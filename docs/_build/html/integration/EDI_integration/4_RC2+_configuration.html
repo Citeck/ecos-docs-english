@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Конфигурация ЭДО &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Синхронизация контрагентов" href="../Counterparties%20sync.html" />
+    <link rel="prev" title="Серверное подписание" href="server_signing.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EDI.html">EDI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events_kontur.html">Настройка получения событий с ящиком Контур.Диадок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="counterparty_kontur.html">Синхронизация данных контрагентов и их ящиков с Контур.Диадок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_provider.html">Реализация интеграции с новым ЭДО-провайдером</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-kontur-lib.html">Описание ecos-edi-kontur-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-ftps-lib.html">Описание ecos-edi-ftps-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-sbis-lib.html">Описание ecos-edi-sbis-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expand_functions.html">Как расширять функционал</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_integration_settings.html">Переход на новые настройки интеграции с EDI провайдерами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CounterpartyEdiInfoRecordsDao.html">CounterpartyEdiInfoRecordsDao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_lib.html">Общая библиотека для обработки EDI событий ecos-edi-integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_signing.html">Серверное подписание</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Конфигурация ЭДО</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a> &raquo;</li>
+      <li>Конфигурация ЭДО</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/integration/EDI_integration/4_RC2+_configuration.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Конфигурация ЭДО<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>После переноса ЭДО в микросервис интеграции - большая часть конфигурации, вроде идентификаторы ящиков, креды и тд переместились из системного журнала <strong>“Конфигурация EDI”</strong>. Информацию по этой конфигурации можно найти <a class="reference internal" href="events_kontur.html#events-kontur"><span class="std std-ref">Настройка получения событий с ящиком Контур_Диадок</span></a></p>
+<p>Актуальная конфигурация в журнале <strong>“Конфигурация EDI”</strong>:</p>
+<ul>
+<li><p><strong>signContentType</strong> - указывается какая часть контента будет подписываться ЭЦП. Возможные значения:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>content</strong> (стоит по умолчанию) - это означает, что подпись должна строиться на основании всего контента документа целиком.</p></li>
+<li><p><strong>digest</strong> - подпись будет строиться на основании «дайджеста» документа, который высчитывается на стороне бэкенда Экоса. ЭДО провайдер его, насколько я знаю, не понимает как подпись к документу.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>inboundPackagesProcessing</strong> - указывается, исходя из каких правил обрабатывать входящие документы. Возможные значения:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>BOX_ID</strong> - заставляет при получении входящего документа - искать обязательно контрагента в системе, от которого пришел данный документ. Если контрагент не найден - документ не будет загружен, событие ЭДО будет пропущено. Контрагент ищется с помощью алгоритмов EdiCounterpartyService на основании активного провайдера.</p></li>
+<li><p><strong>ALL (или любое другое)</strong> - игнорирование отсутствия контрагента. Все документы будут загружаться в систему.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>isplitLsdfDocflowByLegalEntities</strong> - Зеркалирование. Включенный флаг обозначает, что исходящий пакет отправленный в свое же юр лицо попадет в систему еще и как входящий. С технической стороны, при поиске вложений, пакетов, подписей - мы ищем не просто по идентификаторам, но и по направлению. Возможные значения:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>true</strong> - включено.</p></li>
+<li><p><strong>false (или любое другое)</strong> - выключено.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>iallowGenerateLsdfPrintFormsAsyncOnFail</strong> - Оптимизация. Разрешить генерировать печатную форму (ПФ) асинхронно, если ЭДО-провайдер не смог отдать ее сразу при получении пакета. Актуально для проектов, у которых заказчикам приходит огромный объем формализованных документов. Так как для формализованных документов в ассоциацию попадает оригинальная xml, а в контент ПФ - необходимо время на генерацию этой ПФ. Данный флаг позволяет не прерывать работу интеграции, а указать флаг eint:needUpdatePrintForm. Осторожно, если в проекте нет джобы, которая будет регенерить документы с таким флагом - печатные формы, которые не были сгенерированы при получении не будет получены вообще. См. Генерация печатных форм.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>true</strong> - включено.</p></li>
+<li><p><strong>false</strong> (или любое другое) - выключено.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="server_signing.html" class="btn btn-neutral float-left" title="Серверное подписание" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../Counterparties%20sync.html" class="btn btn-neutral float-right" title="Синхронизация контрагентов" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

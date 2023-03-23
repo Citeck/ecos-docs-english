@@ -1,0 +1,681 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECOS CMMN &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Alfresco и информация о миграции" href="../Alfresco.html" />
+    <link rel="prev" title="ECOS BPMN (Flowable)" href="BPMN.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Processes.html">Бизнес-процессы</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="BPMN.html">ECOS BPMN (Flowable)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ECOS CMMN</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Общие сведения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cmmn-ecos-process">Интеграция CMMN с ecos-process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Интеграция CMMN с таймерами ecos-process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cmmn">Парсинг описания для нового CMMN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Импорт кейса</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Процесс импорта новой реализации CMMN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Как включить новую реализацию CMMN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#eproc-eproc">Как включить eproc реализацию для конкретного типа при условии, что eproc реализация включена в системном журнале</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Как работает движок</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Как работают таймеры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluator">Evaluator’ы для событий</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command">Command’ы для действий</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#js-cmmn-ecos-process">Полезные JS-скрипты при работе с CMMN + ecos-process</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../Processes.html">Бизнес-процессы</a> &raquo;</li>
+      <li>ECOS CMMN</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/general/Processes/ECOS_CMMN.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ecos-cmmn">
+<h1><a class="toc-backref" href="#id9">ECOS CMMN</a><a class="headerlink" href="#ecos-cmmn" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ecos-cmmn" id="id9">ECOS CMMN</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id10">Общие сведения</a></p></li>
+<li><p><a class="reference internal" href="#cmmn-ecos-process" id="id11">Интеграция CMMN с ecos-process</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id12">Интеграция CMMN с таймерами ecos-process</a></p></li>
+<li><p><a class="reference internal" href="#cmmn" id="id13">Парсинг описания для нового CMMN</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id14">Импорт кейса</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id5" id="id15">Процесс импорта новой реализации CMMN</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id16">Как включить новую реализацию CMMN</a></p></li>
+<li><p><a class="reference internal" href="#eproc-eproc" id="id17">Как включить eproc реализацию для конкретного типа при условии, что eproc реализация включена в системном журнале</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id7" id="id18">Как работает движок</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id19">Как работают таймеры</a></p></li>
+<li><p><a class="reference internal" href="#evaluator" id="id20">Evaluator’ы для событий</a></p></li>
+<li><p><a class="reference internal" href="#command" id="id21">Command’ы для действий</a></p></li>
+<li><p><a class="reference internal" href="#js-cmmn-ecos-process" id="id22">Полезные JS-скрипты при работе с CMMN + ecos-process</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id2">
+<h2><a class="toc-backref" href="#id10">Общие сведения</a><a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>CMMN + ecos process - движок бизнес процессов.</p>
+<p>Движок создан для ускорения и сокращения объемов миграций - <strong>definition</strong> процесса не хранится в разрезе каждого кейса в Alfresco, а имеет свой <strong>datasource</strong> (ecos-process микросервис).</p>
+<p>В общем виде последовательность шагов бизнес-движка при выполнении каких-либо действий с кейсом (создание/завершение задачи/выполнение пользовательского действия и тд):</p>
+<ol class="arabic simple">
+<li><p>В движок поступает событие (<strong>Event</strong>).</p></li>
+<li><p>Начинается транзакция в Alfresco.</p></li>
+<li><p>В процессе выполнения, запрашивается <strong>state</strong> и/или <strong>definition</strong> посредством команд (через RabbitMQ) из ecos-process микросервиса.</p></li>
+<li><p>Выполняются действия по процессу (активация или завершение активностей и тд).</p></li>
+<li><p>Перед коммитом транзакции, измененный <strong>state</strong> сохраняется в ecos-process посредством команд, новый <strong>stateId</strong> сохраняется в ноду.</p></li>
+<li><p>Транзакция коммитится, фиксируется новый <strong>stateId</strong> для ноды, исходя из которого будут происходить дальнейшие действия.</p></li>
+</ol>
+<p>Схематично это можно показать в следующем виде:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/CMMN.png"><img alt="Колонки" class="align-center" src="../../_images/CMMN.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>В случае проблем во время транзакции, в том числе после отправки нового <strong>state</strong> в микросервис - откат транзакции не меняет <strong>stateId</strong> в ноде кейса и мы не теряя данных, может продолжать работать с кейсом с последней зафиксированной общей в обоих инстансах точки.</p>
+<p>Стоит отметить, состояния в микросервисе иммутабельны и хранятся в микросервисе вне зависимости от того, что на него уже не указывает ни один кейс. Это позволяет в будущем дополнить реализацию нового CMMN функционалом отката процесса.</p>
+</section>
+<section id="cmmn-ecos-process">
+<h2><a class="toc-backref" href="#id11">Интеграция CMMN с ecos-process</a><a class="headerlink" href="#cmmn-ecos-process" title="Ссылка на этот заголовок"></a></h2>
+<p>Интеграция осуществляется через библиотеку <strong>ecos-commands</strong>.</p>
+<p>Микросервис <strong>ecos-process</strong> реализует на своей стороне несколько command executor’ов, которыми пользуется CMMN для получения/создания/обновления состояние или поиска конкретного описания процесса.</p>
+<p>Команды и их роли, описаны в таблице:</p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название команды</p></th>
+<th class="head"><p>Структура запроса</p></th>
+<th class="head"><p>Структура ответа</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>create-proc-instance</strong></p></td>
+<td><div class="line-block">
+<div class="line">procType: String</div>
+<div class="line">ecosTypeRef: RecordRef</div>
+<div class="line">alfTypes: String[]</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">procDefId: String</div>
+<div class="line">procDefRevId: String</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Создает новый пустой инстанс процесса (состояние) в микросервисе.</div>
+<div class="line">Возвращает идентификатор процесса и идентификатор состояния.</div>
+<div class="line">Идентификатор состояния обязателен для обновления состояния в будущем.</div>
+<div class="line">Вызывается при создании кейса единоразово.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>get-proc-def-rev</strong></p></td>
+<td><div class="line-block">
+<div class="line">procType: String</div>
+<div class="line">procDefRevId: String</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">id: String</div>
+<div class="line">format: String</div>
+<div class="line">data: byte[]</div>
+<div class="line">procDefId: String</div>
+<div class="line">version: int</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Производит поиск по recisionId описания конкретного процесса.</div>
+<div class="line">В data - хранится описание процесса, которое парсится в удобный формат и позже кешируется.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>create-proc-instance</strong></p></td>
+<td><div class="line-block">
+<div class="line">procDefRevId: String</div>
+<div class="line">recordRef: RecordRef</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">procId: String</div>
+<div class="line">procStateId: String</div>
+<div class="line">procStateData: byte[]</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Создает новый пустой инстанс процесса (состояние) в микросервисе.</div>
+<div class="line">Возвращает идентификатор процесса и идентификатор состояния.</div>
+<div class="line">Идентификатор состояния обязателен для обновления состояния в будущем.</div>
+<div class="line">Вызывается при создании кейса единоразово.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>get-proc-state</strong></p></td>
+<td><div class="line-block">
+<div class="line">procType: String</div>
+<div class="line">procStateId: String</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">procDefRevId: String</div>
+<div class="line">stateData: byte[]</div>
+<div class="line">version: int</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Получение по stateId состояния процесса с данными.</div>
+<div class="line">Состояние хранится в том же виде, в котором происходило и сохранение (см. update-proc-state).</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>update-proc-state</strong></p></td>
+<td><div class="line-block">
+<div class="line">prevProcStateId: String</div>
+<div class="line">stateData: byte[]</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">procStateId: String</div>
+<div class="line">version: int</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Сохранение в микросервисе нового обновленного состояния.</div>
+<div class="line">Возвращает идентификатор новой версии состояния.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Примечание: procType для CMMN всегда имеет значение <code class="docutils literal notranslate"><span class="pre">cmmn</span></code>.</p>
+<p>Результат выполнения команд <code class="docutils literal notranslate"><span class="pre">find-proc-def</span> <span class="pre">``и</span> <span class="pre">``get-proc-def-rev</span></code> кешируется следующим образом:</p>
+<p>Для команды <code class="docutils literal notranslate"><span class="pre">find-proc-def</span></code> кешируется идентификатор ревизии, который нужен для выполнения следующей команды. Ключом кеша является структура <code class="docutils literal notranslate"><span class="pre">ecosTypeRef+alfTypes</span></code>. Используется Google Guava кеш.</p>
+<p>Для команды <code class="docutils literal notranslate"><span class="pre">get-proc-def-rev</span></code> дела обстоят несколько сложнее. После выполнения команды, описание процесса парсится в удобный формат для процесса (см описание парсинга в соседней статье) и результат парсинга уже кешируется. Ключом кеша является идентификатор ревизии.  Используется Google Guava кеш.</p>
+<p>Полностью работу с микросервисом ecos-process берет на себя сервис <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.activity.service.eproc.EProcActivityServiceImpl</span></code>. Так же, он может предоставлять информацию по доп кешам конкретного дефинишена.</p>
+</section>
+<section id="id3">
+<h2><a class="toc-backref" href="#id12">Интеграция CMMN с таймерами ecos-process</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Микросервис <strong>ecos-process</strong> позволяет “зашедулить” некоторую команду на выполнение в будущем, в какой-то момент времени.</p>
+<p>Последовательность следующая:</p>
+<ol class="arabic simple">
+<li><p>Срабатывает активность таймера в CMMN.</p></li>
+<li><p>CMMN отправляет команду в ecos-process со временем, в которое эту команду нужно вернуть и описанием ответной команды.</p></li>
+<li><p>Проходит отведенное время, ecos-process отправляет ответную команду в приложение, указанное для ответной команды (в данном случае, Alfresco).</p></li>
+<li><p>Завершается активность таймера в CMMN.</p></li>
+</ol>
+<p>Команды для управления таймерами со стороны ecos-process:</p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название команды</p></th>
+<th class="head"><p>Структура запроса</p></th>
+<th class="head"><p>Структура ответа</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>create-timer</strong></p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>   <span class="n">triggerTime</span><span class="p">:</span> <span class="n">Instant</span><span class="p">,</span>
+       <span class="n">command</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nb">id</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+       <span class="n">targetApp</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+       <span class="nb">type</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+       <span class="n">body</span><span class="p">:</span> <span class="n">ObjectData</span>
+       <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="n">timerId</span><span class="p">:</span> <span class="n">String</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line">Создает таймер в ecos-process.</div>
+<div class="line">После прошествия времени, которое указано в <strong>triggerTime</strong>, ecos-process составит команду на основании структуры command и отправит ее в <strong>targetApp</strong> из структуры command.</div>
+<div class="line">Микросервис, если в body не было указано поле с названием <strong>timerId</strong>, то добавит туда настоящий из ecos-process <strong>timerId</strong>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>cancel-timer</strong></p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="n">timerId</span><span class="p">:</span> <span class="n">String</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+       <span class="n">wasCancelled</span><span class="p">:</span> <span class="n">boolean</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line">Отменяет таймер в ecos-process по идентификатору.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Новый CMMN реализует executor с типом <strong>eproc-timer-occur</strong> для реакции на таймеры.
+Если ошибочно установленный (к примеру, оставшийся после отката транзакции) таймер вернет команду в CMMN, движок не отреагирует эту команду, так как, таймер с таким <strong>id</strong> не соответствует активности таймера.</p>
+</section>
+<section id="cmmn">
+<h2><a class="toc-backref" href="#id13">Парсинг описания для нового CMMN</a><a class="headerlink" href="#cmmn" title="Ссылка на этот заголовок"></a></h2>
+<p>Основную работу по парсингу выполняет класс <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.activity.service.eproc.importer.parser.CmmnSchemaParser</span></code>.</p>
+<p>Парсинг состоит из двух стадий:</p>
+<p>С помощью JAXB, парсит <strong>definition</strong> в структуры старого CMMN.</p>
+<p>Структуры старого CMMN парсит в единый объект <strong>ProcessDefinition</strong>’а с вложенными структурами активностей разных типов, с описаниями переходов и тд.</p>
+<p>Вторая стадия особенна тем, что во время нее не только собирается <strong>ProcessDefinition</strong>, но и строятся кеши, которые будут возвращены с <strong>ProcessDefinition</strong> в виде структуры <strong>OptimizedProcessDefinition</strong>.
+На данный момент, структура оптимизированного описания процесса следующая:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">OptimizedProcessDefinition</span> <span class="p">{</span>
+       <span class="n">private</span> <span class="n">Definitions</span> <span class="n">xmlProcessDefinition</span><span class="p">;</span>
+       <span class="n">private</span> <span class="n">ProcessDefinition</span> <span class="n">processDefinition</span><span class="p">;</span>
+       <span class="n">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">ActivityDefinition</span><span class="o">&gt;</span> <span class="n">idToActivityCache</span><span class="p">;</span>
+       <span class="n">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">SentryDefinition</span><span class="o">&gt;</span> <span class="n">idToSentryCache</span><span class="p">;</span>
+       <span class="n">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">SentrySearchKey</span><span class="p">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">SentryDefinition</span><span class="o">&gt;&gt;</span> <span class="n">sentrySearchCache</span><span class="p">;</span>
+       <span class="n">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">ActivityDefinition</span><span class="o">&gt;&gt;</span> <span class="n">roleVarNameToTaskDefinitionCache</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>где:</p>
+<ul class="simple">
+<li><p><strong>xmpProcessDefinition</strong> - результат первой парсинга JAXB (первой стадии парсинга). Обязателен для импорта ролей и элементов кейса.</p></li>
+<li><p><strong>processDefinition</strong> - неоптимизированное описание процесса, результат второй стадии парсинга.</p></li>
+<li><p><strong>idToActivityCache</strong> - кеш ActivityDefinition’ов по идентификаторам.</p></li>
+<li><p><strong>idToSentryCache</strong> - кеш SentryDefinition’ов по идентификаторам.</p></li>
+<li><p><strong>sentrySearchCache</strong> - кеш для поиска SentryDefinition’ов, которые могут сработать при прошествии события, описанного в SentrySearchKey. Смысл этого кеша в том, чтоб без перебора всего процесса найти те sentry, которые могут произойти при событии какого-то типа для определенного SourceRef. В дальнейшем, будут выполнены для этих sentry их evaluator’ы и только те что вернули true - сработают sentry. Активности, привязанные к этим sentry триггерами - перейдут в новое состояние согласно описанным переходам. SentrySearchKey состоит из SourceRef+EventType.</p></li>
+<li><p><strong>roleVarNameToTaskDefinitionCache</strong> - кеш названий ролей к ActivityDefinition с типом “пользовательская задача”. Используется для синхронизации изменившихся ролей с запущенными задачами.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id14">Импорт кейса</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Для импорта кейсов - давно существует бихейвиор <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.behavior.CaseTemplateBehavior</span></code>.</p>
+<section id="id5">
+<h3><a class="toc-backref" href="#id15">Процесс импорта новой реализации CMMN</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<p>Процесс импорта можно расписать по следующим шагам:</p>
+<ol class="arabic simple">
+<li><p>Определение в бихейвиоре, импортировать ли CMMN кейс? Если да, то продолжаем.</p></li>
+<li><p>Парсинг <strong>ProcessDefinition</strong>, расписанного в соседней статье.</p></li>
+<li><p>Импорт ролей.</p></li>
+<li><p>Импорт элементов кейса.</p></li>
+<li><p>Создание нового состояния в микросервисе (с помощью команды <strong>create-proc-instance</strong>, описанной в соседней статье).</p></li>
+<li><p>Сохранение <strong>stateId</strong> и <strong>processId</strong> в ноду кейса.</p></li>
+<li><p>Создание <strong>ProcessInstance</strong> исходя из <strong>ProcessDefinition</strong> перебором активностей. <strong>ProcessInstance</strong> сохраняется в транзакции.</p></li>
+<li><p>Отправка события <strong>case-created</strong> по процессу.</p></li>
+</ol>
+</section>
+<section id="id6">
+<h3><a class="toc-backref" href="#id16">Как включить новую реализацию CMMN</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<p>Первое на что смотрится, какая реализация вообще включена в системном журнале конфигурации по ключу <code class="docutils literal notranslate"><span class="pre">ecos-case-process-type</span></code>. Может быть 2 значения:</p>
+<ul class="simple">
+<li><p><strong>alf</strong> - Всегда выбирать alfresco реализацию CMMN.</p></li>
+<li><p><strong>eproc</strong> - Выбирать ecos-process реализацию CMMN при условии, что для этого типа включена новая реализация. Иначе - выбирать alfresco реализацию CMMN.</p></li>
+</ul>
+</section>
+<section id="eproc-eproc">
+<h3><a class="toc-backref" href="#id17">Как включить eproc реализацию для конкретного типа при условии, что eproc реализация включена в системном журнале</a><a class="headerlink" href="#eproc-eproc" title="Ссылка на этот заголовок"></a></h3>
+<p>Класс <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.activity.service.eproc.importer.EProcCaseImporter</span></code> имеет список типов, доступных для новой реализации CMMN.</p>
+<p>Чтобы зарегистрировать новый тип - можно создать бин класса <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.activity.service.eproc.importer.EProcTypeRegistrar</span></code>.</p>
+<p>Пример для коробочных договоров:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">bean</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;contracts.eproc.registrarForEnabled&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;ru.citeck.ecos.icase.activity.service.eproc.importer.EProcTypeRegistrar&quot;</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="nb">property</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;alfTypes&quot;</span><span class="o">&gt;</span>
+              <span class="o">&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
+                     <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">{</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ru</span><span class="o">/</span><span class="n">model</span><span class="o">/</span><span class="n">contracts</span><span class="o">/</span><span class="mf">1.0</span><span class="p">}</span><span class="n">agreement</span><span class="o">&lt;/</span><span class="n">value</span><span class="o">&gt;</span>
+              <span class="o">&lt;/</span><span class="nb">list</span><span class="o">&gt;</span>
+       <span class="o">&lt;/</span><span class="nb">property</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">bean</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Поддерживает наследование типов alfresco, то есть, если указать <code class="docutils literal notranslate"><span class="pre">sys:base</span></code> тип - то eproc реализация будет доступна для всех типов (при условии, что в журнале eproc реализация включена).</p>
+<p>Поддерживает указание не только alfresco типов, но и <strong>ecosType (RecordRef)</strong>.</p>
+</section>
+</section>
+<section id="id7">
+<h2><a class="toc-backref" href="#id18">Как работает движок</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h2>
+<p>Триггером для начала обработки внутри процесса всегда является событие (<strong>Event</strong>).</p>
+<p>Чтобы началась обработка конкретного Event, нужно, чтобы произошла какая-либо из активностей следующих возможных типов (<strong>eventType</strong>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">activity-started</span></code> - срабатывает при запуске активности (внутреннее событие процесса).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">activity-stopped</span></code> - срабатывает при завершении активности (внутреннее событие процесса).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stage-children-stopped</span></code> - срабатывает при завершении дочерней активности, при условии, что все дочерние элементы не активны (внутреннее событие).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">case-created</span></code> - срабатывает единоразово при создании кейса (внешнее событие).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">case-properties-changed</span></code> - срабатывает при изменении свойств процесса (внешнее событие, инициатор - бихейвиор).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user-action</span></code> - срабатывает при выполнении действия пользователем из виджета действий (внешнее событие).</p></li>
+</ul>
+<p>После срабатывания, например, <strong>“activity-started” eventType</strong> для активности с id=”id-2” - начнется поиск из кешей Sentry с подходящими параметрами.</p>
+<p>Найденные Sentry будут проверены evaluator’ами и уже для тех, что были пропущены evaluator’ами - будет запущена обработка события.</p>
+<p>Сработавшее событие смотрит из своей Sentry, к чему она привязана по следующей схеме (некоторые переходы по сущностям опущены для поддержания простоты усвоения последовательности шагов):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/CMMN_1.png"><img alt="Колонки" class="align-center" src="../../_images/CMMN_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>где процесс из <code class="docutils literal notranslate"><span class="pre">ActivityTransitionDefinition(1)</span></code> смотрит <strong>toState</strong>. В зависимости от его значения:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">toState=Started</span> <span class="pre">(fromState=Not</span> <span class="pre">started)</span></code> - В данном случае будет запущена активность процесса с привязанной definition(2) текущего процесса. Если активность уже была запущена и она перезапускаема - будет произведен reset перед запуском активности.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">toState=Completed</span> <span class="pre">(fromState=Started)</span></code> - В данном случае будет остановлена активность процесса с привязанной definition(2) текущего процесса.</p></li>
+</ul>
+<p>В итоге, запускаемые или останавливаемые активности триггируют события, которые могут влиять на состояния других активностей. Такая рекурсивная цепочка действий и является сутью работы движка.</p>
+<p>Цепочка действий прекратится, когда последние отработавшие активности не найдут sentry, которые бы могли отработать.</p>
+<p>Основные классы для управления активностями и триггирования событий:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.activity.service.eproc.EProcCaseActivityDelegate</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.activity.service.eproc.EProcCaseActivityEventDelegate</span></code></p></li>
+</ul>
+</section>
+<section id="id8">
+<h2><a class="toc-backref" href="#id19">Как работают таймеры</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h2>
+<p>При запуске активности с типом <strong>“Таймер”</strong> - происходит отправка команды в микросервис ecos-process на создание таймера.</p>
+<p>После того, как таймер дотикает - происходит обратная команда из ecos-process в альфреско, которая останавливает активность таймера. Остановка активности таймера начинает триггерить смену состояний других активностей, завязанных на него и процесс идет дальше.</p>
+</section>
+<section id="evaluator">
+<h2><a class="toc-backref" href="#id20">Evaluator’ы для событий</a><a class="headerlink" href="#evaluator" title="Ссылка на этот заголовок"></a></h2>
+<p>После того, как sentry был найден, нужно определить, нужно ли триггировать данное событие.</p>
+<p>За это ответственны evaluator’ы, описание которых можно найти в <strong>SentryDefinition</strong> сущности.</p>
+<p>В новой реализации CMMN, при триггировании события, конвертируются <strong>EvaluatorDefinition</strong> в понятные для <strong>RecordEvaluatorService</strong> структуры вида <strong>RecordEvaluatorDto</strong> и скармливаются, непосредственно, сервису <strong>RecordEvaluatorService</strong>.</p>
+<p>Если сервис вернул true - значит, событие происходит. Иначе - игнорируется.</p>
+<p>Конвертация <strong>EvaluatorDefinition</strong> в <strong>RecordEvaluatorDto</strong> происходит в классе <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.activity.service.eproc.EProcCaseEvaluatorConverter</span></code>. Маппинг доступных эвалюаторов можно посмотреть там же.</p>
+</section>
+<section id="command">
+<h2><a class="toc-backref" href="#id21">Command’ы для действий</a><a class="headerlink" href="#command" title="Ссылка на этот заголовок"></a></h2>
+<p>Команды происходят синхронно и на локальном инстансе (Alfresco).</p>
+<p>Всю работу делает класс <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.commands.CaseCommandsServiceImpl</span></code>.</p>
+<p>Алгоритм примерно следующий:</p>
+<ol class="arabic simple">
+<li><p>В старой или новой реализации CMMN запускается активность с типом Action. Каждый движок своими средствами обращается к CaseCommandsService с идентификатором активности.</p></li>
+<li><p>CaseCommandsService вытягивает из активности тип события.</p></li>
+<li><p>По типу события ищет зарегистрированный Provider команд.</p></li>
+<li><p>Собирает с помощью провайдера команду.</p></li>
+<li><p>Отправляет команду на выполнение.</p></li>
+</ol>
+<p>Список существующих команд:</p>
+<ul class="simple">
+<li><p>Выполнить скрипт (<code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.commands.executors.ExecuteScriptCommandExecutor</span></code>);</p></li>
+<li><p>Fail, просто выбрасывает ошибку. Используется с каким-нибудь Evaluator’ом (<code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.commands.executors.FailCommandExecutor</span></code>);</p></li>
+<li><p>Сигнал БП (<code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.commands.executors.SendWorkflowSignalCommandExecutor</span></code>);</p></li>
+<li><p>Установить статус кейса (<code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.commands.executors.SetCaseStatusCommandExecutor</span></code>);</p></li>
+<li><p>Установить переменную процесса (<code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.commands.executors.SetProcessVariableCommandExecutor</span></code>);</p></li>
+<li><p>Установить переменную кейса (<code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.icase.commands.executors.SetPropertyValueCommandExecutor</span></code>).</p></li>
+</ul>
+</section>
+<section id="js-cmmn-ecos-process">
+<h2><a class="toc-backref" href="#id22">Полезные JS-скрипты при работе с CMMN + ecos-process</a><a class="headerlink" href="#js-cmmn-ecos-process" title="Ссылка на этот заголовок"></a></h2>
+<p>Получение дерева активностей с состояниями и датами старта (выводимые данные можно расширить, указано в комментарии в коде). Актуально, пока конструктор кейса не разработан.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">document</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">findNode</span><span class="p">(</span><span class="s1">&#39;workspace://SpacesStore/2523f47a-f9aa-4320-81d7-6551c2e42fcc&#39;</span><span class="p">);</span>
+ <span class="n">getActivities</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+ <span class="n">function</span> <span class="n">getActivities</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span> <span class="p">{</span>
+         <span class="n">var</span> <span class="n">activities</span> <span class="o">=</span> <span class="n">CaseActivityService</span><span class="o">.</span><span class="n">getActivities</span><span class="p">(</span><span class="n">parent</span><span class="p">);</span>
+         <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">activities</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="n">var</span> <span class="n">activity</span> <span class="o">=</span> <span class="n">activities</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+                 <span class="n">printActivity</span><span class="p">(</span><span class="n">activity</span><span class="p">,</span> <span class="n">level</span><span class="p">);</span>
+                 <span class="n">var</span> <span class="n">childActivities</span> <span class="o">=</span> <span class="n">CaseActivityService</span><span class="o">.</span><span class="n">getActivities</span><span class="p">(</span><span class="n">activity</span><span class="p">);</span>
+                 <span class="n">getActivities</span><span class="p">(</span><span class="n">activity</span><span class="p">,</span> <span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+         <span class="p">}</span>
+ <span class="p">}</span>
+
+ <span class="n">function</span> <span class="n">printActivity</span><span class="p">(</span><span class="n">activity</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span> <span class="p">{</span>
+         <span class="n">var</span> <span class="n">spaces</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+         <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">level</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="n">spaces</span> <span class="o">=</span> <span class="n">spaces</span> <span class="o">+</span> <span class="s1">&#39;    &#39;</span><span class="p">;</span>
+         <span class="p">}</span>
+         <span class="nb">print</span><span class="p">(</span><span class="n">spaces</span> <span class="o">+</span> <span class="n">activity</span><span class="o">.</span><span class="n">title</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="n">activity</span><span class="o">.</span><span class="n">state</span><span class="p">);</span> <span class="o">//</span> <span class="n">Тут</span> <span class="n">можно</span> <span class="n">расширить</span> <span class="n">вывод</span> <span class="n">другими</span> <span class="n">данными</span> <span class="n">из</span> <span class="n">сущности</span> <span class="n">CaseActivity</span><span class="o">.</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>Сброс кэша шаблонов кейсов (актуально если шаблоны меняются через журнал описаний процессов).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">srv</span> <span class="o">=</span> <span class="n">services</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;eprocActivityService&#39;</span><span class="p">);</span>
+
+ <span class="n">var</span> <span class="n">cache1</span> <span class="o">=</span> <span class="n">Packages</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">commons</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">reflect</span><span class="o">.</span><span class="n">FieldUtils</span><span class="o">.</span><span class="n">readField</span><span class="p">(</span><span class="n">srv</span><span class="p">,</span> <span class="s1">&#39;typesToRevisionIdCache&#39;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+ <span class="n">cache1</span><span class="o">.</span><span class="n">invalidateAll</span><span class="p">();</span>
+
+ <span class="n">var</span> <span class="n">cache2</span> <span class="o">=</span> <span class="n">Packages</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">commons</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">reflect</span><span class="o">.</span><span class="n">FieldUtils</span><span class="o">.</span><span class="n">readField</span><span class="p">(</span><span class="n">srv</span><span class="p">,</span> <span class="s1">&#39;revisionIdToProcessDefinitionCache&#39;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+ <span class="n">cache2</span><span class="o">.</span><span class="n">invalidateAll</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Проверка наличия шаблона для типа в обход кэшей:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">srv</span> <span class="o">=</span> <span class="n">services</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;eprocActivityService&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">commandsService</span> <span class="o">=</span> <span class="n">Packages</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">commons</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">reflect</span><span class="o">.</span><span class="n">FieldUtils</span><span class="o">.</span><span class="n">readField</span><span class="p">(</span><span class="n">srv</span><span class="p">,</span> <span class="s1">&#39;commandsService&#39;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">findProcDefCommand</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Packages</span><span class="o">.</span><span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">.</span><span class="n">icase</span><span class="o">.</span><span class="n">activity</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">eproc</span><span class="o">.</span><span class="n">commands</span><span class="o">.</span><span class="n">dto</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">FindProcDef</span><span class="p">();</span>
+<span class="n">findProcDefCommand</span><span class="o">.</span><span class="n">setProcType</span><span class="p">(</span><span class="s2">&quot;cmmn&quot;</span><span class="p">);</span>
+<span class="n">findProcDefCommand</span><span class="o">.</span><span class="n">setEcosTypeRef</span><span class="p">(</span><span class="n">Packages</span><span class="o">.</span><span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">.</span><span class="n">records2</span><span class="o">.</span><span class="n">RecordRef</span><span class="o">.</span><span class="n">valueOf</span><span class="p">(</span><span class="s2">&quot;emodel/type@supplementary-agreement/6ce21c23-d1e7-43b3-994b-2c3c305d320d&quot;</span><span class="p">));</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">commandsService</span><span class="o">.</span><span class="n">executeSync</span><span class="p">(</span><span class="n">findProcDefCommand</span><span class="p">,</span> <span class="s2">&quot;eproc&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Проверка наличия шаблона для заявки с учетом кэшей:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">srv</span> <span class="o">=</span> <span class="n">services</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;eprocActivityService&#39;</span><span class="p">);</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">srv</span><span class="o">.</span><span class="n">getFullDefinition</span><span class="p">(</span><span class="n">Packages</span><span class="o">.</span><span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">.</span><span class="n">records2</span><span class="o">.</span><span class="n">RecordRef</span><span class="o">.</span><span class="n">valueOf</span><span class="p">(</span><span class="s2">&quot;workspace://SpacesStore/45a5d9cf-502f-4622-bf41-040df6d599e5&quot;</span><span class="p">)));</span>
+</pre></div>
+</div>
+<p>Повторное применение шаблона кейса к документу без статуса или в статусе “Error while starting the process/ОШИБКА ПРИ СТАРТЕ ПРОЦЕССА“ (ecos-process-start-error):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">document</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">findNode</span><span class="p">(</span><span class="s2">&quot;workspace://SpacesStore/***&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">hasAspect</span><span class="p">(</span><span class="s2">&quot;req:hasCompletenessLevels&quot;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">document</span><span class="o">.</span><span class="n">removeAspect</span><span class="p">(</span><span class="s2">&quot;req:hasCompletenessLevels&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">services</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;caseTemplateBehavior&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">onAddAspect</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">nodeRef</span><span class="p">,</span> <span class="n">citeckUtils</span><span class="o">.</span><span class="n">createQName</span><span class="p">(</span><span class="s1">&#39;icase:case&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Сброс и перезапуск EPROC процесса кейса</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">document</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">findNode</span><span class="p">(</span><span class="s1">&#39;workspace://SpacesStore/6bb46ade-b5d0-4c0b-bca6-71298e6979a7&#39;</span><span class="p">);</span>
+<span class="n">CaseActivityService</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">document</span><span class="p">);</span>
+<span class="n">caseActivityEventService</span><span class="o">.</span><span class="n">fireEvent</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="s1">&#39;case-created&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Переприменение шаблона кейса (запустить процесс заново с последней версией шаблона)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Выполнение</span> <span class="n">в</span> <span class="mi">2</span> <span class="n">этапа</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;</span> <span class="mf">1.</span> <span class="n">Сбрасываем</span> <span class="n">состояние</span> <span class="n">кейса</span> <span class="n">и</span> <span class="n">кэш</span> <span class="n">шаблонов</span>
+
+<span class="n">var</span> <span class="n">document</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">findNode</span><span class="p">(</span><span class="s1">&#39;workspace://SpacesStore/6558016c-e787-4f24-9d43-34d2739f01a2&#39;</span><span class="p">);</span>
+
+<span class="n">var</span> <span class="n">srv</span> <span class="o">=</span> <span class="n">services</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;eprocActivityService&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">cache1</span> <span class="o">=</span> <span class="n">Packages</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">commons</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">reflect</span><span class="o">.</span><span class="n">FieldUtils</span><span class="o">.</span><span class="n">readField</span><span class="p">(</span><span class="n">srv</span><span class="p">,</span> <span class="s1">&#39;typesToRevisionIdCache&#39;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+<span class="n">cache1</span><span class="o">.</span><span class="n">invalidateAll</span><span class="p">();</span>
+<span class="n">var</span> <span class="n">cache2</span> <span class="o">=</span> <span class="n">Packages</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">commons</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">reflect</span><span class="o">.</span><span class="n">FieldUtils</span><span class="o">.</span><span class="n">readField</span><span class="p">(</span><span class="n">srv</span><span class="p">,</span> <span class="s1">&#39;revisionIdToProcessDefinitionCache&#39;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+<span class="n">cache2</span><span class="o">.</span><span class="n">invalidateAll</span><span class="p">();</span>
+
+<span class="n">CaseActivityService</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">document</span><span class="p">);</span>
+
+<span class="o">&gt;&gt;&gt;&gt;&gt;</span> <span class="mf">2.</span> <span class="n">Сбрасываем</span> <span class="n">для</span> <span class="n">кейса</span> <span class="n">шаблон</span> <span class="n">и</span> <span class="n">состояние</span><span class="p">,</span> <span class="n">запускаем</span> <span class="n">импорт</span> <span class="n">и</span> <span class="n">стартуем</span> <span class="n">новый</span> <span class="n">процесс</span><span class="p">:</span>
+
+<span class="n">document</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s1">&#39;icaseEproc:stateId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+<span class="n">document</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s1">&#39;icaseEproc:definitionRevisionId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+
+<span class="n">document</span><span class="o">.</span><span class="n">save</span><span class="p">();</span>
+
+<span class="n">var</span> <span class="n">roles</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">childAssocs</span><span class="p">[</span><span class="s1">&#39;icaseRole:roles&#39;</span><span class="p">];</span>
+<span class="k">for</span> <span class="n">each</span><span class="p">(</span><span class="n">var</span> <span class="n">role</span> <span class="ow">in</span> <span class="n">roles</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">role</span><span class="o">.</span><span class="n">remove</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="n">services</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;EProcCaseImporter&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">importCase</span><span class="p">(</span><span class="n">Packages</span><span class="o">.</span><span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">.</span><span class="n">records2</span><span class="o">.</span><span class="n">RecordRef</span><span class="o">.</span><span class="n">valueOf</span><span class="p">(</span><span class="s2">&quot;&quot;</span> <span class="o">+</span> <span class="n">document</span><span class="o">.</span><span class="n">nodeRef</span><span class="p">))</span>
+<span class="n">caseActivityEventService</span><span class="o">.</span><span class="n">fireEvent</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="s1">&#39;case-created&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="BPMN.html" class="btn btn-neutral float-left" title="ECOS BPMN (Flowable)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../Alfresco.html" class="btn btn-neutral float-right" title="Alfresco и информация о миграции" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,974 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECOS BPMN (Flowable) &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="ECOS CMMN" href="ECOS_CMMN.html" />
+    <link rel="prev" title="Бизнес-процессы" href="../Processes.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Processes.html">Бизнес-процессы</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ECOS BPMN (Flowable)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ecos-flowable-webapps">Запуск ecos + flowable webapps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#flowable-webapps">Инструкция по настройке общего конфигурационного файла для всех flowable webapps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#async-executors">Включение функционала async executors (таймеры, асинхронные задачи и т. д.)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#flowable">Переменные в flowable</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Предопределенные переменные</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Добавление дополнительных переменных</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Сервисы в flowable</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#casecompletenessservice">CaseCompletenessService</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#casestatusservice">CaseStatusService</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flowablerecipientsservice">FlowableRecipientsService</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Использование Производственного календаря во Flowable</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#listeners-flowable">Listeners в flowable</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#execution-listeners">Execution listeners</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-listeners">Task listeners</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Как активировать пользователя</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Поля документа на форме flowable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Обязательность документов во вкладке «Документы»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#email-flowable">Выполнение задач по email в flowable</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Способы отправки</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Игнорирование ошибки отправки email в Flowable</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#flowable-modeler-docker">Использование flowable-modeler в docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Известные проблемы с Flowable</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Процесс с таймерами не движется дальше</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ECOS_CMMN.html">ECOS CMMN</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../Processes.html">Бизнес-процессы</a> &raquo;</li>
+      <li>ECOS BPMN (Flowable)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/general/Processes/BPMN.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ecos-bpmn-flowable">
+<h1><a class="toc-backref" href="#id15">ECOS BPMN (Flowable)</a><a class="headerlink" href="#ecos-bpmn-flowable" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ecos-bpmn-flowable" id="id15">ECOS BPMN (Flowable)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#ecos-flowable-webapps" id="id16">Запуск ecos + flowable webapps</a></p>
+<ul>
+<li><p><a class="reference internal" href="#flowable-webapps" id="id17">Инструкция по настройке общего конфигурационного файла для всех flowable webapps</a></p></li>
+<li><p><a class="reference internal" href="#async-executors" id="id18">Включение функционала async executors (таймеры, асинхронные задачи и т. д.)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#flowable" id="id19">Переменные в flowable</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id20">Предопределенные переменные</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id21">Добавление дополнительных переменных</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id4" id="id22">Сервисы в flowable</a></p>
+<ul>
+<li><p><a class="reference internal" href="#casecompletenessservice" id="id23">CaseCompletenessService</a></p></li>
+<li><p><a class="reference internal" href="#casestatusservice" id="id24">CaseStatusService</a></p></li>
+<li><p><a class="reference internal" href="#flowablerecipientsservice" id="id25">FlowableRecipientsService</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id26">Использование Производственного календаря во Flowable</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#listeners-flowable" id="id27">Listeners в flowable</a></p>
+<ul>
+<li><p><a class="reference internal" href="#execution-listeners" id="id28">Execution listeners</a></p></li>
+<li><p><a class="reference internal" href="#task-listeners" id="id29">Task listeners</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id6" id="id30">Как активировать пользователя</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id31">Поля документа на форме flowable</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id32">Обязательность документов во вкладке «Документы»</a></p></li>
+<li><p><a class="reference internal" href="#email-flowable" id="id33">Выполнение задач по email в flowable</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id9" id="id34">Способы отправки</a></p>
+<ul>
+<li><p><a class="reference internal" href="#task-listener" id="id35">1. Отправка через task listener</a></p></li>
+<li><p><a class="reference internal" href="#flow" id="id36">2. Отправка через привычный flow процесса</a></p></li>
+<li><p><a class="reference internal" href="#multi-instance-task" id="id37">Поддержка multi-instance task</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id10" id="id38">Пример</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id11" id="id39">Игнорирование ошибки отправки email в Flowable</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#flowable-modeler-docker" id="id40">Использование flowable-modeler в docker</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id41">Известные проблемы с Flowable</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id13" id="id42">Процесс с таймерами не движется дальше</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id14" id="id43">Сервис восстановления таймеров flowable</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="ecos-flowable-webapps">
+<h2><a class="toc-backref" href="#id16">Запуск ecos + flowable webapps</a><a class="headerlink" href="#ecos-flowable-webapps" title="Ссылка на этот заголовок"></a></h2>
+<p>При запуске <strong>ecos-community</strong> через <strong>ecos:run</strong>, веб приложения flowable автоматически деплоятся в tomcat через <strong>profile flowable</strong>. Данный <strong>profile</strong> включен по умолчанию, для отключения можно воспользоваться ключами <code class="docutils literal notranslate"><span class="pre">-P</span> <span class="pre">!flowable</span></code> или <code class="docutils literal notranslate"><span class="pre">-DoffFlowable</span></code></p>
+<p>По умолчанию flowable webapps используют внутренние конфигурационные файлы. По умолчанию, все приложения используют в качестве базы данных H2. Для того, чтобы переопределить параметры внутренних конфигурационных, необходимо в конфигурационных дескрипторах указать новые значения (конфигурационные дескрипторы находятся в <code class="docutils literal notranslate"><span class="pre">&lt;ecos-project&gt;/src/test/resources/tomcat/</span></code>).</p>
+<p>Для большего удобства в проектах ecos-community и ecos-enterprise-core сделан один общий конфигурационный файл для всех flowable webapps -</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;ecos-propejct&gt;/src/test/resources/tomcat/flowable/flowable-webapps.properties</span></code></p>
+<section id="flowable-webapps">
+<h3><a class="toc-backref" href="#id17">Инструкция по настройке общего конфигурационного файла для всех flowable webapps</a><a class="headerlink" href="#flowable-webapps" title="Ссылка на этот заголовок"></a></h3>
+<p>В главном <strong>pom.xml</strong> в профиле <strong>flowable</strong> необходимо добавить плагин <strong>properties-maven-plugin</strong> для считывания <strong>properties</strong> из внешнего файла. Значение <code class="docutils literal notranslate"><span class="pre">inherited</span></code> необходимо выставить <code class="docutils literal notranslate"><span class="pre">false</span></code>, чтобы плагин отработал только для самого проекта и не затрагивал дочерние модули.</p>
+<p><strong>Настройка плагина</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;plugin&gt;
+       &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+   &lt;artifactId&gt;properties-maven-plugin&lt;/artifactId&gt;
+   &lt;version&gt;1.0-alpha-2&lt;/version&gt;
+   &lt;inherited&gt;false&lt;/inherited&gt;
+       &lt;executions&gt;
+               &lt;execution&gt;
+               &lt;phase&gt;validate&lt;/phase&gt;
+                       &lt;goals&gt;
+                       &lt;goal&gt;read-project-properties&lt;/goal&gt;
+                   &lt;/goals&gt;
+                   &lt;configuration&gt;
+                       &lt;files&gt;
+                               &lt;file&gt;${project.build.testOutputDirectory}/tomcat/flowable/flowable-webapps.properties&lt;/file&gt;
+                       &lt;/files&gt;
+                   &lt;/configuration&gt;
+           &lt;/execution&gt;
+       &lt;/executions&gt;
+&lt;/plugin&gt;
+</pre></div>
+</div>
+<p>После в конфигурациях плагина <strong>ecos-maven-plugin</strong> нужно добавить <strong>tomcatSystemProperties</strong> и перекинуть необходимые значения из <strong>flowable-webapps.properties</strong>.</p>
+<p><strong>Системные переменные Tomcat</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;tomcatSystemProperties&gt;
+       &lt;flowable.webapps.db.url&gt;${flowable.webapps.db.url}&lt;/flowable.webapps.db.url&gt;
+   &lt;flowable.webapps.db.driver.class.name&gt;${flowable.webapps.db.driver.class.name}&lt;/flowable.webapps.db.driver.class.name&gt;
+   &lt;flowable.webapps.db.username&gt;${flowable.webapps.db.username}&lt;/flowable.webapps.db.username&gt;
+   &lt;flowable.webapps.db.password&gt;${flowable.webapps.db.password}&lt;/flowable.webapps.db.password&gt;
+
+   &lt;flowable.webapps.admin.userid&gt;${flowable.webapps.admin.userid}&lt;/flowable.webapps.admin.userid&gt;
+   &lt;flowable.webapps.admin.password&gt;${flowable.webapps.admin.password}&lt;/flowable.webapps.admin.password&gt;
+
+   &lt;flowable.webapps.idm.app.url&gt;${flowable.webapps.idm.app.url}&lt;/flowable.webapps.idm.app.url&gt;
+   &lt;flowable.webapps.deployment.api.url&gt;${flowable.webapps.deployment.api.url}&lt;/flowable.webapps.deployment.api.url&gt;
+
+   &lt;flowable.webapps.rest.create.demo.definitions&gt;${flowable.webapps.rest.create.demo.definitions}&lt;/flowable.webapps.rest.create.demo.definitions&gt;
+
+   &lt;flowable.webapps.admin.rest.app.host&gt;${flowable.webapps.admin.rest.app.host}&lt;/flowable.webapps.admin.rest.app.host&gt;
+   &lt;flowable.webapps.admin.rest.app.port&gt;${flowable.webapps.admin.rest.app.port}&lt;/flowable.webapps.admin.rest.app.port&gt;
+   &lt;flowable.webapps.admin.rest.app.user&gt;${flowable.webapps.admin.rest.app.user}&lt;/flowable.webapps.admin.rest.app.user&gt;
+   &lt;flowable.webapps.admin.rest.app.password&gt;${flowable.webapps.admin.rest.app.password}&lt;/flowable.webapps.admin.rest.app.password&gt;
+
+   &lt;flowable.webapps.async-executor-activate&gt;${flowable.webapps.async-executor-activate}&lt;/flowable.webapps.async-executor-activate&gt;
+&lt;/tomcatSystemProperties&gt;
+</pre></div>
+</div>
+<p>После переноса переменных из <strong>flowable-webapps.properties</strong> в <strong>tomcatSystemProperties</strong>, они станут доступны в xml дескрипторах.</p>
+<p><strong>flowable-idm.xml</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
+
+&lt;Context antiJARLocking=&quot;true&quot;&gt;
+   &lt;Environment name=&quot;datasource.driver&quot; value=&quot;${flowable.webapps.db.driver.class.name}&quot; type=&quot;java.lang.String&quot;/&gt;
+   &lt;Environment name=&quot;datasource.url&quot; value=&quot;${flowable.webapps.db.url}&quot; type=&quot;java.lang.String&quot;/&gt;
+   &lt;Environment name=&quot;datasource.username&quot; value=&quot;${flowable.webapps.db.username}&quot; type=&quot;java.lang.String&quot;/&gt;
+   &lt;Environment name=&quot;datasource.password&quot; value=&quot;${flowable.webapps.db.password}&quot; type=&quot;java.lang.String&quot;/&gt;
+
+   &lt;Environment name=&quot;admin.userid&quot; value=&quot;${flowable.webapps.admin.userid}&quot; type=&quot;java.lang.String&quot;/&gt;
+   &lt;Environment name=&quot;admin.password&quot; value=&quot;${flowable.webapps.admin.password}&quot; type=&quot;java.lang.String&quot;/&gt;
+
+       &lt;Environment name=&quot;flowable.async-executor-activate&quot; value=&quot;${flowable.webapps.async-executor-activate}&quot; type=&quot;java.lang.Boolean&quot;/&gt;
+&lt;/Context&gt;
+</pre></div>
+</div>
+</section>
+<section id="async-executors">
+<h3><a class="toc-backref" href="#id18">Включение функционала async executors (таймеры, асинхронные задачи и т. д.)</a><a class="headerlink" href="#async-executors" title="Ссылка на этот заголовок"></a></h3>
+<p>В версии community 3.10.0 была добавлена возможность пользоваться функционалом, который зависел от <strong>async executors</strong>.</p>
+<p>Для правильной работы необходимо выключить запуск <strong>async executors</strong> из <strong>flowable webbaps</strong>, так как <strong>aync executor</strong> будет запускаться из внутреннего сконфигурированного движка flowable. Для этого:</p>
+<ol class="arabic simple">
+<li><p>В главном <strong>pom.xml</strong> в блоке <code class="docutils literal notranslate"><span class="pre">&lt;tomcatSystemProperties&gt;</span></code> необходимо добавить новое свойство <code class="docutils literal notranslate"><span class="pre">&lt;flowable.webapps.async-executor-activate&gt;${flowable.webapps.async-executor-activate}&lt;/flowable.webapps.async-executor-activate&gt;</span></code></p></li>
+<li><p>В <code class="docutils literal notranslate"><span class="pre">flowable-webapps.properties</span></code> выставить свойство обязательно в <code class="docutils literal notranslate"><span class="pre">false</span></code> - <code class="docutils literal notranslate"><span class="pre">flowable.webapps.async-executor-activate=false</span></code></p></li>
+<li><p>В каждый файл - <strong>flowable-admin.xml, flowable-idm.xml, flowable-modeler.xml, flowable-rest.xml, flowable-task.xml</strong> добавить строку - <code class="docutils literal notranslate"><span class="pre">&lt;Environment</span> <span class="pre">name=&quot;flowable.async-executor-activate&quot;</span> <span class="pre">value=&quot;${flowable.webapps.async-executor-activate}&quot;</span> <span class="pre">type=&quot;java.lang.Boolean&quot;/&gt;</span></code></p></li>
+</ol>
+<p>PS - в докер образе данная настройка уже произведена.</p>
+</section>
+</section>
+<section id="flowable">
+<h2><a class="toc-backref" href="#id19">Переменные в flowable</a><a class="headerlink" href="#flowable" title="Ссылка на этот заголовок"></a></h2>
+<section id="id2">
+<h3><a class="toc-backref" href="#id20">Предопределенные переменные</a><a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>case_status</strong> - cm:name кейс статуса</p></li>
+<li><p><strong>case_status_before</strong> - cm:name предыдущего кейс статуса</p></li>
+<li><p><strong>document</strong> - NodeRef документа, по которому идет процесс.</p></li>
+<li><p><strong>shareUrl</strong> - share url из SysAdminParams. Например, <code class="docutils literal notranslate"><span class="pre">http://localhost:8080/share/</span></code>. Доступно с версии 3.28.0 core</p></li>
+<li><p><strong>webUrl</strong> - например <code class="docutils literal notranslate"><span class="pre">http://localhost:8080/</span></code>. Доступно с версии 3.28.0 core</p></li>
+</ol>
+<p><strong>Примеры использования:</strong></p>
+<p>Переменные кейс статусов можно использовать как flow condition:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${case_status_before == &quot;ssg-approval&quot;}
+</pre></div>
+</div>
+<p>Переменная document необходима для манипуляций с документом, будь то скрипт, или передача nodeRef в параметре сервиса.</p>
+<p><strong>Задание кейс статуса в expression</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${caseStatusService.setStatus(document, &quot;ssg-reworking&quot;)}
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3><a class="toc-backref" href="#id21">Добавление дополнительных переменных</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h3>
+<p>Если необходимо в execution процесса добавить дополнительные переменные, это можно сделать унаследовав класс <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.flowable.listeners.global.impl.variables.AbstractFlowableSaveToExecutionListener</span></code> и переопределить методы <strong>saveToExecution</strong> и <strong>saveIsRequired</strong>. Переменные будут пересчитываться по ходу движения процесса.</p>
+<p>Выполнение такого listener будет применяться ко всем процессам, по этому, если в установлении переменных есть привязка к какому-то конкретному типу документа, то это нужно учесть при реализации метода saveToExecution (например проверять в нем, что текущий тип документа - это необходимый тип).</p>
+</section>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id22">Сервисы в flowable</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<section id="casecompletenessservice">
+<h3><a class="toc-backref" href="#id23">CaseCompletenessService</a><a class="headerlink" href="#casecompletenessservice" title="Ссылка на этот заголовок"></a></h3>
+<p>JS имплементация сервиса (caseCompletenessServiceJS), доступна по ключу - <strong>completeness</strong>.</p>
+<p>Пример использования - проверка выполнения чек листов в flow condition:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${completeness.isLevelCompleted(document, &quot;workspace://SpacesStore/cl-hr-itn&quot;) &amp;&amp; completeness.isLevelCompleted(document, &quot;workspace://SpacesStore/cl-hr-bank-details&quot;)}
+</pre></div>
+</div>
+</section>
+<section id="casestatusservice">
+<h3><a class="toc-backref" href="#id24">CaseStatusService</a><a class="headerlink" href="#casestatusservice" title="Ссылка на этот заголовок"></a></h3>
+<p>JS имплементация сервиса (caseStatusServiceJS), доступна по ключу - <strong>caseStatusService</strong>.</p>
+<p>Пример использования - установка кейс статуса через expression:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${caseStatusService.setStatus(document, &quot;ssg-signed&quot;)}
+</pre></div>
+</div>
+</section>
+<section id="flowablerecipientsservice">
+<h3><a class="toc-backref" href="#id25">FlowableRecipientsService</a><a class="headerlink" href="#flowablerecipientsservice" title="Ссылка на этот заголовок"></a></h3>
+<p>JS имплементация сервиса (flowableRecipientsServiceJS), доступна по ключу - <strong>flwRecipients</strong>.</p>
+<p>Данный сервис позволяет получить данные по реципиентам из кейс роли.</p>
+<p><strong>Методы:</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">getRoleEmails(NodeRef</span> <span class="pre">document,</span> <span class="pre">String</span> <span class="pre">caseRoleName)</span></code>  - получение email адресов из кейс роли. Применяется для заполнения поля <strong>To</strong> в <strong>mail task</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${flwRecipients.getRoleEmails(document, &#39;ssg_initiator&#39;)}
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">getRoleGroups(NodeRef</span> <span class="pre">document,</span> <span class="pre">String</span> <span class="pre">caseRoleName)</span></code> - получение групп из кейс роли. Применяется для заполнения <strong>candidate groups</strong> в <strong>user task assigments</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${flwRecipients.getRoleGroups(document, &#39;ssg_initiator&#39;)}
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">getRoleUsers(NodeRef</span> <span class="pre">document,</span> <span class="pre">String</span> <span class="pre">caseRoleName)</span></code> - получение пользователей из кейс роли. Применяется для заполнения <strong>candidate users</strong> в <strong>user task assigments</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${flwRecipients.getRoleUsers(document, &#39;ssg_initiator&#39;)}
+</pre></div>
+</div>
+<p>Например, назначение задачи на роль <strong>ssg_initiator</strong> будет выглядеть следующим образом:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/assintment.png"><img alt="../../_images/assintment.png" class="align-center" src="../../_images/assintment.png" style="width: 400px;" /></a>
+</div></blockquote>
+</section>
+<section id="id5">
+<h3><a class="toc-backref" href="#id26">Использование Производственного календаря во Flowable</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<p>В данный момент производственный календарь во Flowable используется для 2-х целей:</p>
+<ul class="simple">
+<li><p>Задание значения таймера;</p></li>
+<li><p>Задание Срока задачи (dueDate);</p></li>
+</ul>
+<p><strong>Пример задания значения таймера в процессе Flowable:</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/example_1.png"><img alt="../../_images/example_1.png" class="align-center" src="../../_images/example_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>В данном примере мы предварительно вычисляем дату в JS-коде, используя <code class="docutils literal notranslate"><span class="pre">workingCalendarService</span></code>.
+Вычисленную дату сохраняем в переменную <code class="docutils literal notranslate"><span class="pre">execution</span> <span class="pre">${dismissal_payoff_start_timer_date}</span></code>.</p>
+<p>После этого используем в конструкторе БП эту переменную.</p>
+<p>Пример задания переменной execution датой для таймера:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">calculateStartDate</span><span class="p">:</span> <span class="n">function</span> <span class="p">()</span> <span class="p">{</span>
+   <span class="n">var</span> <span class="n">dismissalDate</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">&quot;hr:dismissalDate&quot;</span><span class="p">];</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">dismissalDate</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+       <span class="n">var</span> <span class="n">ws</span> <span class="o">=</span> <span class="n">services</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;workingCalendarService&quot;</span><span class="p">);</span>
+       <span class="n">var</span> <span class="n">correctedDate</span> <span class="o">=</span> <span class="n">workingCalendarService</span><span class="o">.</span><span class="n">addWorkingDaysForCalendar</span><span class="p">(</span><span class="n">dismissalDate</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;RU&quot;</span><span class="p">);</span>
+       <span class="n">var</span> <span class="n">beginHour</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">getWorkingDayData</span><span class="p">(</span><span class="s2">&quot;RU&quot;</span><span class="p">)[</span><span class="s2">&quot;workingDayBegin&quot;</span><span class="p">];</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">beginHour</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+           <span class="n">correctedDate</span><span class="o">.</span><span class="n">setHours</span><span class="p">(</span><span class="n">parseInt</span><span class="p">(</span><span class="n">beginHour</span><span class="p">,</span><span class="mi">10</span><span class="p">));</span>
+       <span class="p">}</span>
+       <span class="n">execution</span><span class="o">.</span><span class="n">setVariable</span><span class="p">(</span><span class="s2">&quot;dismissal_payoff_start_timer_date&quot;</span><span class="p">,</span> <span class="n">correctedDate</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Пример задания Срока задачи в процессе Flowable:</strong></p>
+<ol class="arabic simple">
+<li><p>Непосредственно через <strong>dueDateService</strong></p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/example_2.png"><img alt="../../_images/example_2.png" class="align-center" src="../../_images/example_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">${dueDateService.getDueDateForCalendar('RU',</span> <span class="pre">1)}</span></code> С текущей даты прибавляется 1 рабочий день по Производственному календарю „RU“</p>
+<ol class="arabic simple" start="2">
+<li><p>Также существует возможность задания сроков задач через <strong>FlowableDueDateTaskListener</strong>.</p></li>
+</ol>
+<p>С помощью параметров <code class="docutils literal notranslate"><span class="pre">workingDaysToAdd</span></code>, <code class="docutils literal notranslate"><span class="pre">workingHoursToAdd</span></code> можно задать на сколько рабочих дней/часов должен смещаться Срок задачи относительно текущей даты и времени.</p>
+<p>Данный способ может быть лучше тем, что он более гибко определяет откуда брать производственный календарь (у пользователя, группы в оргструктуре, в которую входит пользователь или выбирать его по локали сервера).</p>
+</section>
+</section>
+<section id="listeners-flowable">
+<h2><a class="toc-backref" href="#id27">Listeners в flowable</a><a class="headerlink" href="#listeners-flowable" title="Ссылка на этот заголовок"></a></h2>
+<section id="execution-listeners">
+<h3><a class="toc-backref" href="#id28">Execution listeners</a><a class="headerlink" href="#execution-listeners" title="Ссылка на этот заголовок"></a></h3>
+<p><strong>FlowableDocumentSetListener</strong></p>
+<p>Устанавливает переменную <strong>document</strong> в <strong>process execution</strong>, представляет собой ScriptNode документа, по которому идет процесс. Можно обращаться к свойствам, ассоциациям документа в flowable expressions.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${document.properties[&quot;idocs:registrationNumber&quot;]}
+</pre></div>
+</div>
+<p><strong>FlowableCheckCompletenessLevelsExecutionListener</strong></p>
+<p>Проверяет, выполнены ли заданные чек-листы, если нет, то выводит сообщения об ошибке, с перечислением невыполненных чек-листов</p>
+<p><em>Параметры</em></p>
+<ul class="simple">
+<li><p><strong>completenessLevels</strong> - перечисление nodeRef чек-листов, через «;»</p></li>
+</ul>
+<p><em>Пример использования</em></p>
+<p><strong>Кейс</strong> - необходимо проверить, что заполнены чек листы <code class="docutils literal notranslate"><span class="pre">workspace://SpacesStore/cl-hr-uni-form-t-8</span></code>, <code class="docutils literal notranslate"><span class="pre">workspace://SpacesStore/cl-hr-uni-form-t-61</span></code>, если чек листы не заполнены, то  блокировать движение по процессу и вывести сообщение с информацией о незаполненных чек-листах.</p>
+<p>Для этого назначим <code class="docutils literal notranslate"><span class="pre">execution</span> <span class="pre">listener</span> <span class="pre">ru.citeck.ecos.flowable.listeners.FlowableCheckCompletenessLevelsExecutionListener</span></code> на необходимый <strong>event</strong>, со следующими параметрами:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">completenessLevels</span> <span class="pre">=</span> <span class="pre">workspace://SpacesStore/cl-hr-uni-form-t-8;workspace://SpacesStore/cl-hr-uni-form-t-61</span> <span class="pre">(nodeRefs</span> <span class="pre">чек-листов)</span></code></p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/execution_listeners.png"><img alt="../../_images/execution_listeners.png" class="align-center" src="../../_images/execution_listeners.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p><strong>FlowableSetAttachmentToMailExecutionListener</strong></p>
+<p>Позволяет прикреплять вложения к письму для конкретной mail task из документов загруженных в карточку.</p>
+<p>Если в карточке не будет загружен ни один из документов с заданным видом, то к письму не будет прикреплено вложений.</p>
+<p><em>Параметры</em></p>
+<ul class="simple">
+<li><p><strong>mailTaskId</strong> - id конкретной mail task</p></li>
+<li><p><strong>filesRefs</strong> - перечисление nodeRef видов документов «tk:kind», через «,»</p></li>
+</ul>
+<p><strong>CreateCalendarEntryExecutionListener</strong></p>
+<p>Позволяет создать событие в ecos календаре через <strong>EcosCalendarService</strong>.</p>
+<p>Все параметры поддерживают expressions.</p>
+<p><em>Параметры</em></p>
+<ul class="simple">
+<li><p><strong>calendarId</strong> - id календаря. Если календарь сайта, то id сайта. В дальнейшем планируется реализация календарей для пользователей, в таком случае в качестве id календаря будет выступать username пользователя.</p></li>
+<li><p><strong>title</strong> - заголовок события</p></li>
+<li><p><strong>description</strong> - описание события</p></li>
+<li><p><strong>isAllDay</strong> - весь день (продолжительность события)</p></li>
+<li><p><strong>start</strong> - начало события. Формат - <code class="docutils literal notranslate"><span class="pre">java.util.Date</span> <span class="pre">${document.properties['term:terTravelStart']}</span></code> или дата в формате iso8601 2019-03-10T18:00:00, 2019-03-06T14:30:42+0700</p></li>
+<li><p><strong>end</strong> - конец события. Формат аналогичен параметру start</p></li>
+<li><p><strong>participants</strong> - участники события. Коллекция String объектов - email или nodeRef пользователя. java.util.Collections из String, или строка с разделителем запятая „,“.</p></li>
+</ul>
+<p><strong>SetCalendarEntryExecutionListener</strong></p>
+<p>Позволяет создать или обновить событие в ecos календаре через <strong>EcosCalendarService</strong>.</p>
+<p>При создании позволяет записать имя эвента в указанную в параметрах execution переменную.</p>
+<p>Все параметры поддерживают expressions.</p>
+<p><em>Параметры</em></p>
+<ul class="simple">
+<li><p><strong>calendarId</strong> - id календаря. Если календарь сайта, то id сайта. В дальнейшем планируется реализация календарей для пользователей, в таком случае в качестве id календаря будет выступать username пользователя.</p></li>
+<li><p><strong>title</strong> - заголовок события</p></li>
+<li><p><strong>description</strong> - описание события</p></li>
+<li><p><strong>isAllDay</strong> - весь день (продолжительность события)</p></li>
+<li><p><strong>start</strong> - начало события. Формат - <code class="docutils literal notranslate"><span class="pre">java.util.Date</span> <span class="pre">${document.properties['term:terTravelStart']}</span></code> или дата в формате iso8601 2019-03-10T18:00:00, 2019-03-06T14:30:42+0700</p></li>
+<li><p><strong>end</strong> - конец события. Формат аналогичен параметру start</p></li>
+<li><p><strong>participants</strong> - участники события. Коллекция String объектов - email или nodeRef пользователя. java.util.Collections из String, или строка с разделителем запятая „,“.</p></li>
+<li><p><strong>transparency</strong> - будет ли созданное событие отображаться со статусом „Busy“. Поддерживает 2 параметра: «opaque» - значение по умолчанию, проставляется если значение указано неверное или не указано ничего, соответствует статусу „Busy“; «transparent» - соответствует статусу «Avaliable».</p></li>
+<li><p><strong>eventName</strong> - имя события в календаре ecos. Если указан, то заданное событие обновится параметрами указанными в лисенере, если не указан или не найден по имени, то создаст новое событие.</p></li>
+<li><p><strong>eventNameVar</strong> - имя execution переменной flowable, если указан, то имя созданного события запишется в эту переменную.</p></li>
+</ul>
+</section>
+<section id="task-listeners">
+<h3><a class="toc-backref" href="#id29">Task listeners</a><a class="headerlink" href="#task-listeners" title="Ссылка на этот заголовок"></a></h3>
+<p><strong>FlowableCheckMandatoryVariableOnOutcomeTaskListener</strong></p>
+<p>Проверяет, что определенная переменная заполнена, при определенных <strong>task outcomes</strong>,  если переменная не заполнена, то блокирует движение по процессу и выводит указанное сообщение.</p>
+<p><em>Параметры</em></p>
+<ul class="simple">
+<li><p><strong>variableId</strong> - проверяемая переменная</p></li>
+<li><p><strong>outcomeId</strong> - task outcome id</p></li>
+<li><p><strong>outcomes</strong> - task outcomes, перечисленные через «;»</p></li>
+<li><p><strong>message</strong> - сообщение об ошибке, которое будет показано пользователю. Можно передать i18 message key.</p></li>
+</ul>
+<p><em>Пример использования</em></p>
+<p><strong>Кейс</strong> - Необходимо проверить, заполнен ли комментарий, при выполнении задачи с результатами На доработку, Отменить, если комментарий не заполнен, то блокировать движение по процессу и вывести пользователю сообщение о необходимости заполнения комментария.</p>
+<p>Для этого, на необходимую задачу назначим <strong>listener on complete</strong>, класса <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.flowable.listeners.FlowableCheckMandatoryVariableOnOutcomeTaskListener</span></code>, со следующими параметрами:</p>
+<ul class="simple">
+<li><p><strong>variableId</strong> = <code class="docutils literal notranslate"><span class="pre">cd_signer_sign_comment</span></code> (id переменной комментария, которую нужно проверить на заполненность)</p></li>
+<li><p><strong>outcomeId</strong> = <code class="docutils literal notranslate"><span class="pre">form_cd_signer_sign_outcome</span></code> (id переменной результата выполнения задачи)</p></li>
+<li><p><strong>outcomes</strong> = <code class="docutils literal notranslate"><span class="pre">На</span> <span class="pre">доработку;Отменить</span></code> (результаты задачи, при которых необходимо осуществлять проверку)</p></li>
+<li><p><strong>message</strong> = <code class="docutils literal notranslate"><span class="pre">wfcf_confirmworkflow.message_comment_is_empty</span></code> (message key сообщения об ошибки, в данном случае будет содержать локализованное сообщение: «Необходимо ввести комментарий»)</p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/task_listeners.png"><img alt="../../_images/task_listeners.png" class="align-center" src="../../_images/task_listeners.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+</section>
+<section id="id6">
+<h2><a class="toc-backref" href="#id30">Как активировать пользователя</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<p>Как активировать пользователя, созданного в БП flowable <code class="docutils literal notranslate"><span class="pre">(PersonServiceImpl.getPerson()</span></code> если не нашел пользователя, то по умолчанию создает его, но надо активировать):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">authService</span> <span class="o">=</span> <span class="n">services</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;authenticationService&quot;</span><span class="p">);</span>
+
+<span class="n">var</span> <span class="n">userName</span> <span class="o">=</span> <span class="s1">&#39;LineManager&#39;</span><span class="p">;</span> <span class="n">var</span> <span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
+
+<span class="n">var</span> <span class="n">passArr</span> <span class="o">=</span> <span class="n">Packages</span><span class="o">.</span><span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">String</span><span class="o">.</span><span class="n">valueOf</span><span class="p">(</span><span class="n">password</span><span class="p">)</span><span class="o">.</span><span class="n">toCharArray</span><span class="p">();</span>
+
+<span class="n">authService</span><span class="o">.</span><span class="n">createAuthentication</span><span class="p">(</span><span class="n">userName</span><span class="p">,</span> <span class="n">passArr</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2><a class="toc-backref" href="#id31">Поля документа на форме flowable</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h2>
+<p>Чтобы появилась возможность просматривать и изменять поля из кейса на форме flowable необходимо в поле <strong>field id</strong>  задать идентификатор в формате <code class="docutils literal notranslate"><span class="pre">_ECM_NSPREFIX_FIELD</span></code>.</p>
+<p>Вначале идентификатора добавляется _ECM_. Затем идет префиксная запись QName свойства или ассоциации с заменой двоеточия (:) на подчеркивание (_).</p>
+<p>QName чувствителен к регистру.</p>
+<p>Пример:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/form_document.png"><img alt="../../_images/form_document.png" class="align-center" src="../../_images/form_document.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>При запуске процесса с документом при открытии карточки с активной задачей мы увидим форму с заполнеными полями из документа:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/document_tasks.png"><img alt="../../_images/document_tasks.png" class="align-center" src="../../_images/document_tasks.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id8">
+<h2><a class="toc-backref" href="#id32">Обязательность документов во вкладке «Документы»</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h2>
+<p>Если в кейсе не запущен бизнес-процесс flowable тогда во вкладке <strong>«Документы»</strong> все документы отмечены красным.</p>
+<p>Если в кейсе есть активные бизнес-процес(ы) flowable, то проверяются текущие активные задачи на наличие listener’а на событии <strong>«complete»</strong> <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.flowable.listeners.CheckListsTaskListener</span></code></p>
+<p>Если таких listener’ов не найдено, то все незагруженные документы отображаются серым цветом. Если найдены <code class="docutils literal notranslate"><span class="pre">CheckListsTaskListener</span></code>, то проверяется свойство «lists», в котором перечислены чек-листы. Все документы из указанных чек-листов отображаются красным цветом на вкладке <strong>«Документы»</strong>.</p>
+<p>Если у Listener’а задано свойство <code class="docutils literal notranslate"><span class="pre">outcomesToCheck</span></code> и корректный <strong>outcomeField</strong> (поле с результатом выполнения задачи), то при невыполненных чек-листах задача не завершится.</p>
+<p>Если у Listener’а свойство <code class="docutils literal notranslate"><span class="pre">outcomesToCheck</span></code> не задано, то чек листы проверяются при любом outcome</p>
+<p>Если у Listener’а свойство <code class="docutils literal notranslate"><span class="pre">checkEnabled</span></code> (поддерживается expression) равняется <strong>false</strong>, то проверки чек-листов при завершении задачи не происходит, но подсветка документов красным во вкладке <strong>«Документы»</strong> по прежнему будет работать.</p>
+<p>Пример конфигурации:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/change_value.png"><img alt="../../_images/change_value.png" class="align-center" src="../../_images/change_value.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="email-flowable">
+<h2><a class="toc-backref" href="#id33">Выполнение задач по email в flowable</a><a class="headerlink" href="#email-flowable" title="Ссылка на этот заголовок"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Версии указаны для модуля enterprise</p>
+</div>
+<section id="id9">
+<h3><a class="toc-backref" href="#id34">Способы отправки</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h3>
+<p>Существует несколько подходов к отправке емейл уведомления с вердиктами.</p>
+<p>Вкратце, для того, чтобы в flowable отправить сообщение с вердиктами задачи, необходимо:</p>
+<ol class="arabic simple">
+<li><p>Создать в процессе <strong>Mail task</strong>, заполнить его необходимыми данными для отправки (при этом получателей рекомендуется указать тех же, что и в кандидатах задачи).</p></li>
+<li><p>В html шаблоне вставить код формирования кнопок выполнения задач.</p></li>
+<li><p>В задаче, для которой необходимо включить возможность выполнения через емейл, добавить <strong>task listener</strong> на событие create с необходимым листенером.</p></li>
+</ol>
+<section id="task-listener">
+<h4><a class="toc-backref" href="#id35">1. Отправка через task listener</a><a class="headerlink" href="#task-listener" title="Ссылка на этот заголовок"></a></h4>
+<p>Отправка осуществляется через <strong>task listener</strong> на create, который подготавливает данные для lazy approval и запускает выполнение <strong>mail task</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/email_task_1.png"><img alt="../../_images/email_task_1.png" class="align-center" src="../../_images/email_task_1.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p><em>Пример</em></p>
+<p><strong>Кейс</strong>
+Необходимо добавить возможность выполнения через емейл для задачи, которая назначается на роль из кейса «nmo-compliance», и имеет 3 результата: Согласовано, Отказ, Отправить на доработку инициатору.</p>
+<p><strong>Решение</strong></p>
+<ol class="arabic simple">
+<li><p>Создаем <strong>mail task</strong>.</p></li>
+</ol>
+<p>Если версия ядра до 4.11.0, то у mail task должен быть уникальный <strong>id</strong>, например - compliance_email_1.</p>
+<ol class="arabic simple" start="2">
+<li><p>В получателях указываем роль nmo_comliance  - <code class="docutils literal notranslate"><span class="pre">${flwRecipients.getRoleEmails(document,</span> <span class="pre">'nmo-compliance')}</span></code></p></li>
+<li><p>В html шаблоне добавляем вердикты:</p></li>
+</ol>
+<p><em>До версии 4.11.0</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;width: 100%; font-family:&#39;GE Inspira&#39;,sans-serif;&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">fieldset</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">p</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;font-weight:bold&quot;</span><span class="o">&gt;</span><span class="n">Вердикты</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;mailto:$</span><span class="si">{taskMailData.compliance_email_1.email_to}</span><span class="s2">?Subject=CA-$</span><span class="si">{taskMailData.compliance_email_1.task_id}</span><span class="s2">-Согласовано-$</span><span class="si">{taskMailData.compliance_email_1.task_token}</span><span class="s2">&amp;body=Вердикт: Согласовано %0D%0A %0D%0A Поле комментарий обязательно для заполнения %0D%0A %0D%0A $[comment] %0D%0A %0D%0A $</span><span class="si">{taskMailData.compliance_email_1.default_task_comment}</span><span class="s2"> %0D%0A %0D%0A [comment]&quot;</span>
+                <span class="n">target</span><span class="o">=</span><span class="s2">&quot;_top&quot;</span><span class="o">&gt;</span><span class="n">Согласовано</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;mailto:$</span><span class="si">{taskMailData.compliance_email_1.email_to}</span><span class="s2">?Subject=CA-$</span><span class="si">{taskMailData.compliance_email_1.task_id}</span><span class="s2">-Отказ-$</span><span class="si">{taskMailData.compliance_email_1.task_token}</span><span class="s2">&amp;body=Вердикт: Отказ %0D%0A %0D%0A Поле комментарий обязательно для заполнения %0D%0A %0D%0A $[comment] %0D%0A %0D%0A $</span><span class="si">{taskMailData.compliance_email_1.default_task_comment}</span><span class="s2"> %0D%0A %0D%0A [comment]&quot;</span>
+                <span class="n">target</span><span class="o">=</span><span class="s2">&quot;_top&quot;</span><span class="o">&gt;</span><span class="n">Отказ</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;mailto:$</span><span class="si">{taskMailData.compliance_email_1.email_to}</span><span class="s2">?Subject=CA-$</span><span class="si">{taskMailData.compliance_email_1.task_id}</span><span class="s2">-Отправить на доработку инициатору-$</span><span class="si">{taskMailData.compliance_email_1.task_token}</span><span class="s2">&amp;body=Вердикт: Отправить на доработку инициатору %0D%0A %0D%0A Поле комментарий обязательно для заполнения %0D%0A %0D%0A $[comment] %0D%0A %0D%0A $</span><span class="si">{taskMailData.compliance_email_1.default_task_comment}</span><span class="s2"> %0D%0A %0D%0A [comment]&quot;</span>
+                <span class="n">target</span><span class="o">=</span><span class="s2">&quot;_top&quot;</span><span class="o">&gt;</span><span class="n">Отправить</span> <span class="n">на</span> <span class="n">доработку</span> <span class="n">инициатору</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">fieldset</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Внутри <strong>div</strong> необходимо сформировать ссылки, каждая ссылка соответствует одному вердикту в задаче. Ссылки формируются по правилу:</p>
+<p><code class="docutils literal notranslate"><span class="pre">href=&quot;mailto:${taskMailData.ID_мейл_таска.email_to}?Subject=CA-${taskMailData.ID_мейл_таска.task_id}-ID_вердикта_по_задаче-${taskMailData.ID_мейл_таска.task_token}&amp;body=Вердикт:</span> <span class="pre">имя_вердикта_по_задаче%0D%0A</span> <span class="pre">%0D%0A</span> <span class="pre">Поле</span> <span class="pre">комментарий</span> <span class="pre">обязательно</span> <span class="pre">для</span> <span class="pre">заполнения</span> <span class="pre">%0D%0A</span> <span class="pre">%0D%0A</span> <span class="pre">$[comment]</span> <span class="pre">%0D%0A</span> <span class="pre">%0D%0A</span> <span class="pre">${taskMailData.ID_мейл_таска.default_task_comment}</span> <span class="pre">%0D%0A</span> <span class="pre">%0D%0A</span> <span class="pre">[comment]&quot;</span></code></p>
+<p><em>До версии 4.9.6 или 4.11.0+</em></p>
+<p>С этой версии завязка данных для lazy approval осуществляется на основе <strong>task definition key (id элемента task)</strong>.</p>
+<p>Оставлена поддержка способа “До версии 4.11.0” для обратной совместимости .</p>
+<p>В <strong>model</strong> шаблона уведомления подтягиваем данные для lazy approval конкретной задачи, в переменную <code class="docutils literal notranslate"><span class="pre">mail_task_data</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">mail_task_data:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;$process.mailTaskApprovalData.comlianceApproval?json&quot;</span></code>, где <code class="docutils literal notranslate"><span class="pre">comlianceApproval</span></code> - id элемента task, по которому происходит согласование через email.</p>
+<p>Добавляем вердикты:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;width: 100%; font-family:&#39;GE Inspira&#39;,sans-serif;&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">fieldset</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">p</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;font-weight:bold&quot;</span><span class="o">&gt;</span><span class="n">Вердикты</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;mailto:$</span><span class="si">{mail_task_data[&quot;email_to&quot;]}</span><span class="s2">?Subject=CA-$</span><span class="si">{mail_task_data[&quot;task_id&quot;]}</span><span class="s2">-Согласовано-$</span><span class="si">{mail_task_data[&quot;task_token&quot;]}</span><span class="s2">&amp;body=Вердикт: Согласовано %0D%0A %0D%0A Поле комментарий обязательно для заполнения %0D%0A %0D%0A $[comment] %0D%0A %0D%0A $</span><span class="si">{mail_task_data[&quot;default_task_comment&quot;]}</span><span class="s2"> %0D%0A %0D%0A [comment]&quot;</span>
+                <span class="n">target</span><span class="o">=</span><span class="s2">&quot;_top&quot;</span><span class="o">&gt;</span><span class="n">Согласовано</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;mailto:$</span><span class="si">{mail_task_data[&quot;email_to&quot;]}</span><span class="s2">?Subject=CA-$</span><span class="si">{mail_task_data[&quot;task_id&quot;]}</span><span class="s2">-Отказ-$</span><span class="si">{mail_task_data[&quot;task_token&quot;]}</span><span class="s2">&amp;body=Вердикт: Отказ %0D%0A %0D%0A Поле комментарий обязательно для заполнения %0D%0A %0D%0A $[comment] %0D%0A %0D%0A $</span><span class="si">{mail_task_data[&quot;default_task_comment&quot;]}</span><span class="s2"> %0D%0A %0D%0A [comment]&quot;</span>
+                <span class="n">target</span><span class="o">=</span><span class="s2">&quot;_top&quot;</span><span class="o">&gt;</span><span class="n">Отказ</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;mailto:$</span><span class="si">{mail_task_data[&quot;email_to&quot;]}</span><span class="s2">?Subject=CA-$</span><span class="si">{mail_task_data[&quot;task_id&quot;]}</span><span class="s2">-Отправить на доработку инициатору-$</span><span class="si">{mail_task_data[&quot;task_token&quot;]}</span><span class="s2">&amp;body=Вердикт: Отправить на доработку инициатору %0D%0A %0D%0A Поле комментарий обязательно для заполнения %0D%0A %0D%0A $[comment] %0D%0A %0D%0A $</span><span class="si">{mail_task_data[&quot;default_task_comment&quot;]}</span><span class="s2"> %0D%0A %0D%0A [comment]&quot;</span>
+                <span class="n">target</span><span class="o">=</span><span class="s2">&quot;_top&quot;</span><span class="o">&gt;</span><span class="n">Отправить</span> <span class="n">на</span> <span class="n">доработку</span> <span class="n">инициатору</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">fieldset</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Внутри <strong>div</strong> необходимо сформировать ссылки, каждая ссылка соответствует одному вердикту в задаче.</p>
+<p><em>Упрощенный шаблон вердиктов, 3.17.0+</em></p>
+<p>Если в процессе может быть запущена только одна задачи с lazy approval в один момент времени, то можно воспользоваться упрощенным шаблоном кнопок</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;width: 100%; font-family:&#39;GE Inspira&#39;,sans-serif;&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">fieldset</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">p</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;font-weight:bold&quot;</span><span class="o">&gt;</span><span class="n">Вердикты</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;mailto:$</span><span class="si">{email_to}</span><span class="s2">?Subject=CA-$</span><span class="si">{task_id}</span><span class="s2">-Согласовано-$</span><span class="si">{task_token}</span><span class="s2">&amp;body=Вердикт: Согласовано %0D%0A %0D%0A Поле комментарий обязательно для заполнения %0D%0A %0D%0A $[comment] %0D%0A %0D%0A $</span><span class="si">{default_task_comment}</span><span class="s2"> %0D%0A %0D%0A [comment]&quot;</span>
+                <span class="n">target</span><span class="o">=</span><span class="s2">&quot;_top&quot;</span><span class="o">&gt;</span><span class="n">Согласовано</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;mailto:$</span><span class="si">{email_to}</span><span class="s2">?Subject=CA-$</span><span class="si">{task_id}</span><span class="s2">-Отказ-$</span><span class="si">{task_token}</span><span class="s2">&amp;body=Вердикт: Отказ %0D%0A %0D%0A Поле комментарий обязательно для заполнения %0D%0A %0D%0A $[comment] %0D%0A %0D%0A $</span><span class="si">{default_task_comment}</span><span class="s2"> %0D%0A %0D%0A [comment]&quot;</span>
+                <span class="n">target</span><span class="o">=</span><span class="s2">&quot;_top&quot;</span><span class="o">&gt;</span><span class="n">Отказ</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;mailto:$</span><span class="si">{email_to}</span><span class="s2">?Subject=CA-$</span><span class="si">{task_id}</span><span class="s2">-Отправить на доработку инициатору-$</span><span class="si">{task_token}</span><span class="s2">&amp;body=Вердикт: Отправить на доработку инициатору %0D%0A %0D%0A Поле комментарий обязательно для заполнения %0D%0A %0D%0A $[comment] %0D%0A %0D%0A $</span><span class="si">{default_task_comment}</span><span class="s2"> %0D%0A %0D%0A [comment]&quot;</span>
+                <span class="n">target</span><span class="o">=</span><span class="s2">&quot;_top&quot;</span><span class="o">&gt;</span><span class="n">Отправить</span> <span class="n">на</span> <span class="n">доработку</span> <span class="n">инициатору</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">fieldset</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Внутри <strong>div</strong> необходимо сформировать ссылки, каждая ссылка соответствует одному вердикту в задаче. Ссылки формируются по правилу:</p>
+<p><code class="docutils literal notranslate"><span class="pre">href=&quot;mailto:${email_to}?Subject=CA-${task_id}-ID_вердикта_по_задаче-${task_token}&amp;body=Вердикт:</span> <span class="pre">имя_вердикта_по_задаче%0D%0A</span> <span class="pre">%0D%0A</span> <span class="pre">Поле</span> <span class="pre">комментарий</span> <span class="pre">обязательно</span> <span class="pre">для</span> <span class="pre">заполнения</span> <span class="pre">%0D%0A</span> <span class="pre">%0D%0A</span> <span class="pre">$[comment]</span> <span class="pre">%0D%0A</span> <span class="pre">%0D%0A</span> <span class="pre">${default_task_comment}</span> <span class="pre">%0D%0A</span> <span class="pre">%0D%0A</span> <span class="pre">[comment]&quot;</span></code></p>
+<ol class="arabic simple" start="4">
+<li><p>В задаче, добавляем <strong>task listener</strong> на create, с классом <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.taskmailapproval.flowable.listeners.ExecuteApprovalServiceMailTaskListener</span></code> и в переменой <strong>emailId</strong> указываем <code class="docutils literal notranslate"><span class="pre">compliance_email_1</span></code>.</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/email_task_2.png"><img alt="../../_images/email_task_2.png" class="align-center" src="../../_images/email_task_2.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../../_images/email_task_3.png"><img alt="../../_images/email_task_3.png" class="align-center" src="../../_images/email_task_3.png" style="width: 400px;" /></a>
+</div></blockquote>
+</section>
+<section id="flow">
+<h4><a class="toc-backref" href="#id36">2. Отправка через привычный flow процесса</a><a class="headerlink" href="#flow" title="Ссылка на этот заголовок"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>добавлено в версии 4.9.3, 4.11.0+</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/email_task_4.png"><img alt="../../_images/email_task_4.png" class="align-center" src="../../_images/email_task_4.png" style="width: 400px;" /></a>
+<p>В данном случае в <strong>task listener</strong> на create осуществляется только подготовка данных для lazy approval, отправка располагается в зависимости от бизнес логики.
+Преимущество такого способа заключается в том, что отправка емейл сообщения не завязана жестко на создание задачи. Это позволяет использовать всю гибкость процесса - добавлять условия, запускать дополнительные действия, размещать отправку емейл сообщения в другом месте процесса и т. д.</p>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<p>По ходу движения процесса задача должна быть создана вместе с листенером подготовки данных для lazy approval <strong>до</strong> отправки емейла.</p>
+</div>
+<p><em>Пример</em></p>
+<p><strong>Кейс</strong></p>
+<p>Необходимо добавить возможность выполнения через емейл для задачи, которая назначается на роль из кейса <strong>«possible-responsible»</strong>, и имеет 1 результат: Взять в работу.
+Отправка емейл сообщения должна осуществляться после создания задачи с определенным условием для отправки разные емейлов.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/email_task_5.png"><img alt="../../_images/email_task_5.png" class="align-center" src="../../_images/email_task_5.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><strong>Решение</strong></p>
+<p>Создаем flow от задачи, <strong>start event</strong> которого является таймер, например, 20 сек после создания задачи. В зависимости от определенного условия, отправляются разные емейлы.</p>
+<p>В <strong>model</strong> шаблона уведомления подтягиваем данные для lazy approval конкретной задачи, в переменную <code class="docutils literal notranslate"><span class="pre">mail_task_data</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">mail_task_data:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;$process.mailTaskApprovalData.waitingForProcessing?json&quot;</span></code>, где <code class="docutils literal notranslate"><span class="pre">waitingForProcessing</span></code> - id элемента task, по которому происходит согласование через email.</p>
+<p>Добавляем вердикты:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;width: 100%; font-family:&#39;GE Inspira&#39;,sans-serif;&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">fieldset</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">p</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;font-weight:bold&quot;</span><span class="o">&gt;</span><span class="n">Вердикты</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;mailto:$</span><span class="si">{mail_task_data[&quot;email_to&quot;]}</span><span class="s2">?Subject=CA-$</span><span class="si">{mail_task_data[&quot;task_id&quot;]}</span><span class="s2">-Take-$</span><span class="si">{mail_task_data[&quot;task_token&quot;]}</span><span class="s2">&amp;body=Вердикт: Взять в работу %0D%0A %0D%0A $[comment] %0D%0A %0D%0A $</span><span class="si">{mail_task_data[&quot;default_task_comment&quot;]}</span><span class="s2"> %0D%0A %0D%0A [comment]&quot;</span>
+                <span class="n">target</span><span class="o">=</span><span class="s2">&quot;_top&quot;</span><span class="o">&gt;</span><span class="n">Взять</span> <span class="n">в</span> <span class="n">работу</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">fieldset</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Внутри <strong>div</strong> необходимо сформировать ссылки, каждая ссылка соответствует одному вердикту в задаче. Ссылки формируются по правилу:</p>
+<p><code class="docutils literal notranslate"><span class="pre">href=&quot;mailto:${mail_task_data[&quot;email_to&quot;]}?Subject=CA-${mail_task_data[&quot;task_id&quot;]}-ID_вердикта_по_задаче-${mail_task_data[&quot;task_token&quot;]}&amp;body=Вердикт:</span> <span class="pre">имя_вердикта_по_задаче%0D%0A</span> <span class="pre">%0D%0A</span> <span class="pre">Поле</span> <span class="pre">комментарий</span> <span class="pre">обязательно</span> <span class="pre">для</span> <span class="pre">заполнения</span> <span class="pre">%0D%0A</span> <span class="pre">%0D%0A</span> <span class="pre">$[comment]</span> <span class="pre">%0D%0A</span> <span class="pre">%0D%0A</span> <span class="pre">${mail_task_data[&quot;default_task_comment&quot;]}</span> <span class="pre">%0D%0A</span> <span class="pre">%0D%0A</span> <span class="pre">[comment]&quot;</span></code></p>
+<p>В задаче добавляем <strong>task listener</strong> на create с классом <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.taskmailapproval.flowable.listeners.SaveTaskMailTokensTaskListener</span></code></p>
+</section>
+<section id="multi-instance-task">
+<h4><a class="toc-backref" href="#id37">Поддержка multi-instance task</a><a class="headerlink" href="#multi-instance-task" title="Ссылка на этот заголовок"></a></h4>
+<p>С версии 3.17.0 была добавлена поддержка <strong>multi-instance task</strong>.</p>
+<section id="id10">
+<h5><a class="toc-backref" href="#id38">Пример</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h5>
+<p>В роли <strong>nmo-compliance</strong> содержится 2 группы - <strong>Директор, Compliance</strong>, которые необходимо запустить в параллельное согласование и согласовать их через email.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/email_task_6.png"><img alt="../../_images/email_task_6.png" class="align-center" src="../../_images/email_task_6.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p><strong>Настройка задачи:</strong></p>
+<p><strong>Collection (Multi-instance)</strong> : <code class="docutils literal notranslate"><span class="pre">${flwRecipients.getRoleGroups(document,</span> <span class="pre">'nmo-compliance')}</span></code></p>
+<p><strong>Element variable (Multi-instance)</strong> : <code class="docutils literal notranslate"><span class="pre">candidateGroup</span></code></p>
+<p><strong>Assignments</strong> : в поле <strong>«Группа кандидатов»</strong> добавим переменную <code class="docutils literal notranslate"><span class="pre">candidateGroup</span></code></p>
+<p><strong>Настройка email task:</strong></p>
+<p>Настройка должна быть произведена согласно пункту №3, для версии 3.17.0+</p>
+<p>В поле To будет использоваться переменная candidateGroup для получения емейлов через вызов сервиса - <code class="docutils literal notranslate"><span class="pre">${flwRecipients.getAuthorityEmails(candidateGroup)}</span></code></p>
+<p>Идея в том, что при <strong>multi-instance task</strong> в поле To у <strong>email task</strong> мы должны указать одного реципиента из коллекции multi-instace, например, посредством <strong>Element variable</strong>, которая будет доступна в контексте email task.</p>
+</section>
+</section>
+</section>
+<section id="id11">
+<h3><a class="toc-backref" href="#id39">Игнорирование ошибки отправки email в Flowable</a><a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h3>
+<p>С версии 3.20.0 - появилась возможность игнорировать ошибку отправки email flowable и не обваливать выполнение. Ошибки будут при этом попадать в лог.</p>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<p>Игнорироваться будут абсолютно все ошибки, разделения ошибок нет.</p>
+</div>
+<p>Включить игнорирование (по умолчанию выключено) можно добавлением следующих свойств в <strong>global-properties</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ecos</span><span class="o">.</span><span class="n">flowable</span><span class="o">.</span><span class="n">mail</span><span class="o">.</span><span class="n">ignore</span><span class="o">-</span><span class="n">exception</span><span class="o">.</span><span class="n">default</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+<p>Игнорирование реализовано за счет переопределение класса отправляющего уведомления в flowable в <code class="docutils literal notranslate"><span class="pre">1st-override-repo</span> <span class="pre">(org.flowable.engine.impl.bpmn.behavior.MailActivityBehavior)</span></code>.</p>
+</section>
+</section>
+<section id="flowable-modeler-docker">
+<h2><a class="toc-backref" href="#id40">Использование flowable-modeler в docker</a><a class="headerlink" href="#flowable-modeler-docker" title="Ссылка на этот заголовок"></a></h2>
+<p>Версия flowable-modeler теперь доступа для докера:</p>
+<ul class="simple">
+<li><p>Для ECOS 4.x.x - 3.0.5.5+</p></li>
+<li><p>Для ECOS 3.x.x - 2.0.6+</p></li>
+</ul>
+<p><a class="reference external" href="https://nexus.citeck.ru/#browse/browse:docker:v2/ecos-flowable-apps/tags">https://nexus.citeck.ru/#browse/browse:docker:v2/ecos-flowable-apps/tags</a></p>
+<p>Для поднятия и использования <strong>flowable-modeler</strong> надо:</p>
+<ol class="arabic simple">
+<li><p>Настроить <strong>alfresco-global-properties</strong>. Указываем логин/пароль для админа и хост/порт контейнера flowable</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flowable</span><span class="o">.</span><span class="n">rest</span><span class="o">-</span><span class="n">api</span><span class="o">.</span><span class="n">username</span><span class="o">=</span><span class="n">admin</span>
+<span class="n">flowable</span><span class="o">.</span><span class="n">rest</span><span class="o">-</span><span class="n">api</span><span class="o">.</span><span class="n">password</span><span class="o">=</span><span class="n">test</span>
+<span class="n">flowable</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">url</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8070</span>
+<span class="n">flowable</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">url</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8070</span><span class="o">/</span><span class="n">flowable</span><span class="o">-</span><span class="n">modeler</span>
+<span class="n">flowable</span><span class="o">.</span><span class="n">rest</span><span class="o">-</span><span class="n">api</span><span class="o">.</span><span class="n">url</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8070</span><span class="o">/</span><span class="n">flowable</span><span class="o">-</span><span class="n">rest</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Добавляем контейнер в файл docker-compose проекта. Проверяем настройки для БД, чтобы микросервис соединялся с той же БД, что и альфреско (проперти в альфреско flowable.db.*)</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ecos</span><span class="o">-</span><span class="n">flowable</span><span class="o">-</span><span class="n">apps</span><span class="o">-</span><span class="n">app</span><span class="p">:</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">nexus</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ru</span><span class="o">/</span><span class="n">ecos</span><span class="o">-</span><span class="n">flowable</span><span class="o">-</span><span class="n">apps</span><span class="p">:</span><span class="mf">3.0.5.5</span><span class="o">-</span><span class="n">snapshot</span>
+    <span class="n">container_name</span><span class="p">:</span> <span class="n">ecos</span><span class="o">-</span><span class="n">flowable</span><span class="o">-</span><span class="n">apps</span><span class="o">-</span><span class="n">app</span>
+    <span class="n">environment</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">SERVER_PORT</span><span class="o">=</span><span class="mi">8080</span>
+        <span class="o">-</span> <span class="n">SPRING_DATASOURCE_DRIVER</span><span class="o">-</span><span class="n">CLASS</span><span class="o">-</span><span class="n">NAME</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">postgresql</span><span class="o">.</span><span class="n">Driver</span>
+        <span class="o">-</span> <span class="n">SPRING_DATASOURCE_URL</span><span class="o">=</span><span class="n">jdbc</span><span class="p">:</span><span class="n">postgresql</span><span class="p">:</span><span class="o">//</span><span class="n">host</span><span class="p">:</span><span class="mi">5432</span><span class="o">/</span><span class="n">flowable</span> <span class="o">//</span> <span class="n">Указываем</span> <span class="n">URI</span> <span class="n">БД</span> <span class="n">flowable</span>
+        <span class="o">-</span> <span class="n">SPRING_DATASOURCE_USERNAME</span><span class="o">=</span><span class="n">alfresco</span>
+        <span class="o">-</span> <span class="n">SPRING_DATASOURCE_PASSWORD</span><span class="o">=</span><span class="n">alfresco</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_COMMON_APP_IDM</span><span class="o">-</span><span class="n">REDIRECT</span><span class="o">-</span><span class="n">URL</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8070</span><span class="o">/</span><span class="n">flowable</span><span class="o">-</span><span class="n">idm</span> <span class="o">//</span> <span class="n">URL</span> <span class="n">Куда</span> <span class="n">редиредктить</span> <span class="n">пользователя</span>
+        <span class="o">//</span> <span class="n">Создаём</span> <span class="n">пользователь</span> <span class="n">админа</span> <span class="n">по</span> <span class="n">умолчнанию</span><span class="o">.</span>
+        <span class="o">//</span> <span class="n">При</span> <span class="n">первом</span> <span class="n">запуске</span> <span class="n">создаётся</span> <span class="n">пользователь</span> <span class="n">с</span> <span class="n">данным</span> <span class="n">логином</span><span class="o">/</span><span class="n">паролем</span>
+        <span class="o">//</span> <span class="n">При</span> <span class="n">последующих</span> <span class="n">запусках</span> <span class="n">логин</span><span class="o">/</span><span class="n">пароль</span> <span class="n">должны</span> <span class="n">сопадать</span> <span class="n">с</span> <span class="n">логином</span> <span class="n">паролем</span> <span class="n">в</span> <span class="n">БД</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_REST_APP_ADMIN_USER</span><span class="o">-</span><span class="n">ID</span><span class="o">=</span><span class="n">admin</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_REST_APP_ADMIN_PASSWORD</span><span class="o">=</span><span class="mi">123123</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_IDM_APP_ADMIN_USER</span><span class="o">-</span><span class="n">ID</span><span class="o">=</span><span class="n">admin</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_IDM_APP_ADMIN_PASSWORD</span><span class="o">=</span><span class="mi">123123</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_COMMON_APP_IDM</span><span class="o">-</span><span class="n">ADMIN_USER</span><span class="o">=</span><span class="n">admin</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_COMMON_APP_IDM</span><span class="o">-</span><span class="n">ADMIN_PASSWORD</span><span class="o">=</span><span class="mi">123123</span>
+        <span class="o">//</span> <span class="n">Настройки</span> <span class="n">по</span> <span class="n">умолчнинию</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_COMMON_APP_IDM</span><span class="o">-</span><span class="n">URL</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">flowable</span><span class="o">-</span><span class="n">idm</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_PROCESS_SERVER</span><span class="o">-</span><span class="n">ADDRESS</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_PROCESS_PORT</span><span class="o">=</span><span class="mi">8080</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_PROCESS_CONTEXT</span><span class="o">-</span><span class="n">ROOT</span><span class="o">=</span><span class="n">flowable</span><span class="o">-</span><span class="n">rest</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_PROCESS_REST</span><span class="o">-</span><span class="n">ROOT</span><span class="o">=</span><span class="n">service</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_CMMN_SERVER</span><span class="o">-</span><span class="n">ADDRESS</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_CMMN_PORT</span><span class="o">=</span><span class="mi">8080</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_CMMN_CONTEXT</span><span class="o">-</span><span class="n">ROOT</span><span class="o">=</span><span class="n">flowable</span><span class="o">-</span><span class="n">rest</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_CMMN_REST</span><span class="o">-</span><span class="n">ROOT</span><span class="o">=</span><span class="n">cmmn</span><span class="o">-</span><span class="n">api</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_DMN_SERVER</span><span class="o">-</span><span class="n">ADDRESS</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_DMN_PORT</span><span class="o">=</span><span class="mi">8080</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_DMN_CONTEXT</span><span class="o">-</span><span class="n">ROOT</span><span class="o">=</span><span class="n">flowable</span><span class="o">-</span><span class="n">rest</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_DMN_REST</span><span class="o">-</span><span class="n">ROOT</span><span class="o">=</span><span class="n">dmn</span><span class="o">-</span><span class="n">api</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_FORM_SERVER</span><span class="o">-</span><span class="n">ADDRESS</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_FORM_PORT</span><span class="o">=</span><span class="mi">8080</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_FORM_CONTEXT</span><span class="o">-</span><span class="n">ROOT</span><span class="o">=</span><span class="n">flowable</span><span class="o">-</span><span class="n">rest</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_FORM_REST</span><span class="o">-</span><span class="n">ROOT</span><span class="o">=</span><span class="n">form</span><span class="o">-</span><span class="n">api</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_CONTENT_SERVER</span><span class="o">-</span><span class="n">ADDRESS</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_CONTENT_PORT</span><span class="o">=</span><span class="mi">8080</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_CONTENT_CONTEXT</span><span class="o">-</span><span class="n">ROOT</span><span class="o">=</span><span class="n">flowable</span><span class="o">-</span><span class="n">rest</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_CONTENT_REST</span><span class="o">-</span><span class="n">ROOT</span><span class="o">=</span><span class="n">content</span><span class="o">-</span><span class="n">api</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_APP_SERVER</span><span class="o">-</span><span class="n">ADDRESS</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_APP_PORT</span><span class="o">=</span><span class="mi">8080</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_APP_CONTEXT</span><span class="o">-</span><span class="n">ROOT</span><span class="o">=</span><span class="n">flowable</span><span class="o">-</span><span class="n">task</span>
+        <span class="o">-</span> <span class="n">FLOWABLE_ADMIN_APP_SERVER</span><span class="o">-</span><span class="n">CONFIG_APP_REST</span><span class="o">-</span><span class="n">ROOT</span><span class="o">=</span><span class="n">app</span><span class="o">-</span><span class="n">api</span>
+    <span class="n">ports</span><span class="p">:</span>
+        <span class="o">-</span> <span class="mi">8070</span><span class="p">:</span><span class="mi">8080</span> <span class="o">//</span> <span class="mi">8070</span> <span class="n">порт</span> <span class="n">т</span><span class="o">.</span><span class="n">к</span><span class="o">.</span> <span class="n">на</span> <span class="mi">8080</span> <span class="n">запускается</span> <span class="n">Alfresco</span>
+    <span class="o">//</span> <span class="n">Ожидаем</span> <span class="n">когда</span> <span class="n">подымиться</span> <span class="n">БД</span>
+    <span class="n">entrypoint</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;/wait-for-something.sh&quot;</span><span class="p">,</span> <span class="s2">&quot;flowable-postgres&quot;</span><span class="p">,</span> <span class="s2">&quot;5432&quot;</span><span class="p">,</span> <span class="s2">&quot;PostgreSQL&quot;</span><span class="p">,</span> <span class="s2">&quot;/opt/tomcat/bin/catalina.sh&quot;</span><span class="p">,</span> <span class="s2">&quot;run&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Поднимаем БД и альфреску, после поднятия альферски, поднимаем flowable-moder</p></li>
+<li><p>Логинимся и меняем процессы как хотим <a class="reference external" href="http://localhost:8070/flowable-modeler">http://localhost:8070/flowable-modeler:</a></p></li>
+</ol>
+</section>
+<section id="id12">
+<h2><a class="toc-backref" href="#id41">Известные проблемы с Flowable</a><a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h2>
+<section id="id13">
+<h3><a class="toc-backref" href="#id42">Процесс с таймерами не движется дальше</a><a class="headerlink" href="#id13" title="Ссылка на этот заголовок"></a></h3>
+<p>Таймеры в flowable по умолчанию пытаться выполниться 3 раза, затем после неудачных попыток перемещаться в таблицу DeadLetterJob</p>
+<p>Получить список и информацию о мертвых таймерах можно через скрипт:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">flowableManagementService</span> <span class="o">=</span> <span class="n">services</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;flowableManagementService&quot;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">jobs</span> <span class="o">=</span> <span class="n">flowableManagementService</span>
+<span class="o">.</span><span class="n">createDeadLetterJobQuery</span><span class="p">()</span>
+<span class="o">//.</span><span class="n">processInstanceId</span><span class="p">(</span><span class="s1">&#39;11699313&#39;</span><span class="p">)</span> <span class="o">//</span> <span class="n">Фильтр</span> <span class="n">по</span> <span class="s2">&quot;ID процесса flowable&quot;</span>
+<span class="o">.</span><span class="n">listPage</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">jobs</span><span class="o">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">job</span> <span class="o">=</span> <span class="n">jobs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">job</span><span class="p">);</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;id: &quot;</span> <span class="o">+</span> <span class="n">job</span><span class="o">.</span><span class="n">getId</span><span class="p">());</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;executionId: &quot;</span> <span class="o">+</span> <span class="n">job</span><span class="o">.</span><span class="n">getExecutionId</span><span class="p">());</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;createTime: &quot;</span> <span class="o">+</span> <span class="n">job</span><span class="o">.</span><span class="n">getCreateTime</span><span class="p">());</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;jobHandlerConfiguration: &quot;</span> <span class="o">+</span> <span class="n">job</span><span class="o">.</span><span class="n">getJobHandlerConfiguration</span><span class="p">());</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;processDefinitionId: &quot;</span> <span class="o">+</span> <span class="n">job</span><span class="o">.</span><span class="n">getProcessDefinitionId</span><span class="p">());</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;processInstanceId: &quot;</span> <span class="o">+</span> <span class="n">job</span><span class="o">.</span><span class="n">getProcessInstanceId</span><span class="p">());</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;exceptionMessage: &quot;</span> <span class="o">+</span> <span class="n">job</span><span class="o">.</span><span class="n">getExceptionMessage</span><span class="p">());</span>
+    <span class="o">//</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;exceptionStacktrace: &quot;</span> <span class="o">+</span> <span class="n">job</span><span class="o">.</span><span class="n">getExceptionStacktrace</span><span class="p">());</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Подробнее: <a class="reference external" href="https://flowable.com/open-source/docs/javadocs/org/flowable/engine/ManagementService.html">DeadLetterJobQuery</a></p>
+<p>ID процесса flowable можно узнать выполнив скрипт:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">document</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">findNode</span><span class="p">(</span><span class="s2">&quot;workspace://SpacesStore/fc00ec8c-d68a-4b8b-a63d-ab879fa99b70&quot;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">bpmPackages</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">parentAssocs</span><span class="p">[</span><span class="s1">&#39;bpm:packageContains&#39;</span><span class="p">]</span> <span class="o">||</span> <span class="p">[];</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bpmPackages</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">bpmPackage</span> <span class="o">=</span> <span class="n">bpmPackages</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">var</span> <span class="n">workflowId</span> <span class="o">=</span> <span class="n">bpmPackage</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s1">&#39;bpm:workflowInstanceId&#39;</span><span class="p">];</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">workflowId</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Чтобы заново запустить таймер его необходимо переместить в таблицу запущенных таймеров</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">flowableManagementService</span> <span class="o">=</span> <span class="n">services</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;flowableManagementService&quot;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">deadLetterJobId</span> <span class="o">=</span> <span class="s1">&#39;1100117&#39;</span><span class="p">;</span> <span class="o">//</span> <span class="n">ID</span> <span class="n">таймера</span>
+<span class="n">var</span> <span class="n">retriesCount</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="o">//</span> <span class="n">Новое</span> <span class="n">кол</span><span class="o">-</span><span class="n">во</span> <span class="n">попыток</span> <span class="n">после</span> <span class="n">которых</span> <span class="n">таймер</span> <span class="n">попадёт</span> <span class="n">в</span> <span class="n">DeadLetterJob</span>
+<span class="n">flowableManagementService</span><span class="o">.</span><span class="n">moveDeadLetterJobToExecutableJob</span><span class="p">(</span><span class="n">deadLetterJobId</span><span class="p">,</span> <span class="n">retriesCount</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id14">
+<h4><a class="toc-backref" href="#id43">Сервис восстановления таймеров flowable</a><a class="headerlink" href="#id14" title="Ссылка на этот заголовок"></a></h4>
+<p>В Community Core 3.34.3 был добавлен сервис <code class="docutils literal notranslate"><span class="pre">FlowableTimersRestorerService</span></code> и джоба <code class="docutils literal notranslate"><span class="pre">FlowableRecoveryTimersJob</span></code> для восстановления таймеров.</p>
+<p>Восстановление таймеров происходит по следующему алгоритму:</p>
+<ol class="arabic">
+<li><p>Запрашивается пачка (batchSize) джоб из таблицы <strong>flowable DeadLetterJobs</strong>/</p></li>
+<li><p>Из этой пачки создаётся множество <strong>processInstanceId</strong></p></li>
+<li><p>Далее отдельно для каждого <strong>processInstanceId</strong> запрашивается кол-во умерших таймеров</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Если кол-во умерших таймеров больше заданного кол-ва <code class="docutils literal notranslate"><span class="pre">maxCountJobForProcess</span></code>, то id данного процесса логируется с ошибкой. Таймеры для него не восстанавливаться.</p></li>
+<li><p>Иначе происходит попытка восстановления таймеров</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Если ошибка удовлетворяет шаблонам (перечислены в <code class="docutils literal notranslate"><span class="pre">exceptionMsgPatterns</span></code>) представленным в конфигурации, таймер будет восстановлен. К нему будет установлена новое кол-во попыток выполнения при неудаче <code class="docutils literal notranslate"><span class="pre">retriesCount</span></code></p></li>
+<li><p>Иначе если <strong>id процесса flowable</strong> и <strong>id таймера</strong> присутствуют в мапе <code class="docutils literal notranslate"><span class="pre">processActivitiesToChangeStatus</span></code>, документу будет выставлено свойство <code class="docutils literal notranslate"><span class="pre">CiteckWorkflowModel.PROP_TIMER_ERROR_STATUS(cwf:timerErrorStatus,</span> <span class="pre">аспект</span> <span class="pre">cwf:hasTimerErrorStatus)</span></code> со значением <code class="docutils literal notranslate"><span class="pre">ecos-flowable-timer-error</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ol>
+<p>Выполняется шаг 1 пока не пройдёт все джобы. Джоба ограничивается последней датой выполнения на момент старта.</p>
+<p>Сервис и джоба использует следующий конфиг:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">maxCountJobForProcess</span></code> - Максимально кол-во таймеров которые можно восстановить для одного процесса. (Необходим для защиты от бага зацикливания таймеров flowable)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">retriesCount</span></code> - Задаёт новое кол-во попыток выполнения для таймера, перед тем как он снова попадёт в таблицу <strong>DeadLetterJobs</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">batchSize</span></code> - Кол-во запрашиваем джоб на шаге 1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Map&lt;String,</span> <span class="pre">Set&lt;String&gt;&gt;</span> <span class="pre">processActivitiesToChangeStatus</span></code> - Мапа, где ключ - <strong>id процесса flowable BPMN</strong> (например flowable-confirm), значения это множество id таймеров в процессе, если таймер не смог выполниться, то документу выставляется свойство <code class="docutils literal notranslate"><span class="pre">cwf:timerErrorStatus</span></code>, со значением <code class="docutils literal notranslate"><span class="pre">ecos-flowable-timer-error</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">exceptionMsgPatterns</span></code> - лист шаблонов для ошибок, которые должны быть обработаны, если не указан, шаблон по умолчанию <code class="docutils literal notranslate"><span class="pre">“.*was</span> <span class="pre">updated</span> <span class="pre">by</span> <span class="pre">another</span> <span class="pre">transaction</span> <span class="pre">concurrently$&quot;</span></code></p></li>
+</ul>
+<p>Необходимо для процессов, где падание таймера останавливает процесс:</p>
+<p>Пример сконфигурированной джобы:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;bean id=&quot;flowable-recovery-timers-job&quot; class=&quot;org.alfresco.util.CronTriggerBean&quot;&gt;
+    &lt;property name=&quot;jobDetail&quot;&gt;
+        &lt;bean class=&quot;org.springframework.scheduling.quartz.JobDetailBean&quot;&gt;
+            &lt;property name=&quot;name&quot; value=&quot;flowable-recovery-timers-job&quot;/&gt;
+            &lt;property name=&quot;jobClass&quot; value=&quot;ru.citeck.ecos.flowable.jobs.FlowableRecoveryTimersJob&quot;/&gt;
+            &lt;property name=&quot;jobDataAsMap&quot;&gt;
+                &lt;map&gt;
+                    &lt;entry key=&quot;name&quot; value=&quot;flowable-recovery-timers-job&quot;/&gt;
+                    &lt;entry key=&quot;jobLockService&quot; value-ref=&quot;jobLockService&quot;/&gt;
+                    &lt;entry key=&quot;flowableTimersRestorerService&quot; value-ref=&quot;flowableTimersRestorerService&quot;/&gt;
+                    &lt;entry key=&quot;maxCountJobForProcess&quot; value=&quot;100&quot;/&gt;
+                    &lt;entry key=&quot;retriesCount&quot; value=&quot;3&quot;/&gt;
+                    &lt;entry key=&quot;batchSize&quot; value=&quot;10000&quot;/&gt;
+                    &lt;entry key=&quot;processActivitiesToChangeStatus&quot;&gt;
+                        &lt;map&gt;
+                            &lt;entry key=&quot;some_process&quot;&gt;
+                                &lt;set&gt;
+                                    &lt;value&gt;sid-BEF8848E-9EF4-45E4-A3D8-2B6678BEBFCC&lt;/value&gt;
+                                    &lt;value&gt;sid-E4352D7A-C751-4EF2-87AD-CA6939CD911E&lt;/value&gt;
+                                &lt;/set&gt;
+                            &lt;/entry&gt;
+                        &lt;/map&gt;
+                    &lt;/entry&gt;
+                    &lt;entry key=&quot;exceptionMsgPatterns&quot;&gt;
+                        &lt;list&gt;
+                            &lt;value&gt;.*was updated by another transaction concurrently$&lt;/value&gt;
+                            &lt;value&gt;.*Can&#39;t get record metadata..*&lt;/value&gt;
+                        &lt;/list&gt;
+                    &lt;/entry&gt;
+                &lt;/map&gt;
+            &lt;/property&gt;
+        &lt;/bean&gt;
+    &lt;/property&gt;
+    &lt;property name=&quot;scheduler&quot; ref=&quot;schedulerFactory&quot;/&gt;
+    &lt;property name=&quot;enabled&quot; value=&quot;true&quot;/&gt;
+    &lt;property name=&quot;cronExpression&quot; value=&quot;0 0 6/12 ? * * *&quot;/&gt; // Раз в 12 часов, начиная с 6 утра
+&lt;/bean&gt;
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../Processes.html" class="btn btn-neutral float-left" title="Бизнес-процессы" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="ECOS_CMMN.html" class="btn btn-neutral float-right" title="ECOS CMMN" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../../../search.html" />
+    <link rel="next" title="Columns" href="columns.html" />
+    <link rel="prev" title="Ecos Select" href="ecos%20select.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../interface.html">Интерфейс</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../forms.html">Формы</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../forms.html">Общая информация</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../form_builder.html">Конструктор форм</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../form_components.html">Компоненты формы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../form_examples.html">Примеры компонент</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../form_localisation.html">Локализация</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../form_for_task.html">Связь формы с задачей</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../journals.html">Журналы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../menu.html">Меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dashboards.html">Дашборды</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../widgets.html">Виджеты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../number_template.html">Шаблоны нумерации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../../../../interface.html">Интерфейс</a> &raquo;</li>
+          <li><a href="../../../forms.html">Формы</a> &raquo;</li>
+          <li><a href="../../form_components.html">Компоненты формы</a> &raquo;</li>
+          <li><a href="../components.html">Подробное описание отдельных компонент</a> &raquo;</li>
+      <li>File</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/settings_kb/interface/forms/form_components/components/file.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file">
+<span id="id1"></span><h1><a class="toc-backref" href="#id6">File</a><a class="headerlink" href="#file" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#file" id="id6">File</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id7">Настройка отображения названия файла</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id8">Настройка отображения отдельных элементов компонента</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id9">Бэкенд</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Компонент для загрузки файлов. Позволяет загружать файлы в контент нод. Для дочерних ассоциаций поддерживается задание <code class="docutils literal notranslate"><span class="pre">type/kind</span></code>.</p>
+<p>Для настройки компонента необходимо перейти во вкладку <span class="guilabel">Файл</span>, в поле <strong>Хранилище</strong> выбрать <strong>Url</strong>, в поле <strong>url</strong> прописать endpoint для загрузки файлов - <code class="docutils literal notranslate"><span class="pre">/share/proxy/alfresco/eform/file</span></code>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/file_1.png"><img alt="../../../../../_images/file_1.png" class="align-center" src="../../../../../_images/file_1.png" style="width: 500px;" /></a>
+</div></blockquote>
+<p>Привязка компонента к конкретному атрибуту выполняется стандартно, аналогично другим компонентам.</p>
+<p>Для привязки <code class="docutils literal notranslate"><span class="pre">type/kind</span></code> необходимо перейти на вкладку <span class="guilabel">Файл</span>, и заполнить <strong>Типы файлов</strong>. <strong>Название поля</strong> - заголовок для отображения, <strong>Значение</strong> - ключ <code class="docutils literal notranslate"><span class="pre">type/kind</span></code>, который должен быть сформирован по следующему паттерну - <code class="docutils literal notranslate"><span class="pre">node-uuid_type/node-uuid_kind</span></code>, при этом, возможно указание только <code class="docutils literal notranslate"><span class="pre">type</span></code> - <code class="docutils literal notranslate"><span class="pre">node-uuid_type</span></code>. Обратите внимание, что нужно использовать именно <strong>node_uuid</strong>, а не nodeRef полностью. Например - <code class="docutils literal notranslate"><span class="pre">category-document-type/kind-d-scan-documents</span></code>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/file_2.png"><img alt="../../../../../_images/file_2.png" class="align-center" src="../../../../../_images/file_2.png" style="width: 500px;" /></a>
+</div></blockquote>
+<section id="id3">
+<h2><a class="toc-backref" href="#id7">Настройка отображения названия файла</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>На вкладке <span class="guilabel">Файл</span> добавлена возможность настраивать отображение названий файлов в списке -  настройка <strong>Отображаемое имя значения</strong>. Поле принимает javascript-выражение, в котором необходимо присвоить переменной <code class="docutils literal notranslate"><span class="pre">disp</span></code> строку, либо Promise.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/file_4.png"><img alt="../../../../../_images/file_4.png" class="align-center" src="../../../../../_images/file_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Помимо стандартных переменных formio, доступных при написании javascript-выражений (data, instance, _ и т.д.) добавлены дополнительные:</p>
+<ul class="simple">
+<li><p><strong>originalFileName</strong> - содержит название файла по-умолчанию</p></li>
+<li><p><strong>file</strong> - объект, содержащий различную информацию о файле</p></li>
+<li><p><strong>record</strong> - Promise, полученный путём вызова <code class="docutils literal notranslate"><span class="pre">Records.get(file.data.recordRef)</span></code>. Если файл не связан ни с каким recordRef, значение record будет равно null.</p></li>
+</ul>
+<p>Примеры использования  настройки <strong>Value display name</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Пример</span> <span class="mf">1.</span> <span class="n">Статическое</span> <span class="n">название</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="s1">&#39;staticName.txt&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Пример</span> <span class="mf">2.</span> <span class="n">Название</span><span class="p">,</span> <span class="n">вычисленное</span> <span class="n">асинхронно</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Promise</span><span class="p">(</span><span class="n">resolve</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">//</span> <span class="n">какие</span><span class="o">-</span><span class="n">то</span> <span class="n">асинхронные</span> <span class="n">действия</span>
+  <span class="o">//</span> <span class="o">...</span>
+  <span class="n">resolve</span><span class="p">(</span><span class="s1">&#39;Асинхронное название файла&#39;</span><span class="p">)</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Пример 3. Использование record
+disp = record ? record.load(&#39;.disp&#39;).then(result =&gt; `${result}.pdf`) : originalFileName;
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id8">Настройка отображения отдельных элементов компонента</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>На вкладку <span class="guilabel">Отображение</span> добавлена дополнительная настройка <strong>Элементы отображения</strong>, которая позволяет задавать условия отображения отдельных элементов (например, кнопка удаления файла, upload-зона с кнопкой для добавления нового файла).</p>
+<p>Поле принимает javascript-выражение, в котором необходимо присвоить переменной <cite>value</cite> объект с необязательными свойствами <strong>upload, delete</strong>. Если какое-то из свойств не указано, то компонент сам будет решать, отображать элемент или скрывать, в зависимости от ситуации.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">upload</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="n">delete</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../../../_images/file_5.png"><img alt="../../../../../_images/file_5.png" class="align-center" src="../../../../../_images/file_5.png" style="width: 500px;" /></a>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id9">Бэкенд</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>Для корректной работы контрола в режиме редактирования у значения “контент” должен быть реализован метод <code class="docutils literal notranslate"><span class="pre">getAs</span></code> с аргументом <strong>“content-data”</strong>, который вернет структуру следующего содержания:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[
+    {
+        “url“: “ссылка_которая откроется при клике на файл.“
+        “name“: “Имя файла“
+        “size“: размер_файла_в_байтах
+    }
+]
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="ecos%20select.html" class="btn btn-neutral float-left" title="Ecos Select" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="columns.html" class="btn btn-neutral float-right" title="Columns" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

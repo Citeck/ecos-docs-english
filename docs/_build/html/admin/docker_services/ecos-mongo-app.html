@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ecos-mongo-app &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="mailhog-app" href="mailhog-app.html" />
+    <link rel="prev" title="ecos-notifications-app" href="ecos-notifications-app.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker-compose.html">Установка Citeck ECOS c помощью Docker-compose</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../docker_services.html">Сервисы Docker</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="onlyoffice-ds-app.html">onlyoffice-ds-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-gateway-app.html">ecos-gateway-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-notifications-app.html">ecos-notifications-app</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ecos-mongo-app</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Назначение:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Базовые образы:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Используемые переменные:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Известные проблемы:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Типовой вывод успешного развертывания в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mailhog-app.html">mailhog-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-registry-app.html">ecos-registry-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-postgresql-app.html">ecos-postgresql-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-model-app.html">ecos-model-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-app.html">ecos-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-integrations-app.html">ecos-integrations-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-solr-app.html">ecos-solr-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-proxy-app.html">ecos-proxy-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-uiserv-app.html">ecos-uiserv-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-process-app.html">ecos-process-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-microservices-postgresql-app.html">ecos-microservices-postgresql-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-history-app.html">ecos-history-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rabbitmq-app.html">rabbitmq-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-apps-app.html">ecos-apps-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eis_Keycloack.html">eis (Keycloak)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backup-tool-app.html">backup-tool-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-alfresco-search-service.html">ecos-alfresco-search-service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html">Аутентификация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sync_authorities.html">Синхронизация Authorities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keycloak.html">ECOS KeyCloak Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keycloack_postman.html">Настройки аутентификации для работы с Records API из внешних систем</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html">Конфигурация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../license.html">Лицензии ECOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audit.html">Аудит</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../howto.html">How To</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a> &raquo;</li>
+          <li><a href="../docker_services.html">Сервисы Docker</a> &raquo;</li>
+      <li>ecos-mongo-app</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/admin/docker_services/ecos-mongo-app.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ecos-mongo-app">
+<h1>ecos-mongo-app<a class="headerlink" href="#ecos-mongo-app" title="Ссылка на этот заголовок"></a></h1>
+<section id="id1">
+<h2>Назначение:<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>Образ для развертывания контейнера с mongodb с преконфигурированными настройками датасорсов для микросервисов</p>
+</section>
+<section id="id2">
+<h2>Базовые образы:<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://hub.docker.com/layers/mongo/library/mongo/4.0/images/sha256-ccd97bd444338973ac143a22753e6b73a3e707a6a3edd512311a418a3e432cdb?context=explore">mongo_4</a> - Официальный образ mongodb v 4.0.x</p></li>
+</ul>
+</section>
+<section id="docker-compose">
+<h2>Шаблон сервиса docker-compose:<a class="headerlink" href="#docker-compose" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mongo</span><span class="o">-</span><span class="n">app</span><span class="p">:</span>
+    <span class="n">logging</span><span class="p">:</span>
+      <span class="n">options</span><span class="p">:</span>
+        <span class="nb">max</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="s2">&quot;10m&quot;</span>
+        <span class="nb">max</span><span class="o">-</span><span class="n">file</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span>
+    <span class="n">container_name</span><span class="p">:</span> <span class="n">mongo</span><span class="o">-</span><span class="n">app</span>
+    <span class="n">hostname</span><span class="p">:</span> <span class="n">mongo</span><span class="o">-</span><span class="n">app</span>
+    <span class="n">restart</span><span class="p">:</span> <span class="n">unless</span><span class="o">-</span><span class="n">stopped</span>
+    <span class="n">stop_grace_period</span><span class="p">:</span> <span class="mi">1</span><span class="n">m</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">nexus</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ru</span><span class="o">/</span><span class="n">mongo</span><span class="p">:</span><span class="mf">4.0</span>
+    <span class="n">env_file</span><span class="p">:</span>
+     <span class="o">-</span> <span class="o">./</span><span class="n">env_dir</span><span class="o">/</span><span class="n">mongo</span><span class="o">-</span><span class="n">app</span><span class="o">.</span><span class="n">env</span>
+    <span class="n">expose</span><span class="p">:</span>
+      <span class="o">-</span> <span class="mi">27017</span><span class="o">/</span><span class="n">tcp</span>
+    <span class="n">volumes</span><span class="p">:</span>
+      <span class="o">-</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">mongo</span><span class="o">-</span><span class="n">app</span><span class="p">:</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">db</span><span class="o">/</span>
+    <span class="n">networks</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">app_network</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>Используемые переменные:<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<ul class="simple">
+<li><p><strong>MONGO_INITDB_ROOT_USERNAME</strong> - логин пользователя, который будет создан в <strong>admin db с root</strong> привилегиями</p></li>
+<li><p><strong>MONGO_INITDB_ROOT_PASSWORD</strong> - пароль привилегированного пользователя</p></li>
+<li><p><strong>MONGO_INITDB_DATABASE</strong> - определение базы данных, используемой в скриптах развертывания в <code class="docutils literal notranslate"><span class="pre">/docker-entrypoint-initdb.d/*.js/sh.</span> <span class="pre">(1)</span></code></p></li>
+<li><p><strong>ECOS_HISTORY_APP_DATASOURCE_DATABASE</strong> - db микросервиса истории <strong>(ecos-history)</strong></p></li>
+<li><p><strong>ECOS_HISTORY_APP_DATASOURCE_USERNAME</strong> - логин для мкр истории, роль dbOwner <strong>(ecos-history)</strong></p></li>
+<li><p><strong>ECOS_HISTORY_APP_DATASOURCE_PASSWORD</strong> - пароль для мкр истории <strong>(ecos-history-password)</strong></p></li>
+<li><p><strong>ECOS_PROCESS_APP_DATASOURCE_DATABASE</strong> - db микросервиса ecos-process <strong>(ecos-process)</strong></p></li>
+<li><p><strong>ECOS_PROCESS_APP_DATASOURCE_USERNAME **- логин для мкр ecos-process, роль dbOwner **(ecos-process)</strong></p></li>
+<li><p><strong>ECOS_PROCESS_APP_DATASOURCE_PASSWORD</strong> - пароль для мкр ecos-process <strong>(ecos-process-password)</strong></p></li>
+</ul>
+<ol class="arabic simple">
+<li><ul class="simple">
+<li><p>This variable allows you to specify the name of a database to be used for creation scripts in /docker-entrypoint-initdb.d/.js (see Initializing a fresh instance below). MongoDB is fundamentally designed for «create on first use», so if you do not insert data with your JavaScript files, then no database is created.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id4">
+<h2>Известные проблемы:<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>2020-05-06T07:44:14.752+0000 I STORAGE [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2020-05-06T07:44:14.752+0000 I STORAGE [initandlisten] ** See `mongo_prodnotes_filesystem &lt;http://dochub.mongodb.org/core/prodnotes-filesystem&gt;`_
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>Типовой вывод успешного развертывания в лог контейнера:<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MongoDB shell version v4.0.18
+connecting to: mongodb://127.0.0.1:27017/test?gssapiServiceName=mongodb
+2020-05-06T07:44:13.565+0000 I NETWORK  [listener] connection accepted from 127.0.0.1:42378 #3 (1 connection now open)
+2020-05-06T07:44:13.565+0000 I NETWORK  [conn3] received client metadata from 127.0.0.1:42378 conn3: { application: { name: &quot;MongoDB Shell&quot; }, driver: { name: &quot;MongoDB Internal Client&quot;, version: &quot;4.0.18&quot; }, os: { type: &quot;Linux&quot;, name: &quot;Ubuntu&quot;, architecture: &quot;x86_64&quot;, version: &quot;16.04&quot; } }
+Implicit session: session { &quot;id&quot; : UUID(&quot;3cb7f158-dfaa-4ffd-896f-b36052828f19&quot;) }
+MongoDB server version: 4.0.18
+2020-05-06T07:44:13.593+0000 I ACCESS   [conn3] Successfully authenticated as principal root_user on admin from client 127.0.0.1:42378
+1
+ecos-process
+Successfully added user: {
+        &quot;user&quot; : &quot;ecos-process&quot;,
+        &quot;roles&quot; : [
+                {
+                        &quot;role&quot; : &quot;dbOwner&quot;,
+                        &quot;db&quot; : &quot;ecos-process&quot;
+                }
+        ]
+}
+ecos-history
+Successfully added user: {
+        &quot;user&quot; : &quot;ecos-history&quot;,
+        &quot;roles&quot; : [
+                {
+                        &quot;role&quot; : &quot;dbOwner&quot;,
+                        &quot;db&quot; : &quot;ecos-history&quot;
+                }
+        ]
+}
+bye
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="ecos-notifications-app.html" class="btn btn-neutral float-left" title="ecos-notifications-app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="mailhog-app.html" class="btn btn-neutral float-right" title="mailhog-app" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

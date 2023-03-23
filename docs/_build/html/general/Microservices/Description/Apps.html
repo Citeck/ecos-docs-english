@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apps microservice &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+    <link rel="next" title="Process Engine microservice" href="Process%20Engine.html" />
+    <link rel="prev" title="Описание микросервисов" href="../Description.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Aspects.html">Аспекты</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../Microservices.html">Микросервисы</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../list.html">Список микросервисов, доступных в Community/Enterprise</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Description.html">Описание микросервисов</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Apps microservice</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Простое описание:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Подробное описание:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#eapps">Полезные скрипты (EApps)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Получение содержимого модулей из базы eapps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ecos-apps">Полезные скрипты в базе ECOS Apps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Process%20Engine.html">Process Engine microservice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Notifications.html">Notifications microservice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Integration.html">Integration microservice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../microservice_development.html">Микросервисы ECOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_microservice.html">Создание нового микросервиса ECOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../../Microservices.html">Микросервисы</a> &raquo;</li>
+          <li><a href="../Description.html">Описание микросервисов</a> &raquo;</li>
+      <li>Apps microservice</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/general/Microservices/Description/Apps.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="apps-microservice">
+<h1>Apps microservice<a class="headerlink" href="#apps-microservice" title="Ссылка на этот заголовок"></a></h1>
+<p>Платформа Citeck ECOS строится на базе артефактов, позволяя расширять функционал написанием новых артефактов, не затрагивая уже существующий функционал.</p>
+<p>Артефакт означает единицу конфигурации системы ECOS. Примером артефактов  являются: форма, журнал, тип, раздел, матрица прав, действие и др.</p>
+<p>Уровень модулей Alfresco в новой архитектуре называется Application. Микросервис, который управляет деплоем приложений и артефактов ECOS называется ECOS Applications или сокращенно ecos-apps.</p>
+<p>Цели микросервиса ECOS Apps:</p>
+<ol class="arabic simple">
+<li><p>Версионирование артефактов . Все меняющиеся артефакты сохраняются как отдельные ревизии без возможности изменения.</p></li>
+<li><p>Доставка артефактов  от всех микросервисов к целевому (например, доставка форм из ecos-integrations, ecos-model, alfresco в ecos-uiserv).</p></li>
+<li><p>Отслеживание зависимостей. Если артефакт зависит от другого артефакта, то ECOS Apps соблюдает порядок деплоя.</p></li>
+<li><p>Управление патчами для артефактов.</p></li>
+</ol>
+<p>Процесс деплоя артефактов выглядит примерно следующим образом:</p>
+<section id="id1">
+<h2>Простое описание:<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/apps_1.png"><img alt="../../../_images/apps_1.png" class="align-center" src="../../../_images/apps_1.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>После появления в сети нового приложения (на схеме это alfresco) происходит 3 этапа:</p>
+<ol class="arabic simple">
+<li><p>Запрос типов.</p></li>
+<li><p>Получение артефактов.</p></li>
+<li><p>Деплой артефактов.</p></li>
+</ol>
+</section>
+<section id="id2">
+<h2>Подробное описание:<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Микросервис периодически опрашивает всех кто подключен к Rabbit MQ</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/apps_2.png"><img alt="../../../_images/apps_2.png" class="align-center" src="../../../_images/apps_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Пока к Rabbit’у никто не подключился ничего не происходит</p></li>
+<li><p>Когда появляется первый микросервис он возвращает ответ в ECOS Apps о своем присутствии</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/apps_3.png"><img alt="../../../_images/apps_3.png" class="align-center" src="../../../_images/apps_3.png" style="width: 400px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>После этого ECOS Apps отправляет запрос на типы, в которых заинтересован микросервис.</p></li>
+</ol>
+<p>Получив список типов ECOS Apps отправляет всем зарегистрировавшимся микросервисам запрос на получение артефактов.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/apps_4.png"><img alt="../../../_images/apps_4.png" class="align-center" src="../../../_images/apps_4.png" style="width: 400px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p>Получив необходимые артефакты ECOS Apps проверяет поменялись или они с прошлой загрузки и если нет, то ничего не делает.</p></li>
+</ol>
+<p>Если выясняется, что артефакты поменялись, то они отправляются в целевой микросервис на деплой.</p>
+<p>Все взаимодействие происходит посредством Rabbit MQ и библиотеки ecos-commands.</p>
+<p>Лог ECOS Apps при обнаружении трех микросервисов (включая себя):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Detected</span> <span class="n">new</span> <span class="n">application</span> <span class="s1">&#39;eapps&#39;</span> <span class="k">with</span> <span class="n">EcosApps</span><span class="p">:</span> <span class="p">[</span><span class="n">EcosAppInfo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">eapps</span><span class="p">,</span> <span class="n">lastChanged</span><span class="o">=</span><span class="mi">1584425736433</span><span class="p">)]</span>
+<span class="o">//</span> <span class="n">Обнаржено</span> <span class="n">новое</span> <span class="n">приложение</span> <span class="p">(</span><span class="n">микросервис</span><span class="p">)</span><span class="o">.</span> <span class="n">eapps</span> <span class="n">не</span> <span class="n">содержит</span> <span class="n">типов</span> <span class="n">артефактов</span><span class="o">.</span> <span class="n">Поэтому</span> <span class="n">грузить</span> <span class="n">нечего</span>
+<span class="n">Detected</span> <span class="n">new</span> <span class="n">application</span> <span class="s1">&#39;uiserv&#39;</span> <span class="k">with</span> <span class="n">EcosApps</span><span class="p">:</span> <span class="p">[</span><span class="n">EcosAppInfo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">uiserv</span><span class="p">,</span> <span class="n">lastChanged</span><span class="o">=</span><span class="mi">1584425751061</span><span class="p">)]</span>
+<span class="o">//</span> <span class="n">В</span> <span class="n">uiserv</span> <span class="n">уже</span> <span class="n">есть</span> <span class="mi">4</span> <span class="n">типа</span> <span class="p">(</span><span class="n">форма</span><span class="p">,</span> <span class="n">дашборд</span><span class="p">,</span> <span class="n">действие</span> <span class="n">и</span> <span class="n">меню</span><span class="p">)</span><span class="o">.</span> <span class="n">Мы</span> <span class="n">должны</span> <span class="n">пройтись</span> <span class="n">по</span> <span class="n">всем</span> <span class="n">зарегистрированным</span> <span class="n">микросервисам</span> <span class="n">и</span> <span class="n">опросить</span> <span class="n">есть</span> <span class="n">ли</span> <span class="n">у</span> <span class="n">них</span> <span class="n">модули</span> <span class="n">с</span> <span class="n">такими</span> <span class="n">типами</span><span class="p">:</span>
+<span class="n">Loaded</span> <span class="mi">1</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;eapps&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;eapps&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;ui/form&#39;</span>
+<span class="o">//</span> <span class="n">нашли</span> <span class="n">одну</span> <span class="n">форму</span> <span class="n">в</span> <span class="n">eapps</span>
+<span class="n">Loaded</span> <span class="mi">1</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;eapps&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;eapps&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;ui/action&#39;</span>
+<span class="o">//</span> <span class="n">нашли</span> <span class="n">одно</span> <span class="n">действие</span> <span class="n">в</span> <span class="n">eapps</span>
+<span class="n">Loaded</span> <span class="mi">0</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;eapps&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;eapps&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;ui/menu&#39;</span>
+<span class="n">Loaded</span> <span class="mi">0</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;eapps&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;eapps&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;ui/dashboard&#39;</span>
+<span class="n">Loaded</span> <span class="mi">3</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;uiserv&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;uiserv&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;ui/form&#39;</span>
+<span class="o">//</span> <span class="n">нашли</span> <span class="mi">3</span> <span class="n">формы</span> <span class="n">в</span> <span class="n">uiserv</span> <span class="p">(</span><span class="n">локальные</span> <span class="n">артефакты</span> <span class="n">тоже</span> <span class="n">деплоятся</span> <span class="n">через</span> <span class="n">ECOS</span> <span class="n">Apps</span><span class="p">)</span>
+<span class="n">Loaded</span> <span class="mi">7</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;uiserv&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;uiserv&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;ui/action&#39;</span>
+<span class="n">Loaded</span> <span class="mi">0</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;uiserv&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;uiserv&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;ui/menu&#39;</span>
+<span class="n">Loaded</span> <span class="mi">4</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;uiserv&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;uiserv&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;ui/dashboard&#39;</span>
+<span class="n">Modules</span> <span class="n">count</span> <span class="n">was</span> <span class="n">changed</span> <span class="n">by</span> <span class="n">target</span> <span class="n">app</span><span class="o">.</span> <span class="n">Before</span><span class="p">:</span> <span class="mi">4</span> <span class="n">After</span><span class="p">:</span> <span class="mi">1</span>
+<span class="o">//</span> <span class="n">мы</span> <span class="n">отправили</span> <span class="n">в</span> <span class="n">uiserv</span> <span class="n">изменившиеся</span> <span class="n">артефакты</span><span class="p">,</span> <span class="n">но</span> <span class="n">он</span> <span class="n">отказался</span> <span class="n">принимать</span> <span class="mi">3</span> <span class="n">из</span> <span class="n">них</span> <span class="p">(</span><span class="n">защита</span> <span class="n">от</span> <span class="n">перезатирания</span> <span class="n">конфигурации</span><span class="p">,</span> <span class="n">которую</span> <span class="n">настроили</span> <span class="n">на</span> <span class="n">стенде</span><span class="p">)</span>
+<span class="n">Detected</span> <span class="n">new</span> <span class="n">application</span> <span class="s1">&#39;emodel&#39;</span> <span class="k">with</span> <span class="n">EcosApps</span><span class="p">:</span> <span class="p">[</span><span class="n">EcosAppInfo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">emodel</span><span class="p">,</span> <span class="n">lastChanged</span><span class="o">=</span><span class="mi">1584425829184</span><span class="p">)]</span>
+<span class="n">Loaded</span> <span class="mi">0</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;eapps&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;eapps&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;model/section&#39;</span>
+<span class="n">Loaded</span> <span class="mi">0</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;eapps&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;eapps&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;model/type&#39;</span>
+<span class="n">Loaded</span> <span class="mi">0</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;uiserv&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;uiserv&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;model/section&#39;</span>
+<span class="n">Loaded</span> <span class="mi">1</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;uiserv&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;uiserv&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;model/type&#39;</span>
+<span class="n">Loaded</span> <span class="mi">0</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;emodel&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;emodel&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;model/section&#39;</span>
+<span class="n">Loaded</span> <span class="mi">3</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;emodel&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;emodel&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;model/type&#39;</span>
+<span class="n">Loaded</span> <span class="mi">3</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;emodel&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;emodel&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;ui/form&#39;</span>
+<span class="n">Loaded</span> <span class="mi">0</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;emodel&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;emodel&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;ui/action&#39;</span>
+<span class="n">Loaded</span> <span class="mi">0</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;emodel&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;emodel&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;ui/menu&#39;</span>
+<span class="n">Loaded</span> <span class="mi">0</span> <span class="n">modules</span> <span class="kn">from</span> <span class="s1">&#39;emodel&#39;</span> <span class="n">EcosApp</span><span class="p">:</span> <span class="s1">&#39;emodel&#39;</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;ui/dashboard&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="eapps">
+<h2>Полезные скрипты (EApps)<a class="headerlink" href="#eapps" title="Ссылка на этот заголовок"></a></h2>
+<p>Для получения всех артефактов по типу можно выполнить следующий скрипт:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">query</span><span class="p">({</span>
+<span class="n">sourceId</span><span class="p">:</span> <span class="s1">&#39;eapps/module&#39;</span><span class="p">,</span>
+      <span class="n">query</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;form&#39;</span>
+      <span class="p">},</span>
+      <span class="n">page</span><span class="p">:</span> <span class="p">{</span><span class="n">maxItems</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>В результате выполнения в консоль выведется список id артефактов.</p>
+<p>Имея id артефакта, его можно удалить следующим скриптом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">remove</span><span class="p">([</span><span class="s2">&quot;eapps/module@form$3784f71c-5557-4123-b751-84e38c6157a1&quot;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>Получение содержимого модулей из базы eapps<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Получаем список ревизий по ext_id и типу артефакта:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">module</span><span class="o">.</span><span class="n">ext_id</span><span class="p">,</span><span class="n">rev</span><span class="o">.</span><span class="n">created_date</span><span class="p">,</span><span class="n">rev</span><span class="o">.</span><span class="n">created_by</span><span class="p">,</span><span class="n">rev</span><span class="o">.</span><span class="n">content_id</span>
+<span class="kn">from</span> <span class="nn">ecos_module</span> <span class="n">module</span>
+<span class="n">join</span> <span class="n">ecos_module_rev</span> <span class="n">rev</span> <span class="n">on</span> <span class="n">module</span><span class="o">.</span><span class="n">id</span><span class="o">=</span><span class="n">rev</span><span class="o">.</span><span class="n">module_id</span>
+<span class="n">where</span> <span class="n">module</span><span class="o">.</span><span class="n">ext_id</span><span class="o">=</span><span class="s1">&#39;ECOS_FORM&#39;</span> <span class="ow">and</span> <span class="n">module</span><span class="o">.</span><span class="n">type</span><span class="o">=</span><span class="s1">&#39;ui/form&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Смотрим на поле <strong>content_id</strong> нужных модулей и делаем следующий запрос:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="nb">id</span><span class="p">,</span><span class="n">encode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;base64&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">ecos_content</span> <span class="n">where</span> <span class="nb">id</span><span class="o">=</span><span class="mi">14809</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Получаем:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="nb">id</span>   <span class="o">|</span>                                    <span class="n">encode</span>
+<span class="o">-------+------------------------------------------------------------------------------</span>
+<span class="mi">11448</span> <span class="o">|</span> <span class="n">UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAOABEARUNPU19GT1JNLmpzb25VVA0ABwAAAAAAAAAA</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">AAAAAO1aWXMbNxL</span><span class="o">+</span><span class="n">K8y8xKnSYUdOLDHZrXIoKVFiLl2Wy3nYcrnAGZADCgNQAIYUxeJ</span><span class="o">/</span><span class="mi">324</span><span class="n">cc1AU</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">HR1UxM3oRRygB</span><span class="o">+</span><span class="n">jz625g5hFLonZ00umdfzntfehGO9FAquwPOoPRTCY5p19wAMYNM5xG7XlEBcyd</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">wmArZ9FiJ0qojhUbGyZFfdrIFk2YaUmTUtXCZTTSx7k2MuvaxYF0pPdjZmh8se</span><span class="o">/</span><span class="mi">20</span><span class="o">/</span><span class="n">sUSfdpLPUu</span><span class="o">+</span>
+      <span class="o">|</span> <span class="o">/</span><span class="n">tp1LyALszH9QAfwEjxMWWLSqC1yznci9uoQN7fcDJhggZmE6TEnKIyXIpbZWAoqjI7a</span><span class="o">/</span><span class="mi">51</span><span class="n">HnPQp</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">h1nHTQuUsRPpVE7</span><span class="o">/</span><span class="n">lCrpyFyYqD0gXFM32kmJqo8a0uf0E6PTqG1UDgOET8lMnwgcT0oyYBx2MfTK</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">DBjluAvhXE67OTdszGmX6AtdUDMxzk1Y8KJiijN8cUI4S4ixpvCqpFqTIXVqGWmUHH8pepkzhVy4</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">lbwa7Zz7</span><span class="o">/</span><span class="n">V6xiV3Jb5wx8Y6KIaoViTJyVXtkAtWii8nK05gYQ5XdeIFaGaJ6P1trEJDxE</span><span class="o">+</span><span class="n">G5588K</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">h</span><span class="o">+</span><span class="mi">5</span><span class="n">BQMQIjMMEjFIRq9nYVFQGMzFNJU</span><span class="o">+</span><span class="n">o8lsosOxVlf0OJ9rvr</span><span class="o">/</span><span class="n">NBMZl5pZZLKQn</span><span class="o">+</span><span class="n">VV08F</span><span class="o">+</span><span class="n">wyrxBQ</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">pZk2VBRaT1mSoCN7gphTonriN5bQQAEmIL8qlrxzHuQJrT</span><span class="o">+</span><span class="mi">9</span><span class="n">l9o7YGTkOPKjfzp</span><span class="o">/</span><span class="n">PXjpn7tEDUH2</span><span class="o">+</span>
+      <span class="o">|</span> <span class="mi">9</span><span class="n">sFSBKEIVCmp</span><span class="o">/</span><span class="n">Mr4bKREmdwD8Ebru4IXMpFQLz</span><span class="o">/</span><span class="mi">4</span><span class="n">fN37SG7kQILOipGkf</span><span class="o">+</span><span class="n">bog3xWn8c3jBUTHucc</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">XKQyZh23EyZ6E</span><span class="o">+</span><span class="n">DVqsUvBWE5pAadcxCMPIO</span><span class="o">/</span><span class="mi">3</span><span class="n">W53N0laadrOshaJrP7o6VoKTSb0rfZhg24FDqCo</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">TnteSd4oH9xowUCID0sWp0RAZGDci8QahXDkDaM5YMc0RUu73</span><span class="o">/</span><span class="n">TSu3AGEVkPyI9lDAc37loi69WI</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">ojT98YfDTMDrJbB8tKj5PEHFeN4aRGkQpUGUZ4oo3y8jCtZmayP9aaBmBZ6EyvEhQVoG</span><span class="o">+</span><span class="n">hagEpdD</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">Fts6UpAM</span><span class="o">+</span><span class="n">Tp2gYK1bkvPIP4zX</span><span class="o">/</span><span class="n">aCYIoNh4g886DNEZkQF6UoTvnQBok0aK</span><span class="o">/</span><span class="mi">1</span><span class="n">rxYT2hAR070xUYAl</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">e1gT7zmZ9pg</span><span class="o">+</span><span class="n">tzugUl989xPyQ2L0R72SI282vzcAGECUmVkU9D</span><span class="o">/</span><span class="n">bpY8dh4C3ZrA2TMohv0YfIIQS</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">dM4IuDTWQcAA0eLz4nODtg3abh</span><span class="o">/</span><span class="n">aTl</span><span class="o">/</span><span class="n">HV0LV6zd8a2m5vwiaI5krYPfMLo3NLMaNdgbGprQjeZ4J</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">j3bYl</span><span class="o">+</span><span class="n">bWxecu5I4d0X9cGNsgA3XF6akNZOdlsKhtcsGVvXQQUDJG4pvIWt</span><span class="o">/</span><span class="mi">1</span><span class="n">rZ6J</span><span class="o">+</span><span class="n">BherLXB9TbT</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">ekwxVNWKBZeSxj5W56sBUYGQymiV2oFbhdAPVGmsYIw4fCspa8NV</span><span class="o">+</span><span class="n">i</span><span class="o">/</span><span class="n">ANwPQq4pSjq2iVCsowRfu</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">l4lqcXl7KloUpbg</span><span class="o">/</span><span class="mi">2</span><span class="n">SjgmFHtzjOWHL</span><span class="o">/</span><span class="n">czIWAPQmxAWA9Iri</span><span class="o">/</span><span class="n">B9jquzgfEhYIBYlMsT64nN</span><span class="o">/</span><span class="n">Hg7qm</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">HKD2d</span><span class="o">+</span><span class="n">e6y2l</span><span class="o">+</span><span class="n">XRUexKMJi0HA30PChNim5pRxSJvFpC5mmySx1UnCge5DcB3l7CgK47</span><span class="o">/</span><span class="n">kxsjSGjhx</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">At77QU5XzByDmxp6c47pU2DpPFaUCmuLrkwIr0yfW</span><span class="o">/+</span><span class="n">miZX1rf6I2aCYtUj9Ojk8SngNIpxV75cF</span><span class="o">+</span>
+      <span class="o">|</span> <span class="mi">0</span><span class="n">IXOFQSdAxftUicpcL5</span><span class="o">+</span><span class="n">DumtUwNNN1Ll5x14VRV</span><span class="o">/+</span><span class="n">bA2fXJlFGktE1Ec3UXSz1XMyhUP4KUh6uNa</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">OHs0KQx8MqHVlsLq8mOKcxKT0su9gxvQkBQSVdwEIeRmhnoCnJ16S34FZVdha7n9w1EWM7fzxNsh</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">tsHG</span><span class="o">/</span><span class="n">wdsvBMYcpYxePPVy5c</span><span class="o">+</span><span class="n">bN8XvZkP451oYFOpN7qtCAvEcXa5USZCP3tuxyBAMXZI0hN85gUq</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">NQSObmx2LrVKszF3jd3PekzEv</span><span class="o">+</span><span class="n">fzFoPBPWu</span><span class="o">+</span><span class="mi">1</span><span class="n">mLx874djgIU2E11lbdlcBjkmvbGvkudFyFUG</span><span class="o">/</span><span class="n">I4</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">YbEmlL8BnPtv3kzioxraHddqzc0efkBdSlaffdQr3pvl0eaw7fGOM</span><span class="o">+</span><span class="mi">4</span><span class="n">Hgnc</span><span class="o">/</span><span class="mi">2</span><span class="n">fk6bDbYt93Y98wO</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">D</span><span class="o">+</span><span class="mi">54</span><span class="n">GKDkVFvTTGeaTWfD4lW8zZaqikfxxegin</span><span class="o">/</span><span class="n">RrgBT6egyo0OHPw3X1QYEnbtKbtCc6KeMJtL2</span><span class="o">/+</span>
+      <span class="o">|</span> <span class="mi">1</span><span class="n">Z1vBdREK5CLl</span><span class="o">+</span><span class="mi">5</span><span class="n">yyw13B88RsaNzh4TI</span><span class="o">/</span><span class="n">MR13eHwzqGnMjFuiE99LuOLsMN9at9wUOhq9JXCxIEt</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">RJtPznouFQSdu5KzJHxEbKjDtEvYd8KLsiO5G2BUjNbgxaP0kdX8ep</span><span class="o">/</span><span class="mi">24</span><span class="n">K7ni5pd29MxPF</span><span class="o">/</span><span class="n">idGDO</span><span class="o">+</span>
+      <span class="o">|</span> <span class="mi">4</span><span class="n">iKBs2FaefQK7okzYXks7ZDSrN4gOUgR34</span><span class="o">+</span><span class="n">G18x2aXIw0Kge8IJxrlP</span><span class="o">/</span><span class="n">g3P740rbfxrkOtpBRtA5</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">oL2zc44kxjigj3</span><span class="o">/</span><span class="n">W8uC4afLsPzVunI9nlz9cXbgzllvSFR79tPw3W0XGKj4Eq6eslXmj4B0XqV2c</span><span class="o">+</span>
+      <span class="o">|</span> <span class="mi">4</span><span class="n">RtYfJzYbP7iuzvkvdLqoVt</span><span class="o">/</span><span class="n">rDyIpYUXtx5dT3E2cr</span><span class="o">/</span><span class="n">Cf8UXFsunKusL</span><span class="o">/</span><span class="n">eKS0ukruucl6TfffNmD</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">aHgRLkt3Wt8qKc0am39763VpyclG70mtvvxFaShwotpZHPRoqIeg2L</span><span class="o">+</span><span class="n">pH9r</span><span class="o">++</span><span class="n">mZLYXlz5cVIH1B</span><span class="o">++</span>
+      <span class="o">|</span> <span class="n">YcuLsiVZW2hsuF9p6pimjtnWOiYWwx</span><span class="o">/</span><span class="mi">7</span><span class="n">l</span><span class="o">+</span><span class="n">vqmHcS1MKuiT8Y3EApY3egT1fM</span><span class="o">/</span><span class="n">C33Nryuxie5vnni</span><span class="o">+</span>
+      <span class="o">|</span> <span class="mi">8</span><span class="n">qRqx2dVoKytXjdyX9Wcy2wrDG</span><span class="o">+</span><span class="n">ubjk6uh6</span><span class="o">/</span><span class="n">acqWpmxpypYHly1H</span><span class="o">+</span><span class="n">dUr7b7Yu6sbbziqyti</span><span class="o">+</span><span class="n">pZ46</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">z</span><span class="o">/</span><span class="n">t4R16rmwJkjBXLiJqtL4FuAs</span><span class="o">/</span><span class="n">j3W84EXVgsSb</span><span class="o">+</span><span class="n">c4r</span><span class="o">/</span><span class="mi">7</span><span class="n">U</span><span class="o">+</span><span class="n">PTfxv</span><span class="o">+</span><span class="n">NqiaFRKb7bQMdP9y8Hr6JG</span><span class="o">/+</span>
+      <span class="o">|</span> <span class="mi">8</span><span class="n">G8yWuPRD8poF3yqXx1at0S9vU1GsPrXoD0oeiW2</span><span class="o">++</span><span class="n">vp4i7</span><span class="o">/</span><span class="n">qb4YrCVYXWaRgv0t7bfCVk0APvMA</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">XF</span><span class="o">/</span><span class="n">R2WiT16PDFJPAYvkL18X</span><span class="o">/</span><span class="n">AFBLBwiiGE2wTAgAAFFCAABQSwECFAAUAAgICAAAACEAohhNsEwI</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">AABRQgAADgAJAAAAAAAAAAAAAAAAAAAARUNPU19GT1JNLmpzb25VVAUABwAAAABQSwUGAAAAAAEA</span><span class="o">+</span>
+      <span class="o">|</span> <span class="n">AQBFAAAAmQgAAAAA</span>
+</pre></div>
+</div>
+<p>Убираем шапку, отступы <code class="docutils literal notranslate"><span class="pre">|</span></code>, переносы строк, знаки + в конце строк и получаем строку:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAOABEARUNPU19GT1JNLmpzb25VVA0ABwAAAAAAAAAAAAAAAO1aWXMbNxL</span><span class="o">+</span><span class="n">K8y8xKnSYUdOLDHZrXIoKVFiLl2Wy3nYcrnAGZADCgNQAIYUxeJ</span><span class="o">/</span><span class="mi">324</span><span class="n">cc1AUHR1UxM3oRRygB</span><span class="o">+</span><span class="n">jz625g5hFLonZ00umdfzntfehGO9FAquwPOoPRTCY5p19wAMYNM5xG7XlEBcydwmArZ9FiJ0qojhUbGyZFfdrIFk2YaUmTUtXCZTTSx7k2MuvaxYF0pPdjZmh8se</span><span class="o">/</span><span class="mi">20</span><span class="o">/</span><span class="n">sUSfdpLPUu</span><span class="o">/</span><span class="n">tp1LyALszH9QAfwEjxMWWLSqC1yznci9uoQN7fcDJhggZmE6TEnKIyXIpbZWAoqjI7a</span><span class="o">/</span><span class="mi">51</span><span class="n">HnPQph1nHTQuUsRPpVE7</span><span class="o">/</span><span class="n">lCrpyFyYqD0gXFM32kmJqo8a0uf0E6PTqG1UDgOET8lMnwgcT0oyYBx2MfTKDBjluAvhXE67OTdszGmX6AtdUDMxzk1Y8KJiijN8cUI4S4ixpvCqpFqTIXVqGWmUHH8pepkzhVy4lbwa7Zz7</span><span class="o">/</span><span class="n">V6xiV3Jb5wx8Y6KIaoViTJyVXtkAtWii8nK05gYQ5XdeIFaGaJ6P1trEJDxE</span><span class="o">+</span><span class="n">G5588Kh</span><span class="o">+</span><span class="mi">5</span><span class="n">BQMQIjMMEjFIRq9nYVFQGMzFNJU</span><span class="o">+</span><span class="n">o8lsosOxVlf0OJ9rvr</span><span class="o">/</span><span class="n">NBMZl5pZZLKQn</span><span class="o">+</span><span class="n">VV08F</span><span class="o">+</span><span class="n">wyrxBQpZk2VBRaT1mSoCN7gphTonriN5bQQAEmIL8qlrxzHuQJrT</span><span class="o">+</span><span class="mi">9</span><span class="n">l9o7YGTkOPKjfzp</span><span class="o">/</span><span class="n">PXjpn7tEDUH29sFSBKEIVCmp</span><span class="o">/</span><span class="n">Mr4bKREmdwD8Ebru4IXMpFQLz</span><span class="o">/</span><span class="mi">4</span><span class="n">fN37SG7kQILOipGkf</span><span class="o">+</span><span class="n">bog3xWn8c3jBUTHuccXKQyZh23EyZ6E</span><span class="o">+</span><span class="n">DVqsUvBWE5pAadcxCMPIO</span><span class="o">/</span><span class="mi">3</span><span class="n">W53N0laadrOshaJrP7o6VoKTSb0rfZhg24FDqCoTnteSd4oH9xowUCID0sWp0RAZGDci8QahXDkDaM5YMc0RUu73</span><span class="o">/</span><span class="n">TSu3AGEVkPyI9lDAc37loi69WIojT98YfDTMDrJbB8tKj5PEHFeN4aRGkQpUGUZ4oo3y8jCtZmayP9aaBmBZ6EyvEhQVoG</span><span class="o">+</span><span class="n">hagEpdDFts6UpAM</span><span class="o">+</span><span class="n">Tp2gYK1bkvPIP4zX</span><span class="o">/</span><span class="n">aCYIoNh4g886DNEZkQF6UoTvnQBok0aK</span><span class="o">/</span><span class="mi">1</span><span class="n">rxYT2hAR070xUYAle1gT7zmZ9pg</span><span class="o">+</span><span class="n">tzugUl989xPyQ2L0R72SI282vzcAGECUmVkU9D</span><span class="o">/</span><span class="n">bpY8dh4C3ZrA2TMohv0YfIIQSdM4IuDTWQcAA0eLz4nODtg3abh</span><span class="o">/</span><span class="n">aTl</span><span class="o">/</span><span class="n">HV0LV6zd8a2m5vwiaI5krYPfMLo3NLMaNdgbGprQjeZ4Jj3bYl</span><span class="o">+</span><span class="n">bWxecu5I4d0X9cGNsgA3XF6akNZOdlsKhtcsGVvXQQUDJG4pvIWt</span><span class="o">/</span><span class="mi">1</span><span class="n">rZ6J</span><span class="o">+</span><span class="n">BherLXB9TbTekwxVNWKBZeSxj5W56sBUYGQymiV2oFbhdAPVGmsYIw4fCspa8NV</span><span class="o">+</span><span class="n">i</span><span class="o">/</span><span class="n">ANwPQq4pSjq2iVCsowRful4lqcXl7KloUpbg</span><span class="o">/</span><span class="mi">2</span><span class="n">SjgmFHtzjOWHL</span><span class="o">/</span><span class="n">czIWAPQmxAWA9Iri</span><span class="o">/</span><span class="n">B9jquzgfEhYIBYlMsT64nN</span><span class="o">/</span><span class="n">Hg7qmHKD2d</span><span class="o">+</span><span class="n">e6y2l</span><span class="o">+</span><span class="n">XRUexKMJi0HA30PChNim5pRxSJvFpC5mmySx1UnCge5DcB3l7CgK47</span><span class="o">/</span><span class="n">kxsjSGjhxAt77QU5XzByDmxp6c47pU2DpPFaUCmuLrkwIr0yfW</span><span class="o">/+</span><span class="n">miZX1rf6I2aCYtUj9Ojk8SngNIpxV75cF0IXOFQSdAxftUicpcL5</span><span class="o">+</span><span class="n">DumtUwNNN1Ll5x14VRV</span><span class="o">/+</span><span class="n">bA2fXJlFGktE1Ec3UXSz1XMyhUP4KUh6uNaOHs0KQx8MqHVlsLq8mOKcxKT0su9gxvQkBQSVdwEIeRmhnoCnJ16S34FZVdha7n9w1EWM7fzxNshtsHG</span><span class="o">/</span><span class="n">wdsvBMYcpYxePPVy5c</span><span class="o">+</span><span class="n">bN8XvZkP451oYFOpN7qtCAvEcXa5USZCP3tuxyBAMXZI0hN85gUqNQSObmx2LrVKszF3jd3PekzEv</span><span class="o">+</span><span class="n">fzFoPBPWu</span><span class="o">+</span><span class="mi">1</span><span class="n">mLx874djgIU2E11lbdlcBjkmvbGvkudFyFUG</span><span class="o">/</span><span class="n">I4YbEmlL8BnPtv3kzioxraHddqzc0efkBdSlaffdQr3pvl0eaw7fGOM</span><span class="o">+</span><span class="mi">4</span><span class="n">Hgnc</span><span class="o">/</span><span class="mi">2</span><span class="n">fk6bDbYt93Y98wOD</span><span class="o">+</span><span class="mi">54</span><span class="n">GKDkVFvTTGeaTWfD4lW8zZaqikfxxegin</span><span class="o">/</span><span class="n">RrgBT6egyo0OHPw3X1QYEnbtKbtCc6KeMJtL2</span><span class="o">/</span><span class="mi">1</span><span class="n">Z1vBdREK5CLl</span><span class="o">+</span><span class="mi">5</span><span class="n">yyw13B88RsaNzh4TI</span><span class="o">/</span><span class="n">MR13eHwzqGnMjFuiE99LuOLsMN9at9wUOhq9JXCxIEtRJtPznouFQSdu5KzJHxEbKjDtEvYd8KLsiO5G2BUjNbgxaP0kdX8ep</span><span class="o">/</span><span class="mi">24</span><span class="n">K7ni5pd29MxPF</span><span class="o">/</span><span class="n">idGDO4iKBs2FaefQK7okzYXks7ZDSrN4gOUgR34</span><span class="o">+</span><span class="n">G18x2aXIw0Kge8IJxrlP</span><span class="o">/</span><span class="n">g3P740rbfxrkOtpBRtA5oL2zc44kxjigj3</span><span class="o">/</span><span class="n">W8uC4afLsPzVunI9nlz9cXbgzllvSFR79tPw3W0XGKj4Eq6eslXmj4B0XqV2c4RtYfJzYbP7iuzvkvdLqoVt</span><span class="o">/</span><span class="n">rDyIpYUXtx5dT3E2cr</span><span class="o">/</span><span class="n">Cf8UXFsunKusL</span><span class="o">/</span><span class="n">eKS0ukruucl6TfffNmDaHgRLkt3Wt8qKc0am39763VpyclG70mtvvxFaShwotpZHPRoqIeg2L</span><span class="o">+</span><span class="n">pH9r</span><span class="o">++</span><span class="n">mZLYXlz5cVIH1B</span><span class="o">+</span><span class="n">YcuLsiVZW2hsuF9p6pimjtnWOiYWwx</span><span class="o">/</span><span class="mi">7</span><span class="n">l</span><span class="o">+</span><span class="n">vqmHcS1MKuiT8Y3EApY3egT1fM</span><span class="o">/</span><span class="n">C33Nryuxie5vnni8qRqx2dVoKytXjdyX9Wcy2wrDG</span><span class="o">+</span><span class="n">ubjk6uh6</span><span class="o">/</span><span class="n">acqWpmxpypYHly1H</span><span class="o">+</span><span class="n">dUr7b7Yu6sbbziqyti</span><span class="o">+</span><span class="n">pZ46z</span><span class="o">/</span><span class="n">t4R16rmwJkjBXLiJqtL4FuAs</span><span class="o">/</span><span class="n">j3W84EXVgsSb</span><span class="o">+</span><span class="n">c4r</span><span class="o">/</span><span class="mi">7</span><span class="n">U</span><span class="o">+</span><span class="n">PTfxv</span><span class="o">+</span><span class="n">NqiaFRKb7bQMdP9y8Hr6JG</span><span class="o">/</span><span class="mi">8</span><span class="n">G8yWuPRD8poF3yqXx1at0S9vU1GsPrXoD0oeiW2</span><span class="o">++</span><span class="n">vp4i7</span><span class="o">/</span><span class="n">qb4YrCVYXWaRgv0t7bfCVk0APvMAXF</span><span class="o">/</span><span class="n">R2WiT16PDFJPAYvkL18X</span><span class="o">/</span><span class="n">AFBLBwiiGE2wTAgAAFFCAABQSwECFAAUAAgICAAAACEAohhNsEwIAABRQgAADgAJAAAAAAAAAAAAAAAAAAAARUNPU19GT1JNLmpzb25VVAUABwAAAABQSwUGAAAAAAEAAQBFAAAAmQgAAAAA</span>
+</pre></div>
+</div>
+<p>Загружаем полученную строку в любой сервис по декодированию base64 в файл. Например:</p>
+<p><a class="reference external" href="https://base64.guru/converter/decode/file">https://base64.guru/converter/decode/file</a></p>
+<p>Скачиваем итоговый файл:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/app_download.png"><img alt="../../../_images/app_download.png" class="align-center" src="../../../_images/app_download.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>В результате получаем архив с нашим модулем.</p>
+</section>
+<section id="ecos-apps">
+<h2>Полезные скрипты в базе ECOS Apps<a class="headerlink" href="#ecos-apps" title="Ссылка на этот заголовок"></a></h2>
+<p>Получение ревизий модуля:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">module</span><span class="o">.</span><span class="n">ext_id</span><span class="p">,</span><span class="n">rev</span><span class="o">.</span><span class="n">created_date</span><span class="p">,</span><span class="n">rev</span><span class="o">.</span><span class="n">created_by</span><span class="p">,</span><span class="n">rev</span><span class="o">.</span><span class="n">is_user_rev</span><span class="p">,</span><span class="n">rev</span><span class="o">.</span><span class="n">content_id</span>
+<span class="kn">from</span> <span class="nn">ecos_module</span> <span class="n">module</span>
+<span class="n">join</span> <span class="n">ecos_module_rev</span> <span class="n">rev</span> <span class="n">on</span> <span class="n">module</span><span class="o">.</span><span class="n">id</span><span class="o">=</span><span class="n">rev</span><span class="o">.</span><span class="n">module_id</span>
+<span class="n">where</span> <span class="n">module</span><span class="o">.</span><span class="n">ext_id</span><span class="o">=</span><span class="s1">&#39;ECOS_FORM&#39;</span> <span class="n">order</span> <span class="n">by</span> <span class="n">rev</span><span class="o">.</span><span class="n">created_date</span> <span class="n">desc</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>is_user_rev</strong> флаг определяет, что модуль менялся пользователем.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../Description.html" class="btn btn-neutral float-left" title="Описание микросервисов" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="Process%20Engine.html" class="btn btn-neutral float-right" title="Process Engine microservice" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

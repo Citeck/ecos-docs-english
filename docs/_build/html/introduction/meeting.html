@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Модуль «Совещания» &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Модуль «Пропуска»" href="order_pass.html" />
+    <link rel="prev" title="Организационная структура" href="org_structure.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Introduction.html">Знакомство с ECOS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="homepage.html">Домашняя страница ECOS и ее элементы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datalists.html">Справочники</a></li>
+<li class="toctree-l2"><a class="reference internal" href="org_structure.html">Организационная структура</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Модуль «Совещания»</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Схема бизнес-процесса</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Совещание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Решение</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Роли</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Совещание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Решение</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Статусы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Совещание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Решение</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Журнал</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Карточка</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id14">Совещание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Решение</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Процесс работы с совещанием</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17">Шаг 1. Создание совещания, повестки к совещанию</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">Шаг 2. Рассылка на ознакомление</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">Шаг 3. Ознакомление</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">Шаг 4. Создание протокола</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">Шаг 5. Назначение на согласование</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">Шаг 6. Согласование</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">Шаг 7. Исполнение</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">Процесс работы с решением</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#decision-do">Подготовка к исполнению</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">Исполнение</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">Проверка</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28">Повторное исполнение</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="order_pass.html">Модуль «Пропуска»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin.html">Раздел администратора</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../Introduction.html">Знакомство с ECOS</a> &raquo;</li>
+      <li>Модуль «Совещания»</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/introduction/meeting.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><a class="toc-backref" href="#id29">Модуль «Совещания»</a><a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>Модуль предназначен для автоматизации процесса планирования и проведения совещаний.</p>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id29">Модуль «Совещания»</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id30">Схема бизнес-процесса</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id31">Роли</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id32">Статусы</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id33">Журнал</a></p></li>
+<li><p><a class="reference internal" href="#id13" id="id34">Карточка</a></p></li>
+<li><p><a class="reference internal" href="#id16" id="id35">Процесс работы с совещанием</a></p></li>
+<li><p><a class="reference internal" href="#id24" id="id36">Процесс работы с решением</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>В составе процесса представлены следующие документы:</p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Совещание</strong></p></td>
+<td><p>Документ, аккумулирующий в себе всю информацию по процессу.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Повестка</strong></p></td>
+<td><p>Документ с информацией о повестке совещания.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Вопрос встречи</strong></p></td>
+<td><p>Представляет вопрос, включаемый в повестку и требуемый решения.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Протокол встречи</strong></p></td>
+<td><p>Документ с информацией о протоколе совещания.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Решение</strong></p></td>
+<td><p>Представляет решение, обозначенных в повестке, вопросов. Отдельный бизнес-процесс.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id3">
+<h2><a class="toc-backref" href="#id30">Схема бизнес-процесса</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<section id="id4">
+<h3>Совещание<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_1.png"><img alt="../_images/meet_1.png" class="align-center" src="../_images/meet_1.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/meet_2.png"><img alt="../_images/meet_2.png" class="align-center" src="../_images/meet_2.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/meet_3.png"><img alt="../_images/meet_3.png" class="align-center" src="../_images/meet_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id5">
+<h3>Решение<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_4.png"><img alt="../_images/meet_4.png" class="align-center" src="../_images/meet_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+</section>
+<section id="id6">
+<h2><a class="toc-backref" href="#id31">Роли</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<section id="id7">
+<h3>Совещание<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Инициатор</strong></p></td>
+<td><p>Создающий документ</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Получатели</strong></p></td>
+<td><p>Сотрудники, ознакамливающиеся с документом.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Согласующие</strong></p></td>
+<td><p>Сотрудники, согласующие документ.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id8">
+<h3>Решение<a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Инициатор</strong></p></td>
+<td><p>Создающий документ, совпадает с Инициатором совещания.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Исполнитель</strong></p></td>
+<td><p>Сотрудники, исполняющие решение по совещанию.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Проверяющий</strong></p></td>
+<td><p>Сотрудники, проверяющие исполнение решения по совещанию.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id9">
+<h2><a class="toc-backref" href="#id32">Статусы</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h2>
+<section id="id10">
+<h3>Совещание<a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Новый</strong></p></td>
+<td><p>Инициатор создал совещание и документ «Повестка», и заполнил его вопросами для обсуждения.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Подготовка к ознакомлению</strong></p></td>
+<td><p>Инициатор назначает лица для ознакомления. На основе этой информации составляются задачи ознакомления.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>На ознакомлении</strong></p></td>
+<td><p>Назначенным лицам поступает задача ознакомления, в ходе которой просматриваются вопросы повестки, и подтверждается ознакомление.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Ознакомление завершено</strong></p></td>
+<td><p>Автоматический статус, когда все лица, назначенные для ознакомления, подтвердили осведомленность, но время проведения совещания еще не наступило.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Проведено</strong></p></td>
+<td><p>По наступлению времени совещания (вне зависимости от того все ли ознакомились) на Инициатора автоматически назначается задача создания протокола совещания. В протоколе обозначаются решения поставленных вопросов.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Подготовка к согласованию</strong></p></td>
+<td><p>Инициатор назначает лица, которые будут согласовывать протокол. Назначаются от 1 до 3 согласующих.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>На согласовании</strong></p></td>
+<td><p>Назначенным лицам поступает последовательно поступает задача, целью которой является просмотр протокола на корректность его составления и выражения согласия с ним.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Согласован</strong></p></td>
+<td><div class="line-block">
+<div class="line">Задача поступает на Инициатора, но основная часть ее исполнения перекладывается на обозначенные в протоколе Решения.</div>
+<div class="line">Инициатор должен перейти в документ каждого из решений и запустить процесс их исполнения, а затем из основного документа (Совещание) контролировать достижения исполнения решений. Когда все решения будут в статусах успешного исполнения или отмены, появится возможность закрытия задачи.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Исполнено</strong></p></td>
+<td><p>Техническая смена статуса, свидетельствующая о завершении процесса.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h3>Решение<a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Подготовка к исполнению</strong></p></td>
+<td><p>Инициатор назначает Исполнителя и Проверяющего, которые будут выполнять соответствующие задачи для данного Решения.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>На исполнении</strong></p></td>
+<td><p>Исполнитель выполняет свою задачу и подтверждает готовность.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Исполнено. На проверке</strong></p></td>
+<td><p>Проверяющий после проверки исполнения выносит вердикт либо с одобрением, либо с отклонением: в первом случае процесс переходит на заключительный этап, во втором - назначается задача Инициатору.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Решение проверено</strong></p></td>
+<td><p>Техническая смена статуса. Процесс завершен с благоприятным исходом.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Не решено</strong></p></td>
+<td><p>Инициатора решает на основе полученных комментариев: отправить решение на повторное исполнение с возможным назначением иных лиц и сроков или отказаться от исполнения.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Решение отменено</strong></p></td>
+<td><p>Техническая смена статуса. Завершение процесса с отменой исполнения.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id12">
+<h2><a class="toc-backref" href="#id33">Журнал</a><a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_5.png"><img alt="../_images/meet_5.png" class="align-center" src="../_images/meet_5.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Журнал содержит поля:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Дата создания</p></li>
+<li><p>Регистрационный номер</p></li>
+<li><p>Статус</p></li>
+<li><p>Организатор встречи</p></li>
+<li><p>Когда</p></li>
+<li><p>Предмет совещания</p></li>
+<li><p>Место совещания</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id13">
+<h2><a class="toc-backref" href="#id34">Карточка</a><a class="headerlink" href="#id13" title="Ссылка на этот заголовок"></a></h2>
+<section id="id14">
+<h3>Совещание<a class="headerlink" href="#id14" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_6.png"><img alt="../_images/meet_6.png" class="align-center" src="../_images/meet_6.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Карточка содержит поля:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Дата создания</p></li>
+<li><p>Регистрационный номер</p></li>
+<li><p>Статус</p></li>
+<li><p>Организатор встречи</p></li>
+<li><p>Когда</p></li>
+<li><p>Предмет совещания</p></li>
+<li><p>Место совещания</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id15">
+<h3>Решение<a class="headerlink" href="#id15" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_7.png"><img alt="../_images/meet_7.png" class="align-center" src="../_images/meet_7.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Карточка содержит поля:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Присутствовали</p></li>
+<li><p>Отсутствовали</p></li>
+<li><p>Решения</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="id16">
+<h2><a class="toc-backref" href="#id35">Процесс работы с совещанием</a><a class="headerlink" href="#id16" title="Ссылка на этот заголовок"></a></h2>
+<section id="id17">
+<h3>Шаг 1. Создание совещания, повестки к совещанию<a class="headerlink" href="#id17" title="Ссылка на этот заголовок"></a></h3>
+<p>Создание возможно, как с помощью кнопки быстрого создания:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_8.png"><img alt="../_images/meet_8.png" class="align-center" src="../_images/meet_8.png" style="width: 200px;" /></a>
+</div></blockquote>
+<p>так и из журнала <strong>«Совещания»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_9.png"><img alt="../_images/meet_9.png" class="align-center" src="../_images/meet_9.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>На экране появляется форма создания Совещания:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_10.png"><img alt="../_images/meet_10.png" class="align-center" src="../_images/meet_10.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Заполните обязательные поля, отмеченные <strong>„*“</strong> и нажмите <strong>«Создать»</strong>.
+Статус совещания становится <strong>«Новый»</strong>.</p>
+<p>Система создает задачу <strong>«Создание повестки»</strong>, которая назначается Инициатору.</p>
+<p>Перейти к Совещанию можно любым из способов:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>из журнала <strong>«Активные задачи»</strong>;</p></li>
+<li><p>найдя документ в Журнале <strong>«Совещания»</strong>.</p></li>
+</ul>
+</div></blockquote>
+<p>В отдельной вкладке открывается карточка Совещания:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_11.png"><img alt="../_images/meet_11.png" class="align-center" src="../_images/meet_11.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Нажмите <strong>«Создать»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_12.png"><img alt="../_images/meet_12.png" class="align-center" src="../_images/meet_12.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Добавьте участников, нажмите <strong>«Создать»</strong> для добавления вопросов для обсуждения:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_13.png"><img alt="../_images/meet_13.png" class="align-center" src="../_images/meet_13.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>К повестке может быть добавлено несколько вопросов.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_14.png"><img alt="../_images/meet_14.png" class="align-center" src="../_images/meet_14.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для сохранения повестки нажмите <strong>«Принять»</strong>.</p>
+<p>Для выполнения задачи в виджете <strong>«Мои задачи»</strong> нажмите <strong>«Повестка создана»</strong>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_15.png"><img alt="../_images/meet_15.png" class="align-center" src="../_images/meet_15.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Статус совещания становится <strong>«Подготовка к ознакомлению»</strong>.</p>
+</section>
+<section id="id18">
+<h3>Шаг 2. Рассылка на ознакомление<a class="headerlink" href="#id18" title="Ссылка на этот заголовок"></a></h3>
+<p>Система создает задачу <strong>«Подготовка к ознакомлению»</strong>, которая назначается Инициатору.</p>
+<p>Перейти к Совещанию можно любым из способов:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>из полученного уведомления;</p></li>
+<li><p>из журнала <strong>«Активные задачи»</strong>;</p></li>
+<li><p>найдя документ в Журнале <strong>«Совещания»</strong>.</p></li>
+</ul>
+</div></blockquote>
+<p>В отдельной вкладке открывается карточка Совещания:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_16.png"><img alt="../_images/meet_16.png" class="align-center" src="../_images/meet_16.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Выберите <strong>Получателей</strong> (тех, кто должен ознакомиться с повесткой к совещанию) по кнопке <strong>«Добавить»</strong>, укажите сообщение при необходимости, и для выполнения задачи нажмите <strong>«Отправить на ознакомление»</strong>.</p>
+<p>Статус совещания становится <strong>«На ознакомлении»</strong>.</p>
+</section>
+<section id="id19">
+<h3>Шаг 3. Ознакомление<a class="headerlink" href="#id19" title="Ссылка на этот заголовок"></a></h3>
+<p>Назначенным в <strong>шаге 2</strong> пользователям, выбранным <strong>Получателями</strong>, поступает задача ознакомления, в ходе которой просматриваются вопросы повестки, созданной на <strong>шаге 1</strong>, и подтверждается ознакомление.</p>
+<p>Перейти к Совещанию можно любым из способов:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>из полученного уведомления;</p></li>
+<li><p>из журнала <strong>«Активные задачи»</strong>;</p></li>
+<li><p>найдя документ в Журнале <strong>«Совещания»</strong>.</p></li>
+</ul>
+</div></blockquote>
+<p>В отдельной вкладке открывается карточка Совещания:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_17.png"><img alt="../_images/meet_17.png" class="align-center" src="../_images/meet_17.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для подробного просмотра вопросов повестки совещания нажмите на иконку глаза.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_18.png"><img alt="../_images/meet_18.png" class="align-center" src="../_images/meet_18.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для выполнения задачи нажмите <strong>«Ознакомлен»</strong>.</p>
+<p>Когда все <strong>Получатели</strong> подтвердят ознакомление, и время проведения совещания еще не наступит, статус совещания автоматически изменится на <strong>«Ознакомление завершено»</strong>.</p>
+</section>
+<section id="id20">
+<h3>Шаг 4. Создание протокола<a class="headerlink" href="#id20" title="Ссылка на этот заголовок"></a></h3>
+<p>По наступлению времени совещания (вне зависимости от того все ли ознакомились) на <strong>Инициатора</strong> назначается задача создания протокола совещания по аналогии с повесткой из <strong>шага 1</strong>.</p>
+<p>В протоколе обозначаются решения поставленных вопросов. Статус совещания становится <strong>«Проведено»</strong>.</p>
+<p>Перейти к Совещанию можно любым из способов:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>из полученного уведомления;</p></li>
+<li><p>из журнала <strong>«Активные задачи»</strong>;</p></li>
+<li><p>найдя документ в Журнале <strong>«Совещания»</strong>.</p></li>
+</ul>
+</div></blockquote>
+<p>В отдельной вкладке открывается карточка Совещания:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_19.png"><img alt="../_images/meet_19.png" class="align-center" src="../_images/meet_19.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Нажмите <strong>«Создать»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_20.png"><img alt="../_images/meet_20.png" class="align-center" src="../_images/meet_20.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Выберите сотрудников, которые <strong>Присутствовали</strong>, <strong>Отсутствовали</strong> на совещании:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_21.png"><img alt="../_images/meet_21.png" class="align-center" src="../_images/meet_21.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Нажмите <strong>«Создать»</strong> для добавления решений по вопросам, которые обсуждались на совещании:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_22.png"><img alt="../_images/meet_22.png" class="align-center" src="../_images/meet_22.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Выберите <strong>вопрос</strong> из списка:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_23.png"><img alt="../_images/meet_23.png" class="align-center" src="../_images/meet_23.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>И укажите по нему решение:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_24.png"><img alt="../_images/meet_24.png" class="align-center" src="../_images/meet_24.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для сохранения решения по вопросу нажмите <strong>«Принять»</strong>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_25.png"><img alt="../_images/meet_25.png" class="align-center" src="../_images/meet_25.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для сохранения протокола нажмите <strong>«Принять»</strong>.</p>
+<p>Для выполнения задачи в виджете <strong>«Мои задачи»</strong> нажмите <strong>«Протокол создан»</strong>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_26.png"><img alt="../_images/meet_26.png" class="align-center" src="../_images/meet_26.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Статус совещания становится <strong>«Подготовка к согласованию»</strong>.</p>
+</section>
+<section id="id21">
+<h3>Шаг 5. Назначение на согласование<a class="headerlink" href="#id21" title="Ссылка на этот заголовок"></a></h3>
+<p>Система создает задачу «Подготовка к согласованию», которая назначается <strong>Инициатору</strong>.</p>
+<p>Перейти к Совещанию можно любым из способов:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>из полученного уведомления;</p></li>
+<li><p>из журнала <strong>«Активные задачи»</strong>;</p></li>
+<li><p>найдя документ в Журнале <strong>«Совещания»</strong>.</p></li>
+</ul>
+</div></blockquote>
+<p>В отдельной вкладке открывается карточка Совещания:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_27.png"><img alt="../_images/meet_27.png" class="align-center" src="../_images/meet_27.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Выберите <strong>Согласующих</strong> протокол (назначаются от 1 до 3 согласующих) по кнопке <strong>«Выбрать»</strong>, укажите <strong>сообщение</strong> при необходимости, и для выполнения задачи нажмите <strong>«Начать согласование»</strong>.</p>
+<p>Статус совещания становится <strong>«На согласовании»</strong>.</p>
+</section>
+<section id="id22">
+<h3>Шаг 6. Согласование<a class="headerlink" href="#id22" title="Ссылка на этот заголовок"></a></h3>
+<p>На выбранных на предыдущем шаге <strong>Согласующих</strong> последовательно назначается задача, целью которой является просмотр протокола на корректность его составления и выражения согласия с ним.</p>
+<p>Перейти к Совещанию можно любым из способов:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>из полученного уведомления;</p></li>
+<li><p>из журнала <strong>«Активные задачи»</strong>;</p></li>
+<li><p>найдя документ в Журнале <strong>«Совещания»</strong>.</p></li>
+</ul>
+</div></blockquote>
+<p>В отдельной вкладке открывается карточка Совещания:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_28.png"><img alt="../_images/meet_28.png" class="align-center" src="../_images/meet_28.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для подробного просмотра вопросов повестки совещания нажмите на иконку глаза</p>
+<p>Для выполнения задачи нажмите <strong>«Согласовано»</strong>.</p>
+<p>Статус совещания становится <strong>«Согласован»</strong>.</p>
+</section>
+<section id="id23">
+<h3>Шаг 7. Исполнение<a class="headerlink" href="#id23" title="Ссылка на этот заголовок"></a></h3>
+<p>Задача поступает на Инициатора, но основная часть ее исполнения перекладывается на обозначенные в протоколе <strong>Решения</strong>.
+Каждое вынесенное по итогам совещания Решение проходит отдельный маршрут исполнения и проверки.
+Инициатор следит за исполнением решений и закрывает задачу по достижении всех результатов исполнений.</p>
+<p>Инициатор должен перейти в документ каждого из решений и запустить процесс их исполнения, а затем из основного документа (Совещание) контролировать достижения исполнения решений.</p>
+<p>Когда все решения будут в статусах <strong>«Решение проверено»</strong> или <strong>«Решение отменено»</strong>, появится возможность закрытия задачи.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_29.png"><img alt="../_images/meet_29.png" class="align-center" src="../_images/meet_29.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Нажмите <strong>«Завершить исполнение»</strong>.</p>
+<p>Статус совещания становится <strong>«Исполнено»</strong>. Процесс завершаетсятся.</p>
+</section>
+</section>
+<section id="id24">
+<h2><a class="toc-backref" href="#id36">Процесс работы с решением</a><a class="headerlink" href="#id24" title="Ссылка на этот заголовок"></a></h2>
+<section id="decision-do">
+<span id="id25"></span><h3>Подготовка к исполнению<a class="headerlink" href="#decision-do" title="Ссылка на этот заголовок"></a></h3>
+<p>Статус: <strong>«Подготовка к исполнению»</strong></p>
+<p>Задача назначается <strong>Инициатору</strong> - тому же пользователю, который назначен на такую же роль в документе Совещание.</p>
+<p>Из журнала <strong>«Активные задачи»</strong> откройте Решение:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_30.png"><img alt="../_images/meet_30.png" class="align-center" src="../_images/meet_30.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Выберите <strong>Исполнителя</strong> и <strong>Проверяющего</strong>, которые будут выполнять соответствующие задачи для данного Решения, сроки исполнения и проверки этих задач, а также укажите сообщение при необходимости.</p>
+<p>Для выполнения задачи нажмите <strong>«Создать поручение»</strong>.</p>
+<p>Статус совещания становится <strong>«На исполнении»</strong>.</p>
+</section>
+<section id="id26">
+<h3>Исполнение<a class="headerlink" href="#id26" title="Ссылка на этот заголовок"></a></h3>
+<p><strong>Исполнитель</strong> просматривает вопрос и его решение, до конца установленного срока выполняет свою задачу и подтверждает готовность (при необходимости оставляет комментарий).</p>
+<p>Из журнала <strong>«Активные задачи»</strong> откройте Решение:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_31.png"><img alt="../_images/meet_31.png" class="align-center" src="../_images/meet_31.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для выполнения задачи нажмите <strong>«Исполнено»</strong>.</p>
+<p>Статус решения становится <strong>«Исполнено. На проверке»</strong>.</p>
+<p>В случае выхода за пределы срока, задача закрывается и считается неисполненной.</p>
+</section>
+<section id="id27">
+<h3>Проверка<a class="headerlink" href="#id27" title="Ссылка на этот заголовок"></a></h3>
+<p>Если задача выполнена <strong>Исполнителем</strong>, то далее на <strong>Проверяющего</strong> назначается ее проверка.</p>
+<p>Из журнала <strong>«Активные задачи»</strong> откройте Решение:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_32.png"><img alt="../_images/meet_32.png" class="align-center" src="../_images/meet_32.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>После проверки исполнения Проверяющий выносит вердикт:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>одобрение по кнопке <strong>«Проверено»</strong>,</p></li>
+<li><p>отклонение по кнопке <strong>«Отклонено»</strong> и обязательным вводом комментария.</p></li>
+</ul>
+</div></blockquote>
+<p>При одобрении статус Решения становится <strong>«Решение проверено»</strong>.</p>
+<p>При отклонении статус Решения становится <strong>«Не решено»</strong>. На Инициатора назначается задача.</p>
+</section>
+<section id="id28">
+<h3>Повторное исполнение<a class="headerlink" href="#id28" title="Ссылка на этот заголовок"></a></h3>
+<p>Задача назначается на <strong>Инициатора</strong>.</p>
+<p>Из журнала <strong>«Активные задачи»</strong> откройте Решение:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/meet_33.png"><img alt="../_images/meet_33.png" class="align-center" src="../_images/meet_33.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p><strong>Инициатор</strong> решает на основе полученных комментариев:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>отправить решение на повторное исполнение по кнопке <strong>«Повторное исполнение»</strong> с возможным назначением иных лиц и сроков. Порядок действий аналогичен шагу <a class="reference internal" href="#decision-do"><span class="std std-ref">Подготовка к исполнению</span></a>.</p></li>
+<li><p>отказаться от исполнения совсем по кнопке <strong>«Отменить»</strong>.</p></li>
+</ul>
+</div></blockquote>
+<p>При отправке на повторное исполнение статус Решения становится <strong>«На исполнении»</strong>.</p>
+<p>При отмене статус Решения становится <strong>«Решение отменено»</strong>. Процесса завершается с отменой исполнения.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="org_structure.html" class="btn btn-neutral float-left" title="Организационная структура" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="order_pass.html" class="btn btn-neutral float-right" title="Модуль «Пропуска»" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

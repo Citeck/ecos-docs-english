@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Массовая рассылка &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Отправка уведомлений из flowable" href="notifications_from_flowable.html" />
+    <link rel="prev" title="Шаблоны уведомлений" href="notifications_template.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interface.html">Интерфейс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../notifications.html">Уведомления</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="notifications.html">Уведомления</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_template.html">Шаблоны уведомлений</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Массовая рассылка</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1. Общие сведения</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">2. Создание массовой рассылки</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">3. Жизненный цикл массовой рассылки</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">4. Дополнительные источники формирования получателей</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_from_flowable.html">Отправка уведомлений из flowable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_from_ecos_bpmn.html">Отправка уведомлений из Ecos BPMN (Camunda)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_firebase_push.html">Push уведомления (firebase)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_commands.html">Отправка уведомлений через команду</a></li>
+<li class="toctree-l3"><a class="reference internal" href="senders.html">Отправители</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../notifications.html">Уведомления</a> &raquo;</li>
+      <li>Массовая рассылка</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/settings_kb/notifications/notifications_bulk_mail.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><a class="toc-backref" href="#id17">Массовая рассылка</a><a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Добавлено в версии 2.7.0 микросервиса ecos-notifications</p>
+</div>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id17">Массовая рассылка</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id18">1. Общие сведения</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id19">2. Создание массовой рассылки</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id5" id="id20">2.1 Форма</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id21">2.2 Описание полей</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id22">2.3 Примеры пакетной рассылки</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id8" id="id23">3. Жизненный цикл массовой рассылки</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id9" id="id24">3.1 Статусы</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id25">3.2 Действия</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id11" id="id26">3.2.1 Сформировать получателей</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id27">3.2.2 Отправить сообщения</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id13" id="id28">4. Дополнительные источники формирования получателей</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id3">
+<h2><a class="toc-backref" href="#id18">1. Общие сведения</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Массовая рассылка позволяет отправить уведомления пользователям через конфигурирование сообщений администратором системы.</p>
+<p>Данный фунционал может использоваться для системных уведомлений о технических работах, информационных сообщений или любых других рассылок.</p>
+<p>Особенности:</p>
+<ul class="simple">
+<li><p>отправка уведомлений большому количеству пользователей за счет возможности разбиения получателей на партии</p></li>
+<li><p>добавление получателей в копию, скрытую копию</p></li>
+<li><p>отложенная отправка</p></li>
+<li><p>получение реципиентов из разных источников, редактирование реципиентов до отправки</p></li>
+<li><p>установление текста уведомлений напрямую</p></li>
+<li><p>подгрузка текста уведомления из заготовленных шаблонов с последующей корректировкой</p></li>
+<li><p>отправка уведомлений по шаблону с выбором базового рекорда</p></li>
+<li><p>просмотр статуса рассылки</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>В массовой рассылке заложена возможность отправки уведомлений через разные провайдеры - email, mobile push, sms и т.д. <br>
+На текущий момент реализована только отправка email. В будущем, для поддержки других провайдеров, необходимо реализовать получение разных адресов отправки в зависимоти от типа уведомления.</p>
+</div>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id19">2. Создание массовой рассылки</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Массовые рассылки располагаются в инструментах администратора, блок «Конфигурация уведомлений», журнал «Массовая рассылка».</p>
+<section id="id5">
+<h3><a class="toc-backref" href="#id20">2.1 Форма</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<a class="reference internal image-reference" href="../../_images/bulk_mail_form_1.png"><img alt="../../_images/bulk_mail_form_1.png" class="align-center" src="../../_images/bulk_mail_form_1.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../_images/bulk_mail_form_2.png"><img alt="../../_images/bulk_mail_form_2.png" class="align-center" src="../../_images/bulk_mail_form_2.png" style="width: 600px;" /></a>
+</section>
+<section id="id6">
+<h3><a class="toc-backref" href="#id21">2.2 Описание полей</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Имя</dt>
+<dd class="field-odd"><p>Имя массовой рассылки</p>
+</dd>
+<dt class="field-even">Сводка уведомлений</dt>
+<dd class="field-even"><p>Сводка по количеству уведомлений в разных статусах, относящихся к текущей рассылки.</p>
+</dd>
+<dt class="field-odd">Шаблон уведомления</dt>
+<dd class="field-odd"><p>Отправка уведомления по выбранному шаблону уведомления.</p>
+</dd>
+<dt class="field-even">Record уведомления</dt>
+<dd class="field-even"><p>Если выбран <code class="docutils literal notranslate"><span class="pre">шаблон</span> <span class="pre">уведомлений</span></code>, то можно выбрать боазовый recordRef для расчета модели шаблона уведомления.</p>
+</dd>
+<dt class="field-odd">Заголовок</dt>
+<dd class="field-odd"><p>Прямое установление заголовка уведомления.</p>
+</dd>
+<dt class="field-even">Тело сообщения</dt>
+<dd class="field-even"><p>Прямое установление тела сообщения через редактор richText.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Через кнопку <code class="docutils literal notranslate"><span class="pre">Загрузить</span> <span class="pre">текст</span> <span class="pre">из</span> <span class="pre">шаблона</span></code> можно подгрузить <em>заголовок</em> и <em>тело сообщения</em> из заготовленного шаблона.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Оргструктура</dt>
+<dd class="field-odd"><p>Выбор получателей сообщения из компонента оргструктуры. Возможно выбрать конкретных пользователей или группу.</p>
+</dd>
+<dt class="field-even">Пользовательский ввод получателей</dt>
+<dd class="field-even"><p>Ввод получателей через указание прямого адреса (<em>на данный момент только email</em>) или userName пользователя. Разделители - <code class="docutils literal notranslate"><span class="pre">,</span></code>, <code class="docutils literal notranslate"><span class="pre">;</span></code>, <code class="docutils literal notranslate"><span class="pre">пробел</span></code>, <code class="docutils literal notranslate"><span class="pre">перевод</span> <span class="pre">на</span> <span class="pre">строку</span> <span class="pre">-</span> <span class="pre">\n</span></code>. Например, данное поле может использоваться для вставки списка получателей копированием из excel.</p>
+</dd>
+<dt class="field-odd">Тип уведомления</dt>
+<dd class="field-odd"><p>Выбор типа уведомления - email, mobile push, sms и т.д. На данный момент реализован только email.</p>
+</dd>
+<dt class="field-even">Язык</dt>
+<dd class="field-even"><p>Язык уведомления для выбранного <code class="docutils literal notranslate"><span class="pre">шаблона</span> <span class="pre">уведомления</span></code></p>
+</dd>
+<dt class="field-odd">Всех получателей в копию</dt>
+<dd class="field-odd"><p>Если выбрано, то все получатели будут добавлены в копию (<code class="docutils literal notranslate"><span class="pre">cc</span></code>)</p>
+</dd>
+<dt class="field-even">Всех получателей в скрытую копию</dt>
+<dd class="field-even"><p>Если выбрано, то все получатели будут добавлены в скрытую копию (<code class="docutils literal notranslate"><span class="pre">bcc</span></code>)</p>
+</dd>
+<dt class="field-odd">Отложенная отправка</dt>
+<dd class="field-odd"><p>Выбор времени отложенной отправки. Если пусто, то отправка осуществится сразу после действия <a class="reference internal" href="#id12">3.2.2 Отправить сообщения</a></p>
+</dd>
+<dt class="field-even">Размер пакета</dt>
+<dd class="field-even"><p>Размер пакета при разбиении рассылки по получателям. <br> Например, если размер равен 0, то будет отправлено одно сообщение. Если получателей 10, а размер равен 2, то будет отправлено 5 сообщений. <br> Эта опция может быть полезна, если почтовый сервер не может обработать отсылку сообщения большому количеству получателей в одном сообщении.</p>
+</dd>
+<dt class="field-odd">Персонализированная рассылка</dt>
+<dd class="field-odd"><p>Отправка персонализированного сообщения каждому получателю</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h3><a class="toc-backref" href="#id22">2.3 Примеры пакетной рассылки</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<p>Ниже будут описаны примеры логики обработки пакетной рассылки для более детального понимания.</p>
+<p>Предположим, что в рассылке 1_000 получателей, тип уведомления - email, тогда:</p>
+<p>При рассылке по умолчанию, без дополнительных настроек, будет отправлено одно сообщение, в котором в поле <code class="docutils literal notranslate"><span class="pre">to</span></code> будет 1_000 адресов.</p>
+<p>Если выбрано <code class="docutils literal notranslate"><span class="pre">Персонализированная</span> <span class="pre">рассылка</span></code>, то будет отправлено 1_000 сообщений, в поле <code class="docutils literal notranslate"><span class="pre">to</span></code> по одному адресу.
+Если здесь же проставить <code class="docutils literal notranslate"><span class="pre">Всех</span> <span class="pre">получателей</span> <span class="pre">в</span> <span class="pre">копию</span></code> или <code class="docutils literal notranslate"><span class="pre">Всех</span> <span class="pre">получателей</span> <span class="pre">в</span> <span class="pre">скрытую</span> <span class="pre">копию</span></code>, то по одному адресу будет добавлено в <code class="docutils literal notranslate"><span class="pre">cc</span></code> или <code class="docutils literal notranslate"><span class="pre">bcc</span></code> соответственно, при этом в <code class="docutils literal notranslate"><span class="pre">to</span></code> будет пусто.</p>
+<p>Если <code class="docutils literal notranslate"><span class="pre">Размер</span> <span class="pre">пакета</span></code> установить <code class="docutils literal notranslate"><span class="pre">50</span></code>, то будет отправлено 20 сообщений, в поле <code class="docutils literal notranslate"><span class="pre">to</span></code> по 50 адресов.
+Если здесь же проставить <code class="docutils literal notranslate"><span class="pre">Всех</span> <span class="pre">получателей</span> <span class="pre">в</span> <span class="pre">копию</span></code> или <code class="docutils literal notranslate"><span class="pre">Всех</span> <span class="pre">получателей</span> <span class="pre">в</span> <span class="pre">скрытую</span> <span class="pre">копию</span></code>, то по 50 адресов будет добавлено в <code class="docutils literal notranslate"><span class="pre">cc</span></code> или <code class="docutils literal notranslate"><span class="pre">bcc</span></code> соответственно, при этом в <code class="docutils literal notranslate"><span class="pre">to</span></code> будет пусто.</p>
+<p>Некоторые почтовые серверы плохо орабатывают большое количество писем в одном сообщении. С помощью пакетной обработки можно решить эту проблему. <br>
+Например, типичная задача - <em>Отправить информационное сообщение большому количеству пользователей, при этом пользователи не должны видеть других получателей</em> решается установлением <code class="docutils literal notranslate"><span class="pre">размера</span> <span class="pre">пакета</span></code> и флага <code class="docutils literal notranslate"><span class="pre">Всех</span> <span class="pre">получателей</span> <span class="pre">в</span> <span class="pre">скрытую</span> <span class="pre">копию</span></code>.</p>
+</section>
+</section>
+<section id="id8">
+<h2><a class="toc-backref" href="#id23">3. Жизненный цикл массовой рассылки</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h2>
+<p>После создания, массовая рассылка переходит в статус «Новый», на котором можно сформировать получателей, скорректировать их и запланировать отправку.</p>
+<section id="id9">
+<h3><a class="toc-backref" href="#id24">3.1 Статусы</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h3>
+<p>Статусы устанавиваются в приоритете описания:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Новый</dt>
+<dd class="field-odd"><p>Массовая рассылка создана.</p>
+</dd>
+<dt class="field-even">Осуществляются попытки отправки</dt>
+<dd class="field-even"><p>Устанавливается, если хотя бы у одного сообщения при отправке произошла ошибка и осуществляются повторные попытки отправки.</p>
+</dd>
+<dt class="field-odd">Ошибка</dt>
+<dd class="field-odd"><p>Устанавливается, если хотя бы у одного сообщения при отправке произошла ошибка, а все повторные попытки или время жизни сообщения были исчерпаны.</p>
+</dd>
+<dt class="field-even">Ожидается отправка</dt>
+<dd class="field-even"><p>Устанавливается, если хотя бы одно сообщение массовой рассылки находится в статусе «Ожидание отправки».</p>
+</dd>
+<dt class="field-odd">Отправлено</dt>
+<dd class="field-odd"><p>Устанавливается, если не найдены кейсы, описанные выше и хотя бы одно сообщение находится в статусе «Отправлено».</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h3><a class="toc-backref" href="#id25">3.2 Действия</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h3>
+<section id="id11">
+<h4><a class="toc-backref" href="#id26">3.2.1 Сформировать получателей</a><a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h4>
+<p>Выбранные получатели на форме массовой рассылки являются заготовкой для формирования конечного списка получателей.</p>
+<p>По умолчанию, на форме есть возможноть выбрать получателей из компонента оргструктуры и ручного ввода (см. <a class="reference internal" href="#id6">2.2 Описание полей</a>). <br>
+При этом, заложена возможность получить дополнительных рецепиентов из кастомного источника. (см. <a class="reference internal" href="#id13">4. Дополнительные источники формирования получателей</a>)</p>
+<p>При выполнении действия «Формирование получателей» происходит сбор получателей из разных источников и формирование уникальных рецепиентов по адресу. В результате можно посмотреть и скорректировать список сформированных получателей в журнале «Получатели»:</p>
+<img alt="../../_images/bulk_mail_recipients_journal.png" class="align-center" src="../../_images/bulk_mail_recipients_journal.png" />
+<p>Журнал получателей поддерживает удаление и простой текстовый поиск через <code class="docutils literal notranslate"><span class="pre">ИЛИ</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>При каждом запуске действия «Сформировать получателей» происходит удаление старых получателей и формирование новых.</p>
+</div>
+</section>
+<section id="id12">
+<h4><a class="toc-backref" href="#id27">3.2.2 Отправить сообщения</a><a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h4>
+<p>При выполнении действия «Отправить сообщения» происходит отправка сообщений, согласно указанным настройкам, получателям из сформированного списка - журнала «Получатели».</p>
+<p>В результате действия будут сформированны уведомления в журнале «Уведомления» (см. <a class="reference internal" href="notifications.html#notifications-label"><span class="std std-ref">Описание уведомлений</span></a>), в котором можно посомтреть информацию о сформированных сообщениях и так же их статус.</p>
+<a class="reference internal image-reference" href="../../_images/bulk_mail_notifications_journal.png"><img alt="../../_images/bulk_mail_notifications_journal.png" class="align-center" src="../../_images/bulk_mail_notifications_journal.png" style="width: 600px;" /></a>
+<p>Пользователи, у которых установлен атрибут <strong>ecos:isPersonDisabled = true</strong>, отфильтровываются, и email сообщения им не отправляются. Актуально для версий: ecos-com:4.9.15, ecos-com:4.11.4 и ecos-com:4.15.0+</p>
+</section>
+</section>
+</section>
+<section id="id13">
+<h2><a class="toc-backref" href="#id28">4. Дополнительные источники формирования получателей</a><a class="headerlink" href="#id13" title="Ссылка на этот заголовок"></a></h2>
+<p>Получение дополнительных получателей осуществляется через records dao, который при <code class="docutils literal notranslate"><span class="pre">queryOne</span></code> запросе атрибута <code class="docutils literal notranslate"><span class="pre">recipients[]?json</span></code>, должен вернуть список объектов в формате:</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">RecipientInfo</span><a class="headerlink" href="#id14" title="Постоянная ссылка на код"></a></div>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">data</span> <span class="kd">class</span> <span class="nc">RecipientInfo</span><span class="p">(</span>
+
+    <span class="nd">@AttName</span><span class="p">(</span><span class="s">&quot;address&quot;</span><span class="p">)</span>
+    <span class="kd">var</span> <span class="nv">address</span><span class="p">:</span> <span class="kt">String?</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+
+
+    <span class="nd">@AttName</span><span class="p">(</span><span class="s">&quot;.disp&quot;</span><span class="p">)</span>
+    <span class="kd">var</span> <span class="nv">disp</span><span class="p">:</span> <span class="kt">String?</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+
+    <span class="nd">@AttName</span><span class="p">(</span><span class="s">&quot;record&quot;</span><span class="p">)</span>
+    <span class="kd">var</span> <span class="nv">record</span><span class="p">:</span> <span class="n">RecordRef? </span><span class="o">=</span> <span class="n">RecordRef</span><span class="p">.</span><span class="na">EMPTY</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">Запрос дополнительных получателей</span><a class="headerlink" href="#id15" title="Постоянная ссылка на код"></a></div>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span> <span class="nv">query</span> <span class="o">=</span> <span class="n">RecordsQuery</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span>
+            <span class="p">.</span><span class="na">withQuery</span><span class="p">(</span><span class="n">bulkMail</span><span class="p">.</span><span class="na">recipientsData</span><span class="p">.</span><span class="na">custom</span><span class="p">)</span>
+            <span class="p">.</span><span class="na">withSourceId</span><span class="p">(</span><span class="n">provider</span><span class="p">)</span>
+            <span class="p">.</span><span class="na">withMaxItems</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+            <span class="p">.</span><span class="na">build</span><span class="p">()</span>
+
+<span class="n">recordsService</span><span class="p">.</span><span class="na">queryOne</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="s">&quot;recipients[]?json&quot;</span><span class="p">).</span><span class="na">asList</span><span class="p">(</span><span class="n">RecipientInfo</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Перечисление recods источников устанавливается через ecos config c id - <code class="docutils literal notranslate"><span class="pre">bulk-mail-custom-recipients-providers</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">Ecos config: bulk-mail-custom-recipients-providers</span><a class="headerlink" href="#id16" title="Постоянная ссылка на код"></a></div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bulk-mail-custom-recipients-providers</span><span class="w"></span>
+<span class="nt">value</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">notifications/custom-fixed-recipients</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">notifications/custom-mail-recipients</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>Указанному источнику, для вычисления получателей, можно передать необходимую информацию в query. Информация, передаваемая в query берется из <code class="docutils literal notranslate"><span class="pre">bulkMailRecord.recipientsData.custom</span></code>, где <code class="docutils literal notranslate"><span class="pre">custom</span></code> это <code class="docutils literal notranslate"><span class="pre">ObjectData</span></code>. <br>
+Например, объект <code class="docutils literal notranslate"><span class="pre">custom</span></code> можно заполнить на переопределенной форме bulk mail, внутри контейнера <code class="docutils literal notranslate"><span class="pre">recipientsData</span></code>, создав вложенынй контейнер <code class="docutils literal notranslate"><span class="pre">custom</span></code>. Таким образом, все, что будет заполнено внутри custom, будет передано в query объекте, источнику records.</p>
+<p>В итоге, при формировании получателей, будет вызван records api метод queryOne с переданным <code class="docutils literal notranslate"><span class="pre">query</span></code>, для каждого указанного источника в конфиге <code class="docutils literal notranslate"><span class="pre">bulk-mail-custom-recipients-providers</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="notifications_template.html" class="btn btn-neutral float-left" title="Шаблоны уведомлений" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="notifications_from_flowable.html" class="btn btn-neutral float-right" title="Отправка уведомлений из flowable" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

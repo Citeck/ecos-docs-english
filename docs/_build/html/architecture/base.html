@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Базовая архитектура &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Патчи ECOS" href="patches.html" />
+    <link rel="prev" title="Архитектура" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Базовая архитектура</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Микросервисы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Хранение данных</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Зависимости компонентов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Взаимодействие клиента с сервером</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">События</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Приложения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Кластеризация</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#citeck-ecos">Кластеризация микросервисов в системе Citeck ECOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="patches.html">Патчи ECOS</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a> &raquo;</li>
+      <li>Базовая архитектура</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/architecture/base.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Базовая архитектура<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>Система Citeck ECOS построена на основе микросервисной событийно-ориентированной архитектуры. В качестве основного способа взаимодействия микросервисов используется обмен сообщениями через очередь сообщений (MQ).</p>
+<p>Платформа поддерживает работу с различными источниками данных без необходимости копирования данных во внутренний репозиторий. Для работы с данными используется собственный язык запросов Records API. Перечень источников данных может быть легко расширен.</p>
+<p>Компоненты системы:</p>
+<ul class="simple">
+<li><p><strong>DAO services</strong> – сервисы работы с контентом и метаданными. В качестве источников данных могут использоваться Alfresco Content Service, Базы данных, 1С, SAP и другие;</p></li>
+<li><p><strong>Process services</strong> – сервисы управления бизнес-процессами, поддерживаются нотации моделирования бизнес-процессов BPMN и CMMN;</p></li>
+<li><p><strong>Application services</strong> – сервисы управления приложениями ECOS, их версионностью и деплойментом;</p></li>
+<li><p><strong>Data services</strong> – сервисы работы с данными, в том числе валидации данных и их индексации;</p></li>
+<li><p><strong>Integration services</strong> – интеграционные сервисы, включая ЮЗДО;</p></li>
+<li><p><strong>API gateway</strong> – API шлюз, используется в том числе для запросов от пользовательского интерфейса (WEB и мобильного);</p></li>
+<li><p><strong>Business logic services</strong> – сервисы бизнес-логики и конфигурации.</p></li>
+</ul>
+<p>Интерфейс системы разработан на базе фреймворка <strong>ReactJS</strong> в виде статичных <strong>JS-библиотек</strong>, которые раздаются через NGINX и работают под управлением веб-браузеров на пользовательских устройствах.</p>
+<p>Мобильный интерфейс разработан на базе фреймворка <strong>React Native</strong>, также поддерживается адаптивная верстка для мобильных браузеров.</p>
+<p>Запросы от пользовательских интерфейсов маршрутизируются через <strong>NGINX</strong> и <strong>API-шлюз</strong>.</p>
+<p>Citeck ECOS развертывается с использование сервисов контейнеризации Docker / Kubernetes.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/Arch_1.png"><img alt="../_images/Arch_1.png" class="align-center" src="../_images/Arch_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<section id="id2">
+<h2>Микросервисы<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/Arch_2.png"><img alt="../_images/Arch_2.png" class="align-center" src="../_images/Arch_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Компонент</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>ecos-ui</strong></p></td>
+<td><p>Контейнер с nginx (openresty) и UI статикой (js + css).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ecos-registry</strong></p></td>
+<td><p>Реестр приложений и сервер Spring Cloud конфигурации.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ecos-gateway</strong></p></td>
+<td><p>Шлюз, через который мы попадаем от клиента к серверу.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ecos-apps</strong></p></td>
+<td><p>Микросервис приложений ECOS. Отвечает за доставку приложений ECOS к целевым сервисам.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ecos-notifications</strong></p></td>
+<td><p>Микросервис нотификаций. Отвечает за отправку уведомлений (email, push-нотификации и др.).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ecos-model</strong></p></td>
+<td><p>Микросервис моделей. Отвечает за информацию о типах, шаблонах нумерации и о матрицах прав.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ecos-history</strong></p></td>
+<td><p>Микросервис истории. Подписан на события в системе и сохраняет информацию о них в БД.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ecos-process</strong></p></td>
+<td><p>Микросервис процессов. Отвечает за процессы кейс-менеджмента и BPMN.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ecos-eis</strong></p></td>
+<td><p>Приложение Keycloak для аутентификации в системе.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>alfresco</strong></p></td>
+<td><p>Open-source ECM система, которая может использоваться для хранения контента и метаданных документов в системе (один из вариантов реализации).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>solr</strong></p></td>
+<td><p>Система индексации метаданных и контента документов.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ecos-uiserv</strong></p></td>
+<td><p>Микросервис UI конфигураций. Отвечает за формы, журналы, UI действия, темы, дашборды, локализацию, иконки, конфигурацию меню.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ecos-integrations</strong></p></td>
+<td><p>Микросервис для интеграции с внешними системами (SAP, 1C, Rabbit MQ и тд.).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>zookeeper</strong></p></td>
+<td><p>Приложение для хранения конфигураций в системе. Изменения конфигурации подхватываются приложениями «на лету».</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Rabbit MQ</strong></p></td>
+<td><p>Приложение для обмена сообщениями между микросервисами.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h2>Хранение данных<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<ol class="arabic simple">
+<li><p>Основная используемая реляционная база данных – <strong>PostgreSQL</strong>.</p></li>
+<li><p>Основная NoSQL база данных – <strong>Mongo DB</strong>.</p></li>
+<li><p>Опционально для высоконагруженных систем возможно использование <strong>Cassandra DB</strong>.</p></li>
+<li><p>Хранение метаданных поддерживается в любой системе через адаптер (record source). Существующие адаптеры: <strong>PostgreSQL, Oracle DB, MS SQL, Mongo DB, Alfresco ECM, SAP HANA</strong>.</p></li>
+<li><p>Для хранения документов может быть использована <strong>БД PostgreSQL, Alfresco ECM или внешняя ECM система через адаптер</strong> (например, разработан адаптер к системе OpenText).</p></li>
+<li><p>Помимо баз данных используется также прямая запись в файловую систему для приложений <strong>Alfresco (Content Store), Zookeeper, Rabbit MQ и Solr</strong>.</p></li>
+</ol>
+</section>
+<section id="id4">
+<h2>Зависимости компонентов<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/Arch_3.png"><img alt="../_images/Arch_3.png" class="align-center" src="../_images/Arch_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ol class="arabic">
+<li><p>Центральной частью системы ECOS является абстракция <strong>&lt;DATA SOURCE&gt;</strong>, в качестве которого может выступать любой источник данных в любом из микросервисов ECOS.</p>
+<p>Для добавления новых источников достаточно реализовать определенный интерфейс и данные из этого источника могут быть свободно интегрированы со всей экосистемой ECOS (их можно отображать в журнале, редактировать и просматривать через формы, отправлять по ним уведомления, запускать по ним процессы и т. д.).</p>
+<p>Общение с источниками данных построено на базе универсального <a class="reference internal" href="../general/ECOS_Records.html#records-api"><span class="std std-ref">Records API</span></a>. Зависимости от <strong>&lt;DATA SOURCE&gt;</strong> по микросервисам:</p>
+<ul class="simple">
+<li><p><strong>ecos-uiserv</strong> загружает атрибуты для фильтрации UI действий по заданным в конфигурации условиям;</p></li>
+<li><p><strong>ecos-notifications</strong> загружает атрибуты для заполнения шаблона уведомления;</p></li>
+<li><p><strong>ecos-history</strong> загружает атрибуты для сохранения записи в истории;</p></li>
+<li><p><strong>ecos-process</strong> загружает и меняет атрибуты в ходе выполнения BPMN процессов;</p></li>
+<li><p><strong>alfresco</strong> загружает и меняет атрибуты в ходе выполнения CMMN процессов.</p></li>
+</ul>
+</li>
+<li><p>Почти все микросервисы работают с <strong>Rabbit MQ</strong> (события и команды) и с <strong>Zookeeper</strong> (события, конфигурация ECOS и конфигурация типов);</p></li>
+<li><p><strong>UI</strong> (мобильный и браузерный) зависят от <strong>ecos-gateway</strong> (шлюз для доступа в систему) и от <strong>ecos-uiserv</strong> (микросервис с UI конфигурациями);</p></li>
+<li><p><strong>ecos-gateway</strong> зависит от <strong>ecos-model</strong> для получения информации по пользователям и группах, в которых они состоят. Эта информация используется для формирования JWT-токена с последующей отправкой его в остальные микросервисы для аутентификации и авторизации;</p></li>
+<li><p><strong>ecos-integrations</strong> зависит от внешних систем, с которыми настроена интеграция;</p></li>
+<li><p><strong>Alfresco</strong> зависит от <strong>Solr</strong> (поиск по индексам) и от микросервиса <strong>ecos-process</strong> (хранение состояния процессов в системе);</p></li>
+<li><p><strong>Solr</strong> зависит от <strong>alfresco</strong> для индексации данных.</p></li>
+</ol>
+</section>
+<section id="id5">
+<h2>Взаимодействие клиента с сервером<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/Arch_4.png"><img alt="../_images/Arch_4.png" class="align-center" src="../_images/Arch_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>При первом поступлении запроса от клиента <strong>nginx</strong> видит, что пользователь не имеет токена и отправляет его на <strong>Keycloak</strong> для аутентификации через протокол OpenID Connect.</p>
+<p><strong>Keycloak</strong> может предложить окно ввода логина/пароля или сразу выдать пользователю токен, с помощью которого он сможет зайти в систему (SSO).
+После успешной аутентификации пользователь перенаправляется на страницу, с которой его отправили в keycloak.</p>
+<p>После того, как запрос прошел дальше, <strong>ecos-gateway</strong> смотрит на URL запроса и по нему решает, какой именно микросервис должен его обработать (например, запрос <strong>/emodel/api/records/query</strong> должен уйти в <strong>ecos-model</strong>).</p>
+<p>Для получения IP адреса и порта целевого микросервиса <strong>ecos-gateway</strong> обращается в <strong>ecos-registry</strong> за нужной информацией и, получив её, отправляет запрос дальше.</p>
+</section>
+<section id="id6">
+<h2>События<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/events_1.png"><img alt="../_images/events_1.png" class="align-center" src="../_images/events_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p><strong>События</strong> в ECOS позволяют менять атрибутивный состав, который нужен подписчику на событие, без модификации источника событий. При старте системы все подписчики регистрируют в Zookeeper список необходимых им событий по типам и атрибуты события, в которых они заинтересованы.</p>
+<p>Приложение, которое может отправлять события подобного типа, видит, что в системе есть подписчики на эти события, и, при их возникновении, подготовив необходимый список атрибутов, отправляет их в Rabbit MQ.</p>
+<p>Атрибуты описываются в формате <a class="reference internal" href="../general/ECOS_Records.html#records-api"><span class="std std-ref">Records API</span></a> и могут пользоваться всеми преимуществами данного API.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/events_2.png"><img alt="../_images/events_2.png" class="align-center" src="../_images/events_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id7">
+<h2>Приложения<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h2>
+<p><a class="reference internal" href="../settings_kb/ecos_applications.html#applications"><span class="std std-ref">Приложения ECOS</span></a> позволяют выгружать из системы нужные артефакты в формате zip и деплоить их «на горячую» в другую систему.</p>
+<p><a class="reference internal" href="../settings_kb/ecos_artifacts.html#ecos-artifacts"><span class="std std-ref">Артефакт</span></a> – единица расширения в Citeck ECOS. Артефактами являются формы, журналы, типы, матрицы прав, действия, описания процессов и многие другие сущности в системе.</p>
+<p>Микросервис ecos-apps управляет артефактами, ведя их версионность и доставляя их до целевого микросервиса. Контент артефактов в системе неизменяемый и при любом изменении артефакта всегда создается новая версия, а старая сохраняется в списке версий.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/Apps_1.png"><img alt="../_images/Apps_1.png" class="align-center" src="../_images/Apps_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Доставка артефактов при старте системы происходит в 3 этапа:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Микросервис <strong>ecos-apps</strong>, увидив новый микросервис в сети, загружает из него список типов, в которых он заинтересован.</p></li>
+<li><p>Получив типы, <strong>ecos-apps</strong> рассылает на все остальные микросервисы запрос на получение артефактов с данными типами.</p></li>
+<li><p>Получив нужные артефакты со всех микросервисов, <strong>ecos-apps</strong> проверяет, изменился ли их контент с прошлого деплоя. Если изменений нет, то алгоритм заканчивает свою работу. Если изменения есть, то происходит деплой новых данных в целевой микросервис.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id8">
+<h2>Кластеризация<a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Кластеризация</strong> — разворачивание нескольких инстансов приложения для обработки большой нагрузки и повышения отказоустойчивости системы.</p>
+<p>Особенности:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Логически система работает одинаково вне зависимости от количества инстансов приложения;</p></li>
+<li><p>Инстансы приложения в кластере как правило работают с одними и теми же хранилищами данных (БД, файловая система);</p></li>
+<li><p>Кластеризация нужна для отказоустойчивости и распределения нагрузки по CPU, RAM и сети.</p></li>
+</ol>
+</div></blockquote>
+<section id="citeck-ecos">
+<h3>Кластеризация микросервисов в системе Citeck ECOS<a class="headerlink" href="#citeck-ecos" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/cluster_1.png"><img alt="../_images/cluster_1.png" class="align-center" src="../_images/cluster_1.png" style="width: 400px;" /></a>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Для разворачивания кластера микросервисов мы просто поднимаем несколько инстансов приложения;</p></li>
+<li><p>При старте все приложения регистрируются в  <strong>ecos-registry</strong>, указывая при этом свой IP, HOST и PORT;</p></li>
+<li><p>Балансировкой нагрузки занимается <strong>ecos-gateway</strong>. Когда приходит запрос от пользователя за некоторым ресурсом, <strong>ecos-gateway</strong> по информации в <strong>ecos-registry</strong> определяет список инстансов нужного приложения. После этого запрос уходит на один из инстансов по алгоритму round-robin;</p></li>
+<li><p><strong>ecos-registry</strong> регулярно проверяет приложения (health-check). Если приложение перестало отвечать, то запросы на него отправляться не будут.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html" class="btn btn-neutral float-left" title="Архитектура" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="patches.html" class="btn btn-neutral float-right" title="Патчи ECOS" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

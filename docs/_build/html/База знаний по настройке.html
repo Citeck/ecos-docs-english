@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Конструктор low-code &mdash; ECOS</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="ECOS Артефакты" href="settings_kb/ecos_artifacts.html" />
+    <link rel="prev" title="Упаковка приложения" href="case_sample/application.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Конструктор low-code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/Aspects.html">Аспекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/interface.html">Интерфейс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">Разработка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">Интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Конструктор low-code</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/База знаний по настройке.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="low-code">
+<h1>Конструктор low-code<a class="headerlink" href="#low-code" title="Ссылка на этот заголовок"></a></h1>
+<p>В разделе прдставлены статьи по настройке и конфигурации артефактов, приложений, бизнес-процессов системы.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="settings_kb/ecos_artifacts.html">ECOS Артефакты</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_artifacts.html#id2">Определения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_artifacts.html#id3">Типы артефактов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_artifacts.html#id4">Переопределение артефактов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_artifacts.html#id5">Создание нового типа артефакта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_artifacts.html#yaml">YAML формат артефакта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_artifacts.html#id6">Патчи для артефактов</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ecos_artifacts.html#id7">Типы патчей</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_artifacts.html#id9">Отображение артефактов разных категорий</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings_kb/ecos_applications.html">ECOS Приложения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_applications.html#id1">Определения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_applications.html#id2">Работа с приложениями</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_applications.html#id3">Перенос данных с одного стенда на другой</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_applications.html#id4">Структура архива приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_applications.html#id5">Артефакты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ecos_applications.html#id6">Источники артефактов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ecos_applications.html#id7">Обновление артефактов</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ecos_applications.html#ecos-apps">Создание ECOS Apps проекта</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ecos_applications.html#id8">Деплой</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#overview">Общий обзор (Overview)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-types-types">Иерархия системных типов и логика их наследования</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-types-admin">Описание перехода к разделу через интерфейс</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#id5">Варианты получения экземпляра типа</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#id8">Пример описания типа</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#id9">Доступные действия с записью</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#id10">Создание нового типа</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-types-main">Основные</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#ecos-model-label">Атрибуты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#type-aspects">Аспекты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#roles-statuses">Роли</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#associations">Статусы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#stages">Стадии</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#create">Варианты создания</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#datatypes-associations">Связи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#datatypes-content">Конфигурация контента</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#id31">Отображаемое имя сущности</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#auto-journal-form">Автоматически сгенерированные формы и журналы в типе данных</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#auto-journal">Журнал</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#auto-form">Форма</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings_kb/Aspects.html">Аспекты</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/Aspects.html#id2">Создание нового аспекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/Aspects.html#id3">Динамические аспекты</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings_kb/interface.html">Интерфейс</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/interface/forms.html">Формы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/forms/forms.html">Общая информация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/forms/form_builder.html">Конструктор форм</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/forms/form_components.html">Компоненты формы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/forms/form_examples.html">Примеры компонент</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/forms/form_localisation.html">Локализация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/forms/form_for_task.html">Связь формы с задачей</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/interface/journals.html">Журналы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/journals.html">Общее описание (Overview)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/new_journal.html">Создание нового журнала</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/user_description.html">Пользовательское описание</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/configuration.html">Конфигурация журналов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/group_actions.html">Групповые действия</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/search_journal_config.html">Конфигурация журнала поиска</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/computed%20attributes.html">Вычисляемые атрибуты (computed attributes)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/filter_by%20_text%20_assoc_column.html">Фильтр по тексту в колонке „assoc“. Настройки innerQuery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/searchAttribute.html">Параметр «2.3 Атрибут для поиска»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/search_nested_attributes.html">Поиск по вложенным атрибутам ассоциации в журналах</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/formatters.html">Форматтеры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/editors.html">Редакторы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/kanban_board.html">Канбан-доска</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/journals/document_library.html">Document Library</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/interface/menu.html">Меню</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/menu.html#id3">Зависимости настроек</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/menu.html#id9">Настройка меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/menu.html#id23">Редактор иконок</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/menu.html#id24">Результат настроек</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/menu.html#id25">Смежные настройки</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/interface/dashboards.html">Дашборды</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/dashboards.html#dashboard-types">Виды дашбордов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/dashboards.html#id4">Кэширование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/dashboards.html#dashboard-config">Конфигурация дашборда</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/dashboards.html#id10">Настройки виджетов на дашбордах</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/dashboards.html#id11">Журнал «Дашборды»</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/interface/widgets.html">Виджеты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-journal">Виджет «Журнал»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-web-page">Виджет «Веб страница»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-doc-preview">Виджет «Предпросмотр»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-comments">Виджет «Комментарии»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-properties">Виджет «Свойства»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-current-tasks">Виджет «Мои задачи»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-tasks">Виджет «Все задачи»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-doc-status">Виджет «Статус»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-events-history">Виджет «История событий»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-versions-journal">Виджет «Журнал версий»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-doc-associations">Виджет «Связи документа»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-record-actions">Виджет «Действия»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-barcode">Виджет «Штрих-код»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-documents">Виджет «Документы»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#doc-one">Виджет «Doc.One»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-process-statistics">Виджет «Статистика процесса»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-stages">Виджет «Стадии»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-report">Виджет «Статистика по задачам»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-birthdays">Виджет «День рождения»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/widgets.html#widget-user-profile">Виджет «Профиль»</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/interface/number_template.html">Шаблоны нумерации</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/number_template.html#template">Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/number_template.html#id3">Алгоритм работы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/number_template.html#id4">Настройка шаблона в интерфейсе</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/number_template.html#id5">Привязка к типу данных</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/interface/number_template.html#id6">Использование данных счетчика в шаблоне отображения имени</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings_kb/ui_actions.html">Действия</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ui_actions.html#id2">Описание формата</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ui_actions.html#id3">Получение действий по записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ui_actions.html#id4">Фронтенд</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ui_actions.html#id5">Общие настройки любого действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ui_actions.html#id6">Типы действий</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#view">view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#edit">edit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#open-in-background">open-in-background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#download">download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#delete">delete</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#download-card-template">download-card-template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#download-by-template">download-by-template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#view-card-template">view-card-template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#upload-new-version">upload-new-version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#create">create</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#save-as-case-template">save-as-case-template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#open-url">open-url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#assoc-action">assoc-action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#content-preview-modal">content-preview-modal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#fetch">fetch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#edit-task-assignee">edit-task-assignee</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#view-business-process">view-business-process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#cancel-business-process">cancel-business-process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#mutate">mutate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#set-task-assignee">set-task-assignee</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#edit-menu">edit-menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#view-menu">view-menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#task-outcome">task-outcome</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#tasks-actions">tasks-actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#edit-password">edit-password</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#open-submit-form">open-submit-form</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ui_actions.html#enterprise">Enterprise действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ui_actions.html#id7">Расширение действий</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#id8">Добавление новых инстансов действий</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#id9">Добавление новых типов действий</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ui_actions.html#id10">Настройки списка действий</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#dashboard">Настройка действий на dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#id11">Настройка действий в журналах</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/ui_actions.html#id12">Техническая информация</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#id13">Вспомогательные параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/ui_actions.html#id14">Ожидаемый формат результат действия</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings_kb/%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/processes/BPMN_ecos.html">Платформа бизнес-процессов (ECOS BPMN)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.html">Общее описание Ecos BPMN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/processes/ecos_bpmn/ecos_bpmn_base_operations.html">Базовые операции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/processes/ecos_bpmn/ecos_bpmn_editor.html">Моделирование бизнес-процесса</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/processes/BPMN_flowable.html">Редактор бизнес-процессов (BPMN) с использованием Flowable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/processes/BPMN_flowable.html#id1">Редактор бизнес-процессов (BPMN) с использованием Flowable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/processes/BPMN_flowable.html#id2">Создание процесса</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/processes/BPMN_flowable.html#id3">Формирование модели созданного процесса</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/processes/BPMN_flowable.html#flowable">Редактор процесса Flowable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/processes/BPMN_flowable.html#bpmn">BPMN категории</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/processes/BPMN_flowable.html#id6">Сервисы Flowable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/processes/BPMN_flowable.html#id7">Уведомления Flowable</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/processes/CMMN.html">Редактор сценариев (CMMN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/processes/CMMN_BPMN.html">Работа в связке CMMN - BPMN</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings_kb/notifications.html">Уведомления</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/notifications/notifications.html">Уведомления</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/notifications.html#id3">1. Сущность «Уведомление»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/notifications.html#id6">2. Журнал уведомлений</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/notifications/notifications_template.html">Шаблоны уведомлений</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/notifications_template.html#id3">1. Общие сведения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/notifications_template.html#id6">1. Операции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/notifications_template.html#id13">3. Использование переменных в шаблоне</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/notifications/notifications_bulk_mail.html">Массовая рассылка</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/notifications_bulk_mail.html#id3">1. Общие сведения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/notifications_bulk_mail.html#id4">2. Создание массовой рассылки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/notifications_bulk_mail.html#id8">3. Жизненный цикл массовой рассылки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/notifications_bulk_mail.html#id13">4. Дополнительные источники формирования получателей</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/notifications/notifications_from_flowable.html">Отправка уведомлений из flowable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/notifications_from_flowable.html#id2">1. Общие сведения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/notifications_from_flowable.html#mail-task">2. Пример отправки из mail task</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/notifications/notifications_from_ecos_bpmn.html">Отправка уведомлений из Ecos BPMN (Camunda)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/notifications/notifications_firebase_push.html">Push уведомления (firebase)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/notifications_firebase_push.html#id2">Пуш уведомления на мобильное устройство о задачах</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/notifications/notifications_commands.html">Отправка уведомлений через команду</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/notifications/senders.html">Отправители</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/senders.html#id3">1. Общие сведения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/senders.html#id4">2. Статусы обработки уведомления</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/notifications/senders.html#command">3. Пример использования command отправителя</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings_kb/Admin_Page.html">Страница администратора</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/Admin_Page.html#id2">Общее описание</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/Admin_Page.html#id3">Настройка разделов меню администратора</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings_kb/%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html#id2">Темы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html#id3">Кэш</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings_kb/Best_practice.html">Best practice</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/Best_practice.html#id1">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/Best_practice.html#id2">Формы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/Best_practice.html#table-form">Формы справочников, дочерних элементов (table-form)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/Best_practice.html#id3">Формы создания заявок</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings_kb/Best_practice.html#id4">Формы задач</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings_kb/Best_practice.html#id5">Шаблон уведомления</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="case_sample/application.html" class="btn btn-neutral float-left" title="Упаковка приложения" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="settings_kb/ecos_artifacts.html" class="btn btn-neutral float-right" title="ECOS Артефакты" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

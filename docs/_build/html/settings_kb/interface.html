@@ -1,0 +1,596 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Интерфейс &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Формы" href="interface/forms.html" />
+    <link rel="prev" title="Аспекты" href="Aspects.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Aspects.html">Аспекты</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Интерфейс</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms.html">Формы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals.html">Журналы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/menu.html">Меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/dashboards.html">Дашборды</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/widgets.html">Виджеты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/number_template.html">Шаблоны нумерации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+      <li>Интерфейс</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/settings_kb/interface.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Интерфейс<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="interface/forms.html">Формы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interface/forms/forms.html">Общая информация</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/forms.html#id2">Описание перехода к разделу через интерфейс</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/forms.html#id3">Варианты получения экземпляра формы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/forms.html#id4">Создание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/forms.html#id5">Загрузка</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/forms.html#id6">Пример описания формы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/forms.html#id7">Доступные действия с записью</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/forms.html#id8">Создание новой формы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/forms.html#ecos">Связь с типом ECOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/forms.html#id9">Связь без типа ECOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/forms.html#id10">Связь с атрибутом записи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/forms.html#id11">Пользовательский модуль</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/forms/form_builder.html">Конструктор форм</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_builder.html#id2">Общее описание</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_builder.html#id3">Добавление компонента формы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_builder.html#id4">Редактирование компонента формы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_builder.html#id5">Общие настройки компонентов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_builder.html#id6">Настройка компонентов</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/forms/form_components.html">Компоненты формы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_components/components_common.html">Общее описание</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components_common.html#id3">Основные компоненты</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#text-field">Text Field</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#select-journal">Select Journal</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#select-orgstruct">Select Orgstruct</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#number">Number</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#date-time">Date/Time</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#text-area">Text Area</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#checkbox">Checkbox</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#day">Day</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#ecos-select">Ecos Select</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#button">Button</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components_common.html#id14">Расширенные</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#ml-text">ML Text</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#table-form">Table Form</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#task-outcome">Task Outcome</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#import-button">Import Button</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#email">Email</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#url">URL</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#phone-number">Phone Number</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#address-field">Address Field</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#ml-textarea">ML Textarea</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#html-element">HTML Element</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#file">File</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#select-action">Select Action</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components_common.html#id17">Макет</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#horizontal-line">Horizontal Line</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#columns">Columns</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#panel">Panel</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#table">Table</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#tabs">Tabs</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components_common.html#id21">Данные</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#hidden">Hidden</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#async-data">Async Data</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#include-form">Include Form</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#container">Container</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#data-grid">Data Grid</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#data-grid-assoc">Data Grid Assoc</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components_common.html#data-map">Data Map</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_components/components.html">Подробное описание отдельных компонент</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components/text%20field.html">Text Field</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components/table%20form.html">Table form</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/table%20form.html#id3">Создание компонента</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/table%20form.html#id4">Чтение введенных данных</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/table%20form.html#id5">Как получить доступ к родительской форме?</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/table%20form.html#id6">Отображение действий</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/table%20form.html#id7">Настройки элементов</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/table%20form.html#id8">Выбор строк в таблице и выполнение действий с выбранными строками</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/table%20form.html#id9">Запрет выбора некоторых строк в таблице</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/table%20form.html#id10">Установка выбранных строк по-умолчанию</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/table%20form.html#allow-manual-override-of-calculated-value">Флаг «Разрешить ручное переопределение вычисляемого значения»/ «Allow Manual Override of Calculated Value»</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/table%20form.html#id11">Статические заголовки</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/table%20form.html#id12">Импорт из файла</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html">Async data</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#id3">Типы данных</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#record">1. Запись/Record</a></li>
+<li class="toctree-l6"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#records-array">2. Массив записей/Records Array</a></li>
+<li class="toctree-l6"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#records-query">3. Запрос записей/Records Query</a></li>
+<li class="toctree-l6"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#ajax">4. Ajax</a></li>
+<li class="toctree-l6"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#custom">5. Пользовательские данные/Custom</a></li>
+<li class="toctree-l6"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#records-script">6. Records Script</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#id4">Отключение кеша при загрузке атрибутов с сервера</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#id5">Условия загрузки данных с сервера</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#id6">Обновление данных по событиям</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#update-on">1. Update on</a></li>
+<li class="toctree-l7"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#refresh-on">2. Refresh on</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#id7">Обновление другого компонента при возникновении события</a></li>
+<li class="toctree-l6"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#id8">Условия обновления данных</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="interface/forms/form_components/components/async%20data.html#id9">1. Условие обновления</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components/select%20journal.html">Select journal</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/select%20journal.html#id3">Настройка компонента</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/select%20journal.html#id4">Динамические критерии для поиска</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/select%20journal.html#id5">Предустановленные фильтры</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/select%20journal.html#id6">Настройка сортировки по атрибуту</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/select%20journal.html#value-title">Миграция инварианта «Value Title» на новые формы</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components/select%20orgstruct.html">Select orgstruct</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/select%20orgstruct.html#id3">Настройка доступных для выбора элементов</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/select%20orgstruct.html#id4">Скрытие групп и подгрупп</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/select%20orgstruct.html#id5">Настройка полей для поиска пользователя</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/select%20orgstruct.html#id6">Прочее</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components/ecos%20select.html">Ecos Select</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/ecos%20select.html#id3">Значение в режиме просмотра</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components/file.html">File</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/file.html#id3">Настройка отображения названия файла</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/file.html#id4">Настройка отображения отдельных элементов компонента</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/file.html#id5">Бэкенд</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components/columns.html">Columns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components/horizontal%20line.html">Horizontal line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/components/import%20button.html">Import button</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/import%20button.html#id3">О компоненте</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/import%20button.html#display">Настройка Display</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/components/import%20button.html#id4">Настройка Данные</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_components/settings.html">Настройка компонента</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_components/settings.html#allow-manual-override-of-calculated-value">Allow Manual Override of Calculated Value / Разрешить ручное переопределение вычисляемого значения</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/settings.html#id2">Описание работы</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="interface/forms/form_components/settings.html#id3">Режим создания</a></li>
+<li class="toctree-l6"><a class="reference internal" href="interface/forms/form_components/settings.html#id4">Режим редактирования</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/settings.html#id5">Описание полей и логики</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/forms/form_components/settings.html#tableform">Пример работы с компонентом TableForm</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="interface/forms/form_components/settings.html#id6">Задача</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/forms/form_examples.html">Примеры компонент</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_examples.html#columns">Columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_examples.html#text-field">Text field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_examples.html#ecos-select-component">ECOS Select Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_examples.html#date-time-component">Date / Time Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_examples.html#select-journal-component">Select Journal Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_examples.html#button-component">Button Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_examples.html#panel">Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_examples.html#select-orgstruct-component">Select Orgstruct Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_examples.html#async-data-component">Async Data Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_examples.html#how-to">How to</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_examples.html#id2">Сделать компонент нередактируемым</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_examples.html#id3">Скрыть поле на форме, если оно пустое</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_examples.html#id4">Статус</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/forms/form_localisation.html">Локализация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/forms/form_for_task.html">Связь формы с задачей</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_for_task.html#outcome">Завершение задачи (outcome)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_for_task.html#id2">Аттрибуты задачи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_for_task.html#id3">Связь формы с задачей</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_for_task.html#flowable">Flowable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/forms/form_for_task.html#activity">Activity</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interface/forms/form_for_task.html#id4">Вид формы задачи</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interface/journals.html">Журналы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/journals.html">Общее описание (Overview)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/journals.html#id1">Определение журнала</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/journals.html#id2">Описание перехода к разделу через интерфейс</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/journals.html#id3">Варианты получения экземпляра журнала</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/journals.html#id4">Создание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/journals.html#id5">Загрузка</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/journals.html#id6">Пример описания журнала</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/journals.html#id7">Доступные действия с записью</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/new_journal.html">Создание нового журнала</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/new_journal.html#journal-main">Основные</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/new_journal.html#additional-column-settings">Дополнительные настройки колонки</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/new_journal.html#journal-actions">Действия</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/new_journal.html#applicability">Применимость</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/new_journal.html#journal-settings">Расширенные настройки</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/user_description.html">Пользовательское описание</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/user_description.html#id2">Представление «Таблица»</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/user_description.html#id3">Настройка журнала</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/user_description.html#id4">Фильтрация</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/user_description.html#id5">Настройка колонок журнала</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/user_description.html#id6">Группировка журнала</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/user_description.html#id7">Настройки фильтрации колонки</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/user_description.html#id8">Представление «Таблица с превью»</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/configuration.html">Конфигурация журналов</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/configuration.html#id2">Использование свойств записи в качестве конфигурации</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/configuration.html#id3">Использование свойств связанных сущностей для форматирования ячейки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/configuration.html#id4">Вычисляемые свойства</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/configuration.html#id5">Модель конфигурации журнала</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/configuration.html#id6">Инструменты для разработчиков</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/group_actions.html">Групповые действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/search_journal_config.html">Конфигурация журнала поиска</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/computed%20attributes.html">Вычисляемые атрибуты (computed attributes)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/computed%20attributes.html#id1">Типы вычисляемых атрибутов</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/filter_by%20_text%20_assoc_column.html">Фильтр по тексту в колонке „assoc“. Настройки innerQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/searchAttribute.html">Параметр «2.3 Атрибут для поиска»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/search_nested_attributes.html">Поиск по вложенным атрибутам ассоциации в журналах</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/formatters.html">Форматтеры</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/formatters.html#id3">Настройки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/formatters.html#id4">Типы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/formatters.html#assocformatter">AssocFormatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/formatters.html#actionformatter">ActionFormatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/formatters.html#booleanformatter">BooleanFormatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/formatters.html#coloredformatter">ColoredFormatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/formatters.html#dateformatter">DateFormatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/formatters.html#datetimeformatter">DateTimeFormatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/formatters.html#defaultformatter">DefaultFormatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/formatters.html#filenameformatter">FileNameFormatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/formatters.html#htmlformatter">HtmlFormatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/formatters.html#linkformatter">LinkFormatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/formatters.html#numberformatter">NumberFormatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/formatters.html#scriptformatter">ScriptFormatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/formatters.html#workflowpriorityformatter">WorkflowPriorityFormatter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/editors.html">Редакторы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/editors.html#id3">Типы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/editors.html#booleaneditor">BooleanEditor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/editors.html#dateeditor">DateEditor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/editors.html#datetimeeditor">DateTimeEditor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/editors.html#journaleditor">JournalEditor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/editors.html#numbereditor">NumberEditor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/editors.html#orgstructeditor">OrgstructEditor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/editors.html#selecteditor">SelectEditor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/editors.html#texteditor">TextEditor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/kanban_board.html">Канбан-доска</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/kanban_board.html#id2">Конфигурация</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/kanban_board.html#id3">Действия</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/kanban_board.html#id4">Форма создания</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/kanban_board.html#id5">Конфигурация колонок</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/kanban_board.html#id6">Заполненная конфигурация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/kanban_board.html#id7">Связь канбан-доски и типа данных</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/journals/document_library.html">Document Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/document_library.html#id2">Действия с файлом</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/journals/document_library.html#id3">Создание папки / Загрузка файла</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/document_library.html#id4">Карточка файла</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/document_library.html#doclib">Включение режима DocLib</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/journals/document_library.html#api">API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interface/menu.html">Меню</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interface/menu.html#id3">Зависимости настроек</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/menu.html#id4">Настройка меню под проект</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/menu.html#id5">Журнал Конфигурация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/menu.html#id6">Журнал Меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/menu.html#id7">Версия конфигурации меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/menu.html#id8">Доступность действий в журнале</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/menu.html#id9">Настройка меню</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/menu.html#id10">Способы открытия</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/menu.html#id11">Окно настроек</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/menu.html#id12">Обзор режима редактирования</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/menu.html#id13">Обзор режима просмотра</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/menu.html#id14">Редактирование</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/menu.html#id15">Вкладка «Настройки выбранной конфигурации» (Меню Левое)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/menu.html#id16">Секция «Элементы меню»</a></li>
+<li class="toctree-l5"><a class="reference internal" href="interface/menu.html#id18">Секция «Группы и пользователи»</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="interface/menu.html#id19">Вкладка «Меню «Создать»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/menu.html#id20">Вкладка «Пользовательское меню»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/menu.html#id21">Вкладка «Глобальные настройки»</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="interface/menu.html#id22">Секция «Приоритеты групп»</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/menu.html#id23">Редактор иконок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/menu.html#id24">Результат настроек</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/menu.html#id25">Смежные настройки</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interface/dashboards.html">Дашборды</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interface/dashboards.html#dashboard-types">Виды дашбордов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/dashboards.html#id4">Кэширование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/dashboards.html#dashboard-config">Конфигурация дашборда</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/dashboards.html#id6">Разделы дашборда</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface/dashboards.html#id7">«Принадлежность»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/dashboards.html#id8">«Представление»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface/dashboards.html#id9">«Виджеты»</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/dashboards.html#id10">Настройки виджетов на дашбордах</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/dashboards.html#id11">Журнал «Дашборды»</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interface/widgets.html">Виджеты</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-journal">Виджет «Журнал»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-web-page">Виджет «Веб страница»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-doc-preview">Виджет «Предпросмотр»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-comments">Виджет «Комментарии»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-properties">Виджет «Свойства»</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/widgets.html#case-details">Настройка режима редактирования виджета для типа дашборда Case-details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/widgets.html#id8">Особенности режима редактирования</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-current-tasks">Виджет «Мои задачи»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-tasks">Виджет «Все задачи»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-doc-status">Виджет «Статус»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-events-history">Виджет «История событий»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-versions-journal">Виджет «Журнал версий»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-doc-associations">Виджет «Связи документа»</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/widgets.html#id15">Настройки</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-record-actions">Виджет «Действия»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-barcode">Виджет «Штрих-код»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-documents">Виджет «Документы»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#doc-one">Виджет «Doc.One»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-process-statistics">Виджет «Статистика процесса»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-stages">Виджет «Стадии»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-report">Виджет «Статистика по задачам»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-birthdays">Виджет «День рождения»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/widgets.html#widget-user-profile">Виджет «Профиль»</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interface/number_template.html">Шаблоны нумерации</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interface/number_template.html#template">Template</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interface/number_template.html#id2">Number template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interface/number_template.html#number-counter">Number counter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface/number_template.html#id3">Алгоритм работы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/number_template.html#id4">Настройка шаблона в интерфейсе</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/number_template.html#id5">Привязка к типу данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface/number_template.html#id6">Использование данных счетчика в шаблоне отображения имени</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="Aspects.html" class="btn btn-neutral float-left" title="Аспекты" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="interface/forms.html" class="btn btn-neutral float-right" title="Формы" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

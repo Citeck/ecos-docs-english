@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Меню &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Дашборды" href="dashboards.html" />
+    <link rel="prev" title="Document Library" href="journals/document_library.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../interface.html">Интерфейс</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="forms.html">Формы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="journals.html">Журналы</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Меню</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Зависимости настроек</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Настройка меню</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">Редактор иконок</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">Результат настроек</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">Смежные настройки</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dashboards.html">Дашборды</a></li>
+<li class="toctree-l3"><a class="reference internal" href="widgets.html">Виджеты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="number_template.html">Шаблоны нумерации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../interface.html">Интерфейс</a> &raquo;</li>
+      <li>Меню</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/settings_kb/interface/menu.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="menu">
+<span id="id1"></span><h1><a class="toc-backref" href="#id26">Меню</a><a class="headerlink" href="#menu" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#menu" id="id26">Меню</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id27">Зависимости настроек</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id4" id="id28">Настройка меню под проект</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id29">Журнал Конфигурация</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id30">Журнал Меню</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id31">Версия конфигурации меню</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id32">Доступность действий в журнале</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id9" id="id33">Настройка меню</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id10" id="id34">Способы открытия</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id35">Окно настроек</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id36">Обзор режима редактирования</a></p></li>
+<li><p><a class="reference internal" href="#id13" id="id37">Обзор режима просмотра</a></p></li>
+<li><p><a class="reference internal" href="#id14" id="id38">Редактирование</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id15" id="id39">Вкладка «Настройки выбранной конфигурации» (Меню Левое)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id16" id="id40">Секция «Элементы меню»</a></p></li>
+<li><p><a class="reference internal" href="#id18" id="id41">Секция «Группы и пользователи»</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id19" id="id42">Вкладка «Меню «Создать»</a></p></li>
+<li><p><a class="reference internal" href="#id20" id="id43">Вкладка «Пользовательское меню»</a></p></li>
+<li><p><a class="reference internal" href="#id21" id="id44">Вкладка «Глобальные настройки»</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id22" id="id45">Секция «Приоритеты групп»</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id23" id="id46">Редактор иконок</a></p></li>
+<li><p><a class="reference internal" href="#id24" id="id47">Результат настроек</a></p></li>
+<li><p><a class="reference internal" href="#id25" id="id48">Смежные настройки</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id3">
+<h2><a class="toc-backref" href="#id27">Зависимости настроек</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<p>На отображение влияют настройки:</p>
+<ul class="simple">
+<li><p><strong>Интерфейс основного меню (Журнал Конфигурация)</strong> - глобальная настройка, для всего приложения и всех пользователей.</p></li>
+<li><p><strong>Приоритеты групп (Настройки меню &gt; Глобальная настройка)</strong> - глобальная настройка для всех конфигураций и пользователей.</p></li>
+<li><p><strong>Группы или пользователи (Настройки меню &gt; Текущая конфигурация)</strong> - принадлежность одной конфигурации меню.</p></li>
+<li><p><strong>Доступность раздела (Настройки меню &gt; Настройки конфигурации &gt; Элементы меню &gt; Раздел)</strong> - принадлежность одного раздела пользователям.</p></li>
+</ul>
+</div>
+<section id="id4">
+<h3><a class="toc-backref" href="#id28">Настройка меню под проект</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<p>Основной подход к кастомизации меню под проект - это создание нового меню. Дефолтные конфигурации имеют наименьший приоритет и не применяются если есть другие подходящие варианты</p>
+</section>
+<section id="id5">
+<h3><a class="toc-backref" href="#id29">Журнал Конфигурация</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<p>В журнале для настройки <strong>Интерфейс основного меню</strong> (default-ui-main-menu) устанавливается какой <strong>вариант</strong> (версия) меню будет использоваться в системе.</p>
+<a class="reference internal image-reference" href="../../_images/menu1.png"><img alt="../../_images/menu1.png" class="align-center" src="../../_images/menu1.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/menu_config.png"><img alt="../../_images/menu_config.png" class="align-center" src="../../_images/menu_config.png" style="width: 500px;" /></a>
+<p>где <strong>left-v1</strong> - первая версия конфигурации левого меню (поддерживается просмотр и редактирование).</p>
+</section>
+<section id="id6">
+<h3><a class="toc-backref" href="#id30">Журнал Меню</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<p>В журнале перечислены все конфигурации разных версий.</p>
+<a class="reference internal image-reference" href="../../_images/menu2.png"><img alt="../../_images/menu2.png" class="align-center" src="../../_images/menu2.png" style="width: 800px;" /></a>
+</section>
+<section id="id7">
+<h3><a class="toc-backref" href="#id31">Версия конфигурации меню</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<p>В конфигурации меню есть поле <strong>version</strong>, которое определяет версию модели. Актуальный список версий:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0 - устаревший xml формат конфигурации</p></li>
+<li><p>1 - актуальный json формат конфигурации</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id32">Доступность действий в журнале</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 65%" />
+<col style="width: 21%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Действия</strong></p></th>
+<th class="head"><p>default</p></th>
+<th class="head"><p>user</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Редактировать</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Удалить</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Копировать</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Просмотреть</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Скачать</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id9">
+<h2><a class="toc-backref" href="#id33">Настройка меню</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h2>
+<section id="id10">
+<h3><a class="toc-backref" href="#id34">Способы открытия</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h3>
+<ul class="simple">
+<li><p>Через шапку сайта иконка «Шестеренка» &gt; <span class="guilabel">Настроить меню</span>.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/Menu_configuration.png"><img alt="../../_images/Menu_configuration.png" class="align-center" src="../../_images/Menu_configuration.png" style="width: 300px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>При использовании данного способа в окно настроек загружается конфигурация меню используемая на данный момент в интерфейсе. То есть в основном для настройки административного меню.</p>
+</div>
+<ul class="simple">
+<li><p>Через журнал <strong>Конфигурация UI</strong> - <strong>Меню</strong> действие <em>Редактировать конфигурацию</em></p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/Menu_configuration_2.png"><img alt="../../_images/Menu_configuration_2.png" class="align-center" src="../../_images/Menu_configuration_2.png" style="width: 600px;" /></a>
+</section>
+<section id="id11">
+<h3><a class="toc-backref" href="#id35">Окно настроек</a><a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h3>
+<p>Настройки содержат четыре вкладки:</p>
+<ol class="arabic simple">
+<li><p><strong>Настройки выбранной конфигурации</strong> - описывает состояние отображаемого меню (элементы меню, версия, принадлежность и т.д.).</p></li>
+<li><p><strong>Меню «Создать»</strong> - для редактирования пунктов меню, доступных по нажатию на кнопку <span class="guilabel">Создать</span></p></li>
+<li><p><strong>Пользовательское меню</strong> - для редактирования пунктов меню, доступных по нажатию на имя пользователя в правом верхнем углу.</p></li>
+<li><p><strong>Глобальные настройки</strong> - то, что влияет на всю систему и всех пользователей (приоритеты).</p></li>
+</ol>
+</section>
+<section id="id12">
+<h3><a class="toc-backref" href="#id36">Обзор режима редактирования</a><a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h3>
+<p><strong>Вкладка «Настройки выбранной конфигурации»:</strong></p>
+<a class="reference internal image-reference" href="../../_images/Menu_edit_mode_1.png"><img alt="../../_images/Menu_edit_mode_1.png" class="align-center" src="../../_images/Menu_edit_mode_1.png" style="width: 600px;" /></a>
+<p><strong>Вкладка «Меню «Создать»:</strong></p>
+<a class="reference internal image-reference" href="../../_images/Menu_edit_mode_2.png"><img alt="../../_images/Menu_edit_mode_2.png" class="align-center" src="../../_images/Menu_edit_mode_2.png" style="width: 600px;" /></a>
+<p><strong>Вкладка «Пользовательское меню»:</strong></p>
+<a class="reference internal image-reference" href="../../_images/Menu_edit_mode_3.png"><img alt="../../_images/Menu_edit_mode_3.png" class="align-center" src="../../_images/Menu_edit_mode_3.png" style="width: 600px;" /></a>
+<p><strong>Вкладка «Пользовательское меню»:</strong></p>
+<a class="reference internal image-reference" href="../../_images/Menu_edit_mode_4.png"><img alt="../../_images/Menu_edit_mode_4.png" class="align-center" src="../../_images/Menu_edit_mode_4.png" style="width: 600px;" /></a>
+</section>
+<section id="id13">
+<h3><a class="toc-backref" href="#id37">Обзор режима просмотра</a><a class="headerlink" href="#id13" title="Ссылка на этот заголовок"></a></h3>
+<p>Действие доступно через журнал <span class="guilabel">Меню</span>.</p>
+<p>То же самое окно что при редактирования, но без элементов изменяющих представление. Например, вкладка <strong>«Настройки выбранной конфигурации»</strong>:</p>
+<a class="reference internal image-reference" href="../../_images/Menu_view_mode1.png"><img alt="../../_images/Menu_view_mode1.png" class="align-center" src="../../_images/Menu_view_mode1.png" style="width: 600px;" /></a>
+</section>
+<section id="id14">
+<h3><a class="toc-backref" href="#id38">Редактирование</a><a class="headerlink" href="#id14" title="Ссылка на этот заголовок"></a></h3>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<p>Настройки на вкладке «Настройки выбранной конфигурации (Меню Левое)»» и «Меню Создать» хранятся вместе. То есть на меню Создать влияют те же правила что и на Левое меню.</p>
+<p><strong>А</strong> - создаются автоматически системой</p>
+</div>
+<section id="id15">
+<h4><a class="toc-backref" href="#id39">Вкладка «Настройки выбранной конфигурации» (Меню Левое)</a><a class="headerlink" href="#id15" title="Ссылка на этот заголовок"></a></h4>
+<section id="id16">
+<h5><a class="toc-backref" href="#id40">Секция «Элементы меню»</a><a class="headerlink" href="#id16" title="Ссылка на этот заголовок"></a></h5>
+<p><strong>Возможные типы пунктов и их доступность на каждом уровне:</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Тип/Уровень</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Раздел</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">А</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Разделяющий заголовок</strong></p></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Журнал</strong></p></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">А</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Произвольный пункт меню</strong></p></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Ссылка на создание кейса</strong></p></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">А</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Запустить бизнес-процесс</strong></p></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">А</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Если добавлен пункт <em>Ссылка</em> на создание кейса и в результате есть возможность создавать несколькими способами в левом отобразится раздел с вариантами создания.</p>
+<a class="reference internal image-reference" href="../../_images/Menu_auto_point.png"><img alt="../../_images/Menu_auto_point.png" class="align-center" src="../../_images/Menu_auto_point.png" style="width: 300px;" /></a>
+<p><strong>Доступность дополнительных характеристик:</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 22%" />
+<col style="width: 25%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Тип</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Раздел</strong></p></td>
+<td><p>Без названия</p></td>
+<td><p>Иконка</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Разделяющий заголовок</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Журнал</strong></p></td>
+<td></td>
+<td><p>Счетчик, Иконка</p></td>
+<td><p>Счетчик</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Произвольный пункт меню</strong></p></td>
+<td></td>
+<td><p>Иконка</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Ссылка на создание кейса</strong></p></td>
+<td></td>
+<td><p>Иконка</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Запустить бизнес-процесс</strong></p></td>
+<td></td>
+<td><p>Иконка</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Подробнее о некоторых типах:</strong></p>
+<p><strong>Раздел</strong></p>
+<p>Скрыть название - доступно только на головном уровне. В меню подпункты отображаются вне группы, но вместе.</p>
+<p>Доступно для - возможность ограничить доступ к разделу пользователям, которым доступны остальные пункты меню.</p>
+<a class="reference internal image-reference" href="../../_images/Section.png"><img alt="../../_images/Section.png" class="align-center" src="../../_images/Section.png" style="width: 400px;" /></a>
+<p><strong>Разделяющий заголовок</strong></p>
+<a class="reference internal image-reference" href="../../_images/Chapter_divide.png"><img alt="../../_images/Chapter_divide.png" class="align-center" src="../../_images/Chapter_divide.png" style="width: 400px;" /></a>
+<p><strong>Журнал</strong>, <strong>Ссылка на создание кейса</strong>, <strong>Запустить бизнес-процесс</strong></p>
+<p>Добавление пунктов осуществляется выбором элементов из журнала. Редактирование не доступно, только удаление. Необходимые сведения поступают из конфигурации элемента.
+Можно добавлять сразу несколько выбранных значений.</p>
+<a class="reference internal image-reference" href="../../_images/type_data.png"><img alt="../../_images/type_data.png" class="align-center" src="../../_images/type_data.png" style="width: 600px;" /></a>
+<p><em>Ссылка на создание кейса</em>, <em>Запустить бизнес-процесс</em> - в настройке выбирается журнал, но в самом меню используются сами варианты создания записей в этом журнале. Варианты создания настраиваются в журнале <em>Журналы</em> &gt; Редактировать нужный журнал &gt; вкладка на форме <em>Create Variants</em></p>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Для <em>Ссылка на создание кейса</em> если:</p>
+<ul>
+<li><p>выбран журнал <strong>Файл уведомления</strong>, в меню отобразится пункт <strong>Загрузить шаблон уведомления</strong>;</p></li>
+<li><p>выбран журнал <strong>Форма</strong>, в меню отобразится раздел Форма с пунктами <strong>Создать форму</strong> и <strong>Загрузить форму</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/form.png"><img alt="../../_images/form.png" class="align-center" src="../../_images/form.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<p><strong>Произвольный пункт меню</strong></p>
+<p><em>Ссылка</em> - В зависимости от значения на выходе формируется соответствующий путь перехода. Под описанием поле выводится результат формируемой ссылки.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Подробнее про <a class="reference external" href="https://htmlacademy.ru/blog/boost/frontend/links">Абсолютные и относительные ссылки</a>.</p>
+</div>
+<p><strong>Абсолютный URL</strong> - если указан полный путь. Ссылка будет открываться в новой вкладке браузера.</p>
+<a class="reference internal image-reference" href="../../_images/Menu_url_absolut.png"><img alt="../../_images/Menu_url_absolut.png" class="align-center" src="../../_images/Menu_url_absolut.png" style="width: 400px;" /></a>
+<p><strong>Относительный URL. Варианты формирования:</strong></p>
+<ul class="simple">
+<li><p>Если значение начинается с “ / ” , то итоговая ссылка формируется как <strong>хост</strong> + <strong>значение</strong>.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/Menu_url_relative.png"><img alt="../../_images/Menu_url_relative.png" class="align-center" src="../../_images/Menu_url_relative.png" style="width: 400px;" /></a>
+<ul class="simple">
+<li><p>Если значение <strong>не</strong> начинается  с “ / ”, то итоговая ссылка формируется как <strong>текущая ссылка в адресной строке</strong> + <strong>значение</strong>.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Может привести к не ожидаемому результату.</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/Menu_url_relative2.png"><img alt="../../_images/Menu_url_relative2.png" class="align-center" src="../../_images/Menu_url_relative2.png" style="width: 400px;" /></a>
+</section>
+<section id="id18">
+<h5><a class="toc-backref" href="#id41">Секция «Группы и пользователи»</a><a class="headerlink" href="#id18" title="Ссылка на этот заголовок"></a></h5>
+<p>Выбор групп и пользователей, которым будет назначено редактируемое меню:</p>
+<ul class="simple">
+<li><p><strong>Пользователь</strong> имеет наивысший приоритет. Так же стоит учесть зависимости других настроек.</p></li>
+<li><p>Если на пользователя/группу назначено несколько конфигураций, это может привести к неопределенному результату и появится не то меню, что ожидалось.</p></li>
+<li><p>Установленные группы попадают в <em>приоритет групп</em>, по умолчанию в конец списка.</p></li>
+</ul>
+</section>
+</section>
+<section id="id19">
+<h4><a class="toc-backref" href="#id42">Вкладка «Меню «Создать»</a><a class="headerlink" href="#id19" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>Возможные типы пунктов и их доступность на каждом уровне:</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 51%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Тип/Уровень</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Раздел</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">А</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Варианты создания из раздела</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">А</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Произвольный пункт меню</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ссылка на создание кейса</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">А</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Запустить бизнес-процесс</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">А</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Доступность дополнительных характеристик:</strong></p>
+<p>Не доступны только Счетчик и Иконка</p>
+<p><strong>Подробнее о некоторых типах:</strong></p>
+<p>Повторяющиеся типы из первой вкладки аналогичны.</p>
+<p><strong>Варианты создания из раздела</strong></p>
+<p>Выборка составляется на основе конфигурации Левого меню, содержит все пункты с типом <strong>Раздел</strong>. Представлены плоским списком, включая дочерние.</p>
+<a class="reference internal image-reference" href="../../_images/Variants_from_chapter.png"><img alt="../../_images/Variants_from_chapter.png" class="align-center" src="../../_images/Variants_from_chapter.png" style="width: 400px;" /></a>
+<p>После создания пункта в настройках отображается только имя раздела.</p>
+<a class="reference internal image-reference" href="../../_images/Variants_from_chapter_1.png"><img alt="../../_images/Variants_from_chapter_1.png" class="align-center" src="../../_images/Variants_from_chapter_1.png" style="width: 400px;" /></a>
+<p>В самом <strong>«Меню Создать»</strong> после применения настроек, пункт превращается в пункты - варианты создания (аналогичные типу <strong>Ссылка на создание кейса</strong>):</p>
+<a class="reference internal image-reference" href="../../_images/Create_menu.png"><img alt="../../_images/Create_menu.png" class="align-center" src="../../_images/Create_menu.png" style="width: 200px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Т.е. данный тип заменяет ручное добавление пунктов с типом Ссылка на создание кейса, если необходимы все варианты из раздела.</p>
+</div>
+</section>
+<section id="id20">
+<h4><a class="toc-backref" href="#id43">Вкладка «Пользовательское меню»</a><a class="headerlink" href="#id20" title="Ссылка на этот заголовок"></a></h4>
+<p>Если меню не настроено:</p>
+<a class="reference internal image-reference" href="../../_images/user_menu.png"><img alt="../../_images/user_menu.png" class="align-center" src="../../_images/user_menu.png" style="width: 600px;" /></a>
+<p><strong>Возможные типы пунктов:</strong></p>
+<p>Для настройки доступны следующие пункты:</p>
+<ul class="simple">
+<li><p>Профиль пользователя</p></li>
+<li><p>Сменить статус</p></li>
+<li><p>Изменить пароль</p></li>
+<li><p>Обратная связь</p></li>
+<li><p>Сообщить о проблеме</p></li>
+<li><p>Выйти</p></li>
+<li><p>Произвольный пункт меню</p></li>
+</ul>
+<p><strong>Подробнее о некоторых типах:</strong></p>
+<p>Тип <strong>«Произвольный пункт меню»</strong> аналогичен первой вкладке.</p>
+</section>
+<section id="id21">
+<h4><a class="toc-backref" href="#id44">Вкладка «Глобальные настройки»</a><a class="headerlink" href="#id21" title="Ссылка на этот заголовок"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Данные настройки относятся ко всей системе.</p>
+</div>
+<section id="id22">
+<h5><a class="toc-backref" href="#id45">Секция «Приоритеты групп»</a><a class="headerlink" href="#id22" title="Ссылка на этот заголовок"></a></h5>
+<ul class="simple">
+<li><p>Список групп соответствует значениям групп, указанных во всех конфигурациях меню.</p></li>
+<li><p>Приоритет группы обратно пропорционален уровню иерархии группы в Оргструктуре или уровню функциональной иерархии. Чем специфичнее и уже группа пользователей, тем выше у нее приоритет.</p></li>
+<li><p>Группы администраторов, как правило, размещаются на первом месте.</p></li>
+<li><p>Пользователь имеет наивысший приоритет (пользователи не отображаются в приоритетах).</p></li>
+</ul>
+<p><strong>Как это работает</strong></p>
+<p>В конфигурации меню указываются группы или пользователи для которых настраивается меню. Приоритет групп - настройка глобальная, исходя из ее настройки и указанных участников, возвращается соответствующее для пользователя меню.</p>
+<a class="reference internal image-reference" href="../../_images/menu_groups_1.png"><img alt="../../_images/menu_groups_1.png" class="align-center" src="../../_images/menu_groups_1.png" style="width: 600px;" /></a>
+<p><strong>АП</strong> - авторизованный пользователь</p>
+<ol class="arabic simple">
+<li><p><strong>АП</strong> - tam42 и он указан в одной из конфигураций. Указание пользователя - наивысший приоритет =&gt; возвращается конфигурация №10. Пользователь не должен указываться в нескольких.</p></li>
+<li><p><strong>АП</strong> состоит в группе администраторов (и не указан на прямую в конфигурации). Настраиваем конфигурацию с указанием этой группы. В настройке приоритетов эта группа на первом месте. Результат - слева отображается меню №3</p></li>
+<li><p><strong>АП</strong> - главный клерк, состоит в  2х группах: клерки и главные клерки. Есть две конфигурации №2 и №6. В приоритетах главные клерки на 2 месте, другие на 3. Результат -  слева отображается меню №6. Для Не главных клерков №2.</p></li>
+<li><p>Если для <strong>АП</strong> нет ни одного подходящего меню - загружается базовое (default)</p></li>
+</ol>
+</section>
+</section>
+</section>
+</section>
+<section id="id23">
+<h2><a class="toc-backref" href="#id46">Редактор иконок</a><a class="headerlink" href="#id23" title="Ссылка на этот заголовок"></a></h2>
+<a class="reference internal image-reference" href="../../_images/menu_icons.png"><img alt="../../_images/menu_icons.png" class="align-center" src="../../_images/menu_icons.png" style="width: 300px;" /></a>
+<p>На выбор пользователю предоставлен набор системных иконок.
+Если в наборе нет подходящей, есть возможность загрузить собственную, которая появится в блоке <em>Пользовательские</em>. Наилучший вариант формата иконки  - <strong>svg</strong>.</p>
+<p>Иконка по умолчанию:</p>
+<a class="reference internal image-reference" href="../../_images/menu_icons_2.png"><img alt="../../_images/menu_icons_2.png" class="align-center" src="../../_images/menu_icons_2.png" style="width: 300px;" /></a>
+</section>
+<section id="id24">
+<h2><a class="toc-backref" href="#id47">Результат настроек</a><a class="headerlink" href="#id24" title="Ссылка на этот заголовок"></a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 47%" />
+<col style="width: 47%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>Меню Левое</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Tab_1.png"><img alt="../../_images/Tab_1.png" src="../../_images/Tab_1.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Tab_1_1.png"><img alt="../../_images/Tab_1_1.png" src="../../_images/Tab_1_1.png" style="width: 200px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>Меню Создать</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Tab_2.png"><img alt="../../_images/Tab_2.png" src="../../_images/Tab_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Tab_2_1.png"><img alt="../../_images/Tab_2_1.png" src="../../_images/Tab_2_1.png" style="width: 200px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>Пользовательское меню</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Tab_3.png"><img alt="../../_images/Tab_3.png" src="../../_images/Tab_3.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Tab_3_1.png"><img alt="../../_images/Tab_3_1.png" src="../../_images/Tab_3_1.png" style="width: 200px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id25">
+<h2><a class="toc-backref" href="#id48">Смежные настройки</a><a class="headerlink" href="#id25" title="Ссылка на этот заголовок"></a></h2>
+<p>Логотип &gt; <a class="reference internal" href="../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html#intrface-themes"><span class="std std-ref">Темы интерфейса</span></a></p>
+<p>Действия&gt; <a class="reference internal" href="../ui_actions.html#ui-actions"><span class="std std-ref">Типы действий</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="journals/document_library.html" class="btn btn-neutral float-left" title="Document Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="dashboards.html" class="btn btn-neutral float-right" title="Дашборды" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

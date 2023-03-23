@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Синхронизация Authorities &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="ECOS KeyCloak Extensions" href="keycloak.html" />
+    <link rel="prev" title="Аутентификация" href="authentication.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="docker-compose.html">Установка Citeck ECOS c помощью Docker-compose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_services.html">Сервисы Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Аутентификация</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Синхронизация Authorities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Общие атрибуты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sync-auth-types">Типы синхронизаций</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#alfresco">Синхронизация пользователей из Alfresco</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Синхронизация групп из Alfresco</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ldap">Синхронизация пользователей из LDAP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="keycloak.html">ECOS KeyCloak Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keycloack_postman.html">Настройки аутентификации для работы с Records API из внешних систем</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Конфигурация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html">Лицензии ECOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit.html">Аудит</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html">How To</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a> &raquo;</li>
+      <li>Синхронизация Authorities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/sync_authorities.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="authorities">
+<h1><a class="toc-backref" href="#id9">Синхронизация Authorities</a><a class="headerlink" href="#authorities" title="Ссылка на этот заголовок"></a></h1>
+<p>Синхронизация Пользователей или Групп с ECOS</p>
+<div class="contents topic" id="id1">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#authorities" id="id9">Синхронизация Authorities</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id10">Общие атрибуты</a></p></li>
+<li><p><a class="reference internal" href="#sync-auth-types" id="id11">Типы синхронизаций</a></p>
+<ul>
+<li><p><a class="reference internal" href="#alfresco" id="id12">Синхронизация пользователей из Alfresco</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id13">Синхронизация групп из Alfresco</a></p></li>
+<li><p><a class="reference internal" href="#ldap" id="id14">Синхронизация пользователей из LDAP</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Синхронизация выполняется на стороне микросрвиса ecos-model. <br>
+Настройка осуществляется через журнал <em>Модель -&gt; Синхронизация</em> или деплой соответствующего артифакта <code class="docutils literal notranslate"><span class="pre">authorities-sync</span></code>.</p>
+<section id="id2">
+<h2><a class="toc-backref" href="#id10">Общие атрибуты</a><a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;emodel-ldap-person-sync&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ru&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Пользователи из LDAP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Persons from LDAP&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;emodel-ldap&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;repeatDelayDuration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT10S&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;authorityType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PERSON&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;manageNewAuthorities&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="colwidths-given tight-table docutils align-default" id="id5">
+<caption><span class="caption-text">Описание общих атрибутов</span><a class="headerlink" href="#id5" title="Постоянная ссылка на таблицу"></a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Атрибут</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>Идентификатор синхронизации</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>Название синхронизации</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>Тип синхронизации. См. <a class="reference internal" href="#sync-auth-types"><span class="std std-ref">Типы синхронизации</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>repeatDelayDuration</p></td>
+<td><p>Периодичность синхронизации (PT10S - каждые 10 секунд)</p></td>
+</tr>
+<tr class="row-even"><td><p>enabled</p></td>
+<td><p>Включена ли синхронизация</p></td>
+</tr>
+<tr class="row-odd"><td><p>config</p></td>
+<td><p>Конфигурация синхронизации специфичная для каждого типа синхронизации</p></td>
+</tr>
+<tr class="row-even"><td><p>version</p></td>
+<td><p>Версия синхронизации. При изменении конфигурации синхронизации, необходимо увеличить версию</p></td>
+</tr>
+<tr class="row-odd"><td><p>authorityType</p></td>
+<td><p>Тип синхронизируемых объектов, возможные значения - PERSON, GROUP</p></td>
+</tr>
+<tr class="row-even"><td><p>manageNewAuthorities</p></td>
+<td><p>TODO: fill &#64;pavel.simonov</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sync-auth-types">
+<span id="id3"></span><h2><a class="toc-backref" href="#id11">Типы синхронизаций</a><a class="headerlink" href="#sync-auth-types" title="Ссылка на этот заголовок"></a></h2>
+<section id="alfresco">
+<h3><a class="toc-backref" href="#id12">Синхронизация пользователей из Alfresco</a><a class="headerlink" href="#alfresco" title="Ссылка на этот заголовок"></a></h3>
+<p>Тип: <code class="docutils literal notranslate"><span class="pre">alfresco</span></code></p>
+<p>Пример конфигурации:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alfresco-persons-sync&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ru&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Пользователи из Alfresco&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Persons from Alfresco&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alfresco&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;repeatDelayDuration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT10S&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;batchSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;firstName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cm:firstName&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;middleName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cm:middleName&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;personDisabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ecos:isPersonDisabled&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;photoCacheKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ecos:photo.contentUrl|presuf(\&quot;v2-\&quot;)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;workingCalendar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org:workingCalendar?id&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;authorityType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PERSON&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;manageNewAuthorities&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="colwidths-given tight-table docutils align-default" id="id6">
+<caption><span class="caption-text">Описание атрибутов конфигурации синхронизации пользователей из Alfresco</span><a class="headerlink" href="#id6" title="Постоянная ссылка на таблицу"></a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Атрибут</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>batchSize</p></td>
+<td><p>Размер пакета для синхронизации</p></td>
+</tr>
+<tr class="row-odd"><td><p>attributes</p></td>
+<td><p>Список атрибутов для синхронизации. Ключ - имя атрибута в Ecos, значение - атрибут в Alfresco</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h3><a class="toc-backref" href="#id13">Синхронизация групп из Alfresco</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<p>Тип: <code class="docutils literal notranslate"><span class="pre">alfresco</span></code></p>
+<p>Пример конфигурации:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alfresco-groups-sync&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ru&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Группы из Alfresco&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Groups from Alfresco&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alfresco&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;repeatDelayDuration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT10S&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;batchSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cm:authorityDisplayName&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;roleType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org:roleType&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;branchType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org:branchType&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;roleSubType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org:roleTypeAssoc.cm:name&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;branchSubType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org:branchTypeAssoc.cm:name&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;roleIsManager&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org:roleTypeAssoc.org:roleIsManager?bool&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;authorityGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assoc_src_cm:member[].cm:authorityName|rxg(\&quot;GROUP_(.+)\&quot;)|presuf(\&quot;emodel/authority-group@\&quot;)&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;authorityType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GROUP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;manageNewAuthorities&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="colwidths-given tight-table docutils align-default" id="id7">
+<caption><span class="caption-text">Описание атрибутов конфигурации синхронизации групп из Alfresco</span><a class="headerlink" href="#id7" title="Постоянная ссылка на таблицу"></a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Атрибут</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>batchSize</p></td>
+<td><p>Размер пакета для синхронизации</p></td>
+</tr>
+<tr class="row-odd"><td><p>attributes</p></td>
+<td><p>Список атрибутов для синхронизации. Ключ - имя атрибута в Ecos, значение - атрибут в Alfresco</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ldap">
+<h3><a class="toc-backref" href="#id14">Синхронизация пользователей из LDAP</a><a class="headerlink" href="#ldap" title="Ссылка на этот заголовок"></a></h3>
+<p>Тип: <code class="docutils literal notranslate"><span class="pre">emodel-ldap</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Доступно только в Ecos Enterprise</p>
+</div>
+<p>Подключение к LDAP осуществляется через Spring LDAP. <br>
+Вы можете создать несколько конфигураций синхронизации, указав различные настройки - например, сервера, домены, фильтры и т.д.</p>
+<p>Пример конфигурации:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;emodel-ldap-person-sync&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ru&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Пользователи из LDAP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Persons from LDAP&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;emodel-ldap&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;repeatDelayDuration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT5M&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;batchSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;usernameAttributeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uid&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;modifyTimestampAttName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;modifyTimestamp&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;modifyTimestampFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;yyyyMMddHHmmss&#39;Z&#39;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mail&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;lastName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sn&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;firstName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;givenname&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;ldapSearch&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;(objectClass=person)&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;differential&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;ldapConnection&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;base&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc=example,dc=org&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;urls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;ldap://localhost:389&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ldap-cred&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;authorityType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PERSON&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;manageNewAuthorities&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="colwidths-given tight-table docutils align-default" id="id8">
+<caption><span class="caption-text">Описание атрибутов конфигурации синхронизации пользователей из LDAP</span><a class="headerlink" href="#id8" title="Постоянная ссылка на таблицу"></a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Атрибут</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>batchSize</p></td>
+<td><p>Размер пакета для синхронизации</p></td>
+</tr>
+<tr class="row-odd"><td><p>usernameAttributeName</p></td>
+<td><p>Атрибут LDAP, содержащий имя пользователя (username), должно быть уникальным в системе. По умолчанию - <code class="docutils literal notranslate"><span class="pre">uid</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>modifyTimestampAttName</p></td>
+<td><p>Атрибут LDAP, содержащий время последнего изменения пользователя, необходим для дифференциальной синхронизации.  По умолчанию - <code class="docutils literal notranslate"><span class="pre">modifyTimestamp</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>modifyTimestampFormat</p></td>
+<td><p>Формат времени последнего изменения пользователя в LDAP (значения атрибута <code class="docutils literal notranslate"><span class="pre">modifyTimestampAttName</span></code>). По умолчанию - <code class="docutils literal notranslate"><span class="pre">yyyyMMddHHmmss'Z'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>attributes</p></td>
+<td><p>Список атрибутов для синхронизации. Ключ - имя атрибута в Ecos, значение - атрибут в LDAP</p></td>
+</tr>
+<tr class="row-odd"><td><p>differential</p></td>
+<td><p>Флаг, указывающий на необходимость синхронизации только измененных пользователей</p></td>
+</tr>
+<tr class="row-even"><td><p>ldapSearch</p></td>
+<td><div class="line-block">
+<div class="line">Параметры поиска</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p>base - базовый DN для поиска</p></li>
+<li><p>filer - фильтр для поиска</p></li>
+<li><p>scope - область поиска. Допустимые значения: <code class="docutils literal notranslate"><span class="pre">BASE</span></code>, <code class="docutils literal notranslate"><span class="pre">ONE_LEVEL</span></code>, <code class="docutils literal notranslate"><span class="pre">SUBTREE</span></code></p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p>ldapConnection</p></td>
+<td><div class="line-block">
+<div class="line">Параметры подключения к LDAP серверу</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p>base - базовый DN подключения</p></li>
+<li><p>urls - список URL серверов</p></li>
+<li><p>credentials - идентификатор credentials для подключения к LDAP серверу (сейчас это credentials из мкр. ecos-integrations)</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Если включена дифференциальная синхронизация и была изменена конфигурация с повышением версии, то первая синхронизация после изменения будет полной.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="authentication.html" class="btn btn-neutral float-left" title="Аутентификация" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="keycloak.html" class="btn btn-neutral float-right" title="ECOS KeyCloak Extensions" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

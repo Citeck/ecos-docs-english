@@ -1,0 +1,487 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>События (Сигналы) &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/translations.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../../../../search.html" />
+    <link rel="next" title="Событийный подпроцесс" href="ecos_bpmn_components_event_subprocess.html" />
+    <link rel="prev" title="Таймер" href="ecos_bpmn_components_timer.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../interface.html">Интерфейс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../ui_actions.html">Действия</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../../BPMN_ecos.html">Платформа бизнес-процессов (ECOS BPMN)</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../ecos_bpmn_overview.html">Общее описание Ecos BPMN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../ecos_bpmn_base_operations.html">Базовые операции</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../../ecos_bpmn_editor.html">Моделирование бизнес-процесса</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../BPMN_flowable.html">Редактор бизнес-процессов (BPMN) с использованием Flowable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../CMMN.html">Редактор сценариев (CMMN)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../CMMN_BPMN.html">Работа в связке CMMN - BPMN</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../../../../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a> &raquo;</li>
+          <li><a href="../../../../BPMN_ecos.html">Платформа бизнес-процессов (ECOS BPMN)</a> &raquo;</li>
+          <li><a href="../../../ecos_bpmn_editor.html">Моделирование бизнес-процесса</a> &raquo;</li>
+          <li><a href="../../ecos_bpmn_components.html">Компоненты Ecos BPMN</a> &raquo;</li>
+          <li><a href="../ecos_bpmn_components_events.html">События</a> &raquo;</li>
+      <li>События (Сигналы)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../../_sources/settings_kb/processes/ecos_bpmn/editor/components/events/ecos_bpmn_components_signal.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><a class="toc-backref" href="#id19">События (Сигналы)</a><a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<span id="ecos-bpmn-events"></span><p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id19">События (Сигналы)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id20">Определение событий (сигналов)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id4" id="id21">Форма</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id22">Атрибуты</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#payload" id="id23">Payload событий</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id6" id="id24">Payload по умолчанию для всех событий</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id25">Payload по умолчанию для предопределенных событий</a></p>
+<ul>
+<li><p><a class="reference internal" href="#record" id="id26">Record создан</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id27">Record удален</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id28">Record изменен</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id29">Статус изменен</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id30">Комментарий создан</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id31">Комментарий изменен</a></p></li>
+<li><p><a class="reference internal" href="#id13" id="id32">Комментарий удален</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#payload-script-task" id="id33">Использование payload события в Script Task</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id14" id="id34">Примеры конфигураций событий</a></p>
+<ul>
+<li><p><a class="reference internal" href="#start-event" id="id35">Start Event - старт процесса</a></p></li>
+<li><p><a class="reference internal" href="#start-event-subprocess" id="id36">Start Event - старт событийного подпроцесса</a></p></li>
+<li><p><a class="reference internal" href="#bondary-event" id="id37">Bondary Event - событие с предикатом</a></p></li>
+<li><p><a class="reference internal" href="#end-throw-event" id="id38">End Throw Event - ручная настройка и события с фильтрами</a></p></li>
+<li><p><a class="reference internal" href="#intermediate-catch-event-expression" id="id39">Intermediate Catch Event - событие с пользовательской моделью и предикатом с expression</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>События сигнала</strong> — это события, которые ссылаются на именованный сигнал.</p>
+<p><strong>Сигнал</strong> — это событие глобального масштаба (broadcast semantics), которое доставляется всем активным обработчикам.</p>
+<p>Throw и Catch сигналов происходит по его имени.</p>
+<p>BPMN Сигналы используются для интеграции <a class="reference internal" href="../../../../../../general/Microservices/Description/process/process_bpmn/process_bpmn_ecos_events_integrations.html#bpmn-events-integrations"><span class="std std-ref">Событий ECOS</span></a></p>
+<section id="id3">
+<h2><a class="toc-backref" href="#id20">Определение событий (сигналов)</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<section id="id4">
+<h3><a class="toc-backref" href="#id21">Форма</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<a class="reference internal image-reference" href="../../../../../../_images/signal_event_form.png"><img alt="../../../../../../_images/signal_event_form.png" class="align-center" src="../../../../../../_images/signal_event_form.png" style="width: 400px;" /></a>
+<p><br></p>
+</section>
+<section id="id5">
+<h3><a class="toc-backref" href="#id22">Атрибуты</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Ручная настройка</strong></p></td>
+<td><p>Флаг, который позволяет переключить настройку сигнала в ручной режим - указание имени сигнала, а не выбор из предустановленных типов событий.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Имя сигнала</strong></p></td>
+<td><div class="line-block">
+<div class="line">Служит для идентификации сигнала.</div>
+<div class="line">Данное поле становится доступно если включена опция <code class="docutils literal notranslate"><span class="pre">Ручная</span> <span class="pre">настройка</span></code>.</div>
+<div class="line">Если выбран <code class="docutils literal notranslate"><span class="pre">тип</span> <span class="pre">события</span></code>, то имя генерируется автоматически.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Модель данных</strong></p></td>
+<td><div class="line-block">
+<div class="line">Каждое событие имеет свою полезную нагрузку (payload).</div>
+<div class="line">Например, событие <code class="docutils literal notranslate"><span class="pre">Статус</span> <span class="pre">изменен</span></code> содержит информацию о новом и предыдущем статусе.</div>
+<div class="line">Модель данных представляет собой <code class="docutils literal notranslate"><span class="pre">map</span></code>, где <code class="docutils literal notranslate"><span class="pre">ключ</span></code> - это имя атрибута, по которому будет доступно вычисленное значение, а <code class="docutils literal notranslate"><span class="pre">значение</span></code> - это <a class="reference internal" href="../../../../../../general/ECOS_Records.html#records-api-attribute"><span class="std std-ref">Records API атрибут.</span></a></div>
+<div class="line">Таким образом, модель данных позволяет указать какие данные будут передаваться в сигнале, при этом пользовательская модель данных имеет высший приоритет над <a class="reference internal" href="#ecos-bpmn-signal-event-defaut-payload"><span class="std std-ref">payload по умолчанию.</span></a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Фильтр события по документу</strong></p></td>
+<td><div class="line-block">
+<div class="line">Позволяет отфильтровать события на основе документа, по которому возникает данное событие.</div>
+<div class="line">Поле имеет 3 значения:</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Любой</span> <span class="pre">документ</span></code> - событие будет происходить для любого документа.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Текущий</span> <span class="pre">документ</span></code> - событие будет происходить только для документа по которому идет бизнес процесс.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Документ</span> <span class="pre">по</span> <span class="pre">из</span> <span class="pre">переменной</span> <span class="pre">процесса</span></code> - событие будет возникать только для документа, который указан в поле <code class="docutils literal notranslate"><span class="pre">Имя</span> <span class="pre">переменной</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Имя переменной</strong></p></td>
+<td><div class="line-block">
+<div class="line">Поле становится доступно, если в <code class="docutils literal notranslate"><span class="pre">Фильтр</span> <span class="pre">события</span> <span class="pre">по</span> <span class="pre">документу</span></code> выбрано значение <code class="docutils literal notranslate"><span class="pre">Документ</span> <span class="pre">из</span> <span class="pre">переменной</span> <span class="pre">процесса</span></code>.</div>
+<div class="line">В данном поле указывается имя переменной процесса, по которой будет определяться документ, для которого будет возникать событие.</div>
+<div class="line">Переменная должна содержать EntityRef документа в виде String.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Фильтр события по предикатам</strong></p></td>
+<td><div class="line-block">
+<div class="line">Используется для фильтрации catch событий.</div>
+<div class="line">Моделью для вычисления предиката является payload события. B предикатах можно ссылаться на атрибуты из payload события через <code class="docutils literal notranslate"><span class="pre">{{someAttribute}}</span></code>. Если атрибут используется только в предикате, то его можно испоьзовать напрямую без объявления в модели.</div>
+<div class="line"><a class="reference internal" href="../../../../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html#ecos-predicate-main"><span class="std std-ref">Подробнее о предикатах.</span></a></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="payload">
+<h2><a class="toc-backref" href="#id23">Payload событий</a><a class="headerlink" href="#payload" title="Ссылка на этот заголовок"></a></h2>
+<div class="literal-block-wrapper docutils container" id="id18">
+<span id="ecos-bpmn-signal-event-defaut-payload"></span><div class="code-block-caption"><span class="caption-text">Пример payload события <strong>Статус изменен</strong></span><a class="headerlink" href="#id18" title="Постоянная ссылка на код"></a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;_meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0944c87d-7d4a-482f-881a-3b84ec9b740d&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;record-status-changed&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1670576506017</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;system&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;record&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;emodel/hr-person@7d2455c4-26b5-408a-913c-6affd9eb3a19&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;recordType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;emodel/type@hr-person&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;before&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;prepare&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;after&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fill-data&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<section id="id6">
+<h3><a class="toc-backref" href="#id24">Payload по умолчанию для всех событий</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<p>Каждое событие имеет payload по умолчанию, который содержит:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_meta</span></code> - мета информация о событии. Содержит:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> - уникальный идентификатор события (UUID)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> - тип события (String)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> - время возникновения события (Instant)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user</span></code> - username пользователя, который вызвал событие (String)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">record</span></code> - документ по которому произошло событие (EntityRef)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">recordType</span></code> - тип документа по которому произошло событие (EntityRef)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>По соглашению, каждое событие должно содержать атрибут <code class="docutils literal notranslate"><span class="pre">record</span></code> в виде EntityRef. Если событие не содержит этого поля, то фильтрация по документу не будет работать.</p>
+</div>
+</section>
+<section id="id7">
+<h3><a class="toc-backref" href="#id25">Payload по умолчанию для предопределенных событий</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<section id="record">
+<h4><a class="toc-backref" href="#id26">Record создан</a><a class="headerlink" href="#record" title="Ссылка на этот заголовок"></a></h4>
+<p>Дополнительная модель отсутствует.</p>
+</section>
+<section id="id8">
+<h4><a class="toc-backref" href="#id27">Record удален</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h4>
+<p>Дополнительная модель отсутствует.</p>
+</section>
+<section id="id9">
+<h4><a class="toc-backref" href="#id28">Record изменен</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">before</span></code> - атрибуты до изменения (Map&lt;String, Any&gt;)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">after</span></code> - атрибуты после изменения (Map&lt;String, Any&gt;)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diff</span></code> - объект описывающий изменения (<a class="reference external" href="https://gitlab.citeck.ru/ecos-community/ecos-events/-/blob/master/ecos-events2/src/main/java/ru/citeck/ecos/events2/type/RecordEventTypes.kt">Diff</a>)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code> - список изменений (List&lt;<a class="reference external" href="https://gitlab.citeck.ru/ecos-community/ecos-events/-/blob/master/ecos-events2/src/main/java/ru/citeck/ecos/events2/type/RecordEventTypes.kt">DiffValue</a>&gt;), например <em>diff.list?json</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">has</span></code> - предоставляет возможность проверить был ли изменен атрибут (Boolean), например <em>diff._has.youAttName?bool</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id10">
+<h4><a class="toc-backref" href="#id29">Статус изменен</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">before</span></code> - статус до изменения (StatusValue)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">after</span></code> - статус после изменения (StatusValue)</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">StatusValue</span></code> содержит следующие атриубуты:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> - идентификатор статуса (String)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - имя статуса (MLText)</p></li>
+</ul>
+<p>по умолчанию возвращается в виде <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+</section>
+<section id="id11">
+<h4><a class="toc-backref" href="#id30">Комментарий создан</a><a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> - текст комментария (String)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">commentRecord</span></code> - рекорд созданного комментария (EntityRef)</p></li>
+</ul>
+</section>
+<section id="id12">
+<h4><a class="toc-backref" href="#id31">Комментарий изменен</a><a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">textBefore</span></code> - текст комментария до изменения (String)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">textAfter</span></code> - текст комментария после изменения (String)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">commentRecord</span></code> - рекорд созданного комментария (EntityRef)</p></li>
+</ul>
+</section>
+<section id="id13">
+<h4><a class="toc-backref" href="#id32">Комментарий удален</a><a class="headerlink" href="#id13" title="Ссылка на этот заголовок"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> - текст удалленого комментария (String)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">commentRecord</span></code> - рекорд удаленного комментария (EntityRef)</p></li>
+</ul>
+</section>
+</section>
+<section id="payload-script-task">
+<h3><a class="toc-backref" href="#id33">Использование payload события в Script Task</a><a class="headerlink" href="#payload-script-task" title="Ссылка на этот заголовок"></a></h3>
+<p>После возникновениия события, его payload доступен в переменной <code class="docutils literal notranslate"><span class="pre">event</span></code> в рамках текущей транзакции. Если необходимо сохранить какую-то информацию из payload в execution процесса, то это можно осуществить через обычное сохранение переменных в execution.</p>
+<p>Переменная <code class="docutils literal notranslate"><span class="pre">event</span></code>, это класс-обертка <a class="reference external" href="https://gitlab.citeck.ru/ecos-community/ecos-process/-/blob/develop/src/main/java/ru/citeck/ecos/process/domain/bpmn/engine/camunda/impl/variables/convert/BpmnDataValue.kt">BpmnDataValue</a>, который позволяет удобно работать с json представлением данных - безопасно обращаться к полям, получать значения по умолчанию, приводить к нужному типу и многое другое, подробнее см. методы класса.</p>
+<p>Пример использования payload в скрипте:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">print</span><span class="p">(</span><span class="s2">&quot;---HELLO FROM SCRIPT---&quot;</span><span class="p">);</span>
+
+
+<span class="nx">print</span><span class="p">(</span><span class="s2">&quot;event id from base: &quot;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;_meta&quot;</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">));</span>
+<span class="nx">print</span><span class="p">(</span><span class="s2">&quot;event id from $: &quot;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;$._meta.id&quot;</span><span class="p">));</span>
+<span class="nx">print</span><span class="p">(</span><span class="s2">&quot;event id from JsonPointer: &quot;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/_meta/id&quot;</span><span class="p">));</span>
+
+<span class="nx">print</span><span class="p">(</span><span class="s2">&quot;event time as instant: &quot;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/_meta/time&quot;</span><span class="p">).</span><span class="nx">takeAsInstant</span><span class="p">());</span>
+<span class="nx">print</span><span class="p">(</span><span class="s2">&quot;event field names list: &quot;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">fieldNamesList</span><span class="p">());</span>
+
+<span class="nx">print</span><span class="p">(</span><span class="s2">&quot;call undefined prop is safe: &quot;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/_meta/a/b/c/&quot;</span><span class="p">));</span>
+
+<span class="nx">print</span><span class="p">(</span><span class="s2">&quot;event id is boolean &quot;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;_meta&quot;</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">).</span><span class="nx">isBoolean</span><span class="p">());</span>
+
+
+<span class="nx">print</span><span class="p">(</span><span class="s2">&quot;-------END--------------&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Результат выполнения скрипта:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>---HELLO FROM SCRIPT---
+event id from base: &quot;5cf00981-6da6-414e-a82f-d0320f91f7a4&quot;
+event id from $: &quot;5cf00981-6da6-414e-a82f-d0320f91f7a4&quot;
+event id from JsonPointer: &quot;5cf00981-6da6-414e-a82f-d0320f91f7a4&quot;
+event time as instant: 2022-12-09T14:17:24.027Z
+event field names list: [text, commentRecord, docDisp, myText, myText2, _meta, record, recordType]
+call undefined prop is safe: null
+event id is boolean: false
+-------END--------------
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id14">
+<h2><a class="toc-backref" href="#id34">Примеры конфигураций событий</a><a class="headerlink" href="#id14" title="Ссылка на этот заголовок"></a></h2>
+<section id="start-event">
+<h3><a class="toc-backref" href="#id35">Start Event - старт процесса</a><a class="headerlink" href="#start-event" title="Ссылка на этот заголовок"></a></h3>
+<p>При изменении статуса по любому документу будет запущен процесс, который выполнит скрипт.</p>
+<a class="reference internal image-reference" href="../../../../../../_images/bpmn_start_event_example.png"><img alt="../../../../../../_images/bpmn_start_event_example.png" src="../../../../../../_images/bpmn_start_event_example.png" style="width: 25%;" /></a>
+<a class="reference internal image-reference" href="../../../../../../_images/bpmn_start_event_form_example.png"><img alt="../../../../../../_images/bpmn_start_event_form_example.png" src="../../../../../../_images/bpmn_start_event_form_example.png" style="width: 25%;" /></a>
+</section>
+<section id="start-event-subprocess">
+<span id="id15"></span><h3><a class="toc-backref" href="#id36">Start Event - старт событийного подпроцесса</a><a class="headerlink" href="#start-event-subprocess" title="Ссылка на этот заголовок"></a></h3>
+<p>Каждый раз при создании комментария по текущему документу, пока основной процесс активен, будет запущен подпроцесс, который отправит уведомление.</p>
+<a class="reference internal image-reference" href="../../../../../../_images/bpmn_start_event_sub_process_example.png"><img alt="../../../../../../_images/bpmn_start_event_sub_process_example.png" src="../../../../../../_images/bpmn_start_event_sub_process_example.png" style="width: 25%;" /></a>
+<a class="reference internal image-reference" href="../../../../../../_images/bpmn_start_event_sub_process_form_example.png"><img alt="../../../../../../_images/bpmn_start_event_sub_process_form_example.png" src="../../../../../../_images/bpmn_start_event_sub_process_form_example.png" style="width: 25%;" /></a>
+</section>
+<section id="bondary-event">
+<span id="id16"></span><h3><a class="toc-backref" href="#id37">Bondary Event - событие с предикатом</a><a class="headerlink" href="#bondary-event" title="Ссылка на этот заголовок"></a></h3>
+<p>При активной задаче, если был добавлен комментарий, который содержит текст «Галя, отмена!», то задача будет отменена и отправлено уведомление.</p>
+<a class="reference internal image-reference" href="../../../../../../_images/bpmn_boundary_event_with_predicate_example.png"><img alt="../../../../../../_images/bpmn_boundary_event_with_predicate_example.png" src="../../../../../../_images/bpmn_boundary_event_with_predicate_example.png" style="width: 25%;" /></a>
+<a class="reference internal image-reference" href="../../../../../../_images/bpmn_boundary_event_with_predicate_form_example.png"><img alt="../../../../../../_images/bpmn_boundary_event_with_predicate_form_example.png" src="../../../../../../_images/bpmn_boundary_event_with_predicate_form_example.png" style="width: 25%;" /></a>
+</section>
+<section id="end-throw-event">
+<span id="id17"></span><h3><a class="toc-backref" href="#id38">End Throw Event - ручная настройка и события с фильтрами</a><a class="headerlink" href="#end-throw-event" title="Ссылка на этот заголовок"></a></h3>
+<p>При завершении подпроцесса сработает <strong>signal end event</strong> и будет сформировал сигнал с именем «manual-throw-signal» с фильтрацией - любой документ, тип «Найм сотрудника». При этом запустится событийный подпроцесс, так как он подходит по названию сигнала, документу и типу документа.</p>
+<a class="reference internal image-reference" href="../../../../../../_images/bpmn_throw_event_with_filters_example.png"><img alt="../../../../../../_images/bpmn_throw_event_with_filters_example.png" src="../../../../../../_images/bpmn_throw_event_with_filters_example.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../../../../../../_images/bpmn_throw_event_with_filters_throw_form_example.png"><img alt="../../../../../../_images/bpmn_throw_event_with_filters_throw_form_example.png" src="../../../../../../_images/bpmn_throw_event_with_filters_throw_form_example.png" style="width: 25%;" /></a>
+<a class="reference internal image-reference" href="../../../../../../_images/bpmn_throw_event_with_filters_start_form_example.png"><img alt="../../../../../../_images/bpmn_throw_event_with_filters_start_form_example.png" src="../../../../../../_images/bpmn_throw_event_with_filters_start_form_example.png" style="width: 25%;" /></a>
+</section>
+<section id="intermediate-catch-event-expression">
+<span id="intermediate-catch-event"></span><h3><a class="toc-backref" href="#id39">Intermediate Catch Event - событие с пользовательской моделью и предикатом с expression</a><a class="headerlink" href="#intermediate-catch-event-expression" title="Ссылка на этот заголовок"></a></h3>
+<p>Создается задача, в результате которой, пользователь определяет, комментарий с каким текстом нужно удалить, текст комментария сохраняется в переменную документа <code class="docutils literal notranslate"><span class="pre">textForDelete</span></code>. <br>
+После выполнения задачи процесс ожидается события <code class="docutils literal notranslate"><span class="pre">Комментарий</span> <span class="pre">удален</span></code> по текущему документу и предикатом, который проверяет, что текст удаленного комментария совпадает с текстом переменной <code class="docutils literal notranslate"><span class="pre">delText</span></code>, которая определена в модели данных и ссылается на атрибут документа.</p>
+<a class="reference internal image-reference" href="../../../../../../_images/bpmn_intermediate_catch_event_with_model_expression_predicate_example.png"><img alt="../../../../../../_images/bpmn_intermediate_catch_event_with_model_expression_predicate_example.png" class="align-center" src="../../../../../../_images/bpmn_intermediate_catch_event_with_model_expression_predicate_example.png" style="width: 600px;" /></a>
+<p>Если атрибут используется только в предикате, то его можно не объявлять в модели, а использоваться напрямую, таким образом, пример выше можно упростить до:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="w"></span>
+<span class="w"> </span><span class="s">&quot;t&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;eq&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w"> </span><span class="s">&quot;att&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w"> </span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;{{record.textForDelete}}&quot;</span><span class="w"></span>
+<span class="p p-Indicator">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="ecos_bpmn_components_timer.html" class="btn btn-neutral float-left" title="Таймер" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="ecos_bpmn_components_event_subprocess.html" class="btn btn-neutral float-right" title="Событийный подпроцесс" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

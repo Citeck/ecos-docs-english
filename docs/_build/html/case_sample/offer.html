@@ -1,0 +1,3077 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Процесс согласования оффера &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Упаковка приложения" href="application.html" />
+    <link rel="prev" title="Процесс запроса на закупку оборудования" href="equipment_request.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="new_user.html">Создание пользователей для ecos-community-demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="equipment_request.html">Процесс запроса на закупку оборудования</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Процесс согласования оффера</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#types-offer">Типы данных</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-sample">Справочники</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Кейс</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Формы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Форма «Кандидаты»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">Форма «Согласование оффера»</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Журналы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Создание бизнес-процесса</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id19">Используемые в процессе элементы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">Создание элементов для Части (1) схемы бизнес-процесса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">Создание элементов для Части (2) схемы бизнес-процесса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28">Создание элементов для Части (3) схемы бизнес-процесса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id29">Создание элементов для Части (4) схемы бизнес-процесса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id30">Создание элементов для Части (5) схемы бизнес-процесса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id31">Создание элементов для Части (6) схемы бизнес-процесса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id32">Сохранение и публикация</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#menu-add">Добавление журнала в главное меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">Просмотр журнала и создание в нем элемента</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">Настройка меню «Создать»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">Запуск кейса</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="application.html">Упаковка приложения</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a> &raquo;</li>
+      <li>Процесс согласования оффера</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/case_sample/offer.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><a class="toc-backref" href="#id37">Процесс согласования оффера</a><a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id37">Процесс согласования оффера</a></p>
+<ul>
+<li><p><a class="reference internal" href="#types-offer" id="id38">Типы данных</a></p>
+<ul>
+<li><p><a class="reference internal" href="#dataset-sample" id="id39">Справочники</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id5" id="id40">Создание справочника «Город»</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id41">Создание справочника «Офис»</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id42">Создание справочника «Тип должности»</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id43">Создание справочника «Грейд»</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id44">Создание справочника «Социальный пакет»</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id45">Создание справочника «Должностные обязанности»</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id46">Создание справочника «Кандидат»</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id12" id="id47">Кейс</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id13" id="id48">Создание типа данных «Согласование оффера»</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id14" id="id49">Формы</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id15" id="id50">Форма «Кандидаты»</a></p></li>
+<li><p><a class="reference internal" href="#id16" id="id51">Форма «Согласование оффера»</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id17" id="id52">Журналы</a></p></li>
+<li><p><a class="reference internal" href="#id18" id="id53">Создание бизнес-процесса</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id19" id="id54">Используемые в процессе элементы</a></p></li>
+<li><p><a class="reference internal" href="#id20" id="id55">Создание элементов для Части (1) схемы бизнес-процесса</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id21" id="id56">Начальное событие</a></p></li>
+<li><p><a class="reference internal" href="#id22" id="id57">Шлюз и поток данных</a></p></li>
+<li><p><a class="reference internal" href="#id23" id="id58">Смена статуса</a></p></li>
+<li><p><a class="reference internal" href="#id24" id="id59">Уведомление</a></p></li>
+<li><p><a class="reference internal" href="#id25" id="id60">Задача-сценарий</a></p></li>
+<li><p><a class="reference internal" href="#id26" id="id61">Пользовательская задача</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id27" id="id62">Создание элементов для Части (2) схемы бизнес-процесса</a></p></li>
+<li><p><a class="reference internal" href="#id28" id="id63">Создание элементов для Части (3) схемы бизнес-процесса</a></p></li>
+<li><p><a class="reference internal" href="#id29" id="id64">Создание элементов для Части (4) схемы бизнес-процесса</a></p></li>
+<li><p><a class="reference internal" href="#id30" id="id65">Создание элементов для Части (5) схемы бизнес-процесса</a></p></li>
+<li><p><a class="reference internal" href="#id31" id="id66">Создание элементов для Части (6) схемы бизнес-процесса</a></p></li>
+<li><p><a class="reference internal" href="#id32" id="id67">Сохранение и публикация</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#menu-add" id="id68">Добавление журнала в главное меню</a></p></li>
+<li><p><a class="reference internal" href="#id34" id="id69">Просмотр журнала и создание в нем элемента</a></p></li>
+<li><p><a class="reference internal" href="#id35" id="id70">Настройка меню «Создать»</a></p></li>
+<li><p><a class="reference internal" href="#id36" id="id71">Запуск кейса</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Создание приложения включает в себя создание и настройку отдельных артефактов, таких как типы данных, журналы, формы, процессы и т.д.</p>
+<p>Вы можете создать приложение самостоятельно, или загрузить по ссылке: <a class="reference external" href="https://gitlab.citeck.ru/ecos-community/ecos-offers">https://gitlab.citeck.ru/ecos-community/ecos-offers</a></p>
+<p>В разделе приводятся рекомендации и пояснения по разработке приложения с нуля.</p>
+<p><a class="reference internal" href="../settings_kb/ecos_artifacts.html#ecos-artifacts"><span class="std std-ref">Артефакты</span></a> взаимосвязаны между собой, поэтому рекомендуется придерживаться следующего порядка их создания:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-types-main"><span class="std std-ref">тип данных</span></a></p></li>
+<li><p><a class="reference internal" href="../settings_kb/interface/journals.html#journals"><span class="std std-ref">журнал</span></a></p></li>
+<li><p><a class="reference internal" href="../settings_kb/interface/forms.html#forms"><span class="std std-ref">форма для типа</span></a> (если требуется);</p></li>
+<li><p><a class="reference internal" href="../settings_kb/interface/dashboards.html#dashboard"><span class="std std-ref">дашборд</span></a> (если требуется);</p></li>
+<li><p>схема процесса;</p></li>
+<li><p>формы задач процесса.</p></li>
+</ul>
+</div></blockquote>
+<p>При создании собственных моделей рекомендуется предварительно составить схему взаимосвязей между создаваемыми типами, а далее производить процедуру внесения их в систему в порядке от более простых и независимых типов (справочников) к типам, включающим в себя уже ранее созданные. В таком случае не будет сведена к минимуму необходимость прерывания настройки одного типа для настройки другого.</p>
+<p>Последующие разделы будут содержать процесс пошагового создания приложения в соответствии с приведенными выше рекомендациями -  сначала будут созданы справочные типы:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Город,</p></li>
+<li><p>Офис,</p></li>
+<li><p>Тип должности;</p></li>
+<li><p>Грейд,</p></li>
+<li><p>Социальный пакет,</p></li>
+<li><p>Должностные обязанности,</p></li>
+<li><p>Кандидат</p></li>
+</ul>
+</div></blockquote>
+<p>далее основной тип-кейс:</p>
+<blockquote>
+<div><p>– Согласование оффера (тип данных, для которого будет реализована основная бизнес-логика приложения).</p>
+</div></blockquote>
+<p>Структура создания каждого отдельного компонента будет обязательно начинаться с подготовки типа данных. При создании типа данных автоматически генерируеются форма и журнал.</p>
+<section id="types-offer">
+<span id="id3"></span><h2><a class="toc-backref" href="#id38">Типы данных</a><a class="headerlink" href="#types-offer" title="Ссылка на этот заголовок"></a></h2>
+<p>Для просмотра существующих типов и их редактирования создан журнал Типы данных (<strong>Раздел администратора - Модель - Журналы</strong>):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_new_11.png"><img alt="../_images/type_new_11.png" class="align-center" src="../_images/type_new_11.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для создания типа данных необходимо нажать <strong>+ - Создать новый тип</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_new_21.png"><img alt="../_images/type_new_21.png" class="align-center" src="../_images/type_new_21.png" style="width: 600px;" /></a>
+</div></blockquote>
+<section id="dataset-sample">
+<span id="id4"></span><h3><a class="toc-backref" href="#id39">Справочники</a><a class="headerlink" href="#dataset-sample" title="Ссылка на этот заголовок"></a></h3>
+<section id="id5">
+<h4><a class="toc-backref" href="#id40">Создание справочника «Город»</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>Тип Город</strong> не зависит от других типов. Содержит информацию о городах.</p>
+<p>Является справочником (о различиях справочников и кейсов <a class="reference internal" href="../settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-types-types"><span class="std std-ref">здесь</span></a>)</p>
+<p>Для создания справочника необходимо заполнить форму создания типа в соответствии со следующими таблицами.</p>
+<p>Номер маркера в таблице соответствует номеру поля, отмеченного на рисунке, приведенном <a class="reference internal" href="../settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-types-main"><span class="std std-ref">здесь</span></a>.</p>
+<p>Таблица заполнения для вкладки <strong>Основные</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Номер маркера</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>id</p></td>
+<td><p>city</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Имя</p></td>
+<td><p>Город</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Родитель</p></td>
+<td><p>Справочник</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Действия</p></td>
+<td><p>Редактировать свойства; Удалить</p></td>
+</tr>
+</tbody>
+</table>
+<p>Атрибуты, не указанные в таблице, не являются необходимыми при создании данного типа (поля могут быть оставлены пустыми или с неизменными значениями по умолчанию)</p>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_1.png"><img alt="../_images/type_1.png" class="align-center" src="../_images/type_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Таблица заполнения для вкладки <strong>Атрибуты</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 18%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>id (1)</p></th>
+<th class="head"><p>Имя (2)</p></th>
+<th class="head"><p>Тип (3)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cityCode</p></td>
+<td><p>Код</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-odd"><td><p>cityName</p></td>
+<td><p>Название</p></td>
+<td><p>Text</p></td>
+</tr>
+</tbody>
+</table>
+<p>Атрибуты, не указанные в таблицах, не являются необходимыми при создании данного типа (поля могут быть оставлены пустыми или с неизменными значениями по умолчанию)</p>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_2.png"><img alt="../_images/type_2.png" class="align-center" src="../_images/type_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id6">
+<h4><a class="toc-backref" href="#id41">Создание справочника «Офис»</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>Тип Офис</strong> зависит от ранее созданного типа <strong>Город</strong> (обратить внимание на задание ассоциативного атрибута). Содержит информацию об офисах. Является справочником.</p>
+<p>Таблица заполнения для вкладки <strong>Основные</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Номер маркера</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>id</p></td>
+<td><p>office</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Имя</p></td>
+<td><p>Офис</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Родитель</p></td>
+<td><p>Справочник</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Действия</p></td>
+<td><p>Редактировать свойства; Удалить</p></td>
+</tr>
+</tbody>
+</table>
+<p>Атрибуты, не указанные в таблице, не являются необходимыми при создании данного типа (поля могут быть оставлены пустыми или с неизменными значениями по умолчанию).</p>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_3.png"><img alt="../_images/type_3.png" class="align-center" src="../_images/type_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Таблица заполнения для вкладки <strong>Атрибуты</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 18%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>id (1)</p></th>
+<th class="head"><p>Имя (2)</p></th>
+<th class="head"><p>Тип (3)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>officeCode</p></td>
+<td><p>Код</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-odd"><td><p>officeCity</p></td>
+<td><p>Город</p></td>
+<td><p>Association По кнопке «Настроить» выбрать тип «Город»</p></td>
+</tr>
+<tr class="row-even"><td><p>officeAddress</p></td>
+<td><p>Адрес</p></td>
+<td><p>Text</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_4.png"><img alt="../_images/type_4.png" class="align-center" src="../_images/type_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id7">
+<h4><a class="toc-backref" href="#id42">Создание справочника «Тип должности»</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>Тип Должности</strong> не зависит от других типов. Содержит информацию о должностях.</p>
+<p>Является справочником</p>
+<p>Таблица заполнения для вкладки <strong>Основные</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Номер маркера</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>id</p></td>
+<td><p>orgstruct-simple-role</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Имя</p></td>
+<td><p>Тип должности</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Родитель</p></td>
+<td><p>Справочник</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Действия</p></td>
+<td><p>Редактировать свойства; Удалить</p></td>
+</tr>
+</tbody>
+</table>
+<p>Атрибуты, не указанные в таблице, не являются необходимыми при создании данного типа (поля могут быть оставлены пустыми или с неизменными значениями по умолчанию)</p>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_5.png"><img alt="../_images/type_5.png" class="align-center" src="../_images/type_5.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Таблица заполнения для вкладки <strong>Атрибуты</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 18%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>id (1)</p></th>
+<th class="head"><p>Имя (2)</p></th>
+<th class="head"><p>Тип (3)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>Имя</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-odd"><td><p>title</p></td>
+<td><p>Должность</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-even"><td><p>rolesManager</p></td>
+<td><p>Руководящая роль</p></td>
+<td><p>Boolean</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_6.png"><img alt="../_images/type_6.png" class="align-center" src="../_images/type_6.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id8">
+<h4><a class="toc-backref" href="#id43">Создание справочника «Грейд»</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>Тип Грейд</strong> зависит от ранее созданного типа <strong>Тип должности</strong> (обратить внимание на задание ассоциативного атрибута). Содержит информацию о грейдах.</p>
+<p>Является справочником.</p>
+<p>Таблица заполнения для вкладки <strong>Основные</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Номер маркера</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>id</p></td>
+<td><p>hr-grade</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Имя</p></td>
+<td><p>Грейд</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Родитель</p></td>
+<td><p>Справочник</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Действия</p></td>
+<td><p>Редактировать свойства; Удалить</p></td>
+</tr>
+</tbody>
+</table>
+<p>Атрибуты, не указанные в таблице, не являются необходимыми при создании данного типа (поля могут быть оставлены пустыми или с неизменными значениями по умолчанию)</p>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_7.png"><img alt="../_images/type_7.png" class="align-center" src="../_images/type_7.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Таблица заполнения для вкладки <strong>Атрибуты</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 18%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>id (1)</p></th>
+<th class="head"><p>Имя (2)</p></th>
+<th class="head"><p>Тип (3)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>gradesSimpleRoleTypeAssoc</p></td>
+<td><p>Должность</p></td>
+<td><p>Association По кнопке «Настроить» выбрать тип «Тип должности»</p></td>
+</tr>
+<tr class="row-odd"><td><p>gradesNumber</p></td>
+<td><p>Номер</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-even"><td><p>gradesRequirements</p></td>
+<td><p>Требования к сотруднику</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-odd"><td><p>gradesResponsibilities</p></td>
+<td><p>Обязанности</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-even"><td><p>gradesSalary</p></td>
+<td><p>Вилка оклада</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-odd"><td><p>gradesPrize</p></td>
+<td><p>Премия</p></td>
+<td><p>Text</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_8.png"><img alt="../_images/type_8.png" class="align-center" src="../_images/type_8.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id9">
+<h4><a class="toc-backref" href="#id44">Создание справочника «Социальный пакет»</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>Тип Социальный пакет</strong> не зависит от других типов. Содержит информацию о социальном пакете. Является справочником.</p>
+<p>Таблица заполнения для вкладки <strong>Основные</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Номер маркера</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>id</p></td>
+<td><p>social-package</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Имя</p></td>
+<td><p>Социальный пакет</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Родитель</p></td>
+<td><p>Справочник</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Действия</p></td>
+<td><p>Редактировать свойства; Удалить</p></td>
+</tr>
+</tbody>
+</table>
+<p>Атрибуты, не указанные в таблице, не являются необходимыми при создании данного типа (поля могут быть оставлены пустыми или с неизменными значениями по умолчанию).</p>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_9.png"><img alt="../_images/type_9.png" class="align-center" src="../_images/type_9.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Таблица заполнения для вкладки <strong>Атрибуты</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 18%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>id (1)</p></th>
+<th class="head"><p>Имя (2)</p></th>
+<th class="head"><p>Тип (3)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>socialPackage</p></td>
+<td><p>Соц.пакет</p></td>
+<td><p>Text</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_10.png"><img alt="../_images/type_10.png" class="align-center" src="../_images/type_10.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id10">
+<h4><a class="toc-backref" href="#id45">Создание справочника «Должностные обязанности»</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>Тип Должностные обязанности</strong> не зависит от других типов. Содержит информацию о должностных обязанностях.</p>
+<p>Является справочником.</p>
+<p>Таблица заполнения для вкладки <strong>Основные</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Номер маркера</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>id</p></td>
+<td><p>offer-responsibility</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Имя</p></td>
+<td><p>Должностные обязанности</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Родитель</p></td>
+<td><p>Справочник</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Действия</p></td>
+<td><p>Редактировать свойства; Удалить</p></td>
+</tr>
+</tbody>
+</table>
+<p>Атрибуты, не указанные в таблице, не являются необходимыми при создании данного типа (поля могут быть оставлены пустыми или с неизменными значениями по умолчанию)</p>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_11.png"><img alt="../_images/type_11.png" class="align-center" src="../_images/type_11.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Таблица заполнения для вкладки <strong>Атрибуты</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 18%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>id (1)</p></th>
+<th class="head"><p>Имя (2)</p></th>
+<th class="head"><p>Тип (3)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>responsibilitiesSimpleRoleTypeAssoc</p></td>
+<td><p>Должность</p></td>
+<td><p>Association По кнопке «Настроить» выбрать тип «Тип должности»</p></td>
+</tr>
+<tr class="row-odd"><td><p>responsibilitiesSubordination</p></td>
+<td><p>Подчинение</p></td>
+<td><p>Person (для выбора сотрудника из оргструктуры)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_12.png"><img alt="../_images/type_12.png" class="align-center" src="../_images/type_12.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id11">
+<h4><a class="toc-backref" href="#id46">Создание справочника «Кандидат»</a><a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>Тип Кандидаты</strong> зависит от ранее созданного типа Города (обратить внимание на задание ассоциативного атрибута). Содержит информацию о кандидатах, рассматриваемых для выдачи оффера.</p>
+<p>Является справочником.</p>
+<p>Таблица заполнения для вкладки <strong>Основные</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Номер маркера</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>id</p></td>
+<td><p>offer-candidate</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Имя</p></td>
+<td><p>Кандидат</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Родитель</p></td>
+<td><p>Справочник</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Действия</p></td>
+<td><p>Редактировать свойства; Удалить</p></td>
+</tr>
+</tbody>
+</table>
+<p>Атрибуты, не указанные в таблице, не являются необходимыми при создании данного типа (поля могут быть оставлены пустыми или с неизменными значениями по умолчанию).</p>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_13.png"><img alt="../_images/type_13.png" class="align-center" src="../_images/type_13.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Таблица заполнения для вкладки <strong>Атрибуты</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 18%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>id (1)</p></th>
+<th class="head"><p>Имя (2)</p></th>
+<th class="head"><p>Тип (3)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>candidateCode</p></td>
+<td><p>Код</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-odd"><td><p>candidateLastName</p></td>
+<td><p>Фамилия</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-even"><td><p>candidateFirstName</p></td>
+<td><p>Имя</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-odd"><td><p>candidateMiddleName</p></td>
+<td><p>Отчество</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-even"><td><p>candidateBirthDate</p></td>
+<td><p>День рождения</p></td>
+<td><p>Date</p></td>
+</tr>
+<tr class="row-odd"><td><p>candidateGender</p></td>
+<td><p>Пол</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-even"><td><p>candidateCityAssoc</p></td>
+<td><p>Город</p></td>
+<td><p>Association По кнопке «Настроить» выбрать тип «Город»</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_14.png"><img alt="../_images/type_14.png" class="align-center" src="../_images/type_14.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+</section>
+<section id="id12">
+<h3><a class="toc-backref" href="#id47">Кейс</a><a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h3>
+<section id="id13">
+<h4><a class="toc-backref" href="#id48">Создание типа данных «Согласование оффера»</a><a class="headerlink" href="#id13" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>Тип Согласование оффера</strong> является типом-кейс и зависит от ранее созданных справочников (о различиях справочников и кейсов <a class="reference internal" href="../settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-types-types"><span class="std std-ref">здесь</span></a>)</p>
+<p>Таблица заполнения для вкладки <strong>Основные</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Номер маркера</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>id</p></td>
+<td><p>offer</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Имя</p></td>
+<td><p>Согласование оффера</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Шаблон отображения имени</p></td>
+<td><p>Оффер №${_docNum|fmt(«000000»)} номер будет указан в виде 0000001</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Родитель</p></td>
+<td><p>Кейс</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Шаблон нумерации</p></td>
+<td><p>Создать hr-offer-number-template см. ниже</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Действия</p></td>
+<td><p>Редактировать свойства; Удалить</p></td>
+</tr>
+</tbody>
+</table>
+<p>Атрибуты, не указанные в таблице, не являются необходимыми при создании данного типа (поля могут быть оставлены пустыми или с неизменными значениями по умолчанию)</p>
+<p>Номер маркера в таблице соответствует номеру поля, отмеченного на рисунке, приведенном <a class="reference internal" href="../settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-types-main"><span class="std std-ref">здесь</span></a>.</p>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_15.png"><img alt="../_images/type_15.png" class="align-center" src="../_images/type_15.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Пояснение к пп. 3 и 8. Номер можно присваивать автоматически. И номер можно отражать в шаблоне отображения имени. Для этого необходимо задать и настроить <a class="reference internal" href="../settings_kb/interface/number_template.html#number-template"><span class="std std-ref">Шаблон нумерации</span></a>.</p>
+<p>Нажать <strong>«Выбрать»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/count_6.png"><img alt="../_images/count_6.png" class="align-center" src="../_images/count_6.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Далее нажать <strong>Создать  - Создать новый шаблон</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/count_7.png"><img alt="../_images/count_7.png" class="align-center" src="../_images/count_7.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Заполнить открывшуюся форму:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/count_3.png"><img alt="../_images/count_3.png" class="align-center" src="../_images/count_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Номер маркера</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>id</p></td>
+<td><p>hr-offer-number-template</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Name</p></td>
+<td><p>Offer Number Template</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Counter key</p></td>
+<td><p>hr-offer-counter</p></td>
+</tr>
+</tbody>
+</table>
+<p>И выбрать созданный шаблон:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/count_8.png"><img alt="../_images/count_8.png" class="align-center" src="../_images/count_8.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Таблица заполнения для вкладки <strong>Атрибуты</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 18%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>id (1)</p></th>
+<th class="head"><p>Имя (2)</p></th>
+<th class="head"><p>Тип (3)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>registrationNumber</p></td>
+<td><p>Регистрационный номер</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-odd"><td><p>offerIssueDate</p></td>
+<td><p>Дата создания</p></td>
+<td><p>Date</p></td>
+</tr>
+<tr class="row-even"><td><p>initiator</p></td>
+<td><p>Инициатор</p></td>
+<td><p>Person</p></td>
+</tr>
+<tr class="row-odd"><td><p>offerCandidate</p></td>
+<td><p>Кандидат</p></td>
+<td><p>Association По кнопке «Настроить» выбрать тип «Кандидат»</p></td>
+</tr>
+<tr class="row-even"><td><p>offerPosition</p></td>
+<td><p>Должность</p></td>
+<td><p>Association По кнопке «Настроить» выбрать тип «Тип должности»</p></td>
+</tr>
+<tr class="row-odd"><td><p>offerSubdivision</p></td>
+<td><p>Подразделение</p></td>
+<td><p>Group</p></td>
+</tr>
+<tr class="row-even"><td><p>offerGrade</p></td>
+<td><p>Грейд</p></td>
+<td><p>Association По кнопке «Настроить» выбрать тип «Грейд»:</p></td>
+</tr>
+<tr class="row-odd"><td><p>offerOffice</p></td>
+<td><p>Офис</p></td>
+<td><p>Association По кнопке «Настроить» выбрать тип «Офис»:</p></td>
+</tr>
+<tr class="row-even"><td><p>offerComment</p></td>
+<td><p>Комментарий</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-odd"><td><p>offerChief</p></td>
+<td><p>Руководитель</p></td>
+<td><p>Person</p></td>
+</tr>
+<tr class="row-even"><td><p>offerAdditionalChief</p></td>
+<td><p>Доп. согласующий</p></td>
+<td><p>Person</p></td>
+</tr>
+<tr class="row-odd"><td><p>offerFeedback</p></td>
+<td><p>Фидбэк по собеседованиям</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-even"><td><p>offerSalaryAndPrize</p></td>
+<td><p>Зарплатная вилка и премия</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-odd"><td><p>offerSubordination</p></td>
+<td><p>Подчинение</p></td>
+<td><p>Person</p></td>
+</tr>
+<tr class="row-even"><td><p>offerSalary</p></td>
+<td><p>Оклад</p></td>
+<td><p>Number</p></td>
+</tr>
+<tr class="row-odd"><td><p>offerPrize</p></td>
+<td><p>Премия</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-even"><td><p>offerSchedule</p></td>
+<td><p>График работы</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-odd"><td><p>content</p></td>
+<td><p>Содержимое</p></td>
+<td><p>Content</p></td>
+</tr>
+<tr class="row-even"><td><p>offerDateWork</p></td>
+<td><p>Дата выхода на работу</p></td>
+<td><p>Date</p></td>
+</tr>
+<tr class="row-odd"><td><p>offerApproveStage</p></td>
+<td><p>Номер этапа согласования</p></td>
+<td><p>Number</p></td>
+</tr>
+<tr class="row-even"><td><p>offerTaskComment</p></td>
+<td><p>Комментарий по офферу</p></td>
+<td><p>Text</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_16.png"><img alt="../_images/type_16.png" class="align-center" src="../_images/type_16.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p id="roles-offer">Таблица заполнения для вкладки <strong>Роли</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 12%" />
+<col style="width: 35%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>id (1)</p></th>
+<th class="head"><p>Название логики (2)</p></th>
+<th class="head"><p>Участники роли(3)</p></th>
+<th class="head"><p>Атрибуты(4)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>offer-initiator-role</p></td>
+<td><p>Инициатор</p></td>
+<td><p>Нет</p></td>
+<td><p>Инициатор</p></td>
+</tr>
+<tr class="row-odd"><td><p>offer-chief-role</p></td>
+<td><p>Руководитель</p></td>
+<td><p>Нет</p></td>
+<td><p>Руководитель</p></td>
+</tr>
+<tr class="row-even"><td><p>offer-additional-chief-role</p></td>
+<td><p>Доп. согласующий</p></td>
+<td><p>Нет</p></td>
+<td><p>Доп. согласующий</p></td>
+</tr>
+<tr class="row-odd"><td><p>offer-director-role</p></td>
+<td><p>Директор</p></td>
+<td><p>По кнопке «Выбрать» сотрудника из оргструктуры</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>offer-technologist-role</p></td>
+<td><p>Технолог</p></td>
+<td><p>По кнопке «Выбрать» сотрудника из оргструктуры</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_17.png"><img alt="../_images/type_17.png" class="align-center" src="../_images/type_17.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Таблица заполнения для вкладки <strong>Статусы</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 60%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>id (1)</p></th>
+<th class="head"><p>Название логики (2)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>draft</p></td>
+<td><p>Черновик</p></td>
+</tr>
+<tr class="row-odd"><td><p>hr-offer-approve</p></td>
+<td><p>Согласование руководителем</p></td>
+</tr>
+<tr class="row-even"><td><p>hr-offer-director-approve</p></td>
+<td><p>Согласование директором</p></td>
+</tr>
+<tr class="row-odd"><td><p>hr-offer-additionaly-approve</p></td>
+<td><p>Согласование доп. согласующим</p></td>
+</tr>
+<tr class="row-even"><td><p>hr-offer-rework</p></td>
+<td><p>Доработка</p></td>
+</tr>
+<tr class="row-odd"><td><p>hr-offer-feedback</p></td>
+<td><p>Формирование ответа кандидату</p></td>
+</tr>
+<tr class="row-even"><td><p>hr-offer-feedback-from-candidate</p></td>
+<td><p>Ожидание ответа от кандидата</p></td>
+</tr>
+<tr class="row-odd"><td><p>hr-offer-reject</p></td>
+<td><p>Кандидату отказано</p></td>
+</tr>
+<tr class="row-even"><td><p>hr-offer-accept-offer</p></td>
+<td><p>Оффер принят</p></td>
+</tr>
+<tr class="row-odd"><td><p>hr-offer-reject-offer</p></td>
+<td><p>Оффер не принят</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки типа (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_18.png"><img alt="../_images/type_18.png" class="align-center" src="../_images/type_18.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>При создании типа данных по умолчанию созда.тся <a class="reference internal" href="../settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#auto-journal-form"><span class="std std-ref">автоматически генерируемая форма и журнал</span></a></p>
+</section>
+</section>
+</section>
+<section id="id14">
+<h2><a class="toc-backref" href="#id49">Формы</a><a class="headerlink" href="#id14" title="Ссылка на этот заголовок"></a></h2>
+<p>При создании типа данных по умолчанию создается связанная <a class="reference internal" href="../settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#auto-form"><span class="std std-ref">автоматически сгенерированная форма</span></a>.</p>
+<p>Для просмотра существующих форм и их редактирования создан журнал <strong>Формы</strong> (<strong>Раздел администратора - Конфигурация UI - Формы</strong>):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/forms_journal.png"><img alt="../_images/forms_journal.png" class="align-center" src="../_images/forms_journal.png" style="width: 700px;" /></a>
+</div></blockquote>
+<p>Автоматически сгенерированные формы используются в журналах как формы для <a class="reference internal" href="#city-form"><span class="std std-ref">создания нового элемента</span></a>.</p>
+<p>Подробная информация о:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../settings_kb/interface/forms.html#forms"><span class="std std-ref">формах</span></a>,</p></li>
+<li><p><a class="reference internal" href="../settings_kb/interface/forms/form_builder.html#form-builder"><span class="std std-ref">редакторе форм</span></a>,</p></li>
+<li><p><a class="reference internal" href="../settings_kb/interface/forms/form_components.html#form-components"><span class="std std-ref">компонентах формы</span></a>,</p></li>
+<li><p><a class="reference internal" href="../settings_kb/interface/forms/form_examples.html#form-examples"><span class="std std-ref">примерах компонент</span></a></p></li>
+</ul>
+</div></blockquote>
+<p>Для справочников «Город», «Офис», «Тип должности», «Грейд», «Социальный пакет», «Должностные обязанности» оставим автоматически сгенерированные формы.</p>
+<p>Ниже рассмотрим, как изменить  формы «Кандидаты» и «Офферы». Скопируйте форму из карточки типа данных:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_edit_1.png"><img alt="../_images/form_edit_1.png" class="align-center" src="../_images/form_edit_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Переименуйте идентификатор формы:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_edit_2.png"><img alt="../_images/form_edit_2.png" class="align-center" src="../_images/form_edit_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>В типе данных проставляется данная форма и становятся доступны действия, включая редактирование:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_edit_3.png"><img alt="../_images/form_edit_3.png" class="align-center" src="../_images/form_edit_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Нажмите <strong>«Редактировать»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_edit_4.png"><img alt="../_images/form_edit_4.png" class="align-center" src="../_images/form_edit_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>И далее нажмите <strong>«Редактировать форму»</strong>.</p>
+<section id="id15">
+<h3><a class="toc-backref" href="#id50">Форма «Кандидаты»</a><a class="headerlink" href="#id15" title="Ссылка на этот заголовок"></a></h3>
+<p>Пример формы:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_14.png"><img alt="../_images/form_14.png" class="align-center" src="../_images/form_14.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Компоненты формы:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Имя свойства</p></th>
+<th class="head"><p>Наименование компонента</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td><p>Колонки формы</p></td>
+<td><p>Columns Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Код</p></td>
+<td><p>candidatesCode</p></td>
+<td><p>Text Field Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Фамилия</p></td>
+<td><p>candidatesLastName</p></td>
+<td><p>Text Field Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Имя</p></td>
+<td><p>candidatesFirstName</p></td>
+<td><p>Text Field Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Отчество</p></td>
+<td><p>candidatesMiddleName</p></td>
+<td><p>Text Field Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Дата рождения</p></td>
+<td><p>candidatesBirthDate</p></td>
+<td><p><a class="reference internal" href="../settings_kb/interface/forms/form_examples.html#sample-date-time-component"><span class="std std-ref">Date / Time Component</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Пол</p></td>
+<td><p>candidatesGender</p></td>
+<td><p><a class="reference internal" href="../settings_kb/interface/forms/form_examples.html#sample-ecos-select-component"><span class="std std-ref">ECOS Select Component</span></a></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_17.png"><img alt="../_images/form_17.png" class="align-center" src="../_images/form_17.png" style="width: 300px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Город</p></td>
+<td><p>candidatesCityAssoc</p></td>
+<td><p>Select Journal Component</p></td>
+</tr>
+</tbody>
+</table>
+<p>Кнопки для форм, созданных выше:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Отменить</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_18.png"><img alt="../_images/form_18.png" class="align-center" src="../_images/form_18.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>Сохранить</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_19.png"><img alt="../_images/form_19.png" class="align-center" src="../_images/form_19.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Для отображения кнопки на всю ширину ячейки необходимо на вкладке <strong>«Вид»</strong> выставить чекбокс <strong>«Блокировать»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_48.png"><img alt="../_images/form_48.png" class="align-center" src="../_images/form_48.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id16">
+<h3><a class="toc-backref" href="#id51">Форма «Согласование оффера»</a><a class="headerlink" href="#id16" title="Ссылка на этот заголовок"></a></h3>
+<p>Пример формы:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_16.png"><img alt="../_images/form_16.png" class="align-center" src="../_images/form_16.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Компоненты формы:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Имя свойства</p></th>
+<th class="head"><p>Наименование компонента</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>Заголовок</p></td>
+<td><p><a class="reference internal" href="../settings_kb/interface/forms/form_examples.html#sample-panel-component"><span class="std std-ref">Panel Component</span></a></p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Колонки формы</p></td>
+<td><p>Columns Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Регистрационный номер</p></td>
+<td><p>registrationNumber</p></td>
+<td><p>Text Field Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Присвоить номер</p></td>
+<td><p>generateNumber</p></td>
+<td><p>Checkbox Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Дата создания</p></td>
+<td><p>_created (для автоматического ввода даты создания документа)</p></td>
+<td><p>Date / Time Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Комментарий по результатам</p></td>
+<td><p>offerTaskComment</p></td>
+<td><p><a class="reference internal" href="../settings_kb/interface/forms/form_components/components_common.html#text-area"><span class="std std-ref">Text Area Component</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>initiator</p></td>
+<td><p>initiator</p></td>
+<td><p>Select Orgstruct Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Кандидат</p></td>
+<td><p>offerCandidate</p></td>
+<td><p>Select Journal Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Должность</p></td>
+<td><p>offerPosition</p></td>
+<td><p>Select Journal Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Подразделение</p></td>
+<td><p>offerSubdivision</p></td>
+<td><p><a class="reference internal" href="../settings_kb/interface/forms/form_examples.html#sample-select-orgstruct-component"><span class="std std-ref">Select Orgstruct Component</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Грейд</p></td>
+<td><p>offerGrade</p></td>
+<td><p>Select Journal Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Руководитель</p></td>
+<td><p>offerChief</p></td>
+<td><p>Select Orgstruct Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Офис</p></td>
+<td><p>offerOffice</p></td>
+<td><p>Select Journal Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Доп.согласующий</p></td>
+<td><p>offerAdditionalChief</p></td>
+<td><p>Select Orgstruct Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Комментарий</p></td>
+<td><p>offerComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Зарплатная вилка и премия</p></td>
+<td><p>offerSalaryForkAndPrize</p></td>
+<td><p>Text Field Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Подчинение</p></td>
+<td><p>offerSubordinationAtr</p></td>
+<td><p>Text Field Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Фидбэк по собеседованиям</p></td>
+<td><p>offerFeedback</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Оклад</p></td>
+<td><p>offerSalary</p></td>
+<td><p><a class="reference internal" href="../settings_kb/interface/forms/form_components/components_common.html#number"><span class="std std-ref">Number Component</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Премия</p></td>
+<td><p>offerPrize</p></td>
+<td><p>Text Field Component</p></td>
+</tr>
+<tr class="row-even"><td><p>График работы</p></td>
+<td><p>offerSchedule</p></td>
+<td><p>Text Field Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Дата выхода на работу</p></td>
+<td><p>offerDateWork</p></td>
+<td><p>Date / Time Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Файлы</p></td>
+<td><p>content</p></td>
+<td><p><a class="reference internal" href="../settings_kb/interface/forms/form_components/components_common.html#file"><span class="std std-ref">File Component</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Отменить</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_20.png"><img alt="../_images/form_20.png" class="align-center" src="../_images/form_20.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>Создать</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_21.png"><img alt="../_images/form_21.png" class="align-center" src="../_images/form_21.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Сохранить (как черновик)</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_22.png"><img alt="../_images/form_22.png" class="align-center" src="../_images/form_22.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id17">
+<h2><a class="toc-backref" href="#id52">Журналы</a><a class="headerlink" href="#id17" title="Ссылка на этот заголовок"></a></h2>
+<p>При создании типа данных по умолчанию создается связанный с ним <a class="reference internal" href="../settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#auto-journal"><span class="std std-ref">автоматически сгенерированный журнал</span></a> журнал. Такой журнал получает идентификатор вида <strong>type$idтипа</strong>.</p>
+<p>Созданные автоматически журналы доступны в разделе <strong>Журналы</strong> (<strong>Раздел администратора - Конфигурация UI - Журналы</strong>):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/journal_auto_1.png"><img alt="../_images/journal_auto_1.png" class="align-center" src="../_images/journal_auto_1.png" style="width: 700px;" /></a>
+</div></blockquote>
+<p>Автосозданный журнал может полноценно использоваться в системе – и быть добавлен в <a class="reference internal" href="../settings_kb/interface/menu.html#menu"><span class="std std-ref">меню</span></a> - рассмотрим на примере справочника <strong>«Города»</strong>:</p>
+<ol class="arabic simple">
+<li><p>Перейдите в настройку меню, нажав на шестеренку справа сверху, далее выберите <strong>«Настроить меню»</strong>:</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/menu_11.png"><img alt="../_images/menu_11.png" class="align-center" src="../_images/menu_11.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Перейдите во вкладку <strong>«Настройки выбранной конфигурации»</strong>, нажмите <strong>«+ Добавить»</strong>, выберите <strong>«Раздел»</strong>:</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/menu_21.png"><img alt="../_images/menu_21.png" class="align-center" src="../_images/menu_21.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>В поле <strong>«Название»</strong> введите название раздела. Например, «Офферы». Нажмите <strong>«Сохранить»</strong>.</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/menu_31.png"><img alt="../_images/menu_31.png" class="align-center" src="../_images/menu_31.png" style="width: 400px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p>Наведите курсор на добавленный раздел, нажмите <strong>«+ Добавить»</strong>, выберите <strong>«Журнал»</strong>:</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/menu_41.png"><img alt="../_images/menu_41.png" class="align-center" src="../_images/menu_41.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Выберите журнал <strong>«type$city»</strong> и нажмите <strong>ОК</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/menu_51.png"><img alt="../_images/menu_51.png" class="align-center" src="../_images/menu_51.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/menu_61.png"><img alt="../_images/menu_61.png" class="align-center" src="../_images/menu_61.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p id="city-form">В левом меню появился новый журнал <strong>«Город»</strong>, в котором по нажатию на <strong>+</strong> открывается форма создания нового элемента:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/menu_71.png"><img alt="../_images/menu_71.png" class="align-center" src="../_images/menu_71.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id18">
+<h2><a class="toc-backref" href="#id53">Создание бизнес-процесса</a><a class="headerlink" href="#id18" title="Ссылка на этот заголовок"></a></h2>
+<p>С использованием созданных ранее типов данных, форм настраиваем бизнес-процесс согласования оффера:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/diagram_00.png"><img alt="../_images/diagram_00.png" class="align-center" src="../_images/diagram_00.png" style="width: 800px;" /></a>
+</div></blockquote>
+<p>Для наглядности описания разобьем процесс на <strong>6 частей</strong>. И рассмотрим каждую часть подробно.</p>
+<p>На примере <strong>1 части</strong> рассмотрим подробное создание элементов, для частей <strong>2-5</strong> будт приведены изображения конечной настройки элементов.</p>
+<p>Для просмотра существующих бизнес-процессов и их редактирования необходимо перейти в левом меню в пункт <strong>«Редактор бизнес-процессов»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bp_new1.png"><img alt="../_images/bp_new1.png" class="align-center" src="../_images/bp_new1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для создания процесса необходимо нажать <strong>«+ - Создать camunda процесс»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bp_new_11.png"><img alt="../_images/bp_new_11.png" class="align-center" src="../_images/bp_new_11.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Подробно можно ознакомиться с:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/ecos_bpmn_editor.html#editor-bpmn"><span class="std std-ref">редактором бизнес-процесса</span></a>,</p></li>
+<li><p><a class="reference internal" href="../settings_kb/processes/ecos_bpmn/ecos_bpmn_base_operations.html#new-bp"><span class="std std-ref">созданием бизнес-процесса</span></a>,</p></li>
+<li><p><a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/ecos_bpmn_components.html#ecos-bpmn-components"><span class="std std-ref">компонентами конструктора</span></a>,</p></li>
+</ul>
+</div></blockquote>
+<p>Заполнение формы создания бизнес-процесса «Согласование оффера»:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/process_form.png"><img alt="../_images/process_form.png" class="align-center" src="../_images/process_form.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>где</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Номер маркера</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Идентификатор</strong></p></td>
+<td><p>hr-offer-process</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Имя</strong></p></td>
+<td><p>hr-offer-process</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Ecos Type</strong></p></td>
+<td><p>выбрать созданный ранее тип данных <strong>«Согласование оффера (hr-offer-type)»</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Раздел</strong></p></td>
+<td><p>не заполнять, сохранение произойдет автоматически в раздел «По умолчанию».</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Форма</strong></p></td>
+<td><p>не указывать</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><strong>Включен</strong></p></td>
+<td><p>флаг выставлен</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><strong>Автоматический старт процесса</strong></p></td>
+<td><p>флаг выставлен</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id19">
+<h3><a class="toc-backref" href="#id54">Используемые в процессе элементы</a><a class="headerlink" href="#id19" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><a class="reference internal image-reference" href="../_images/bpform_1.png"><img alt="../_images/bpform_1.png" class="align-center" src="../_images/bpform_1.png" style="width: 50px;" /></a>
+</td>
+<td><p>Начальное событие</p></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal image-reference" href="../_images/bpform_2.png"><img alt="../_images/bpform_2.png" class="align-center" src="../_images/bpform_2.png" style="width: 50px;" /></a>
+</td>
+<td><p><a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.html#gateways"><span class="std std-ref">Шлюз</span></a> и <a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_seq_flow.html#sequential-flow"><span class="std std-ref">поток управления</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal image-reference" href="../_images/bpform_3.png"><img alt="../_images/bpform_3.png" class="align-center" src="../_images/bpform_3.png" style="width: 50px;" /></a>
+</td>
+<td><p><a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.html#user-task"><span class="std std-ref">Пользовательская задача</span></a></p></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal image-reference" href="../_images/bpform_4.png"><img alt="../_images/bpform_4.png" class="align-center" src="../_images/bpform_4.png" style="width: 50px;" /></a>
+</td>
+<td><p><a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_notifications.html#notification"><span class="std std-ref">Уведомление</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal image-reference" href="../_images/bpform_5.png"><img alt="../_images/bpform_5.png" class="align-center" src="../_images/bpform_5.png" style="width: 50px;" /></a>
+</td>
+<td><p><a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_set_status.html#set-status"><span class="std std-ref">Смена статуса</span></a></p></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal image-reference" href="../_images/bpform_6.png"><img alt="../_images/bpform_6.png" class="align-center" src="../_images/bpform_6.png" style="width: 50px;" /></a>
+</td>
+<td><p><a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.html#script-task"><span class="std std-ref">Задача сценарий</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal image-reference" href="../_images/bpform_7.png"><img alt="../_images/bpform_7.png" class="align-center" src="../_images/bpform_7.png" style="width: 50px;" /></a>
+</td>
+<td><p>Завершающее событие</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id20">
+<h3><a class="toc-backref" href="#id55">Создание элементов для Части (1) схемы бизнес-процесса</a><a class="headerlink" href="#id20" title="Ссылка на этот заголовок"></a></h3>
+<p><strong>Часть (1)</strong> схемы бизнес-процесса:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/scheme_1.png"><img alt="../_images/scheme_1.png" class="align-center" src="../_images/scheme_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<section id="id21">
+<h4><a class="toc-backref" href="#id56">Начальное событие</a><a class="headerlink" href="#id21" title="Ссылка на этот заголовок"></a></h4>
+<p>Начальное событие <strong>(1) на схеме</strong> задается по умолчанию элементом:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn09.png"><img alt="../_images/bmpn09.png" class="align-center" src="../_images/bmpn09.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p><strong>ID элемента</strong> Система указывает автоматически для всех создаваемых элементов.</p>
+</section>
+<section id="id22">
+<h4><a class="toc-backref" href="#id57">Шлюз и поток данных</a><a class="headerlink" href="#id22" title="Ссылка на этот заголовок"></a></h4>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn10.png"><img alt="../_images/bmpn10.png" class="align-center" src="../_images/bmpn10.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Для шлюза <strong>(2) на схеме</strong> укажите <strong>Имя</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn10_1.png"><img alt="../_images/bmpn10_1.png" class="align-center" src="../_images/bmpn10_1.png" style="width: 500px;" /></a>
+</div></blockquote>
+<p>Поток управления используется для связи элементов потока BPMN (событий, процессов, шлюзов).</p>
+<p>Поток управления (стрелка) отображает ход выполнения процесса.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn10а.png"><img alt="../_images/bmpn10а.png" class="align-center" src="../_images/bmpn10а.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p>Далее ведите стрелку к необходимому элементу. Для потока можно указать тип условия.</p>
+<p>Для шлюза, созданного выше:</p>
+<p><strong>Поток «Нет»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpflow_1.png"><img alt="../_images/bpflow_1.png" class="align-center" src="../_images/bpflow_1.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Текст скипта:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">offerChief</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;_roles.assigneesOf.offer-chief-role&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">director</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;_roles.assigneesOf.offer-director-role&#39;</span><span class="p">);</span>
+
+<span class="n">value</span><span class="o">=</span> <span class="n">offerChief</span><span class="o">!=</span><span class="n">director</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Поток «Да»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpflow_2.png"><img alt="../_images/bpflow_2.png" class="align-center" src="../_images/bpflow_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Текст скипта:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">offerChief</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;_roles.assigneesOf.offer-chief-role&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">director</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;_roles.assigneesOf.offer-director-role&#39;</span><span class="p">);</span>
+
+
+<span class="n">value</span> <span class="o">=</span> <span class="n">offerChief</span><span class="o">==</span><span class="n">director</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Для следующего шлюза <strong>3 на схеме</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><a class="reference internal image-reference" href="../_images/bpform_13.png"><img alt="../_images/bpform_13.png" class="align-center" src="../_images/bpform_13.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_14.png"><img alt="../_images/bpform_14.png" class="align-center" src="../_images/bpform_14.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Поток «Начало процесса»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_3.png"><img alt="../_images/bpflow_3.png" class="align-center" src="../_images/bpflow_3.png" style="width: 400px;" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id23">
+<h4><a class="toc-backref" href="#id58">Смена статуса</a><a class="headerlink" href="#id23" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>4 на схеме</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn35.png"><img alt="../_images/bmpn35.png" class="align-center" src="../_images/bmpn35.png" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn35_1.png"><img alt="../_images/bmpn35_1.png" class="align-center" src="../_images/bmpn35_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Указать <strong>Имя</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bmpn36.png"><img alt="../_images/bmpn36.png" class="align-center" src="../_images/bmpn36.png" style="width: 300px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>Выбрать <strong>статус</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bmpn37.png"><img alt="../_images/bmpn37.png" class="align-center" src="../_images/bmpn37.png" style="width: 300px;" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_set_status.html#set-status"><span class="std std-ref">Подробно об установке статуса</span></a></p>
+</section>
+<section id="id24">
+<h4><a class="toc-backref" href="#id59">Уведомление</a><a class="headerlink" href="#id24" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>5 на схеме</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn11.png"><img alt="../_images/bmpn11.png" class="align-center" src="../_images/bmpn11.png" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn11_1.png"><img alt="../_images/bmpn11_1.png" class="align-center" src="../_images/bmpn11_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">Указать <strong>Имя</strong>,</div>
+<div class="line">выбрать <strong>Тип уведомления</strong></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bmpn12.png"><img alt="../_images/bmpn12.png" class="align-center" src="../_images/bmpn12.png" style="width: 300px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Выбрать шаблон,</div>
+<div class="line">или указать <strong>Заголовок</strong> и <strong>тело сообщения</strong></div>
+</div>
+</td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn13.png"><img alt="../_images/bmpn13.png" class="align-center" src="../_images/bmpn13.png" style="width: 300px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn14.png"><img alt="../_images/bmpn14.png" class="align-center" src="../_images/bmpn14.png" style="width: 300px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Получатели выбираются из списка ролей, заполненных в <a class="reference internal" href="#roles-offer"><span class="std std-ref">типе данных</span></a></p></td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn15.png"><img alt="../_images/bmpn15.png" class="align-center" src="../_images/bmpn15.png" style="width: 300px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn16.png"><img alt="../_images/bmpn16.png" class="align-center" src="../_images/bmpn16.png" style="width: 300px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id25">
+<h4><a class="toc-backref" href="#id60">Задача-сценарий</a><a class="headerlink" href="#id25" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>6 на схеме</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn17.png"><img alt="../_images/bmpn17.png" class="align-center" src="../_images/bmpn17.png" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn17_1.png"><img alt="../_images/bmpn17_1.png" class="align-center" src="../_images/bmpn17_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Указать <strong>Имя</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bmpn18.png"><img alt="../_images/bmpn18.png" class="align-center" src="../_images/bmpn18.png" style="width: 300px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>Указать <strong>скрипт</strong></p></td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn19.png"><img alt="../_images/bmpn19.png" class="align-center" src="../_images/bmpn19.png" style="width: 300px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Текст скипта:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">execution</span><span class="o">.</span><span class="n">removeVariable</span><span class="p">(</span><span class="s1">&#39;chiefApproveComment&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_script_task.html#script-task"><span class="std std-ref">Подробно о скриптах</span></a></p>
+</section>
+<section id="id26">
+<h4><a class="toc-backref" href="#id61">Пользовательская задача</a><a class="headerlink" href="#id26" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>7 на схеме</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn20.png"><img alt="../_images/bmpn20.png" class="align-center" src="../_images/bmpn20.png" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn20_1.png"><img alt="../_images/bmpn20_1.png" class="align-center" src="../_images/bmpn20_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Указать <strong>Имя</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bmpn21.png"><img alt="../_images/bmpn21.png" class="align-center" src="../_images/bmpn21.png" style="width: 300px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>Указать <strong>Реципиентов</strong> – исполнителей задачи, выбираются из списка ролей, заполненных <a class="reference internal" href="#roles-offer"><span class="std std-ref">типе данных</span></a></p></td>
+<td><a class="reference internal image-reference" href="../_images/bmpn22.png"><img alt="../_images/bmpn22.png" class="align-center" src="../_images/bmpn22.png" style="width: 300px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>Форма задачи</strong> определяет то, что будет отображено при назначении задачи пользователю.</div>
+<div class="line">Если какие-то задачи могут совпадать, то можно использовать одинаковую форму, но если различаются, то, соответственно, формы разные.</div>
+<div class="line">Можно создать форму заранее и выбрать ее из списка или создать непосредственно из списка выбора (см. ниже)</div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bmpn23.png"><img alt="../_images/bmpn23.png" class="align-center" src="../_images/bmpn23.png" style="width: 300px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Выставить <strong>приоритет задачи</strong>, указать <strong>результат задачи</strong> – идентификатор и название.</div>
+<div class="line">Здесь и далее - исходящие варианты для потока управления доступны к выбору, если в пользовательской задаче добавлены результаты задачи.</div>
+<div class="line">См. ниже <strong>(8)</strong> в таблице.</div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bmpn24.png"><img alt="../_images/bmpn24.png" class="align-center" src="../_images/bmpn24.png" style="width: 300px;" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Создание формы:</p>
+<p>Нажмите <strong>«Выбрать»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn25_1.png"><img alt="../_images/bmpn25_1.png" class="align-center" src="../_images/bmpn25_1.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Далеее <strong>«Создать - Создать форму»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn25.png"><img alt="../_images/bmpn25.png" class="align-center" src="../_images/bmpn25.png" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn26.png"><img alt="../_images/bmpn26.png" class="align-center" src="../_images/bmpn26.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Идентификатор формы</p></td>
+<td><p>offer-form-approve</p></td>
+</tr>
+<tr class="row-odd"><td><p>Название формы</p></td>
+<td><p>Offer Form Approve</p></td>
+</tr>
+<tr class="row-even"><td><p>Редактируемый тип данных</p></td>
+<td><p>Нет</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_26.png"><img alt="../_images/form_26.png" class="align-center" src="../_images/form_26.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Пример формы:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_27.png"><img alt="../_images/form_27.png" class="align-center" src="../_images/form_27.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Компоненты формы:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Имя свойства</p></th>
+<th class="head"><p>Наименование компонента</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>Колонки формы</p></td>
+<td><p>Columns Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Комментарий доп. согласующего</p></td>
+<td><p>addApproveComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Комментарий после доработки</p></td>
+<td><p>reworkComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Комментарий</p></td>
+<td><p>chiefApproveComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+</tbody>
+</table>
+<p>Кнопки формы:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Reject</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_28.png"><img alt="../_images/form_28.png" class="align-center" src="../_images/form_28.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>Rework</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_29.png"><img alt="../_images/form_29.png" class="align-center" src="../_images/form_29.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Submit</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_30.png"><img alt="../_images/form_30.png" class="align-center" src="../_images/form_30.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Для последующих элементов:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 15%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>8</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_31.png"><img alt="../_images/bpform_31.png" class="align-center" src="../_images/bpform_31.png" style="width: 100px;" /></a>
+</td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpform_32.png"><img alt="../_images/bpform_32.png" class="align-center" src="../_images/bpform_32.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Здесь и далее -  исходящие варианты для потока управления доступны к выбору, если в пользовательской задаче добавлены результаты задачи. См. выше описание элемента <strong>(7)</strong>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><strong>Поток «Вернуть на доработку»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_4.png"><img alt="../_images/bpflow_4.png" class="align-center" src="../_images/bpflow_4.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><strong>Поток «Отказ»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_5.png"><img alt="../_images/bpflow_5.png" class="align-center" src="../_images/bpflow_5.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><strong>Поток «Доп согласование»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_6.png"><img alt="../_images/bpflow_6.png" class="align-center" src="../_images/bpflow_6.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_33.png"><img alt="../_images/bpform_33.png" class="align-center" src="../_images/bpform_33.png" style="width: 100px;" /></a>
+</td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpform_34.png"><img alt="../_images/bpform_34.png" class="align-center" src="../_images/bpform_34.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Текст скрипта:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">offerAdditionalChief</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;offerAdditionalChief&#39;</span><span class="p">);</span>
+
+
+<span class="k">if</span><span class="p">(</span><span class="n">offerAdditionalChief</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">execution</span><span class="o">.</span><span class="n">setVariable</span><span class="p">(</span><span class="s1">&#39;additional&#39;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="n">execution</span><span class="o">.</span><span class="n">setVariable</span><span class="p">(</span><span class="s1">&#39;additional&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.html#user-task"><span class="std std-ref">Подробно о формах для бизнес-процессов</span></a></p>
+</section>
+</section>
+<section id="id27">
+<h3><a class="toc-backref" href="#id62">Создание элементов для Части (2) схемы бизнес-процесса</a><a class="headerlink" href="#id27" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/scheme_2.png"><img alt="../_images/scheme_2.png" class="align-center" src="../_images/scheme_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>И таблица, в которой отражены конечные настройки компонент бизнес-процесса (для визуальной сверки):</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 15%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_21.png"><img alt="../_images/bpform_21.png" class="align-center" src="../_images/bpform_21.png" style="width: 100px;" /></a>
+</td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpform_22.png"><img alt="../_images/bpform_22.png" class="align-center" src="../_images/bpform_22.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Текст скрипта:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">execution</span><span class="o">.</span><span class="n">removeVariable</span><span class="p">(</span><span class="s1">&#39;reworkComment&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_19.png"><img alt="../_images/bpform_19.png" class="align-center" src="../_images/bpform_19.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_20.png"><img alt="../_images/bpform_20.png" class="align-center" src="../_images/bpform_20.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_17.png"><img alt="../_images/bpform_17.png" class="align-center" src="../_images/bpform_17.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_18.png"><img alt="../_images/bpform_18.png" class="align-center" src="../_images/bpform_18.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_15.png"><img alt="../_images/bpform_15.png" class="align-center" src="../_images/bpform_15.png" style="width: 100px;" /></a>
+</td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpform_16.png"><img alt="../_images/bpform_16.png" class="align-center" src="../_images/bpform_16.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>Для всех подобных задач в «Форма задачи» выбрать ранее созданную форму задачи</strong></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Информация по форме <strong>Доработка (Offer Form Rework)</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Идентификатор формы</p></td>
+<td><p>offer-form-rework</p></td>
+</tr>
+<tr class="row-odd"><td><p>Название формы</p></td>
+<td><p>Offer Form Rework</p></td>
+</tr>
+<tr class="row-even"><td><p>Редактируемый тип данных</p></td>
+<td><p>Нет</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_23.png"><img alt="../_images/form_23.png" class="align-center" src="../_images/form_23.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Пример формы:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_24.png"><img alt="../_images/form_24.png" class="align-center" src="../_images/form_24.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Компоненты формы:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Имя свойства</p></th>
+<th class="head"><p>Наименование компонента</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>Колонки формы</p></td>
+<td><p>Columns Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Комментарий руководителя</p></td>
+<td><p>chiefApproveComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Комментарий Директора</p></td>
+<td><p>dirApproveComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Комментарий</p></td>
+<td><p>reworkComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+</tbody>
+</table>
+<p>Кнопка Done:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_25.png"><img alt="../_images/form_25.png" class="align-center" src="../_images/form_25.png" style="width: 400px;" /></a>
+</div></blockquote>
+</section>
+<section id="id28">
+<h3><a class="toc-backref" href="#id63">Создание элементов для Части (3) схемы бизнес-процесса</a><a class="headerlink" href="#id28" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/scheme_3.png"><img alt="../_images/scheme_3.png" class="align-center" src="../_images/scheme_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>И таблица, в которой отражены конечные настройки компонент бизнес-процесса (для визуальной сверки):</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 15%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_103.png"><img alt="../_images/bpform_103.png" class="align-center" src="../_images/bpform_103.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_104.png"><img alt="../_images/bpform_104.png" class="align-center" src="../_images/bpform_104.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><strong>Поток «Да»</strong></p></td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpflow_7.png"><img alt="../_images/bpflow_7.png" class="align-center" src="../_images/bpflow_7.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Текст скрипта:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">offerAdditionalChief</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">getVariable</span><span class="p">(</span><span class="s1">&#39;additional&#39;</span><span class="p">);</span>
+<span class="n">value</span><span class="o">=</span> <span class="n">offerAdditionalChief</span><span class="o">===</span><span class="n">true</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><strong>Поток «Нет»</strong></p></td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpflow_8.png"><img alt="../_images/bpflow_8.png" class="align-center" src="../_images/bpflow_8.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Текст скрипта:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">offerAdditionalChief</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">getVariable</span><span class="p">(</span><span class="s1">&#39;additional&#39;</span><span class="p">);</span>
+<span class="n">value</span><span class="o">=</span> <span class="n">offerAdditionalChief</span><span class="o">===</span><span class="n">false</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_43.png"><img alt="../_images/bpform_43.png" class="align-center" src="../_images/bpform_43.png" style="width: 100px;" /></a>
+</td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpform_44.png"><img alt="../_images/bpform_44.png" class="align-center" src="../_images/bpform_44.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Текст скрипта:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>execution.removeVariable(‘addApproveComment’);
+execution.removeVariable(&#39;reworkComment&#39;);
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_41.png"><img alt="../_images/bpform_41.png" class="align-center" src="../_images/bpform_41.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_42.png"><img alt="../_images/bpform_42.png" class="align-center" src="../_images/bpform_42.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_39.png"><img alt="../_images/bpform_39.png" class="align-center" src="../_images/bpform_39.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_40.png"><img alt="../_images/bpform_40.png" class="align-center" src="../_images/bpform_40.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_37.png"><img alt="../_images/bpform_37.png" class="align-center" src="../_images/bpform_37.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_38.png"><img alt="../_images/bpform_38.png" class="align-center" src="../_images/bpform_38.png" style="width: 400px;" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Информация по форме <strong>Согласование доп. согласующими (Offer Form Add Approve)</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Идентификатор формы</p></td>
+<td><p>offer-form-add-approve</p></td>
+</tr>
+<tr class="row-odd"><td><p>Название формы</p></td>
+<td><p>Offer Form Add Approve</p></td>
+</tr>
+<tr class="row-even"><td><p>Редактируемый тип данных</p></td>
+<td><p>Нет</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_31.png"><img alt="../_images/form_31.png" class="align-center" src="../_images/form_31.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Пример формы:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_32.png"><img alt="../_images/form_32.png" class="align-center" src="../_images/form_32.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Компоненты формы:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Имя свойства</p></th>
+<th class="head"><p>Наименование компонента</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>Колонки формы</p></td>
+<td><p>Columns Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Комментарий руководителя</p></td>
+<td><p>chiefApproveComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Комментарий</p></td>
+<td><p>addApproveComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+</tbody>
+</table>
+<p>Кнопки формы:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Reject</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_33.png"><img alt="../_images/form_33.png" class="align-center" src="../_images/form_33.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>Submit</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_34.png"><img alt="../_images/form_34.png" class="align-center" src="../_images/form_34.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 15%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>6</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_35.png"><img alt="../_images/bpform_35.png" class="align-center" src="../_images/bpform_35.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_36.png"><img alt="../_images/bpform_36.png" class="align-center" src="../_images/bpform_36.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><strong>Поток «Отказано»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_9.png"><img alt="../_images/bpflow_9.png" class="align-center" src="../_images/bpflow_9.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><strong>Поток «Согласовано»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_10.png"><img alt="../_images/bpflow_10.png" class="align-center" src="../_images/bpflow_10.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_27.png"><img alt="../_images/bpform_27.png" class="align-center" src="../_images/bpform_27.png" style="width: 100px;" /></a>
+</td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpform_28.png"><img alt="../_images/bpform_28.png" class="align-center" src="../_images/bpform_28.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Текст скрипта:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">execution</span><span class="o">.</span><span class="n">removeVariable</span><span class="p">(</span><span class="s1">&#39;chiefApproveComment&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id29">
+<h3><a class="toc-backref" href="#id64">Создание элементов для Части (4) схемы бизнес-процесса</a><a class="headerlink" href="#id29" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/scheme_4.png"><img alt="../_images/scheme_4.png" class="align-center" src="../_images/scheme_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>И таблица, в которой отражены конечные настройки компонент бизнес-процесса (для визуальной сверки):</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_46.png"><img alt="../_images/bpform_46.png" class="align-center" src="../_images/bpform_46.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_47.png"><img alt="../_images/bpform_47.png" class="align-center" src="../_images/bpform_47.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><strong>Поток «Согласование директором»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_11.png"><img alt="../_images/bpflow_11.png" class="align-center" src="../_images/bpflow_11.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_48.png"><img alt="../_images/bpform_48.png" class="align-center" src="../_images/bpform_48.png" style="width: 100px;" /></a>
+</td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpform_49.png"><img alt="../_images/bpform_49.png" class="align-center" src="../_images/bpform_49.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Текст скрипта:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">execution</span><span class="o">.</span><span class="n">removeVariable</span><span class="p">(</span><span class="s1">&#39;dirApproveComment&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_50.png"><img alt="../_images/bpform_50.png" class="align-center" src="../_images/bpform_50.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_51.png"><img alt="../_images/bpform_51.png" class="align-center" src="../_images/bpform_51.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_52.png"><img alt="../_images/bpform_52.png" class="align-center" src="../_images/bpform_52.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_53.png"><img alt="../_images/bpform_53.png" class="align-center" src="../_images/bpform_53.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_54.png"><img alt="../_images/bpform_54.png" class="align-center" src="../_images/bpform_54.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_55.png"><img alt="../_images/bpform_55.png" class="align-center" src="../_images/bpform_55.png" style="width: 400px;" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Информация по форме <strong>Согласование директором (Offer Director Form Approve)</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Идентификатор формы</p></td>
+<td><p>offer-director-form-approve</p></td>
+</tr>
+<tr class="row-odd"><td><p>Название формы</p></td>
+<td><p>Offer Director Form Approve</p></td>
+</tr>
+<tr class="row-even"><td><p>Редактируемый тип данных</p></td>
+<td><p>Нет</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_35.png"><img alt="../_images/form_35.png" class="align-center" src="../_images/form_35.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Пример формы:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_36.png"><img alt="../_images/form_36.png" class="align-center" src="../_images/form_36.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Компоненты формы:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Имя свойства</p></th>
+<th class="head"><p>Наименование компонента</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>Колонки формы</p></td>
+<td><p>Columns Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Комментарий руководителя</p></td>
+<td><p>chiefApproveComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Комментарий доп. согласующего</p></td>
+<td><p>addApproveComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Комментарий после доработки</p></td>
+<td><p>reworkComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Комментарий</p></td>
+<td><p>addApproveComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+</tbody>
+</table>
+<p>Кнопки формы:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Reject</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_37.png"><img alt="../_images/form_37.png" class="align-center" src="../_images/form_37.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>Rework</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_38.png"><img alt="../_images/form_38.png" class="align-center" src="../_images/form_38.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Submit</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_39.png"><img alt="../_images/form_39.png" class="align-center" src="../_images/form_39.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>6</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_56.png"><img alt="../_images/bpform_56.png" class="align-center" src="../_images/bpform_56.png" style="width: 200px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_57.png"><img alt="../_images/bpform_57.png" class="align-center" src="../_images/bpform_57.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><strong>Поток «Вернуть на доработку»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_12.png"><img alt="../_images/bpflow_12.png" class="align-center" src="../_images/bpflow_12.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><strong>Поток «Отказ»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_13.png"><img alt="../_images/bpflow_13.png" class="align-center" src="../_images/bpflow_13.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><strong>Поток «Согласовано»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_14.png"><img alt="../_images/bpflow_14.png" class="align-center" src="../_images/bpflow_14.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_64.png"><img alt="../_images/bpform_64.png" class="align-center" src="../_images/bpform_64.png" style="width: 100px;" /></a>
+</td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpform_65.png"><img alt="../_images/bpform_65.png" class="align-center" src="../_images/bpform_65.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Текст скрипта:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">execution</span><span class="o">.</span><span class="n">removeVariable</span><span class="p">(</span><span class="s1">&#39;reworkComment&#39;</span><span class="p">);</span>
+<span class="n">execution</span><span class="o">.</span><span class="n">removeVariable</span><span class="p">(</span><span class="s1">&#39;addApproveComment&#39;</span><span class="p">);</span>
+<span class="n">execution</span><span class="o">.</span><span class="n">removeVariable</span><span class="p">(</span><span class="s1">&#39;chiefApproveComment&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_62.png"><img alt="../_images/bpform_62.png" class="align-center" src="../_images/bpform_62.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_63.png"><img alt="../_images/bpform_63.png" class="align-center" src="../_images/bpform_63.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_60.png"><img alt="../_images/bpform_60.png" class="align-center" src="../_images/bpform_60.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_61.png"><img alt="../_images/bpform_61.png" class="align-center" src="../_images/bpform_61.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_58.png"><img alt="../_images/bpform_58.png" class="align-center" src="../_images/bpform_58.png" style="width: 100px;" /></a>
+</td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpform_59.png"><img alt="../_images/bpform_59.png" class="align-center" src="../_images/bpform_59.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Для всех подобных задач в <strong>«Форма задачи»</strong> выбрать ранее созданную форму задачи.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id30">
+<h3><a class="toc-backref" href="#id65">Создание элементов для Части (5) схемы бизнес-процесса</a><a class="headerlink" href="#id30" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/scheme_5.png"><img alt="../_images/scheme_5.png" class="align-center" src="../_images/scheme_5.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>И таблица, в которой отражены конечные настройки компонент бизнес-процесса (для визуальной сверки):</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_105.png"><img alt="../_images/bpform_105.png" class="align-center" src="../_images/bpform_105.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_106.png"><img alt="../_images/bpform_106.png" class="align-center" src="../_images/bpform_106.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><strong>Поток «Отказ»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_107.png"><img alt="../_images/bpform_107.png" class="align-center" src="../_images/bpform_107.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_67.png"><img alt="../_images/bpform_67.png" class="align-center" src="../_images/bpform_67.png" style="width: 100px;" /></a>
+</td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpform_68.png"><img alt="../_images/bpform_68.png" class="align-center" src="../_images/bpform_68.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Текст скрипта:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">execution</span><span class="o">.</span><span class="n">setVariable</span><span class="p">(</span><span class="s1">&#39;isRejected&#39;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_69.png"><img alt="../_images/bpform_69.png" class="align-center" src="../_images/bpform_69.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_70.png"><img alt="../_images/bpform_70.png" class="align-center" src="../_images/bpform_70.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><strong>Поток «Отказ 1»</strong></p></td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpflow_15.png"><img alt="../_images/bpflow_15.png" class="align-center" src="../_images/bpflow_15.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Текст скрипта:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">getVariable</span><span class="p">(</span><span class="s1">&#39;isRejected&#39;</span><span class="p">)</span><span class="o">!=</span><span class="n">true</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><strong>Поток «Отказ 2»</strong></p></td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpflow_16.png"><img alt="../_images/bpflow_16.png" class="align-center" src="../_images/bpflow_16.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Текст скрипта:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">getVariable</span><span class="p">(</span><span class="s1">&#39;isRejected&#39;</span><span class="p">)</span><span class="o">==</span><span class="n">true</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p>4, 5</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_71.png"><img alt="../_images/bpform_71.png" class="align-center" src="../_images/bpform_71.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_72.png"><img alt="../_images/bpform_72.png" class="align-center" src="../_images/bpform_72.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>6, 7</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_73.png"><img alt="../_images/bpform_73.png" class="align-center" src="../_images/bpform_73.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_74.png"><img alt="../_images/bpform_74.png" class="align-center" src="../_images/bpform_74.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_75.png"><img alt="../_images/bpform_75.png" class="align-center" src="../_images/bpform_75.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_76.png"><img alt="../_images/bpform_76.png" class="align-center" src="../_images/bpform_76.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><strong>Поток «Формирование ответа»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_17.png"><img alt="../_images/bpflow_17.png" class="align-center" src="../_images/bpflow_17.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_77.png"><img alt="../_images/bpform_77.png" class="align-center" src="../_images/bpform_77.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_78.png"><img alt="../_images/bpform_78.png" class="align-center" src="../_images/bpform_78.png" style="width: 400px;" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Информация по форме <strong>Формирование ответа кандидату (Offer Form Feedback)</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Идентификатор формы</p></td>
+<td><p>offer-form-feedback</p></td>
+</tr>
+<tr class="row-odd"><td><p>Название формы</p></td>
+<td><p>Offer Form Feedback</p></td>
+</tr>
+<tr class="row-even"><td><p>Редактируемый тип данных</p></td>
+<td><p>нет</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_40.png"><img alt="../_images/form_40.png" class="align-center" src="../_images/form_40.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Пример формы:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_41.png"><img alt="../_images/form_41.png" class="align-center" src="../_images/form_41.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Компоненты формы:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Имя свойства</p></th>
+<th class="head"><p>Наименование компонента</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>Колонки формы</p></td>
+<td><p>Columns Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Комментарий директора</p></td>
+<td><p>dirApproveComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Comment</p></td>
+<td><p>offerTaskComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+</tbody>
+</table>
+<p>Кнопки формы:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Send Reject</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_42.png"><img alt="../_images/form_42.png" class="align-center" src="../_images/form_42.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>Send Offer</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_43.png"><img alt="../_images/form_43.png" class="align-center" src="../_images/form_43.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>10</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_79.png"><img alt="../_images/bpform_79.png" class="align-center" src="../_images/bpform_79.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_80.png"><img alt="../_images/bpform_80.png" class="align-center" src="../_images/bpform_80.png" style="width: 400px;" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id31">
+<h3><a class="toc-backref" href="#id66">Создание элементов для Части (6) схемы бизнес-процесса</a><a class="headerlink" href="#id31" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/scheme_6.png"><img alt="../_images/scheme_6.png" class="align-center" src="../_images/scheme_6.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>И таблица, в которой отражены конечные настройки компонент бизнес-процесса (для визуальной сверки):</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_82.png"><img alt="../_images/bpform_82.png" class="align-center" src="../_images/bpform_82.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_83.png"><img alt="../_images/bpform_83.png" class="align-center" src="../_images/bpform_83.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><strong>Поток «Отправлен оффер»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_18.png"><img alt="../_images/bpflow_18.png" class="align-center" src="../_images/bpflow_18.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><strong>Поток «Отправлен отказ»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_19.png"><img alt="../_images/bpflow_19.png" class="align-center" src="../_images/bpflow_19.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_99.png"><img alt="../_images/bpform_99.png" class="align-center" src="../_images/bpform_99.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_100.png"><img alt="../_images/bpform_100.png" class="align-center" src="../_images/bpform_100.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_84.png"><img alt="../_images/bpform_84.png" class="align-center" src="../_images/bpform_84.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_85.png"><img alt="../_images/bpform_85.png" class="align-center" src="../_images/bpform_85.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_88.png"><img alt="../_images/bpform_88.png" class="align-center" src="../_images/bpform_88.png" style="width: 100px;" /></a>
+</td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../_images/bpform_89.png"><img alt="../_images/bpform_89.png" class="align-center" src="../_images/bpform_89.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Текст скрипта:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">execution</span><span class="o">.</span><span class="n">removeVariable</span><span class="p">(</span><span class="s1">&#39;offerTaskComment&#39;</span><span class="p">);</span>
+<span class="n">execution</span><span class="o">.</span><span class="n">removeVariable</span><span class="p">(</span><span class="s1">&#39;dirApproveComment&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_86.png"><img alt="../_images/bpform_86.png" class="align-center" src="../_images/bpform_86.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_87.png"><img alt="../_images/bpform_87.png" class="align-center" src="../_images/bpform_87.png" style="width: 400px;" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Информация по форме <strong>Ожидание ответа кандидата (Offer Form Feedback From Candidate)</strong>:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Идентификатор формы</p></td>
+<td><p>offer-form-feedback-from-candidate</p></td>
+</tr>
+<tr class="row-odd"><td><p>Название формы</p></td>
+<td><p>Offer Form Feedback From Candidate</p></td>
+</tr>
+<tr class="row-even"><td><p>Редактируемый тип данных</p></td>
+<td><p>нет</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ниже приведено изображение конечной настройки (для визуальной сверки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_44.png"><img alt="../_images/form_44.png" class="align-center" src="../_images/form_44.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Пример формы:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_45.png"><img alt="../_images/form_45.png" class="align-center" src="../_images/form_45.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Компоненты формы:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название поля</p></th>
+<th class="head"><p>Имя свойства</p></th>
+<th class="head"><p>Наименование компонента</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>Колонки формы</p></td>
+<td><p>Columns Component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Комментарий</p></td>
+<td><p>offerTaskComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+<tr class="row-even"><td><p>Комментарий по результатам</p></td>
+<td><p>_ECM_offerTaskComment</p></td>
+<td><p>Text Area Component</p></td>
+</tr>
+</tbody>
+</table>
+<p>Кнопки формы:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Reject Offer</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_46.png"><img alt="../_images/form_46.png" class="align-center" src="../_images/form_46.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>Accept Offer</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_47.png"><img alt="../_images/form_47.png" class="align-center" src="../_images/form_47.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>6</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_90.png"><img alt="../_images/bpform_90.png" class="align-center" src="../_images/bpform_90.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_91.png"><img alt="../_images/bpform_91.png" class="align-center" src="../_images/bpform_91.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><strong>Поток «Оффер принят»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_20.png"><img alt="../_images/bpflow_20.png" class="align-center" src="../_images/bpflow_20.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><strong>Поток «Оффер не принят»</strong></p></td>
+<td><a class="reference internal image-reference" href="../_images/bpflow_21.png"><img alt="../_images/bpflow_21.png" class="align-center" src="../_images/bpflow_21.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_92.png"><img alt="../_images/bpform_92.png" class="align-center" src="../_images/bpform_92.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_93.png"><img alt="../_images/bpform_93.png" class="align-center" src="../_images/bpform_93.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_97.png"><img alt="../_images/bpform_97.png" class="align-center" src="../_images/bpform_97.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_98.png"><img alt="../_images/bpform_98.png" class="align-center" src="../_images/bpform_98.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_94.png"><img alt="../_images/bpform_94.png" class="align-center" src="../_images/bpform_94.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_96.png"><img alt="../_images/bpform_96.png" class="align-center" src="../_images/bpform_96.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_95.png"><img alt="../_images/bpform_95.png" class="align-center" src="../_images/bpform_95.png" style="width: 100px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_108.png"><img alt="../_images/bpform_108.png" class="align-center" src="../_images/bpform_108.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>11, 12, 13</p></td>
+<td><a class="reference internal image-reference" href="../_images/bpform_101.png"><img alt="../_images/bpform_101.png" class="align-center" src="../_images/bpform_101.png" style="width: 70px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../_images/bpform_102.png"><img alt="../_images/bpform_102.png" class="align-center" src="../_images/bpform_102.png" style="width: 400px;" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id32">
+<h3><a class="toc-backref" href="#id67">Сохранение и публикация</a><a class="headerlink" href="#id32" title="Ссылка на этот заголовок"></a></h3>
+<p>Созданный процесс сохраняем и публикуем:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn27.png"><img alt="../_images/bmpn27.png" class="align-center" src="../_images/bmpn27.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+</section>
+<section id="menu-add">
+<span id="id33"></span><h2><a class="toc-backref" href="#id68">Добавление журнала в главное меню</a><a class="headerlink" href="#menu-add" title="Ссылка на этот заголовок"></a></h2>
+<p>Для наполнения созданных журналов данными необходимо добавить их в главное меню:</p>
+<ol class="arabic simple">
+<li><p>Перейти в настройку меню, нажав на шестеренку, потом кнопку <strong>«Настроить меню»</strong> справа сверху.</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn28.png"><img alt="../_images/bmpn28.png" class="align-center" src="../_images/bmpn28.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Выбрать вкладку <strong>«Настройки выбранной конфигурации»</strong>, выбрать раздел , в котором будет находиться журнал. Навести на раздел и нажать кнопку <strong>«Добавить»</strong>, выбрать <strong>«Журнал»</strong>:</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/journal_9.png"><img alt="../_images/journal_9.png" class="align-center" src="../_images/journal_9.png" style="width: 600px;" /></a>
+<p>Поместим созданные справочники в раздел «Справочники», а кейс «Согласование оффера» в отдельный раздел.</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Выбрать журнал:</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/journal_10.png"><img alt="../_images/journal_10.png" class="align-center" src="../_images/journal_10.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Выбранный журнал будет отражен в настройках меню:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/journal_11.png"><img alt="../_images/journal_11.png" class="align-center" src="../_images/journal_11.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Аналогично добавим кейс:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/journal_12.png"><img alt="../_images/journal_12.png" class="align-center" src="../_images/journal_12.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p>Добавленный пункт меню:</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/journal_13.png"><img alt="../_images/journal_13.png" class="align-center" src="../_images/journal_13.png" style="width: 250px;" /></a>
+</div></blockquote>
+</section>
+<section id="id34">
+<h2><a class="toc-backref" href="#id69">Просмотр журнала и создание в нем элемента</a><a class="headerlink" href="#id34" title="Ссылка на этот заголовок"></a></h2>
+<p>В главном меню выбрать журнал. В журнале нажать <strong>+</strong>, откроется форма для заполнения:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/journal_14.png"><img alt="../_images/journal_14.png" class="align-center" src="../_images/journal_14.png" style="width: 800px;" /></a>
+</div></blockquote>
+</section>
+<section id="id35">
+<h2><a class="toc-backref" href="#id70">Настройка меню «Создать»</a><a class="headerlink" href="#id35" title="Ссылка на этот заголовок"></a></h2>
+<p>Для добавления процесса в меню <strong>«Создать»</strong>:</p>
+<ol class="arabic simple">
+<li><p>Перейти в настройку меню, нажав на шестеренку, потом кнопку <strong>«Настроить меню»</strong> справа сверху.</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn28.png"><img alt="../_images/bmpn28.png" class="align-center" src="../_images/bmpn28.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Выбрать вкладку <strong>«Меню «Создать»</strong>, выбрать элемент меню, в котором будет находиться процесс. Навести на элемент и нажать кнопку <strong>«Добавить»</strong>, выбрать <strong>«Добавить ссылку на создание кейса»</strong>:</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn29.png"><img alt="../_images/bmpn29.png" class="align-center" src="../_images/bmpn29.png" style="width: 600px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../_images/bmpn30.png"><img alt="../_images/bmpn30.png" class="align-center" src="../_images/bmpn30.png" style="width: 400px;" /></a>
+</div></blockquote>
+<ol class="arabic" start="3">
+<li><p>Выбрать тип данных:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn31.png"><img alt="../_images/bmpn31.png" class="align-center" src="../_images/bmpn31.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+</ol>
+<p><strong>Название</strong> будет указано по умолчанию из типа данных, и может быть изменено. Нажать <strong>«Сохранить»</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn32.png"><img alt="../_images/bmpn32.png" class="align-center" src="../_images/bmpn32.png" style="width: 400px;" /></a>
+</div></blockquote>
+<ol class="arabic" start="4">
+<li><p>Добавленный пункт меню:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn33.png"><img alt="../_images/bmpn33.png" class="align-center" src="../_images/bmpn33.png" style="width: 250px;" /></a>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="id36">
+<h2><a class="toc-backref" href="#id71">Запуск кейса</a><a class="headerlink" href="#id36" title="Ссылка на этот заголовок"></a></h2>
+<p>В меню <strong>«Создать»</strong> выбрать <strong>«Согласование оффера»</strong>, откроется форма для заполнения:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bmpn34.png"><img alt="../_images/bmpn34.png" class="align-center" src="../_images/bmpn34.png" style="width: 500px;" /></a>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="equipment_request.html" class="btn btn-neutral float-left" title="Процесс запроса на закупку оборудования" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="application.html" class="btn btn-neutral float-right" title="Упаковка приложения" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

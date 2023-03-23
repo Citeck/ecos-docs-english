@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Патчи ECOS &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html" />
+    <link rel="prev" title="Базовая архитектура" href="base.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="base.html">Базовая архитектура</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Патчи ECOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Модель</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Типы патчей</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Дата патча</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Использование в коде</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stateful">Stateful патчи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Архитектура</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a> &raquo;</li>
+      <li>Патчи ECOS</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/architecture/patches.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ecos">
+<h1><a class="toc-backref" href="#id7">Патчи ECOS</a><a class="headerlink" href="#ecos" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ecos" id="id7">Патчи ECOS</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id8">Модель</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id9">Типы патчей</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id10">Дата патча</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id11">Использование в коде</a></p></li>
+<li><p><a class="reference internal" href="#stateful" id="id12">Stateful патчи</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id13">Архитектура</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Патч ECOS</strong> - это некоторая работа, которую нужно выполнить один раз после запуска системы.</p>
+<p>Патчи могут быть использованы для автоматической или ручной миграции.</p>
+<p>Патчи ECOS - это артефакты с типом <strong>app/patch</strong>, которые подчиняются тем же правилам деплоя, что и остальные артефакты.</p>
+<p>Уникальность патча в пределах системы определяется по <strong>targetApp + id</strong></p>
+<section id="id2">
+<h2><a class="toc-backref" href="#id8">Модель</a><a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">идентификатор</span> <span class="n">патча</span>
+<span class="n">name</span><span class="p">:</span> <span class="n">MLText</span> <span class="o">//</span> <span class="n">имя</span> <span class="n">патча</span>
+<span class="n">targetApp</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">целевое</span> <span class="n">приложение</span> <span class="n">где</span> <span class="n">патч</span> <span class="n">будет</span> <span class="n">выполнен</span><span class="o">.</span> <span class="n">По</span> <span class="n">умолчанию</span> <span class="o">-</span> <span class="n">текущее</span> <span class="n">приложение</span><span class="o">.</span>
+<span class="n">date</span><span class="p">:</span> <span class="n">Instant</span> <span class="o">//</span> <span class="n">дата</span> <span class="n">патча</span><span class="o">.</span> <span class="n">Подробнее</span> <span class="n">ниже</span><span class="o">.</span>
+<span class="n">manual</span><span class="p">:</span> <span class="n">Boolean</span> <span class="o">//</span> <span class="n">ручной</span> <span class="n">запуск</span> <span class="n">патча</span><span class="o">.</span> <span class="n">Если</span> <span class="n">флаг</span> <span class="n">равен</span> <span class="n">true</span><span class="p">,</span> <span class="n">то</span> <span class="n">патч</span> <span class="n">не</span> <span class="n">будет</span> <span class="n">выполнен</span> <span class="n">автоматически</span><span class="o">.</span>
+<span class="n">dependsOn</span><span class="p">:</span> <span class="n">String</span><span class="p">[]</span> <span class="o">//</span> <span class="n">зависимость</span> <span class="n">от</span> <span class="n">других</span> <span class="n">патчей</span>
+<span class="nb">type</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">тип</span> <span class="n">патча</span>
+<span class="n">config</span><span class="p">:</span> <span class="n">ObjectData</span> <span class="o">//</span> <span class="n">конфигурация</span> <span class="n">патча</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2><a class="toc-backref" href="#id9">Типы патчей</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 28%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Тип</p></th>
+<th class="head"><p>Конфигурация</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>bean</strong></p></td>
+<td><p><strong>beanId: String</strong> - идентификатор бина для исполнения</p></td>
+<td><div class="line-block">
+<div class="line">Запустить бин в контексте приложения.</div>
+<div class="line">Поддерживаются следующие интерфейсы:</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p>Runnable</p></li>
+<li><p>Function0&lt;*&gt;</p></li>
+<li><p>Callable&lt;*&gt;</p></li>
+<li><p>StatefulEcosPatch&lt;*&gt;</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>delete</strong></p></td>
+<td><p><strong>records: RecordRef[]</strong></p></td>
+<td><p>Удалить указанные записи</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>mutate</strong></p></td>
+<td><div class="line-block">
+<div class="line"><strong>records: RecordAtts[]</strong></div>
+<div class="line"><strong>record: RecordAtts</strong></div>
+</div>
+<blockquote>
+<div><p>где RecordAtts:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>id: String</p></li>
+<li><p>attributes: Map&lt;String, Any?&gt;</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line">Произвести мутацию указанных записей;</div>
+<div class="line">Если в конфигурации указаны records, то используются они и поле <strong>record</strong> игнорируется;</div>
+<div class="line">Если в конфигурации не указаны records, то используется record.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id10">Дата патча</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Дата патча</strong> - это ISO8601 ZULU значение даты и времени (напр. 2022-01-01T00:00:00Z). Это время заполняется при создании патча вручную текущей датой. Точное соответствие времени не требуется, но желательно чтобы дата указывалась хотя бы с точностью до дней. Дата патча используется для нескольких вещей:</p>
+<ol class="arabic">
+<li><p>Для сортировки патчей. Патчи с меньшим временем будут исполняться раньше. Эта гарантия действует только для патчей в пределах одного приложения. Т.е. тогда когда мы описываем патчи в приложении, которые будут исполняться в рамках того же приложения. Для строгой зависимости нужно использовать поле dependsOn.</p></li>
+<li><p>Для возможности управления исполнением патча. Решение о исполнении патча принимается на основе старого и нового значений даты:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Если старая_дата отсутствует (новый патч), то патч исполнится;</p></li>
+<li><p>Если старая_дата &gt;= новая_дата, то патч считается выполненным и не исполнится;</p></li>
+<li><p>Если старая_дата &lt; новая_дата, то патч считается обновленным и ставится в очередь на исполнение;</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+<p>Таким образом, если мы хотим, чтобы уже сработавший патч перевыполнился при следующем обновлении, то мы просто увеличиваем время в date.</p>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id11">Использование в коде</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>Для описания патчей можно использовать аннотацию <strong>&#64;EcosPatch</strong></p>
+<p>Для указания зависимостей можно использовать аннотацию <strong>&#64;EcosPatchDependsOn</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Component</span>
+<span class="nd">@EcosPatchDependsOn</span><span class="p">(</span><span class="s2">&quot;other-patch&quot;</span><span class="p">)</span>
+<span class="nd">@EcosPatch</span><span class="p">(</span><span class="s2">&quot;test-patch&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-01-01T00:00:00Z&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">TestComponent</span> <span class="p">:</span> <span class="n">Callable</span><span class="o">&lt;</span><span class="n">Any</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="n">override</span> <span class="n">fun</span> <span class="n">call</span><span class="p">():</span> <span class="n">Any</span> <span class="p">{</span>
+        <span class="n">println</span><span class="p">(</span><span class="s2">&quot;Patch executed&quot;</span><span class="p">)</span>
+        <span class="o">//</span> <span class="n">Результат</span> <span class="n">будет</span> <span class="n">записан</span> <span class="n">в</span> <span class="n">БД</span> <span class="n">ecos</span><span class="o">-</span><span class="n">apps</span><span class="p">,</span> <span class="n">чтобы</span> <span class="n">его</span> <span class="n">можно</span> <span class="n">было</span> <span class="n">потом</span> <span class="n">посмотреть</span><span class="o">.</span>
+        <span class="o">//</span> <span class="n">Из</span> <span class="n">требований</span> <span class="n">к</span> <span class="n">результату</span> <span class="o">-</span> <span class="n">только</span> <span class="n">возможность</span> <span class="n">конвертации</span> <span class="n">через</span> <span class="n">Json</span><span class="o">.</span><span class="n">mapper</span><span class="o">.</span><span class="n">toString</span> <span class="n">в</span> <span class="n">json</span> <span class="n">строку</span><span class="o">.</span>
+        <span class="k">return</span> <span class="s2">&quot;custom-result&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="stateful">
+<h2><a class="toc-backref" href="#id12">Stateful патчи</a><a class="headerlink" href="#stateful" title="Ссылка на этот заголовок"></a></h2>
+<p>Для выполнения некоторой объемной работы можно использовать Stateful патчи (патчи с состоянием).</p>
+<p>Их суть заключается в том, что при выполнении патча мы не делаем всю работу сразу, а выполняем некоторую часть работы, после чего возвращаем промежуточное состояние процесса.</p>
+<p>Для реализации Stateful патча нужно реализовать интерфейс <strong>StatefulEcosPatch&lt;Config&gt;</strong>,</p>
+<blockquote>
+<div><p>где <strong>Config</strong> - это произвольный тип, который представляет состояние выполнения.</p>
+</div></blockquote>
+<p>Важно, чтобы инстанс этого класса можно было создать из пустого объекта ({}) т.к. это начальное состояние для патча.</p>
+<p>Пример в коде:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@EcosPatch</span><span class="p">(</span><span class="s2">&quot;stateful-patch&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-01-01T00:00:00Z&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">TestWithState</span> <span class="p">:</span> <span class="n">StatefulEcosPatch</span><span class="o">&lt;</span><span class="n">ObjectData</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="n">override</span> <span class="n">fun</span> <span class="n">execute</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">ObjectData</span><span class="p">):</span> <span class="n">PatchExecutionState</span><span class="o">&lt;</span><span class="n">ObjectData</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="n">val</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;counter&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">val</span> <span class="n">completed</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">5</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span> <span class="p">{</span> <span class="s2">&quot;Execute stateful patch. Counter: $counter, Completed: $completed&quot;</span> <span class="p">}</span>
+        <span class="k">return</span> <span class="n">PatchExecutionState</span><span class="p">(</span>
+            <span class="n">ObjectData</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+                <span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;counter&quot;</span><span class="p">,</span> <span class="n">counter</span><span class="p">),</span>
+            <span class="n">completed</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2><a class="toc-backref" href="#id13">Архитектура</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/patches_1.png"><img alt="../_images/patches_1.png" class="align-center" src="../_images/patches_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Из приложения артефакты патчей попадают в <strong>ecos-apps</strong> по стандартному механизму деплоя артефактов и сохраняются в БД.</p>
+<p>Далее <strong>ecos-apps</strong> периодически опрашивает таблицу патчей на наличие тех, которые можно применить (т.е. <strong>targetApp</strong> доступен и статус патча позволяет его применить).</p>
+<p>Если патч для применения нашелся, то мы выполняем команду на выполнение патча и отправляем её в <strong>targetApp</strong>. Результат выполнения команды мы кладем в БД.</p>
+<p>Если при выполнении патча возникла ошибка, то мы сохраняем эту ошибку в БД и через некоторое время повторяем попытку применить патч.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="base.html" class="btn btn-neutral float-left" title="Базовая архитектура" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

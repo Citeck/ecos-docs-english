@@ -1,0 +1,585 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Конфигурация журналов &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+    <link rel="next" title="Групповые действия" href="group_actions.html" />
+    <link rel="prev" title="Пользовательское описание" href="user_description.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../interface.html">Интерфейс</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../forms.html">Формы</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../journals.html">Журналы</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="journals.html">Общее описание (Overview)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="new_journal.html">Создание нового журнала</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_description.html">Пользовательское описание</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Конфигурация журналов</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group_actions.html">Групповые действия</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search_journal_config.html">Конфигурация журнала поиска</a></li>
+<li class="toctree-l4"><a class="reference internal" href="computed%20attributes.html">Вычисляемые атрибуты (computed attributes)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filter_by%20_text%20_assoc_column.html">Фильтр по тексту в колонке „assoc“. Настройки innerQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="searchAttribute.html">Параметр «2.3 Атрибут для поиска»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search_nested_attributes.html">Поиск по вложенным атрибутам ассоциации в журналах</a></li>
+<li class="toctree-l4"><a class="reference internal" href="formatters.html">Форматтеры</a></li>
+<li class="toctree-l4"><a class="reference internal" href="editors.html">Редакторы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kanban_board.html">Канбан-доска</a></li>
+<li class="toctree-l4"><a class="reference internal" href="document_library.html">Document Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../menu.html">Меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dashboards.html">Дашборды</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../widgets.html">Виджеты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../number_template.html">Шаблоны нумерации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../../interface.html">Интерфейс</a> &raquo;</li>
+          <li><a href="../journals.html">Журналы</a> &raquo;</li>
+      <li>Конфигурация журналов</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/settings_kb/interface/journals/configuration.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Конфигурация журналов<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>Конфигурация журналов хранится в <code class="docutils literal notranslate"><span class="pre">ecos-uiserv</span></code>. Список загруженных журналов можно посмотреть в системных журналах → <span class="guilabel">Журналы</span>.
+Варианты создания записи берутся из связанного типа.</p>
+<ol class="arabic simple">
+<li><p>Для добавления нового журнала нужно описать тип, для которого будет описан журнал <strong>Типы кейсов</strong>.</p></li>
+<li><p>Затем добавляем <code class="docutils literal notranslate"><span class="pre">yml</span></code> (предпочтительнее) или <code class="docutils literal notranslate"><span class="pre">json</span></code> конфигурацию в любом микросервисе по пути <strong>eapps/artifacts/ui/journal</strong>.</p></li>
+</ol>
+<p><strong>Примеры</strong></p>
+<p>Журнал с дашбордами:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">:</span> <span class="n">ecos</span><span class="o">-</span><span class="n">dashboards</span>
+<span class="n">name</span><span class="p">:</span> <span class="p">{</span> <span class="n">ru</span><span class="p">:</span> <span class="n">Дашборды</span><span class="p">,</span> <span class="n">en</span><span class="p">:</span> <span class="n">Dashboards</span> <span class="p">}</span>
+
+<span class="n">actions</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">uiserv</span><span class="o">/</span><span class="n">action</span><span class="nd">@ecos</span><span class="o">-</span><span class="n">module</span><span class="o">-</span><span class="n">download</span>
+  <span class="o">-</span> <span class="n">uiserv</span><span class="o">/</span><span class="n">action</span><span class="nd">@delete</span>
+  <span class="o">-</span> <span class="n">uiserv</span><span class="o">/</span><span class="n">action</span><span class="nd">@edit</span>
+
+<span class="n">columns</span><span class="p">:</span>
+
+  <span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">moduleId</span>
+    <span class="n">name</span><span class="p">:</span> <span class="p">{</span> <span class="n">ru</span><span class="p">:</span> <span class="n">Идентификатор</span><span class="p">,</span> <span class="n">en</span><span class="p">:</span> <span class="n">Id</span> <span class="p">}</span>
+
+  <span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">typeRef</span>
+    <span class="n">name</span><span class="p">:</span> <span class="p">{</span> <span class="n">ru</span><span class="p">:</span> <span class="n">Тип</span> <span class="n">ECOS</span><span class="p">,</span> <span class="n">en</span><span class="p">:</span> <span class="n">ECOS</span> <span class="n">Type</span> <span class="p">}</span>
+
+  <span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">authority</span>
+    <span class="n">name</span><span class="p">:</span> <span class="p">{</span> <span class="n">ru</span><span class="p">:</span> <span class="n">Человек</span> <span class="n">или</span> <span class="n">группа</span><span class="p">,</span> <span class="n">en</span><span class="p">:</span> <span class="n">User</span> <span class="ow">or</span> <span class="n">group</span> <span class="p">}</span>
+</pre></div>
+</div>
+<section id="id2">
+<h2>Использование свойств записи в качестве конфигурации<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>В журналах предусмотрена возможность использования атрибутов записи для конфигурации форматтеров и редакторов.
+Чтобы воспользоваться данной возможностью достаточно в конфигурации указать значение необходимого свойства с помощью ${…}</p>
+<p>Пример:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">formatter</span><span class="p">:</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">script</span>
+  <span class="n">config</span><span class="p">:</span>
+    <span class="n">fn</span><span class="p">:</span> <span class="s1">&#39;return &quot;Контрагент &quot; + vars.inn;&#39;</span>
+    <span class="nb">vars</span><span class="p">:</span>
+      <span class="o">//</span> <span class="n">атрибут</span> <span class="n">ecos</span><span class="p">:</span><span class="n">inn</span> <span class="n">будет</span> <span class="n">загружен</span> <span class="n">вместе</span> <span class="n">со</span> <span class="n">всеми</span> <span class="n">другими</span> <span class="n">в</span> <span class="n">запросе</span> <span class="n">поиска</span>
+      <span class="n">inn</span><span class="p">:</span> <span class="s2">&quot;${ecos:inn}&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>Использование свойств связанных сущностей для форматирования ячейки<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Если у нас есть некоторая ассоциация (множественная или нет не важно) и мы хотим отформатировать
+каждую связанную сущность используя её поля, то можно воспользоваться следующей конфигурацией колонки:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">some</span><span class="o">-</span><span class="n">assoc</span><span class="o">-</span><span class="n">attribute</span>
+  <span class="n">attSchema</span><span class="p">:</span> <span class="s1">&#39;{field0,field1}&#39;</span>
+  <span class="n">formatter</span><span class="p">:</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">script</span>
+    <span class="n">config</span><span class="p">:</span>
+      <span class="n">fn</span><span class="p">:</span> <span class="s1">&#39;return cell.field0 + &quot; - &quot; + cell.field1;&#39;</span>
+</pre></div>
+</div>
+<p>Здесь attSchema - это перечисление внутренних атрибутов, которые нужно загрузить у связанных сущностей</p>
+<p>Итоговый запрос для атрибута <code class="docutils literal notranslate"><span class="pre">some-assoc-attribute</span></code> формируется из следующих частей:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">some-assoc-attribute</span></code> // id колонки или если есть, то attribute</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[]</span></code> // добавляется к части из п.1 в конец если multiple == true</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{value:?assoc,disp:?disp}</span></code> // на основе типа колонки определяется какие скаляры мы подгружаем для атрибута (для ассоциаций это ?assoc и ?disp)</p></li>
+</ol>
+<p>Получаем в итоге: <code class="docutils literal notranslate"><span class="pre">some-assoc-attribute[]{value:?assoc,disp:?disp}</span></code></p>
+<p>Пункт 3 можно переопределить параметром attSchema и в примере выше будет загружаются следующий атрибут:</p>
+<p><code class="docutils literal notranslate"><span class="pre">some-assoc-attribute[]{field0,field1}</span></code></p>
+<p>По правилам RecordsAPI если алиасы для значений не заданы, то они будут доступны под именем field0 и field1.
+Вариант с алиасами будет выглядеть следующим образом:</p>
+<p><code class="docutils literal notranslate"><span class="pre">some-assoc-attribute[]{alias0:field0,alias1:field1}</span></code></p>
+<p>При загрузке такого атрибута мы получим результат в следующем формате:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;some-assoc-attribute&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;alias0&quot;</span><span class="p">:</span> <span class="s2">&quot;значение атрибута field0 для первой связанной сущности&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias1&quot;</span><span class="p">:</span> <span class="s2">&quot;значение атрибута field1 для первой связанной сущности&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;alias0&quot;</span><span class="p">:</span> <span class="s2">&quot;значение атрибута field0 для второй связанной сущности&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias1&quot;</span><span class="p">:</span> <span class="s2">&quot;значение атрибута field1 для второй связанной сущности&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>Вычисляемые свойства<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Не редко бывают ситуации, когда для работы фильтров, форматтеров или редакторов требуются дополнительные данные, которые могут загружаться с удаленного сервера.
+Для таких случаев предусмотрены вычисляемые свойства (computed), которые описываются для колонки или для конфига журнала в целом.</p>
+<p>Все вычисляемые свойства делятся на два уровня:</p>
+<ol class="arabic simple">
+<li><p>Уровень конфигурации</p></li>
+<li><p>Уровень записи</p></li>
+</ol>
+<p>Уровень конфигурации означает, что свойство может быть вычислено независимо от отображаемых записей в журнале.
+Уровень записи полагается на атрибуты записи для своих вычислений.
+Если в конфигурации вычисляемого свойства присутствуют вставки ${…}, то предполагается, что это свойство уровня записи
+и требуется его вычислять отдельно для каждой строки в журнале. Если же подобных вставок нет, то это уровень конфигурации
+и сервис может вычислить это свойство только один раз при первом открытии журнала.</p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Список поддерживаемых вычисляемых свойств</span><a class="headerlink" href="#id7" title="Постоянная ссылка на таблицу"></a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название</p></th>
+<th class="head"><p>Свойства</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>attributes</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">record:</span> <span class="pre">String</span></code> запись, у которой нужно получить атрибуты</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">attributes:</span> <span class="pre">String|List&lt;String&gt;|Map&lt;String,</span> <span class="pre">String&gt;</span></code> атрибуты, которые нужно загрузить.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Загрузить атрибуты через</div>
+<div class="line">Records.get(record).load(attributes)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>query</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">query:</span> <span class="pre">String</span></code> поисковый запрос, который нужно выполнить</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">attributes:</span> <span class="pre">String|List&lt;String&gt;|Map&lt;String,</span> <span class="pre">String&gt;</span></code> атрибуты, которые нужно загрузить.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Отправить поисковый запрос через</div>
+<div class="line">Records.query(query, attributes)</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>script</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">fn:</span> <span class="pre">String</span></code> скрипт для вычислений. Может вернуть Promise.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">vars:</span> <span class="pre">Map&lt;String,</span> <span class="pre">Any&gt;</span></code> переменные, которые будут переданы в скрипт.</div>
+</div>
+</td>
+<td><p>Вычислить скрипт</p></td>
+</tr>
+</tbody>
+</table>
+<p>Пример использования вычисляемого свойства для вариантов выбора:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// колонка с идентификатором &#39;category&#39;
+- id: category
+
+  computed:
+
+      // идентификатор свойства
+    - id: options
+
+      // тип вычисляемого свойства
+      type: attributes
+
+      // конфигурация вычисляемого свойства
+      config:
+        record: app/sourceId@someCategoryRef
+        attributes: cm:subcategories[]{label:?disp,value:?id}
+
+  editor:
+
+    // Указываем, что тип фильтра и inline-редактора - выбор из списка
+    type: select
+
+    config:
+
+      // ссылаемся на вычисляемое свойство с помощью ${...} и префикса &#39;$computed.&#39;
+      options: &#39;${$computed.options}&#39;
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>Модель конфигурации журнала<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>Модель:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Конфигурация журнала
+JournalDef {
+
+    // Идентификатор журнала
+    id: String,
+
+    // Отображаемое имя журнала
+    name: MLText,
+
+    // Идентификатор источника данных, из которого будут загружаться записи.
+    // Как правило задается в типе, а здесь нужен только для особых случаев.
+    sourceId: String,
+
+    // Запись, из которой будет загружаться мета-информация для фильтров.
+    // По умолчанию - &quot;{sourceId}@&quot;
+    metaRecord: RecordRef,
+
+    // Предикат для поиска отображаемых записей.
+    // По умолчанию в журнале отображаются записи связанного типа.
+    // Используя это поле можно наложить дополнительные условия.
+    predicate: Predicate,
+
+    // Дополнительные данные для запроса при поиске записей.
+    // Если это поле задано, то язык поиска устанавливается predicate-with-data
+    // и структура query становится
+    // {
+    //   data: {queryData},
+    //   predicate: {predicate}
+    // }
+    queryData: ObjectData,
+
+    // Тип записей в журнале. Как правило это поле следует оставлять пустым,
+    // чтобы связь с типом указывалась в конфигурации типа.
+    // Данное поле полезно для случая когда у одного типа может быть несколько журналов.
+    typeRef: RecordRef,
+
+    // Список атрибутов для группировки записей
+    groupBy: List&lt;String&gt;,
+
+    // Сортировка по умолчанию
+    sortBy: List&lt;JournalSortByDef&gt;,
+
+    // Флаг, который определяет необходимость загрузки действий из типа.
+    // true - действия из типа загружаются
+    // false - действия из типа не загружаются
+    // null - действия из типа загружаются если поле actions пустое
+    actionsFromType: Boolean?,
+
+    // Ссылки на UI действия над записями в журнале
+    actions: List&lt;RecordRef&gt;,
+
+    // Описание UI действий в конфиге журнала. Если действие специфично только для определенного журнала
+    // и его использование в других частях системы не предполагается, то можно использовать данное поле.
+    actionsDef: List&lt;JournalActionDef&gt;,
+
+    // Флаг, которые определяет доступно ли inline-редактирование в журнале
+    editable: Boolean,
+
+    // Конфигурация колонок
+    columns: List&lt;JournalColumnDef&gt;,
+
+    // Вычисляемые значения в контексте журнала. Полезны для использования в форматтерах и редакторах.
+    computed: List&lt;JournalComputedDef&gt;,
+
+    // Флаг, который определяет что форма системная. Системные формы нельзя добавить в приложение ECOS.
+    system: Boolean,
+
+    // Дополнительные свойства для поддержки произвольных настроек,
+    // которые очень специфичны, чтобы стать частью основного конфига.
+    properties: ObjectData
+}
+
+// Структура для описания сортировки
+JournalSortByDef {
+
+    // Атрибут для сортировки
+    attribute: String,
+
+    // Порядок сортировки. true - по возрастанию. false - по убыванию.
+    ascending: Boolean
+}
+
+JournalActionDef(
+
+    // Идентификатор действия. Не обязательный
+    id: String,
+
+    // Отображаемое имя действия
+    name: MLText,
+
+    // Отображаемое имя действия во множественном числе
+    pluralName: MLText,
+
+    // Иконка для действия
+    icon: String,
+
+    // Настройка для подтверждения действия
+    confirm: ActionConfirmDef,
+
+    // Тип действия
+    type: String,
+
+    // Конфигурация действия
+    config: ObjectData,
+
+    // Доступные возможности (execForRecord, execForRecords, execForQuery)
+    features: Map&lt;String, Boolean&gt;,
+
+    // Предикат для определения доступности действия
+    predicate: Predicate
+)
+
+// Конфигурация колонки
+JournalColumnDef {
+
+    // Идентификатор колонки
+    val id: String,
+
+    // Отображаемое имя
+    val name: MLText,
+
+    // Тип атрибута (Строка, Число и др.)
+    val type: AttributeType?,
+
+    // Атрибут для загрузки данных. Служит для указания атрибута для загрузки, который отличен от {id}.
+    // Может быть вложенным (напр. ecos:counterparty.ecos:inn). Должен содержать только верхнеуровневый путь
+    // к загружаемому значению без скаляров
+    val attribute: String,
+
+    // Внутренняя схема атрибута. Используется для случаев, когда стандартная схема для AttributeType не подходит.
+    // Данная схема может содержать один из скаляров (&#39;?str&#39;, &#39;?disp&#39;, &#39;?num&#39; и др.) или
+    // пару из двух вложенных атрибутов: &#39;{value:name,disp:?disp}&#39;. Для пары атрибутов обязательно
+    // в качестве алиасов должны использоваться &#39;value&#39; и &#39;disp&#39;
+    val attSchema: String,
+
+    // Описание редактора, который будет использован в фильтрах и при инлайн редактировании.
+    val editor: ColumnEditorDef,
+
+    // Описание форматтера, который будет использован при отрисовке ячеек в колонке.
+    val formatter: ColumnFormatterDef,
+
+    // Можно ли искать по колонке
+    val searchable: Boolean?,
+
+    // Можно ли искать по колонке используя произвольный текст
+    val searchableByText: Boolean?,
+
+    // Можно ли сортировать по колонке
+    val sortable: Boolean?,
+
+    // Можно ли группировать по колонке
+    val groupable: Boolean?,
+
+    // Доступно ли инлайн редактирование в колонке
+    val editable: Boolean?,
+
+    // Отображается ли клонка по умолчанию.
+    val visible: Boolean?,
+
+    // Есть ли возможность добавить колонку в журнал для отображения.
+    // Полезно когда отображать колонку нельзя, но искать по ней можно (searchable=true).
+    val hidden: Boolean?,
+
+    // Значения в колонке множественные или нет
+    val multiple: Boolean?,
+
+    // Вычисляемые значения для использования в форматтерах и редакторах
+    val computed: List&lt;JournalComputedDef&gt;,
+
+    // Дополнительные свойства для поддержки произвольных настроек,
+    // которые очень специфичны, чтобы стать частью основного конфига.
+    val properties: ObjectData = ObjectData.create()
+}
+
+// Конфигурация редактора
+ColumnEditorDef {
+    type: String,
+    config: ObjectData
+}
+
+// Конфигурация форматтера
+ColumnFormatterDef {
+    type: String,
+    config: ObjectData
+}
+
+// Конфигурация вычисляемого значения
+JournalComputedDef {
+    id: String,
+    type: String,
+    config: ObjectData
+}
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>Инструменты для разработчиков<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<ol class="arabic simple">
+<li><p>Если на странице журналов нажать <span class="guilabel">Ctrl</span> + <span class="guilabel">Shift</span> + <span class="guilabel">ЛКМ</span> на заголовке журнала, то откроется его конфигурация для просмотра.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="user_description.html" class="btn btn-neutral float-left" title="Пользовательское описание" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="group_actions.html" class="btn btn-neutral float-right" title="Групповые действия" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

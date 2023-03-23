@@ -1,0 +1,621 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Создание нового журнала &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+    <link rel="next" title="Пользовательское описание" href="user_description.html" />
+    <link rel="prev" title="Общее описание (Overview)" href="journals.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../interface.html">Интерфейс</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../forms.html">Формы</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../journals.html">Журналы</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="journals.html">Общее описание (Overview)</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Создание нового журнала</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_description.html">Пользовательское описание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html">Конфигурация журналов</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group_actions.html">Групповые действия</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search_journal_config.html">Конфигурация журнала поиска</a></li>
+<li class="toctree-l4"><a class="reference internal" href="computed%20attributes.html">Вычисляемые атрибуты (computed attributes)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filter_by%20_text%20_assoc_column.html">Фильтр по тексту в колонке „assoc“. Настройки innerQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="searchAttribute.html">Параметр «2.3 Атрибут для поиска»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search_nested_attributes.html">Поиск по вложенным атрибутам ассоциации в журналах</a></li>
+<li class="toctree-l4"><a class="reference internal" href="formatters.html">Форматтеры</a></li>
+<li class="toctree-l4"><a class="reference internal" href="editors.html">Редакторы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kanban_board.html">Канбан-доска</a></li>
+<li class="toctree-l4"><a class="reference internal" href="document_library.html">Document Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../menu.html">Меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dashboards.html">Дашборды</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../widgets.html">Виджеты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../number_template.html">Шаблоны нумерации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../../interface.html">Интерфейс</a> &raquo;</li>
+          <li><a href="../journals.html">Журналы</a> &raquo;</li>
+      <li>Создание нового журнала</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/settings_kb/interface/journals/new_journal.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="new-journal">
+<span id="id1"></span><h1>Создание нового журнала<a class="headerlink" href="#new-journal" title="Ссылка на этот заголовок"></a></h1>
+<p>Форма создания нового журнала состоит из следующих вкладок:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/new_3_1.png"><img alt="../../../_images/new_3_1.png" class="align-center" src="../../../_images/new_3_1.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference internal" href="#journal-main"><span class="std std-ref">Основные</span></a> – основные характеристики журнала.</p>
+<p><a class="reference internal" href="#journal-actions"><span class="std std-ref">Действия</span></a> - настройка действий, доступных для журнала.</p>
+<p><a class="reference internal" href="#journal-settings"><span class="std std-ref">Расширенные настройки</span></a> -  дополнительные настройки журнала.</p>
+<section id="journal-main">
+<span id="id2"></span><h2>Основные<a class="headerlink" href="#journal-main" title="Ссылка на этот заголовок"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/new_4.png"><img alt="../../../_images/new_4.png" class="align-center" src="../../../_images/new_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>п/п</p></th>
+<th class="head"><p>Наименование</p></th>
+<th class="head"><p>Описание</p></th>
+<th class="head"><p>Пример заполнения</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Идентификатор журнала(обязательное)</strong></p></td>
+<td><p>Уникальный идентификатор журнала</p></td>
+<td><p>test_journal (kebab_case)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Название журнала</strong></p></td>
+<td><p>Имя журнала, которое будет отображаться</p></td>
+<td><p>Тестовый журнал</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Разрешить редактирование значений в ячейках</strong></p></td>
+<td><p>Возможность инлайн редактирования – редактирование данных непосредственно в ячейке.</p></td>
+<td><p>Флаг</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Добавить колонки</strong></p></td>
+<td><p><strong>[уточнить]</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Добавить действия из типа</strong></p></td>
+<td><div class="line-block">
+<div class="line">Добавляет действия, которые были добавлены в типе данных.</div>
+<div class="line">Возможны три значения:</div>
+<div class="line">-  <strong>empty (null)</strong> - если actions и actionsDef пустые, то добавляем действия из типа</div>
+<div class="line">-  <strong>true</strong> - всегда добавляем действия из типа</div>
+<div class="line">-  <strong>false</strong> - никогда не добавляем из типа</div>
+</div>
+</td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><strong>Действия</strong></p></td>
+<td><p>Выбрать из списка действия, которые будут доступны для объектов журнала (инлайн действия в строке)</p></td>
+<td><p>выбирается из списка предлагаемых</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><strong>Тип данных</strong></p></td>
+<td><div class="line-block">
+<div class="line">Выбрать из списка тип данных, созданный ранее.</div>
+<div class="line">Можно не выбирать - достаточно связи:</div>
+<div class="line">тип -&gt; журнал</div>
+<div class="line">тип -&gt; форма</div>
+<div class="line">Обратная связь нужна только в случаях, когда для одного типа есть много форм или много журналов.</div>
+</div>
+</td>
+<td><p>выбирается из списка предлагаемых</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p><strong>Системное имя</strong></p></td>
+<td><p>Id <a class="reference internal" href="../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#ecos-model-label"><span class="std std-ref">атрибута модели</span></a></p></td>
+<td><p>testAttribute</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p><strong>Название колонки</strong></p></td>
+<td><p>Имя колонки, которое будет отображаться</p></td>
+<td><p>Тестовый атрибут</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p><strong>Тип данных</strong></p></td>
+<td><p>тип поля. <a class="reference internal" href="../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#ecos-model-types"><span class="std std-ref">Поддерживаемые типы</span></a></p></td>
+<td><p>выбирается из списка предлагаемых</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p><strong>Дополнительно</strong></p></td>
+<td><p>Дополнительные настройки колонки. См. <a class="reference internal" href="#additional-column-settings"><span class="std std-ref">ниже</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Колонки можно перемещать, удалять.</p>
+<section id="additional-column-settings">
+<span id="id3"></span><h3>Дополнительные настройки колонки<a class="headerlink" href="#additional-column-settings" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/new_5.png"><img alt="../../../_images/new_5.png" class="align-center" src="../../../_images/new_5.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 43%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>п/п</p></th>
+<th class="head"><p>Наименование</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Атрибут для загрузки (по умолчанию системное имя)</strong></p></td>
+<td><p><strong>[уточнить]</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Можно ли искать по атрибуту</strong></p></td>
+<td><p>Разрешить поиск по атрибуту</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Можно ли искать в шапке колонки</strong></p></td>
+<td><p>Разрешить поиск в шапке колонки</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Можно ли сортировать</strong></p></td>
+<td><p>Разрешить сортировку по колонке</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Можно ли группировать</strong></p></td>
+<td><p>Разрешить группировку по колонке</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><strong>Можно ли редактировать в таблице</strong></p></td>
+<td><div class="line-block">
+<div class="line">Инлайн редактирование по клику на значение.</div>
+<div class="line">В зависимости от типа данных доступен различный вариант редактирования. <strong>[уточнить]</strong></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><strong>Отображать по умолчанию</strong></p></td>
+<td><p>Разрешить колонку отображать по умолчанию</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p><strong>Скрытая колонка</strong></p></td>
+<td><p>Можно искать по колонке, но её нельзя вывести в таблицу</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p><strong>Множественное значение</strong></p></td>
+<td><div class="line-block">
+<div class="line">Сколько значений может быть в ячейке:</div>
+<div class="line">- false - 0-1</div>
+<div class="line">- true - сколько угодно</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p><strong>Форматтер для колонки</strong></p></td>
+<td><p>Указать форматтер <a class="reference internal" href="formatters.html#formatters"><span class="std std-ref">см. Форматтеры</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p><strong>Конфигурация форматтера</strong></p></td>
+<td><p>Ключ и значение при необходимости</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p><strong>Редактор для колонки</strong></p></td>
+<td><p>Указать редактор <a class="reference internal" href="editors.html#editors"><span class="std std-ref">см. Редакторы</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p><strong>Конфигурация редактора</strong></p></td>
+<td><p>Ключ и значение при необходимости</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p><strong>Конфигурация фильтра в заголовке</strong></p></td>
+<td><p><strong>[уточнить]</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>а</p></td>
+<td><p><strong>Тип редактора</strong></p></td>
+<td><p>Указать редактор <a class="reference internal" href="editors.html#editors"><span class="std std-ref">см. Редакторы</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p><strong>Search config</strong></p></td>
+<td><p>Конфигрурация поиска</p></td>
+</tr>
+<tr class="row-even"><td><p>а</p></td>
+<td><p><strong>Разделители</strong></p></td>
+<td><p>Возможность установки и настройки разделителя для массива значений</p></td>
+</tr>
+<tr class="row-odd"><td><p>b</p></td>
+<td><p><strong>Идентификатор источника данных (по умолчанию пустой)</strong></p></td>
+<td><p><strong>[уточнить]</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>c</p></td>
+<td><p><strong>Запрос</strong></p></td>
+<td><p>Тело запроса</p></td>
+</tr>
+<tr class="row-odd"><td><p>d</p></td>
+<td><p><strong>Количество записей подзапроса</strong></p></td>
+<td><p>Выводимое количество записей подзапроса</p></td>
+</tr>
+<tr class="row-even"><td><p>e</p></td>
+<td><p><strong>Настраиваемый атрибут (по умолчанию пустой)</strong></p></td>
+<td><p><strong>[уточнить]</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>f</p></td>
+<td><p><strong>Атрибут для поиска</strong></p></td>
+<td><div class="line-block">
+<div class="line">Параметр используется в интерфейсе при построении запроса с фильтром по столбцу (<code class="docutils literal notranslate"><span class="pre">searchAttribute</span></code>).</div>
+<div class="line">При построении запроса с фильтром по столбцу и наличии <code class="docutils literal notranslate"><span class="pre">searchAttribute</span></code> в конфигурации столбца, нужно подменять атрибут для поиска значением из <code class="docutils literal notranslate"><span class="pre">searchAttribute</span></code>. См. <a class="reference internal" href="searchAttribute.html#searchattribute"><span class="std std-ref">подробно</span></a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p><strong>Panel</strong></p></td>
+<td><p><strong>[уточнить]</strong></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="journal-actions">
+<span id="id4"></span><h2>Действия<a class="headerlink" href="#journal-actions" title="Ссылка на этот заголовок"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/new_6.png"><img alt="../../../_images/new_6.png" class="align-center" src="../../../_images/new_6.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 43%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>п/п</p></th>
+<th class="head"><p>Наименование</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>ID</strong></p></td>
+<td><p>Уникальный идентификатор</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Имя</strong></p></td>
+<td><p>Наименование действия</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Размер батча</strong></p></td>
+<td><p>Размер запроса</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Количество параллельных батчей</strong></p></td>
+<td><p>Указать сколько запросов запускается одновременно</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Сообщение при ошибке timeout</strong></p></td>
+<td><p>Ввести текст сообщения об ошибке</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><strong>Предикат</strong></p></td>
+<td><p>Указать предикат. См. подробно <a class="reference internal" href="../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html#ecos-predicate-main"><span class="std std-ref">Язык предикатов</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><strong>Тип</strong></p></td>
+<td><p>Указать тип (<a class="reference internal" href="../../ui_actions.html#ui-actions"><span class="std std-ref">действия</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p><strong>Модуль предварительной обработки</strong></p></td>
+<td><p>Указать ссылку на модуль, содержащий JS-код</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p><strong>Конфигурация</strong></p></td>
+<td><p>Ключ и значение при необходимости</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p><strong>Название формы подтверждения</strong></p></td>
+<td><p>Наименование формы</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p><strong>Текст подтверждения</strong></p></td>
+<td><p>Текст подтверждения</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p><strong>Форма</strong></p></td>
+<td><p>Форма выбирается из списка предлагаемых</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p><strong>Параметры формы подтверждения</strong></p></td>
+<td><p>Ключ и значение при необходимости</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p><strong>Применимость</strong></p></td>
+<td><p>Применить для записи, записей, поискового запроса. См. <a class="reference internal" href="#applicability"><span class="std std-ref">подробно ниже</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Пример согласования выбранных заявок:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/new_8.png"><img alt="../../../_images/new_8.png" class="align-center" src="../../../_images/new_8.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="applicability">
+<span id="id5"></span><h2>Применимость<a class="headerlink" href="#applicability" title="Ссылка на этот заголовок"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/applicability_1.png"><img alt="../../../_images/applicability_1.png" class="align-center" src="../../../_images/applicability_1.png" style="width: 400px;" /></a>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p><strong>Для записи</strong></p></li>
+</ol>
+<p>Действия для записи в журнале:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ForRecord_1.png"><img alt="../../../_images/ForRecord_1.png" class="align-center" src="../../../_images/ForRecord_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>в карточке в виджете «Действия»:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ForRecord_2.png"><img alt="../../../_images/ForRecord_2.png" class="align-center" src="../../../_images/ForRecord_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><strong>Для записей</strong></p></li>
+</ol>
+<p>Действия над выбранными записями:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ForRecords_1.png"><img alt="../../../_images/ForRecords_1.png" class="align-center" src="../../../_images/ForRecords_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>Для запроса</strong></p></li>
+</ol>
+<p>Действия над отфильтрованными записями:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ForQuery_1.png"><img alt="../../../_images/ForQuery_1.png" class="align-center" src="../../../_images/ForQuery_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Критерий поиска отправляется на сервер, сервер выполняет постраничное выполнению группового действия.</p>
+<blockquote>
+<div><p><strong>Выполнить как для записей</strong></p>
+</div></blockquote>
+<p>Флаг определяет, что логику по перебору страниц и выполнению группового действия выполнять на фронте (например, для работы с ЭЦП).</p>
+</section>
+<section id="journal-settings">
+<span id="id6"></span><h2>Расширенные настройки<a class="headerlink" href="#journal-settings" title="Ссылка на этот заголовок"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/new_7.png"><img alt="../../../_images/new_7.png" class="align-center" src="../../../_images/new_7.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 43%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>п/п</p></th>
+<th class="head"><p>Наименование</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Идентификатор источника данных</strong></p></td>
+<td><p><strong>[в каком виде и что из себя представляет]</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Предикат</strong></p></td>
+<td><p>Ввод предиката. <a class="reference internal" href="../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html#ecos-predicate-main"><span class="std std-ref">Язык предикатов</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Дополнительные свойства</strong></p></td>
+<td><p>Свойства, которые позволяют какую-то произвольную информацию добавлять к журналу без необходимости делать доработку системы.</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Фильтры по умолчанию</strong></p></td>
+<td><div class="line-block">
+<div class="line">Добавить фильтр по умолчанию.</div>
+<div class="line">например, <code class="docutils literal notranslate"><span class="pre">{&quot;t&quot;:&quot;eq&quot;,&quot;att&quot;:&quot;name&quot;,&quot;val&quot;:&quot;123&quot;}</span></code></div>
+<div class="line">Фильтр по атрибуту <code class="docutils literal notranslate"><span class="pre">name</span></code> - значение атрибута = <code class="docutils literal notranslate"><span class="pre">123</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Группировать по</strong></p></td>
+<td><p>Добавить колонки для группировки.</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><strong>Сортировка по умолчанию</strong></p></td>
+<td><p>Указать атрибуты для сортировки по умолчанию.</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><strong>Search Config</strong></p></td>
+<td><div class="line-block">
+<div class="line">Конфигурация поиска.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>a</p></td>
+<td><p><strong>Поле поиска в таблице</strong></p></td>
+<td><div class="line-block">
+<div class="line">Снятый чекбокс - панель поиска по записям журнала скрыта.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>b</p></td>
+<td><p><strong>Delimiters</strong></p></td>
+<td><div class="line-block">
+<div class="line">Разделители при поиске, чтобы в одной строке можно было указать УСЛОВИЕ_1 ИЛИ УСЛОВИЕ_2.</div>
+<div class="line">Т.е. например, если разделитель у нас «|», то при поиске «Содержит abc|def» мы по факту получим поисковый запрос «Содержит abc ИЛИ Содержит def»</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="journals.html" class="btn btn-neutral float-left" title="Общее описание (Overview)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="user_description.html" class="btn btn-neutral float-right" title="Пользовательское описание" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

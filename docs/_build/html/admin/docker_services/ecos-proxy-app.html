@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ecos-proxy-app &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="ecos-uiserv-app" href="ecos-uiserv-app.html" />
+    <link rel="prev" title="ecos-solr-app" href="ecos-solr-app.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker-compose.html">Установка Citeck ECOS c помощью Docker-compose</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../docker_services.html">Сервисы Docker</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="onlyoffice-ds-app.html">onlyoffice-ds-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-gateway-app.html">ecos-gateway-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-notifications-app.html">ecos-notifications-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-mongo-app.html">ecos-mongo-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mailhog-app.html">mailhog-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-registry-app.html">ecos-registry-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-postgresql-app.html">ecos-postgresql-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-model-app.html">ecos-model-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-app.html">ecos-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-integrations-app.html">ecos-integrations-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-solr-app.html">ecos-solr-app</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ecos-proxy-app</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Назначение</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Базовые образы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-compose">Шаблон сервиса docker-compose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Используемые переменные</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Типовой вывод принятых настроек в лог контейнера</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-uiserv-app.html">ecos-uiserv-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-process-app.html">ecos-process-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-microservices-postgresql-app.html">ecos-microservices-postgresql-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-history-app.html">ecos-history-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rabbitmq-app.html">rabbitmq-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-apps-app.html">ecos-apps-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eis_Keycloack.html">eis (Keycloak)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backup-tool-app.html">backup-tool-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-alfresco-search-service.html">ecos-alfresco-search-service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html">Аутентификация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sync_authorities.html">Синхронизация Authorities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keycloak.html">ECOS KeyCloak Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keycloack_postman.html">Настройки аутентификации для работы с Records API из внешних систем</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html">Конфигурация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../license.html">Лицензии ECOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audit.html">Аудит</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../howto.html">How To</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a> &raquo;</li>
+          <li><a href="../docker_services.html">Сервисы Docker</a> &raquo;</li>
+      <li>ecos-proxy-app</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/admin/docker_services/ecos-proxy-app.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ecos-proxy-app">
+<span id="id1"></span><h1>ecos-proxy-app<a class="headerlink" href="#ecos-proxy-app" title="Ссылка на этот заголовок"></a></h1>
+<section id="id2">
+<h2>Назначение<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Образ проксирующего сервера со сборкой проекта ecos-ui.</p>
+</section>
+<section id="id3">
+<h2>Базовые образы<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>nexus.citeck.ru/ecos-nginx-spnego:stable -  Nginx (1.17.6) собирается из исходников + в сборку включен модуль spnego (1.1.0)  для интеграции с AD заказчика и реализации SSO. Базовый образ строится на alpine:3.7
+openresty/openresty:centos-rpm - openresty (1.15.8.3) устанавливается из репо пакетами. Базовый образ строится на CentOS 7.</p>
+</section>
+<section id="docker-compose">
+<h2>Шаблон сервиса docker-compose<a class="headerlink" href="#docker-compose" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ecos</span><span class="o">-</span><span class="n">proxy</span><span class="p">:</span>
+   <span class="n">logging</span><span class="p">:</span>
+     <span class="n">options</span><span class="p">:</span>
+       <span class="nb">max</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="s2">&quot;10m&quot;</span>
+       <span class="nb">max</span><span class="o">-</span><span class="n">file</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span>
+   <span class="n">container_name</span><span class="p">:</span> <span class="n">ecos</span><span class="o">-</span><span class="n">proxy</span>
+   <span class="n">restart</span><span class="p">:</span> <span class="n">unless</span><span class="o">-</span><span class="n">stopped</span>
+   <span class="n">stop_grace_period</span><span class="p">:</span> <span class="mi">1</span><span class="n">m</span>
+   <span class="n">hostname</span><span class="p">:</span> <span class="n">ecos</span><span class="o">-</span><span class="n">proxy</span>
+   <span class="n">ports</span><span class="p">:</span>
+     <span class="o">-</span> <span class="mi">80</span><span class="p">:</span><span class="mi">80</span><span class="o">/</span><span class="n">tcp</span>
+   <span class="n">env_file</span><span class="p">:</span>
+    <span class="o">-</span> <span class="o">./</span><span class="n">env_dir</span><span class="o">/</span><span class="n">ecos</span><span class="o">-</span><span class="n">proxy</span><span class="o">.</span><span class="n">env</span>
+   <span class="n">image</span><span class="p">:</span> <span class="n">nexus</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ru</span><span class="o">/</span><span class="n">ecos</span><span class="o">-</span><span class="n">proxy</span><span class="p">:</span><span class="o">&lt;</span><span class="n">ECOS_PROXY_IMAGE</span>
+   <span class="n">networks</span><span class="p">:</span>
+     <span class="o">-</span> <span class="n">app_network</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>Используемые переменные<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<ul class="simple">
+<li><p>DEFAULT_LOCATION_V2 - переключение дефолтного редиректа ( / ) с share/page на v2/. Формат переменной: DEFAULT_LOCATION_V2=true (параметр дублируется в клиенте в настройках системных журналов)</p></li>
+<li><p>ECOS_INIT_DELAY - таймаут запуска entrypoint скрипта, формирующего default.conf сервера. По умолчанию 30с для нормализации инициализации апстримов в compose проектах.</p></li>
+<li><p>CADVISOR_TARGET - если параметр не указан, то из файла конфигурации nginx будет удален апсрим cadvisor и зависимые от него локейшены. Формат переменной: CADVISOR_TARGET=ip_or_fqdn:port</p></li>
+<li><p>NODE_EXPORTER_TARGET - если параметр не указан, то из файла конфигурации nginx будет удален апсрим node-exporter и зависимые от него локейшены. Формат переменной: NODE_EXPORTER_TARGET=ip_or_fqdn:port</p></li>
+<li><p>USE_EXTERNAL_CONFIGURATION - при объявлении данной переменной будет удален конфигурационный файл default.conf в директории nginx. Используется для разработки и конфигурирования, при этом директории статики, конфигурационные файлы, сертификаты и прочее необходимо прокинуть в контейнер через pv. Директория монтирования файла конфигурации nginx  - /etc/nginx/conf.d/. Формат переменной: USE_EXTERNAL_CONFIGURATION=true</p></li>
+<li><p>PROXY_TARGET - если параметр не указан в файле ecos-proxy.env, то выставляется дефолтное проксирование на контейнер ecos- ecos:8080. Соответственно, при объявлении параметра в файле переменных будет заменено значение ecos:8080 в апстриме ecos конфигурации nginx образа на указанное в файле переменных. Формат переменной: PROXY_TARGET=ip_or_fqdn:port</p></li>
+<li><p>GATEWAY_TARGET - если параметр не указан, то из файла конфигурации nginx будет удален апсрим gateway и зависимые от него локейшены. Формат переменной: GATEWAY_TARGET=ip_or_fqdn:port</p></li>
+<li><p>ENABLE_LOGGING - по умолчанию логирование контейнера отключено, объявление данной переменной включит стандартное логирование nginx, выставление переменной в debug включит расширенный режим отладки обработки пакетов nginx. Формат переменной: ENABLE_LOGGING=true (debug для расширенного режима)</p></li>
+<li><p>ENABLE_SERVER_STATUS - включение локейшена с выдачей статистики сервера nginx, используется для централизированного мониторинга. Локейш доступен только из docker сети. Формат переменной: ENABLE_SERVER_STATUS=true</p></li>
+<li><p>ENABLE_MOBILE_APP_ACCESS - включение локейшена /gateeway с проверкой bearer токена в хидере Authorization. Используется для доступа мобильным приложением. Формат переменной: ENABLE_MOBILE_APP_ACCESS=true. При включении данного функционала требуется сконфигрурировать переменные EIS_ID, REALM_ID, CLIENT_SECRET для интеграции с keycloak.</p></li>
+<li><p>ENABLE_OIDC_FULL_ACCESS - включение проверки bearer токена в хидере Authorization для любого из обрабатываемых локейшенов. Формат переменной: ENABLE_OIDC_FULL_ACCESS=true. При включении данного функционала требуется сконфигрурировать переменные EIS_ID, REALM_ID, CLIENT_SECRET для интеграции с keycloak.</p></li>
+<li><p>ONLYOFFICE_TARGET - включение локейшена /onlyoffice/ для интеграции ecos c развернутым инстансом OnlyOffice. Формат переменной: ONLYOFFICE_TARGET=ip_or_fqdn:port</p></li>
+<li><p>MAILHOG_TARGET - включение локейшена проксирования в ui контейнера mailhog. MAILHOG_TARGET=ip_or_fqdn:port</p></li>
+<li><p>ECOS_REGISTRY_TARGET - включение локейшена проксирования в ui контейнера ecos(jhipster)-registry. Формат переменной: ECOS_REGISTRY_TARGET=ip_or_fqdn:port</p></li>
+<li><p>RABBITMQ_TARGET - включение локейшена проксирования в managment ui контейнера rabbitmq. Формат переменной: RABBITMQ_TARGET=ip_or_fqdn:port</p></li>
+<li><p>EIS_TARGET - включение локейшена проксирования в ui контейнера eis. Используется при размещении eis за проксирующим сервером в сетевом сегменте заказчика. Формат переменной: EIS_TARGET=ip_or_fqdn:port</p></li>
+<li><p>ECOS_PAGE_TITLE - настройка заголовка index.html страницы браузера для нового интерфейса (v2). По умолчанию Citeck ECOS</p></li>
+<li><p>EIS_PROTO – протокол, по которому идёт взаимодействие с keycloak. Значение по-умолчанию  https, опционально можно поставить http</p></li>
+<li><p>GATEWAY_TLS_ENABLED - включить HTTPS до ecos-gateway (v4)</p></li>
+<li><p>GATEWAY_TLS_CERT - корневой сертификат для проверки сертификата ecos-gateway. Можно указать непосредственно тот же сертификат, который использует gateway. По умолчанию цепочка сертификатов проверяется на 2 уровня. По умолчанию false. (v4)</p></li>
+<li><p>GATEWAY_TLS_NAME - имя gateway сервера. nginx всегда проверяет хост gateway на соответствие сертификату, но если хост динамический, то можно использовать эту настройку чтобы задать его константой. (v4)</p></li>
+<li><p>ENABLE_HTTPS - включает сервер по SERVER_HTTPS_PORT порту и ждет сертификаты SERVER_TLS_CERT и SERVER_TLS_KEY (v3, v4)</p></li>
+<li><p>ENABLE_HSTS - добавлять заголовок Strict-Transport-Security к ответам сервера. (v3, v4)</p></li>
+<li><p>SERVER_TLS_CERT - сертификат сервера. По умолчанию /app/ssl/ecos-proxy.cert (v4)</p></li>
+<li><p>SERVER_TLS_KEY - приватный ключ сервера. По умолчанию /app/ssl/ecos-proxy.key (v4)</p></li>
+<li><p>SERVER_HTTP_PORT - http порт, который будет слушать nginx. По умолчанию зависит от пользователя, под которым запускается контейнер. Если это root, то 80, иначе - 8080 (v4)</p></li>
+<li><p>SERVER_HTTPS_PORT - https порт, который будет слушать nginx. По умолчанию зависит от пользователя, под которым запускается контейнер. Если это root, то 443, иначе - 8443 (v4)</p></li>
+<li><p>MIN_TLS_VER - минимально допустимая версия TLS. Допустимные значения: [1.3, 1.2, 1.0] (v3, v4)</p></li>
+</ul>
+<p>Не реализованы:</p>
+<ul class="simple">
+<li><p>SOLR_TARGET</p></li>
+<li><p>ECOS_REGISTRY_TARGET (проблема с api)</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>Типовой вывод принятых настроек в лог контейнера<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ecos-proxy                  | Wait 30 seconds and run nginx
+ecos-proxy                  | - Logging disabled
+ecos-proxy                  | + Server status monitoring enabled!
+ecos-proxy                  | + Changed upstream gateway: gateway-app:8085
+ecos-proxy                  | - Disabled api-auth upstream and locations
+ecos-proxy                  | + Changed mailhog upstream: mailhog:8025
+ecos-proxy                  | - Disabled gss
+ecos-proxy                  | + Changed ecos-registry upstream: jhipster-registry:8761
+ecos-proxy                  | + Changed rabbitmq upstream: rabbitmq:15672
+ecos-proxy                  | - Disabled eis upstream and locations
+ecos-proxy                  | - Disabled solr location
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="ecos-solr-app.html" class="btn btn-neutral float-left" title="ecos-solr-app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="ecos-uiserv-app.html" class="btn btn-neutral float-right" title="ecos-uiserv-app" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

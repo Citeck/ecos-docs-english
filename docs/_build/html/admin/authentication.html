@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Аутентификация &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Синхронизация Authorities" href="sync_authorities.html" />
+    <link rel="prev" title="ecos-alfresco-search-service" href="docker_services/ecos-alfresco-search-service.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="docker-compose.html">Установка Citeck ECOS c помощью Docker-compose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_services.html">Сервисы Docker</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Аутентификация</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Терминология</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Общая информация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oidc">Аутентификация через встроенный OIDC клиент</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Алгоритм аутентификация через встроенный OIDC клиент</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Аутентификация через внешний OIDC клиент</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Настройка времени жизни сессий на Keycloak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#touch">Touch запросы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#idp">Интеграция с внешними IdP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sync_authorities.html">Синхронизация Authorities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keycloak.html">ECOS KeyCloak Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keycloack_postman.html">Настройки аутентификации для работы с Records API из внешних систем</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Конфигурация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html">Лицензии ECOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit.html">Аудит</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html">How To</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a> &raquo;</li>
+      <li>Аутентификация</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/authentication.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Аутентификация<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<section id="id2">
+<h2>Терминология<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<ul class="simple">
+<li><p>IdP (Identity provider) - Провайдер аутентификации, который отвечает за аутентификацию пользователей и внешних систем.
+В Citeck ECOS в качестве протокола для аутентификации используется OpenID Connect. В качестве стандартного IdP используется <a class="reference external" href="https://www.keycloak.org/">Keycloak</a>.</p></li>
+<li><p><a class="reference external" href="https://openid.net/connect/">OIDC (OpenID Connect)</a> - Открытый стандарт децентрализованной системы аутентификации.</p></li>
+<li><p>Access Token - Токен доступа. Используется при доступе к защищенным ресурсам. Как правило имеет малое время жизни (порядка пяти минут) и регулярно обновляется с помощью токена обновления (Refresh Token).</p></li>
+<li><p>Refresh Token - Токен обновления. Используется OIDC клиентом при обращении к IdP для получения нового токена доступа (Access Token).</p></li>
+<li><p>IdP Realm - это независимое пространство со своими настройками аутентификации для конкретного сервера.
+Если проводить аналогию с базами данных, то IdP - это СУБД, а реалм - это БД.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>Общая информация<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>В Citeck ECOS поддерживается два способа аутентификации:</p>
+<ol class="arabic simple">
+<li><p>Аутентификация через встроенный OIDC клиент</p></li>
+<li><p>Аутентификация через внешний OIDC клиент</p></li>
+</ol>
+</section>
+<section id="oidc">
+<h2>Аутентификация через встроенный OIDC клиент<a class="headerlink" href="#oidc" title="Ссылка на этот заголовок"></a></h2>
+<p>Логика аутентификации находится в приложении ecos-proxy-app и реализована через модуль <a class="reference external" href="https://luarocks.org/modules/hanszandbelt/lua-resty-openidc">lua-resty-openidc</a></p>
+<p>Настройка модуля выполняется через переменные среды контейнера ecos-proxy-app:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Переменная</strong></p></td>
+<td><p><strong>Значение</strong></p></td>
+<td><p><strong>Описание</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>EIS_TARGET</p></td>
+<td><div class="line-block">
+<div class="line">Строка вида <code class="docutils literal notranslate"><span class="pre">host[:port]</span></code></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Внутренний хост IdP. Используется, чтобы определить куда нужно направить запросы</div>
+<div class="line">с <code class="docutils literal notranslate"><span class="pre">http://{{SERVER_HOST}}/ecos-idp/auth/</span></code>. Этот параметр нужен только тогда, когда IdP</div>
+<div class="line">разворачивается в комплекте с ECOS. Для использования внешнего IdP эту настройку</div>
+<div class="line">следует опустить.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>ENABLE_OIDC_FULL_ACCESS</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">true</span></code> или <code class="docutils literal notranslate"><span class="pre">false</span></code></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Включить интеграцию с IdP. Как правило здесь всегда должно стоять <code class="docutils literal notranslate"><span class="pre">true</span></code>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>CLIENT_ID</p></td>
+<td><div class="line-block">
+<div class="line">Строка</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Идентификатор клиента для работы с IdP. По умолчанию <code class="docutils literal notranslate"><span class="pre">nginx</span></code>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>CLIENT_SECRET</p></td>
+<td><div class="line-block">
+<div class="line">Строка</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Секрет для аутентификации OIDC клиента (ecos-proxy-app) на IdP.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>EIS_SCHEME</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">http</span></code> или <code class="docutils literal notranslate"><span class="pre">https</span></code></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Схема для запросов от OIDC клиента (ecos-proxy-app) к IdP. По умолчанию <code class="docutils literal notranslate"><span class="pre">https</span></code>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>EIS_ID</p></td>
+<td><div class="line-block">
+<div class="line">Строка вида <code class="docutils literal notranslate"><span class="pre">host[:port]</span></code></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Хост для доступа к IdP от OIDC клиента и от браузера пользователя.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>EIS_LOCATION</p></td>
+<td><div class="line-block">
+<div class="line">Строка</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Локация, по которой доступен IdP на хосте EIS_ID. По умолчанию <code class="docutils literal notranslate"><span class="pre">auth</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>REALM_ID</p></td>
+<td><div class="line-block">
+<div class="line">Строка</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Идентификатор реалма, в рамках которого выполняется интеграция с IdP.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>REDIRECT_LOGOUT_URI</p></td>
+<td><div class="line-block">
+<div class="line">URI строка</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">URI для переадресации после успешного входа, который произошел после логаута.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>ENABLE_LOGGING</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">debug</span></code> или <code class="docutils literal notranslate"><span class="pre">warn</span></code></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Включение дебага для ecos-proxy-app. При значении <code class="docutils literal notranslate"><span class="pre">debug</span></code> в логах пишутся все шаги</div>
+<div class="line">взаимодействия с IdP. Если этот параметр не задан, то все логи отправляются в <code class="docutils literal notranslate"><span class="pre">/dev/null</span></code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>При включенной интеграции с IdP ecos-proxy-app отправляет GET запрос за информацией для работы протокола OIDC по адресу:</p>
+<p><code class="docutils literal notranslate"><span class="pre">EIS_SCHEME://EIS_ID/EIS_LOCATION/realms/REALM_ID/.well-known/openid-configuration</span></code></p>
+<p>В ответе IdP возвращает параметры, которые нужны нашему клиенту для работы по протоколу OIDC. Например:</p>
+<ol class="arabic simple">
+<li><p>Адреса для получения и обновления токенов;</p></li>
+<li><p>Адрес для проверки токена пользователя;</p></li>
+<li><p>Адрес для логаута;</p></li>
+<li><p>Поддерживаемые алгоритмы шифрования;</p></li>
+<li><p>и т.д.</p></li>
+</ol>
+<section id="id4">
+<h3>Алгоритм аутентификация через встроенный OIDC клиент<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<a class="reference internal image-reference" href="../_images/auth-ecos-proxy-app.png"><img alt="../_images/auth-ecos-proxy-app.png" class="align-center" src="../_images/auth-ecos-proxy-app.png" style="width: 800px;" /></a>
+<ol class="arabic simple">
+<li><p>Приходит запрос от пользователя на защищенный ресурс;</p></li>
+<li><p>ecos-proxy-app создает сессию для пользователя и сохраняет там исходный запрос из п.1;</p></li>
+<li><p>ecos-proxy-app отправляет ответ пользователю с установкой куки с идентификатором сессии и редиректом на IdP для входа;</p></li>
+<li><p>Пользователь проходит аутентификацию на IdP через ввод логина/пароля или используя альтернативные способы для входа;</p></li>
+<li><p>IdP после успешного входа редиректит пользователя на URI, который был указан в параметре redirect_uri при редиректе на п.3 и при этом добавляет в этот URI параметр с кодом, по которому ecos-proxy-app сможет запросить токены пользователя у IdP;</p></li>
+<li><p>Пользователь открывает URI, который является колбэком для аутентификации (по дефолту в ECOS это <code class="docutils literal notranslate"><span class="pre">/v2</span></code>) и попадает на ecos-proxy-app;</p></li>
+<li><p>ecos-proxy-app получает код от пользователя и отправляет с ним запрос на IdP для получения Access и Refresh токенов для пользователя;</p></li>
+<li><p>ecos-proxy-app получает токены пользователя от IdP;</p></li>
+<li><p>ecos-proxy-app сохраняет у себя токены пользователя в его сессии;</p></li>
+<li><p>ecos-proxy-app отправляет пользователю редирект на исходный URI, который он запрашивал в п.1;</p></li>
+<li><p>Пользователь отправляет запрос на исходный URI из п.1;</p></li>
+<li><p>ecos-proxy-app достает Access токен пользователя из сессии и отправляет запрос в IdP на проверку валидности;</p></li>
+<li><p>IdP отвечает ecos-proxy-app, что токен валидный;</p></li>
+<li><p>ecos-proxy-app предоставляет доступ пользователю к защищенному ресурсу и при этом добавляет в запрос хидер <code class="docutils literal notranslate"><span class="pre">X-ECOS-User</span></code>, который равен имени пользователя;</p></li>
+<li><p>Пользователь получает ожидаемый ответ от защищенного ресурса.</p></li>
+</ol>
+<p>Во всем процессе аутентификации от пользователя требуется только действия на шаге 4 (аутентификация на IdP).
+Все остальные пункты проходят прозрачно и незаметно для пользователя.</p>
+<p>Шаги 11-15 выполняются при каждом последующем запросе с поправкой на то, что результат проверки токена на валидность кэшируется.
+Время хранения кэша зависит от настоек IdP и как правило равно времени жизни токена доступа (Access Token).</p>
+</section>
+</section>
+<section id="id5">
+<h2>Аутентификация через внешний OIDC клиент<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<a class="reference internal image-reference" href="../_images/auth-ext-client.png"><img alt="../_images/auth-ext-client.png" class="align-center" src="../_images/auth-ext-client.png" style="width: 800px;" /></a>
+<ol class="arabic simple">
+<li><p>Клиент получает базовую конфигурацию для работы с IdP (realmId, eisId, logoutUrl) отправив GET запрос на <code class="docutils literal notranslate"><span class="pre">{{SERVER_HOST}}/eis.json</span></code>;</p></li>
+<li><p>Клиент предлагает пользователю пройти аутентификацию на IdP;</p></li>
+<li><p>Клиент получает Access и Refresh токены от IdP;</p></li>
+<li><p>Клиент отправляет запрос на защищенный ресурс с Access Token;</p></li>
+<li><p>ecos-proxy-app валидирует Access токен отправляя запрос на IdP;</p></li>
+<li><p>IdP отвечает, что токен валидный;</p></li>
+<li><p>ecos-proxy-app отправляет запрос на защищенный ресурс, который нужен клиенту добавив в запрос хидер <code class="docutils literal notranslate"><span class="pre">X-ECOS-User</span></code> с именем пользователя;</p></li>
+<li><p>Клиент получает ответ от защищенного ресурса.</p></li>
+</ol>
+<p>Во всем процессе аутентификации от пользователя требуется только действия на шаге 2 (аутентификация на IdP).
+Все остальные пункты проходят прозрачно и незаметно для пользователя.</p>
+<p>Клиент может отправлять токен при запросах в следующем виде:</p>
+<ol class="arabic simple">
+<li><p>В хидере Authentication в формате <code class="docutils literal notranslate"><span class="pre">Bearer</span> <span class="pre">{{TOKEN}}</span></code>.</p></li>
+<li><p>В куке PA</p></li>
+</ol>
+<p>Настройки /eis.json заполняются значениями из переменных среды ecos-proxy-app - REALM_ID и EIS_ID</p>
+</section>
+<section id="id6">
+<h2>Настройка времени жизни сессий на Keycloak<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<p>Настройки на уровне реалма (действуют для всех клиентов в этом реалме по умолчанию):</p>
+<p><code class="docutils literal notranslate"><span class="pre">Realm</span> <span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">Tokens</span></code></p>
+<p>Настройки на уровне клиента (переопределяют настройки реалма):</p>
+<p><code class="docutils literal notranslate"><span class="pre">Clients</span> <span class="pre">-&gt;</span> <span class="pre">CLIENT_ID</span> <span class="pre">-&gt;</span> <span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">Advanced</span> <span class="pre">Settings</span></code></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Параметр</strong></p></td>
+<td><p><strong>Описание</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>SSO Session Idle</p></td>
+<td><div class="line-block">
+<div class="line">Время жизни сессии пользователя при неактивности. Если от пользователя</div>
+<div class="line">нет никакой активности в течении этого времени, то сессия прерывается.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>SSO Session Max</p></td>
+<td><div class="line-block">
+<div class="line">Максимальное время жизни сессии пользователя. Сессия прерывается если</div>
+<div class="line">с момента аутентификации прошло указанное время вне зависимости от активности пользователя.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Client Session Idle</p></td>
+<td><div class="line-block">
+<div class="line">Время жизни сессии OIDC клиента при неактивности. Если от OIDC клиента</div>
+<div class="line">нет никакой активности в течении этого времени, то сессия клиента прерывается.</div>
+<div class="line">Если значение не задано, то по умолчанию берется значение SSO Session Idle.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Client Session Max</p></td>
+<td><div class="line-block">
+<div class="line">Максимальное время жизни сессии клиента. Сессия прерывается если</div>
+<div class="line">с момента аутентификации клиента прошло указанное время вне зависимости от активности клиента.</div>
+<div class="line">Если значение не задано, то по умолчанию берется значение SSO Session Max.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Access Token Lifespan</p></td>
+<td><div class="line-block">
+<div class="line">Время жизни Access токена. Это время жизни должно быть</div>
+<div class="line">небольшим (по умолчанию 5 минут) из соображений безопасности.</div>
+<div class="line">Токены доступа меняются автоматически и прозрачно для пользователя.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Примечания:</p>
+<ol class="arabic simple">
+<li><p>Если сессия пользователя прерывается, то выданные в этой сессии Access и Refresh токены отзываются.</p></li>
+<li><p>Если сессия OIDC клиента прерывается, то выданные в этой сессии Access и Refresh токены для всех пользователей отзываются.</p></li>
+</ol>
+<p>Если пользователь работает с сервером через встроенный OIDC клиент в ecos-proxy-app, то следует учитывать, что OIDC клиент
+кэширует результат запросов к IdP и не каждый запрос приводит к обновлению условного «таймера активности» на IdP. Активность
+обновляется как минимум при обновлении Access Token’а.</p>
+<p>Из особенности работы OIDC клиента с кэшем так же следует, что если мы прерываем сессию в IdP, то это не гарантирует,
+что пользователь сразу же потеряет доступ к серверу. Пользователь сможет отправлять запросы и получать данные от
+сервера до тех пор пока действует его Access Token.</p>
+</section>
+<section id="touch">
+<h2>Touch запросы<a class="headerlink" href="#touch" title="Ссылка на этот заголовок"></a></h2>
+<p>Для того, чтобы сессия пользователя неожиданно не прерывалась без явных действий пользователя,
+которые приводят к запросам на сервер, в ecos-ui добавлена логика с периодическй отправкой
+touch запроса. Задача этого запроса в проходе через механизм проверки токена пользователя и обновления
+условного таймера неактивности в IdP. Touch запросы отправляются периодически до тех пор пока
+пользователь что-то делает в системе (двигает мышкой, нажимает клавиши и т.д.).</p>
+<p>Тайминги touch запросов для версии ecos-ui 2.9.0+:</p>
+<ul class="simple">
+<li><p>Период отправки touch запросов: 30с.</p></li>
+<li><p>Время неактивности после которого перестают отправляться touch запросы: 1ч.</p></li>
+</ul>
+<p>В журнале конфигурации ECOS можно настроить поведение touch запросов:</p>
+<ul class="simple">
+<li><p>Scope: <strong>app/gateway</strong></p></li>
+<li><p>Id: <strong>touch</strong></p></li>
+</ul>
+<p>Содержимое настройки:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">Boolean</span> <span class="o">//</span><span class="n">включить</span> <span class="n">или</span> <span class="n">отключить</span> <span class="n">touch</span> <span class="n">запросы</span>
+  <span class="s2">&quot;uri&quot;</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">URI</span> <span class="n">для</span> <span class="n">touch</span> <span class="n">запросов</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="idp">
+<h2>Интеграция с внешними IdP<a class="headerlink" href="#idp" title="Ссылка на этот заголовок"></a></h2>
+<p>Для организации аутентификации в Citeck ECOS с использованием IdP отличных от Keycloak или c Keycloak,
+который не поставляется вместе с Citeck ECOS мы рекомендуем использовать архитектуру</p>
+<p><code class="docutils literal notranslate"><span class="pre">[Citeck</span> <span class="pre">ECOS</span> <span class="pre">&lt;-&gt;</span> <span class="pre">Keycloak]</span> <span class="pre">&lt;-&gt;</span> <span class="pre">External</span> <span class="pre">IdP</span></code></p>
+<p>Citeck ECOS продолжает использовать свой Keycloak для аутентификации, а внешний IdP прозрачно подключается
+с использованием обширных возможностей Keycloak по интеграции с внешними IdP. Такая архитектура проверена
+временем и является оптимальной для использования.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="docker_services/ecos-alfresco-search-service.html" class="btn btn-neutral float-left" title="ecos-alfresco-search-service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="sync_authorities.html" class="btn btn-neutral float-right" title="Синхронизация Authorities" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

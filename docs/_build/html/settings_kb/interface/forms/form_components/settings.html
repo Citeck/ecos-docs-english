@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Настройка компонента &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../../search.html" />
+    <link rel="next" title="Примеры компонент" href="../form_examples.html" />
+    <link rel="prev" title="Import button" href="components/import%20button.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../interface.html">Интерфейс</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../forms.html">Формы</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../forms.html">Общая информация</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../form_builder.html">Конструктор форм</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../form_components.html">Компоненты формы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../form_examples.html">Примеры компонент</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../form_localisation.html">Локализация</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../form_for_task.html">Связь формы с задачей</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../journals.html">Журналы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../menu.html">Меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dashboards.html">Дашборды</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../widgets.html">Виджеты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../number_template.html">Шаблоны нумерации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../../../interface.html">Интерфейс</a> &raquo;</li>
+          <li><a href="../../forms.html">Формы</a> &raquo;</li>
+          <li><a href="../form_components.html">Компоненты формы</a> &raquo;</li>
+      <li>Настройка компонента</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/settings_kb/interface/forms/form_components/settings.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Настройка компонента<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<section id="allow-manual-override-of-calculated-value">
+<h2>Allow Manual Override of Calculated Value / Разрешить ручное переопределение вычисляемого значения<a class="headerlink" href="#allow-manual-override-of-calculated-value" title="Ссылка на этот заголовок"></a></h2>
+<p>Настройка расположена на вкладке <strong>«Данные»</strong>.</p>
+<p>При помощи <strong>Allow Manual Override of Calculated Value / Разрешить ручное переопределение вычисляемого значения</strong> поле перевычисляется до тех пор, пока пользователь не поменяет это значение.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/calculated_value.png"><img alt="../../../../_images/calculated_value.png" class="align-center" src="../../../../_images/calculated_value.png" style="width: 600px;" /></a>
+</div></blockquote>
+<section id="id2">
+<h3>Описание работы<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h3>
+<section id="id3">
+<h4>Режим создания<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h4>
+<p>Чтобы <strong>calculated value</strong> установилось, необходимо, чтобы <strong>valueChangedByUser = false</strong> (при условии, что включен <strong>Allow Manual Override of Calculated Value</strong>). Тогда в режиме создания достаточно просто очистить компонент, и <strong>calculatedValue</strong> снова заполнит его.</p>
+</section>
+<section id="id4">
+<h4>Режим редактирования<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h4>
+<p>В режиме редактирования если очистить компонент, то это также считается за пользовательские правки, следовательно, нет возможности снова получить значение из <strong>calculatedValue</strong>.</p>
+</section>
+</section>
+<section id="id5">
+<h3>Описание полей и логики<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Имя</p></th>
+<th class="head"><p>Значение по умолчанию</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>calculatedValue</strong></p></td>
+<td><p>null</p></td>
+<td><p>вычисленное значение</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dataValue</strong></p></td>
+<td><p>значение с сервера</p></td>
+<td><p>значение в поле</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>режим формы</strong></p></td>
+<td></td>
+<td><div class="line-block">
+<div class="line">по умолчанию выставить значение «CREATE».</div>
+<div class="line">Возможные значения - CREATE, EDIT</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>calculatedValueWasCalculated</strong></p></td>
+<td></td>
+<td><div class="line-block">
+<div class="line">Внутренний флаг, по которому определяется первое это вычисление значения или нет.</div>
+<div class="line">После первого вычисления проставляется в true.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>valueChangedByUser</strong></p></td>
+<td><p>false</p></td>
+<td><p>Внутренний флаг, который определяет, что текущее значение (dataValue) отвязано от вычисленного</p></td>
+</tr>
+</tbody>
+</table>
+<p>До проставления <strong>dataValue</strong> у всех полей проверятся, что никакая логика с формы не начинает вычисляться.</p>
+<p>Для каждого перевычисления <strong>calculatedValue</strong>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>После первого вычисления <strong>calculatedValue</strong> (первое или нет определяется по флагу <strong>calculatedValueWasCalculated</strong>) проставляется значение флага <strong>valueChangedByUser</strong>.</p></li>
+<li><p><strong>calculatedValueWasCalculated</strong> проставляется в <strong>true</strong></p></li>
+<li><p>Если флаг <strong>valueChangedByUser = false</strong>, то меняется <strong>dataValue</strong>, иначе с <strong>dataValue</strong> действия не производятся</p></li>
+</ol>
+</div></blockquote>
+<p>Дополнительная логика:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Если значение dataValue меняется пользователем, то проставляется флаг <strong>valueChangedByUser = true</strong></p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="tableform">
+<h3>Пример работы с компонентом TableForm<a class="headerlink" href="#tableform" title="Ссылка на этот заголовок"></a></h3>
+<section id="id6">
+<h4>Задача<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h4>
+<p>данные должны вычисляться на основе компонента 1 и помещаться в компонент 2, и после этого у пользователя должна быть возможность их изменять.</p>
+<p>И если пользователь ошибся или изменил решение, то удалить данные из компонента 2 и снова путем перевыбора в компоненте 1 получить другие данные и также изменять их:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/calculated_value_table.png"><img alt="../../../../_images/calculated_value_table.png" class="align-center" src="../../../../_images/calculated_value_table.png" style="width: 600px;" /></a>
+</div></blockquote>
+<dl class="simple">
+<dt>Реализация:</dt><dd><ol class="arabic simple">
+<li><p>использование флага <strong>allow Manual Override</strong>,</p></li>
+<li><p>но вместо <strong>calculated value</strong>, логика подтягивания записей перенесена в раздел компонента <strong>«Logic»</strong> (table form)</p></li>
+<li><p>Логика включается по событию нажатия кнопки (только когда пользователь действительно хочет перезаписать свои значения вычисленными)</p></li>
+</ol>
+</dd>
+</dl>
+<p>Итог: работает перезапись, ручной запуск вычисления данных (на формах создания и редактирования). Не работало ранее, до использования <strong>instance.setValue()</strong>.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="components/import%20button.html" class="btn btn-neutral float-left" title="Import button" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../form_examples.html" class="btn btn-neutral float-right" title="Примеры компонент" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

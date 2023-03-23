@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Общение между двумя и более инстансами ECOS’а через команды и события &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Интеграция с ЭДО провайдерами" href="EDI_integration.html" />
+    <link rel="prev" title="Файловый импорт в систему" href="file_import.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Общение между двумя и более инстансами ECOS’а через команды и события</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Требования</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Настройка</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ecos-1-second-ecos-ecos-0-main-ecos">Отправка команды во внешнюю систему (из ECOS 1 (second-ecos) в ECOS 0 (main-ecos))</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Тестирование отправки команд</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Отправка файлов в командах и событиях</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+      <li>Общение между двумя и более инстансами ECOS’а через команды и события</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integration/2_instances.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ecos">
+<h1>Общение между двумя и более инстансами ECOS’а через команды и события<a class="headerlink" href="#ecos" title="Ссылка на этот заголовок"></a></h1>
+<section id="id1">
+<h2>Требования<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<ol class="arabic simple">
+<li><p>Инстансы ECOS должны быть самодостаточны. Т.е. в каждом ECOS должен быть развернут полный список необходимых микросервисов для полноценной работы.</p></li>
+<li><p>Микросервис интеграции в каждом контуре ECOS должен иметь доступ по сети к RabbitMQ и Zookeeper удаленного ECOS.</p></li>
+<li><p>В каждом контуре ECOS должен быть микросервис интеграции версии 1.15.0+ (пока SNAPSHOT)</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>доступ к Zookeeper нужен для работы событий, но они пока в TODO, а для работы команд достаточно доступа к RabbitMQ.</p>
+</div>
+</section>
+<section id="id2">
+<h2>Настройка<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Схема подключения двух инстансов ECOS’а:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/2_instances_1.png"><img alt="../_images/2_instances_1.png" class="align-center" src="../_images/2_instances_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Подключение пунктирными линиями настраиваются в central-config для микросервиса интеграции (в дальнейшем подключение к Zookeeper будет в connections под ключом “zookeeper”):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Пример конфигурации для main-ecos. Для second-ecos изменится this-app-name и возможно host/user/pass у rabbitmq</span>
+<span class="n">ecos</span><span class="o">-</span><span class="n">integrations</span><span class="p">:</span>
+<span class="n">extecos</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">this</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">name</span><span class="p">:</span> <span class="n">main</span><span class="o">-</span><span class="n">ecos</span>
+    <span class="n">connections</span><span class="p">:</span>
+        <span class="n">rabbitmq</span><span class="p">:</span>
+        <span class="n">host</span><span class="p">:</span> <span class="n">localhost</span>
+        <span class="n">username</span><span class="p">:</span> <span class="n">admin</span>
+        <span class="n">password</span><span class="p">:</span> <span class="n">admin</span>
+    <span class="n">commands</span><span class="p">:</span>
+        <span class="n">apps</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">alfresco</span>
+</pre></div>
+</div>
+<p><strong>extecos</strong> - массив из подключений к различным контурам ECOS (поддерживается неограниченное кол-во подключений).</p>
+<p><strong>extecos[].this-app-name</strong> - имя текущего контура экос. Будет использоваться при отправке команд и событий из внешней системы в текущую</p>
+<p><strong>extecos[].connections</strong> - раздел с подключениями к RabbitMQ и Zookeeper</p>
+<p><strong>extecos[].commands</strong> - настройка команд;</p>
+<p><strong>extecos[].commands.apps</strong> - локальные приложения, которым будет возможность отправлять команды из внешней системы.</p>
+<p><strong>Регистрация исполнителя команд</strong></p>
+<p>Инжектим <strong>CommandsService</strong> и вызываем:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commandsService</span><span class="o">.</span><span class="n">addExecutor</span><span class="p">(</span><span class="n">new</span> <span class="n">SomeExecutor</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>Пример исполнителя команд:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">SomeExecutor</span> <span class="n">implements</span> <span class="n">CommandExecutor</span><span class="o">&lt;</span><span class="n">SomeBody</span><span class="o">&gt;</span> <span class="p">{</span> <span class="o">//</span> <span class="n">SomeBody</span> <span class="o">-</span> <span class="n">любой</span> <span class="n">DTO</span> <span class="n">тип</span><span class="p">,</span> <span class="n">который</span> <span class="n">будет</span> <span class="n">передаваться</span> <span class="n">в</span> <span class="n">Body</span> <span class="n">команды</span><span class="o">.</span> <span class="n">DTO</span> <span class="n">тип</span> <span class="n">должен</span> <span class="n">иметь</span> <span class="n">аннотацию</span> <span class="n">CommandType</span> <span class="n">для</span> <span class="n">определения</span> <span class="n">типа</span> <span class="n">команды</span>
+
+    <span class="nd">@Nullable</span>
+    <span class="nd">@Override</span>
+    <span class="n">public</span> <span class="n">Object</span> <span class="n">execute</span><span class="p">(</span><span class="n">SomeBody</span> <span class="n">someBody</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">//</span><span class="n">выполняем</span> <span class="n">необходимые</span> <span class="n">действи</span>
+        <span class="k">return</span> <span class="s2">&quot;OK&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Data</span>
+<span class="nd">@CommandType</span><span class="p">(</span><span class="s2">&quot;some-command-type&quot;</span><span class="p">)</span> <span class="o">//</span> <span class="n">тип</span> <span class="n">команды</span><span class="o">.</span> <span class="n">С</span> <span class="n">отправляющей</span> <span class="n">стороны</span> <span class="n">задается</span> <span class="n">как</span> <span class="n">builder</span><span class="o">.</span><span class="n">setType</span><span class="p">(</span><span class="s2">&quot;some-command-type&quot;</span><span class="p">)</span> <span class="n">или</span> <span class="n">так</span> <span class="n">же</span> <span class="n">через</span> <span class="n">аннотацию</span> <span class="n">на</span> <span class="n">типе</span> <span class="n">тела</span> <span class="n">команды</span><span class="p">,</span> <span class="n">которое</span> <span class="n">передается</span> <span class="n">как</span> <span class="n">builder</span><span class="o">.</span><span class="n">setBody</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">SomeBody</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">strField</span> <span class="o">=</span> <span class="s2">&quot;str-field&quot;</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">byte</span><span class="p">[]</span> <span class="n">bytesField</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>SomeExecutor</strong> - принимающая сторона, а отправляющая сторона будет там где вызовется commandsService.execute (пример в разделе “отправка команд”)</p>
+<p><strong>SomeBody</strong> класс должен быть описан на отправляющей стороне и на принимающей (Дстаточно чтобы имена полей и типы полей совпадали. Пакеты при этом не важны. Jackson позаботится о приобразовании данных).</p>
+</section>
+<section id="ecos-1-second-ecos-ecos-0-main-ecos">
+<h2>Отправка команды во внешнюю систему (из ECOS 1 (second-ecos) в ECOS 0 (main-ecos))<a class="headerlink" href="#ecos-1-second-ecos-ecos-0-main-ecos" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Из java кода</strong></p>
+<p>Инжектим <strong>CommandsService</strong> и вызываем отправку команды:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commandsService</span><span class="o">.</span><span class="n">executeSync</span><span class="p">(</span><span class="n">builder</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">//</span> <span class="n">вместо</span> <span class="n">executeSync</span> <span class="n">можно</span> <span class="n">вызвать</span> <span class="n">просто</span> <span class="n">execute</span><span class="p">,</span> <span class="n">чтобы</span> <span class="n">не</span> <span class="n">дожидаться</span> <span class="n">ответа</span><span class="o">.</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">setTargetApp</span><span class="p">(</span><span class="s2">&quot;main-ecos/alfresco&quot;</span><span class="p">);</span> <span class="o">//</span> <span class="n">целевое</span> <span class="n">приложение</span><span class="o">.</span> <span class="n">Является</span> <span class="n">значением</span> <span class="n">this</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">name</span> <span class="n">из</span> <span class="n">конфигурации</span> <span class="n">целевого</span> <span class="n">контура</span> <span class="n">ECOS</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">индентификатор</span> <span class="n">целевого</span> <span class="n">приложения</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">setType</span><span class="p">(</span><span class="s2">&quot;some-command-type&quot;</span><span class="p">);</span> <span class="o">//</span> <span class="n">тип</span> <span class="n">события</span><span class="o">.</span> <span class="n">по</span> <span class="n">нему</span> <span class="n">будет</span> <span class="n">выбран</span> <span class="n">CommandExecutor</span> <span class="n">для</span> <span class="n">выполнения</span><span class="o">.</span> <span class="n">Вместо</span> <span class="n">данной</span> <span class="n">строки</span> <span class="n">тип</span> <span class="n">можно</span> <span class="n">указать</span> <span class="n">через</span> <span class="n">аннотацию</span> <span class="nd">@CommandType</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">setBody</span><span class="p">(</span><span class="n">new</span> <span class="n">SomeBody</span><span class="p">());</span> <span class="o">//</span> <span class="n">любой</span> <span class="n">инстанс</span> <span class="n">DTO</span> <span class="n">класса</span><span class="o">.</span> <span class="n">Преобразуется</span> <span class="n">в</span> <span class="n">байты</span> <span class="n">и</span> <span class="n">обратно</span> <span class="n">с</span> <span class="n">помощью</span> <span class="n">библиотеки</span> <span class="n">Jackson</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">setTtl</span><span class="p">(</span><span class="n">Duration</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ChronoUnit</span><span class="o">.</span><span class="n">MINUTES</span><span class="p">));</span> <span class="o">//</span><span class="n">время</span> <span class="n">жизни</span> <span class="n">сообщения</span> <span class="n">в</span> <span class="n">RabbitMQ</span><span class="o">.</span> <span class="n">Если</span> <span class="n">за</span> <span class="n">это</span> <span class="n">время</span> <span class="n">сообщение</span> <span class="n">никто</span> <span class="n">не</span> <span class="n">обработает</span><span class="p">,</span> <span class="n">то</span> <span class="n">оно</span> <span class="n">удалится</span> <span class="n">из</span> <span class="n">очередей</span><span class="o">.</span>
+    <span class="k">return</span> <span class="n">Unit</span><span class="o">.</span><span class="n">INSTANCE</span><span class="p">;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>Если предположим, что отправка осуществляется из alfresco (ECOS 1 - second-ecos) в alfresco (ECOS 0 - main-ecos), то ход команды будет следующим:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/2_instances_2.png"><img alt="../_images/2_instances_2.png" class="align-center" src="../_images/2_instances_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id3">
+<h2>Тестирование отправки команд<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Отправка команд в удаленный ECOS и локальный отличается только аргументом в <strong>setTargetApp</strong>. Т.о. отлаживать механизм можно без учета нескольких инстансов ECOS.</p>
+<p>Отправка команды в локальный RabbitMQ через Java тест (можно размещать в <strong>ecos-integrations</strong>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">CommandsTest</span> <span class="p">{</span>
+
+    <span class="nd">@Test</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">test</span><span class="p">()</span> <span class="p">{</span>
+
+        <span class="o">//</span> <span class="n">подключаемся</span> <span class="n">к</span> <span class="n">нужному</span> <span class="n">RabbitMQ</span>
+        <span class="n">RabbitMqConnProps</span> <span class="n">props</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RabbitMqConnProps</span><span class="p">();</span>
+        <span class="n">props</span><span class="o">.</span><span class="n">setUsername</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">);</span>
+        <span class="n">props</span><span class="o">.</span><span class="n">setPassword</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">);</span>
+        <span class="n">props</span><span class="o">.</span><span class="n">setHost</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">);</span>
+
+        <span class="n">RabbitMqConnFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RabbitMqConnFactory</span><span class="p">();</span>
+        <span class="n">RabbitMqConn</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">createConnection</span><span class="p">(</span><span class="n">props</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+        <span class="n">conn</span><span class="o">.</span><span class="n">waitUntilReady</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+
+        <span class="n">CommandsServiceFactory</span> <span class="n">commFactory</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CommandsServiceFactory</span><span class="p">()</span> <span class="p">{</span>
+
+            <span class="nd">@NotNull</span>
+            <span class="nd">@Override</span>
+            <span class="n">protected</span> <span class="n">CommandsProperties</span> <span class="n">createProperties</span><span class="p">()</span> <span class="p">{</span>
+                <span class="n">CommandsProperties</span> <span class="n">props</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CommandsProperties</span><span class="p">();</span>
+                <span class="n">props</span><span class="o">.</span><span class="n">setAppName</span><span class="p">(</span><span class="s2">&quot;alfresco1&quot;</span><span class="p">);</span> <span class="o">//</span> <span class="s2">&quot;представляемся&quot;</span> <span class="n">в</span> <span class="n">системе</span> <span class="n">как</span> <span class="n">приложение</span> <span class="n">с</span> <span class="n">именем</span> <span class="s2">&quot;alfresco1&quot;</span>
+                <span class="n">props</span><span class="o">.</span><span class="n">setAppInstanceId</span><span class="p">(</span><span class="s2">&quot;alfresco1-123&quot;</span><span class="p">);</span> <span class="o">//</span> <span class="n">идентификатор</span> <span class="n">инстанса</span> <span class="n">приложения</span>
+                <span class="n">props</span><span class="o">.</span><span class="n">setListenBroadcast</span><span class="p">(</span><span class="n">false</span><span class="p">);</span> <span class="o">//</span> <span class="n">указываем</span><span class="p">,</span> <span class="n">что</span> <span class="n">широковещательные</span> <span class="n">команды</span> <span class="n">нам</span> <span class="n">исполнять</span> <span class="n">не</span> <span class="n">нужно</span>
+                <span class="k">return</span> <span class="n">props</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="nd">@NotNull</span>
+            <span class="nd">@Override</span>
+            <span class="n">protected</span> <span class="n">RemoteCommandsService</span> <span class="n">createRemoteCommandsService</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">new</span> <span class="n">RabbitCommandsService</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">conn</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+
+        <span class="n">commFactory</span><span class="o">.</span><span class="n">getRemoteCommandsService</span><span class="p">();</span>
+        <span class="n">CommandsService</span> <span class="n">commandsService</span> <span class="o">=</span> <span class="n">commFactory</span><span class="o">.</span><span class="n">getCommandsService</span><span class="p">();</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">commandsService</span><span class="o">.</span><span class="n">executeSync</span><span class="p">(</span><span class="n">builder</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">//</span> <span class="n">выполняем</span> <span class="n">команду</span> <span class="n">синхронно</span> <span class="n">и</span> <span class="n">выводим</span> <span class="n">результат</span> <span class="n">в</span> <span class="n">консоль</span>
+            <span class="n">builder</span><span class="o">.</span><span class="n">setTargetApp</span><span class="p">(</span><span class="s2">&quot;alfresco&quot;</span><span class="p">);</span> <span class="o">//</span> <span class="n">отправляем</span> <span class="n">команду</span> <span class="n">в</span> <span class="n">alfresco</span>
+            <span class="n">builder</span><span class="o">.</span><span class="n">setType</span><span class="p">(</span><span class="s2">&quot;some-command-type&quot;</span><span class="p">);</span> <span class="o">//</span> <span class="n">тип</span> <span class="n">команды</span>
+            <span class="n">builder</span><span class="o">.</span><span class="n">setBody</span><span class="p">(</span><span class="n">new</span> <span class="n">SomeBody</span><span class="p">());</span> <span class="o">//</span> <span class="n">тело</span> <span class="n">команды</span>
+            <span class="n">builder</span><span class="o">.</span><span class="n">setTtl</span><span class="p">(</span><span class="n">Duration</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ChronoUnit</span><span class="o">.</span><span class="n">MINUTES</span><span class="p">));</span>
+            <span class="k">return</span> <span class="n">Unit</span><span class="o">.</span><span class="n">INSTANCE</span><span class="p">;</span>
+        <span class="p">}));</span>
+
+        <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Data</span>
+    <span class="nd">@CommandType</span><span class="p">(</span><span class="s2">&quot;some-command-type&quot;</span><span class="p">)</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="k">class</span> <span class="nc">SomeBody</span> <span class="p">{</span>
+        <span class="n">private</span> <span class="n">String</span> <span class="n">strField</span> <span class="o">=</span> <span class="s2">&quot;str-field&quot;</span><span class="p">;</span>
+        <span class="n">private</span> <span class="n">byte</span><span class="p">[]</span> <span class="n">bytesField</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Локальное тестирование отправки команд на удаленный инстанс (имеет смысл после отладки через обычную отправку команд):</p>
+<ol class="arabic simple">
+<li><p>Добавляем настройку удаленного контура ECOS как описано в разделе <strong>“Настройка”</strong>. В  качестве целевого RabbitMQ выбираем localhost. Т.о. можно локально тестировать работу с удаленными инстансами подняв только один инстанс RabbitMQ. Конфликтов при этом не возникнет.</p></li>
+<li><p>Немного меняем аргумент в методе <strong>setTargetApp</strong> при отправке команды в тесте:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="n">здесь</span> <span class="n">все</span> <span class="n">аналогично</span> <span class="n">предыдущему</span> <span class="n">блоку</span> <span class="n">кода</span><span class="p">,</span> <span class="n">который</span> <span class="n">описывает</span> <span class="n">класс</span> <span class="n">CommandsTest</span> <span class="o">...</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">commandsService</span><span class="o">.</span><span class="n">executeSync</span><span class="p">(</span><span class="n">builder</span> <span class="o">-&gt;</span> <span class="p">{</span>
+            <span class="n">builder</span><span class="o">.</span><span class="n">setTargetApp</span><span class="p">(</span><span class="s2">&quot;main-ecos/alfresco&quot;</span><span class="p">);</span> <span class="o">//</span> <span class="n">единственное</span> <span class="n">отличие</span> <span class="n">при</span> <span class="n">отправке</span> <span class="n">команд</span> <span class="o">-</span> <span class="n">добавляется</span> <span class="n">идентификатор</span> <span class="n">контура</span> <span class="n">ECOS</span> <span class="n">со</span> <span class="n">слэшем</span>
+            <span class="n">builder</span><span class="o">.</span><span class="n">setType</span><span class="p">(</span><span class="s2">&quot;some-command-type&quot;</span><span class="p">);</span>
+            <span class="n">builder</span><span class="o">.</span><span class="n">setBody</span><span class="p">(</span><span class="n">new</span> <span class="n">SomeBody</span><span class="p">());</span>
+            <span class="n">builder</span><span class="o">.</span><span class="n">setTtl</span><span class="p">(</span><span class="n">Duration</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ChronoUnit</span><span class="o">.</span><span class="n">MINUTES</span><span class="p">));</span>
+            <span class="k">return</span> <span class="n">Unit</span><span class="o">.</span><span class="n">INSTANCE</span><span class="p">;</span>
+        <span class="p">}));</span>
+<span class="o">...</span> <span class="n">здесь</span> <span class="n">все</span> <span class="n">аналогично</span> <span class="n">предыдущему</span> <span class="n">блоку</span> <span class="n">кода</span><span class="p">,</span> <span class="n">который</span> <span class="n">описывает</span> <span class="n">класс</span> <span class="n">CommandsTest</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>При желании можно подключиться и к реальному удаленному ECOS, но для этого должен быть доступ к RabbitMQ извне. При этом достаточно будет исправить параметры в <strong>RabbitMqConnProps</strong></p>
+</section>
+<section id="id4">
+<h2>Отправка файлов в командах и событиях<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Для отправки файлов в командах и событиях следует использовать поля с типом byte[] (сообщения сжимаются перед отправкой. Т.е. доп. оптимизация не нужна).</p>
+<p>Для удобной работы с файлами есть утилитные классы <strong>EcosMemFile EcosMemDir</strong> и <strong>ru.citeck.ecos.commons.utils.ZipUtils</strong>, который может легко упаковывать много файлов в один поток байт и обратно.</p>
+<p>Пример:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SomeBody</span> <span class="n">body</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SomeBody</span><span class="p">();</span>
+
+<span class="n">EcosMemDir</span> <span class="nb">dir</span> <span class="o">=</span> <span class="n">new</span> <span class="n">EcosMemDir</span><span class="p">();</span>
+<span class="nb">dir</span><span class="o">.</span><span class="n">createFile</span><span class="p">(</span><span class="s2">&quot;firstFile.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">);</span>
+<span class="nb">dir</span><span class="o">.</span><span class="n">createFile</span><span class="p">(</span><span class="s2">&quot;secondFile.docx&quot;</span><span class="p">,</span> <span class="n">new</span> <span class="n">byte</span><span class="p">[</span><span class="mi">10</span><span class="p">]);</span>
+<span class="n">body</span><span class="o">.</span><span class="n">setBytesField</span><span class="p">(</span><span class="n">ZipUtils</span><span class="o">.</span><span class="n">writeZipAsBytes</span><span class="p">(</span><span class="nb">dir</span><span class="p">));</span>
+
+<span class="n">commandsService</span><span class="o">.</span><span class="n">executeSync</span><span class="p">(</span><span class="n">builder</span> <span class="o">-&gt;</span> <span class="p">{</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">setTargetApp</span><span class="p">(</span><span class="s2">&quot;main-ecos/alfresco&quot;</span><span class="p">);</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">setType</span><span class="p">(</span><span class="s2">&quot;some-command-type&quot;</span><span class="p">);</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">setBody</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">setTtl</span><span class="p">(</span><span class="n">Duration</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ChronoUnit</span><span class="o">.</span><span class="n">MINUTES</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">Unit</span><span class="o">.</span><span class="n">INSTANCE</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="file_import.html" class="btn btn-neutral float-left" title="Файловый импорт в систему" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="EDI_integration.html" class="btn btn-neutral float-right" title="Интеграция с ЭДО провайдерами" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

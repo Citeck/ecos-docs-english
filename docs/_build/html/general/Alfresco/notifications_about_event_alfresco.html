@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Уведомления о событиях alfresco &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="How To" href="../How_To.html" />
+    <link rel="prev" title="Типы данных" href="Data_types.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Alfresco.html">Alfresco и информация о миграции</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="JavaScript_Records_API.html">JavaScript Records API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Alfresco%20_ECOS.html">Связь типов ECOS и типов Alfresco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Alfresco-share_migration.html">Миграция локализации из Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nodebrowser.html">Доработки функционала Alfresco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data_types.html">Типы данных</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Уведомления о событиях alfresco</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1. Форма уведомления</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2. Тип уведомления</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3. Логика поиска шаблона</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">4. Отключение/Включении уведомлений</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">5. Адресаты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">6. Шаблон</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ecos">7. Данные для шаблонов ECOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../Alfresco.html">Alfresco и информация о миграции</a> &raquo;</li>
+      <li>Уведомления о событиях alfresco</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/general/Alfresco/notifications_about_event_alfresco.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="alfresco">
+<h1><a class="toc-backref" href="#id8">Уведомления о событиях alfresco</a><a class="headerlink" href="#alfresco" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#alfresco" id="id8">Уведомления о событиях alfresco</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id9">1. Форма уведомления</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id10">2. Тип уведомления</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id11">3. Логика поиска шаблона</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id12">4. Отключение/Включении уведомлений</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id13">5. Адресаты</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id14">6. Шаблон</a></p></li>
+<li><p><a class="reference internal" href="#ecos" id="id15">7. Данные для шаблонов ECOS</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Для настройки уведомлений на определённые события добавлен системный журнал “Уведомления о событиях”.</p>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Данный журнал является временным решением перехода старой отправки уведомлений через новый микросервис.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>При создании уведомления через журнал, уведомление складывается по пути: <code class="docutils literal notranslate"><span class="pre">/app:company_home/app:dictionary/app:email_templates/cm:workflownotification</span></code></p>
+</div>
+<section id="id2">
+<h2><a class="toc-backref" href="#id9">1. Форма уведомления</a><a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<a class="reference internal image-reference" href="../../_images/notifications_about_event_alfresco_form.png"><img alt="../../_images/notifications_about_event_alfresco_form.png" class="align-center" src="../../_images/notifications_about_event_alfresco_form.png" style="width: 600px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Имя должно быть уникальным</p>
+</div>
+</section>
+<section id="id3">
+<h2><a class="toc-backref" href="#id10">2. Тип уведомления</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>При каком либо событии, например переназначении задачи, ищется шаблон в журнале с фильтром по полю “Тип уведомления”. Если установлена галочка “Не участвует в поиске”, шаблон игнорируется.</p>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id11">3. Логика поиска шаблона</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Шаблон можно привязывать к типу кейса, процессу Activity/Flowable и задаче, для этого используются следующие поля соответственно “Тип ECOS”, “Название процесса”, “Название задачи”.</p>
+<p>Приоритет выбора шаблона следующий: “Название задачи” &gt; “Название процесса” &gt; “Тип ECOS”.</p>
+<p><em>Пример:</em> мы можем задать для определенной задачи шаблон, он будет применён для всех типов кейсов и для всех процессов. Но если создадим шаблон для такой же задачи, но укажем тип кейса, то для указанного типа кейса и задачи будет выбран этот шаблон.</p>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id12">4. Отключение/Включении уведомлений</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>Для отключение уведомления по фильтру необходимо установить галочку <code class="docutils literal notranslate"><span class="pre">Уведомление</span> <span class="pre">отключено</span></code></p>
+<p>Если по умолчанию необходимо отключить отправку уведомлений, создаём запасись с пустыми полями типа ecos, процесса и задачи. Тогда отправка по умолчанию будет отключена.</p>
+<p>Для полного отключения уведомлений необходимого добавить properites со значением false:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">notification</span><span class="o">.</span><span class="n">cancel</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">true</span>
+<span class="n">notification</span><span class="o">.</span><span class="n">complete</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">true</span>
+<span class="n">notification</span><span class="o">.</span><span class="n">complete</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">true</span>
+<span class="n">notification</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">change</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">true</span>
+<span class="n">notification</span><span class="o">.</span><span class="k">for</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">item</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">true</span>
+<span class="n">notification</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">true</span>
+<span class="n">notification</span><span class="o">.</span><span class="n">reassing</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">true</span>
+<span class="n">notification</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">true</span>
+<span class="n">notification</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">true</span>
+<span class="n">workflow</span><span class="o">.</span><span class="n">notification</span><span class="o">.</span><span class="n">overdue</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">true</span>
+<span class="n">workflow</span><span class="o">.</span><span class="n">notification</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">overdue</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2><a class="toc-backref" href="#id13">5. Адресаты</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<p>Поля Отправить автору документа, Отправить инициатору, Отправить исполнителю, Другие адресаты (Поле, строка для вычисления), Доп. адресаты (пользователи, группы) позволяют регулировать кому будет отправлено уведомление.</p>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Для некоторых уведомлений выбор адресата может не работать. Проверить кому отправляется можно в классах нотификатора <code class="docutils literal notranslate"><span class="pre">com-core</span> <span class="pre">ru.citeck.ecos.notification.*</span></code>
+Например, для <code class="docutils literal notranslate"><span class="pre">DocumentNotificationSender</span></code> не реализованы функции получения для отправки инициатору и исполнителю.</p>
+</div>
+</section>
+<section id="id7">
+<h2><a class="toc-backref" href="#id14">6. Шаблон</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h2>
+<p>В поле <code class="docutils literal notranslate"><span class="pre">Содержимое</span></code> находиться шаблон который отправляется на стороне Alfresco.</p>
+<p>Для отправки уведомления через микросервис ecos-notification в поле <code class="docutils literal notranslate"><span class="pre">Шаблон</span> <span class="pre">уведомления</span> <span class="pre">ECOS</span></code> нужно выбрать уже созданный шаблон из журнала Шаблоны уведомлений. Поле содержимое можно оставить пустым.</p>
+</section>
+<section id="ecos">
+<h2><a class="toc-backref" href="#id15">7. Данные для шаблонов ECOS</a><a class="headerlink" href="#ecos" title="Ссылка на этот заголовок"></a></h2>
+<p>В данных уведомлений в качестве основной записи уведомления используется <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.notification.task.record.TaskExecutionRecord</span></code> с следующими полями:</p>
+<ul class="simple">
+<li><p>name, title, description, .id</p></li>
+<li><p>Map&lt;String, Object&gt; workflow - Свойства задачи процесса, обычно содержит id и документы (documents)</p></li>
+<li><p>Map&lt;String, Object&gt;properties - Свойства полученные из таски. Для получение свойства опускается префикс <code class="docutils literal notranslate"><span class="pre">properties</span></code>. (например просто bpm_priority)</p></li>
+</ul>
+<p>В переменную <code class="docutils literal notranslate"><span class="pre">$subject</span></code> устанавливается тема которая вычисляется в нотификаторе.</p>
+<p>Пример модели данных:</p>
+<a class="reference internal image-reference" href="../../_images/notifications_about_event_alfresco_model_example.png"><img alt="../../_images/notifications_about_event_alfresco_model_example.png" class="align-center" src="../../_images/notifications_about_event_alfresco_model_example.png" style="width: 600px;" /></a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="Data_types.html" class="btn btn-neutral float-left" title="Типы данных" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../How_To.html" class="btn btn-neutral float-right" title="How To" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

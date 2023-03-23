@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Использование Camel DSL &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Источники данных" href="data%20sources.html" />
+    <link rel="prev" title="Примеры использования Records API для внешних систем" href="API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Использование Camel DSL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Общие сведения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Выборка из БД</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recordsdaoendpoint">Подключение RecordsDaoEndpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Удаление данных из БД</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+      <li>Использование Camel DSL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integration/Camel_DSL.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="camel-dsl">
+<h1>Использование Camel DSL<a class="headerlink" href="#camel-dsl" title="Ссылка на этот заголовок"></a></h1>
+<section id="id1">
+<h2>Общие сведения<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Apache Camel</strong> — открытый кроссплатформенный java-фреймворк, который позволяет проводить интеграцию приложений в простой и понятной форме.</p>
+<p>Camel использует доменные языки (Domain Specific Language - DSL) для описания проектных шаблонов интеграции или маршрутов.</p>
+<p>В ECOS используется Yaml DSL для описания маршрутов в формате YAML и XML DSL.</p>
+<p><strong>Camel-контекст</strong> – главная сущность Camel. Контекст является контейнером среды выполнения Camel. Контекст предоставляет много полезных сервисов, наиболее значимыми являются маршруты, компоненты, языки, конверторы типов, реестр, endpointы и форматы данных.</p>
+<p><strong>Маршрут</strong> – определение <a class="reference external" href="https://camel.apache.org/manual/routes.html">интеграционного потока</a>
+Например, для объединения двух систем маршрут определяет как именно эти системы взаимодействуют.</p>
+<p><strong>Компоненты</strong>  - подробно описано по <a class="reference external" href="https://camel.apache.org/components/3.16.x/index.html">ссылке</a></p>
+<ul class="simple">
+<li><p><strong>Bean</strong> – для вызова методов Java-бинов, хранящихся в реестре;</p></li>
+<li><p><strong>Direct</strong> – вызывает другой endpoint из того же контекста синхронно;</p></li>
+<li><p><strong>Direct VM</strong> - вызывает другой endpoint из любого контекста на той же JVM синхронно;</p></li>
+<li><p><strong>File</strong> – читает и записывает файлы;</p></li>
+<li><p><strong>Timer</strong> – генерирует сообщения с определенным интервалом, используя java.util.Timer;</p></li>
+<li><p><strong>JDBC</strong> – предоставляет доступ к базам данных через JDBC;</p></li>
+<li><p><strong>Jetty</strong> – предоставляет endpoint на основе HTTP для получения и отправки HTTP запросов.</p></li>
+</ul>
+<p>Пример контекста с маршрутом:</p>
+<a class="reference internal image-reference" href="../_images/Camel_1.png"><img alt="../_images/Camel_1.png" class="align-center" src="../_images/Camel_1.png" style="width: 600px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Атрибут = свойство = поле</p>
+<p>Целевая БД = БД назначения = целевой источник данных – куда данные помещаются</p>
+<p>Исходная БД = исходный источник данных – откуда данные берутся</p>
+</div>
+</section>
+<section id="id4">
+<h2>Выборка из БД<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Для выборки данных из БД необходимо:</p>
+<ol class="arabic simple">
+<li><p>Создать <strong>“Credentials”</strong> для подключения:</p></li>
+</ol>
+<p><strong>Главное меню: Инструменты администратора -&gt; Инструменты</strong></p>
+<a class="reference internal image-reference" href="../_images/Camel_2.png"><img alt="../_images/Camel_2.png" class="align-center" src="../_images/Camel_2.png" style="width: 800px;" /></a>
+<p><strong>Неосновное меню: Интеграция  -&gt; Credentials</strong></p>
+<a class="reference internal image-reference" href="../_images/Camel_3.png"><img alt="../_images/Camel_3.png" class="align-center" src="../_images/Camel_3.png" style="width: 800px;" /></a>
+<ol class="arabic simple" start="2">
+<li><p>Создать <strong>“Источник данных”</strong> DB Data Source, в результате источник будет с типом db.</p></li>
+</ol>
+<p><strong>Главное меню: Инструменты администратора -&gt; Инструменты</strong></p>
+<p><strong>Неосновное меню: Интеграция  -&gt; Источники данных</strong></p>
+<a class="reference internal image-reference" href="../_images/Camel_4.png"><img alt="../_images/Camel_4.png" class="align-center" src="../_images/Camel_4.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../_images/Camel_5.png"><img alt="../_images/Camel_5.png" class="align-center" src="../_images/Camel_5.png" style="width: 600px;" /></a>
+<ol class="arabic simple" start="3">
+<li><p>Создать <strong>“Camel DSL”</strong></p></li>
+</ol>
+<p><strong>Главное меню: Инструменты администратора -&gt; Инструменты</strong></p>
+<p><strong>Неосновное меню: Интеграция  -&gt; Camel DSL</strong></p>
+<a class="reference internal image-reference" href="../_images/Camel_6.png"><img alt="../_images/Camel_6.png" class="align-center" src="../_images/Camel_6.png" style="width: 800px;" /></a>
+<p>Контекст Camel DSL должен содержать маршрут выборки из БД. Например:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">route</span><span class="p">:</span>
+   <span class="n">from</span><span class="p">:</span> <span class="s2">&quot;timer:start?delay=-1&amp;repeatCount=1&quot;</span>
+   <span class="n">steps</span><span class="p">:</span>
+         <span class="o">-</span> <span class="nb">set</span><span class="o">-</span><span class="n">body</span><span class="p">:</span>
+                 <span class="n">constant</span><span class="p">:</span> <span class="s2">&quot;select * from actions&quot;</span>
+         <span class="o">-</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;jdbc:datasource&quot;</span>
+         <span class="o">-</span> <span class="n">split</span><span class="p">:</span>
+                 <span class="n">simple</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{body}</span><span class="s2">&quot;</span>
+                 <span class="n">steps</span><span class="p">:</span>
+                   <span class="o">-</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;stream:out&quot;</span>
+</pre></div>
+</div>
+<p>где</p>
+<ul class="simple">
+<li><p><strong>datasource</strong> – имя источника данных, созданного в п.2 при его использовании в маршруте нужно добавлять префикс <strong>«jdbc:»</strong>;</p></li>
+<li><p><strong>actions</strong> – имя таблицы БД, из которой делается выборка;</p></li>
+<li><p><strong>timer</strong> – таймер, который запускает маршрут <strong>delay=-1</strong> - немедленно при старте контекста и только один раз <strong>repeatCount=1</strong>;</p></li>
+<li><p><strong>блок split</strong> разделяет результат выборки на строки, которые выводятся в трассу <strong>stream:out</strong></p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Для выполнения содержимого контекста нужно изменить состояние Camel DSL на <strong>Started</strong></p></li>
+</ol>
+</section>
+<section id="recordsdaoendpoint">
+<h2>Подключение RecordsDaoEndpoint<a class="headerlink" href="#recordsdaoendpoint" title="Ссылка на этот заголовок"></a></h2>
+<p>Для записи данных в RecordsDao в содержании контекста Camel DSL нужно описать <code class="docutils literal notranslate"><span class="pre">RecordsDaoEndpoint</span></code>. Для этого до маршрутов описывается секция <strong>beans</strong>. Например:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">beans</span><span class="p">:</span>
+   <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;recordsDaoEndpoint&quot;</span>
+         <span class="nb">type</span><span class="p">:</span> <span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">.</span><span class="n">integrations</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">cameldsl</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">RecordsDaoEndpoint</span>
+         <span class="n">properties</span><span class="p">:</span>
+           <span class="n">sourceId</span><span class="p">:</span> <span class="n">testDao</span>
+           <span class="n">pkProp</span><span class="p">:</span> <span class="nb">id</span>
+           <span class="n">columnMap</span><span class="p">:</span>
+                 <span class="n">name</span><span class="p">:</span> <span class="n">content</span>
+                 <span class="n">state</span><span class="p">:</span> <span class="n">currentState</span>
+                 <span class="nb">type</span><span class="p">:</span> <span class="nb">type</span>
+           <span class="n">valueConvertMap</span><span class="p">:</span> <span class="o">|</span>
+                 <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;*&quot;</span><span class="p">:</span> <span class="s2">&quot;YAML&quot;</span><span class="p">},</span> <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;1&quot;</span><span class="p">:</span><span class="s2">&quot;STARTED&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span> <span class="s2">&quot;STOPPED&quot;</span><span class="p">}}</span>
+<span class="o">-</span> <span class="n">route</span><span class="p">:</span>
+   <span class="n">from</span><span class="p">:</span> <span class="s2">&quot;timer:start?delay=-1&amp;repeatCount=1&quot;</span>
+   <span class="n">steps</span><span class="p">:</span>
+         <span class="o">-</span> <span class="nb">set</span><span class="o">-</span><span class="n">body</span><span class="p">:</span>
+                 <span class="n">constant</span><span class="p">:</span> <span class="s2">&quot;select * from actions&quot;</span>
+         <span class="o">-</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;jdbc:datasource&quot;</span>
+         <span class="o">-</span> <span class="n">split</span><span class="p">:</span>
+                 <span class="n">simple</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{body}</span><span class="s2">&quot;</span>
+                 <span class="n">steps</span><span class="p">:</span>
+                   <span class="o">-</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;bean:recordsDaoEndpoint&quot;</span>
+</pre></div>
+</div>
+<p>Где</p>
+<ul>
+<li><p><strong>recordsDaoEndpoint</strong> – имя <code class="docutils literal notranslate"><span class="pre">RecordsDaoEndpoint</span></code>, при его использовании в маршруте нужно добавлять префикс <strong>«bean:»</strong>;</p></li>
+<li><p><strong>type</strong> – класс бина, всегда указывается <strong>ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint</strong></p></li>
+<li><p>в секции <strong>properties</strong> описываются настройки <code class="docutils literal notranslate"><span class="pre">RecordsDaoEndpoint</span></code>:</p></li>
+<li><dl>
+<dt><strong>appName</strong> - целевой идентификатор приложения, например alfresco:</dt><dd><blockquote>
+<div><ul class="simple">
+<li><p><strong>sourceId</strong> - целевой идентификатор источника данных, куда будут помещаться данные. Обязательное свойство;</p></li>
+<li><p><strong>pkProp</strong> – атрибут исходного источника, который является первичным ключом;</p></li>
+<li><p><strong>columnMap</strong> – соответствие атрибутов исходного источника и атрибутов назначения. В приведенном примере значение атрибута <strong>name</strong> из источника будет перекладываться в атрибут <strong>content</strong> назначения, <strong>state</strong> в <strong>currentState</strong>, <strong>type</strong> в <strong>type</strong>. Общий вид карты:</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sourcePropName1: targetPropName1
+sourcePropName2: targetPropName2
+…
+sourcePropNameN: targetPropNameN
+чтоБерем: кудаКладем
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>valueConvertMap</strong> – карта преобразований исходных значений перед записью их в БД назначения. Карта пишется в формате JSON, символ <strong>„*“</strong> означает любое значение атрибута. В приведенном примере перед записью в атрибут <strong>currentState</strong> значение поля <strong>state</strong> будет заменено на <strong>STARTED</strong>, если оно равно <strong>1</strong>, и на <strong>STOPPED</strong> во всех других случаях. Таким образом, атрибут <strong>currentState</strong> в результирующей таблице будет содержать только два значения: <strong>STARTED</strong> или <strong>STOPPED</strong>. Общий вид карты:</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{“sourcePropName1”:
+{“value1”:”resultValue1”,
+    “value2”:”resultValue2”,
+    …
+    “valueN”:”resultValueN”},
+“sourcePropName2”:
+{“value21”:”resultValue21”,
+    “value22”:”resultValue22”,
+    …
+    “value2N”:”resultValue2N”},
+…
+“sourcePropNameM”:
+{“valueM1”:”resultValueM1”,
+    “valueM2”:”resultValueM2”,
+    …
+    “valueMN”:”resultValueMN”}}
+</pre></div>
+</div>
+<p>Так как <strong>valueConvertMap</strong> многострочное свойство, то перед значением необходимо указать символ <strong>«|»</strong>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>В одном контексте может быть описано несколько <code class="docutils literal notranslate"><span class="pre">RecordsDaoEndpoint</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>- beans:
+   - name: &quot;recordsTestDaoEndpoint&quot;
+         type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
+         properties:
+           sourceId: recordsTestDao
+           pkProp: id
+   - name: &quot;testDaoEndpoint&quot;
+         type: ru.citeck.ecos.integrations.domain.cameldsl.service.RecordsDaoEndpoint
+         properties:
+           sourceId: testDao
+           pkProp: id
+           columnMap:
+                 name: content
+                 state: currentState
+                 type: type
+           valueConvertMap: |
+                 {&quot;type&quot;: {&quot;*&quot;: &quot;YAML&quot;}}
+ - name: &quot;…&quot;
+   …
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">RecordsDaoEndpoint</span></code> также может обрабатывать данные полученные из XML-файла, CSV-файла или текстового файла, содержащего строковые представления <strong>Map</strong>.</p>
+<p>Пример контекста, содержащего маршруты для обработки <code class="docutils literal notranslate"><span class="pre">RecordsDaoEndpoint</span></code> данных из файлов:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">beans</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;recordsDaoEndpoint&quot;</span>
+          <span class="nb">type</span><span class="p">:</span> <span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">.</span><span class="n">integrations</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">cameldsl</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">RecordsDaoEndpoint</span>
+          <span class="n">properties</span><span class="p">:</span>
+                <span class="n">sourceId</span><span class="p">:</span> <span class="n">testDao</span>
+                <span class="n">pkProp</span><span class="p">:</span> <span class="nb">id</span>
+                <span class="n">columnMap</span><span class="p">:</span>
+                  <span class="n">name</span><span class="p">:</span> <span class="n">content</span>
+                  <span class="n">state</span><span class="p">:</span> <span class="n">currentState</span>
+                <span class="n">delimiter</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span>
+<span class="o">-</span> <span class="n">route</span><span class="p">:</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="s2">&quot;fromXmlFileToDb&quot;</span>
+        <span class="n">from</span><span class="p">:</span> <span class="s2">&quot;direct:fromXmlFileToDb&quot;</span>
+        <span class="n">steps</span><span class="p">:</span>
+          <span class="o">-</span> <span class="n">split</span><span class="p">:</span>
+                  <span class="n">xpath</span><span class="p">:</span> <span class="s2">&quot;//someObject&quot;</span>
+                  <span class="n">steps</span><span class="p">:</span>
+                        <span class="o">-</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;bean:recordsDaoEndpoint&quot;</span>
+<span class="o">-</span> <span class="n">route</span><span class="p">:</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="s2">&quot;fromTxtFileToDb&quot;</span>
+        <span class="n">from</span><span class="p">:</span> <span class="s2">&quot;direct:fromTxtFileToDb&quot;</span>
+        <span class="n">steps</span><span class="p">:</span>
+          <span class="o">-</span> <span class="n">split</span><span class="p">:</span>
+                  <span class="n">tokenize</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                  <span class="n">steps</span><span class="p">:</span>
+                        <span class="o">-</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;bean:recordsDaoEndpoint&quot;</span>
+</pre></div>
+</div>
+<p>Маршрут <strong>fromXmlFileToDb</strong> делит входной XML-поток из файла на элементы <strong>someObject</strong> и передает их в <code class="docutils literal notranslate"><span class="pre">RecordsDaoEndpoint</span></code>.</p>
+<p>Пример входного XML-файла:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;massages&gt;
+        &lt;someObject id=&quot;50&quot; usage =&quot;Additional&quot;&gt;
+                &lt;name&gt;Test route name James&lt;/name&gt;
+                &lt;purpose&gt;Test endpoint&lt;/purpose&gt;
+        &lt;/someObject&gt;
+        &lt;someObject id=&quot;210&quot; usage =&quot;Standard&quot;&gt;
+                &lt;name&gt;Route 61&lt;/name&gt;
+                &lt;purpose&gt;Test&lt;/purpose&gt;
+                &lt;city&gt;Moscow&lt;/city&gt;
+        &lt;/someObject&gt;
+&lt;/massages&gt;
+</pre></div>
+</div>
+<p>В приведенном примере для установки значений доступны атрибуты записи <strong>id</strong>, <strong>usage</strong>, <strong>name</strong> и <strong>purpose</strong>.</p>
+<p>Маршрут <strong>fromTxtFileToDb</strong> делит входной текстовый поток из файла на строки. Пример CSV-файла:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">value</span>
+    <span class="mi">10</span><span class="p">,</span><span class="n">SomeName</span><span class="p">,</span>
+    <span class="mi">908</span><span class="p">,</span><span class="o">-</span> <span class="n">route</span><span class="p">:,</span><span class="n">additional</span>
+    <span class="mi">77</span><span class="p">,,</span>
+</pre></div>
+</div>
+<p>Пример файла со строковыми представлениями Map:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">Test</span>
+    <span class="nb">id</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">Route</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">null</span>
+    <span class="nb">id</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">Open</span> <span class="n">route</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">null</span>
+</pre></div>
+</div>
+<p>Для работы со строковыми данными используются настройки <code class="docutils literal notranslate"><span class="pre">RecordsDaoEndpoint</span></code> <strong>delimiter</strong> и <strong>keyValueSeparator</strong>.
+* <strong>delimiter</strong> – определяет строку-разделитель значений в строке для CSV-файла и пар ключ-значение для строкового представления Map, по умолчанию значение <strong>«,»</strong>
+* <strong>keyValueSeparator</strong> – определяет строку-разделитель ключа и значения в строковом представлении Map, по умолчанию значение <strong>«=»</strong></p>
+</section>
+<section id="id5">
+<h2>Удаление данных из БД<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>Для удаления данных из БД необходимо создать <strong>Credentials</strong>, <strong>Источник данных</strong> и <strong>Camel DSL</strong> как указано в пункте <strong>«Выборка из БД»</strong>. При этом, содержимое маршрута должно включать в себя SQL-запрос на удаление данных.</p>
+<p>Например, следующий маршрут <strong>clearValues</strong> удаляет все записи из таблицы <strong>simple</strong> источника данных <strong>datasource</strong>, кроме тех у которых атрибут <strong>id</strong> равен <strong>„1“</strong> или <strong>„2“</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">route</span><span class="p">:</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="s2">&quot;clearValues&quot;</span>
+        <span class="n">from</span><span class="p">:</span> <span class="s2">&quot;timer:start?delay=-1&amp;repeatCount=1&quot;</span>
+        <span class="n">steps</span><span class="p">:</span>
+          <span class="o">-</span> <span class="nb">set</span><span class="o">-</span><span class="n">body</span><span class="p">:</span>
+                  <span class="n">constant</span><span class="p">:</span> <span class="s2">&quot;delete from simple where id not in (&#39;1&#39;,&#39;2&#39;)&quot;</span>
+          <span class="o">-</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;jdbc:datasource&quot;</span>
+</pre></div>
+</div>
+<p>Пример контекста, который берет данные из источника данных <strong>todb</strong>, обрабатывает их через R`RecordsDaoEndpoint`` <strong>daoEndpoint</strong>  и очищает таблицу <strong>simple</strong>, из которой взял данные:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">beans</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;daoEndpoint&quot;</span>
+          <span class="nb">type</span><span class="p">:</span> <span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">.</span><span class="n">integrations</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">cameldsl</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">RecordsDaoEndpoint</span>
+          <span class="n">properties</span><span class="p">:</span>
+                <span class="n">sourceId</span><span class="p">:</span> <span class="n">testDao</span>
+                <span class="n">pkProp</span><span class="p">:</span> <span class="nb">id</span>
+                <span class="n">columnMap</span><span class="p">:</span>
+                  <span class="n">name</span><span class="p">:</span> <span class="n">content</span>
+                  <span class="n">state</span><span class="p">:</span> <span class="n">currentState</span>
+                  <span class="nb">type</span><span class="p">:</span> <span class="nb">type</span>
+<span class="o">-</span> <span class="n">route</span><span class="p">:</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="s2">&quot;getValues&quot;</span>
+        <span class="n">from</span><span class="p">:</span> <span class="s2">&quot;timer:start?delay=-1&amp;repeatCount=1&quot;</span>
+        <span class="n">steps</span><span class="p">:</span>
+          <span class="o">-</span> <span class="nb">set</span><span class="o">-</span><span class="n">body</span><span class="p">:</span>
+                  <span class="n">constant</span><span class="p">:</span> <span class="s2">&quot;select * from simple&quot;</span>
+          <span class="o">-</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;jdbc:todb&quot;</span>
+          <span class="o">-</span> <span class="n">split</span><span class="p">:</span>
+                  <span class="n">simple</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{body}</span><span class="s2">&quot;</span>
+                  <span class="n">steps</span><span class="p">:</span>
+                        <span class="o">-</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;bean:daoEndpoint&quot;</span>
+                        <span class="o">-</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;direct:clearValues&quot;</span>
+<span class="o">-</span> <span class="n">route</span><span class="p">:</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="s2">&quot;clearValues&quot;</span>
+        <span class="n">from</span><span class="p">:</span> <span class="s2">&quot;direct:clearValues&quot;</span>
+        <span class="n">steps</span><span class="p">:</span>
+          <span class="o">-</span> <span class="nb">set</span><span class="o">-</span><span class="n">body</span><span class="p">:</span>
+                  <span class="n">constant</span><span class="p">:</span> <span class="s2">&quot;delete from simple&quot;</span>
+          <span class="o">-</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;jdbc:todb&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Особенности контекста:
+Содержимое constant переводится в нижний регистр. Например, выборка <strong>«select * from simple order by COMPANY_ID»</strong> приводит к ошибке <strong>ERROR: column «company_id» does not exist</strong></p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html" class="btn btn-neutral float-left" title="Примеры использования Records API для внешних систем" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="data%20sources.html" class="btn btn-neutral float-right" title="Источники данных" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

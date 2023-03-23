@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Виджеты &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Шаблоны нумерации" href="number_template.html" />
+    <link rel="prev" title="Дашборды" href="dashboards.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../interface.html">Интерфейс</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="forms.html">Формы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="journals.html">Журналы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="menu.html">Меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboards.html">Дашборды</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Виджеты</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#widget-journal">Виджет «Журнал»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-web-page">Виджет «Веб страница»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-doc-preview">Виджет «Предпросмотр»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-comments">Виджет «Комментарии»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-properties">Виджет «Свойства»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-current-tasks">Виджет «Мои задачи»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-tasks">Виджет «Все задачи»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-doc-status">Виджет «Статус»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-events-history">Виджет «История событий»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-versions-journal">Виджет «Журнал версий»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-doc-associations">Виджет «Связи документа»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-record-actions">Виджет «Действия»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-barcode">Виджет «Штрих-код»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-documents">Виджет «Документы»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#doc-one">Виджет «Doc.One»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-process-statistics">Виджет «Статистика процесса»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-stages">Виджет «Стадии»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-report">Виджет «Статистика по задачам»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-birthdays">Виджет «День рождения»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#widget-user-profile">Виджет «Профиль»</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="number_template.html">Шаблоны нумерации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../interface.html">Интерфейс</a> &raquo;</li>
+      <li>Виджеты</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/settings_kb/interface/widgets.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="widgets">
+<span id="id1"></span><h1><a class="toc-backref" href="#id24">Виджеты</a><a class="headerlink" href="#widgets" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#widgets" id="id24">Виджеты</a></p>
+<ul>
+<li><p><a class="reference internal" href="#widget-journal" id="id25">Виджет «Журнал»</a></p></li>
+<li><p><a class="reference internal" href="#widget-web-page" id="id26">Виджет «Веб страница»</a></p></li>
+<li><p><a class="reference internal" href="#widget-doc-preview" id="id27">Виджет «Предпросмотр»</a></p></li>
+<li><p><a class="reference internal" href="#widget-comments" id="id28">Виджет «Комментарии»</a></p></li>
+<li><p><a class="reference internal" href="#widget-properties" id="id29">Виджет «Свойства»</a></p>
+<ul>
+<li><p><a class="reference internal" href="#case-details" id="id30">Настройка режима редактирования виджета для типа дашборда Case-details</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id31">Особенности режима редактирования</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#widget-current-tasks" id="id32">Виджет «Мои задачи»</a></p></li>
+<li><p><a class="reference internal" href="#widget-tasks" id="id33">Виджет «Все задачи»</a></p></li>
+<li><p><a class="reference internal" href="#widget-doc-status" id="id34">Виджет «Статус»</a></p></li>
+<li><p><a class="reference internal" href="#widget-events-history" id="id35">Виджет «История событий»</a></p></li>
+<li><p><a class="reference internal" href="#widget-versions-journal" id="id36">Виджет «Журнал версий»</a></p></li>
+<li><p><a class="reference internal" href="#widget-doc-associations" id="id37">Виджет «Связи документа»</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id15" id="id38">Настройки</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#widget-record-actions" id="id39">Виджет «Действия»</a></p></li>
+<li><p><a class="reference internal" href="#widget-barcode" id="id40">Виджет «Штрих-код»</a></p></li>
+<li><p><a class="reference internal" href="#widget-documents" id="id41">Виджет «Документы»</a></p></li>
+<li><p><a class="reference internal" href="#doc-one" id="id42">Виджет «Doc.One»</a></p></li>
+<li><p><a class="reference internal" href="#widget-process-statistics" id="id43">Виджет «Статистика процесса»</a></p></li>
+<li><p><a class="reference internal" href="#widget-stages" id="id44">Виджет «Стадии»</a></p></li>
+<li><p><a class="reference internal" href="#widget-report" id="id45">Виджет «Статистика по задачам»</a></p></li>
+<li><p><a class="reference internal" href="#widget-birthdays" id="id46">Виджет «День рождения»</a></p></li>
+<li><p><a class="reference internal" href="#widget-user-profile" id="id47">Виджет «Профиль»</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Для некоторых виджетов доступна настройка. Настройка отмечена следующей иконкой:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_1.png"><img alt="../../_images/widget_1.png" class="align-center" src="../../_images/widget_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<section id="widget-journal">
+<span id="id3"></span><h2><a class="toc-backref" href="#id25">Виджет «Журнал»</a><a class="headerlink" href="#widget-journal" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">journal</span></code></p>
+<p>Виджет для настройки отображения журнала.</p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>Настройка</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_2.png"><img alt="../../_images/widget_2.png" class="align-center" src="../../_images/widget_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_3.png"><img alt="../../_images/widget_3.png" class="align-center" src="../../_images/widget_3.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>Настроенный вид</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_4.png"><img alt="../../_images/widget_4.png" class="align-center" src="../../_images/widget_4.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="widget-web-page">
+<span id="id4"></span><h2><a class="toc-backref" href="#id26">Виджет «Веб страница»</a><a class="headerlink" href="#widget-web-page" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">web-page</span></code></p>
+<p>Виджет отображает любую web-страницу, заданную в его настройках.</p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>Настройка</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_5.png"><img alt="../../_images/widget_5.png" class="align-center" src="../../_images/widget_5.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>Настроенный вид</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_6.png"><img alt="../../_images/widget_6.png" class="align-center" src="../../_images/widget_6.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="widget-doc-preview">
+<span id="id5"></span><h2><a class="toc-backref" href="#id27">Виджет «Предпросмотр»</a><a class="headerlink" href="#widget-doc-preview" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">doc-preview</span></code></p>
+<p>Виджет предпросмотра служит для отображения основного документа и всех связанных из атрибута «Содержимое». Позволяет осуществлять скачивание не только основного, а текущего открытого документа.</p>
+<p>Оригиналы документов могут быть других расширений, но виджет показывает только картинки или сгенерированные pdf на базе основного.</p>
+<p>С включённой настройкой в виджете показываются все связанные документы.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Preview_2.png"><img alt="../../_images/Preview_2.png" class="align-center" src="../../_images/Preview_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Первым отображается основной контент <strong>cm:content</strong>, затем дочерние элементы с типом <strong>idocs:doc</strong>.</p>
+<p>Если основной отсутствует, то отобразится следующий документ.</p>
+<p>Переход между документами осуществляется через дропдаун или скролл. Количество документов указано в дропдауне:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Preview_1.png"><img alt="../../_images/Preview_1.png" class="align-center" src="../../_images/Preview_1.png" style="width: 800px;" /></a>
+</div></blockquote>
+<p>Содержимое виджета обновляется при изменениях основного и связанных документов.</p>
+</section>
+<section id="widget-comments">
+<span id="id6"></span><h2><a class="toc-backref" href="#id28">Виджет «Комментарии»</a><a class="headerlink" href="#widget-comments" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">comments</span></code></p>
+<p>Виджет для отображения комментариев к документу.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_8.png"><img alt="../../_images/widget_8.png" class="align-center" src="../../_images/widget_8.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="widget-properties">
+<span id="id7"></span><h2><a class="toc-backref" href="#id29">Виджет «Свойства»</a><a class="headerlink" href="#widget-properties" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">properties</span></code></p>
+<p>Виджет для отображения атрибутов карточки формы и их значений. Предоставляет возможность inline редактирования значений атрибутов или редактирование в режиме «формы» (с учетом статуса кейса, наличия прав у просматривающего кейс пользователя).</p>
+<p>Список для выбора - формы из журнала форм.</p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>Настройка</strong></div>
+<div class="line">Список для выбора - формы из журнала форм.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_9.png"><img alt="../../_images/widget_9.png" class="align-center" src="../../_images/widget_9.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_10.png"><img alt="../../_images/widget_10.png" class="align-center" src="../../_images/widget_10.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>Настроенный вид</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Для типа дашборда <a class="reference internal" href="dashboards.html#dashboard-types"><span class="std std-ref">Case-details</span></a> реализовано 2 режима (см. настройки ниже)</div>
+</div>
+<div class="line-block">
+<div class="line">- просмотр с возможностью inline редактирования значений атрибутов:</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_11.png"><img alt="../../_images/widget_11.png" class="align-center" src="../../_images/widget_11.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">- редактирование в режиме «формы»:</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_11_1.png"><img alt="../../_images/widget_11_1.png" class="align-center" src="../../_images/widget_11_1.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Для типа дашборда <a class="reference internal" href="dashboards.html#dashboard-types"><span class="std std-ref">Site-dashboard</span></a></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_12.png"><img alt="../../_images/widget_12.png" class="align-center" src="../../_images/widget_12.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Для виджета так же доступен переход в конструктор формы для дополнительной настройки полей. См. подробную статью <a class="reference internal" href="forms.html#forms"><span class="std std-ref">Формы</span></a></p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/form_builder_icon.png"><img alt="../../_images/form_builder_icon.png" class="align-center" src="../../_images/form_builder_icon.png" style="width: 200px;" /></a>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/form_builder_form.png"><img alt="../../_images/form_builder_form.png" class="align-center" src="../../_images/form_builder_form.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="case-details">
+<h3><a class="toc-backref" href="#id30">Настройка режима редактирования виджета для типа дашборда Case-details</a><a class="headerlink" href="#case-details" title="Ссылка на этот заголовок"></a></h3>
+<p>Для типа дашборда Case-details доступна настройка режима просмотра с возможностью inline редактирования значений атрибутов или редактирования в режиме «формы».
+По умолчанию выставлен режим просмотра.</p>
+<p>Для изменения режима необходимо в карточке <strong>нажать шестеренку- &gt; «Настроить страницу»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/case_edit_1.png"><img alt="../../_images/case_edit_1.png" class="align-center" src="../../_images/case_edit_1.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p>В настройке карточки перейти в раздел <strong>«Виджеты»</strong>, и у <strong>виджета «Свойства»</strong> нажать:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/case_edit_2.png"><img alt="../../_images/case_edit_2.png" class="align-center" src="../../_images/case_edit_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>В настройках выбрать <strong>«Режим редактирования»</strong> и нажать <strong>«Применить»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/case_edit_3.png"><img alt="../../_images/case_edit_3.png" class="align-center" src="../../_images/case_edit_3.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>В настройке карточки нажать <strong>«Применить»</strong>.</p>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id31">Особенности режима редактирования</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h3>
+<p>В виджете при открытии страницы дашборда доступны свойства документа в режиме редактирования, аналогично открытию документа в модальном окне редактирования:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/case_edit_4.png"><img alt="../../_images/case_edit_4.png" class="align-center" src="../../_images/case_edit_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Если пользователь вносит изменения, то в шапке виджета становятся доступны кнопки <strong>«Отмена»</strong> и <strong>«Сохранить»</strong>.</p>
+<p>Если изменений нет - кнопки в шапке виджета отсутствуют.</p>
+<p>Если поля при редактировании не проходят валидацию -  кнопка <strong>«Сохранить»</strong> становится не доступна для нажатия:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/case_edit_5.png"><img alt="../../_images/case_edit_5.png" class="align-center" src="../../_images/case_edit_5.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+</section>
+<section id="widget-current-tasks">
+<span id="id9"></span><h2><a class="toc-backref" href="#id32">Виджет «Мои задачи»</a><a class="headerlink" href="#widget-current-tasks" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">current-tasks</span></code></p>
+<p>Виджет для отображения задач по данному кейсу у просматривающего его пользователя и варианты их завершения.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_13.png"><img alt="../../_images/widget_13.png" class="align-center" src="../../_images/widget_13.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="widget-tasks">
+<span id="id10"></span><h2><a class="toc-backref" href="#id33">Виджет «Все задачи»</a><a class="headerlink" href="#widget-tasks" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">tasks</span></code></p>
+<p>Виджет для отображения задач по данному кейсу и их исполнителей.</p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>Настройка</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_14.png"><img alt="../../_images/widget_14.png" class="align-center" src="../../_images/widget_14.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>Настроенный вид</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_15.png"><img alt="../../_images/widget_15.png" class="align-center" src="../../_images/widget_15.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="widget-doc-status">
+<span id="id11"></span><h2><a class="toc-backref" href="#id34">Виджет «Статус»</a><a class="headerlink" href="#widget-doc-status" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">doc-status</span></code></p>
+<p>Виджет отображает текущий статус кейса (определяется системой автоматически, не доступен для редактирования пользователем).</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_16.png"><img alt="../../_images/widget_16.png" class="align-center" src="../../_images/widget_16.png" style="width: 400px;" /></a>
+</div></blockquote>
+</section>
+<section id="widget-events-history">
+<span id="id12"></span><h2><a class="toc-backref" href="#id35">Виджет «История событий»</a><a class="headerlink" href="#widget-events-history" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">events-history</span></code></p>
+<p>Виджет служит для отображения событий таких, как создание, обновление, смена статуса кейса с фиксацией даты и времени их происшествия, участников и комментариев.</p>
+<p>Виджет представлен в виде таблицы.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/History_1.png"><img alt="../../_images/History_1.png" class="align-center" src="../../_images/History_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для каждого столбца можно настроить фильтрацию и поиск событий:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/History_2.png"><img alt="../../_images/History_2.png" class="align-center" src="../../_images/History_2.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p>Для bpmn-процесса:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/History_3.png"><img alt="../../_images/History_3.png" class="align-center" src="../../_images/History_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>В виджет добавлены события по сущности процесса:</p>
+<ul class="simple">
+<li><p>Создании процесса</p></li>
+<li><p>Обновлении версии. Так же с указанием исходной версии.</p></li>
+<li><p>Публикации версии в движок</p></li>
+</ul>
+</section>
+<section id="widget-versions-journal">
+<span id="id13"></span><h2><a class="toc-backref" href="#id36">Виджет «Журнал версий»</a><a class="headerlink" href="#widget-versions-journal" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">versions-journal</span></code></p>
+<p>Виджет содержит актуальную и предшествующие версии документа.</p>
+<p>Служит для загрузки новой версии документа, а также для сравнения файлов.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_18.png"><img alt="../../_images/widget_18.png" class="align-center" src="../../_images/widget_18.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для bpmn-процесса:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_39.png"><img alt="../../_images/widget_39.png" class="align-center" src="../../_images/widget_39.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>В виджете реализован функционал «тегов». Для версии процесса, которая была опубликована, будет показываться тег «Опубликовано» <strong>(1)</strong>.</p>
+<p>Добавлена кнопка редактирования <strong>(2)</strong>, при нажатии на которую, открывается bpmn-редактор процесса конкретной версии.</p>
+<p>При нажатии на кнопку скачать <strong>(3)</strong>, происходит скачивание конкретной версии процесса.</p>
+<p>При сохранении процесса в редакторе, если есть различий, происходит инкремент версии.</p>
+<p>Добавлено сравнение версий процесса - выберите версии и нажмите <strong>«Сравнить»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_40.png"><img alt="../../_images/widget_40.png" class="align-center" src="../../_images/widget_40.png" style="width: 400px;" /></a>
+</div></blockquote>
+</section>
+<section id="widget-doc-associations">
+<span id="id14"></span><h2><a class="toc-backref" href="#id37">Виджет «Связи документа»</a><a class="headerlink" href="#widget-doc-associations" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">doc-associations</span></code></p>
+<p>Виджет используется для установки связей данного кейса с другими</p>
+<a class="reference internal image-reference" href="../../_images/doc-associations.png"><img alt="../../_images/doc-associations.png" class="align-center" src="../../_images/doc-associations.png" style="width: 300px;" /></a>
+<p>и отображения установленных связей.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_19.png"><img alt="../../_images/widget_19.png" class="align-center" src="../../_images/widget_19.png" style="width: 600px;" /></a>
+</div></blockquote>
+<section id="id15">
+<h3><a class="toc-backref" href="#id38">Настройки</a><a class="headerlink" href="#id15" title="Ссылка на этот заголовок"></a></h3>
+<p>Настройки производятся на вкладке <a class="reference internal" href="../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#datatypes-associations"><span class="std std-ref">Связи</span></a> типа данных. Связь может быть настроена с любой ассоциацией.</p>
+</section>
+</section>
+<section id="widget-record-actions">
+<span id="id16"></span><h2><a class="toc-backref" href="#id39">Виджет «Действия»</a><a class="headerlink" href="#widget-record-actions" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">record-actions</span></code></p>
+<p>Виджет содержит перечень доступных действий с кейсом на данном статусе.</p>
+<p>Настройки подтягиваются из <a class="reference internal" href="../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-types-main"><span class="std std-ref">типа данных</span></a>. См. подробную статью <a class="reference internal" href="../ui_actions.html#ui-actions"><span class="std std-ref">Действия</span></a></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_20.png"><img alt="../../_images/widget_20.png" class="align-center" src="../../_images/widget_20.png" style="width: 200px;" /></a>
+</div></blockquote>
+</section>
+<section id="widget-barcode">
+<span id="id17"></span><h2><a class="toc-backref" href="#id40">Виджет «Штрих-код»</a><a class="headerlink" href="#widget-barcode" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">barcode</span></code></p>
+<p>Виджет отображает отображает сгенерированный штрих-код документа, основанный на числовом поле документа.</p>
+<p>По умолчанию используется поле <code class="docutils literal notranslate"><span class="pre">idocs:barcode</span></code>.</p>
+<p>Если нужно другое поле, то следует зарегистрировать это поле по типу ECOS в бине <code class="docutils literal notranslate"><span class="pre">core.barcode-attribute.type-to-property.mappingRegistry</span></code>
+Пример:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">bean</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;records.contracts.barcode-attribute.type-to-property.mapping&quot;</span>
+    <span class="n">class</span><span class="o">=</span><span class="s2">&quot;ru.citeck.ecos.spring.registry.MappingRegistrar&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">constructor</span><span class="o">-</span><span class="n">arg</span> <span class="n">ref</span><span class="o">=</span><span class="s2">&quot;core.barcode-attribute.type-to-property.mappingRegistry&quot;</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nb">property</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mapping&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nb">map</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">entry</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;contracts-cat-doctype-contract&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;contracts:barcode&quot;</span><span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">map</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nb">property</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">bean</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>Настройка</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_21.png"><img alt="../../_images/widget_21.png" class="align-center" src="../../_images/widget_21.png" style="width: 200px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Условие отображения кнопки:</div>
+<div class="line">Если отсутствует условие, то кнопка отображается. Иначе для отображения, API по заданному условию должно возвращать <strong>true</strong>.</div>
+<div class="line">В текущей версии сохраняется как json строка.</div>
+<div class="line">Написание условия в соответствии статье <a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html#ecos-predicate-main"><span class="std std-ref">Язык предикатов</span></a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>Настроенный вид</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Для типа дашборда Case-details</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_22.png"><img alt="../../_images/widget_22.png" class="align-center" src="../../_images/widget_22.png" style="width: 200px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="widget-documents">
+<span id="id18"></span><h2><a class="toc-backref" href="#id41">Виджет «Документы»</a><a class="headerlink" href="#widget-documents" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">documents</span></code></p>
+<p>Виджет служит для загрузки сопутствующих документов/ синхронизации пользователей и групп.</p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>Настройка</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Если корневой уровень (на скриншоте Базовый тип) один, то он раскрывается по умолчанию:</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>Документы</strong></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_23.png"><img alt="../../_images/widget_23.png" class="align-center" src="../../_images/widget_23.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>Синхронизация пользователей</strong></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_24.png"><img alt="../../_images/widget_24.png" class="align-center" src="../../_images/widget_24.png" style="width: 400px;" /></a>
+</div></blockquote>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Доступно отображение только выбранных типов по соответстующему чекбоксу:</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_37.png"><img alt="../../_images/widget_37.png" class="align-center" src="../../_images/widget_37.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">При выборе типа чекбоксом и наведении мышки на строку:</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_34.png"><img alt="../../_images/widget_34.png" class="align-center" src="../../_images/widget_34.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">становится доступна настройка выбранного типа документа:</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_35.png"><img alt="../../_images/widget_35.png" class="align-center" src="../../_images/widget_35.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">При поиске типа раскрываются все вложенности и подсвечиваются совпадения:</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_38.png"><img alt="../../_images/widget_38.png" class="align-center" src="../../_images/widget_38.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>Настроенный вид</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Документы</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_25.png"><img alt="../../_images/widget_25.png" class="align-center" src="../../_images/widget_25.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">В списке типов документов может встречаться одинаковое название, поэтому при наведении на тултип дополнительно отображается порядок вложенности:</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_36.png"><img alt="../../_images/widget_36.png" class="align-center" src="../../_images/widget_36.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Синхронизация пользователей</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_26.png"><img alt="../../_images/widget_26.png" class="align-center" src="../../_images/widget_26.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="doc-one">
+<span id="widget-doc-constructor"></span><h2><a class="toc-backref" href="#id42">Виджет «Doc.One»</a><a class="headerlink" href="#doc-one" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">doc-constructor</span></code></p>
+<p>Виджет для использования конструктора документов Doc.one.</p>
+<p>Doc.one - программа по составлению документов, с помощью которой можно преобразовать любые типовые документы, в умные шаблоны Doc.one.</p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>Настройка</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_27.png"><img alt="../../_images/widget_27.png" class="align-center" src="../../_images/widget_27.png" style="width: 300px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>Настроенный вид</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_28.png"><img alt="../../_images/widget_28.png" class="align-center" src="../../_images/widget_28.png" style="width: 600px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="widget-process-statistics">
+<span id="id19"></span><h2><a class="toc-backref" href="#id43">Виджет «Статистика процесса»</a><a class="headerlink" href="#widget-process-statistics" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">process-statistics</span></code></p>
+<p>Виджет визуализирует статистику по бизнес-процессу с отображением тепловой карты (heatmap).</p>
+<p><strong>Heatmap</strong> – способ визуализации статистических данных с помощью цветовой палитры.</p>
+<p>В виджете реализованы два представления:</p>
+<ul>
+<li><p><strong>Процесс</strong> - модель бизнес-процесса с heatmap</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Process_statistics_1.png"><img alt="../../_images/Process_statistics_1.png" class="align-center" src="../../_images/Process_statistics_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+<p>Heatmap для каждого шага процесса отображает количество инстансов, находящихся на данном шаге.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Process_statistics_5.png"><img alt="../../_images/Process_statistics_5.png" class="align-center" src="../../_images/Process_statistics_5.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Так же можно включить/выключить отображение счетчиков, тепловой карты активных и завершённых процессов, отображение самого бизнес-процесса останется.</p>
+<p>Для <strong>масштабирования</strong> используйте сочетание <strong>ctrl и скролл мыши</strong>.
+Для перемещения по heatmap <strong>влево- вправо</strong> - сочетание <strong>shift и скролл мыши</strong>.</p>
+<ul>
+<li><p><strong>Журнал</strong>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Process_statistics_2.png"><img alt="../../_images/Process_statistics_2.png" class="align-center" src="../../_images/Process_statistics_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+<p>В журнале для каждого столбца можно настроить <strong>фильтрацию и поиск событий</strong>. Визуализация будет перерисована в соответствии с выбранными фильтрами.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Process_statistics_4.png"><img alt="../../_images/Process_statistics_4.png" class="align-center" src="../../_images/Process_statistics_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>В настройках виджета выбираются отображаемые по умолчанию элементы виджета, и включено/ выключено отображение цветовой панели тепловой карты:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/Process_statistics_3.png"><img alt="../../_images/Process_statistics_3.png" class="align-center" src="../../_images/Process_statistics_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="widget-stages">
+<span id="id20"></span><h2><a class="toc-backref" href="#id44">Виджет «Стадии»</a><a class="headerlink" href="#widget-stages" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">stages</span></code></p>
+<p>Виджет визуализирует прохождение стадий документа:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/stages_1.png"><img alt="../../_images/stages_1.png" class="align-center" src="../../_images/stages_1.png" style="width: 400px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>Настройка</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/stages_2.png"><img alt="../../_images/stages_2.png" class="align-center" src="../../_images/stages_2.png" style="width: 300px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Если снять чекбокс, то будет показана только текущая стадия:</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>Настроенный вид</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/stages_3.png"><img alt="../../_images/stages_3.png" class="align-center" src="../../_images/stages_3.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="widget-report">
+<span id="id21"></span><h2><a class="toc-backref" href="#id45">Виджет «Статистика по задачам»</a><a class="headerlink" href="#widget-report" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">report</span></code></p>
+<p>Виджет отображает статистику по задачам.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_31.png"><img alt="../../_images/widget_31.png" class="align-center" src="../../_images/widget_31.png" style="width: 500px;" /></a>
+</div></blockquote>
+</section>
+<section id="widget-birthdays">
+<span id="id22"></span><h2><a class="toc-backref" href="#id46">Виджет «День рождения»</a><a class="headerlink" href="#widget-birthdays" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">birthdays</span></code></p>
+<p>Виджет отображает ближайшие дни рождения.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_32.png"><img alt="../../_images/widget_32.png" class="align-center" src="../../_images/widget_32.png" style="width: 500px;" /></a>
+</div></blockquote>
+</section>
+<section id="widget-user-profile">
+<span id="id23"></span><h2><a class="toc-backref" href="#id47">Виджет «Профиль»</a><a class="headerlink" href="#widget-user-profile" title="Ссылка на этот заголовок"></a></h2>
+<p>Ключ <code class="docutils literal notranslate"><span class="pre">user-profile</span></code></p>
+<p>Виджет профиля пользователя</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/widget_33.png"><img alt="../../_images/widget_33.png" class="align-center" src="../../_images/widget_33.png" style="width: 300px;" /></a>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="dashboards.html" class="btn btn-neutral float-left" title="Дашборды" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="number_template.html" class="btn btn-neutral float-right" title="Шаблоны нумерации" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Настройка получения событий с ящиком Контур.Диадок &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Синхронизация данных контрагентов и их ящиков с Контур.Диадок" href="counterparty_kontur.html" />
+    <link rel="prev" title="EDI" href="EDI.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EDI.html">EDI</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Настройка получения событий с ящиком Контур.Диадок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#datasource">1. Создание DataSource до ЭДО провайдера</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#credentials-api">2. Создание Credentials для доступа к ЭДО провайдеру по API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3. Создание ящика с информацией об ЭДО провайдере</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4. Настройка интеграции с ЭДО провайдером в рамках ящика</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">5. Итоги</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="counterparty_kontur.html">Синхронизация данных контрагентов и их ящиков с Контур.Диадок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_provider.html">Реализация интеграции с новым ЭДО-провайдером</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-kontur-lib.html">Описание ecos-edi-kontur-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-ftps-lib.html">Описание ecos-edi-ftps-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-sbis-lib.html">Описание ecos-edi-sbis-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expand_functions.html">Как расширять функционал</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_integration_settings.html">Переход на новые настройки интеграции с EDI провайдерами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CounterpartyEdiInfoRecordsDao.html">CounterpartyEdiInfoRecordsDao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_lib.html">Общая библиотека для обработки EDI событий ecos-edi-integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_signing.html">Серверное подписание</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_RC2%2B_configuration.html">Конфигурация ЭДО</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a> &raquo;</li>
+      <li>Настройка получения событий с ящиком Контур.Диадок</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/integration/EDI_integration/events_kontur.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="events-kontur">
+<span id="id1"></span><h1><a class="toc-backref" href="#id6">Настройка получения событий с ящиком Контур.Диадок</a><a class="headerlink" href="#events-kontur" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#events-kontur" id="id6">Настройка получения событий с ящиком Контур.Диадок</a></p>
+<ul>
+<li><p><a class="reference internal" href="#datasource" id="id7">1. Создание DataSource до ЭДО провайдера</a></p></li>
+<li><p><a class="reference internal" href="#credentials-api" id="id8">2. Создание Credentials для доступа к ЭДО провайдеру по API</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id9">3. Создание ящика с информацией об ЭДО провайдере</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id10">4. Настройка интеграции с ЭДО провайдером в рамках ящика</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id11">5. Итоги</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>В данной статье будет на примере нашего тестового ящика показано как добавить интеграцию с Контур.Диадок.</p>
+<p>Для начала, уточним общие моменты. Что понимаем под интеграцией в контексте данной статьи? Конкретно в контексте данной статьи - получение событий из ЭДО-провайдера, их первичная обработка (конвертация) и отправка универсальной структуры события в обработчик. Детали по тому как работает интеграция смотрите в соседних статьях.</p>
+<section id="datasource">
+<h2><a class="toc-backref" href="#id7">1. Создание DataSource до ЭДО провайдера</a><a class="headerlink" href="#datasource" title="Ссылка на этот заголовок"></a></h2>
+<p>В новой интеграции мы не опираемся на жестко заданных в конфигах URL. По этой причине, при настройки интеграции - понадобится задать URL.</p>
+<p>Описание работы <strong>DataSource</strong> смотрите в дочерних статьях раздела <a class="reference internal" href="../data%20sources.html#data-sources"><span class="std std-ref">REST Data Source</span></a> Он создается через системный журнал <strong>Data Sources</strong>.</p>
+<p>Для начала проясним, нас интересует в большинстве случаев - <strong>REST DataSource</strong>, так как большинство ЭДО провайдеров предоставляют именно <strong>HTTP API</strong>. Требования к DataSource ЭДО провайдера, отличного от Контур.Диадок - смотрите в соответствующих статьях. Предоставляю пример настроенного <strong>DataSource</strong> для продуктивного <strong>Контур.Диадок</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/events_kontur_1.png"><img alt="../../_images/events_kontur_1.png" class="align-center" src="../../_images/events_kontur_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Как несложно заметить, заполнены только обязательные поля (<strong>Id, Name</strong>) и <strong>URL</strong>. Именно на <strong>URL</strong> смотрит интеграция при запросе.</p>
+<p>Примеры заполнения URL и расшифровка:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://diadoc-api.kontur.ru">https://diadoc-api.kontur.ru</a> - продуктивный Контур.Диадок, указанный на скрине выше.</p></li>
+<li><p><a class="reference external" href="https://diadoc-api-test.kontur.ru">https://diadoc-api-test.kontur.ru</a> - тестовый Контур.Диадок.</p></li>
+<li><p><a class="reference external" href="https://test-edi-api.kontur.ru">https://test-edi-api.kontur.ru</a> - тестовый Контур.EDI.</p></li>
+<li><p><a class="reference external" href="https://courier-demo-api.esphere.ru">https://courier-demo-api.esphere.ru</a> - тестовый Сфера.Курьер (Корус).</p></li>
+<li><p><a class="reference external" href="https://courier-api.esphere.ru">https://courier-api.esphere.ru</a> - продуктивный Сфера.Курьер (Корус).</p></li>
+</ul>
+<p>В случае, если <strong>REST Data Sources</strong> будет не хватать для нового ЭДО провайдера - будем развивать функционал <strong>Data Sources</strong>.</p>
+</section>
+<section id="credentials-api">
+<h2><a class="toc-backref" href="#id8">2. Создание Credentials для доступа к ЭДО провайдеру по API</a><a class="headerlink" href="#credentials-api" title="Ссылка на этот заголовок"></a></h2>
+<p>По аналогии с <strong>Data Sources</strong>, нужно так же создать запись в системном журнале <strong>Credentials</strong>.</p>
+<p>Пример заполнения с предзаполненными кредами от тестового ящика Citeck (<strong>Id</strong> - случайный):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/events_kontur_2.png"><img alt="../../_images/events_kontur_2.png" class="align-center" src="../../_images/events_kontur_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id3">
+<h2><a class="toc-backref" href="#id9">3. Создание ящика с информацией об ЭДО провайдере</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Заходим в системный журнал <strong>“Конфигурация ящиков ЭДО” (“EDI boxes configuration”)</strong> и создаем там запись о нашем ящике.</p>
+<p>Пример:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/events_kontur_3.png"><img alt="../../_images/events_kontur_3.png" class="align-center" src="../../_images/events_kontur_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>В данной записи обязательно надо выбрать ЭДО провайдер. Сейчас доступны для выбора следующие ЭДО провайдеры (доступны для выбора, но поддерживался на момент написания статьи только Контур):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/events_kontur_4.png"><img alt="../../_images/events_kontur_4.png" class="align-center" src="../../_images/events_kontur_4.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Атрибуты <strong>“URL”</strong> и <strong>“Авторизационные данные”</strong> содержат созданные в пунктах выше значения - выбираем соответствующий датасорс и креды.</p>
+<p>После этого  - вставляем идентификатор ящика и ключ разработчика.</p>
+<p>P.S. ключ разработчика добавлен только на форму для Контур ЭДО провайдера. Иные провайдеры могут затребовать еще какие-то дополнительные данные.</p>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id10">4. Настройка интеграции с ЭДО провайдером в рамках ящика</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Финальный этап настройки - заходим в системный журнал <strong>“Синхронизации”</strong>. Создаем <strong>запись интеграции ЭДО</strong> (это новый отдельный вариант создания, доступен для выбора по кнопке <strong>“+”</strong>):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/events_kontur_5.png"><img alt="../../_images/events_kontur_5.png" class="align-center" src="../../_images/events_kontur_5.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Идентификатор и наименование - произвольные.</p>
+<p>Чекбоксы <strong>“Включена”</strong> и <strong>“Необходимо перезапустить?”</strong> - стандартные атрибуты синхронизаций ECOS, пример описания другого типа синхронизации можно посмотреть <a class="reference internal" href="../ECOS%20Synchronization.html#ecos-synchronization"><span class="std std-ref">здесь</span></a></p>
+<p>В разделе <strong>“Базовая конфигурация”</strong> - необходимо выбрать ящик из пункта 3, и указать время блокировки и время лага в миллисекундах.</p>
+<p><strong>Время наложения блокировки</strong> - необходимо задавать для того, чтобы одновременно не запускалось более 2х интеграций для одного и того же ящика. Если значение не задано - блокировка будет накладываться на 2 часа.</p>
+<p><strong>Время лага</strong> - придумано для того, чтобы не обрабатывать события, которые произошли только что. Цель - не обрабатывать события, транзакция по которым в системе могла еще не завершиться. Рекомендуется ставить значение, хотя бы, 60 секунд (60000).</p>
+<p>В разделе <strong>конфигурация шедулинга</strong> - указаны несколько атрибутов для шедулинга.</p>
+<p>Опишу тут логику их работы:</p>
+<p>Если задан <code class="docutils literal notranslate"><span class="pre">CronExpression</span></code> - джоба будет отрабатывать по CronExpression. Подробнее здесь: <code class="docutils literal notranslate"><span class="pre">org.springframework.scheduling.support.CronTrigger</span></code>.</p>
+<p>Иначе, джоба будет работать периодично, раз в <code class="docutils literal notranslate"><span class="pre">TriggerPeriod</span></code> миллисекунд. Если задан <code class="docutils literal notranslate"><span class="pre">InitialDelay</span></code> - джоба не будет триггериться первые N миллисекунд. Если установлена галка <code class="docutils literal notranslate"><span class="pre">FixedRate</span></code> - отсчет времени до следующего триггирования будет начинаться только после того как завершилась работа по предыдущему триггированию. Подробнее здесь: org.springframework.scheduling.support.PeriodicTrigger.</p>
+<p>Самый важный и интересный раздел - <strong>Конфигурация персистентности</strong>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Camel</span> <span class="pre">endpoint</span></code> - это эндпоинт Camel, в который будут поступать универсальные структуры события (Event). Данные события должны уметь быть отработанными в заданном роуте Camel. Рекомендуется использовать эндпоинты типа <code class="docutils literal notranslate"><span class="pre">direct-vm</span></code>, чтобы работала передача событий в посторонние контексты.</p>
+<p>Список параметров, которые можно добавлять - это мапа <code class="docutils literal notranslate"><span class="pre">String-String</span></code>, которая будет прокидываться в сообщение с событием в Camel роут в виде <code class="docutils literal notranslate"><span class="pre">Properties</span></code> к <code class="docutils literal notranslate"><span class="pre">CamelExchange</span></code>.</p>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id11">5. Итоги</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>На этом, настройка завершена. Важно, что новая интеграция работает как несколько изолированных компонентов. Соответственно, настроив текущую интеграцию - надо подключить в микросервис OSGi бандл с классами для работы с диадок и OSGi бандл, ответственный за предоставление Camel контекста с поддержкой роута, указанного при настройке интеграции. Данные моменты будут уточнены и подробнее рассмотрены в следующих статьях данного раздела.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="EDI.html" class="btn btn-neutral float-left" title="EDI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="counterparty_kontur.html" class="btn btn-neutral float-right" title="Синхронизация данных контрагентов и их ящиков с Контур.Диадок" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

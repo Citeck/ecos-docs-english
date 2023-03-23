@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Общее описание &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../../search.html" />
+    <link rel="next" title="Подробное описание отдельных компонент" href="components.html" />
+    <link rel="prev" title="Компоненты формы" href="../form_components.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../interface.html">Интерфейс</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../forms.html">Формы</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../forms.html">Общая информация</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../form_builder.html">Конструктор форм</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../form_components.html">Компоненты формы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../form_examples.html">Примеры компонент</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../form_localisation.html">Локализация</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../form_for_task.html">Связь формы с задачей</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../journals.html">Журналы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../menu.html">Меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dashboards.html">Дашборды</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../widgets.html">Виджеты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../number_template.html">Шаблоны нумерации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../../../interface.html">Интерфейс</a> &raquo;</li>
+          <li><a href="../../forms.html">Формы</a> &raquo;</li>
+          <li><a href="../form_components.html">Компоненты формы</a> &raquo;</li>
+      <li>Общее описание</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/settings_kb/interface/forms/form_components/components_common.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><a class="toc-backref" href="#id22">Общее описание</a><a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id22">Общее описание</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id23">Основные компоненты</a></p>
+<ul>
+<li><p><a class="reference internal" href="#text-field" id="id24">Text Field</a></p></li>
+<li><p><a class="reference internal" href="#select-journal" id="id25">Select Journal</a></p></li>
+<li><p><a class="reference internal" href="#select-orgstruct" id="id26">Select Orgstruct</a></p></li>
+<li><p><a class="reference internal" href="#number" id="id27">Number</a></p></li>
+<li><p><a class="reference internal" href="#date-time" id="id28">Date/Time</a></p></li>
+<li><p><a class="reference internal" href="#text-area" id="id29">Text Area</a></p></li>
+<li><p><a class="reference internal" href="#checkbox" id="id30">Checkbox</a></p></li>
+<li><p><a class="reference internal" href="#day" id="id31">Day</a></p></li>
+<li><p><a class="reference internal" href="#ecos-select" id="id32">Ecos Select</a></p></li>
+<li><p><a class="reference internal" href="#button" id="id33">Button</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id14" id="id34">Расширенные</a></p>
+<ul>
+<li><p><a class="reference internal" href="#ml-text" id="id35">ML Text</a></p></li>
+<li><p><a class="reference internal" href="#table-form" id="id36">Table Form</a></p></li>
+<li><p><a class="reference internal" href="#task-outcome" id="id37">Task Outcome</a></p></li>
+<li><p><a class="reference internal" href="#import-button" id="id38">Import Button</a></p></li>
+<li><p><a class="reference internal" href="#email" id="id39">Email</a></p></li>
+<li><p><a class="reference internal" href="#url" id="id40">URL</a></p></li>
+<li><p><a class="reference internal" href="#phone-number" id="id41">Phone Number</a></p></li>
+<li><p><a class="reference internal" href="#address-field" id="id42">Address Field</a></p></li>
+<li><p><a class="reference internal" href="#ml-textarea" id="id43">ML Textarea</a></p></li>
+<li><p><a class="reference internal" href="#html-element" id="id44">HTML Element</a></p></li>
+<li><p><a class="reference internal" href="#file" id="id45">File</a></p></li>
+<li><p><a class="reference internal" href="#select-action" id="id46">Select Action</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id17" id="id47">Макет</a></p>
+<ul>
+<li><p><a class="reference internal" href="#horizontal-line" id="id48">Horizontal Line</a></p></li>
+<li><p><a class="reference internal" href="#columns" id="id49">Columns</a></p></li>
+<li><p><a class="reference internal" href="#panel" id="id50">Panel</a></p></li>
+<li><p><a class="reference internal" href="#table" id="id51">Table</a></p></li>
+<li><p><a class="reference internal" href="#tabs" id="id52">Tabs</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id21" id="id53">Данные</a></p>
+<ul>
+<li><p><a class="reference internal" href="#hidden" id="id54">Hidden</a></p></li>
+<li><p><a class="reference internal" href="#async-data" id="id55">Async Data</a></p></li>
+<li><p><a class="reference internal" href="#include-form" id="id56">Include Form</a></p></li>
+<li><p><a class="reference internal" href="#container" id="id57">Container</a></p></li>
+<li><p><a class="reference internal" href="#data-grid" id="id58">Data Grid</a></p></li>
+<li><p><a class="reference internal" href="#data-grid-assoc" id="id59">Data Grid Assoc</a></p></li>
+<li><p><a class="reference internal" href="#data-map" id="id60">Data Map</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id3">
+<h2><a class="toc-backref" href="#id23">Основные компоненты</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<section id="text-field">
+<span id="id4"></span><h3><a class="toc-backref" href="#id24">Text Field</a><a class="headerlink" href="#text-field" title="Ссылка на этот заголовок"></a></h3>
+<p>Однострочное текстовое поле.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Text_Field_Component.png"><img alt="../../../../_images/Text_Field_Component.png" class="align-center" src="../../../../_images/Text_Field_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/form-components#text-field">См. подробное описание Text Field на Form.io</a></p>
+<p><a class="reference internal" href="components/text%20field.html#text-field-ecos"><span class="std std-ref">См. доработки компонента</span></a></p>
+<p><a class="reference internal" href="../form_examples.html#sample-text-field-component"><span class="std std-ref">См. пример Text Field</span></a></p>
+</section>
+<section id="select-journal">
+<span id="id5"></span><h3><a class="toc-backref" href="#id25">Select Journal</a><a class="headerlink" href="#select-journal" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент, отвечающий за выбор из журнала. Работает только в том случае, если для ссылочного типа существует журнал.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Select_Journal_Component.png"><img alt="../../../../_images/Select_Journal_Component.png" class="align-center" src="../../../../_images/Select_Journal_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference internal" href="components/select%20journal.html#select-journal"><span class="std std-ref">См. подробное описание Select Journal</span></a></p>
+<p><a class="reference internal" href="../form_examples.html#sample-select-journal-component"><span class="std std-ref">См. пример Select Journal</span></a></p>
+</section>
+<section id="select-orgstruct">
+<span id="id6"></span><h3><a class="toc-backref" href="#id26">Select Orgstruct</a><a class="headerlink" href="#select-orgstruct" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент, отвечающий за выбор из оргструктуры пользователей/групп. Что именно будет выбираться (пользователи с группами вместе, или что-то одно), – регулируется внутри компонента.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Select_Orgstruct_Component.png"><img alt="../../../../_images/Select_Orgstruct_Component.png" class="align-center" src="../../../../_images/Select_Orgstruct_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference internal" href="components/select%20orgstruct.html#select-orgstruct"><span class="std std-ref">См. подробное описание Select Orgstruct</span></a></p>
+<p><a class="reference internal" href="../form_examples.html#sample-select-orgstruct-component"><span class="std std-ref">См. пример Select Orgstruct</span></a></p>
+</section>
+<section id="number">
+<span id="id7"></span><h3><a class="toc-backref" href="#id27">Number</a><a class="headerlink" href="#number" title="Ссылка на этот заголовок"></a></h3>
+<p>Числовое поле. Может принимать в себя как целочисленные значения, так и с плавающей точкой. Это регулируется внутри компонента.</p>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/form-components#number">См. подробное описание Number на Form.io</a></p>
+</section>
+<section id="date-time">
+<span id="id8"></span><h3><a class="toc-backref" href="#id28">Date/Time</a><a class="headerlink" href="#date-time" title="Ссылка на этот заголовок"></a></h3>
+<p>Поле, отвечающее за отображение даты и времени. Отображение регулируется внутри компонента.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Date_Time_Component.png"><img alt="../../../../_images/Date_Time_Component.png" class="align-center" src="../../../../_images/Date_Time_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/form-components#date-time">См. подробное описание Date/Time на Form.io</a></p>
+<p><a class="reference internal" href="../form_examples.html#sample-date-time-component"><span class="std std-ref">См. пример Date/Time</span></a></p>
+</section>
+<section id="text-area">
+<span id="id9"></span><h3><a class="toc-backref" href="#id29">Text Area</a><a class="headerlink" href="#text-area" title="Ссылка на этот заголовок"></a></h3>
+<p>Аналог Text Field. Многострочное текстовое поле.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Text_Area_Component.png"><img alt="../../../../_images/Text_Area_Component.png" class="align-center" src="../../../../_images/Text_Area_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/form-components#text-area">См. подробное описание Text Area на Form.io</a></p>
+</section>
+<section id="checkbox">
+<span id="id10"></span><h3><a class="toc-backref" href="#id30">Checkbox</a><a class="headerlink" href="#checkbox" title="Ссылка на этот заголовок"></a></h3>
+<p>Поле выбора нескольких значений из списка параметров.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Checkbox_Component.png"><img alt="../../../../_images/Checkbox_Component.png" class="align-center" src="../../../../_images/Checkbox_Component.png" style="width: 200px;" /></a>
+</div></blockquote>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/form-components#check-box">См. подробное описание Checkbox на Form.io</a></p>
+</section>
+<section id="day">
+<span id="id11"></span><h3><a class="toc-backref" href="#id31">Day</a><a class="headerlink" href="#day" title="Ссылка на этот заголовок"></a></h3>
+<p>Поле для ввода значений «День», «Месяц» и «Год» с использованием числа или выбора типа поля.</p>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/form-components#day">См. подробное описание Day на Form.io</a></p>
+</section>
+<section id="ecos-select">
+<span id="id12"></span><h3><a class="toc-backref" href="#id32">Ecos Select</a><a class="headerlink" href="#ecos-select" title="Ссылка на этот заголовок"></a></h3>
+<p>Поле, отвечающее за выбор из списка. Основан на стандартном formio-компоненте Select, был модифицирован.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/ECOS_Select_Component.png"><img alt="../../../../_images/ECOS_Select_Component.png" class="align-center" src="../../../../_images/ECOS_Select_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference internal" href="components/ecos%20select.html#ecos-select"><span class="std std-ref">См. подробное описание Ecos Select</span></a></p>
+<p><a class="reference internal" href="../form_examples.html#sample-ecos-select-component"><span class="std std-ref">См. пример Ecos Select</span></a></p>
+</section>
+<section id="button">
+<span id="id13"></span><h3><a class="toc-backref" href="#id33">Button</a><a class="headerlink" href="#button" title="Ссылка на этот заголовок"></a></h3>
+<p>Добавление кнопок для выполнения различных действий в форме.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Button_Component.png"><img alt="../../../../_images/Button_Component.png" class="align-center" src="../../../../_images/Button_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/form-components#button">См. подробное описание Button на Form.io</a></p>
+<p><a class="reference internal" href="../form_examples.html#sample-button-component"><span class="std std-ref">См. пример Button</span></a></p>
+</section>
+</section>
+<section id="id14">
+<h2><a class="toc-backref" href="#id34">Расширенные</a><a class="headerlink" href="#id14" title="Ссылка на этот заголовок"></a></h2>
+<section id="ml-text">
+<span id="id15"></span><h3><a class="toc-backref" href="#id35">ML Text</a><a class="headerlink" href="#ml-text" title="Ссылка на этот заголовок"></a></h3>
+<p>Однострочное текстовое поле.</p>
+<p>Для выбора языка предусмотрен переключатель в виде флага России /США. После выбора языка в поле вводится текст.</p>
+<p>Сохраняются оба введенных зачения.</p>
+<p>Если поле содержит постфикс ML и является объектом (содержит ключ EN/RU), то элемент отрисовывается.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/ML_Text_Component.png"><img alt="../../../../_images/ML_Text_Component.png" class="align-center" src="../../../../_images/ML_Text_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Поддержка ML text реализована для поля «Название поля», «Подсказка» всех компонент редактора форм, так же для поля «Контент» компонента Html Component, «Название свойства» компонента Panel Component.</p>
+</section>
+<section id="table-form">
+<h3><a class="toc-backref" href="#id36">Table Form</a><a class="headerlink" href="#table-form" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент позволяет отображать выбранные значения в виде таблицы.</p>
+<p><a class="reference internal" href="components/table%20form.html#table-form"><span class="std std-ref">См. подробное описание Table Form</span></a></p>
+</section>
+<section id="task-outcome">
+<h3><a class="toc-backref" href="#id37">Task Outcome</a><a class="headerlink" href="#task-outcome" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент для автоматической отрисовки кнопок для форм задач.</p>
+<p>В настройках кейса для «Пользовательской задачи» если заполнено поле «Варианты результатов», то должны создаваться кнопки действий согласно статье …</p>
+<p>Важно чтобы соблюдался порядок кнопок: слева серым цветом отрицательные действия, справа положительные синим цветом.</p>
+<p>Пример такой формы - <strong>wfcperformTask</strong>, это стандартная форма в которой список действий указывается только в свойстве «Варианты результатов».</p>
+<p>Кнопки могут быть без надписи.</p>
+<p>Добавлена возможность указать позитивный/негативный тип действия кнопки ccc^n|Отмена#alf#bbb^p|Согласовать
+- p - позитивный (по умолчанию, можно не указывать)
+- n - негативный</p>
+<p>Кнопки сортируются по типу действия - сначала позитивные, потом негативные</p>
+</section>
+<section id="import-button">
+<h3><a class="toc-backref" href="#id38">Import Button</a><a class="headerlink" href="#import-button" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент позволяет добавить на форму настраиваемую кнопку для загрузки файлов.</p>
+<p><a class="reference internal" href="components/import%20button.html#import-button"><span class="std std-ref">См. подробное описание Import Button</span></a></p>
+</section>
+<section id="email">
+<h3><a class="toc-backref" href="#id39">Email</a><a class="headerlink" href="#email" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент для настройки ввода электронной почты.</p>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/form-components#email">См. подробное описание Email на Form.io</a></p>
+</section>
+<section id="url">
+<h3><a class="toc-backref" href="#id40">URL</a><a class="headerlink" href="#url" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент имеет настраиваемый параметр проверки, который, если он настроен правильно, может гарантировать, что введенное значение является допустимым URL-адресом.</p>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/form-components#url">См. подробное описание URL на Form.io</a></p>
+</section>
+<section id="phone-number">
+<h3><a class="toc-backref" href="#id41">Phone Number</a><a class="headerlink" href="#phone-number" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент можно использовать для ввода номеров телефонов в форму.</p>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/form-components#phone-number">См. подробное описание Phone Number на Form.io</a></p>
+</section>
+<section id="address-field">
+<h3><a class="toc-backref" href="#id42">Address Field</a><a class="headerlink" href="#address-field" title="Ссылка на этот заголовок"></a></h3>
+<p>Cпециальный компонент, выполняющий поиск введенных адресов.</p>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/form-components#address">См. подробное описание Address Field на Form.io</a></p>
+</section>
+<section id="ml-textarea">
+<h3><a class="toc-backref" href="#id43">ML Textarea</a><a class="headerlink" href="#ml-textarea" title="Ссылка на этот заголовок"></a></h3>
+<p>Многострочное текстовое поле для ввода на русском/анлийском языках.</p>
+<p>Для выбора языка предусмотрен переключатель в виде флага России /США. После выбора языка вводится в поле вводится текст.</p>
+<p>Сохраняются оба введенных зачения.</p>
+<p>Если поле содержит постфикс ML и является объектом (содержитключ EN/RU), то элемент отрисовывается.</p>
+</section>
+<section id="html-element">
+<h3><a class="toc-backref" href="#id44">HTML Element</a><a class="headerlink" href="#html-element" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент может быть добавлен в форму для отображения одного элемента HTML.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/HTML_Element_Component.png"><img alt="../../../../_images/HTML_Element_Component.png" class="align-center" src="../../../../_images/HTML_Element_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/layout-components#html-element">См. подробное описание HTML Element на Form.io</a></p>
+</section>
+<section id="file">
+<span id="id16"></span><h3><a class="toc-backref" href="#id45">File</a><a class="headerlink" href="#file" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент для загрузки файлов.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/File_Component.png"><img alt="../../../../_images/File_Component.png" class="align-center" src="../../../../_images/File_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/premium-components#file">См. подробное описание File на Form.io</a></p>
+<p><a class="reference internal" href="components/file.html#file"><span class="std std-ref">См. подробное описание File</span></a></p>
+</section>
+<section id="select-action">
+<h3><a class="toc-backref" href="#id46">Select Action</a><a class="headerlink" href="#select-action" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент для отображения список значений в раскрывающемся списке. Пользователи могут выбрать одно из значений.</p>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/form-components#select">См. подробное описание Select Action на Form.io</a></p>
+</section>
+</section>
+<section id="id17">
+<h2><a class="toc-backref" href="#id47">Макет</a><a class="headerlink" href="#id17" title="Ссылка на этот заголовок"></a></h2>
+<section id="horizontal-line">
+<h3><a class="toc-backref" href="#id48">Horizontal Line</a><a class="headerlink" href="#horizontal-line" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент для отображения разделителя блоков.</p>
+<p><a class="reference internal" href="components/horizontal%20line.html#horizontal-line"><span class="std std-ref">См. подробное описание Horizontal Line</span></a></p>
+</section>
+<section id="columns">
+<span id="id18"></span><h3><a class="toc-backref" href="#id49">Columns</a><a class="headerlink" href="#columns" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент, отвечающий за разделение формы на столбцы. Основан на стандартном formio-компоненте Columns, был модифицирован.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Columns_Component.png"><img alt="../../../../_images/Columns_Component.png" class="align-center" src="../../../../_images/Columns_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Columns_Component_1.png"><img alt="../../../../_images/Columns_Component_1.png" class="align-center" src="../../../../_images/Columns_Component_1.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Columns_Component_form.png"><img alt="../../../../_images/Columns_Component_form.png" class="align-center" src="../../../../_images/Columns_Component_form.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/layout-components#columns">См. подробное описание Columns на Form.io</a></p>
+<p><a class="reference internal" href="components/columns.html#columns"><span class="std std-ref">См. подробное описание Columns</span></a></p>
+<p><a class="reference internal" href="../form_examples.html#sample-columns-component"><span class="std std-ref">См. пример Columns</span></a></p>
+</section>
+<section id="panel">
+<span id="id19"></span><h3><a class="toc-backref" href="#id50">Panel</a><a class="headerlink" href="#panel" title="Ссылка на этот заголовок"></a></h3>
+<p>Панель, в которую можно поместить свойство. Нужна для зонирования. В неё помещаются близкие по смыслу компоненты и им присваивается заголовок.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Panel_Component.png"><img alt="../../../../_images/Panel_Component.png" class="align-center" src="../../../../_images/Panel_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/layout-components#panel">См. подробное описание Panel на Form.io</a></p>
+<p><a class="reference internal" href="../form_examples.html#sample-panel-component"><span class="std std-ref">См. пример Panel</span></a></p>
+</section>
+<section id="table">
+<span id="id20"></span><h3><a class="toc-backref" href="#id51">Table</a><a class="headerlink" href="#table" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент позволяет создать таблицу со столбцами и строками.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Select_Journal_Component.png"><img alt="../../../../_images/Select_Journal_Component.png" class="align-center" src="../../../../_images/Select_Journal_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/layout-components#table">См. подробное описание Table на Form.io</a></p>
+</section>
+<section id="tabs">
+<h3><a class="toc-backref" href="#id52">Tabs</a><a class="headerlink" href="#tabs" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент твечает за вкладки на форме. Вкладка скрывается, когда на ней все компоненты скрыты, либо компонентов нет совсем.</p>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/layout-components#tabs">См. подробное описание Tabs на Form.io</a></p>
+</section>
+</section>
+<section id="id21">
+<h2><a class="toc-backref" href="#id53">Данные</a><a class="headerlink" href="#id21" title="Ссылка на этот заголовок"></a></h2>
+<section id="hidden">
+<h3><a class="toc-backref" href="#id54">Hidden</a><a class="headerlink" href="#hidden" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент можно добавить в форму, чтобы создать свойство ресурса, которое можно настроить в форме. Внешнего виджета для скрытых компонентов нет. Они не отображаются в визуализированных формах.</p>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/data-components#hidden">См. подробное описание Hidden на Form.io</a></p>
+</section>
+<section id="async-data">
+<h3><a class="toc-backref" href="#id55">Async Data</a><a class="headerlink" href="#async-data" title="Ссылка на этот заголовок"></a></h3>
+<p>Невидимый компонент для загрузки асинхронных данных.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Async_Data_Component.png"><img alt="../../../../_images/Async_Data_Component.png" class="align-center" src="../../../../_images/Async_Data_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference internal" href="components/async%20data.html#async-data"><span class="std std-ref">м. подробное описание Async Data</span></a></p>
+<p><a class="reference internal" href="../form_examples.html#sample-async-data-component"><span class="std std-ref">См. пример Async Data</span></a></p>
+</section>
+<section id="include-form">
+<h3><a class="toc-backref" href="#id56">Include Form</a><a class="headerlink" href="#include-form" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент для включения одной формы в другие.</p>
+<p>В свойствах одно поле - <strong>formRef</strong> с выбором из журнала форм (ecos-forms).</p>
+<p>Внеший вид в билдере (как у компонента Hidden, но имя формируется по шаблону «Форма: имя_формы»).</p>
+<p>Вариант на английском: Form: form_name</p>
+<p>где <strong>form_name</strong> и <strong>имя_формы</strong> - это атрибут <strong>«?disp»</strong> выбраной формы. Если форма не выбрана, то пишется No form (Нет формы)</p>
+<p>При отрисовке формы не в билдере компонент рисовать не нужно (на сервере он будет автоматически заменяться на все компоненты, которые есть в выбранной форме).</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Include_Form_Component.png"><img alt="../../../../_images/Include_Form_Component.png" class="align-center" src="../../../../_images/Include_Form_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+</section>
+<section id="container">
+<h3><a class="toc-backref" href="#id57">Container</a><a class="headerlink" href="#container" title="Ссылка на этот заголовок"></a></h3>
+<p>Оболочка для набора полей, аналогичная <strong>Field Set</strong>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Container_Component.png"><img alt="../../../../_images/Container_Component.png" class="align-center" src="../../../../_images/Container_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Компонент управления отображением данных, основанный на использовании Bootstrap Grid.</p>
+<p>Система <strong>Bootstrap Grid</strong> нужна для разметки страницы, в частности, для создания адаптивных макетов.</p>
+<p>Фреймворк определяет 5 уровней адаптивности (брейкпоинтов), которые основаны на ширине области просмотра:</p>
+<ul class="simple">
+<li><p><strong>xs</strong> — extra small, супермаленький — ширина &lt; 576px (это уровень по умолчанию);</p></li>
+<li><p><strong>sm</strong> — small, маленький — ширина ≥ 576px;</p></li>
+<li><p><strong>md</strong> — medium, средний — ширина ≥ 768px;</p></li>
+<li><p><strong>lg</strong> — large, большой — ширина ≥ 992px;</p></li>
+<li><p><strong>xl</strong> — extra large, супербольшой — ширина ≥ 1200px.</p></li>
+</ul>
+<p>Сетка состоит из групп рядов и колонок, расположенных внутри одного или нескольких контейнеров.</p>
+<p>Основные правила сетки в Bootstrap:</p>
+<ul class="simple">
+<li><p>колонки находятся строго внутри ряда на первом уровне вложенности;</p></li>
+<li><p>ряды нужны только для размещения колонок;</p></li>
+<li><p>ряды должны располагаться внутри контейнера.</p></li>
+</ul>
+<p>Ряды и колонки всегда работают вместе,  их нельзя разделять.</p>
+<p>Элемент с классом <strong>.container</strong> является корневым блоком сетки в Bootstrap, то есть располагается на внешнем уровне. Контейнер подходит для хранения любых элементов, а не только рядов и колонок.</p>
+<p>Внутри ряда должны находиться только колонки, а контент – уже внутри них.</p>
+<p>Колонки нужны для разделения области просмотра по горизонтали, при этом в одном ряду могут быть столбцы разной ширины.</p>
+<p>Классическая Bootstrap-сетка состоит из 12 колонок.</p>
+<p>В большинстве случаев, не требуется использование всех, их можно объединять по мере надобности. Представьте, что вся область просмотра разделена на 12 равных частей – единиц ширины. В одной колонке может быть от 1 до 12 таких единиц.</p>
+<p><a class="reference external" href="https://getbootstrap.com/docs/4.0/layout/grid/">См. подробное описание Bootstrap Grid system</a></p>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/data-components#container">См. подробное описание Container на Form.io</a></p>
+</section>
+<section id="data-grid">
+<h3><a class="toc-backref" href="#id58">Data Grid</a><a class="headerlink" href="#data-grid" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент управления отображением данных, который извлекает информацию из коллекции объектов и визуализирует ее в сетке со строками и ячейками. Каждая строка соответствует отдельному объекту, а каждый столбец — свойству в этом объекте.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../_images/Data_Grid_Component.png"><img alt="../../../../_images/Data_Grid_Component.png" class="align-center" src="../../../../_images/Data_Grid_Component.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/data-components#data-grid">См. подробное описание Data Grid на Form.io</a></p>
+</section>
+<section id="data-grid-assoc">
+<h3><a class="toc-backref" href="#id59">Data Grid Assoc</a><a class="headerlink" href="#data-grid-assoc" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент управления отображением данных.</p>
+</section>
+<section id="data-map">
+<h3><a class="toc-backref" href="#id60">Data Map</a><a class="headerlink" href="#data-map" title="Ссылка на этот заголовок"></a></h3>
+<p>Компонент позволяет пользователям создавать пары ключ/значение.</p>
+<p><a class="reference external" href="https://help.form.io/userguide/forms/data-components#data-map">См. подробное описание Data Map на Form.io</a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../form_components.html" class="btn btn-neutral float-left" title="Компоненты формы" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="components.html" class="btn btn-neutral float-right" title="Подробное описание отдельных компонент" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

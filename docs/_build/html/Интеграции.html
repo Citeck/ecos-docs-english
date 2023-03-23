@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Интеграции &mdash; ECOS</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Примеры использования Records API для внешних систем" href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html" />
+    <link rel="prev" title="How To" href="general/How_To.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">Разработка</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Интеграции</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Интеграции</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Интеграции.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="integration">
+<span id="id1"></span><h1>Интеграции<a class="headerlink" href="#integration" title="Ссылка на этот заголовок"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html#id2">Управление маршрутами</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html#id3">Получение списка маршрутов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html#id4">Получение иерархии по уровням</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html#id5">Изменение маршрута (Добавление/удаление пользователей/группы в маршрут)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html#id6">Управление набором и составом групп</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html#id7">Просмотр списка пользователей</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html#id8">Получение списка групп, в которой состоит пользователь</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html#id9">Удаление/добавление пользователя в группу</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html#id10">Просмотр содержимого группы</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integration/Camel_DSL.html">Использование Camel DSL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/Camel_DSL.html#id1">Общие сведения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/Camel_DSL.html#id4">Выборка из БД</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/Camel_DSL.html#recordsdaoendpoint">Подключение RecordsDaoEndpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/Camel_DSL.html#id5">Удаление данных из БД</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integration/data%20sources.html">Источники данных</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/data%20sources.html#rest-data-source">REST Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/data%20sources.html#db-data-source">DB Data Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/data%20sources.html#ssl-ecos-db-data-source">SSL при запросах к бд через ECOS db-data-source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integration/data%20sources.html#mq-data-source">MQ Data Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/records%20sources.html#id1">Автозаполнение контрагента</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integration/OSGI.html">Функционал загрузки OSGI пакетов</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/OSGI.html#id2">Пример создания бандла</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/OSGI.html#id3">1. Сборка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/OSGI.html#id4">2. Активатор</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/OSGI.html#id5">3. Загрузка в микросервис</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integration/OSGI.html#id6">Способы расширения микросервиса интеграций с помощью бандлов</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/OSGI.html#recordsdao">1. Регистрация своего RecordsDao</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/OSGI.html#id7">2. Регистрация новых команд</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/OSGI.html#camel">3. Возможность работы с camel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/OSGI.html#endpoint">4. Регистрация нового endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/OSGI.html#id9">Особенности</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/file_import.html">Файловый импорт в систему</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/file_import.html#id3">Общая информация по функционалу</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/file_import.html#id4">Информация об использовании справочников</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/file_import.html#id5">Конфигурация импорта файлов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/file_import.html#id6">Файлы для импорта</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/file_import.html#id7">Элементы файлового импорта</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integration/file_import.html#id8">Пример создания своих обработчиков</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/file_import.html#id9">1. Создание конфигурации импорта</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/file_import.html#id10">2. Написание команды парсинга</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/file_import.html#id11">3. Написание команды импорта элементов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/2_instances.html#id1">Требования</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/2_instances.html#id2">Настройка</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/2_instances.html#ecos-1-second-ecos-ecos-0-main-ecos">Отправка команды во внешнюю систему (из ECOS 1 (second-ecos) в ECOS 0 (main-ecos))</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/2_instances.html#id3">Тестирование отправки команд</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/2_instances.html#id4">Отправка файлов в командах и событиях</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration/EDI.html">EDI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/EDI.html#id2">Основные принципы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/EDI.html#edisyncexecution">Связь сервисов-реализации с EdiSyncExecution для интеграции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/EDI.html#edistateservice">Что происходит в либах обработки и что за зверь - EdiStateService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/EDI.html#event">Структура Event</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration/events_kontur.html">Настройка получения событий с ящиком Контур.Диадок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/events_kontur.html#datasource">1. Создание DataSource до ЭДО провайдера</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/events_kontur.html#credentials-api">2. Создание Credentials для доступа к ЭДО провайдеру по API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/events_kontur.html#id3">3. Создание ящика с информацией об ЭДО провайдере</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/events_kontur.html#id4">4. Настройка интеграции с ЭДО провайдером в рамках ящика</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/events_kontur.html#id5">5. Итоги</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration/counterparty_kontur.html">Синхронизация данных контрагентов и их ящиков с Контур.Диадок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/counterparty_kontur.html#id2">Устройство бандла для обработки контрагентов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/counterparty_kontur.html#id3">Настройка синхронизации контрагентов с Контур.Диадок</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration/new_provider.html">Реализация интеграции с новым ЭДО-провайдером</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/new_provider.html#id2">1. Со стороны бандла работы с ЭДО-провайдером (мкр. интеграции)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/new_provider.html#ecos-edi-integration">2. Со стороны связующей либы ecos-edi-integration (мкр. интеграции)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/new_provider.html#id3">3. Со стороны хранилки (альфреско)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration/ecos-edi-kontur-lib.html">Описание ecos-edi-kontur-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration/ecos-edi-ftps-lib.html">Описание ecos-edi-ftps-lib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/ecos-edi-ftps-lib.html#id2">1. Цель либы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/ecos-edi-ftps-lib.html#id3">2. Настройка интеграции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/ecos-edi-ftps-lib.html#id4">3. Принципы работы при отправке сообщений</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/ecos-edi-ftps-lib.html#id5">4. Принципы работы при получении сообщений</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration/ecos-edi-sbis-lib.html">Описание ecos-edi-sbis-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration/expand_functions.html">Как расширять функционал</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/expand_functions.html#id2">1. Кастомизация поиска контрагента и юр лица</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/expand_functions.html#alfresco">2. Кастомизация варианта создания пакетов в alfresco</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/expand_functions.html#camel">3. Переопределение обработки событий от ЭДО-провайдеров (Camel)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/expand_functions.html#id3">4. Расширение способов генерации печатных форм и иных служебных документов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/expand_functions.html#ecosediservice">5. Переопределение EcosEdiService для добавления дополнительных флагов в случае необходимости</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration/new_integration_settings.html">Переход на новые настройки интеграции с EDI провайдерами</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/new_integration_settings.html#id1">Пошаговая инструкция по переходу на новую интеграцию</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration/CounterpartyEdiInfoRecordsDao.html">CounterpartyEdiInfoRecordsDao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration/common_lib.html">Общая библиотека для обработки EDI событий ecos-edi-integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration/server_signing.html">Серверное подписание</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/server_signing.html#id2">Описание</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/server_signing.html#keycloak">Создание сервисного клиента keycloak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration/EDI_integration/server_signing.html#ecos">Запрос из ecos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integration/EDI_integration/4_RC2%2B_configuration.html">Конфигурация ЭДО</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/currency.html">Интеграция курсов валют</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/currency.html#id2">Инструкция для получения курсов валют с ЦБ РФ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/ECOS%20Synchronization.html#id1">Изменение синхронизации «на лету»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/ECOS%20Synchronization.html#id2">Перенос конфигурации между стендами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/ECOS%20Synchronization.html#id3">Структура таблицы с данными</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/ECOS%20Synchronization.html#id4">Пример скрипта для просмотра существующих записей в alfresco, для просмотра данных которые пойдут в таблицу интеграции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/ECOS%20Synchronization.html#id5">Восстановление потеряных записей</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="general/How_To.html" class="btn btn-neutral float-left" title="How To" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html" class="btn btn-neutral float-right" title="Примеры использования Records API для внешних систем" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

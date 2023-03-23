@@ -1,0 +1,30 @@
+Разработка
+===========
+
+.. important::
+
+    Eсли система поднята локально без eis (keycloak), то используется **BASIC_AUTH_ACCESS** и при добавлении пользователя его нужно добавить в :ref:`docker-файл<ecos_proxy_app>`
+
+В разделе представлены статьи по "тонкой" настройке, использованию языков и API.
+
+
+.. toctree::
+    :maxdepth: 3
+ 
+    general/Термины
+    general/ECOS_Records
+    general/ECOS_Records_examples
+    general/ecos_data
+    general/System_attributes
+    general/Язык_предикатов
+    general/Transactions
+    general/Commands
+    general/Aspects
+    general/Microservices
+    general/ECOS_WebAPI
+    general/Генерация документов
+    general/Preview
+    general/Events
+    general/Processes
+    general/Alfresco
+    general/How_To

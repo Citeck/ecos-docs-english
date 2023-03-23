@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Уведомление &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../../../search.html" />
+    <link rel="next" title="Установка статуса" href="ecos_bpmn_components_set_status.html" />
+    <link rel="prev" title="Скриптовая задача" href="ecos_bpmn_components_script_task.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../interface.html">Интерфейс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ui_actions.html">Действия</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../BPMN_ecos.html">Платформа бизнес-процессов (ECOS BPMN)</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../ecos_bpmn_overview.html">Общее описание Ecos BPMN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ecos_bpmn_base_operations.html">Базовые операции</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../ecos_bpmn_editor.html">Моделирование бизнес-процесса</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../BPMN_flowable.html">Редактор бизнес-процессов (BPMN) с использованием Flowable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CMMN.html">Редактор сценариев (CMMN)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CMMN_BPMN.html">Работа в связке CMMN - BPMN</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../../../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a> &raquo;</li>
+          <li><a href="../../../BPMN_ecos.html">Платформа бизнес-процессов (ECOS BPMN)</a> &raquo;</li>
+          <li><a href="../../ecos_bpmn_editor.html">Моделирование бизнес-процесса</a> &raquo;</li>
+          <li><a href="../ecos_bpmn_components.html">Компоненты Ecos BPMN</a> &raquo;</li>
+      <li>Уведомление</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_notifications.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><a class="toc-backref" href="#id7">Уведомление</a><a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<span id="notification"></span><p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id7">Уведомление</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id8">Общее описание</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id9">Атрибуты и форма</a></p></li>
+<li><p><a class="reference internal" href="#notification-variables" id="id10">Доступные переменные</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id6" id="id11">Пример использования переменных в шаблоне</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id3">
+<h2><a class="toc-backref" href="#id8">Общее описание</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Элемент используется для отправки уведомлений пользователям. На данный момент поддерживается только уведомление по электронной почте.</p>
+<p>Уведомления отправляются через микросервис ecos-notifications, см. подробнее - <a class="reference internal" href="../../../../notifications.html#notifications"><span class="std std-ref">уведомления</span></a> и <a class="reference internal" href="../../../../notifications/notifications_template.html#notification-templates"><span class="std std-ref">шаблоны уведомлений</span></a>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/48.png"><img alt="../../../../../_images/48.png" class="align-center" src="../../../../../_images/48.png" style="width: 400px;" /></a>
+</div></blockquote>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id9">Атрибуты и форма</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Указать <strong>Имя</strong>, выбрать <strong>Тип уведомления</strong></p></td>
+<td><a class="reference internal image-reference" href="../../../../../_images/49.png"><img alt="../../../../../_images/49.png" class="align-center" src="../../../../../_images/49.png" style="width: 300px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p>Можно выбрать <a class="reference internal" href="../../../../notifications/notifications_template.html#notification-templates"><span class="std std-ref">шаблон уведомления</span></a> или напрямую указать <em>Заголовок</em> и <em>Тело</em> сообщения напрямую. <br> При прямом использовании Заголовка и Тела возможно указывать только текст, без использования динамических переменных из процесса или документа.</p></td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/50.png"><img alt="../../../../../_images/50.png" class="align-center" src="../../../../../_images/50.png" style="width: 300px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/51.png"><img alt="../../../../../_images/51.png" class="align-center" src="../../../../../_images/51.png" style="width: 300px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Получатели могут быть выбраны из: <br> <br>
+<strong>Роли</strong> <br> Роли, заполненные в <a class="reference internal" href="../../../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-types-main"><span class="std std-ref">типе данных</span></a>. <br> <br>
+<strong>Выражение</strong> <br> Имя, recordRef или емейл получателя. Поддерживаются expression для получения данных из переменных или сервисов. Expression может вернуть множественное значение - строки разделенные запятой: <code class="docutils literal notranslate"><span class="pre">ivan&#64;mail.com,user2,user3</span></code>. <br>
+<br>
+Например: <br>
+<code class="docutils literal notranslate"><span class="pre">ivan.petrov</span></code> <br>
+<code class="docutils literal notranslate"><span class="pre">GROUP_company_accountant</span></code> <br>
+<code class="docutils literal notranslate"><span class="pre">emodel/authority-group&#64;company_accountant</span></code> <br>
+<code class="docutils literal notranslate"><span class="pre">emodel/person&#64;ivan</span></code> <br>
+<code class="docutils literal notranslate"><span class="pre">${someVariable}</span></code> <br>
+<code class="docutils literal notranslate"><span class="pre">${someService.getEmails()},petya.voks</span></code> <br></p></td>
+<td><blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/send_task_recipient_roles.png"><img alt="../../../../../_images/send_task_recipient_roles.png" class="align-center" src="../../../../../_images/send_task_recipient_roles.png" style="width: 300px;" /></a>
+</div></blockquote>
+<a class="reference internal image-reference" href="../../../../../_images/send_task_recipient_expression.png"><img alt="../../../../../_images/send_task_recipient_expression.png" class="align-center" src="../../../../../_images/send_task_recipient_expression.png" style="width: 300px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Исходящий адрес</strong> <br> Исходящий адрес уведомления. Может быть указан напрямую или через expression. <br> Если пусто, то будет использовано значение по умолчанию. <br>
+<br>
+Например: <br>
+<code class="docutils literal notranslate"><span class="pre">someAddress&#64;mail.com</span></code> <br>
+<code class="docutils literal notranslate"><span class="pre">&quot;Some</span> <span class="pre">Name&quot;</span> <span class="pre">&lt;someAddress&#64;mail.com&gt;</span></code> <br>
+<code class="docutils literal notranslate"><span class="pre">${someExpressionToGetAddress}</span></code> <br>
+<br>
+Получение адреса из Ecos Конфигурации: <br>
+<code class="docutils literal notranslate"><span class="pre">${Config.getNotNull(&quot;app/you-app$you-config-key&quot;).asText()}</span></code> <br> <br></p>
+<p><strong>Record уведомления:</strong> <br> Базовый record для заполнения шаблона. Если в этом поле ничего не указано, то берется документ, по которому запущен бизнес процесс. <br> <br>
+<strong>Язык:</strong> <br> Указывается язык шаблона уведомления в формате <code class="docutils literal notranslate"><span class="pre">ru</span></code>, <code class="docutils literal notranslate"><span class="pre">en</span></code> и т.д. Если язык не указан, то берется язык по умолчанию. <br> <br>
+<strong>Дополнительная модель (additional meta):</strong> <br> Описание дополнительной мета информации, где <br> <em>ключ (string)</em> - по ключу становится доступна информация в модели шаблона уведомления. <br> <em>значение (object)</em> - если в значении передана строка и начинается с префикса <code class="docutils literal notranslate"><span class="pre">!str_</span></code>, то символы после префикса записываются как строка, иначе строка считается как recordRef.</p>
+</td>
+<td><a class="reference internal image-reference" href="../../../../../_images/send_task_settings_panel.png"><img alt="../../../../../_images/send_task_settings_panel.png" class="align-center" src="../../../../../_images/send_task_settings_panel.png" style="width: 300px;" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notification-variables">
+<span id="id5"></span><h2><a class="toc-backref" href="#id10">Доступные переменные</a><a class="headerlink" href="#notification-variables" title="Ссылка на этот заголовок"></a></h2>
+<p>В модели шаблона уведомлений есть доступ к следующим переменным:</p>
+<ol class="arabic simple">
+<li><p><em>Переменные из базового record</em>. По умолчанию это документ, по которому идет бизнес-процесс. Обращение происходит напрямую к атрибутам record.</p></li>
+<li><p><em>Переменные процесса.</em> Через переменную <code class="docutils literal notranslate"><span class="pre">$process</span></code> доступны переменные процесса на момент отправки уведомления.</p></li>
+<li><p><em>Переменные</em> <a class="reference internal" href="events/ecos_bpmn_components_signal.html#ecos-bpmn-events"><span class="std std-ref">событий Ecos</span></a>. Доступны через переменную <code class="docutils literal notranslate"><span class="pre">$process.event</span></code>.</p></li>
+<li><p><em>Контекстные переменные Records API</em></p></li>
+</ol>
+<p>Также в самом шаблоне уведомлений доступны <a class="reference internal" href="../../../../notifications/notifications_template.html#notification-template-services"><span class="std std-ref">сервисы шаблонизатора</span></a></p>
+<section id="id6">
+<h3><a class="toc-backref" href="#id11">Пример использования переменных в шаблоне</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<p>Для примера используем event sub process, который реагирует на событие добавления нового комментария и отправляет уведомление.</p>
+<a class="reference internal image-reference" href="../../../../../_images/bpmn_notification_example_process.png"><img alt="../../../../../_images/bpmn_notification_example_process.png" class="align-center" src="../../../../../_images/bpmn_notification_example_process.png" style="width: 300px;" /></a>
+<p>Шаблон уведомления содержит модель:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;model&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;documentDisp&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;.disp&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;documentCreated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;_created&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;documentFio&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;fio&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;now&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$now&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;user&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$user&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;processAtt&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$process.someAttr&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;str&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$str&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;commentText&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$process.event.text&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;eventId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$process.event._meta.id&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;eventType&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$process.event._meta.type&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;eventRecord&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$process.event.eventRecord&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;eventRecordCreated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$process.event.eventRecordCreated&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;currentRunAsUser&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$process.currentRunAsUser&quot;</span><span class="w"></span>
+<span class="p p-Indicator">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Шаблон уведомления содержит текст:</p>
+<img alt="../../../../../_images/bpmn_notification_example_text.png" class="align-center" src="../../../../../_images/bpmn_notification_example_text.png" />
+<p>В результате получим следующее уведомление:</p>
+<img alt="../../../../../_images/bpmn_notification_example_result.png" class="align-center" src="../../../../../_images/bpmn_notification_example_result.png" />
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="ecos_bpmn_components_script_task.html" class="btn btn-neutral float-left" title="Скриптовая задача" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="ecos_bpmn_components_set_status.html" class="btn btn-neutral float-right" title="Установка статуса" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

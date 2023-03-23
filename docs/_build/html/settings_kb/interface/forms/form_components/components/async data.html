@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Async data &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../../../search.html" />
+    <link rel="next" title="Select journal" href="select%20journal.html" />
+    <link rel="prev" title="Table form" href="table%20form.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../interface.html">Интерфейс</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../forms.html">Формы</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../forms.html">Общая информация</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../form_builder.html">Конструктор форм</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../form_components.html">Компоненты формы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../form_examples.html">Примеры компонент</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../form_localisation.html">Локализация</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../form_for_task.html">Связь формы с задачей</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../journals.html">Журналы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../menu.html">Меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dashboards.html">Дашборды</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../widgets.html">Виджеты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../number_template.html">Шаблоны нумерации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../../../../interface.html">Интерфейс</a> &raquo;</li>
+          <li><a href="../../../forms.html">Формы</a> &raquo;</li>
+          <li><a href="../../form_components.html">Компоненты формы</a> &raquo;</li>
+          <li><a href="../components.html">Подробное описание отдельных компонент</a> &raquo;</li>
+      <li>Async data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/settings_kb/interface/forms/form_components/components/async data.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="async-data">
+<span id="id1"></span><h1><a class="toc-backref" href="#id10">Async data</a><a class="headerlink" href="#async-data" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#async-data" id="id10">Async data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id11">Типы данных</a></p>
+<ul>
+<li><p><a class="reference internal" href="#record" id="id12">1. Запись/Record</a></p></li>
+<li><p><a class="reference internal" href="#records-array" id="id13">2. Массив записей/Records Array</a></p></li>
+<li><p><a class="reference internal" href="#records-query" id="id14">3. Запрос записей/Records Query</a></p></li>
+<li><p><a class="reference internal" href="#ajax" id="id15">4. Ajax</a></p></li>
+<li><p><a class="reference internal" href="#custom" id="id16">5. Пользовательские данные/Custom</a></p></li>
+<li><p><a class="reference internal" href="#records-script" id="id17">6. Records Script</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id4" id="id18">Отключение кеша при загрузке атрибутов с сервера</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id19">Условия загрузки данных с сервера</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id6" id="id20">Обновление данных по событиям</a></p>
+<ul>
+<li><p><a class="reference internal" href="#update-on" id="id21">1. Update on</a></p></li>
+<li><p><a class="reference internal" href="#refresh-on" id="id22">2. Refresh on</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id7" id="id23">Обновление другого компонента при возникновении события</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id24">Условия обновления данных</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id9" id="id25">1. Условие обновления</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Запись (record)</strong> - это понятие, которое включает в себя ноду альфреско, но не любая запись является нодой.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/async_data_1.png"><img alt="../../../../../_images/async_data_1.png" class="align-center" src="../../../../../_images/async_data_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<section id="id3">
+<h2><a class="toc-backref" href="#id11">Типы данных</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Есть 6 типов данных, которые можно загружать с помощью данного компонента:</p>
+<section id="record">
+<h3><a class="toc-backref" href="#id12">1. Запись/Record</a><a class="headerlink" href="#record" title="Ссылка на этот заголовок"></a></h3>
+<p>Если мы знаем идентификатор какой-то записи (он есть в поле формы или статичен), то мы можем выбрать этот режим.</p>
+<p>Для подстановки значений формы в поле <strong>record</strong> можно делать вставки с четыремя фигурными скобками и полем, которое мы хотим подставить <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">data.typeField</span> <span class="pre">}}</span></code></p>
+<p>Для подстановки текущей редактируемой ноды можно использовать <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">recordId</span> <span class="pre">}}</span></code></p>
+<p>В аттрибутах <code class="docutils literal notranslate"><span class="pre">ключ</span></code> - это алиас (имя по которому будет храниться значение аттрибута), а <code class="docutils literal notranslate"><span class="pre">value</span></code> - это сам аттрибут. Список вариантов значения <code class="docutils literal notranslate"><span class="pre">value</span></code> можно посмотреть в ECOS Records [Ссылку разместить]</p>
+<p>По умолчанию, при попытке из record’а получить ассоциацию, возвращается её <strong>displayName (cm:title или если нет, то cm:name в простом случае)</strong>. Чтобы получить ссылку на неё, необходимо после указания названия атрибута, поставить постфикс <strong>?assoc</strong>. Пример:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/async_data_2.png"><img alt="../../../../../_images/async_data_2.png" class="align-center" src="../../../../../_images/async_data_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+</section>
+<section id="records-array">
+<h3><a class="toc-backref" href="#id13">2. Массив записей/Records Array</a><a class="headerlink" href="#records-array" title="Ссылка на этот заголовок"></a></h3>
+<p>Работает по аналогии с режимом <strong>Record</strong>, но применительно к массиву идентификаторов записей.</p>
+</section>
+<section id="records-query">
+<h3><a class="toc-backref" href="#id14">3. Запрос записей/Records Query</a><a class="headerlink" href="#records-query" title="Ссылка на этот заголовок"></a></h3>
+<p>Если мы хотим отправить запрос поиска записей, то можем воспользоваться режимом <strong>RecordsQuery</strong>. Аналог <strong>Citeck.Records.query({…})</strong>, где указывается поисковый запрос (т.е. если нет ссылок на сущности)
+В этом режиме есть вычисляемое javascript поле <strong>Query</strong>, в котором нужно на основе данных формы или других данных подготовить запрос для отправки на сервер. Если query не меняется, то новых запросов на сервер не происходит.</p>
+<p>Аттрибуты аналогичны режиму <strong>Record</strong>, но они будут запрошены для каждой вернувшейся записи.</p>
+<p>Если включен <strong>Единственная запись</strong> параметр, то в результате будет поиск только одной записи.</p>
+<p>Если ссылки на сущности уже есть, то необходимо использовать другой режим.</p>
+</section>
+<section id="ajax">
+<h3><a class="toc-backref" href="#id15">4. Ajax</a><a class="headerlink" href="#ajax" title="Ссылка на этот заголовок"></a></h3>
+<p>Данный режим предназначен для запроса произвольных данных по URL.</p>
+<p>В этом режиме есть два вычисляемых javascript поля <strong>Query Data</strong> и <strong>Query Result Mapping</strong>.</p>
+<p><strong>Query Data</strong> - поле, результат вычисления которого отправляется в запросе на сервер. Если метод запроса GET, то параметры из <strong>Query Data</strong> будут добавлены в URL. Если метод POST, то в данные попадут в тело запроса.</p>
+<p><strong>Query Result Mapping</strong> - необязательное поле. Если его не заполнить, то в Async Data контроле будет весь результат запроса. Если в данном поле есть дополнительная обработка результата, то итог данной обработки будет записан в значении поля.</p>
+</section>
+<section id="custom">
+<h3><a class="toc-backref" href="#id16">5. Пользовательские данные/Custom</a><a class="headerlink" href="#custom" title="Ссылка на этот заголовок"></a></h3>
+<p>Данный режим предназначен для вычисления любых асинхронных данных.</p>
+<p>В этом режиме есть два вычисляемых javascript поля <strong>Синхронные данные</strong> и <strong>Асинхронные данные</strong>.</p>
+<p><strong>Синхронные данные</strong> - это подготовка данных, которые будут нужны для выполнения <strong>Асинхронные данные</strong>.</p>
+<p>В <strong>Асинхронные данные</strong> можно в <code class="docutils literal notranslate"><span class="pre">value</span></code> записать <strong>Promise</strong>, результат выполнения которого будет проставлен в поле.</p>
+</section>
+<section id="records-script">
+<h3><a class="toc-backref" href="#id17">6. Records Script</a><a class="headerlink" href="#records-script" title="Ссылка на этот заголовок"></a></h3>
+<p>Тоже самое что и <strong>Record</strong> и <strong>Record Array</strong>, с тем отличием что имеется возможность вычислять идентификатор записи. Если идентификатор равен массиву, то отрабатывает как <strong>Records Array</strong> иначе как <strong>Record</strong>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/async_data_3.png"><img alt="../../../../../_images/async_data_3.png" class="align-center" src="../../../../../_images/async_data_3.png" style="width: 400px;" /></a>
+</div></blockquote>
+</section>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id18">Отключение кеша при загрузке атрибутов с сервера</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>В режимах <strong>Record, Records Array и Records Script</strong> результат выполнения запроса к серверу кешируется. Для отключения такого кеширования добавлена опция:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/async_data_4.png"><img alt="../../../../../_images/async_data_4.png" class="align-center" src="../../../../../_images/async_data_4.png" style="width: 400px;" /></a>
+</div></blockquote>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id19">Условия загрузки данных с сервера</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>Во вкладке <span class="guilabel">Расширенные настройки</span> настраивается частота и условия обновления данных.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/async_data_5.png"><img alt="../../../../../_images/async_data_5.png" class="align-center" src="../../../../../_images/async_data_5.png" style="width: 400px;" /></a>
+</div></blockquote>
+<section id="id6">
+<h3><a class="toc-backref" href="#id20">Обновление данных по событиям</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<p>Для реакции на определенные события существуют 2 параметра на вкладке <span class="guilabel">Расширенные настройки</span>: <strong>Update on</strong> и <strong>Refresh on</strong>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/async_data_6.png"><img alt="../../../../../_images/async_data_6.png" class="align-center" src="../../../../../_images/async_data_6.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>На данный момент <strong>Update on</strong> и <strong>Refresh on</strong> выполняют по сути одну функцию и отличаются только событиями на которые они реагируют. Данные параметры можно комбинировать для покрытия большего количества ситуаций.</p>
+<section id="update-on">
+<h4><a class="toc-backref" href="#id21">1. Update on</a><a class="headerlink" href="#update-on" title="Ссылка на этот заголовок"></a></h4>
+<p>Данный параметр поддерживает 4 события, в ответ на которые будет произведена загрузка информации:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/async_data_7.png"><img alt="../../../../../_images/async_data_7.png" class="align-center" src="../../../../../_images/async_data_7.png" style="width: 400px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Любых изменениях/Any change</strong> – обновлять данные при любом изменении на форме.</p>
+<ul>
+<li><p><strong>Update rate, ms</strong> – период проверки обновления формы на изменения в миллисекундах(если в течении этого времени данные формы изменились, то запрос будет один). Таким образом, если этот параметр равен 100, и за последние 100 ms произошло, к примеру, 1000 событий на форме, то данные будут загружены всего 1 раз.</p></li>
+</ul>
+</li>
+<li><p><strong>Событиях/Event</strong> – обновлять данные по заданному событию (события можно триггерить кнопкой).</p>
+<ul>
+<li><p><strong>Event</strong> – название события, на которое следует реагировать.</p></li>
+</ul>
+</li>
+<li><p><strong>Единоразово/Once</strong> – загрузить данные единожды при загрузке формы.</p></li>
+<li><p><strong>Блокировке/Disabled</strong> – выключает параметр Update on.</p></li>
+</ul>
+</section>
+<section id="refresh-on">
+<h4><a class="toc-backref" href="#id22">2. Refresh on</a><a class="headerlink" href="#refresh-on" title="Ссылка на этот заголовок"></a></h4>
+<p>Данный параметр имеет всего одно поле для указания элементов формы, которые следует отслеживать.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/async_data_8.png"><img alt="../../../../../_images/async_data_8.png" class="align-center" src="../../../../../_images/async_data_8.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Поле поддерживает множественный выбор, так что можно можно выбрать несколько элементов, при обновлении которых будет происходить загрузка данных.</p>
+<p>Для выбора элемента начните вводить <strong>Название поля/Property Name</strong> нужного элемента.</p>
+</section>
+</section>
+<section id="id7">
+<h3><a class="toc-backref" href="#id23">Обновление другого компонента при возникновении события</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<p>Пример условия обновления другого компонента при возникновении события <code class="docutils literal notranslate"><span class="pre">event_terLineManDefault</span></code> в <strong>Async Data Component</strong>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/async_data_10.png"><img alt="../../../../../_images/async_data_10.png" class="align-center" src="../../../../../_images/async_data_10.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Выставите <strong>Force update</strong> при подписке на событие из <strong>TableForm Component</strong>.</p>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id24">Условия обновления данных</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h3>
+<p>После того как было обнаружено какое-либо событие из параметров <strong>Update on</strong> и <strong>Refresh on</strong>, можно также предварительно убедиться, что данные необходимо обновить.</p>
+<section id="id9">
+<h4><a class="toc-backref" href="#id25">1. Условие обновления</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h4>
+<p>Данный параметр отвечает за проверку необходимости обновления данных после того, как какое-либо необходимое событие было обнаружено.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/async_data_11.png"><img alt="../../../../../_images/async_data_11.png" class="align-center" src="../../../../../_images/async_data_11.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><strong>Условие обновления</strong> представляет собой разворачивающееся окно javaScript кода. В данное окно вводится проверка необходимости обновления данных.</p>
+<p>Можно ввести любое условие, главное присвоить переменной <code class="docutils literal notranslate"><span class="pre">value</span></code> результат проверки. Если <strong>value === true</strong> - необходимо загрузить данные с сервера, а если <strong>value === false</strong>, то данные не будут загружены.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="table%20form.html" class="btn btn-neutral float-left" title="Table form" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="select%20journal.html" class="btn btn-neutral float-right" title="Select journal" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

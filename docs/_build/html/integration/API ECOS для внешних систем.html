@@ -1,0 +1,745 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Примеры использования Records API для внешних систем &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Использование Camel DSL" href="Camel_DSL.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Примеры использования Records API для внешних систем</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Управление маршрутами</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Получение списка маршрутов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Получение иерархии по уровням</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Изменение маршрута (Добавление/удаление пользователей/группы в маршрут)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Управление набором и составом групп</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Просмотр списка пользователей</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Получение списка групп, в которой состоит пользователь</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Удаление/добавление пользователя в группу</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Просмотр содержимого группы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Просмотр пользователей в группе</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Просмотр групп в группах</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+      <li>Примеры использования Records API для внешних систем</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integration/API ECOS для внешних систем.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="records-api">
+<h1><a class="toc-backref" href="#id15">Примеры использования Records API для внешних систем</a><a class="headerlink" href="#records-api" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#records-api" id="id15">Примеры использования Records API для внешних систем</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id16">Управление маршрутами</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id17">Получение списка маршрутов</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id18">Получение иерархии по уровням</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id19">Изменение маршрута (Добавление/удаление пользователей/группы в маршрут)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id6" id="id20">Управление набором и составом групп</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id7" id="id21">Просмотр списка пользователей</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id22">Получение списка групп, в которой состоит пользователь</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id23">Удаление/добавление пользователя в группу</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id24">Просмотр содержимого группы</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id11" id="id25">Просмотр пользователей в группе</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id26">Просмотр групп в группах</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>API-интерфейс позволяет работать с данными системы ECOS в привычном интерфейсе вашей информационной системы.</p>
+<p>С помощью Records API вы можете выполнять любые действия с данными, которые хранятся в любом из микросервисов ECOS. Подробнее про <a class="reference internal" href="../general/ECOS_Records.html#records-api"><span class="std std-ref">Records API</span></a></p>
+<p>Примеры использования API:</p>
+<ul class="simple">
+<li><p>получение и изменение информации о маршрутах;</p></li>
+<li><p>управление набором и составом групп пользователей.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<p>Для обеспечения корректной отправки http-запросов произведите настройки аутентификации в соответствии со <a class="reference internal" href="../admin/keycloack_postman.html#keycloak-postman"><span class="std std-ref">статьей</span></a></p>
+</div>
+<section id="id2">
+<h2><a class="toc-backref" href="#id16">Управление маршрутами</a><a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<section id="id3">
+<h3><a class="toc-backref" href="#id17">Получение списка маршрутов</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>URL</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="n">host</span><span class="p">}}</span><span class="o">/</span><span class="n">gateway</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">records</span><span class="o">/</span><span class="n">query</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Type</strong></p></td>
+<td><p>POST</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Запрос</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;query&quot;</span><span class="p">:{</span>
+    <span class="s2">&quot;sourceId&quot;</span><span class="p">:</span><span class="s2">&quot;alfresco/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;query&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;att&quot;</span><span class="p">:</span><span class="s2">&quot;_type&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;val&quot;</span><span class="p">:</span><span class="s2">&quot;emodel/type@sampleedidl-routeTemplateItem&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;t&quot;</span><span class="p">:</span><span class="s2">&quot;eq&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;language&quot;</span><span class="p">:</span><span class="s2">&quot;predicate&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;page&quot;</span><span class="p">:{</span><span class="s2">&quot;skipCount&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;maxItems&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="s2">&quot;page&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span>
+        <span class="s2">&quot;consistency&quot;</span><span class="p">:</span><span class="s2">&quot;EVENTUAL&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sortBy&quot;</span><span class="p">:[{</span><span class="s2">&quot;attribute&quot;</span><span class="p">:</span><span class="s2">&quot;cm:created&quot;</span><span class="p">,</span><span class="s2">&quot;ascending&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">}]},</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:[</span><span class="s2">&quot;sampleedidl:rtCode?disp&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Ответ</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;alfresco/@workspace://SpacesStore/820f88b5-e722-4bc0-933f-926d57e728aa&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;sampleedidl:rtCode?disp&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;hasMore&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;totalCount&quot;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h3><a class="toc-backref" href="#id18">Получение иерархии по уровням</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>URL</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{{host}}/gateway/alfresco/alfresco/s/api/orgstruct/v2/group/_orgstruct_home_/children?addAdminGroup=true&amp;branch=true&amp;excludeAuthorities=&amp;group=true&amp;role=true&amp;user=true
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Type</strong></p></td>
+<td><p>GET</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ответ</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;nodeRef&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace://SpacesStore/03094bf2-1395-4ded-98ff-3aba20698260&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;fullName&quot;</span><span class="p">:</span> <span class="s2">&quot;GROUP_all&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;shortName&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Все пользователи&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;authorityType&quot;</span><span class="p">:</span> <span class="s2">&quot;GROUP&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;groupType&quot;</span><span class="p">:</span> <span class="s2">&quot;branch&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;groupSubType&quot;</span><span class="p">:</span> <span class="s2">&quot;company&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;nodeRef&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace://SpacesStore/6ac1289b-45c6-43b5-ad95-fdbbe1302d69&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;fullName&quot;</span><span class="p">:</span> <span class="s2">&quot;GROUP_company&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;shortName&quot;</span><span class="p">:</span> <span class="s2">&quot;company&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Организация&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;authorityType&quot;</span><span class="p">:</span> <span class="s2">&quot;GROUP&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;groupType&quot;</span><span class="p">:</span> <span class="s2">&quot;branch&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;groupSubType&quot;</span><span class="p">:</span> <span class="s2">&quot;company&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3><a class="toc-backref" href="#id19">Изменение маршрута (Добавление/удаление пользователей/группы в маршрут)</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>URL</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="n">host</span><span class="p">}}</span><span class="o">/</span><span class="n">gateway</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">records</span><span class="o">/</span><span class="n">mutate</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Type</strong></p></td>
+<td><p>POST</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Запрос</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
+    &quot;records&quot;: [
+        {
+            &quot;id&quot;:&quot;alfresco/@workspace://SpacesStore/820f88b5-e722-4bc0-933f-926d57e728aa&quot;, -- ID маршрута
+            &quot;attributes&quot;:{
+                &quot;sampleedidl:templateRouteSignerAssoc?str&quot;:&quot;workspace://SpacesStore/15d05def-45fd-41cf-bf8d-96ecd422edea&quot;, - этап, на который необходимо добавить пользователя/группу (указать ID пользователя/группы), если необходимо удалить с этапа, то указать “”
+                &quot;_state?str&quot;:&quot;submitted&quot;
+                         }
+        }
+               ]
+}
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Ответ</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;alfresco/@workspace://SpacesStore/820f88b5-e722-4bc0-933f-926d57e728aa&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id6">
+<h2><a class="toc-backref" href="#id20">Управление набором и составом групп</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<section id="id7">
+<h3><a class="toc-backref" href="#id21">Просмотр списка пользователей</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>URL</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="n">host</span><span class="p">}}</span><span class="o">/</span><span class="n">gateway</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">records</span><span class="o">/</span><span class="n">query</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Type</strong></p></td>
+<td><p>POST</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Запрос</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;query&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;query&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;t&quot;</span><span class="p">:</span><span class="s2">&quot;and&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;val&quot;</span><span class="p">:[{</span><span class="s2">&quot;t&quot;</span><span class="p">:</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span><span class="s2">&quot;att&quot;</span><span class="p">:</span><span class="s2">&quot;TYPE&quot;</span><span class="p">,</span><span class="s2">&quot;val&quot;</span><span class="p">:</span><span class="s2">&quot;cm:person&quot;</span><span class="p">}]},</span>
+        <span class="s2">&quot;language&quot;</span><span class="p">:</span><span class="s2">&quot;predicate&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;consistency&quot;</span><span class="p">:</span><span class="s2">&quot;EVENTUAL&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;page&quot;</span><span class="p">:{</span><span class="s2">&quot;maxItems&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="s2">&quot;skipCount&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}},</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:{</span><span class="s2">&quot;fullName&quot;</span><span class="p">:</span><span class="s2">&quot;.disp&quot;</span><span class="p">,</span><span class="s2">&quot;userName&quot;</span><span class="p">:</span><span class="s2">&quot;userName&quot;</span><span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Ответ</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;alfresco/@workspace://SpacesStore/e0d4333e-97e1-4d42-a4d0-83e4259ed936&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;fullName&quot;</span><span class="p">:</span> <span class="s2">&quot;Guest&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;guest&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;alfresco/@workspace://SpacesStore/6985ba61-155a-4ae8-aeb3-28acbc59f5f4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;fullName&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;alfresco/@workspace://SpacesStore/15d05def-45fd-41cf-bf8d-96ecd422edea&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;fullName&quot;</span><span class="p">:</span> <span class="s2">&quot;Administrator&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">],</span>
+<span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="s2">&quot;hasMore&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+<span class="s2">&quot;totalCount&quot;</span><span class="p">:</span> <span class="mi">3</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id22">Получение списка групп, в которой состоит пользователь</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>URL</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="n">host</span><span class="p">}}</span><span class="o">/</span><span class="n">gateway</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">records</span><span class="o">/</span><span class="n">query</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Type</strong></p></td>
+<td><p>POST</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Запрос</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;records&quot;</span><span class="p">:</span>
+    <span class="p">[</span><span class="s2">&quot;people@admin&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;attributes&quot;</span><span class="p">:</span>
+        <span class="p">[</span><span class="s2">&quot;groups[]&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Ответ</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;people@admin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;groups[]&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;ALFRESCO_ADMINISTRATORS&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ALFRESCO_MODEL_ADMINISTRATORS&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">],</span>
+<span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h3><a class="toc-backref" href="#id23">Удаление/добавление пользователя в группу</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>URL</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="n">host</span><span class="p">}}</span><span class="o">/</span><span class="n">gateway</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">records</span><span class="o">/</span><span class="n">mutate</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Type</strong></p></td>
+<td><p>POST</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Запрос</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;records&quot;</span><span class="p">:[</span>
+    <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;emodel/person@admin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;attributes&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;att_add_authorityGroups&quot;</span><span class="p">:</span><span class="s2">&quot;emodel/authority-group@GROUP_company_accountancy&quot;</span>
+<span class="p">}}]}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>att_add_authorityGroups</strong> – добавление в группу</p>
+<p><strong>att_rem_authorityGroups</strong> – удаление из группы</p>
+</section>
+<section id="id10">
+<h3><a class="toc-backref" href="#id24">Просмотр содержимого группы</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h3>
+<section id="id11">
+<h4><a class="toc-backref" href="#id25">Просмотр пользователей в группе</a><a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h4>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>URL</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="n">host</span><span class="p">}}</span><span class="o">/</span><span class="n">gateway</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">records</span><span class="o">/</span><span class="n">query</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Type</strong></p></td>
+<td><p>POST</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Запрос</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;query&quot;</span><span class="p">:{</span>
+    <span class="s2">&quot;sourceId&quot;</span><span class="p">:</span> <span class="s2">&quot;emodel/person&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="s2">&quot;authorityGroups&quot;</span><span class="p">,</span> <span class="s2">&quot;v&quot;</span><span class="p">:</span> <span class="s2">&quot;emodel/authority-group@orders-technologist&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;language&quot;</span><span class="p">:</span> <span class="s2">&quot;predicate&quot;</span>
+<span class="p">}}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Ответ</strong></p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;emodel/person@admin&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;hasMore&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;totalCount&quot;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h4><a class="toc-backref" href="#id26">Просмотр групп в группах</a><a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h4>
+<p>Просмотр групп в группе аналогичен просмотру пользователей в группе, но <strong>sourceId</strong> равен <strong>“emodel/authority-group“</strong>.</p>
+<p>Просмотр пользователей или групп с учетом иерархии вниз (т.е. указать корень оргструктуры или любую другую группу, но так же ищется и во всех подгруппах) - то же что и просмотр пользователей в группе, но вместо <strong>“authorityGroups”</strong> использовать <strong>“authorityGroupsFull“</strong></p>
+<table class="colwidths-given tight-table docutils align-default" id="id13">
+<caption><span class="caption-text">Таблица 1 Описание полей</span><a class="headerlink" href="#id13" title="Постоянная ссылка на таблицу"></a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Поле</p></th>
+<th class="head"><p>Наименование</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>fullName</strong></p></td>
+<td><p>Полное наименование</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>shortName</strong></p></td>
+<td><p>Сокращенное наименование</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p>ID записи</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>nodeRef</strong></p></td>
+<td><p>Ссылка на запись в системе Citeck</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>displayName</strong></p></td>
+<td><p>Отображаемое наименование</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>authorityType</strong></p></td>
+<td><p>Тип полномочий User/Group</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>groupType</strong></p></td>
+<td><p>Тип группы</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>groupSubType</strong></p></td>
+<td><p>Тип подгруппы</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>userName</strong></p></td>
+<td><p>Логин</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>templateRouteSignerAssoc</strong></p></td>
+<td><p>Этап, на который необходимо добавить пользователя/группу (указать ID пользователя/группы), если необходимо удалить с этапа указать “”</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>att_add_authorityGroups</strong></p></td>
+<td><div class="line-block">
+<div class="line">att_add_authorityGroups – добавление в группу</div>
+<div class="line">att_rem_authorityGroups – удаление из группы</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>rtCode</strong></p></td>
+<td><p>Код шаблона</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_state</strong></p></td>
+<td><p>Тип состояния</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>errors</strong></p></td>
+<td><p>Значение ошибки, если при запросе она произошла</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>hasMore</strong></p></td>
+<td><p>Есть ли дальше рекорды (записи)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>totalCount</strong></p></td>
+<td><p>Общее количество найденных записей</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>disp</strong></p></td>
+<td><p>Значение для вывода</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>value</strong></p></td>
+<td><p>Значение</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given tight-table docutils align-default" id="id14">
+<caption><span class="caption-text">Таблица 2 Описание параметров</span><a class="headerlink" href="#id14" title="Постоянная ссылка на таблицу"></a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Параметр</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Блок “page”</strong></p></td>
+<td><div class="line-block">
+<div class="line">Параметр для настройки пагинации.</div>
+<div class="line">Необязательный параметр.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Блок “sortBy”</strong></p></td>
+<td><div class="line-block">
+<div class="line">Параметр для сортировки.</div>
+<div class="line">Необязательный параметр.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Блок “attributes“</strong></p></td>
+<td><div class="line-block">
+<div class="line">Параметры (см. Таблица 1), которые необходимо получить на выходе.</div>
+<div class="line">Необязательный параметр.</div>
+<div class="line">Можно не указывать параметры в “attributes“ или убрать данный блок и на выходе получить список Id записей.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>sourceId</strong></p></td>
+<td><div class="line-block">
+<div class="line">Источник данных для поиска. В данном случае alfresco.</div>
+<div class="line">Возможные варианты:</div>
+<div class="line">•   reports-data</div>
+<div class="line">•   alfresco</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>query</strong></p></td>
+<td><p>Необходимый predicate query для поиска записей</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>att</strong></p></td>
+<td><p>Название аттрибута</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>val</strong></p></td>
+<td><p>Значение</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>t</strong></p></td>
+<td><div class="line-block">
+<div class="line">Типы предикатов.</div>
+<div class="line">Возможные варианты:</div>
+<div class="line">•   starts</div>
+<div class="line">•   ends</div>
+<div class="line">•   or</div>
+<div class="line">•   and</div>
+<div class="line">•   empty</div>
+<div class="line">•   not</div>
+<div class="line">•   eq</div>
+<div class="line">•   gt</div>
+<div class="line">•   ge</div>
+<div class="line">•   lt</div>
+<div class="line">•   le</div>
+<div class="line">•   like</div>
+<div class="line">•   in</div>
+<div class="line">•   contains</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>language</strong></p></td>
+<td><p>Язык запроса. На текущий момент поддерживается только predicate</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>consistency</strong></p></td>
+<td><div class="line-block">
+<div class="line">Консистенция (Согласованность)</div>
+<div class="line">Возможные варианты:</div>
+<div class="line">•   EVENTUAL</div>
+<div class="line">•   TRANSACTIONAL</div>
+<div class="line">•   DEFAULT</div>
+<div class="line">•   TRANSACTIONAL_IF_POSSIBLE</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="Camel_DSL.html" class="btn btn-neutral float-right" title="Использование Camel DSL" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

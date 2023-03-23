@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document Library &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+    <link rel="next" title="Меню" href="../menu.html" />
+    <link rel="prev" title="Канбан-доска" href="kanban_board.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../interface.html">Интерфейс</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../forms.html">Формы</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../journals.html">Журналы</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="journals.html">Общее описание (Overview)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="new_journal.html">Создание нового журнала</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_description.html">Пользовательское описание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html">Конфигурация журналов</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group_actions.html">Групповые действия</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search_journal_config.html">Конфигурация журнала поиска</a></li>
+<li class="toctree-l4"><a class="reference internal" href="computed%20attributes.html">Вычисляемые атрибуты (computed attributes)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filter_by%20_text%20_assoc_column.html">Фильтр по тексту в колонке „assoc“. Настройки innerQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="searchAttribute.html">Параметр «2.3 Атрибут для поиска»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search_nested_attributes.html">Поиск по вложенным атрибутам ассоциации в журналах</a></li>
+<li class="toctree-l4"><a class="reference internal" href="formatters.html">Форматтеры</a></li>
+<li class="toctree-l4"><a class="reference internal" href="editors.html">Редакторы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kanban_board.html">Канбан-доска</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Document Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../menu.html">Меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dashboards.html">Дашборды</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../widgets.html">Виджеты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../number_template.html">Шаблоны нумерации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../../interface.html">Интерфейс</a> &raquo;</li>
+          <li><a href="../journals.html">Журналы</a> &raquo;</li>
+      <li>Document Library</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/settings_kb/interface/journals/document_library.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="document-library">
+<span id="id1"></span><h1>Document Library<a class="headerlink" href="#document-library" title="Ссылка на этот заголовок"></a></h1>
+<p><strong>Document Library (Библиотека документов)</strong> - иерархический интерфейс для работы с папками и документами.
+Данный интерфейс доступен для любого типа ECOS. Для журнала любого типа можно настроить отображение сущностей в режиме проводника.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/DocLib_1.png"><img alt="../../../_images/DocLib_1.png" class="align-center" src="../../../_images/DocLib_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>В данном режиме можно просмотреть дерево иерархии папок и документов, произвести действия над документами и папками по аналогии действиям в проводнике Windows.</p>
+<p>Проводник отображается в правом меню по нажатию на <strong>«Показать дерево папок»</strong>. Сворачивается по кнопке <strong>«Скрыть дерево папок»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/DocLib_2.png"><img alt="../../../_images/DocLib_2.png" class="align-center" src="../../../_images/DocLib_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/DocLib_3.png"><img alt="../../../_images/DocLib_3.png" class="align-center" src="../../../_images/DocLib_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Выбранная папка подсвечивается среди других папок <strong>(1)</strong>.</p></li>
+<li><p>При клике на иконку или название папки она раскрывается <strong>(1)</strong>, и в левой части отражаются файлы, находящиеся в папке <strong>(2)</strong>.</p></li>
+<li><p>Для отображения документов и папок используются иконки, соответствующие формату файлов по аналогии с проводником Windows:</p>
+<ul class="simple">
+<li><p>Microsoft Word (doc, docx);</p></li>
+<li><p>Microsoft Excel (xls, xlsx);</p></li>
+<li><p>Microsoft Powerpoint (ppt, pptx);</p></li>
+<li><p>Adobe Acrobat (pdf);</p></li>
+<li><p>Файлы изображений (jpg, bmp, png, gif, tif);</p></li>
+<li><p>OpenOffice/ LibreOffice (odf);</p></li>
+<li><p>Файл сообщения из электронной почты (.msg).</p></li>
+</ul>
+</li>
+<li><p>Загрузка файлов осуществляется по кнопке <strong>+</strong> и используя drag&amp;drop. Файлы добавляться как по одному, так и группой.</p></li>
+<li><p>Перемещение файлов из каталога в каталог осуществляется с использованием drag&amp;drop. Файлы могут быть перемещены как по одному, так и группой.</p></li>
+<li><p>Над журналом размещено название текущей раскрытой папки <strong>(4)</strong>, чуть ниже - полный путь к открытой папке <strong>(3)</strong>.</p></li>
+<li><p>Выделение документов и папок работает аналогично выбору в файловых менеджерах с учетом кнопок Ctrl, Shift и ЛКМ:</p>
+<ul class="simple">
+<li><p><strong>ЛКМ с Shift</strong> приводит к выделению диапазона файлов и папок;</p></li>
+<li><p><strong>ЛКМ с Ctrl</strong> добавляет выделение, не сбрасывая уже выделенные файлы;</p></li>
+<li><p><strong>ЛКМ без других клавиш</strong> сбрасывает предыдущее выделение и устанавливает новое на том файле или папке куда произошел клик.</p></li>
+</ul>
+</li>
+<li><p>Поиск документов внутри выбранной папки <strong>(5)</strong>. Результат поиска отображается в виде списка.</p></li>
+<li><p>При наведении курсора на файл или папку отображаются действия см. Действия с файлом <strong>(6)</strong>.</p></li>
+</ol>
+<section id="id2">
+<h2>Действия с файлом<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><a class="reference internal image-reference" href="../../../_images/ic_1.png"><img alt="../../../_images/ic_1.png" class="align-center" src="../../../_images/ic_1.png" style="width: 30px;" /></a>
+</td>
+<td><p>Переход на просмотр карточки в новой вкладке.</p></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal image-reference" href="../../../_images/ic_2.png"><img alt="../../../_images/ic_2.png" class="align-center" src="../../../_images/ic_2.png" style="width: 30px;" /></a>
+</td>
+<td><p>Открытие карточки в новой вкладке.</p></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal image-reference" href="../../../_images/ic_3.png"><img alt="../../../_images/ic_3.png" class="align-center" src="../../../_images/ic_3.png" style="width: 30px;" /></a>
+</td>
+<td><dl>
+<dt>Удаление файла или папки:</dt><dd><a class="reference internal image-reference" href="../../../_images/DocLib_4.png"><img alt="../../../_images/DocLib_4.png" class="align-center" src="../../../_images/DocLib_4.png" style="width: 400px;" /></a>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal image-reference" href="../../../_images/ic_4.png"><img alt="../../../_images/ic_4.png" class="align-center" src="../../../_images/ic_4.png" style="width: 30px;" /></a>
+</td>
+<td><dl>
+<dt>Переименование файла или папки:</dt><dd><blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/DocLib_5.png"><img alt="../../../_images/DocLib_5.png" class="align-center" src="../../../_images/DocLib_5.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Можно изменить название файла, или сам вложенный файл.</div>
+</div>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="id3">
+<h3>Создание папки / Загрузка файла<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h3>
+<p>Создание папки или загрузка файла осуществляется по кнопке <strong>+</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/DocLib_6.png"><img alt="../../../_images/DocLib_6.png" class="align-center" src="../../../_images/DocLib_6.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>При загрузке файла необходимо ввести его название, которое будет отображаться, и выбрать или перетащить файл для прикрепления:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/DocLib_7.png"><img alt="../../../_images/DocLib_7.png" class="align-center" src="../../../_images/DocLib_7.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+</section>
+<section id="id4">
+<h2>Карточка файла<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Карточка состоит из виджетов.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/DocLib_8.png"><img alt="../../../_images/DocLib_8.png" class="align-center" src="../../../_images/DocLib_8.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для файла доступны следующие действия:</p>
+<ul class="simple">
+<li><p>Загрузить новую версию;</p></li>
+<li><p>Редактировать свойства;</p></li>
+<li><p>Скачать;</p></li>
+<li><p>Печатать;</p></li>
+<li><p>Удалить.</p></li>
+</ul>
+</section>
+<section id="doclib">
+<h2>Включение режима DocLib<a class="headerlink" href="#doclib" title="Ссылка на этот заголовок"></a></h2>
+<p>В настройках типа данных <strong>(Раздел администратора - &gt; Модель - &gt; Типы данных)</strong> доступна вкладка <strong>«Documents Library»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/DocLib_9.png"><img alt="../../../_images/DocLib_9.png" class="align-center" src="../../../_images/DocLib_9.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>В настройках базового типа добавлены дополнительные параметры:
+-       тип папки;
+-       тип файлов.</p>
+</section>
+<section id="api">
+<h2>API<a class="headerlink" href="#api" title="Ссылка на этот заголовок"></a></h2>
+<p>Для примеров взят тип <strong>emodel/type&#64;TEST_TYPE</strong></p>
+<ol class="arabic">
+<li><p>Корень для библиотеки документов всегда доступен по составному id: <strong>alfresco/doclib&#64;TEST_TYPE$</strong> (от id типа отбрасывается префикс <strong>emodel/type&#64;</strong>, добавляется префикс <strong>alresco/doclib&#64;</strong> и постфикс <strong>$</strong>)</p></li>
+<li><p>Получение дочерних элементов:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;alfresco/doclib@TEST_TYPE$&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;children[]{id:?id,displayName:?disp,nodeType,hasChildrenDirs:hasChildrenDirs?bool,typeRef:typeRef?id}&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Все получаемые id нужно проверять на наличие префикса <strong>alfresco/doclib&#64;</strong>. Если возвращается просто <strong>doclib&#64;…</strong>, то нужно добавить <strong>alfresco/</strong> чтобы получилось <strong>alfresco/doclib&#64;</strong></p>
+<ol class="arabic" start="3">
+<li><p>Узнать поддерживает ли тип режим doclib:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;emodel/type@TEST_TYPE&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;resolvedDocLib.enabled?bool&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Получить список типов файлов, которые могут быть в данной библиотеке:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;emodel/type@TEST_TYPE&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;resolvedDocLib.fileTypeRefs[]?id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Получить тип директории в библиотеке документов:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;emodel/type@TEST_TYPE&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;resolvedDocLib.dirTypeRef?id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Создать новый файл или папку в библиотеке:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var record = Citeck.Records.get(&#39;alfresco/doclib@TEST_TYPE$&#39;);
+record.att(&#39;_parent&#39;, &#39;alfresco/doclib@TEST_TYPE$workspace://SpacesStore/16fffdd9-c37a-4d4f-8e40-9e698c8f194f&#39;); // для корня библиотеки следует использовать alfresco/doclib@TEST_TYPE$
+record.att(&#39;cm:title&#39;, &#39;Папка #1000&#39;);
+record.att(&#39;_type&#39;, &#39;emodel/type@file&#39;); //здесь должен быть один из типов пункта 4 или пункта 5 (по этому типу определяется, что именно нужно создать - папку или файл)
+record.save();
+</pre></div>
+</div>
+</li>
+<li><p>Получить дочерние элементы по типу:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Records</span><span class="o">.</span><span class="n">query</span><span class="p">({</span>
+    <span class="n">sourceId</span><span class="p">:</span> <span class="s1">&#39;alfresco/doclib&#39;</span><span class="p">,</span>
+    <span class="n">query</span><span class="p">:</span> <span class="p">{</span>
+        <span class="n">parentRef</span><span class="p">:</span> <span class="s1">&#39;alfresco/doclib@TEST_TYPE$&#39;</span><span class="p">,</span>
+        <span class="n">nodeType</span><span class="p">:</span> <span class="s1">&#39;DIR&#39;</span>
+    <span class="p">},</span>
+    <span class="n">language</span><span class="p">:</span> <span class="s1">&#39;children&#39;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</li>
+<li><p>Поиск дочерних элементов с фильтрацией (для поиска через полосу поиска над таблицей флаг recursive должен быть true):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Records</span><span class="o">.</span><span class="n">query</span><span class="p">({</span>
+   <span class="n">sourceId</span><span class="p">:</span> <span class="s1">&#39;alfresco/doclib&#39;</span><span class="p">,</span>
+   <span class="n">query</span><span class="p">:</span> <span class="p">{</span>
+       <span class="n">parentRef</span><span class="p">:</span> <span class="s2">&quot;alfresco/doclib@TEST_TYPE$&quot;</span><span class="p">,</span>
+       <span class="n">recursive</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+       <span class="nb">filter</span><span class="p">:</span> <span class="p">{</span>
+           <span class="n">t</span><span class="p">:</span> <span class="s1">&#39;contains&#39;</span><span class="p">,</span>
+           <span class="n">att</span><span class="p">:</span> <span class="s1">&#39;ALL&#39;</span><span class="p">,</span>
+           <span class="n">val</span><span class="p">:</span> <span class="s1">&#39;111&#39;</span>
+       <span class="p">}</span>
+   <span class="p">},</span>
+   <span class="n">language</span><span class="p">:</span> <span class="s1">&#39;children&#39;</span>
+ <span class="p">})</span>
+</pre></div>
+</div>
+</li>
+<li><p>Получение пути для документа (можно объединять с другими атрибутами):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;alfresco/doclib@nsd-attorney$workspace://SpacesStore/fab07cb3-cf5a-4c07-a17a-4e3f56e208d2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;path[]{disp:?disp,id:?id}&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="kanban_board.html" class="btn btn-neutral float-left" title="Канбан-доска" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../menu.html" class="btn btn-neutral float-right" title="Меню" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

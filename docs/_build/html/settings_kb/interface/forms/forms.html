@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Общая информация &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+    <link rel="next" title="Конструктор форм" href="form_builder.html" />
+    <link rel="prev" title="Формы" href="../forms.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../interface.html">Интерфейс</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../forms.html">Формы</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Общая информация</a></li>
+<li class="toctree-l4"><a class="reference internal" href="form_builder.html">Конструктор форм</a></li>
+<li class="toctree-l4"><a class="reference internal" href="form_components.html">Компоненты формы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="form_examples.html">Примеры компонент</a></li>
+<li class="toctree-l4"><a class="reference internal" href="form_localisation.html">Локализация</a></li>
+<li class="toctree-l4"><a class="reference internal" href="form_for_task.html">Связь формы с задачей</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../journals.html">Журналы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../menu.html">Меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dashboards.html">Дашборды</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../widgets.html">Виджеты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../number_template.html">Шаблоны нумерации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../../interface.html">Интерфейс</a> &raquo;</li>
+          <li><a href="../forms.html">Формы</a> &raquo;</li>
+      <li>Общая информация</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/settings_kb/interface/forms/forms.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Общая информация<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p><strong>Форма</strong> - графическое представление объекта в виде набора элементов интерфейса для манипуляции данными объекта. Элементы интерфейса ссылаются на атрибуты, заданные в <a class="reference internal" href="../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-types-main"><span class="std std-ref">типе данных</span></a>.</p>
+<ul class="simple">
+<li><p>Формы ECOS реализованы на базе движка <a class="reference external" href="https://github.com/formio/formio.js">formio.js</a>.</p></li>
+<li><p>Функция <a class="reference internal" href="form_builder.html#form-builder"><span class="std std-ref">редактора форм</span></a> доступна только в ECOS <strong>Enterprise</strong>.</p></li>
+<li><p>Формы описываются в json-формате.</p></li>
+<li><p>Формы используются для редактирования записей из <strong>Records Service</strong> см. <a class="reference internal" href="../../../general/ECOS_Records.html#records-api"><span class="std std-ref">ECOS Records</span></a>. На бэкэнде редактирование записи может восприниматься как создание новой (например если не указан <strong>ID</strong> редактируемой записи).</p></li>
+</ul>
+<section id="id2">
+<h2>Описание перехода к разделу через интерфейс<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Для просмотра существующих форм и их редактирования создан журнал <strong>Формы</strong> (<strong>Раздел администратора - Конфигурация UI - Формы</strong>):</p>
+<a class="reference internal image-reference" href="../../../_images/form_journal.png"><img alt="../../../_images/form_journal.png" class="align-center" src="../../../_images/form_journal.png" style="width: 600px;" /></a>
+</section>
+<section id="id3">
+<h2>Варианты получения экземпляра формы<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Форму можно создать или загрузить уже созданный в систему.</p>
+<section id="id4">
+<h3>Создание<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<p>Подробнее см. раздел ниже</p>
+<p>Для создания журнала необходимо нажать <strong>+ - Создать форму</strong>:</p>
+<a class="reference internal image-reference" href="../../../_images/form_new.png"><img alt="../../../_images/form_new.png" class="align-center" src="../../../_images/form_new.png" style="width: 300px;" /></a>
+<p>Откроется форма создания формы:</p>
+<a class="reference internal image-reference" href="../../../_images/form_form_new.png"><img alt="../../../_images/form_form_new.png" class="align-center" src="../../../_images/form_form_new.png" style="width: 600px;" /></a>
+</section>
+<section id="id5">
+<h3>Загрузка<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<p>Для загрузки созданного журнала необходимо нажать <strong>+ - Форма</strong>:</p>
+<a class="reference internal image-reference" href="../../../_images/form_new_1.png"><img alt="../../../_images/form_new_1.png" class="align-center" src="../../../_images/form_new_1.png" style="width: 300px;" /></a>
+<p>Файл формата .json</p>
+</section>
+</section>
+<section id="id6">
+<h2>Пример описания формы<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">{</span>
+ <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;vacation-request&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;formKey&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="s2">&quot;ru&quot;</span><span class="p">:</span> <span class="s2">&quot;Заявление на отпуск&quot;</span>
+ <span class="p">},</span>
+ <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">{},</span>
+ <span class="s2">&quot;customModule&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;typeRef&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;system&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+ <span class="s2">&quot;i18n&quot;</span><span class="p">:</span> <span class="p">{},</span>
+ <span class="s2">&quot;definition&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="s2">&quot;components&quot;</span><span class="p">:</span> <span class="p">[</span>
+     <span class="p">{</span>
+       <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;datetime&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+       <span class="s2">&quot;enableTime&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+       <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;from&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">{</span>
+         <span class="s2">&quot;ru&quot;</span><span class="p">:</span> <span class="s2">&quot;Начинается с&quot;</span>
+       <span class="p">},</span>
+       <span class="s2">&quot;suffix&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+       <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;yyyy-MM-dd&quot;</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;datetime&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+       <span class="s2">&quot;enableTime&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+       <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;to&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">{</span>
+         <span class="s2">&quot;ru&quot;</span><span class="p">:</span> <span class="s2">&quot;Заканчивается&quot;</span>
+       <span class="p">},</span>
+       <span class="s2">&quot;suffix&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+       <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;yyyy-MM-dd&quot;</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">{</span>
+         <span class="s2">&quot;ru&quot;</span><span class="p">:</span> <span class="s2">&quot;Инициатор&quot;</span>
+       <span class="p">},</span>
+       <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;initiator&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;allowedAuthorityType&quot;</span><span class="p">:</span> <span class="s2">&quot;USER&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;currentUserByDefault&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+       <span class="s2">&quot;refreshOn&quot;</span><span class="p">:</span> <span class="p">[],</span>
+       <span class="s2">&quot;optionalWhenDisabled&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+       <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;selectOrgstruct&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+       <span class="s2">&quot;defaultValue&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;columns&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;buttons-columns&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;columns&quot;</span><span class="p">:</span> <span class="p">[</span>
+         <span class="p">{</span>
+           <span class="s2">&quot;md&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;column&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+           <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="s2">&quot;components&quot;</span><span class="p">:</span> <span class="p">[],</span>
+           <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;column&quot;</span>
+         <span class="p">},</span>
+         <span class="p">{</span>
+           <span class="s2">&quot;md&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;column&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+           <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+           <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;column&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;components&quot;</span><span class="p">:</span> <span class="p">[]</span>
+         <span class="p">},</span>
+         <span class="p">{</span>
+           <span class="s2">&quot;md&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;column&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+           <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+           <span class="s2">&quot;components&quot;</span><span class="p">:</span> <span class="p">[</span>
+             <span class="p">{</span>
+               <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;button&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;cancel&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">{</span>
+                 <span class="s2">&quot;ru&quot;</span><span class="p">:</span> <span class="s2">&quot;Отменить&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;Cancel&quot;</span>
+               <span class="p">},</span>
+               <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;event&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;event&quot;</span><span class="p">:</span> <span class="s2">&quot;cancel&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;block&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+               <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">true</span>
+             <span class="p">}</span>
+           <span class="p">],</span>
+           <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;column&quot;</span>
+         <span class="p">},</span>
+         <span class="p">{</span>
+           <span class="s2">&quot;md&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;column&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+           <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+           <span class="s2">&quot;components&quot;</span><span class="p">:</span> <span class="p">[</span>
+             <span class="p">{</span>
+               <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;button&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;theme&quot;</span><span class="p">:</span> <span class="s2">&quot;primary&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;submit&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">{</span>
+                 <span class="s2">&quot;ru&quot;</span><span class="p">:</span> <span class="s2">&quot;Сохранить&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;Save&quot;</span>
+               <span class="p">},</span>
+               <span class="s2">&quot;block&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+               <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">true</span>
+             <span class="p">}</span>
+           <span class="p">],</span>
+           <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;column&quot;</span>
+         <span class="p">}</span>
+       <span class="p">],</span>
+       <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">false</span>
+     <span class="p">}</span>
+   <span class="p">],</span>
+   <span class="s2">&quot;formId&quot;</span><span class="p">:</span> <span class="s2">&quot;vacation-request&quot;</span>
+ <span class="p">},</span>
+ <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>Доступные действия с записью<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h2>
+<p>В журнале администратору с каждой записью доступен стандартный набор действий:</p>
+<a class="reference internal image-reference" href="../../../_images/form_actions.png"><img alt="../../../_images/form_actions.png" class="align-center" src="../../../_images/form_actions.png" style="width: 500px;" /></a>
+<ul class="simple">
+<li><p>скачать в виде json-файла;</p></li>
+<li><p>удалить;</p></li>
+<li><p>открыть на редактирование;</p></li>
+<li><p>редактировать json-файл;</p></li>
+<li><p>копировать;</p></li>
+<li><p>открыть карточку в соседней вкладке. Карточка представляет собой <a class="reference internal" href="../dashboards.html#dashboard"><span class="std std-ref">дашборд</span></a>:</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../../_images/form_dashboard.png"><img alt="../../../_images/form_dashboard.png" class="align-center" src="../../../_images/form_dashboard.png" style="width: 600px;" /></a>
+</section>
+<section id="id8">
+<h2>Создание новой формы<a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/form_form_numbers.png"><img alt="../../../_images/form_form_numbers.png" class="align-center" src="../../../_images/form_form_numbers.png" style="width: 600px;" /></a>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>п/п</p></th>
+<th class="head"><p>Наименование</p></th>
+<th class="head"><p>Описание</p></th>
+<th class="head"><p>Пример заполнения</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Идентификатор формы*</strong></p></td>
+<td><p>уникальный идентификатор формы (обязательное)</p></td>
+<td><p>test-form (kebab-case)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Название формы</strong></p></td>
+<td><p>имя формы (обязательное)</p></td>
+<td><p>Test form</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Ключ формы</strong></p></td>
+<td><p>ключ формы. Используется для связи между формой и сущностью, которую трудно привязать к типам ECOS или напрямую связать. Обычно это старые задачи (flowable/activiti).</p></td>
+<td><p>test-form</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Редактируемый тип данных</strong></p></td>
+<td><p>из списка выбрать :ref:тип данных &lt;data_types_main&gt;, созданный ранее</p></td>
+<td><p>выбирается из списка предлагаемых</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Ширина формы</strong></p></td>
+<td><p>выбор варианта ширины формы</p></td>
+<td><p>выбирается из списка предлагаемых</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><strong>Описание формы</strong></p></td>
+<td><p>поля для ввода описания формы</p></td>
+<td><p>Форма создана для…</p></td>
+</tr>
+</tbody>
+</table>
+<p>Нажать кнопку <strong>«Редактировать форму»</strong>. Откроется <a class="reference internal" href="form_builder.html#form-builder"><span class="std std-ref">конструктор форм</span></a></p>
+</section>
+<section id="ecos">
+<h2>Связь с типом ECOS<a class="headerlink" href="#ecos" title="Ссылка на этот заголовок"></a></h2>
+<p>В типе ECOS предусмотрено поле <code class="docutils literal notranslate"><span class="pre">formRef</span></code>, которое определяет связь типа с формой. В большинстве случаев этого поля достаточно, но если для одного типа требуется несколько форм (например, для отображения на дашборде), то в конгфигурации формы предусмотрено поле <code class="docutils literal notranslate"><span class="pre">typeRef</span></code>.</p>
+</section>
+<section id="id9">
+<h2>Связь без типа ECOS<a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h2>
+<p>Если запись не может быть привязана к определенному типу ECOS, можно воспользоваться привязкой по ключам.
+Запись должна отдавать атрибут <code class="docutils literal notranslate"><span class="pre">_formKey</span></code> и по полученным ключам идет поиск формы до первого совпадения.</p>
+<p>Если записи принадлежат одному типу или тип отсутствует, но для некоторых записей должна использоваться определенная форма,
+можно реализовать атрибут <code class="docutils literal notranslate"><span class="pre">_formRef</span></code>. Если этот атрибут вернул ссылку на форму, то она имеет наибольший приоритет.</p>
+</section>
+<section id="id10">
+<h2>Связь с атрибутом записи<a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h2>
+<p>Для простых полей мы можем во вкладке <strong>Базовые</strong> выставить <strong>Имя свойства</strong>  в соответствии со свойством записи:</p>
+<a class="reference internal image-reference" href="../../../_images/form_local_1.png"><img alt="../../../_images/form_local_1.png" class="align-center" src="../../../_images/form_local_1.png" style="width: 600px;" /></a>
+<p>но если нужно связать с атрибутом, в котором есть спец символы (например «:»), то во вкладке <strong>API</strong> следует добавить в <strong>Пользовательские свойства</strong> свойство (2) с ключом <strong>attribute</strong> и значением - именем атрибута.</p>
+<a class="reference internal image-reference" href="../../../_images/form_local_2.png"><img alt="../../../_images/form_local_2.png" class="align-center" src="../../../_images/form_local_2.png" style="width: 600px;" /></a>
+</section>
+<section id="id11">
+<h2>Пользовательский модуль<a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h2>
+<p>В json описании формы можно добавить поле <code class="docutils literal notranslate"><span class="pre">customModule</span></code>, в котором записать путь до <code class="docutils literal notranslate"><span class="pre">javascript</span></code> модуля, который будет создан вместе с формой. В этом модуле можно разместить сложную логику, которую в последствии вызывать из скриптов формы. Для примера см. <code class="docutils literal notranslate"><span class="pre">ecos-eform-repo/src/main/resources/alfresco/module/ecos-eform-repo/ecos-forms\ecos-form.json</span></code></p>
+<p>Если в <code class="docutils literal notranslate"><span class="pre">customModule</span></code> будет метод <code class="docutils literal notranslate"><span class="pre">init</span></code>, то он будет вызван с текущей формой в аргументах.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../forms.html" class="btn btn-neutral float-left" title="Формы" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="form_builder.html" class="btn btn-neutral float-right" title="Конструктор форм" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

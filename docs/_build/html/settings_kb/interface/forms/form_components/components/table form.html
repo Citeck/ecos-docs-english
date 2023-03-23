@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Table form &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../../../search.html" />
+    <link rel="next" title="Async data" href="async%20data.html" />
+    <link rel="prev" title="Text Field" href="text%20field.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../interface.html">Интерфейс</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../forms.html">Формы</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../forms.html">Общая информация</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../form_builder.html">Конструктор форм</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../form_components.html">Компоненты формы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../form_examples.html">Примеры компонент</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../form_localisation.html">Локализация</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../form_for_task.html">Связь формы с задачей</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../journals.html">Журналы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../menu.html">Меню</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dashboards.html">Дашборды</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../widgets.html">Виджеты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../number_template.html">Шаблоны нумерации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../../../../interface.html">Интерфейс</a> &raquo;</li>
+          <li><a href="../../../forms.html">Формы</a> &raquo;</li>
+          <li><a href="../../form_components.html">Компоненты формы</a> &raquo;</li>
+          <li><a href="../components.html">Подробное описание отдельных компонент</a> &raquo;</li>
+      <li>Table form</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/settings_kb/interface/forms/form_components/components/table form.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="table-form">
+<span id="id1"></span><h1><a class="toc-backref" href="#id13">Table form</a><a class="headerlink" href="#table-form" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#table-form" id="id13">Table form</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id14">Создание компонента</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id15">Чтение введенных данных</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id16">Как получить доступ к родительской форме?</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id17">Отображение действий</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id18">Настройки элементов</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id19">Выбор строк в таблице и выполнение действий с выбранными строками</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id20">Запрет выбора некоторых строк в таблице</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id21">Установка выбранных строк по-умолчанию</a></p></li>
+<li><p><a class="reference internal" href="#allow-manual-override-of-calculated-value" id="id22">Флаг «Разрешить ручное переопределение вычисляемого значения»/ «Allow Manual Override of Calculated Value»</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id23">Статические заголовки</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id24">Импорт из файла</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id3">
+<h2><a class="toc-backref" href="#id14">Создание компонента</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Компонент <strong>Table Form</strong> позволяет отображать выбранные значения в виде таблицы.</p>
+<p>Созданные записи являются временными и хранятся в памяти на клиенте. Отправляются на сервер вместе с родительской формой.</p>
+<p>Для отображения кнопки <span class="guilabel">Создать</span> и возможности вызова формы создания используется <code class="docutils literal notranslate"><span class="pre">formKey*</span></code>, который может быть вычислен в зависимости от настройки <strong>Типа данных</strong> на вкладке <span class="guilabel">Данные</span>:</p>
+<ul class="simple">
+<li><p><strong>Журнал</strong> - варианты создания вычисляются с помощью настройки <strong>ID журнала</strong>, либо на основе типа ассоциации, которая указана в атрибуте (при этом <strong>ID журнала</strong> заполнять не нужно). Есть возможность выбрать колонки для отображения в таблице.</p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/Table_form_1.png"><img alt="../../../../../_images/Table_form_1.png" class="align-center" src="../../../../../_images/Table_form_1.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_2.png"><img alt="../../../../../_images/Table_form_2.png" class="align-center" src="../../../../../_images/Table_form_2.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_3.png"><img alt="../../../../../_images/Table_form_3.png" class="align-center" src="../../../../../_images/Table_form_3.png" style="width: 400px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Пользовательские</strong> - варианты создания вычисляются на основе типа ассоциации, которая указана в атрибуте. При этом требуется добавить вручную колонки для отображения в таблице (соответствуют названиям полей в форме создания).</p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/Table_form_4.png"><img alt="../../../../../_images/Table_form_4.png" class="align-center" src="../../../../../_images/Table_form_4.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_5.png"><img alt="../../../../../_images/Table_form_5.png" class="align-center" src="../../../../../_images/Table_form_5.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_6.png"><img alt="../../../../../_images/Table_form_6.png" class="align-center" src="../../../../../_images/Table_form_6.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Варианты создания определяются из указанного аттрибута на вкладке <span class="guilabel">API</span>, либо из настройки <strong>Пользовательские варианты создания</strong> на вкладке <span class="guilabel">Данные</span>. Настройки колонок берутся из первого по списку полученного варианта создания. Если нет ни одного доступного варианта создания, кнопка <span class="guilabel">Создать</span> будет скрыта.</p>
+<p>Для каждой колонки можно задать настройки вручную. Для этого нужно отметить галочкой пункт <strong>Установить атрибуты вручную</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/Table_form_7.png"><img alt="../../../../../_images/Table_form_7.png" class="align-center" src="../../../../../_images/Table_form_7.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Таким образом можно установить заголовок колонки, тип данных и признак <strong>Выбор нескольких</strong>.</p>
+<p>Предусмотрена возможность применения к колонке форматтера вручную. Опция <strong>Установить атрибуты вручную</strong> не влияет на настройку форматтера.  Поле настройки форматтера принимает значение вида:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;ExampleFormatter&#39;</span><span class="p">,</span>
+    <span class="n">params</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Пример:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>value = {
+name: &#39;FunctionFormatter&#39;,
+params: {
+    fn: function(cell, rec, col, data) {
+    cell.innerHTML = `&lt;strong&gt;${data}&lt;/strong&gt;`;
+    }
+}
+};
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_8.png"><img alt="../../../../../_images/Table_form_8.png" class="align-center" src="../../../../../_images/Table_form_8.png" style="width: 600px;" /></a>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id15">Чтение введенных данных</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Для этого можно использовать компонент <strong>Async Data</strong> (добавить ссылку) с типом данных <strong>Массив записей (Records Array)</strong>.</p>
+<p>В поле <strong>Массив записей (Records Array)</strong> указывается имя таблицы, заключенное в двойные фигурные скобки, в аттрибутах - поля этой таблицы и ключи, по которым они будут доступны.</p>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_9.png"><img alt="../../../../../_images/Table_form_9.png" class="align-center" src="../../../../../_images/Table_form_9.png" style="width: 400px;" /></a>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id16">Как получить доступ к родительской форме?</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>Чтобы получить доступ к родительской форме из формы создания/редактирования записи, можно использовать объект <code class="docutils literal notranslate"><span class="pre">instance.options.parentForm</span></code>.
+Например, если требуется установить значение по-умолчанию полю дочерней формы, опираясь на значение из поля родительской формы, можно установить этому полю настройку <strong>Пользовательские значения по умолчанию</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="k">if</span> <span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">parentForm</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">parentForm</span><span class="o">.</span><span class="n">getValue</span><span class="p">()[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;someParentFormFieldName&#39;</span><span class="p">]</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_10.png"><img alt="../../../../../_images/Table_form_10.png" class="align-center" src="../../../../../_images/Table_form_10.png" style="width: 400px;" /></a>
+</section>
+<section id="id6">
+<h2><a class="toc-backref" href="#id17">Отображение действий</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<p>Вкладка <span class="guilabel">Отображение</span>, настройка <strong>Элементы отображения</strong> позволяет задавать условия отображения действий.</p>
+<p>Есть два варианта установки действий:</p>
+<ol class="arabic simple">
+<li><p>При использовании источника данных <strong>Журнал</strong> и установки флага <strong>Использовать действия журнала</strong>, в таблице будут задействованы действия заданные в конфигурации указанного журнала.</p></li>
+<li><p>Если источник не журнал или не нужны журнальные действия, и заполнено поле <strong>Действия компонентов</strong>, отобразятся доступные стандартные действия, описанные ниже.</p>
+<ul class="simple">
+<li><p>Если установлен  флаг <strong>Использовать действия журнала</strong>, то из поля <strong>Действия компонентов</strong> будет обработано только действие <span class="guilabel">Создать</span>.</p></li>
+</ul>
+</li>
+</ol>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Наименование действия</p></th>
+<th class="head"><p>Ключ</p></th>
+<th class="head"><p>По умолчанию</p></th>
+<th class="head"><p>disabled / режим просмотра</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Создать</strong></p></td>
+<td><p>create</p></td>
+<td><p>true</p></td>
+<td><p>недоступно или скрыто</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Редактировать</strong></p></td>
+<td><p>edit</p></td>
+<td><p>true</p></td>
+<td><p>недоступно</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Удалить</strong></p></td>
+<td><p>delete</p></td>
+<td><p>true</p></td>
+<td><p>недоступно</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Просмотр</strong></p></td>
+<td><p>view</p></td>
+<td><p>true</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Предпросмотр документа</strong></p></td>
+<td><p>preview</p></td>
+<td><p>false</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Клонировать</strong></p></td>
+<td><p>clone</p></td>
+<td><p>false</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Поле принимает javascript-выражение, в котором необходимо присвоить переменной <strong>value</strong> объект с необязательными свойствами <strong>create, view, preview, edit и delete</strong> (ключи в таблице выше).</p>
+<p>Если какое-то из свойств не указано, то компонент сам будет решать, отображать элемент или скрывать, в зависимости от ситуации (*).</p>
+<p>Если компонент <strong>Table Form</strong> в состоянии <em>disabled</em> или <em>форма в режиме просмотра</em>, элементы “редактировать“, “удалить“ в любом случае будут недоступны.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">create</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">view</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">edit</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">delete</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="n">preview</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_11.png"><img alt="../../../../../_images/Table_form_11.png" class="align-center" src="../../../../../_images/Table_form_11.png" style="width: 400px;" /></a>
+</section>
+<section id="id7">
+<h2><a class="toc-backref" href="#id18">Настройки элементов</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h2>
+<p>Вкладка <span class="guilabel">Отображение</span> настройка <strong>Элементы отображения</strong> задает некоторые свойства действиям.</p>
+<ul class="simple">
+<li><p><strong>Мгновенный клон</strong></p></li>
+</ul>
+<p>Если флаг установлен, запускается мгновенное добавление, в противном случае отображается форма создания и запись добавляется только после отправки.</p>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_12.png"><img alt="../../../../../_images/Table_form_12.png" class="align-center" src="../../../../../_images/Table_form_12.png" style="width: 600px;" /></a>
+</section>
+<section id="id8">
+<h2><a class="toc-backref" href="#id19">Выбор строк в таблице и выполнение действий с выбранными строками</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h2>
+<p>Для включения возможности выбора строки в таблице нужно отметить галочкой пункт <strong>Выбираемые строки</strong> на вкладке <span class="guilabel">Данные</span>.</p>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_13.png"><img alt="../../../../../_images/Table_form_13.png" class="align-center" src="../../../../../_images/Table_form_13.png" style="width: 600px;" /></a>
+<p>Для получения списка выбранных строк в таблице у компонента предусмотрен метод <code class="docutils literal notranslate"><span class="pre">getSelectedRows()</span></code>.</p>
+<p>Например, чтобы выполнить какое-нибудь действие с выбранными строками в таблице при нажатии на кнопку, в компоненте <strong>Button</strong> выберем <strong>Действия: Custom</strong> и укажем <strong>Button Custom Logic</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>const tableFormComponent = utils.getComponent(form.components, &#39;tableFormComponentKey&#39;);
+if (!tableFormComponent) {
+    return;
+}
+
+const selectedRows = tableFormComponent.getSelectedRows();
+
+// some actions with selectedRows
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h2><a class="toc-backref" href="#id20">Запрет выбора некоторых строк в таблице</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h2>
+<p>На вкладке <span class="guilabel">Данные</span> в поле <strong>Указать невыбираемые строки</strong> можно запретить выбор определенных строк в таблице:</p>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_14.png"><img alt="../../../../../_images/Table_form_14.png" class="align-center" src="../../../../../_images/Table_form_14.png" style="width: 400px;" /></a>
+</section>
+<section id="id10">
+<h2><a class="toc-backref" href="#id21">Установка выбранных строк по-умолчанию</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h2>
+<p>На вкладке <span class="guilabel">Данные</span> в поле <strong>Указать выбираемые строки</strong> можно указать, какие строки должны быть выбраны по-умолчанию:</p>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_15.png"><img alt="../../../../../_images/Table_form_15.png" class="align-center" src="../../../../../_images/Table_form_15.png" style="width: 400px;" /></a>
+</section>
+<section id="allow-manual-override-of-calculated-value">
+<h2><a class="toc-backref" href="#id22">Флаг «Разрешить ручное переопределение вычисляемого значения»/ «Allow Manual Override of Calculated Value»</a><a class="headerlink" href="#allow-manual-override-of-calculated-value" title="Ссылка на этот заголовок"></a></h2>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_18.png"><img alt="../../../../../_images/Table_form_18.png" class="align-center" src="../../../../../_images/Table_form_18.png" style="width: 400px;" /></a>
+<p>На вкладке <span class="guilabel">Данные</span> выставленный флаг разрешает принудительно перезаписать пользователю поле, где уже введено вычисляемое значение.</p>
+</section>
+<section id="id11">
+<h2><a class="toc-backref" href="#id23">Статические заголовки</a><a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h2>
+<p>Для включения статического заголовка необходимо в родительской форме проставить чекбокс <strong>Скрыть имя записи в модальном заголовке/ Hide record name in modal title</strong>. В данном случае произойдет скрытие имени ноды.</p>
+<p>Так же, есть возможность задать свой локализованный статический заголовок. Для этого необходимо:</p>
+<ol class="arabic simple">
+<li><p>Создать в <strong>Локализация/Localization</strong> бандл с необходимой локализацией</p></li>
+<li><p>Вставить ключ локализации в поле <strong>Укажите пользовательское статическое название поля для объединения с основным/ Enter custom static label for concat with basic</strong>. Если данный ключ не будет найден, то в заголовок добавится тот текст, что лежит в поле <strong>Укажите пользовательское статическое название поля для объединения с основным/ Enter custom static label for concat with basic</strong></p></li>
+</ol>
+</section>
+<section id="id12">
+<h2><a class="toc-backref" href="#id24">Импорт из файла</a><a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h2>
+<p>Появилась возможность импортировать в таблицу данные из файла (например, xslx). Для этого в настройки компонента  добавлен раздел <span class="guilabel">Импорт</span>:</p>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_16.png"><img alt="../../../../../_images/Table_form_16.png" class="align-center" src="../../../../../_images/Table_form_16.png" style="width: 400px;" /></a>
+<p>Поле <strong>URL для загрузки</strong> предназначено для указания url, куда будет отправляться POST-запрос с прикреплённым файлом (или несколькими файлами) для обработки. Обязательно к заполнению.</p>
+<p>Поле <strong>Обработчик ответов</strong> предназначено для обработки результата ответа сервера после загрузки файла. Обязательно к заполнению.
+Принимает javascript-выражение, в котором необходимо присвоить переменной <strong>result строку (recordRef), массив строк (массив recordRef) или ошибку (result = new Error(„текст ошибки“))</strong>.
+В javascript-выражении помимо стандартных объектов formio (data, instance, _, moment, и т.д.) доступна переменная response (или resp), которая содержит результат ответа сервера после загрузки файла.</p>
+<p>После заполнения настроек у компонента должна появиться кнопка <strong>Импорт</strong>:</p>
+<a class="reference internal image-reference" href="../../../../../_images/Table_form_17.png"><img alt="../../../../../_images/Table_form_17.png" class="align-center" src="../../../../../_images/Table_form_17.png" style="width: 400px;" /></a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="text%20field.html" class="btn btn-neutral float-left" title="Text Field" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="async%20data.html" class="btn btn-neutral float-right" title="Async data" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

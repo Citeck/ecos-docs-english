@@ -1,0 +1,1516 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Типы данных &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Аспекты" href="Aspects.html" />
+    <link rel="prev" title="ECOS Приложения" href="ecos_applications.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Типы данных</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Общий обзор (Overview)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data-types-types">Иерархия системных типов и логика их наследования</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-types-admin">Описание перехода к разделу через интерфейс</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Варианты получения экземпляра типа</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Пример описания типа</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Доступные действия с записью</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Создание нового типа</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data-types-main">Основные</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ecos-model-label">Атрибуты</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#type-aspects">Аспекты</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roles-statuses">Роли</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#associations">Статусы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stages">Стадии</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create">Варианты создания</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datatypes-associations">Связи</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datatypes-content">Конфигурация контента</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">Отображаемое имя сущности</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#auto-journal-form">Автоматически сгенерированные формы и журналы в типе данных</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#auto-journal">Журнал</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#auto-form">Форма</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Aspects.html">Аспекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface.html">Интерфейс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+      <li>Типы данных</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/settings_kb/Типы_данных.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-types">
+<span id="id1"></span><h1><a class="toc-backref" href="#id36">Типы данных</a><a class="headerlink" href="#data-types" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#data-types" id="id36">Типы данных</a></p>
+<ul>
+<li><p><a class="reference internal" href="#overview" id="id37">Общий обзор (Overview)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#data-types-types" id="id38">Иерархия системных типов и логика их наследования</a></p></li>
+<li><p><a class="reference internal" href="#data-types-admin" id="id39">Описание перехода к разделу через интерфейс</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id40">Варианты получения экземпляра типа</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id41">Пример описания типа</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id9" id="id42">Доступные действия с записью</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id43">Создание нового типа</a></p>
+<ul>
+<li><p><a class="reference internal" href="#data-types-main" id="id44">Основные</a></p></li>
+<li><p><a class="reference internal" href="#ecos-model-label" id="id45">Атрибуты</a></p></li>
+<li><p><a class="reference internal" href="#type-aspects" id="id46">Аспекты</a></p></li>
+<li><p><a class="reference internal" href="#roles-statuses" id="id47">Роли</a></p></li>
+<li><p><a class="reference internal" href="#associations" id="id48">Статусы</a></p></li>
+<li><p><a class="reference internal" href="#stages" id="id49">Стадии</a></p></li>
+<li><p><a class="reference internal" href="#create" id="id50">Варианты создания</a></p></li>
+<li><p><a class="reference internal" href="#datatypes-associations" id="id51">Связи</a></p></li>
+<li><p><a class="reference internal" href="#datatypes-content" id="id52">Конфигурация контента</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id31" id="id53">Отображаемое имя сущности</a></p></li>
+<li><p><a class="reference internal" href="#auto-journal-form" id="id54">Автоматически сгенерированные формы и журналы в типе данных</a></p>
+<ul>
+<li><p><a class="reference internal" href="#auto-journal" id="id55">Журнал</a></p></li>
+<li><p><a class="reference internal" href="#auto-form" id="id56">Форма</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="overview">
+<h2><a class="toc-backref" href="#id37">Общий обзор (Overview)</a><a class="headerlink" href="#overview" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Тип данных</strong> - основной артефакт ECM, описывающий объект. В типе данных определяются метаданные, которые будет содержать объект, статусы жизненного цикла, роли, которые могут работать с объектом. Тип данных связан с формой и журналом.</p>
+<p>Типы ECOS - артефакты с типом <strong>model/type</strong>.</p>
+<p>В ECOS на основе типа данных создаются следующие артефакты:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="interface/forms.html#forms"><span class="std std-ref">Форма</span></a></p></li>
+<li><p><a class="reference internal" href="interface/journals.html#journals"><span class="std std-ref">Журнал</span></a></p></li>
+</ul>
+</div></blockquote>
+<section id="data-types-types">
+<span id="id3"></span><h3><a class="toc-backref" href="#id38">Иерархия системных типов и логика их наследования</a><a class="headerlink" href="#data-types-types" title="Ссылка на этот заголовок"></a></h3>
+<p>У каждого типа данных должен быть родитель. Базовые типы данных:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_19.png"><img alt="../_images/type_19.png" class="align-center" src="../_images/type_19.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p><strong>Кейс (case)</strong> - тип для хранения записи, изменяемой во времени посредстовом связи ее с бизнес-процессом (не явлется статической). Маркером того, что тип будет кейсом является необходимость прикрепления к нему процесса и указания при создании общей информации, атрибутов, ролей, статусов и матрицы прав.</p>
+<p><strong>Справочник (datalist)</strong> - тип для хранения наборов бизнес-данных, которые будут использоваться как статические данные для документов, не участвующие непосредственно в бизнес-процессах. Маркером того, что тип будет даталистом является указание при его создании только общей информации и перечня атрибутов.</p>
+<p>В качестве родителя можно использовать созданный ранее тип данных.</p>
+<p>Родительские атрибуты попадают в список <strong>наследуемых атрибутов</strong> (<a class="reference internal" href="#ecos-model-label"><span class="std std-ref">Атрибуты</span></a>) и по флагу <strong>«Наследовать»</strong> можно наследовать форму, действия, шаблон нумерации.</p>
+</section>
+<section id="data-types-admin">
+<span id="id4"></span><h3><a class="toc-backref" href="#id39">Описание перехода к разделу через интерфейс</a><a class="headerlink" href="#data-types-admin" title="Ссылка на этот заголовок"></a></h3>
+<p>Для просмотра существующих типов и их редактирования создан журнал <strong>Типы данных (Раздел администратора - Модель - Типы данных)</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_21.png"><img alt="../_images/type_21.png" class="align-center" src="../_images/type_21.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>По умолчанию в журнале типов данных системные типы не отображаются.</p>
+<p>Для отображения <strong>ТОЛЬКО</strong> системных типов перейдите в настройки таблицы, выставите <strong>Системный тип - Да</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/system_types.png"><img alt="../_images/system_types.png" class="align-center" src="../_images/system_types.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id5">
+<h3><a class="toc-backref" href="#id40">Варианты получения экземпляра типа</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<p>Тип данных можно создать или загрузить уже созданный в систему.</p>
+<section id="id6">
+<h4>Создание<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h4>
+<p>Подробнее см. раздел ниже</p>
+<p>Для создания типа данных необходимо нажать <strong>+ - Создать новый тип</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/new_type_1.png"><img alt="../_images/new_type_1.png" class="align-center" src="../_images/new_type_1.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Откроется форма создания типа данных:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/new_type.png"><img alt="../_images/new_type.png" class="align-center" src="../_images/new_type.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id7">
+<h4>Загрузка<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h4>
+<p>Для загрузки созданного типа данных необходимо нажать <strong>+ - Загрузить тип</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/download_type.png"><img alt="../_images/download_type.png" class="align-center" src="../_images/download_type.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Файл формата .yaml</p>
+</section>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id41">Пример описания типа</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hr-offices-type</span><span class="w"></span>
+<span class="nt">name</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ru</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Офисы</span><span class="w"></span>
+<span class="nt">storageType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ECOS_MODEL</span><span class="w"></span>
+<span class="nt">parentRef</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">emodel/type@data-list</span><span class="w"></span>
+<span class="nt">formRef</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uiserv/form@hr-offices-form</span><span class="w"></span>
+<span class="nt">journalRef</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uiserv/journal@hr-offices-journal</span><span class="w"></span>
+<span class="nt">inheritActions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="nt">defaultCreateVariant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="nt">model</span><span class="p">:</span><span class="w"></span>
+<span class="nt">attributes</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">officesCode</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ru</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Код</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">officesCity</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ru</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Город</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">officesAddress</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ru</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Адрес</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id9">
+<h2><a class="toc-backref" href="#id42">Доступные действия с записью</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/actions1.png"><img alt="../_images/actions1.png" class="align-center" src="../_images/actions1.png" style="width: 500px;" /></a>
+</div></blockquote>
+<p>В журнале администратору с каждой записью доступен стандартный набор действий:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>скачать в виде json-файла;</p></li>
+<li><p>удалить;</p></li>
+<li><p>открыть карточку в соседней вкладке;</p></li>
+<li><p>открыть на редактирование;</p></li>
+<li><p>редактировать json-файл;</p></li>
+<li><p>копировать.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id10">
+<h2><a class="toc-backref" href="#id43">Создание нового типа</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h2>
+<p>Форма создания нового типа состоит из следующих вкладок:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tabs.png"><img alt="../_images/tabs.png" class="align-center" src="../_images/tabs.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p><a class="reference internal" href="#data-types-main"><span class="std std-ref">Основные</span></a> – основные характеристики типа данных.</p>
+<p><a class="reference internal" href="#ecos-model-label"><span class="std std-ref">Атрибуты</span></a>– характеристика, определяющая свойства объекта.</p>
+<p><a class="reference internal" href="#type-aspects"><span class="std std-ref">Аспекты</span></a>– функционал расширения типа данных без изменения самого типа.</p>
+<p><a class="reference internal" href="#roles-statuses"><span class="std std-ref">Роли</span></a> – роли, которые участвуют в работе с объектом.</p>
+<p><a class="reference internal" href="#roles-statuses"><span class="std std-ref">Статусы</span></a>– статусы, по которым объект будет перемещаться по мере выполнения бизнес-процесса.</p>
+<p><a class="reference internal" href="#stages"><span class="std std-ref">Стадии</span></a>– этапы жизненного цикла документа.</p>
+<p><a class="reference internal" href="#create"><span class="std std-ref">Варианты создания</span></a> – настройка поддержки выбора варианта создания после выбора типа</p>
+<p><a class="reference internal" href="#datatypes-associations"><span class="std std-ref">Связи</span></a> – настраиваются для отображения, добавления и удаления связанных объектов в виджете «Связи»» на карточке объекта.</p>
+<p><a class="reference internal" href="#datatypes-content"><span class="std std-ref">Конфигурация контента</span></a> – настройки работы с содержимым (контентом).</p>
+<section id="data-types-main">
+<span id="id11"></span><h3><a class="toc-backref" href="#id44">Основные</a><a class="headerlink" href="#data-types-main" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tab_main.png"><img alt="../_images/tab_main.png" class="align-center" src="../_images/tab_main.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p><strong>Родитель, форму, журнал</strong>, указанные по умолчанию можно изменять.</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>п/п</p></th>
+<th class="head"><p>Наименование</p></th>
+<th class="head"><p>Описание</p></th>
+<th class="head"><p>Пример заполнения</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Id (обязательное)</strong></p></td>
+<td><p>уникальный идентификатор типа</p></td>
+<td><p>test_type (snake case)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Имя</strong></p></td>
+<td><p>локализованное название компонента</p></td>
+<td><p>Тестовый тип</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Шаблон отображения имени</strong></p></td>
+<td><div class="line-block">
+<div class="line">локализованный шаблон заголовка записи, отображаемого при запросах ее локализованного имени (расширеный вариант для параметра п.2).</div>
+<div class="line">Поддерживает выражения с использованием данных записи</div>
+</div>
+</td>
+<td><p>Тестовый тип № ${counter}</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Описание</strong></p></td>
+<td><p>локализованное описание данного типа ECOS (необязательно).</p></td>
+<td><p>Тип, используемый для тестовых целей</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Родитель</strong></p></td>
+<td><p>тип данных, на основании которого, создается текущий.</p></td>
+<td><div class="line-block">
+<div class="line">выбирается из списка предлагаемых:</div>
+<div class="line"><a class="reference internal" href="#data-types-types"><span class="std std-ref">Кейс (по умолчанию), Справочник</span></a></div>
+<div class="line">Остальное – иные созданные ранее типы данных.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><strong>Форма</strong></p></td>
+<td><div class="line-block">
+<div class="line">ссылка на форму, которая будет открываться при инициировании создания записи данного типа.</div>
+<div class="line">Наследование формы позволяет не заполнять в дочернем типе поле <strong>«форма»</strong>, это поле в итоге заполнится значением из родительского типа.</div>
+</div>
+</td>
+<td><p>есть вариант создания автоматически по умолчанию (Форма по умолчанию), создания вручную (Создать-Создать форму), загрузки (Создать-Загрузить форму).</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><strong>Журнал</strong></p></td>
+<td><p>ссылка на журнал, который будет отображать записи данного типа</p></td>
+<td><p>есть вариант создания автоматически по умолчанию (Журнал по умолчанию), создания вручную (Создать-Создать журнал), загрузки (Создать-Загрузить журнал).</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p><strong>Шаблон нумерации</strong></p></td>
+<td><p>шаблон нумерации <a class="reference internal" href="interface/number_template.html#number-template"><span class="std std-ref">См. Шаблоны нумерации</span></a></p></td>
+<td><p>выбирается из списка предлагаемых</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p><strong>Форма дополнительной конфигурации типа</strong></p></td>
+<td><p>[уточнить]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p><strong>Журнал</strong></p></td>
+<td><p>Отображать библиотеку документов</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p><strong>Действия</strong></p></td>
+<td><div class="line-block">
+<div class="line">Cсылки на действия, которые будут доступны в соответсвующем виджете всех записей данного типа, а также в журнале, связанном с типом (<a class="reference internal" href="ui_actions.html#ui-actions"><span class="std std-ref">подробнее о действиях</span></a>).</div>
+<div class="line">Возможно наследование дейсвтий от родительского или же наоборот его запрет (управляется проставлением соответсвующего флага)</div>
+</div>
+</td>
+<td><p>выбирается из списка предлагаемых</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p><strong>Дополнительные свойства</strong></p></td>
+<td><p>[уточнить]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p><strong>Тип источника данных</strong></p></td>
+<td><p>хранилище, в которое будут заноситься записи данного типа (название отражает не использумую БД, а сервис, в БД которого будут направляться запросы).
+Значение «По умолчанию» означает, что для места хранения будет использоваться «ID источника данных (14)» из текущего или родительского
+типа и при этом не будет никакого автоматического создания хранилища. Т.е. при типе источника данных «По умолчанию» предполагается, что место хранения уже подготовлено заранее.</p></td>
+<td><p>выбирается из списка предлагаемых.</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p><strong>ID источника данных</strong></p></td>
+<td><p>иденифтикатор источника для случая, когда используется хранилище не встроенное по умлочанию в систему (в случае когда в п.14 выбран выриант Custom)</p></td>
+<td><p>test_datasource (snake case)</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p><strong>Канбан доска</strong></p></td>
+<td><p>выбор канбан-доски <a class="reference internal" href="interface/journals/kanban_board.html#kanban-board"><span class="std std-ref">См. Канбан-доска</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<section id="id12">
+<h4>Создание и редактрование журнала, формы из типа данных<a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h4>
+<p>Рассмотрим на примере журнала:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/new_journal.png"><img alt="../_images/new_journal.png" class="align-center" src="../_images/new_journal.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>При нажатии на <strong>«Создать-создать журнал»</strong> открывается форма создания журнала:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/new_journal_1.png"><img alt="../_images/new_journal_1.png" class="align-center" src="../_images/new_journal_1.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>При нажатии на <strong>«Создать-загрузить журнал»</strong> открывается форма загрузки журнала:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/new_journal_2.png"><img alt="../_images/new_journal_2.png" class="align-center" src="../_images/new_journal_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Функциональность реализована в настройках компонента <a class="reference internal" href="interface/forms/form_components/components/select%20journal.html#select-journal"><span class="std std-ref">Select Journal во вкладке «Кастомные»</span></a></p>
+<p>При нажатии на <strong>«Изменить»</strong> открывается журнал, содержащий все созданные в системе журналы:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/new_journal_3.png"><img alt="../_images/new_journal_3.png" class="align-center" src="../_images/new_journal_3.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>При нажатии на <strong>Редактировать</strong> открывается форма редактирования соответствующей выбранной сущности на новой вкладке.</p>
+</section>
+</section>
+<section id="ecos-model-label">
+<span id="id13"></span><h3><a class="toc-backref" href="#id45">Атрибуты</a><a class="headerlink" href="#ecos-model-label" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tab_attributes.png"><img alt="../_images/tab_attributes.png" class="align-center" src="../_images/tab_attributes.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>п/п</p></th>
+<th class="head"><p>Наименование</p></th>
+<th class="head"><p>Описание</p></th>
+<th class="head"><p>Пример заполнения</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Id</strong></p></td>
+<td><p>идентификатор поля, по которому оно будет доступно на форме, в журнале.</p></td>
+<td><p>testAttribute (camelCase)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Имя</strong></p></td>
+<td><p>имя поля для отображения пользователю.</p></td>
+<td><p>Тестовый атрибут</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Тип</strong></p></td>
+<td><p>тип поля. <a class="reference internal" href="#ecos-model-types"><span class="std std-ref">Поддерживаемые типы</span></a></p></td>
+<td><p>выбирается из списка предлагаемых. По умолчанию выставляется text.</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Множественный</strong></p></td>
+<td><p>множественный ввод разрешен</p></td>
+<td><p>флаг</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Обязательный</strong></p></td>
+<td><p>поле обязательно к заполнению</p></td>
+<td><p>флаг</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><strong>Настройка прав для атрибута</strong></p></td>
+<td><p>функционал, позволяющий произвести настройку прав доступа в отношении «Роль-Статус» для конкретного атрибута. <a class="reference internal" href="#count-attributes"><span class="std std-ref">См. подробно</span></a></p></td>
+<td><p>выбирается состояние доступа атрибута на пересечении сетки «Роль-Статус»</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><strong>Вычисляемые атрибуты</strong></p></td>
+<td><p>функионал, позволяющий установить выражение-зависимость, позволяющий гибко создавать производные атрибуты <a class="reference internal" href="#attribute-rights"><span class="std std-ref">См. подробно</span></a></p></td>
+<td><p>настройка конфигурации в зависимости от типа и сложности вычисления атрибута</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p><strong>Наследуемые атрибуты</strong></p></td>
+<td><p>отображение значений наследумых от родительского типа атрибутов в соответсвии с п. 1, 2 и 6 (при условии что родительский тип задан и имеет атрибуты)</p></td>
+<td><p>отсутствует</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p><strong>Настройка прав для типа данных</strong></p></td>
+<td><div class="line-block">
+<div class="line">функционал, позволяющий произвести настройку прав доступа документа в отношении «Роль-Статус».</div>
+<div class="line">А также выгрузить и удалить полную схему прав (включая настройки из п.6) <a class="reference internal" href="#doc-rights"><span class="std std-ref">См. подробно</span></a></div>
+</div>
+</td>
+<td><p>выбирается состояние доступа документа на пересечении сетки «Роль-Статус»</p></td>
+</tr>
+</tbody>
+</table>
+<section id="ecos-model-types">
+<span id="id14"></span><h4>Возможные типы атрибутов:<a class="headerlink" href="#ecos-model-types" title="Ссылка на этот заголовок"></a></h4>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Text</strong></p></td>
+<td><p>текст</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>MLText</strong></p></td>
+<td><p>текст с локализацией. Содержание меняется в зависимости от выбранной локализации.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Person</strong></p></td>
+<td><p>пользователь из оргструктуры</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Group</strong></p></td>
+<td><p>группа пользователей из оргструктуры</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Authority</strong></p></td>
+<td><p>пользователь или группа. Это по сути базовый тип и для пользователей и для групп</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Association</strong></p></td>
+<td><div class="line-block">
+<div class="line">связь с другой сущностью</div>
+<div class="line">По кнопке <strong>«Настроить»</strong> выбрать тип данных и при необходимости выставить признак дочерней ассоциации:</div>
+</div>
+<a class="reference internal image-reference" href="../_images/association_type.png"><img alt="../_images/association_type.png" class="align-center" src="../_images/association_type.png" style="width: 400px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Number</strong></p></td>
+<td><p>число</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Boolean</strong></p></td>
+<td><p>булево значение да/нет;</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Date</strong></p></td>
+<td><p>дата</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>DateTime</strong></p></td>
+<td><p>дата с временем;</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Content</strong></p></td>
+<td><p>содержимое. Как правило поля с этим типом используются для сохранения больших объемов данных. Например - содержимое документа.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>JSON</strong></p></td>
+<td><p>текстовый, структурированный формат данных. Например:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;some&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Binary</strong></p></td>
+<td><div class="line-block">
+<div class="line">массив байт. Похож на контент, но намного проще.</div>
+<div class="line">Не рекомендуется здесь хранить более 1мб данных.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="count-attributes">
+<span id="id15"></span><h4>Вычисляемые атрибуты<a class="headerlink" href="#count-attributes" title="Ссылка на этот заголовок"></a></h4>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/count_1.png"><img alt="../_images/count_1.png" class="align-center" src="../_images/count_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/count_2.png"><img alt="../_images/count_2.png" class="align-center" src="../_images/count_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><strong>Тип</strong> - тип вычисляемого атрибута. Поддерживаются:</p>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li><p><strong>Script</strong> - вычисление атрибута на основе <code class="docutils literal notranslate"><span class="pre">javascript'а</span></code>;</p></li>
+<li><p><strong>Attribute</strong> - вычисление атрибута на основе другого атрибута (можно делать алиас на глубоко вложенный атрибут. Например: <code class="docutils literal notranslate"><span class="pre">idocs:counterparty.idocs:fullOrganizationName?str)</span></code>;</p></li>
+<li><p><strong>Значение</strong> - константное значение;</p></li>
+<li><p><strong>Counter</strong> - значение будет генерироваться по счетчику при создании документа и не меняться со временем.</p></li>
+<li><p><strong>Template</strong> - шаблонная строка. Можно использовать вставки вида ${…}. Например: <code class="docutils literal notranslate"><span class="pre">${someAttribute?str}</span></code>. Вместо данного плейсхолдера будет подставлено значение укзанного атрибута;</p></li>
+</ul>
+</div></blockquote>
+<a class="reference internal image-reference" href="../_images/count_31.png"><img alt="../_images/count_31.png" class="align-center" src="../_images/count_31.png" style="width: 400px;" /></a>
+<p><strong>Метод хранения</strong> - тип сохранения. Определяет, нужно или нет сохранять вычисленное значение и если да, то в какие моменты. Возможные значения:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>None</strong> - сохранение не нужно. При каждом обращении вычисляем значение заново;</p></li>
+<li><p><strong>On empty</strong> - сохранять вычисленное значение только если сохраненное значение отсутствует (т.е. при запросе значения вернулся <code class="docutils literal notranslate"><span class="pre">null</span></code>);</p></li>
+<li><p><strong>On create</strong> - сохранять вычисленное значение только после создания. Последующие мутации никак данный атрибут не затронут и он будет работать как обычный атрибут.</p></li>
+<li><p><strong>On mutate</strong> - сохранять вычисленное значение при каждой мутации. В случае использования <a class="reference internal" href="../general/ECOS_Records.html#records-api"><span class="std std-ref">Records API</span></a>  для изменения записи гарантируется актуальность значения.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<section id="script">
+<h5>Возможности атрибута с типом <strong>script</strong><a class="headerlink" href="#script" title="Ссылка на этот заголовок"></a></h5>
+<p>Объекты в глобальной области видимости:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Records</strong> - адаптер для RecordsService;</p></td>
+<td><p>Методы:</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>get(recordRef: String): AttValueScriptCtx // возвращает объект аналогичный value, который описан выше
+query(query: Object, attributes: Any?) // возвращает объект вида:
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;records&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;workspace://...&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;attribute0&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;attribute1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value1&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;workspace://...&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;attribute00&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;attribute11&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value11&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;totalCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;hasMore&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>value</strong> - текущий документ;</p></td>
+<td><div class="line-block">
+<div class="line">Свойства</div>
+</div>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>id: String //глобальный идентификатор записи
+localId: String //локальный идентификатор записи
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Методы:</div>
+</div>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>load(attributes: Any?): Any? // загрузка атрибутов у текущей записи. Можно передавать массив, строку и объект &lt;String, String&gt;
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Пример:</div>
+<div class="line">Вычислить атрибут на основе трех других:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">firstName</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;firstName&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">lastName</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;lastName&#39;</span><span class="p">);</span>
+<span class="k">return</span> <span class="n">lastName</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">firstName</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>log</strong> - логгер.</p></td>
+<td><p>[уточнить]</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Прикладных сервисов в контексте скрипта нет.</p>
+</div>
+</section>
+</section>
+<section id="permissions">
+<span id="id16"></span><h4>Матрица прав<a class="headerlink" href="#permissions" title="Ссылка на этот заголовок"></a></h4>
+<p><strong>Матрица прав</strong> - таблица, которая показывает, какими правами обладает конкретная роль на отдельные виды данных.</p>
+<p>Права могут быть настроены отдельно на документ, отдельно на его атрибуты.</p>
+<section id="id17">
+<h5>Настройка прав<a class="headerlink" href="#id17" title="Ссылка на этот заголовок"></a></h5>
+<p>Настройка прав осуществляется на форме редактирования типа во вкладке <span class="guilabel">Атрибуты</span>. Редактор доступен только в <strong>Enterprise</strong> версии ECOS.</p>
+<p id="doc-rights">Права на документ:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/matrix_1.png"><img alt="../_images/matrix_1.png" class="align-center" src="../_images/matrix_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/matrix_2.png"><img alt="../_images/matrix_2.png" class="align-center" src="../_images/matrix_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p id="attribute-rights">Права на атрибут:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/matrix_3.png"><img alt="../_images/matrix_3.png" class="align-center" src="../_images/matrix_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/matrix_4.png"><img alt="../_images/matrix_4.png" class="align-center" src="../_images/matrix_4.png" style="width: 400px;" /></a>
+</div></blockquote>
+</section>
+<section id="id18">
+<h5>Вычисление прав<a class="headerlink" href="#id18" title="Ссылка на этот заголовок"></a></h5>
+<p>Вычисление прав для <strong>PermissionsDef</strong> (документа или атрибута) делится на два этапа:</p>
+<p><strong>1. Применение матрицы прав</strong> &lt;<em>Роль, &lt;Статус, Уровень_прав</em>&gt;&gt;. Есть 3 уровня прав:</p>
+<ul class="simple">
+<li><p>NONE - нет прав;</p></li>
+<li><p>READ - чтение;</p></li>
+<li><p>WRITE - чтение и запись.</p></li>
+</ul>
+<p><strong>2. Применение правил</strong>. Правила нужны в случаях, когда логика распределения прав не укладывается в простую матрицу. Примеры:</p>
+<ul class="simple">
+<li><p>Если есть 2 состояния документа в одном статусе, но с разными правами;</p></li>
+<li><p>Если уровень прав зависит от атрибутов документа.</p></li>
+</ul>
+<p>Значения, которые вычисляются на этапах 1 и 2 должны быть абсолютными. Т.е. если у нас есть конфигурация прав, то она на 100% описывает текущий уровень прав и не предполагает наличие дополнительных механизмов.</p>
+<ul class="simple">
+<li><p>Роли и статусы берутся из конфигурации типа. Если какой-то роли или статуса нет в конфигурации типа, то наличие этих сущностей в конфиге прав игнорируется.</p></li>
+<li><p>Если для роли, статуса или атрибута нет настройки прав, но они присутствуют в типе, то по умолчанию выставляется право только на чтение.</p></li>
+<li><p>Если у документа выставлен статус или есть роль, которые отсутствуют в конфиге типа, то права для них по умолчанию пустые (нет возможности даже читать).</p></li>
+</ul>
+</section>
+<section id="id19">
+<h5>Пограничные условия<a class="headerlink" href="#id19" title="Ссылка на этот заголовок"></a></h5>
+<p>Данные условия относятся к настройкам матрицы без системных статусов и ролей.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Статус есть в типе</p></th>
+<th class="head"><p>Статус есть в матрице</p></th>
+<th class="head"><p>Роль есть в типе</p></th>
+<th class="head"><p>Роль есть в матрице</p></th>
+<th class="head"><p>Уровень прав</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Да</p></td>
+<td><p>Да</p></td>
+<td><p>Да</p></td>
+<td><p>Да</p></td>
+<td><p>Из матрицы</p></td>
+</tr>
+<tr class="row-odd"><td><p>Да</p></td>
+<td><p>Да</p></td>
+<td><p>Да</p></td>
+<td><p>Нет</p></td>
+<td><p>Чтение</p></td>
+</tr>
+<tr class="row-even"><td><p>Да</p></td>
+<td><p>Да</p></td>
+<td><p>Нет</p></td>
+<td><p>Да</p></td>
+<td><p>Нет прав</p></td>
+</tr>
+<tr class="row-odd"><td><p>Да</p></td>
+<td><p>Да</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет прав</p></td>
+</tr>
+<tr class="row-even"><td><p>Да</p></td>
+<td><p>Нет</p></td>
+<td><p>Да</p></td>
+<td><p>Да</p></td>
+<td><p>Чтение</p></td>
+</tr>
+<tr class="row-odd"><td><p>Да</p></td>
+<td><p>Нет</p></td>
+<td><p>Да</p></td>
+<td><p>Нет</p></td>
+<td><p>Чтение</p></td>
+</tr>
+<tr class="row-even"><td><p>Да</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет</p></td>
+<td><p>Да</p></td>
+<td><p>Нет прав</p></td>
+</tr>
+<tr class="row-odd"><td><p>Да</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет прав</p></td>
+</tr>
+<tr class="row-even"><td><p>Нет</p></td>
+<td><p>Да</p></td>
+<td><p>Да</p></td>
+<td><p>Да</p></td>
+<td><p>Нет прав</p></td>
+</tr>
+<tr class="row-odd"><td><p>Нет</p></td>
+<td><p>Да</p></td>
+<td><p>Да</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет прав</p></td>
+</tr>
+<tr class="row-even"><td><p>Нет</p></td>
+<td><p>Да</p></td>
+<td><p>Нет</p></td>
+<td><p>Да</p></td>
+<td><p>Нет прав</p></td>
+</tr>
+<tr class="row-odd"><td><p>Нет</p></td>
+<td><p>Да</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет прав</p></td>
+</tr>
+<tr class="row-even"><td><p>Нет</p></td>
+<td><p>Нет</p></td>
+<td><p>Да</p></td>
+<td><p>Да</p></td>
+<td><p>Нет прав</p></td>
+</tr>
+<tr class="row-odd"><td><p>Нет</p></td>
+<td><p>Нет</p></td>
+<td><p>Да</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет прав</p></td>
+</tr>
+<tr class="row-even"><td><p>Нет</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет</p></td>
+<td><p>Да</p></td>
+<td><p>Нет прав</p></td>
+</tr>
+<tr class="row-odd"><td><p>Нет</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет</p></td>
+<td><p>Нет прав</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id20">
+<h5>Системные статусы и роли<a class="headerlink" href="#id20" title="Ссылка на этот заголовок"></a></h5>
+<p>При необходимости можно настроить в типе системные статусы и роли. Для этого достаточно указать <strong>ID</strong> равным одному из предопределенных значений:</p>
+<p><strong>Роли:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>EVERYONE</strong> - виртуальная роль, к которой относятся все пользователи. <em>Assignees</em> у такой роли всегда пустые, но если роль <strong>EVERYONE</strong> по матрице получает права, то они распространяются на всех пользователей в системе.</p></li>
+</ol>
+<p><strong>Статусы:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>EMPTY</strong> - пустой статус. Полезен для приватных сущностей, которые недоступны на чтение всем пользователям в системе. Пустой статус может быть в случае если процесс для кейса не найден или операция старта процесса еще не завершилась;</p></li>
+<li><p><strong>ANY</strong> - любой статус. Вариант использования: для справочников можно задать права для <strong>ANY</strong> и <strong>EVERYONE</strong> на чтение, а для изменения записей завести отдельную группу.</p></li>
+</ol>
+</section>
+<section id="id21">
+<h5>Модель описания прав<a class="headerlink" href="#id21" title="Ссылка на этот заголовок"></a></h5>
+<p>Основная логика находится в библиотеке <strong>ecos-model-lib</strong>.</p>
+<p>Конфигурация прав хранится в микросервисе <strong>ecos-model</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TypePermsDef</span>
+<span class="nb">id</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">Идентификатор</span> <span class="n">настроек</span><span class="o">.</span> <span class="n">Уникальный</span> <span class="n">в</span> <span class="n">пределах</span> <span class="n">системы</span>
+<span class="n">typeRef</span><span class="p">:</span> <span class="n">RecordRef</span> <span class="o">//</span> <span class="n">Тип</span> <span class="n">ECOS</span><span class="p">,</span> <span class="n">к</span> <span class="n">которому</span> <span class="n">относятся</span> <span class="n">настройки</span> <span class="n">прав</span>
+<span class="n">permissions</span><span class="p">:</span> <span class="n">PermissionsDef</span> <span class="o">//</span> <span class="n">Настройка</span> <span class="n">прав</span> <span class="n">на</span> <span class="n">документ</span>
+<span class="n">attributes</span><span class="p">:</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">PermissionsDef</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">Настройка</span> <span class="n">прав</span> <span class="n">на</span> <span class="n">атрибуты</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PermissionsDef</span>
+ <span class="n">matrix</span><span class="p">:</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">PermissionLevel</span><span class="o">&gt;&gt;</span> <span class="o">//</span> <span class="n">Матрица</span> <span class="n">прав</span> <span class="o">&lt;</span><span class="n">Роль</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Статус</span><span class="p">,</span> <span class="n">Уровень_прав</span><span class="o">&gt;&gt;.</span>
+ <span class="n">rules</span><span class="p">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">PermissionRule</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">Дополнительные</span> <span class="n">правила</span> <span class="n">для</span> <span class="n">гибкой</span> <span class="n">настройки</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PermissionLevel</span> <span class="p">(</span><span class="n">enum</span><span class="p">)</span>
+<span class="n">NONE</span> <span class="o">//</span> <span class="n">нет</span> <span class="n">прав</span>
+<span class="n">READ</span> <span class="o">//</span> <span class="n">права</span> <span class="n">на</span> <span class="n">чтение</span>
+<span class="n">WRITE</span> <span class="o">//</span> <span class="n">права</span> <span class="n">на</span> <span class="n">чтение</span> <span class="n">и</span> <span class="n">запись</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PermissionRule</span>
+<span class="n">roles</span><span class="p">:</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">Роли</span><span class="p">,</span> <span class="n">для</span> <span class="n">которых</span> <span class="n">применяется</span> <span class="n">правило</span>
+<span class="n">permissions</span><span class="p">:</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">Список</span> <span class="n">прав</span>
+<span class="n">statuses</span><span class="p">:</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">Статусы</span><span class="p">,</span> <span class="n">в</span> <span class="n">которых</span> <span class="n">данное</span> <span class="n">правило</span> <span class="n">применимо</span><span class="o">.</span> <span class="n">Пустой</span> <span class="n">список</span> <span class="o">-</span> <span class="n">любой</span> <span class="n">статус</span>
+<span class="n">condition</span><span class="p">:</span> <span class="n">Predicate</span> <span class="o">//</span> <span class="n">Условие</span><span class="p">,</span> <span class="n">по</span> <span class="n">которому</span> <span class="n">данное</span> <span class="n">правило</span> <span class="n">применимо</span> <span class="n">в</span> <span class="n">формате</span> <span class="n">предиката</span> <span class="p">(</span><span class="n">см</span><span class="o">.</span> <span class="n">Язык</span> <span class="n">предикатов</span><span class="p">)</span><span class="o">.</span>
+<span class="nb">type</span><span class="p">:</span> <span class="n">RuleType</span> <span class="o">//</span> <span class="n">Тип</span> <span class="n">правила</span>
+
+<span class="n">RuleType</span> <span class="p">(</span><span class="n">enum</span><span class="p">)</span>
+<span class="n">ALLOW</span> <span class="o">-</span> <span class="n">разрешение</span><span class="o">.</span> <span class="n">Если</span> <span class="n">правило</span> <span class="n">активно</span><span class="p">,</span> <span class="n">то</span> <span class="n">permissions</span> <span class="n">добавляются</span> <span class="n">для</span> <span class="n">указанных</span> <span class="n">ролей</span>
+<span class="n">REVOKE</span> <span class="o">-</span> <span class="n">отбирание</span> <span class="n">прав</span><span class="o">.</span> <span class="n">Если</span> <span class="n">правило</span> <span class="n">активно</span><span class="p">,</span> <span class="n">то</span> <span class="n">permissions</span> <span class="n">убираются</span> <span class="n">из</span> <span class="n">списка</span> <span class="n">уже</span> <span class="n">существующих</span> <span class="n">прав</span> <span class="n">у</span> <span class="n">ролей</span>
+</pre></div>
+</div>
+</section>
+<section id="id22">
+<h5>Наследование прав<a class="headerlink" href="#id22" title="Ссылка на этот заголовок"></a></h5>
+<p>При поиске матрицы прав учитывается иерархия типов ECOS. При этом ищется первая не пустая конфигурация и дальше поиск прекращается. Т.е. никакого объединения настроек прав из разных типов не происходит.</p>
+<p><strong>Пример конфигурации</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">:</span> <span class="s2">&quot;2a5c3f00-06d5-4b62-8192-1b9116f12db4&quot;</span>
+<span class="n">typeRef</span><span class="p">:</span> <span class="s2">&quot;emodel/type@contracts-cat-doctype-contract&quot;</span>
+
+<span class="n">permissions</span>
+
+ <span class="n">matrix</span><span class="p">:</span>
+   <span class="n">confirmers</span><span class="p">:</span>
+     <span class="n">approval</span><span class="p">:</span> <span class="n">WRITE</span>
+     <span class="n">reworking</span><span class="p">:</span> <span class="n">NONE</span>
+   <span class="n">initiator</span><span class="p">:</span>
+     <span class="n">approval</span><span class="p">:</span> <span class="n">READ</span>
+     <span class="n">reworking</span><span class="p">:</span> <span class="n">WRITE</span>
+   <span class="n">scan</span><span class="o">-</span><span class="n">man</span><span class="p">:</span>
+     <span class="n">approval</span><span class="p">:</span> <span class="n">WRITE</span>
+     <span class="n">reworking</span><span class="p">:</span> <span class="n">NONE</span>
+ <span class="n">rules</span><span class="p">:</span> <span class="p">[]</span>
+
+
+<span class="n">attributes</span><span class="p">::</span>
+
+ <span class="n">cm</span><span class="p">:</span><span class="n">name</span><span class="p">:</span>
+   <span class="n">matrix</span><span class="p">:</span>
+     <span class="n">confirmers</span><span class="p">:</span>
+       <span class="n">approval</span><span class="p">:</span> <span class="n">WRITE</span>
+       <span class="n">reworking</span><span class="p">:</span> <span class="n">NONE</span>
+     <span class="n">initiator</span><span class="p">:</span>
+       <span class="n">approval</span><span class="p">:</span> <span class="n">READ</span>
+       <span class="n">reworking</span><span class="p">:</span> <span class="n">WRITE</span>
+     <span class="n">scan</span><span class="o">-</span><span class="n">man</span><span class="p">:</span>
+       <span class="n">approval</span><span class="p">:</span> <span class="n">WRITE</span>
+       <span class="n">reworking</span><span class="p">:</span> <span class="n">NONE</span>
+   <span class="n">rules</span><span class="p">:</span> <span class="p">[]</span>
+
+ <span class="n">cm</span><span class="p">:</span><span class="n">title</span><span class="p">:</span>
+   <span class="n">matrix</span><span class="p">:</span>
+     <span class="n">confirmers</span><span class="p">:</span>
+       <span class="n">approval</span><span class="p">:</span> <span class="n">WRITE</span>
+       <span class="n">reworking</span><span class="p">:</span> <span class="n">NONE</span>
+     <span class="n">initiator</span><span class="p">:</span>
+       <span class="n">approval</span><span class="p">:</span> <span class="n">READ</span>
+       <span class="n">reworking</span><span class="p">:</span> <span class="n">WRITE</span>
+     <span class="n">scan</span><span class="o">-</span><span class="n">man</span><span class="p">:</span>
+       <span class="n">approval</span><span class="p">:</span> <span class="n">WRITE</span>
+       <span class="n">reworking</span><span class="p">:</span> <span class="n">NONE</span>
+   <span class="n">rules</span><span class="p">:</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="type-aspects">
+<span id="id23"></span><h3><a class="toc-backref" href="#id46">Аспекты</a><a class="headerlink" href="#type-aspects" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tab_aspects.png"><img alt="../_images/tab_aspects.png" class="align-center" src="../_images/tab_aspects.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Выберите спект из списка. По кнопке <strong>«Настроить»</strong> можно отредактировать конфигурацию - открывается форма, настроенная для <a class="reference internal" href="Aspects.html#aspects-user"><span class="std std-ref">аспекта</span></a>.</p>
+<p>Атрибуты из добавленных аспектов будут доступны в создаваемом типе данных.</p>
+</section>
+<section id="roles-statuses">
+<span id="id24"></span><h3><a class="toc-backref" href="#id47">Роли</a><a class="headerlink" href="#roles-statuses" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tab_roles.png"><img alt="../_images/tab_roles.png" class="align-center" src="../_images/tab_roles.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>п/п</p></th>
+<th class="head"><p>Наименование</p></th>
+<th class="head"><p>Описание</p></th>
+<th class="head"><p>Пример заполнения</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Id</strong></p></td>
+<td><p>уникальный идентификатор роли</p></td>
+<td><p>myTestRole (camel case)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Название логики</strong></p></td>
+<td><p>имя роли</p></td>
+<td><p>Тестовая роль</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Участники роли</strong></p></td>
+<td><div class="line-block">
+<div class="line">статическое заполнение роли.</div>
+<div class="line">Выбор группы и/или отдельных пользователей из оргструктуры, которые будут выполнять функцию данной роли.</div>
+</div>
+</td>
+<td><p>выбирается из списка оргуструктуры организации</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Атрибуты</strong></p></td>
+<td><p>динамическое заполнение роли. Выбор атрибута типа, на который будет ссылаться роль для получения назначаемых пользователей.</p></td>
+<td><p>выбирается из списка предлагаемых атрибутов</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Динамическая роль</strong></p></td>
+<td><div class="line-block">
+<div class="line">динамическое заполнение роли.</div>
+<div class="line">Установление произвольной гибкой логики, по которой будет произведено вычисление состава пользователей роли.</div>
+</div>
+</td>
+<td><p>настройка конфигурации в зависимости от сложности и набора заивисимых данных для вычисления состава роли</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Все назначенные роли (статические, динамические, атрибутивные) объединяются.</p>
+</div>
+</section>
+<section id="associations">
+<span id="id25"></span><h3><a class="toc-backref" href="#id48">Статусы</a><a class="headerlink" href="#associations" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tab_statuses.png"><img alt="../_images/tab_statuses.png" class="align-center" src="../_images/tab_statuses.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>п/п</p></th>
+<th class="head"><p>Наименование</p></th>
+<th class="head"><p>Описание</p></th>
+<th class="head"><p>Пример заполнения</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Id</strong></p></td>
+<td><p>уникальный идентификатор статуса</p></td>
+<td><p>testStatus (camel case)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Название логики</strong></p></td>
+<td><p>имя статуса</p></td>
+<td><p>Тестовый статус</p></td>
+</tr>
+</tbody>
+</table>
+<p>На форме документа статус может быть отражен следующим образом:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_status1.png"><img alt="../_images/form_status1.png" class="align-center" src="../_images/form_status1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>В компоненте  <a class="reference internal" href="interface/forms/form_components/components_common.html#text-field"><span class="std std-ref">Text field</span></a>:</p>
+<ul class="simple">
+<li><p>название поля может быть любым,</p></li>
+<li><p>имя свойства -  <strong>_status</strong>,</p></li>
+<li><p>скрыть и заблокировать на ввод, если необходимо не отображать на форме.</p></li>
+</ul>
+</section>
+<section id="stages">
+<span id="id26"></span><h3><a class="toc-backref" href="#id49">Стадии</a><a class="headerlink" href="#stages" title="Ссылка на этот заголовок"></a></h3>
+<p><strong>Стадии</strong> — этапы жизненного цикла документа. В каждую стадию входит один или несколько статусов.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tab_stages.png"><img alt="../_images/tab_stages.png" class="align-center" src="../_images/tab_stages.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Прежде, чем приступить к работе над стадиями, необходимо заполнить <a class="reference internal" href="#roles-statuses"><span class="std std-ref">Статусы</span></a>.</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>п/п</p></th>
+<th class="head"><p>Наименование</p></th>
+<th class="head"><p>Описание</p></th>
+<th class="head"><p>Пример заполнения</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Название стадии</strong></p></td>
+<td><p>Наименование стадии</p></td>
+<td><p>testStage (camel case)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Статусы</strong></p></td>
+<td><p>Перечень статусов, входящих в стадию</p></td>
+<td><p>Выбирается из списка предлагаемых статусов</p></td>
+</tr>
+</tbody>
+</table>
+<p>Каждый статус может быть назначен только на одну стадию:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tab_stages_2.png"><img alt="../_images/tab_stages_2.png" class="align-center" src="../_images/tab_stages_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Стадии отображаются в виджете <a class="reference internal" href="interface/widgets.html#widget-stages"><span class="std std-ref">виджете «Стадии»</span></a></p>
+</section>
+<section id="create">
+<span id="id27"></span><h3><a class="toc-backref" href="#id50">Варианты создания</a><a class="headerlink" href="#create" title="Ссылка на этот заголовок"></a></h3>
+<p>Настройка поддержки выбора варианта создания после выбора типа настраиваются на вкладке <span class="guilabel">Варианты создания</span></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tab_create.png"><img alt="../_images/tab_create.png" class="align-center" src="../_images/tab_create.png" style="width: 600px;" /></a>
+</div></blockquote>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>п/п</p></th>
+<th class="head"><p>Наименование</p></th>
+<th class="head"><p>Описание</p></th>
+<th class="head"><p>Пример заполнения</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Id</strong></p></td>
+<td><p>уникальный идентификатор варианта создания</p></td>
+<td><p>testCreate (camel case)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Имя</strong></p></td>
+<td><p>имя поля для отображения пользователю.</p></td>
+<td><p>Тестовый статус</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Форма</strong></p></td>
+<td><p>имя поля для отображения пользователю.</p></td>
+<td><p>Тестовый статус</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Разрешен для</strong></p></td>
+<td><p>пользователь или группа, для которых разрешен функционал.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Дополнительно</strong></p></td>
+<td><p>дополнительные настройки.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<a class="reference internal image-reference" href="../_images/create_full.png"><img alt="../_images/create_full.png" class="align-center" src="../_images/create_full.png" style="width: 600px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../_images/create_full_1.png"><img alt="../_images/create_full_1.png" class="align-center" src="../_images/create_full_1.png" style="width: 300px;" /></a>
+</section>
+<section id="datatypes-associations">
+<span id="id28"></span><h3><a class="toc-backref" href="#id51">Связи</a><a class="headerlink" href="#datatypes-associations" title="Ссылка на этот заголовок"></a></h3>
+<a class="reference internal image-reference" href="../_images/tab_attributes.png"><img alt="../_images/tab_attributes.png" class="align-center" src="../_images/tab_attributes.png" style="width: 600px;" /></a>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 43%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>п/п</p></th>
+<th class="head"><p>Наименование</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Id</strong></p></td>
+<td><div class="line-block">
+<div class="line">идентификатор связи. Обязательное поле (если не заполнено, то сервер такую связь не сохраняет).</div>
+<div class="line">Это поле нужно для:</div>
+<div class="line">1. Перезаписывания конфигурации связи в дочернем типе. Т.е. если мы в дочернем типе укажем тот же ID, то по сути перезатрем конфигурацию связи</div>
+<div class="line">2. Указание атрибута, в котором связь сохранится (если не задано значение в поле «Атрибут»)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Имя</strong></p></td>
+<td><p>имя связи для отображения в интерфейсе</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Атрибут</strong></p></td>
+<td><div class="line-block">
+<div class="line">в который новые связи будут добавляться и из которого будут загружаться.</div>
+<div class="line">Как правило это ассоциация из вкладки <span class="guilabel">Атрибуты</span>. Если не задано то используется значение поля ID.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Направление связи</strong></p></td>
+<td><div class="line-block">
+<div class="line">определяет какие связи отображать в виджете связей. Любая связь строится по принципу <strong>SOURCE -&gt; TARGET</strong></div>
+<div class="line">- <strong>SOURCE</strong> - обратное к <strong>target</strong> связь у источника. При открытии карточки <strong>TARGET</strong> мы увидим нашу связь. При открытии карточки <strong>SOURCE</strong> мы ничего не увидим.</div>
+<div class="line">- <strong>TARGET</strong> - связь отображается только у документа, который хотим привязать. При открытии карточки <strong>TARGET</strong> мы ничего не увидим. При открытии карточки <strong>SOURCE</strong> мы увидим нашу связь.</div>
+<div class="line">- <strong>BOTH</strong> - двухсторонняя связь. И на карточке <strong>SOURCE</strong> и на карточке <strong>TARGET</strong> увидим нашу связь.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Связанный тип</strong></p></td>
+<td><p>тип сущностей, с которыми мы можем связать нашу ноду</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><strong>Журналы</strong></p></td>
+<td><p>список журналов, которые можно использовать для создания новой связи. Если необходимо создавать связи не с одним определенным типом.</p></td>
+</tr>
+</tbody>
+</table>
+<a class="reference internal image-reference" href="../_images/association_example.png"><img alt="../_images/association_example.png" class="align-center" src="../_images/association_example.png" style="width: 600px;" /></a>
+<p>Для добавления возможности связать документ с простой ссылкой (<strong>Id</strong> - webLinks, <strong>Направление связи</strong> - TARGET):</p>
+<a class="reference internal image-reference" href="../_images/association_example_weblink.png"><img alt="../_images/association_example_weblink.png" class="align-center" src="../_images/association_example_weblink.png" style="width: 600px;" /></a>
+<p><strong>Связи (associations)</strong> настраиваются для отображения, добавления и удаления связанных объектов в виджете Формы <a class="reference internal" href="interface/widgets.html#widget-doc-associations"><span class="std std-ref">«Связи документов»</span></a> на карточке объекта.</p>
+<a class="reference internal image-reference" href="../_images/connections.png"><img alt="../_images/connections.png" class="align-center" src="../_images/connections.png" style="width: 400px;" /></a>
+</section>
+<section id="datatypes-content">
+<span id="id29"></span><h3><a class="toc-backref" href="#id52">Конфигурация контента</a><a class="headerlink" href="#datatypes-content" title="Ссылка на этот заголовок"></a></h3>
+<p>Работа с контентом в ECOS осуществляется с использованием атрибутов ECOS типа с типом <strong>«Содержимое»</strong>.</p>
+<section id="content">
+<h4>Атрибут _content<a class="headerlink" href="#content" title="Ссылка на этот заголовок"></a></h4>
+<p>Атрибут <strong>_content</strong> служит для доступа к основному контенту записи без необходимости узнавать в каком именно атрибуте
+хранится контент. По умолчанию атрибут с контентом - content, но этот атрибут можно переопределить в типе во вкладке <span class="guilabel">Конфигурация контента</span>.</p>
+<p>При загрузке нового контента в свойство <strong>“_content”</strong> имя содержимого записывается в свойство <strong>name</strong> сущности (если оно определено в атрибутах).</p>
+<p>Контент в свойстве <strong>_content</strong> всегда имеет имя, которое совпадает с именем сущности (оно переопределяет имя самого контента).</p>
+</section>
+<section id="id30">
+<h4>Настройка типа<a class="headerlink" href="#id30" title="Ссылка на этот заголовок"></a></h4>
+<a class="reference internal image-reference" href="../_images/tab_content.png"><img alt="../_images/tab_content.png" class="align-center" src="../_images/tab_content.png" style="width: 600px;" /></a>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 43%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>п/п</p></th>
+<th class="head"><p>Наименование</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Атрибут с основным контентом</strong></p></td>
+<td><div class="line-block">
+<div class="line">атрибут, в котором находится контент, который доступен через свойство <strong>“_content”</strong>.</div>
+<div class="line">Может быть сложным с указанием свойства из связанной сущности. Например - <strong>“linkedRecord.content”</strong>.</div>
+<div class="line">Если это поле оставить пустым, то основным полем с контентом будет <strong>“content“</strong>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Тип хранилища</strong></p></td>
+<td><div class="line-block">
+<div class="line">атрибут, в котором находится контент, который будет использоваться для предпросмотра документа.</div>
+<div class="line">Если не указать значение, то используется “Атрибут с основным контентом”</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Атрибут с контентом для предпросмотра</strong></p></td>
+<td><div class="line-block">
+<div class="line">место где будет сохраняться контент.</div>
+<div class="line">По умолчанию <strong>“local“</strong>, что в свою очередь означает, что контент будет сохраняться в БД в той же схеме, что и таблица сущностей нашего типа.</div>
+<div class="line">Другие типы хранилища пока не поддерживаются.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="java">
+<h4>Java<a class="headerlink" href="#java" title="Ссылка на этот заголовок"></a></h4>
+<p>Для работы в java с контентом следует использовать интерфейс EcosContentApi:</p>
+<p>Загрузка:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">EntityRef</span> <span class="n">tempFile</span> <span class="o">=</span> <span class="n">contentApi</span><span class="p">.</span><span class="na">uploadTempFile</span><span class="p">()</span>
+    <span class="p">.</span><span class="na">withMimeType</span><span class="p">(</span><span class="s">&quot;application/pdf&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="na">writeContent</span><span class="p">((</span><span class="n">writer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">writer</span><span class="p">.</span><span class="na">writeBytes</span><span class="p">(</span><span class="n">imageContent1</span><span class="p">));</span>
+
+<span class="n">ObjectData</span> <span class="n">attributeForMutation</span> <span class="o">=</span> <span class="n">ObjectData</span><span class="p">.</span><span class="na">create</span><span class="p">()</span>
+    <span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;customContentAtt&quot;</span><span class="p">,</span> <span class="n">tempFile</span><span class="p">);</span>
+
+<span class="c1">// Создание</span>
+<span class="n">EntityRef</span> <span class="n">newFileWithContent</span> <span class="o">=</span> <span class="n">recordsService</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;emodel/test&quot;</span><span class="p">,</span> <span class="n">attributeForMutation</span><span class="p">);</span>
+<span class="c1">// Обновление</span>
+<span class="n">recordsService</span><span class="p">.</span><span class="na">mutate</span><span class="p">(</span><span class="n">newFileWithContent</span><span class="p">,</span> <span class="n">attributeForMutation</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Чтение:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">EntityRef</span> <span class="n">ref</span> <span class="o">=</span> <span class="n">EntityRef</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="s">&quot;emodel/test@localId&quot;</span><span class="p">);</span>
+<span class="n">EcosContentData</span> <span class="n">contentData</span> <span class="o">=</span> <span class="n">contentApi</span><span class="p">.</span><span class="na">getContent</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="s">&quot;attributeWithContent&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">contentData</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Content is null&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// При работе с файлами, максимальный размер которых может быть более ~20мб</span>
+<span class="c1">// чтение контента в массив байт следует по возможности избегать. Иначе есть риск получить OutOfMemoryError</span>
+<span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="n">contentData</span><span class="p">.</span><span class="na">readContent</span><span class="p">(</span><span class="n">reader</span> <span class="o">-&gt;</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">IOUtils</span><span class="p">.</span><span class="na">toByteArray</span><span class="p">(</span><span class="n">reader</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id31">
+<h2><a class="toc-backref" href="#id53">Отображаемое имя сущности</a><a class="headerlink" href="#id31" title="Ссылка на этот заголовок"></a></h2>
+<p>Есть несколько сценариев для работы с отображаемым именем сущности.</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Если необходимо, чтобы имя сущности всегда формировалось по шаблону, то следует использовать поле <strong>dispNameTemplate</strong> в типе;</p></li>
+<li><p>Если необходимо, чтобы именем сущности можно было управлять, то следует в список атрибутов добавить атрибут с <strong>id = ‘name“</strong>. Система автоматически будет использовать это поле для отображаемого имени (скаляр <strong>?disp</strong> в Records API)</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Можно вывести поле name на форму и тогда пользователь сможет сам им управлять</p></li>
+<li><p>Можно поле <strong>name</strong> не выводить на форму, но позволить пользователю работать с <strong>“_content”</strong> атрибутом. В этом случае при загрузке нового контента автоматически будет изменяться поле name и =&gt; отображаемое имя.</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="auto-journal-form">
+<span id="id32"></span><h2><a class="toc-backref" href="#id54">Автоматически сгенерированные формы и журналы в типе данных</a><a class="headerlink" href="#auto-journal-form" title="Ссылка на этот заголовок"></a></h2>
+<p>Для типа данных доступны автоматически генерируемая форма и журнал:</p>
+<a class="reference internal image-reference" href="../_images/auto_1.png"><img alt="../_images/auto_1.png" class="align-center" src="../_images/auto_1.png" style="width: 600px;" /></a>
+<p>Рассмотрим подробнее на примере. Заполним атрибуты типа данных:</p>
+<a class="reference internal image-reference" href="../_images/auto_2.png"><img alt="../_images/auto_2.png" class="align-center" src="../_images/auto_2.png" style="width: 600px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>На форме типа после создания становятся доступны действия с автосгенерированными формой и журналом:</p>
+<a class="reference internal image-reference" href="../_images/auto_3.png"><img alt="../_images/auto_3.png" class="align-center" src="../_images/auto_3.png" style="width: 600px;" /></a>
+<section id="auto-journal">
+<span id="id33"></span><h3><a class="toc-backref" href="#id55">Журнал</a><a class="headerlink" href="#auto-journal" title="Ссылка на этот заголовок"></a></h3>
+<p>Журнал получает идентификатор – <strong>type$idтипа</strong>, название - как и тип данных, и может полноценно использоваться в системе – может быть добавлен в <a class="reference internal" href="../case_sample/offer.html#menu-add"><span class="std std-ref">меню</span></a>:</p>
+<a class="reference internal image-reference" href="../_images/auto_18.png"><img alt="../_images/auto_18.png" class="align-center" src="../_images/auto_18.png" style="width: 600px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Перейти в журнал и создать элемент журнала:</p>
+<a class="reference internal image-reference" href="../_images/auto_19.png"><img alt="../_images/auto_19.png" class="align-center" src="../_images/auto_19.png" style="width: 600px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Перейдем в журнал <strong>«Журналы»</strong>:</p>
+<a class="reference internal image-reference" href="../_images/auto_20.png"><img alt="../_images/auto_20.png" class="align-center" src="../_images/auto_20.png" style="width: 600px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Автосгенерированный журнал нельзя редактировать, т.к. он генерируется на лету при каждом обращении.</p>
+<p>Для журнала доступны действия:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>скачать,</p></li>
+<li><p>редактировать json,</p></li>
+<li><p>копировать,</p></li>
+<li><p>открыть журнал в соседней вкладке.</p></li>
+</ul>
+</div></blockquote>
+<p>По нажатию на <em>глаз</em> открывается дашборд для просмотра свойств сгенерированной журнала:</p>
+<a class="reference internal image-reference" href="../_images/auto_21.png"><img alt="../_images/auto_21.png" class="align-center" src="../_images/auto_21.png" style="width: 600px;" /></a>
+</section>
+<section id="auto-form">
+<span id="id34"></span><h3><a class="toc-backref" href="#id56">Форма</a><a class="headerlink" href="#auto-form" title="Ссылка на этот заголовок"></a></h3>
+<p>Для созданного типа данных для формы доступны следующие действия:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><a class="reference internal image-reference" href="../_images/auto_4.png"><img alt="../_images/auto_4.png" class="align-center" src="../_images/auto_4.png" style="width: 30px;" /></a>
+</td>
+<td><div class="line-block">
+<div class="line">Тестировать форму - как будет выглядеть форма в итоговом виде:</div>
+</div>
+<a class="reference internal image-reference" href="../_images/auto_5.png"><img alt="../_images/auto_5.png" class="align-center" src="../_images/auto_5.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line">Для просмотра формы необходимо нажать <strong>Submit</strong>:</div>
+</div>
+<a class="reference internal image-reference" href="../_images/auto_6.png"><img alt="../_images/auto_6.png" class="align-center" src="../_images/auto_6.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line">На форме присутствуют поля в соответствии с данными и типом, указанным в атрибутах.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal image-reference" href="../_images/auto_7.png"><img alt="../_images/auto_7.png" class="align-center" src="../_images/auto_7.png" style="width: 30px;" /></a>
+</td>
+<td><div class="line-block">
+<div class="line">Автосгенерированную форму можно скопировать, чтобы присвоить идентификатор  и отредактировать под себя. <a class="reference internal" href="#auto-form-change"><span class="std std-ref">См. подробнее ниже</span></a></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Перейдем в журнал <strong>«Формы»</strong>.</p>
+<p>Форма получает идентификатор – <strong>type$idтипа</strong>, название - как у типа данных.</p>
+<a class="reference internal image-reference" href="../_images/auto_8.png"><img alt="../_images/auto_8.png" class="align-center" src="../_images/auto_8.png" style="width: 700px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Автосгенерированную форму нельзя редактировать.</p>
+<p>Для формы доступны действия:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>тестировать форму,</p></li>
+<li><p>скачать,</p></li>
+<li><p>редактировать json,</p></li>
+<li><p>копировать,</p></li>
+<li><p>открыть форму в соседней вкладке.</p></li>
+</ul>
+</div></blockquote>
+<p>По нажатию на <em>глаз</em> открывается дашборд для просмотра свойств сгенерированной формы:</p>
+<a class="reference internal image-reference" href="../_images/auto_9.png"><img alt="../_images/auto_9.png" class="align-center" src="../_images/auto_9.png" style="width: 700px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="auto-form-change">
+<span id="id35"></span><h4>Изменение автосгенерированной формы<a class="headerlink" href="#auto-form-change" title="Ссылка на этот заголовок"></a></h4>
+<p>Если необходимо изменить форму. Например, чтобы в форме инициатор выбирался автоматически как текущий пользователь.</p>
+<p>Для этого необходимо скопировать форму из журнала <strong>«Формы»</strong>, или карточки типа данных.</p>
+<a class="reference internal image-reference" href="../_images/auto_10.png"><img alt="../_images/auto_10.png" class="align-center" src="../_images/auto_10.png" style="width: 600px;" /></a>
+<p>Переименовать:</p>
+<a class="reference internal image-reference" href="../_images/auto_11.png"><img alt="../_images/auto_11.png" class="align-center" src="../_images/auto_11.png" style="width: 400px;" /></a>
+<p>В типе данных проставляется данная форма и становятся доступны действия, включая редактирование:</p>
+<a class="reference internal image-reference" href="../_images/auto_12.png"><img alt="../_images/auto_12.png" class="align-center" src="../_images/auto_12.png" style="width: 600px;" /></a>
+<p>Нажать <strong>«Редактировать»</strong>:</p>
+<a class="reference internal image-reference" href="../_images/auto_13.png"><img alt="../_images/auto_13.png" class="align-center" src="../_images/auto_13.png" style="width: 600px;" /></a>
+<p>Далее перейти к редактированию компонента:</p>
+<a class="reference internal image-reference" href="../_images/auto_14.png"><img alt="../_images/auto_14.png" class="align-center" src="../_images/auto_14.png" style="width: 600px;" /></a>
+<p>На вкладке <strong>«Кастомные»</strong> выставить чекбокс <strong>«Текущий пользователь по умолчанию»</strong>, сохранить компонент:</p>
+<a class="reference internal image-reference" href="../_images/auto_15.png"><img alt="../_images/auto_15.png" class="align-center" src="../_images/auto_15.png" style="width: 600px;" /></a>
+<p>Далее сохранить форму, тип данных.</p>
+<p>В журнале <strong>«Формы»</strong> при этом пропадет автосгенерированная форма, т.к. она не выбрана по умолчанию в типе данных.</p>
+<p>И добавлена созданная вручную, для которой доступны и редактирование, и удаление:</p>
+<a class="reference internal image-reference" href="../_images/auto_16.png"><img alt="../_images/auto_16.png" class="align-center" src="../_images/auto_16.png" style="width: 600px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Проверим – при создании заявления на отпуск инициатором автоматически проставляется текущий пользователь:</p>
+<a class="reference internal image-reference" href="../_images/auto_17.png"><img alt="../_images/auto_17.png" class="align-center" src="../_images/auto_17.png" style="width: 700px;" /></a>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="ecos_applications.html" class="btn btn-neutral float-left" title="ECOS Приложения" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="Aspects.html" class="btn btn-neutral float-right" title="Аспекты" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

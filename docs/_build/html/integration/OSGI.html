@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Функционал загрузки OSGI пакетов &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции" href="Filesystem%20Export.html" />
+    <link rel="prev" title="Создание новых источников записей через Web интерфейс" href="records%20sources.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Функционал загрузки OSGI пакетов</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Пример создания бандла</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1. Сборка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2. Активатор</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3. Загрузка в микросервис</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Способы расширения микросервиса интеграций с помощью бандлов</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recordsdao">1. Регистрация своего RecordsDao</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2. Регистрация новых команд</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camel">3. Возможность работы с camel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#endpoint">4. Регистрация нового endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Особенности</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+      <li>Функционал загрузки OSGI пакетов</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integration/OSGI.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="osgi">
+<span id="id1"></span><h1>Функционал загрузки OSGI пакетов<a class="headerlink" href="#osgi" title="Ссылка на этот заголовок"></a></h1>
+<p>Начиная с версии 1.16.0 в микросервис была добавлена возможность загружать кастомный код, реализованный согласно спецификации <strong>OSGI</strong> для пакетов. Это позволяет расширять микросервис без изменения базового функционала.</p>
+<p>Загрузка самих пакетов производится через журнал <strong>“OSGI пакеты”</strong> в системных журналах. Чтобы загрузить пакет, переходим в этот журнал и нажимаем кнопку создания. Появляется модальное окно с предложением загрузки файла. Подкладываем туда свой скомпилированный jar файл и нажимаем <strong>“Создать”</strong>. Пакет загружен и проинсталлирован, если никаких проблем при инсталляции не возникло. В самом журнале всегда можно найти актуальный статус пакета, имя загруженного файла, символическое имя пакета, а так же, скачать сам jar файл пакета.</p>
+<p>Что доступно “из коробки” при реализации нового пакета:</p>
+<ul class="simple">
+<li><p><strong>ApplicationContext ecos-integrations</strong> микросервиса, но просто так с ним работать не получится, потому что пакеты не могут “переварить” зависимость от spring библиотек, поэтому в библиотеке <strong>ecos-osgi-loader</strong> была реализована обертка, принимающая в себя объект <strong>ApplicationContext</strong> и позволяющая получать из него бины</p></li>
+</ul>
+<p>Полезные ссылки для реализации OSGI пакетов:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://java-online.ru/osgi.xhtml">http://java-online.ru/osgi.xhtml</a> – Описание работы OSGI с подробными примерами реализации самих пакетов</p></li>
+<li><p><a class="reference external" href="https://felix.apache.org/">https://felix.apache.org/</a>  – Официальный сайт фреймворка Apache Felix, который был использован в качестве реализации спецификации OSGI</p></li>
+<li><p><a class="reference external" href="https://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html">https://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html</a> – Более подробное описание работы с плагином для создания OSGI пакетов.</p></li>
+</ol>
+<p>При реализации пакетов можно не прописывать пакеты <strong>Felix</strong> и <strong>OSGI Core</strong> в свои проекты, а просто добавить зависимость на ecos-osgi-loader. Все необходимые библиотеки OSGI придут оттуда, как и обертка для работы с <strong>ApplicationContext</strong>.</p>
+<p>Версия плагина для сборки пакетов: 5.1.1</p>
+<p>Пример настроенного плагина:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;plugin&gt;
+    &lt;groupId&gt;org.apache.felix&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-bundle-plugin&lt;/artifactId&gt;
+    &lt;version&gt;5.1.1&lt;/version&gt;
+    &lt;extensions&gt;true&lt;/extensions&gt;
+    &lt;configuration&gt;
+        &lt;instructions&gt;
+            &lt;Bundle-SymbolicName&gt;${project.groupId}.test-spring-bundle&lt;/Bundle-SymbolicName&gt;
+            &lt;Bundle-Name&gt;${project.name}&lt;/Bundle-Name&gt;
+            &lt;Bundle-Version&gt;${project.version}&lt;/Bundle-Version&gt;
+            &lt;Bundle-Activator&gt;${project.groupId}.TestSpringAppActivator&lt;/Bundle-Activator&gt;
+            &lt;Import-Package&gt;org.osgi.framework.*&lt;/Import-Package&gt;
+            &lt;Export-Package&gt;org.apache.*, org.slf4j.*, ru.citeck.*, lombok.*&lt;/Export-Package&gt;
+        &lt;/instructions&gt;
+    &lt;/configuration&gt;
+&lt;/plugin&gt;
+</pre></div>
+</div>
+<section id="id2">
+<h2>Пример создания бандла<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>В данной статье будет рассмотрено пошаговое создание бандла, а так же внедрение этого бандла в микросервис интеграций.</p>
+<p>Пример, на котором рассмотрим - <a class="reference external" href="https://gitlab.citeck.ru/citeck-projects/ecos-edi-kontur-lib/-/tree/develop">ecos-edi-kontur-lib</a></p>
+<section id="id3">
+<h3>1. Сборка<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h3>
+<p><strong>Бандл</strong> -  стандартный <strong>jar файл</strong> с добавлением в него <strong>MANIFEST.MF</strong> файла.</p>
+<p>Чтобы получить подобную сборку, делаем следующее:</p>
+<p>1.1. Указываем <strong>packaging</strong> свойство в <strong>pom.xml</strong> в значение <strong>bundle</strong>. Пример с контекстом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">project</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
+        <span class="n">xmlns</span><span class="p">:</span><span class="n">xsi</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+        <span class="n">xsi</span><span class="p">:</span><span class="n">schemaLocation</span><span class="o">=</span><span class="s2">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span><span class="o">&gt;</span>
+<span class="o">...</span>
+    <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">ecos</span><span class="o">-</span><span class="n">edi</span><span class="o">-</span><span class="n">kontur</span><span class="o">-</span><span class="n">lib</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.2.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">packaging</span><span class="o">&gt;</span><span class="n">bundle</span><span class="o">&lt;/</span><span class="n">packaging</span><span class="o">&gt;</span>
+<span class="o">...</span>
+<span class="o">&lt;/</span><span class="n">project</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>1.2. Указываем в области <strong>build</strong> следующий плагин (у меня получился довольно большой объем):</p>
+<p>Тут стоит остановиться поподробнее на настройке этого плагина. Bundle имеет свой <strong>ClassLoader</strong>, зависящий от других бандлов. Для него не свойственны правила наследования ClassLoader’ов в Java. По этой причине, чтобы класс из какой-то либы был доступен в вашем бандле - его надо импортировать (а другой бандл, соответственно, должен его экспортировать). Если импорта не будет - произойдет <strong>ClassNotFoundException</strong> или <strong>NoClassDefFoundError</strong> в рантайме (в зависимости от контекста запроса к классу). Если импорт будет, но подобная зависимость не может быть найдена в фреймворке из других бандлов (ни один не экспортировал) - будет исключение о том, разрешения зависимостей (wiring) при старте бандла.</p>
+<p>По комментариям в xml должно быть понятно что есть что. Опишу некоторые подводные камни.</p>
+<p>Бывает ситуация, когда бандл при старте будет жаловаться на отсутствие зависимости, но вы только что загрузили эту зависимость в другом бандле (или эта зависимость есть в системном бандле). Данная проблема может быть из-за того, что зависимость экспортировалась без версии (или со стандартной версией <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>) из-за отсутствия этой информации в рантайме при экспорте, а импорт требует, например, <code class="docutils literal notranslate"><span class="pre">25.1.0</span></code>. Примером решения подобной проблемы - может быть указание минимальной поддерживаемой версии самостоятельно в манифесте. Для этого, вместо строки в импорте <code class="docutils literal notranslate"><span class="pre">com.google.common.*</span></code> пишем следующее: <code class="docutils literal notranslate"><span class="pre">com.google.common.*;</span> <span class="pre">version=&quot;[1.0,26.0)&quot;</span></code> , что означает, что мы будем рады любой версии от 1.0.0 до 26.0.</p>
+<p>1.3. Сама сборка после предыдущих приготовлений выполняется стандартной командой <code class="docutils literal notranslate"><span class="pre">mvn</span> <span class="pre">clean</span> <span class="pre">package</span> <span class="pre">(install|deploy)</span></code></p>
+</section>
+<section id="id4">
+<h3>2. Активатор<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<p><strong>Активатор</strong> - аналог main метода для бандла. Он вызывается при старте бандла и при его остановке (методы start и stop).</p>
+<p>Либа из примера, используется для того, чтоб создать объекты, зарегистрировать их в микросервисе. Под регистрацией тут подразумевается - добавление по ключу <strong>KONTUR</strong> сервиса обработки событий <strong>Diadoc</strong> и <strong>Kontur.EDI</strong>. Таким образом, подключив бандл - можем пользоваться обработкой событий (и прочими фишками библиотеки) из микросервиса.</p>
+</section>
+<section id="id5">
+<h3>3. Загрузка в микросервис<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<p>Заходим в <strong>системные журналы → Журнал OSGI пакеты</strong>. Загружаем через кнопку + свой бандл.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/OSGI_1.png"><img alt="../_images/OSGI_1.png" class="align-center" src="../_images/OSGI_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Если все ок, увидим следующую картину:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/OSGI_2.png"><img alt="../_images/OSGI_2.png" class="align-center" src="../_images/OSGI_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Важный факт, что статус - <strong>ACTIVE</strong>, это означает, что бандл зарезолвен, установлен и фреймворк его успешно стартанул.</p>
+<p>Если есть ошибка загрузки - необходимо корректировать либо код, либо настройки бандла (импорт и экспорт).</p>
+<p>Обязательно проверьте, что в рантайме нет ошибок при работе бандла. Как писалось выше, отсутствующие импорты могут привести к ошибкам рантайма.</p>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<p>Если вы получили ошибку, поправили бандл, загружаете новый бандл и получаете эту же ошибку - сделайте рестарт микросервиса интеграций после каждого неудачного старта бандла.</p>
+</div>
+</section>
+</section>
+<section id="id6">
+<h2>Способы расширения микросервиса интеграций с помощью бандлов<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<section id="recordsdao">
+<h3>1. Регистрация своего RecordsDao<a class="headerlink" href="#recordsdao" title="Ссылка на этот заголовок"></a></h3>
+<p>Подготовительная часть - импортировать зависимости records с помощью maven в своем бандле.</p>
+<p>Импортировать пакеты в бандл (в конфиге):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kotlin</span><span class="o">.*</span><span class="p">,</span>
+<span class="n">ecos</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">fasterxml</span><span class="o">.</span><span class="n">jackson210</span><span class="o">.*</span><span class="p">,</span>
+<span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">.</span><span class="n">records2</span><span class="o">.*</span><span class="p">,</span>
+<span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">.</span><span class="n">records3</span><span class="o">.*</span><span class="p">,</span>
+<span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">.</span><span class="n">commons</span><span class="o">.*</span>
+</pre></div>
+</div>
+<p>Дальше - написать <code class="docutils literal notranslate"><span class="pre">RecordsDao</span></code> под свои потребности.</p>
+<p>После написания - в <code class="docutils literal notranslate"><span class="pre">BundleActivator</span></code> можно получить с помощью <code class="docutils literal notranslate"><span class="pre">ApplicationContextReflection</span></code> бин класса <code class="docutils literal notranslate"><span class="pre">RecordsService</span></code> и вызываем у него метод <strong>register</strong>, передав свой <code class="docutils literal notranslate"><span class="pre">RecordsDao</span></code>.</p>
+<p>Теперь, запросы по указанному <strong>sourceId</strong> будут попадать в ваш <code class="docutils literal notranslate"><span class="pre">RecordsDao</span></code>.</p>
+</section>
+<section id="id7">
+<h3>2. Регистрация новых команд<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<p>Подготовительная часть - импортировать зависимости commands с помощью maven в своем бандле.</p>
+<p>Импортировать пакеты в бандл (в конфиге):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ecos</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">fasterxml</span><span class="o">.</span><span class="n">jackson210</span><span class="o">.*</span><span class="p">,</span>
+<span class="n">kotlin</span><span class="o">.*</span><span class="p">,</span>
+<span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">.</span><span class="n">commons</span><span class="o">.*</span><span class="p">,</span>
+<span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">.</span><span class="n">commands</span><span class="o">.*</span>
+</pre></div>
+</div>
+<p>Дальше объявить свою <code class="docutils literal notranslate"><span class="pre">CommandDto</span></code>, указать аннотацией <code class="docutils literal notranslate"><span class="pre">&#64;CommandType</span></code> тип для нее. Создать <code class="docutils literal notranslate"><span class="pre">CommandExecutor</span></code> для этой dto.</p>
+<p>После написания - в <code class="docutils literal notranslate"><span class="pre">BundleActivator</span></code> можно получить с помощью <code class="docutils literal notranslate"><span class="pre">ApplicationContextReflection</span></code> бин класса <code class="docutils literal notranslate"><span class="pre">CommandsService</span></code> и вызвать у него метод <strong>addExecutor</strong>, передав свою реализацию <code class="docutils literal notranslate"><span class="pre">CommandExecutor</span></code>.</p>
+<p>Теперь, команды с указанным типом будут попадать в ваш <strong>CommandExecutor</strong>.</p>
+</section>
+<section id="camel">
+<h3>3. Возможность работы с camel<a class="headerlink" href="#camel" title="Ссылка на этот заголовок"></a></h3>
+<p>В основном пока что это используется для ЭДО-интеграций, но бывает проще использовать camel для некоторых вещей.</p>
+<p>Чтобы его использовать - добавить зависимости camel, которые нужны с помощью maven в своем бандле.</p>
+<p>Импортировать пакеты в бандл (в конфиге):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">camel</span><span class="o">.*</span>
+</pre></div>
+</div>
+<p>Дальше - в <code class="docutils literal notranslate"><span class="pre">BundleActivator</span></code> создать <code class="docutils literal notranslate"><span class="pre">DefaultCamelContext</span></code>. Добавить в него необходимые маршруты. Запустить контекст.</p>
+<p>Теперь у вас работает Camel в вашем бандле. Camel позволяет не только в рамках контекста обмениваться сообщениями, но и в рамках JVM, что может быть особенно полезно (direct-vm компонент).</p>
+<p>Пока что возможности Camel вроде динамичного добавления ендпоинтов и тд не тестировались, но до кролика или иного сервиса (исходящий запрос) - очень даже удобно ходить.</p>
+</section>
+<section id="endpoint">
+<h3>4. Регистрация нового endpoint<a class="headerlink" href="#endpoint" title="Ссылка на этот заголовок"></a></h3>
+<p>Добавляем зависимость:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="n">springframework</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">spring</span><span class="o">-</span><span class="n">webmvc</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">5.0.12</span><span class="o">.</span><span class="n">RELEASE</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">scope</span><span class="o">&gt;</span><span class="n">provided</span><span class="o">&lt;/</span><span class="n">scope</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Добавляем в импорт пакеты:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">org</span><span class="o">.</span><span class="n">springframework</span><span class="o">.</span><span class="n">web</span><span class="o">.*</span><span class="p">,</span>
+<span class="n">org</span><span class="o">.</span><span class="n">springframework</span><span class="o">.</span><span class="n">http</span><span class="o">.*</span>
+</pre></div>
+</div>
+<p>В бандле создаем класс(ы) содержащий(ие) методы для обработки запросов.</p>
+<p>Возможные варианты реализации такого метода - использование <a class="reference external" href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/RequestEntity.html">RequestEnitity</a>, <a class="reference external" href="https://www.baeldung.com/spring-response-entity">ResponseEntity</a>, использование <a class="reference external" href="https://www.baeldung.com/spring-request-response-body">&#64;RequestBody</a>, <a class="reference external" href="https://www.logicbig.com/tutorials/spring-framework/spring-web-mvc/request-response-entity.html">пример</a>.  Также методы могут принимать переменные пути запроса <a class="reference external" href="https://www.baeldung.com/spring-pathvariable">&#64;PathVariable</a> и переменные заголовка <a class="reference external" href="https://www.baeldung.com/spring-rest-http-headers">&#64;RequestHeader</a>.</p>
+<p>В <code class="docutils literal notranslate"><span class="pre">start</span></code> методе активатора при помощи <code class="docutils literal notranslate"><span class="pre">ApplicationContextReflection</span></code> получаем <code class="docutils literal notranslate"><span class="pre">RequestMappingHandlerMapping</span></code>, настраиваем <code class="docutils literal notranslate"><span class="pre">RequestMappingInfo.BuilderConfiguration</span></code>, создаем <code class="docutils literal notranslate"><span class="pre">RequestMappingInfo</span></code> и регистрируем его в  <code class="docutils literal notranslate"><span class="pre">RequestMappingHandlerMapping</span></code>. Пример для регистрации нового endpoint <code class="docutils literal notranslate"><span class="pre">&quot;ecos/message&quot;</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RequestMappingHandlerMapping</span> <span class="n">requestMappingHandlerMapping</span> <span class="o">=</span> <span class="n">ApplicationContextReflection</span><span class="o">.</span><span class="n">getBean</span><span class="p">(</span><span class="n">RequestMappingHandlerMapping</span><span class="o">.</span><span class="n">class</span><span class="p">);</span>
+<span class="n">handlerMapping</span> <span class="o">=</span> <span class="p">(</span><span class="n">AbstractHandlerMethodMapping</span><span class="p">)</span> <span class="n">requestMappingHandlerMapping</span><span class="p">;</span>
+
+<span class="n">RequestMappingInfo</span><span class="o">.</span><span class="n">BuilderConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RequestMappingInfo</span><span class="o">.</span><span class="n">BuilderConfiguration</span><span class="p">();</span>
+<span class="n">config</span><span class="o">.</span><span class="n">setUrlPathHelper</span><span class="p">(</span><span class="n">requestMappingHandlerMapping</span><span class="o">.</span><span class="n">getUrlPathHelper</span><span class="p">());</span>
+<span class="n">config</span><span class="o">.</span><span class="n">setPathMatcher</span><span class="p">(</span><span class="n">requestMappingHandlerMapping</span><span class="o">.</span><span class="n">getPathMatcher</span><span class="p">());</span>
+<span class="n">config</span><span class="o">.</span><span class="n">setSuffixPatternMatch</span><span class="p">(</span><span class="n">requestMappingHandlerMapping</span><span class="o">.</span><span class="n">useSuffixPatternMatch</span><span class="p">());</span>
+<span class="n">config</span><span class="o">.</span><span class="n">setTrailingSlashMatch</span><span class="p">(</span><span class="n">requestMappingHandlerMapping</span><span class="o">.</span><span class="n">useTrailingSlashMatch</span><span class="p">());</span>
+<span class="n">config</span><span class="o">.</span><span class="n">setRegisteredSuffixPatternMatch</span><span class="p">(</span><span class="n">requestMappingHandlerMapping</span><span class="o">.</span><span class="n">useRegisteredSuffixPatternMatch</span><span class="p">());</span>
+<span class="n">config</span><span class="o">.</span><span class="n">setContentNegotiationManager</span><span class="p">(</span><span class="n">requestMappingHandlerMapping</span><span class="o">.</span><span class="n">getContentNegotiationManager</span><span class="p">());</span>
+
+<span class="n">RequestMappingInfo</span><span class="o">.</span><span class="n">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">RequestMappingInfo</span>
+                <span class="o">.</span><span class="n">paths</span><span class="p">(</span><span class="s2">&quot;ecos/message&quot;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">methods</span><span class="p">(</span><span class="n">RequestMethod</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">consumes</span><span class="p">(</span><span class="n">MediaType</span><span class="o">.</span><span class="n">APPLICATION_JSON_VALUE</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">produces</span><span class="p">(</span><span class="n">MediaType</span><span class="o">.</span><span class="n">APPLICATION_JSON_VALUE</span><span class="p">);</span>
+
+<span class="n">RequestMappingInfo</span> <span class="n">requestMappingInfo</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">();</span>
+<span class="n">handlerMapping</span><span class="o">.</span><span class="n">registerMapping</span><span class="p">(</span><span class="n">requestMappingInfo</span><span class="p">,</span> <span class="n">controller</span><span class="p">,</span> <span class="n">DocumentController</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">getDeclaredMethod</span><span class="p">(</span><span class="s2">&quot;postLoad&quot;</span><span class="p">,</span> <span class="n">String</span><span class="o">.</span><span class="n">class</span><span class="p">,</span> <span class="n">CreateDocsRequest</span><span class="o">.</span><span class="n">class</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>В методе <code class="docutils literal notranslate"><span class="pre">stop</span></code> предусматриваем отключение endpoint при помощи вызова <code class="docutils literal notranslate"><span class="pre">handlerMapping.unregisterMapping(info)</span></code>.</p>
+<p>Для изменения записей в ECOS можно использовать <code class="docutils literal notranslate"><span class="pre">RecordsService</span></code>. Есть следующие особенности при работе с сервисом через DTO:</p>
+<ul class="simple">
+<li><p>Создание ObjectData из DTO-объекта:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ObjectData</span> <span class="n">targetAttributesData</span> <span class="o">=</span> <span class="n">ObjectData</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">dtoObject</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Для использования псевдонима в свойствах можно использовать <code class="docutils literal notranslate"><span class="pre">ecos.com.fasterxml.jackson210.annotation.JsonProperty</span></code></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@JsonProperty</span><span class="p">(</span><span class="s2">&quot;nsdb_author&quot;</span><span class="p">)</span>
+<span class="n">private</span> <span class="n">String</span> <span class="n">author</span><span class="p">;</span>
+<span class="o">...</span>
+<span class="n">ObjectData</span> <span class="n">targetAttributesData</span> <span class="o">=</span> <span class="n">ObjectData</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">dtoObject</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Свойство с типом <code class="docutils literal notranslate"><span class="pre">ASSOC:</span> <span class="pre">private</span> <span class="pre">RecordRef</span> <span class="pre">nsdb_counterparty</span></code></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ObjectData</span> <span class="n">targetAttributesData</span> <span class="o">=</span> <span class="n">ObjectData</span><span class="o">.</span><span class="n">create</span><span class="p">();</span>
+<span class="n">targetAttributesData</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;nsdb_counterparty&quot;</span><span class="p">,</span> <span class="n">assocRecordRef</span><span class="p">);</span>
+<span class="n">RecordAtts</span> <span class="n">recordAtts</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RecordAtts</span><span class="p">(</span><span class="n">targetRecordRef</span><span class="p">,</span> <span class="n">targetAttributesData</span><span class="p">);</span>
+<span class="n">RecordRef</span> <span class="n">result</span> <span class="o">=</span> <span class="n">recordsService</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="n">recordAtts</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Свойство с типом <code class="docutils literal notranslate"><span class="pre">CONTENT:</span> <span class="pre">private</span> <span class="pre">ObjectData</span> <span class="pre">nsdb_content</span></code></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ObjectData</span> <span class="n">contentData</span> <span class="o">=</span> <span class="n">ObjectData</span><span class="o">.</span><span class="n">create</span><span class="p">();</span>
+<span class="n">contentData</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;mimetype&quot;</span><span class="p">,</span> <span class="s2">&quot;application/xml&quot;</span><span class="p">);</span>
+<span class="n">contentData</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;filename&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">);</span>
+<span class="n">contentData</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;base64content&quot;</span><span class="p">,</span> <span class="n">base64content</span><span class="o">.</span><span class="n">getBytes</span><span class="p">());</span>
+<span class="n">nsdb_content</span> <span class="o">=</span> <span class="n">contentData</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Возможные свойства для установки <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.records.source.alf.file.FileRepresentation</span></code></p>
+<ul class="simple">
+<li><p>Ссылка на родителя из ASSOC</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@AttName</span><span class="p">(</span><span class="s2">&quot;_parent?id&quot;</span><span class="p">)</span>
+<span class="n">RecordRef</span> <span class="n">parentRef</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Объявление свойства, которое базируется на атрибуте типа с двоеточием (cm:name, idocs:inn)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@AttName</span><span class="p">(</span><span class="s2">&quot;idocs:inn&quot;</span><span class="p">)</span>
+<span class="n">private</span> <span class="n">String</span> <span class="n">inn</span><span class="p">;</span>
+<span class="nd">@AttName</span><span class="p">(</span><span class="s2">&quot;idocs:fullOrganizationName&quot;</span><span class="p">)</span>
+<span class="n">private</span> <span class="n">String</span> <span class="n">organizationName</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Указание определенного alfresco-типа для родителя при создании записи</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">targetAttributesData</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">AlfNodeRecord</span><span class="o">.</span><span class="n">ATTR_TYPE</span><span class="p">,</span> <span class="s2">&quot;dl:dataListItem&quot;</span><span class="p">);</span>
+<span class="n">RecordAtts</span> <span class="n">recordAtts</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RecordAtts</span><span class="p">(</span><span class="n">targetRecordRef</span><span class="p">,</span> <span class="n">targetAttributesData</span><span class="p">);</span>
+<span class="n">RecordRef</span> <span class="n">result</span> <span class="o">=</span> <span class="n">recordsService</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="n">recordAtts</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>где <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.records.source.alf.meta.AlfNodeRecord.ATTR_TYPE</span> <span class="pre">=</span> <span class="pre">“type“</span></code></p>
+<ul class="simple">
+<li><p>Указать определенный тип связи между родителем и дочерней записью</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">targetAttributesData</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">RecordConstants</span><span class="o">.</span><span class="n">ATT_PARENT_ATT</span><span class="p">,</span> <span class="s2">&quot;icase:documents&quot;</span><span class="p">);</span>
+<span class="n">RecordAtts</span> <span class="n">recordAtts</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RecordAtts</span><span class="p">(</span><span class="n">targetRecordRef</span><span class="p">,</span> <span class="n">targetAttributesData</span><span class="p">);</span>
+<span class="n">RecordRef</span> <span class="n">result</span> <span class="o">=</span> <span class="n">recordsService</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="n">recordAtts</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>где <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.records2.RecordConstants.ATT_PARENT_ATT</span> <span class="pre">=</span> <span class="pre">“_parentAtt“;</span></code></p>
+<p>Тестирование работоспособности методов можно проверить, реализовав в тесте интерфейсы <code class="docutils literal notranslate"><span class="pre">RecordMutateDao</span></code>, <code class="docutils literal notranslate"><span class="pre">RecordAttsDao</span></code>, <code class="docutils literal notranslate"><span class="pre">RecordsQueryDao</span></code> и имитировав работу <code class="docutils literal notranslate"><span class="pre">RecordsService</span></code>, например:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RecordsServiceFactory</span> <span class="n">recordsServiceFactory</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RecordsServiceFactory</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="n">protected</span> <span class="n">RecordsProperties</span> <span class="n">createProperties</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">RecordsProperties</span> <span class="n">properties</span> <span class="o">=</span> <span class="nb">super</span><span class="o">.</span><span class="n">createProperties</span><span class="p">();</span>
+            <span class="n">properties</span><span class="o">.</span><span class="n">setAppInstanceId</span><span class="p">(</span><span class="s2">&quot;162037&quot;</span><span class="p">);</span>
+            <span class="n">properties</span><span class="o">.</span><span class="n">setAppName</span><span class="p">(</span><span class="s2">&quot;alfresco&quot;</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">properties</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="n">recordsServiceFactory</span><span class="o">.</span><span class="n">getRecordsServiceV1</span><span class="p">()</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">this</span><span class="p">);</span>
+<span class="n">RecordsService</span> <span class="n">recordsService</span> <span class="o">=</span> <span class="n">recordsServiceFactory</span><span class="o">.</span><span class="n">getRecordsServiceV1</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>где <strong>this</strong> реализует <code class="docutils literal notranslate"><span class="pre">RecordMutateDao</span></code>, <code class="docutils literal notranslate"><span class="pre">RecordsQueryDao</span></code>.</p>
+</section>
+<section id="id9">
+<h3>Особенности<a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h3>
+<p>Одновременное использование аннотаций JsonProperty и AttName приводит к тому, что при чтении DTO из RecordsService свойство не заполняется.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@JsonProperty</span><span class="p">(</span><span class="s2">&quot;nsdb_author&quot;</span><span class="p">)</span>
+<span class="nd">@AttName</span><span class="p">(</span><span class="s2">&quot;nsdb_author&quot;</span><span class="p">)</span>
+<span class="n">private</span> <span class="n">String</span> <span class="n">author</span><span class="p">;</span>
+<span class="o">...</span>
+<span class="n">RecsQueryRes</span><span class="o">&lt;</span><span class="n">Dto</span><span class="o">&gt;</span> <span class="n">docRes</span> <span class="o">=</span> <span class="n">recordsService</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">Dto</span><span class="o">.</span><span class="n">class</span><span class="p">);</span>
+<span class="o">...</span>
+<span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">queryResultDto</span><span class="o">.</span><span class="n">getAuthor</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>Выведет на консоль null.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="records%20sources.html" class="btn btn-neutral float-left" title="Создание новых источников записей через Web интерфейс" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="Filesystem%20Export.html" class="btn btn-neutral float-right" title="Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

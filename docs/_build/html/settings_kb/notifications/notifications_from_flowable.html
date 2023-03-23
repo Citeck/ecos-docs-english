@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Отправка уведомлений из flowable &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Отправка уведомлений из Ecos BPMN (Camunda)" href="notifications_from_ecos_bpmn.html" />
+    <link rel="prev" title="Массовая рассылка" href="notifications_bulk_mail.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interface.html">Интерфейс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../notifications.html">Уведомления</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="notifications.html">Уведомления</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_template.html">Шаблоны уведомлений</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_bulk_mail.html">Массовая рассылка</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Отправка уведомлений из flowable</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1. Общие сведения</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mail-task">2. Пример отправки из mail task</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_from_ecos_bpmn.html">Отправка уведомлений из Ecos BPMN (Camunda)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_firebase_push.html">Push уведомления (firebase)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_commands.html">Отправка уведомлений через команду</a></li>
+<li class="toctree-l3"><a class="reference internal" href="senders.html">Отправители</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../notifications.html">Уведомления</a> &raquo;</li>
+      <li>Отправка уведомлений из flowable</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/settings_kb/notifications/notifications_from_flowable.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="flowable">
+<h1><a class="toc-backref" href="#id5">Отправка уведомлений из flowable</a><a class="headerlink" href="#flowable" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#flowable" id="id5">Отправка уведомлений из flowable</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id6">1. Общие сведения</a></p></li>
+<li><p><a class="reference internal" href="#mail-task" id="id7">2. Пример отправки из mail task</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id2">
+<h2><a class="toc-backref" href="#id6">1. Общие сведения</a><a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Для отправки уведомлений через микросервис нотификаций была доработана стандартная активность “Mail Task”.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>При этом осталась поддержка стандартных уведомлений flowable. Если в mail task заполнено поле <code class="docutils literal notranslate"><span class="pre">template</span></code>, то отправка осуществляется через микросервис нотификаций по указанному шаблону, иначе - через стандартынй механизм flowable с использованием стандартных полей.</p>
+</div>
+<p>В mail task были добавлены поля:</p>
+<dl class="field-list simple">
+<dt class="field-odd">template</dt>
+<dd class="field-odd"><p>RecordRef шаблона уведомления из микросервиса нотификаций. Здесь необходимо указывать полный recordRef, например - <code class="docutils literal notranslate"><span class="pre">notifications/template&#64;simple-test-template</span></code></p>
+</dd>
+<dt class="field-even">html</dt>
+<dd class="field-even"><p>Стандартное поле, которые не актуально при указании template, но его нужно обязательно заполнить, иначе flowable не даст сохранить шаблон процесса. Например, можно заполнить символом <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p>
+</dd>
+<dt class="field-odd">charset</dt>
+<dd class="field-odd"><p>Стандартное поле, заполнить значением <code class="docutils literal notranslate"><span class="pre">UTF-8</span></code></p>
+</dd>
+<dt class="field-even">language</dt>
+<dd class="field-even"><p>Указывается язык шаблона уведомления в формате <code class="docutils literal notranslate"><span class="pre">ru</span></code>, <code class="docutils literal notranslate"><span class="pre">en</span></code> и т.д. Если язык не указан, то берется язык по умолчанию, который определяется свойством <code class="docutils literal notranslate"><span class="pre">notifications.default.locale</span></code> в alfresco-global.properties, изначально - <code class="docutils literal notranslate"><span class="pre">en</span></code>.</p>
+</dd>
+<dt class="field-odd">record</dt>
+<dd class="field-odd"><p>Базовый record для заполнения шаблона. Если в этом поле ничего не указано, то берется документ, по которому запущен бизнес процесс из переменной процесса <code class="docutils literal notranslate"><span class="pre">document</span></code></p>
+</dd>
+<dt class="field-even">notificationtype</dt>
+<dd class="field-even"><p>Тип уведомления. Если поле не заполнено, то тип = <code class="docutils literal notranslate"><span class="pre">EMAIL_NOTIFICATION</span></code></p>
+</dd>
+<dt class="field-odd">additionalmeta</dt>
+<dd class="field-odd"><p>Описание дополнительной мета информации в виде json: <br> <em>ключ (string)</em> - по ключу становится доступна информация в модели шаблона уведомления. <br> <em>значение (object)</em> - если в значении передана строка и начинается с префикса <code class="docutils literal notranslate"><span class="pre">!str_</span></code>, то символы после префикса записываются как строка, иначе строка считается как recordRef. Если в значение передан тип объекта, отличный от string, то он записывается явно.</p>
+</dd>
+</dl>
+<p>Например, если в <code class="docutils literal notranslate"><span class="pre">additionalmeta</span></code> добавить информацию:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;admin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;people@admin&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;!str_bar&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>То в модели шаблона уведомления можно будет получить доступ к значениям:</p>
+<a class="reference internal image-reference" href="../../_images/notifications_from_flowable_additional_meta.png"><img alt="../../_images/notifications_from_flowable_additional_meta.png" class="align-center" src="../../_images/notifications_from_flowable_additional_meta.png" style="width: 600px;" /></a>
+<p>При обработке шаблона - <code class="docutils literal notranslate"><span class="pre">${adminFio}</span></code> выведет <em>.disp</em> для <em>admin</em>, <code class="docutils literal notranslate"><span class="pre">${foo}</span></code> выведет <em>bar</em></p>
+<p>Пользователи, у которых установлен атрибут <strong>ecos:isPersonDisabled = true</strong>, отфильтровываются, и email сообщения им не отправляются. Актуально для версий: ecos-com:4.9.15, ecos-com:4.11.4 и ecos-com:4.15.0+</p>
+</section>
+<section id="mail-task">
+<h2><a class="toc-backref" href="#id7">2. Пример отправки из mail task</a><a class="headerlink" href="#mail-task" title="Ссылка на этот заголовок"></a></h2>
+<ol class="arabic simple">
+<li><p>Создаем шаблон уведомления</p></li>
+</ol>
+<p>С информаций:</p>
+<p><strong>id</strong> = “simple-test-template“</p>
+<p><strong>Notification Title</strong> = Тестовое письмо - ${title}</p>
+<p><strong>Model</strong> = <br>
+title - .disp <br>
+created - cm:created <br>
+adminFio - $admin <br>
+fooValue - $foo</p>
+<p><strong>template content</strong></p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">ru</span><a class="headerlink" href="#id3" title="Постоянная ссылка на код"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Привет! Это тестовое письмо. &lt;br&gt;
+Документ: ${title}, дата создания: ${created} &lt;br&gt;
+Имя администратора: ${adminFio} &lt;br&gt;
+Foo ${fooValue}
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">en</span><a class="headerlink" href="#id4" title="Постоянная ссылка на код"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello! Its test email. &lt;br&gt;
+Document: ${title}, created: ${created} &lt;br&gt;
+Admin name: ${adminFio} &lt;br&gt;
+Foo ${fooValue}
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Создаем процесс flowable</p></li>
+</ol>
+<p>Создадим простой flowable процесс с id <code class="docutils literal notranslate"><span class="pre">simple-test-template</span></code>, состоящий из отправки одного емейла.</p>
+<a class="reference internal image-reference" href="../../_images/notifications_from_flowable_process.png"><img alt="../../_images/notifications_from_flowable_process.png" class="align-center" src="../../_images/notifications_from_flowable_process.png" style="width: 600px;" /></a>
+<p>Заполним mail task следующими значениями:</p>
+<p><strong>template</strong> - <a class="reference external" href="mailto:notifications/template&#37;&#52;&#48;simple-test-template">notifications/template<span>&#64;</span>simple-test-template</a></p>
+<p><strong>html</strong> - “_“.</p>
+<p><strong>language</strong> - оставим пустым.</p>
+<p><strong>record</strong> - оставим пустым.</p>
+<p><strong>notificationtype</strong> - оставим пустым</p>
+<p><strong>to</strong> - тестовый емейл, кому отправить уведомление</p>
+<p><strong>additionalmeta</strong> -</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="nt">&quot;admin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;people@admin&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;!str_bar&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Деплоим процесс в ecos</p></li>
+<li><p>Загрузим какой-нибудь файл в папку “Guest Home“</p></li>
+</ol>
+<p>Например, изображение с именем car_wood.jpg, по этому документу будет запускать процесс.</p>
+<ol class="arabic simple" start="5">
+<li><p>Запуск процесса</p></li>
+</ol>
+<p>Перейдём на страницу старта workflow - <a class="reference external" href="https://you-ecos-url.com/share/page/start-workflow?referrer=workflows&amp;myWorkflowsLinkBack=true">https://you-ecos-url.com/share/page/start-workflow?referrer=workflows&amp;myWorkflowsLinkBack=true</a> и выберем созданный процесс на этапе №2 с id - <code class="docutils literal notranslate"><span class="pre">simple-test-template</span></code>, в поле “Элементы“ выберем загруженный файл <code class="docutils literal notranslate"><span class="pre">car_wood.jpg</span></code> и нажмем “Начать бизнес процесс“</p>
+<ol class="arabic simple" start="6">
+<li><p>Получение уведомления</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/notifications_from_flowable_result_1.png"><img alt="../../_images/notifications_from_flowable_result_1.png" class="align-center" src="../../_images/notifications_from_flowable_result_1.png" style="width: 600px;" /></a>
+<p>Так как мы не указали language, то пришло уведомление из шаблона по умолчанию en.</p>
+<p>Вернемся в бизнес процесс flowable и в поле language поставим ru, сохраним и задеплоим новую версию, запустим бизнес процесс.</p>
+<p>Получим уведомление из шаблона ru:</p>
+<a class="reference internal image-reference" href="../../_images/notifications_from_flowable_result_2.png"><img alt="../../_images/notifications_from_flowable_result_2.png" class="align-center" src="../../_images/notifications_from_flowable_result_2.png" style="width: 600px;" /></a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="notifications_bulk_mail.html" class="btn btn-neutral float-left" title="Массовая рассылка" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="notifications_from_ecos_bpmn.html" class="btn btn-neutral float-right" title="Отправка уведомлений из Ecos BPMN (Camunda)" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

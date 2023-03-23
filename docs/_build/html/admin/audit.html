@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Аудит &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="How To" href="howto.html" />
+    <link rel="prev" title="Лицензии ECOS" href="license.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="docker-compose.html">Установка Citeck ECOS c помощью Docker-compose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_services.html">Сервисы Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Аутентификация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_authorities.html">Синхронизация Authorities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keycloak.html">ECOS KeyCloak Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keycloack_postman.html">Настройки аутентификации для работы с Records API из внешних систем</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Конфигурация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html">Лицензии ECOS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Аудит</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Доступные настройки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Пример настройки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Общий вид события</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Описание аудита</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Модель события аудита</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#errorinfo">Модель ErrorInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Типы событий</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entityref">Описание EntityRef</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Описание атрибутов для загрузки</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html">How To</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a> &raquo;</li>
+      <li>Аудит</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/audit.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><a class="toc-backref" href="#id11">Аудит</a><a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id11">Аудит</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id12">Доступные настройки</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id13">Пример настройки</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id14">Общий вид события</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id15">Описание аудита</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id7" id="id16">Модель события аудита</a></p></li>
+<li><p><a class="reference internal" href="#errorinfo" id="id17">Модель ErrorInfo</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id18">Типы событий</a></p>
+<ul>
+<li><p><a class="reference internal" href="#records-query-records" id="id19">records.query-records</a></p></li>
+<li><p><a class="reference internal" href="#records-get-records-atts" id="id20">records.get-records-atts</a></p></li>
+<li><p><a class="reference internal" href="#records-mutate-record" id="id21">records.mutate-record</a></p></li>
+<li><p><a class="reference internal" href="#records-delete-records" id="id22">records.delete-records</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#entityref" id="id23">Описание EntityRef</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id24">Описание атрибутов для загрузки</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Аудит (журнал событий)</strong> предназначен для ведения лог-файлов, в которые записываются события системы, а именно:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Поиск записей</p></li>
+<li><p>Получение атрибутов записей по их ID</p></li>
+<li><p>Изменение атрибутов или создание новой записи</p></li>
+<li><p>Удаление записей</p></li>
+</ul>
+</div></blockquote>
+<p>Запись о событии содержит заданный в настройках набор информации о событии.</p>
+<p>Основная логика аудита располагается в библиотеке <strong>ecos-audit-lib</strong>: <a class="reference external" href="https://gitlab.citeck.ru/citeck-projects/ecos-audit-lib">https://gitlab.citeck.ru/citeck-projects/ecos-audit-lib</a></p>
+<p>Аудит в ECOS настраивается через Spring-конфигурацию.</p>
+<p>Префикс конфигурации: ecos.webapp.audit</p>
+<section id="id3">
+<h2><a class="toc-backref" href="#id12">Доступные настройки</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enabled</span><span class="p">:</span> <span class="n">Boolean</span> <span class="o">//</span> <span class="n">включить</span> <span class="n">или</span> <span class="n">выключить</span> <span class="n">аудит</span><span class="o">.</span> <span class="n">По</span> <span class="n">умолчанию</span> <span class="n">false</span>
+<span class="n">pipelines</span><span class="p">:</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">PipelineProps</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">конфигурация</span> <span class="n">конвееров</span>
+<span class="n">outputs</span><span class="p">:</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">OutputProps</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">конфигурация</span> <span class="n">выходов</span>
+</pre></div>
+</div>
+<p>PipelineProps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enabled</span><span class="p">:</span> <span class="n">Boolean</span> <span class="o">//</span> <span class="n">включен</span> <span class="n">или</span> <span class="n">нет</span> <span class="n">конвеер</span><span class="o">.</span> <span class="n">По</span> <span class="n">умолчанию</span> <span class="n">true</span>
+<span class="nb">filter</span><span class="p">:</span> <span class="n">EcosAuditEventFilterProps</span> <span class="o">//</span> <span class="n">настройки</span> <span class="n">фильтрации</span>
+<span class="n">processors</span><span class="p">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">EcosAuditProcessorProps</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">процессоры</span>
+<span class="n">outputs</span><span class="p">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">выходы</span>
+</pre></div>
+</div>
+<p>EcosAuditEventFilterProps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">TypeFilter</span> <span class="o">//</span> <span class="n">фильтр</span> <span class="n">по</span> <span class="n">типу</span>
+<span class="n">authority</span><span class="p">:</span> <span class="n">AuthorityFilter</span> <span class="o">//</span> <span class="n">фильтр</span> <span class="n">по</span> <span class="n">текущему</span> <span class="n">пользователю</span>
+<span class="n">headers</span><span class="p">:</span> <span class="n">Predicate</span> <span class="o">//</span> <span class="n">фильтр</span> <span class="n">по</span> <span class="n">хидерам</span><span class="o">.</span> <span class="n">Предикат</span> <span class="n">задается</span> <span class="n">в</span> <span class="n">виде</span> <span class="n">строки</span><span class="o">.</span>
+<span class="n">eventData</span><span class="p">:</span> <span class="n">Predicate</span> <span class="o">//</span> <span class="n">фильтр</span> <span class="n">по</span> <span class="n">содержимому</span> <span class="n">события</span><span class="o">.</span> <span class="n">Предикат</span> <span class="n">задается</span> <span class="n">в</span> <span class="n">виде</span> <span class="n">строки</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>TypeFilter</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">includes</span><span class="p">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">обрабатывать</span> <span class="n">только</span> <span class="n">события</span> <span class="n">из</span> <span class="n">этого</span> <span class="n">списка</span>
+<span class="n">excludes</span><span class="p">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">исключить</span> <span class="n">обработку</span> <span class="n">событий</span> <span class="n">из</span> <span class="n">этого</span> <span class="n">списка</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>в includes и excludes для типов поддерживаются шаблоны. Тип события разбивается по символам “.“ на слова и дальше идет сопоставление с includes и excludes. Если в настройках встречается символ #, то он означает “любое количество слов включая 0”, символ * означает - одно любое слово.</p>
+</div>
+<p>AuthorityFilter</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">includes</span><span class="p">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">обрабатывать</span> <span class="n">только</span> <span class="n">события</span> <span class="n">от</span> <span class="n">пользователей</span><span class="p">,</span> <span class="n">ролей</span> <span class="n">и</span><span class="o">/</span><span class="n">или</span> <span class="n">групп</span> <span class="n">из</span> <span class="n">этого</span> <span class="n">списка</span>
+<span class="n">excludes</span><span class="p">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">исключать</span> <span class="n">события</span> <span class="n">от</span> <span class="n">пользователей</span><span class="p">,</span> <span class="n">ролей</span> <span class="n">и</span><span class="o">/</span><span class="n">или</span> <span class="n">групп</span> <span class="n">из</span> <span class="n">этого</span> <span class="n">списка</span>
+<span class="n">includeSystem</span><span class="p">:</span> <span class="n">Boolean</span> <span class="o">//</span> <span class="n">фиксировать</span> <span class="n">действия</span> <span class="n">системы</span><span class="o">.</span> <span class="n">По</span> <span class="n">умолчанию</span> <span class="n">false</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id13">Пример настройки</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ecos</span><span class="p">:</span>
+<span class="n">webapp</span><span class="p">:</span>
+    <span class="n">audit</span><span class="p">:</span>
+    <span class="n">enabled</span><span class="p">:</span> <span class="n">true</span>
+    <span class="n">pipelines</span><span class="p">:</span>
+        <span class="n">main</span><span class="p">:</span>
+        <span class="nb">filter</span><span class="p">:</span>
+            <span class="nb">type</span><span class="p">:</span>
+            <span class="n">includes</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;records.query-records&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;records.get-records-atts&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;records.mutate-record&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;records.delete-records&quot;</span>
+            <span class="p">]</span>
+            <span class="n">headers</span><span class="p">:</span> <span class="o">|</span>
+            <span class="p">{</span><span class="s2">&quot;t&quot;</span><span class="p">:</span><span class="s2">&quot;like&quot;</span><span class="p">,</span><span class="s2">&quot;att&quot;</span><span class="p">:</span><span class="s2">&quot;sourceId&quot;</span><span class="p">,</span><span class="s2">&quot;val&quot;</span><span class="p">:</span><span class="s2">&quot;</span><span class="si">%-c</span><span class="s2">ipher&quot;</span><span class="p">}</span>
+        <span class="n">outputs</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rabbitmq&quot;</span><span class="p">,</span> <span class="s2">&quot;log&quot;</span><span class="p">]</span>
+    <span class="n">outputs</span><span class="p">:</span>
+        <span class="n">rabbitmq</span><span class="p">:</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="n">rabbitmq</span>
+        <span class="n">log</span><span class="p">:</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="n">log</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>type</p></th>
+<th class="head"><p>Конфигурация</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>rabbitmq</p></td>
+<td></td>
+<td><p>Отправлять события в RabbitMQ на  exchange “ecos-audit“ с RoutingKey == {тип_события}</p></td>
+</tr>
+<tr class="row-odd"><td><p>log</p></td>
+<td></td>
+<td><p>Выводить события в лог микросервиса</p></td>
+</tr>
+</tbody>
+</table>
+<p>Типы событий:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>type</p></th>
+<th class="head"><p>Поля</p></th>
+<th class="head"><p>Хидеры</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>records.query-records</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sourceId</span><span class="p">:</span> <span class="n">String</span>
+<span class="n">query</span><span class="p">:</span> <span class="n">RecordsQuery</span>
+<span class="n">records</span><span class="p">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">EntityRef</span><span class="o">&gt;</span>
+<span class="n">attributes</span><span class="p">:</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sourceId</span><span class="p">:</span> <span class="n">String</span>
+<span class="n">appName</span><span class="p">:</span> <span class="n">String</span>
+<span class="n">appInstanceId</span><span class="p">:</span> <span class="n">String</span>
+</pre></div>
+</div>
+</td>
+<td><p>Поиск записей</p></td>
+</tr>
+<tr class="row-odd"><td><p>records.get-records-atts</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sourceId</span><span class="p">:</span> <span class="n">String</span>
+<span class="n">record</span><span class="p">:</span> <span class="n">EntityRef</span>
+<span class="n">attributes</span><span class="p">:</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sourceId</span><span class="p">:</span> <span class="n">String</span>
+<span class="n">appName</span><span class="p">:</span> <span class="n">String</span>
+<span class="n">appInstanceId</span><span class="p">:</span> <span class="n">String</span>
+</pre></div>
+</div>
+</td>
+<td><p>Получение атрибутов записей по их ID</p></td>
+</tr>
+<tr class="row-even"><td><p>records.mutate-record</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sourceId</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+<span class="n">record</span><span class="p">:</span> <span class="n">EntityRef</span><span class="p">,</span>
+<span class="n">attributes</span><span class="p">:</span> <span class="n">ObjectData</span><span class="p">,</span>
+<span class="n">attsToLoad</span><span class="p">:</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sourceId</span><span class="p">:</span> <span class="n">String</span>
+<span class="n">appName</span><span class="p">:</span> <span class="n">String</span>
+<span class="n">appInstanceId</span><span class="p">:</span> <span class="n">String</span>
+</pre></div>
+</div>
+</td>
+<td><p>Изменение атрибутов или создание новой записи</p></td>
+</tr>
+<tr class="row-odd"><td><p>records.delete-records</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sourceId</span><span class="p">:</span> <span class="n">String</span>
+<span class="n">records</span><span class="p">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">EntityRef</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sourceId</span><span class="p">:</span> <span class="n">String</span>
+<span class="n">appName</span><span class="p">:</span> <span class="n">String</span>
+<span class="n">appInstanceId</span><span class="p">:</span> <span class="n">String</span>
+</pre></div>
+</div>
+</td>
+<td><p>Удаление записей</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id14">Общий вид события</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">:</span> <span class="n">UUID</span> <span class="o">//</span> <span class="n">уникальный</span> <span class="n">идентификатор</span> <span class="n">события</span>
+<span class="nb">type</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">тип</span> <span class="n">события</span>
+<span class="n">user</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">пользователь</span>
+<span class="n">admin</span><span class="p">:</span> <span class="n">Boolean</span> <span class="o">//</span> <span class="n">флаг</span> <span class="n">определяющий</span> <span class="n">является</span> <span class="n">ли</span> <span class="n">пользователь</span> <span class="n">администратором</span>
+<span class="n">client</span><span class="p">:</span> <span class="n">ClientInfo</span> <span class="o">//</span> <span class="n">информация</span> <span class="n">о</span> <span class="n">клиенте</span><span class="o">.</span> <span class="n">На</span> <span class="n">данный</span> <span class="n">момент</span> <span class="n">одно</span> <span class="n">поле</span> <span class="n">внутри</span> <span class="o">-</span> <span class="n">ip</span><span class="p">:</span> <span class="n">String</span>
+<span class="n">time</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">ISO8601</span> <span class="n">время</span> <span class="n">события</span>
+<span class="n">success</span><span class="p">:</span> <span class="n">Boolean</span> <span class="o">//</span> <span class="n">успешно</span> <span class="n">или</span> <span class="n">нет</span> <span class="n">выполнилось</span> <span class="n">действие</span>
+<span class="n">actionTimeMs</span><span class="p">:</span> <span class="n">Long</span> <span class="o">//</span> <span class="n">время</span> <span class="n">выполнения</span> <span class="n">действия</span> <span class="n">в</span> <span class="n">миллисекундах</span>
+<span class="n">error</span><span class="p">:</span> <span class="n">ErrorInfo</span> <span class="o">//</span> <span class="n">информация</span> <span class="n">об</span> <span class="n">ошибке</span><span class="o">.</span> <span class="n">Присутствует</span> <span class="n">только</span> <span class="n">если</span> <span class="n">success</span> <span class="o">==</span> <span class="n">false</span>
+<span class="n">data</span><span class="p">:</span> <span class="n">ObjectData</span> <span class="o">//</span> <span class="n">данные</span> <span class="n">по</span> <span class="n">событию</span><span class="o">.</span> <span class="n">Для</span> <span class="n">каждого</span> <span class="n">типа</span> <span class="n">событий</span> <span class="n">свой</span> <span class="n">набор</span> <span class="n">данных</span>
+<span class="n">appName</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">имя</span> <span class="n">приложения</span><span class="p">,</span> <span class="n">в</span> <span class="n">котором</span> <span class="n">произошло</span> <span class="n">событие</span>
+<span class="n">appInstanceId</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">инстанс</span> <span class="n">приложения</span><span class="p">,</span> <span class="n">в</span> <span class="n">котором</span> <span class="n">произошло</span> <span class="n">событие</span>
+</pre></div>
+</div>
+<p><strong>ErrorInfo</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">message</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">текст</span> <span class="n">ошибки</span>
+<span class="n">javaClass</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">класс</span> <span class="n">ошибки</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2><a class="toc-backref" href="#id15">Описание аудита</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<section id="id7">
+<h3><a class="toc-backref" href="#id16">Модель события аудита</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<p><strong>id:</strong> UUID // уникальный идентификатор события. Автоматически генерируется для каждого события.</p>
+<p><strong>type:</strong> String // тип события</p>
+<p><strong>user:</strong> String // пользователь</p>
+<p><strong>admin:</strong> Boolean // флаг определяющий является ли пользователь администратором</p>
+<p><strong>client:</strong> ClientInfo // информация о клиенте. На данный момент одно поле внутри - ip: String</p>
+<p><strong>time:</strong> String // ISO8601 время события</p>
+<p><strong>success:</strong> Boolean // успешно или нет выполнилось действие</p>
+<p><strong>actionTimeMs:</strong> Long // время выполнения действия в миллисекундах</p>
+<p><strong>error: ErrorInfo</strong> // информация об ошибке. Присутствует только если <strong>success == false</strong>. Описание этой структуры ниже.</p>
+<p><strong>data:</strong> Map&lt;String, Object&gt; // данные по событию. Для каждого типа событий свой набор данных. Ниже будет список данных по типу события.</p>
+<p><strong>appName:</strong> String // имя приложения, в котором произошло событие</p>
+<p><strong>appInstanceId:</strong> String // инстанс приложения, в котором произошло событие</p>
+</section>
+<section id="errorinfo">
+<h3><a class="toc-backref" href="#id17">Модель ErrorInfo</a><a class="headerlink" href="#errorinfo" title="Ссылка на этот заголовок"></a></h3>
+<p><strong>message:</strong> String // текст ошибки. Может формироваться произвольным образом и напрямую зависит от участка кода где эта ошибка возникла. Если нужно обрабатывать и отлавливать определенные типы ошибок, то следует сформировать список таких ошибок и сделать доработку.</p>
+<p><strong>javaClass:</strong> String // java класс ошибки. Так же как и message может быть любым, но с привязкой к существующим классам в системе.</p>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id18">Типы событий</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h3>
+<section id="records-query-records">
+<h4><a class="toc-backref" href="#id19">records.query-records</a><a class="headerlink" href="#records-query-records" title="Ссылка на этот заголовок"></a></h4>
+<p>Данные в поле <strong>data</strong>:</p>
+<p><strong>sourceId:</strong> String // Идентификатор источника данных. По нему можно сгруппировать или отфильтровать все операции (чтение, изменение, создание, удаление) в определенном источнике данных.</p>
+<p><strong>query:</strong> RecordsQuery // Поисковый запрос за данными (записями) в источнике данных.</p>
+<p><strong>records:</strong> List&lt;EntityRef&gt; // Список записей, который вернулись в результате запроса. <a class="reference internal" href="#entityref"><span class="std std-ref">Описание EntityRef</span></a></p>
+<p><strong>attributes:</strong> Map&lt;String, String&gt; // Список атрибутов, которые клиент запросил у записей из списка records.</p>
+</section>
+<section id="records-get-records-atts">
+<h4><a class="toc-backref" href="#id20">records.get-records-atts</a><a class="headerlink" href="#records-get-records-atts" title="Ссылка на этот заголовок"></a></h4>
+<p>Данные в поле <strong>data</strong>:</p>
+<p><strong>sourceId:</strong> String // Идентификатор источника данных. По нему можно сгруппировать или отфильтровать все операции (чтение, изменение, создание, удаление) в определенном источнике данных. <strong>sourceId</strong> всегда является частью record и если отдельное поле для фильтрации и группировки <code class="docutils literal notranslate"><span class="pre">query/get-atts/mutate/delete</span></code> действий не требуется, то можно <strong>sourceId</strong> убрать из события.</p>
+<p><strong>record:</strong> EntityRef // Ссылка на запись в источнике данных. <a class="reference internal" href="#entityref"><span class="std std-ref">Описание EntityRef</span></a></p>
+<p><strong>attributes:</strong> Map&lt;String, String&gt; // Атрибуты, которые мы запрашиваем у записи</p>
+</section>
+<section id="records-mutate-record">
+<h4><a class="toc-backref" href="#id21">records.mutate-record</a><a class="headerlink" href="#records-mutate-record" title="Ссылка на этот заголовок"></a></h4>
+<p>Данные в поле <strong>data</strong>:</p>
+<p><strong>sourceId:</strong> String // Идентификатор источника данных. По нему можно сгруппировать или отфильтровать все операции (чтение, изменение, создание, удаление) в определенном источнике данных. <strong>sourceId</strong> всегда является частью record и если отдельное поле для фильтрации и группировки <code class="docutils literal notranslate"><span class="pre">query/get-atts/mutate/delete</span></code> действий не требуется, то можно sourceId убрать из события.</p>
+<p><strong>record:</strong> EntityRef // Ссылка на запись в источнике данных. Если record имеет вид <code class="docutils literal notranslate"><span class="pre">&quot;{{appName}}/{{sourceId}}&#64;&quot;</span></code> (т.е. после знака &#64; ничего нет), то это означает, что пришел запрос на создание новой сущности. <a class="reference internal" href="#entityref"><span class="std std-ref">Описание EntityRef</span></a></p>
+<p><strong>attributes:</strong> Map&lt;String, Object&gt; // Атрибуты, которые отправлены от клиента для обновления. Т.е. если в <strong>attributes</strong> мы видим {«field0»: «field1»}, то это означает, что клиент пытается изменить поле «field0» присвоив ему значение «field1».</p>
+<p><strong>attsToLoad:</strong> Map&lt;String, String&gt; // Атрибуты для загрузки после мутации. В ряде случаев клиент отправляет в запросе помимо атрибутов, которые следует изменить так же и атрибуты, которые следует загрузить из записи после успешного окончания мутации.</p>
+</section>
+<section id="records-delete-records">
+<h4><a class="toc-backref" href="#id22">records.delete-records</a><a class="headerlink" href="#records-delete-records" title="Ссылка на этот заголовок"></a></h4>
+<p>Данные в поле <strong>data</strong>:</p>
+<p><strong>sourceId:</strong> String // Идентификатор источника данных. По нему можно сгруппировать или отфильтровать все операции (чтение, изменение, создание, удаление) в определенном источнике данных. sourceId всегда является частью каждого элемента в records и если отдельное поле для фильтрации и группировки query/get-atts/mutate/delete действий не требуется, то можно sourceId убрать из события.</p>
+<p><strong>records:</strong> List&lt;EntityRef&gt; // Список записей для удаления. <a class="reference internal" href="#entityref"><span class="std std-ref">Описание EntityRef</span></a></p>
+</section>
+</section>
+<section id="entityref">
+<span id="id9"></span><h3><a class="toc-backref" href="#id23">Описание EntityRef</a><a class="headerlink" href="#entityref" title="Ссылка на этот заголовок"></a></h3>
+<p><strong>EntityRef</strong> - это уникальный идентификатор сущности в системе ECOS. Он формируется по следующему шаблону:</p>
+<p><code class="docutils literal notranslate"><span class="pre">{{appName}}/{{sourceId}}&#64;{{localId}}</span></code></p>
+<p><strong>appName</strong> - имя приложения где располагается источник данных (см. поле appName в модели события). Примеры приложений: <strong>uiserv, emodel, integrations и т.д.</strong></p>
+<p><strong>sourceId</strong> - это идентификатор источника данных в пределах приложения (см. поле <strong>sourceId</strong>)</p>
+<p><strong>localId</strong> - это локальный идентификатор сущности в пределах источника данных. Отсутствие <strong>localId</strong> для мутации означает создание новой записи.</p>
+</section>
+<section id="id10">
+<h3><a class="toc-backref" href="#id24">Описание атрибутов для загрузки</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h3>
+<p>Атрибуты для загрузки могут иметь следующий вид:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;name?disp&quot;</span><span class="p">,</span>
+
+  <span class="s2">&quot;counterparty&quot;</span><span class="p">:</span> <span class="s2">&quot;counterparty.fullOrgName?str&quot;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Подобный формат атрибутов - это часть Records API (на базе которого строится все общение в ECOS).</p>
+<p>В RecordsAPI клиент может запросить атрибуты, указав сложную вложенную струтуру, но для аудита в основном полезны только ключи в этой мапе.</p>
+<p>То есть из примера выше мы можем получить информацию о том, что клиент запросил два атрибута - <strong>«name»</strong> и <strong>«counterparty»</strong></p>
+<p>Подробнее про <a class="reference internal" href="../general/ECOS_Records.html#records-api"><span class="std std-ref">Records API</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="license.html" class="btn btn-neutral float-left" title="Лицензии ECOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="howto.html" class="btn btn-neutral float-right" title="How To" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

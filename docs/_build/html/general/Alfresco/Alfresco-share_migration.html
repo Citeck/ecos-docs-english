@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Миграция локализации из Share &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Доработки функционала Alfresco" href="Nodebrowser.html" />
+    <link rel="prev" title="Связь типов ECOS и типов Alfresco" href="Alfresco%20_ECOS.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Alfresco.html">Alfresco и информация о миграции</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="JavaScript_Records_API.html">JavaScript Records API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Alfresco%20_ECOS.html">Связь типов ECOS и типов Alfresco</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Миграция локализации из Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nodebrowser.html">Доработки функционала Alfresco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data_types.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications_about_event_alfresco.html">Уведомления о событиях alfresco</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../Alfresco.html">Alfresco и информация о миграции</a> &raquo;</li>
+      <li>Миграция локализации из Share</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/general/Alfresco/Alfresco-share_migration.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="share">
+<h1>Миграция локализации из Share<a class="headerlink" href="#share" title="Ссылка на этот заголовок"></a></h1>
+<p>Скрипт для формирования модуля локализации из alfresco-share (выполняется в консоли браузера). Работает с версии uiserv 1.14.0+
+После выполнения можно зайти в системные журналы и скачать новый модуль, после чего залить его в репозиторий:</p>
+<p>Скрипт:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">getMessages</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="n">locale</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">var</span> <span class="n">resProm</span> <span class="o">=</span> <span class="k">await</span> <span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;/share/service/messages.js?locale=&#39;</span> <span class="o">+</span> <span class="n">locale</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">resProm</span><span class="o">.</span><span class="n">status</span> <span class="o">!==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">resProm</span> <span class="o">=</span> <span class="k">await</span> <span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;/share/noauth/messages.js?locale=&#39;</span> <span class="o">+</span> <span class="n">locale</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="k">await</span> <span class="n">resProm</span><span class="o">.</span><span class="n">text</span><span class="p">();</span>
+  <span class="n">var</span> <span class="n">messagesRegexp</span> <span class="o">=</span> <span class="o">/</span><span class="k">global</span> <span class="o">=</span> <span class="p">(</span>\<span class="p">{</span><span class="o">.+</span>\<span class="p">})</span><span class="o">/</span><span class="p">;</span>
+  <span class="n">var</span> <span class="n">messagesRes</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">messagesRegexp</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">messagesRes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="p">};</span>
+
+<span class="n">var</span> <span class="n">locales</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;ru&quot;</span><span class="p">];</span>
+
+<span class="n">var</span> <span class="n">module</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;moduleId&quot;</span><span class="p">:</span> <span class="s2">&quot;alfresco-messages&quot;</span><span class="p">,</span> <span class="n">locales</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="p">{}</span> <span class="p">};</span>
+
+<span class="n">var</span> <span class="n">messagesByLocale</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="n">var</span> <span class="n">keys</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">let</span> <span class="n">locale</span> <span class="n">of</span> <span class="n">locales</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">messagesByLocale</span><span class="p">[</span><span class="n">locale</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="n">getMessages</span><span class="p">(</span><span class="n">locale</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">let</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">messagesByLocale</span><span class="p">[</span><span class="n">locale</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">keys</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">let</span> <span class="n">key</span> <span class="n">of</span> <span class="n">Object</span><span class="o">.</span><span class="n">keys</span><span class="p">(</span><span class="n">keys</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">locales</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">l</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="n">let</span> <span class="n">message</span> <span class="o">=</span> <span class="n">messagesByLocale</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="n">key</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">message</span> <span class="o">==</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">let</span> <span class="n">locale</span> <span class="n">of</span> <span class="n">locales</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="n">messagesByLocale</span><span class="p">[</span><span class="n">locale</span><span class="p">][</span><span class="n">key</span><span class="p">];</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">message</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="n">message</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">message</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="n">var</span> <span class="n">record</span> <span class="o">=</span> <span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;uiserv/i18n@&#39;</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">let</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">module</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">record</span><span class="o">.</span><span class="n">att</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">module</span><span class="p">[</span><span class="n">key</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="n">record</span><span class="o">.</span><span class="n">save</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="Alfresco%20_ECOS.html" class="btn btn-neutral float-left" title="Связь типов ECOS и типов Alfresco" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="Nodebrowser.html" class="btn btn-neutral float-right" title="Доработки функционала Alfresco" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

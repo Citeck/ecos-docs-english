@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Синхронизация контрагентов &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Интеграция курсов валют" href="currency.html" />
+    <link rel="prev" title="Конфигурация ЭДО" href="EDI_integration/4_RC2%2B_configuration.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+      <li>Синхронизация контрагентов</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integration/Counterparties sync.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Синхронизация контрагентов<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>Синхронизация работает по следующей схеме:</p>
+<p>1. Запрашиваются данные из альферско по полю ИНН/ОГРН (поле и тип можно указывать в конфиге)
+Записи получаются в порядке их добавление в БД (по полю sys:node-dbid)
+Запрашиваются записи с типом <code class="docutils literal notranslate"><span class="pre">idocs:contractor</span></code></p>
+<ol class="arabic simple" start="2">
+<li><p>Из записей составляется список ИНН/ОГРН по которому отправляется запрос в Контур</p></li>
+</ol>
+<p>3. По полученным данным из контура обновляются записи контрагентов согласно мапе
+(<code class="docutils literal notranslate"><span class="pre">src/main/resources/counterparty-sync/default-mapping-attributes.json</span></code>, решено было пока в конфиг не выносить)
+Если в записи изменять нечего, запрос на изменение не отправляется</p>
+<p>Конфигурация синхронизации:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/sync_1.png"><img alt="../_images/sync_1.png" class="align-center" src="../_images/sync_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p><strong>Ключ</strong> - ключ для запросов в контур <a class="reference external" href="https://focus-api.kontur.ru/api3/req/userform">https://focus-api.kontur.ru/api3/req/userform</a></p>
+<p><strong>Cron expression</strong> - Cron выражение для шедулинга</p>
+<p><strong>Batch Size</strong> - Кол-во записей запрашиваемое из алфреско для одной итерации, максимальное значение 100</p>
+<p><strong>Параметр для поиска</strong> - Параметр куда будут устанавливается значения для поиска в запросе. ИНН (inn) или ОГРН (ogrn)</p>
+<p><strong>Атрибут для поиска</strong> - Атрибут в котором лежит значение ИНН/ОГРН, по которому будет осуществляется поиск в контуре</p>
+<p><strong>Состояние синхронизации</strong> - информация о состоянии синхронизации, используется когда синхронизация включена</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lastModifiedNodeDbid</span></code> - значение поля sys:node-dbid, последней обработанной записи</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">countProcessedNodes</span></code>- кол-во обработанных записей</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">status</span></code>- Статус синхронизации:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">TRIGGER_WAITING</span></code>- Ожидает начала планового обновления (Cron expression)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IN_PROGRESS</span></code> - Синхронизация в процессе обновления контрагентов</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RETRY_WAITING</span></code>- Ожидает время из nextTry для попытки успешно завершить итерацию (всего три попытки, через 10 сек, через 1 минуту и через 10 минут)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ERROR</span></code> - Все попытки успешно завершить итерацию провались. Ожидает начала планового обновления (Cron expression)</p></li>
+<li><dl class="simple">
+<dt>Дополнительно:</dt><dd><p>При запуске микросервиса интеграции, если синхронизация находилась в состоянии <code class="docutils literal notranslate"><span class="pre">IN_PROGRESS</span></code> или <code class="docutils literal notranslate"><span class="pre">RETRY_WAITING</span></code>, она продолжит работу. При <code class="docutils literal notranslate"><span class="pre">RETRY_WAITING</span></code> кол-во попыток будет сброшено
+Изменение конфигурации синхронизации останавливает синхронизацию и запускает её заново.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tryCount</span></code> - Номер попытки при ошибке во время синхронизации</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nextTry</span></code> - Время когда синхронизация начнёт работу после ошибки</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error</span></code> - Сообщение об ошибке</p></li>
+</ul>
+</div></blockquote>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="EDI_integration/4_RC2%2B_configuration.html" class="btn btn-neutral float-left" title="Конфигурация ЭДО" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="currency.html" class="btn btn-neutral float-right" title="Интеграция курсов валют" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

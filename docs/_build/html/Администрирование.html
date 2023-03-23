@@ -1,0 +1,471 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Администрирование &mdash; ECOS</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Установка Citeck ECOS c помощью Docker-compose" href="admin/docker-compose.html" />
+    <link rel="prev" title="Best practice" href="settings_kb/Best_practice.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Администрирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker-compose.html">Установка Citeck ECOS c помощью Docker-compose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services.html">Сервисы Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/authentication.html">Аутентификация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/sync_authorities.html">Синхронизация Authorities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/keycloak.html">ECOS KeyCloak Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/keycloack_postman.html">Настройки аутентификации для работы с Records API из внешних систем</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/configuration.html">Конфигурация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/license.html">Лицензии ECOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/audit.html">Аудит</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/howto.html">How To</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Администрирование</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Администрирование.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Администрирование<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="admin/docker-compose.html">Установка Citeck ECOS c помощью Docker-compose</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker-compose.html#id2">Общие требования к системе</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker-compose.html#id3">Системные требования</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker-compose.html#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker-compose.html#id5">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker-compose.html#macos">MacOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker-compose.html#id7">Установка и запуск проекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker-compose.html#centos-7-x-citeck-ecos">Подготовка окружения CentOS 7.x для установки Citeck Ecos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker-compose.html#docker">Сервисы Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker-compose.html#id10">Возможные проблемы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker-compose.html#id11">ОС Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker-compose.html#id15">MacOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="admin/docker_services.html">Сервисы Docker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/onlyoffice-ds-app.html">onlyoffice-ds-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/onlyoffice-ds-app.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/onlyoffice-ds-app.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/onlyoffice-ds-app.html#id2">Типовой вывод успешного развертывания в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-gateway-app.html">ecos-gateway-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-gateway-app.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-gateway-app.html#id2">Теги:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-gateway-app.html#id3">Базовые образы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-gateway-app.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-gateway-app.html#id4">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-gateway-app.html#id5">Известные проблемы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-gateway-app.html#id6">Типовой вывод успешного развертывания в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-notifications-app.html">ecos-notifications-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-notifications-app.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-notifications-app.html#id2">Базовые образы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-notifications-app.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-notifications-app.html#id3">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-notifications-app.html#id4">Известные проблемы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-notifications-app.html#id5">Типовой вывод успешного развертывания в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-mongo-app.html">ecos-mongo-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-mongo-app.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-mongo-app.html#id2">Базовые образы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-mongo-app.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-mongo-app.html#id3">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-mongo-app.html#id4">Известные проблемы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-mongo-app.html#id5">Типовой вывод успешного развертывания в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/mailhog-app.html">mailhog-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/mailhog-app.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/mailhog-app.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/mailhog-app.html#id2">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/mailhog-app.html#id3">Типовой вывод успешного развертывания в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-registry-app.html">ecos-registry-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-registry-app.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-registry-app.html#id2">Теги:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-registry-app.html#id3">Базовые образы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-registry-app.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-registry-app.html#id4">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-registry-app.html#id5">Известные проблемы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-registry-app.html#id6">Типовой вывод успешного развертывания в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-postgresql-app.html">ecos-postgresql-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-postgresql-app.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-postgresql-app.html#id2">Теги:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-postgresql-app.html#id3">Базовые образы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-postgresql-app.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-postgresql-app.html#id4">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-postgresql-app.html#id5">Известные проблемы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-postgresql-app.html#id6">Типовой вывод принятых настроек в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-model-app.html">ecos-model-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-model-app.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-model-app.html#id2">Базовые образы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-model-app.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-model-app.html#id3">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-model-app.html#id4">Известные проблемы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-model-app.html#id5">Типовой вывод успешного развертывания в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-app.html">ecos-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-app.html#id1">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-app.html#id2">Теги</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-app.html#id3">Базовые образы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-app.html#docker-compose">Шаблон сервиса docker-compose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-app.html#id4">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-app.html#id5">Известные проблемы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-app.html#id6">Типовой вывод принятых настроек в лог контейнера</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-integrations-app.html">ecos-integrations-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-integrations-app.html#id1">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-integrations-app.html#id2">Базовые образы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-integrations-app.html#docker-compose">Шаблон сервиса docker-compose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-integrations-app.html#id3">Используемые переменные</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-integrations-app.html#id4">Известные проблемы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-integrations-app.html#id5">Типовой вывод успешного развертывания в лог контейнера</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-solr-app.html">ecos-solr-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-solr-app.html#id1">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-solr-app.html#id2">Базовые образы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-solr-app.html#docker-compose">Шаблон сервиса docker-compose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-solr-app.html#id3">Используемые переменные</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-solr-app.html#id4">Типовой вывод успешного развертывания в лог контейнера</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-proxy-app.html">ecos-proxy-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-proxy-app.html#id2">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-proxy-app.html#id3">Базовые образы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-proxy-app.html#docker-compose">Шаблон сервиса docker-compose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-proxy-app.html#id4">Используемые переменные</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-proxy-app.html#id5">Типовой вывод принятых настроек в лог контейнера</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-uiserv-app.html">ecos-uiserv-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-uiserv-app.html#id1">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-uiserv-app.html#id2">Базовые образы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-uiserv-app.html#docker-compose">Шаблон сервиса docker-compose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-uiserv-app.html#id3">Используемые переменные</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-uiserv-app.html#id4">Известные проблемы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-uiserv-app.html#id5">Типовой вывод успешного развертывания в лог контейнера</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-process-app.html">ecos-process-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-process-app.html#id1">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-process-app.html#id2">Базовые образы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-process-app.html#docker-compose">Шаблон сервиса docker-compose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-process-app.html#id3">Используемые переменные</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-process-app.html#id4">Известные проблемы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-process-app.html#id5">Типовой вывод успешного развертывания в лог контейнера</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-microservices-postgresql-app.html">ecos-microservices-postgresql-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-microservices-postgresql-app.html#id1">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-microservices-postgresql-app.html#id2">Теги:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-microservices-postgresql-app.html#id3">Базовые образы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-microservices-postgresql-app.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-microservices-postgresql-app.html#id4">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-microservices-postgresql-app.html#id5">Известные проблемы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-microservices-postgresql-app.html#id6">Типовой вывод принятых настроек в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-history-app.html">ecos-history-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-history-app.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-history-app.html#id2">Теги:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-history-app.html#id3">Базовые образы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-history-app.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-history-app.html#id4">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-history-app.html#id5">Известные проблемы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-history-app.html#id6">Дополнительно:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-history-app.html#id7">Типовой вывод успешного развертывания в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/rabbitmq-app.html">rabbitmq-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/rabbitmq-app.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/rabbitmq-app.html#id2">Теги:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/rabbitmq-app.html#id3">Базовые образы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/rabbitmq-app.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/rabbitmq-app.html#id4">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/rabbitmq-app.html#id5">Известные проблемы:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-apps-app.html">ecos-apps-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-apps-app.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-apps-app.html#id2">Теги:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-apps-app.html#id3">Базовые образы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-apps-app.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-apps-app.html#id4">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-apps-app.html#id5">Известные проблемы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-apps-app.html#id6">Дополнительно:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-apps-app.html#id7">Типовой вывод успешного развертывания в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/eis_Keycloack.html">eis (Keycloak)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/eis_Keycloack.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/eis_Keycloack.html#id2">Теги:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/eis_Keycloack.html#id3">Базовые образы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/eis_Keycloack.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/eis_Keycloack.html#id4">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/eis_Keycloack.html#id5">Известные проблемы:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/eis_Keycloack.html#id6">Дополнительно:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/eis_Keycloack.html#id7">Типовой вывод успешного развертывания в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/backup-tool-app.html">backup-tool-app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/backup-tool-app.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/backup-tool-app.html#id3">Теги:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/backup-tool-app.html#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/backup-tool-app.html#id4">Используемые переменные:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/backup-tool-app.html#id8">Типовой вывод принятых настроек в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/docker_services/ecos-alfresco-search-service.html">ecos-alfresco-search-service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-alfresco-search-service.html#id1">Назначение:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-alfresco-search-service.html#id2">Теги:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-alfresco-search-service.html#id3">Базовые образы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-alfresco-search-service.html#docker-compose">Шаблон сервиса docker-compose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/docker_services/ecos-alfresco-search-service.html#id4">Используемые переменные:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="admin/authentication.html">Аутентификация</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="admin/authentication.html#id2">Терминология</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/authentication.html#id3">Общая информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/authentication.html#oidc">Аутентификация через встроенный OIDC клиент</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/authentication.html#id4">Алгоритм аутентификация через встроенный OIDC клиент</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/authentication.html#id5">Аутентификация через внешний OIDC клиент</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/authentication.html#id6">Настройка времени жизни сессий на Keycloak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/authentication.html#touch">Touch запросы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/authentication.html#idp">Интеграция с внешними IdP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="admin/sync_authorities.html">Синхронизация Authorities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="admin/sync_authorities.html#id2">Общие атрибуты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/sync_authorities.html#sync-auth-types">Типы синхронизаций</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/sync_authorities.html#alfresco">Синхронизация пользователей из Alfresco</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/sync_authorities.html#id4">Синхронизация групп из Alfresco</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/sync_authorities.html#ldap">Синхронизация пользователей из LDAP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="admin/keycloak.html">ECOS KeyCloak Extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="admin/keycloak.html#id1">Возможности расширения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/keycloak.html#id2">Подключение плагина</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/keycloak.html#id4">Активация плагина</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="admin/keycloack_postman.html">Настройки аутентификации для работы с Records API из внешних систем</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="admin/keycloack_postman.html#client-id-client-secret-keycloak">Получение и работа с Client ID и Client Secret в Keycloak</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/keycloack_postman.html#keycloak">Создание клиента в Keycloak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/keycloack_postman.html#c-ecos">Cоздание пользователя в ECOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/keycloack_postman.html#ecos">Отправка запросов в ECOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="admin/configuration.html">Конфигурация</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="admin/configuration.html#configuration-system">Системный уровень</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/configuration.html#configuration-admin">Уровень администратора</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/configuration.html#id4">Создание нового конфига</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/configuration.html#id5">Общая архитектура работы конфигураций</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/configuration.html#rc5">Формы для конфигураций [rc5+]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/configuration.html#scope">Область (scope)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/configuration.html#id6">Модель</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/configuration.html#id7">Версия конфигурации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/configuration.html#config-provider">Config Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/configuration.html#ecos">Обновление значения через патч ECOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="admin/license.html">Лицензии ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin/audit.html">Аудит</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="admin/audit.html#id3">Доступные настройки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/audit.html#id4">Пример настройки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/audit.html#id5">Общий вид события</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin/audit.html#id6">Описание аудита</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/audit.html#id7">Модель события аудита</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/audit.html#errorinfo">Модель ErrorInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/audit.html#id8">Типы событий</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/audit.html#entityref">Описание EntityRef</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/audit.html#id10">Описание атрибутов для загрузки</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="admin/howto.html">How To</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="admin/howto.html#http-ecos-community-demo-http-mydomain-ru">Изменить http://ecos-community-demo на http://mydomain.ru</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="admin/howto.html#id1">С чистой БД</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admin/howto.html#id2">Не с чистой БД</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="admin/howto.html#keycloak">Исключить адрес из авторизации Keycloak</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="settings_kb/Best_practice.html" class="btn btn-neutral float-left" title="Best practice" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="admin/docker-compose.html" class="btn btn-neutral float-right" title="Установка Citeck ECOS c помощью Docker-compose" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,509 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Серверное подписание &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Конфигурация ЭДО" href="4_RC2%2B_configuration.html" />
+    <link rel="prev" title="Общая библиотека для обработки EDI событий ecos-edi-integration" href="common_lib.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EDI.html">EDI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events_kontur.html">Настройка получения событий с ящиком Контур.Диадок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="counterparty_kontur.html">Синхронизация данных контрагентов и их ящиков с Контур.Диадок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_provider.html">Реализация интеграции с новым ЭДО-провайдером</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-kontur-lib.html">Описание ecos-edi-kontur-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-ftps-lib.html">Описание ecos-edi-ftps-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-sbis-lib.html">Описание ecos-edi-sbis-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expand_functions.html">Как расширять функционал</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_integration_settings.html">Переход на новые настройки интеграции с EDI провайдерами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CounterpartyEdiInfoRecordsDao.html">CounterpartyEdiInfoRecordsDao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_lib.html">Общая библиотека для обработки EDI событий ecos-edi-integration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Серверное подписание</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Описание</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keycloak">Создание сервисного клиента keycloak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ecos">Запрос из ecos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="4_RC2%2B_configuration.html">Конфигурация ЭДО</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a> &raquo;</li>
+      <li>Серверное подписание</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/integration/EDI_integration/server_signing.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Серверное подписание<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>В микросервисе ecos-integrations начиная с версии 2.3.5 добавлен функционал серверного подписания документов электронной подписью без использования плагина <strong>КриптоПро ЭЦП Browser plug-in</strong>.</p>
+<p>Для этого был разработан дополнительный сервис <strong>ecos-crypto-sign</strong> (репозиторий <a class="reference external" href="https://gitlab.citeck.ru/citeck-projects/ecos-crypto-sign">https://gitlab.citeck.ru/citeck-projects/ecos-crypto-sign</a>)</p>
+<p>Общая схема работы:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/server_signing_1png.png"><img alt="../../_images/server_signing_1png.png" class="align-center" src="../../_images/server_signing_1png.png" style="width: 600px;" /></a>
+</div></blockquote>
+<section id="id2">
+<h2>Описание<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<ol class="arabic simple">
+<li><p>Клиент API аутентифицируется в KeyCloak. KeyCloak выдает токен.</p></li>
+<li><p>Клиент API передает свой запрос в ecos-proxy, указав в заголовке токен.</p></li>
+<li><p>Компонент ecos-proxy проверяет токен в KeyCloak. Если токен валидный - пропускает запрос дальше. Иначе - ошибка.</p></li>
+<li><p>Компонент ecos-proxy маршрутизирует запрос на целевой микросервис ecos-gateway. Заголовок с токеном транслируется.</p></li>
+<li><p>Этот микросервис маршрутизирует запрос на один из доступных микросервисов ecos-integrations. Заголовок с токеном транслируется.</p></li>
+<li><p>Микросервис интеграций отправляет запрос в микросервис подписания. Заголовок с токеном транслируется.</p></li>
+<li><p>Микросервис подписания проверяет токен в KeyCloak. Если токен валидный - происходит подписание. Иначе - ошибка. Возврат ответа клиенту API</p></li>
+</ol>
+<p>Сервис подписания это стандартное spring-boot приложение.</p>
+<p>На данный момент доступно 2 REST запроса:</p>
+<p><strong>Подписание контента</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">host</span><span class="p">:</span><span class="n">port</span><span class="p">}</span><span class="o">/</span><span class="n">ecos</span><span class="o">/</span><span class="n">crypto</span><span class="o">/</span><span class="n">sign</span>
+</pre></div>
+</div>
+<p>headers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Authorization</span><span class="p">:</span> <span class="n">Bearer</span> <span class="n">access_token</span> <span class="o">//</span><span class="n">keycloak</span> <span class="n">bearer</span> <span class="n">access</span> <span class="n">token</span>
+</pre></div>
+</div>
+<p>body:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;documentContent&quot;</span><span class="p">:</span><span class="s2">&quot;QQMTIzNDU2Nzg5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;keyStoreInfo&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;providerType&quot;</span><span class="p">:</span><span class="s2">&quot;JCSP&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;keyStoreType&quot;</span><span class="p">:</span><span class="s2">&quot;FAT12_D&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;certificateInfo&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;pin&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span><span class="s2">&quot;null&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;serialNumber&quot;</span><span class="p">:</span><span class="s2">&quot;5927a700f7ac223d9548e8628fe9c2c302&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;thumbprint&quot;</span><span class="p">:</span><span class="s2">&quot;A14BFD6503EFD7116AFCE95A6FAA2097E0883DEAD811&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;signatureAlgorithm&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>documentContent</strong> - Контент для подписания (Base64 encoded byte[])</p></li>
+<li><p><strong>providerType</strong> - Тип провайдера (По умолчанию у нас используется JCSP)</p></li>
+<li><p><strong>keyStoreType</strong> - Тип хранилища сертификата (Например HDD в разделе D, как в текущем примере или registry и т.д.)</p></li>
+<li><p><strong>pin</strong> - пароль от контейнера для получения приватного ключа</p></li>
+<li><p><strong>alias</strong> - alias сертификата для поиска нужного сертификата для подписи</p></li>
+<li><p><strong>serialNumber</strong> - серийный номер сертификата? если <strong>alias</strong> не известен</p></li>
+<li><p><strong>thumbprint</strong> - отпечаток сертификата, используется <strong>alias</strong> и <strong>serialNumber</strong>  неизвестны</p></li>
+<li><p><strong>signatureAlgorithm</strong> - алгоритм подписи (в данный момент передаваемый алгоритм не используется, берется из найденного сертификата)</p></li>
+</ul>
+<p>В текущей реализации сертификат ищется:</p>
+<ol class="arabic simple">
+<li><p>Во-первых по aliasу (если он не пустой, если пустой, то пропускаем данный шаг)</p></li>
+<li><p>Если не найден, то по серийному номеру (если он не пустой, если пустой, то пропускаем данный шаг)</p></li>
+<li><p>Если опять не найден, то по отпечатку (если пустой и сертификат не найден, то возвращаем ошибку подписания)</p></li>
+</ol>
+<p>Ожидаемый ответ:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;signatureContent&quot;</span><span class="p">:</span> <span class="s2">&quot;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&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>success</strong> - результат выполнения rest запроса (успешно/неуспешно)</p></li>
+<li><p><strong>error</strong> - Строка ошибки (При ошибке подписания)</p></li>
+<li><p><strong>signatureContent</strong> - контент полученной подписи (Base64 encoded byte[])</p></li>
+</ul>
+<p>При подписании создается подпись в формате CMS. Возвращается зашифрованная в Base64 строка подписи (аналогично подписанию через плагин).</p>
+<p><strong>Валидация подписи</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">host</span><span class="p">:</span><span class="n">port</span><span class="p">}</span><span class="o">/</span><span class="n">ecos</span><span class="o">/</span><span class="n">crypto</span><span class="o">/</span><span class="n">signVerify</span>
+</pre></div>
+</div>
+<p>headers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Authorization</span><span class="p">:</span> <span class="n">Bearer</span> <span class="n">access_token</span> <span class="o">//</span><span class="n">keycloak</span> <span class="n">bearer</span> <span class="n">access</span> <span class="n">token</span>
+</pre></div>
+</div>
+<p>body:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;documentContent&quot;</span><span class="p">:</span><span class="s2">&quot;QQMTIzNDU2Nzg5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;signatureContent&quot;</span><span class="p">:</span><span class="s2">&quot;MIIMoQYJKoZIh&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;keyStoreInfo&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;providerType&quot;</span><span class="p">:</span><span class="s2">&quot;JCSP&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;keyStoreType&quot;</span><span class="p">:</span><span class="s2">&quot;FAT12_D&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;certificateInfo&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;pin&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;serialNumber&quot;</span><span class="p">:</span><span class="s2">&quot;5927a700f713a4c2d9548e8628fe559c2c302&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;thumbprint&quot;</span><span class="p">:</span><span class="s2">&quot;A14BFD6503E123FD76AFCE95A6FAA2097E0883DEAD811&quot;</span>
+        <span class="s2">&quot;signatureAlgorithm&quot;</span><span class="p">:</span><span class="s2">&quot;GOST3411_2012_256withGOST3410DH_2012_256&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>documentContent</strong> - Контент, который был подписан (Base64 encoded byte[])</p></li>
+<li><p><strong>signatureContent</strong> - Непосредственно сама подпись (Base64 encoded byte[])</p></li>
+<li><p><strong>providerType</strong> - Тип провайдера (По умолчанию у нас используется JCSP)</p></li>
+<li><p><strong>keyStoreType</strong> - Тип хранилища сертификата (Например HDD в разделе D, как в текущем примере или registry и т.д.)</p></li>
+<li><p><strong>pin</strong> - пароль от контейнера для получения приватного ключа</p></li>
+<li><p><strong>alias</strong> - alias сертификата для поиска нужного сертификата для подписи</p></li>
+<li><p><strong>serialNumber</strong> - серийный номер сертификата если <strong>alias</strong> неизвестен</p></li>
+<li><p><strong>thumbprint</strong> - отпечаток сертификата, используется если <strong>alias</strong> и <strong>serialNumber</strong> неизвестны</p></li>
+<li><p><strong>signatureAlgorithm</strong> - алгоритм подписи (в данный момент передаваемый алгоритм не используется, берется из найденного сертификата)</p></li>
+</ul>
+<p>В текущей реализации сертификат ищется:</p>
+<ol class="arabic simple">
+<li><p>Во-первых по aliasу (если он не пустой, если пустой, то пропускаем данный шаг)</p></li>
+<li><p>Если не найден, то по серийному номеру (если он не пустой, если пустой, то пропускаем данный шаг)</p></li>
+<li><p>Если опять не найден, то по отпечатку (если пустой и сертификат не найден, то возвращаем ошибку подписания)</p></li>
+</ol>
+<p>Ожидаемый ответ:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>success</strong> - результат выполнения rest запроса (успешно/неуспешно)</p></li>
+<li><p><strong>error</strong> - Строка ошибки (При ошибке валидации)</p></li>
+<li><p><strong>result</strong> - результат валидации подписи</p></li>
+</ul>
+<p>Проверку токена можно отключить выставив соответствующие свойства:</p>
+<p>В микросервисе интеграции: <strong>ecos-integrations.server-sign.keycloak.isTokenCheckEnabled</strong></p>
+<p>В сервисе подписания: <strong>keycloak.enabled</strong></p>
+<p>Полный конфиг настроек keycloak сервиса подписания:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">keycloak</span><span class="p">:</span>
+    <span class="n">enabled</span><span class="p">:</span> <span class="n">true</span>
+    <span class="n">auth</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8484</span><span class="o">/</span><span class="n">auth</span>
+    <span class="n">realm</span><span class="p">:</span> <span class="s2">&quot;master&quot;</span>
+    <span class="n">resource</span><span class="p">:</span> <span class="s2">&quot;service_client&quot;</span>
+    <span class="n">bearer</span><span class="o">-</span><span class="n">only</span><span class="p">:</span> <span class="n">true</span>
+    <span class="n">security</span><span class="o">-</span><span class="n">constraints</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">authRoles</span><span class="p">:</span>
+          <span class="o">-</span> <span class="n">uma_authorization</span>
+      <span class="n">securityCollections</span><span class="p">:</span>
+          <span class="o">-</span> <span class="n">patterns</span><span class="p">:</span>
+              <span class="o">-</span> <span class="o">/</span><span class="n">ecos</span><span class="o">/*</span>
+</pre></div>
+</div>
+<ul>
+<li><p><strong>enabled</strong> - включена/отключена проверка токена перед подписью/валидацией</p></li>
+<li><p><strong>auth-server-url</strong> - адрес эндпоинта auth для keycloak</p></li>
+<li><p><strong>realm</strong> - realm для которого происходит проверка токена.</p></li>
+<li><p><strong>resource</strong> - ID клиента к которому необходим доступ (В данном сервисе неактуально, можно добавить любого валидного клиента в указанном realm)</p></li>
+<li><p><strong>bearer-only</strong> - если выставлено true, то приложение может только проверять токены, и в приложении нельзя будет залогиниться</p></li>
+<li><p><strong>security-constraints</strong> - для описания ролевой политики</p>
+<blockquote>
+<div><ul>
+<li><p><strong>authRoles</strong> - список ролей Keycloak (uma_authorization по умолчанию, так как она выдается всем клиентам)</p></li>
+<li><p><strong>securityCollections</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>patterns</strong> - URL-паттерны для методов REST API, которые требуется закрыть соответствующими ролями (в данном случае два метода /ecos/“*“)</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>Конфиг дополнительных настроек для микросервиса интеграции:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ecos</span><span class="o">-</span><span class="n">integrations</span><span class="p">:</span>
+<span class="n">server</span><span class="o">-</span><span class="n">sign</span><span class="p">:</span>
+    <span class="n">root</span><span class="o">-</span><span class="n">uri</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8083</span>
+    <span class="n">keycloak</span><span class="p">:</span>
+        <span class="n">host</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span>
+        <span class="n">port</span><span class="p">:</span> <span class="mi">8484</span>
+        <span class="n">client</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="n">service_client</span>
+        <span class="n">client</span><span class="o">-</span><span class="n">secret</span><span class="p">:</span> <span class="mf">5307e923</span><span class="o">-</span><span class="mi">570</span><span class="n">b</span><span class="o">-</span><span class="mi">4</span><span class="n">fed</span><span class="o">-</span><span class="n">ad18</span><span class="o">-</span><span class="n">cc6320056bf9</span>
+        <span class="n">realm</span><span class="p">:</span> <span class="n">master</span>
+        <span class="n">isTokenCheckEnabled</span><span class="p">:</span> <span class="n">false</span>
+        <span class="n">isTrustAllEnabled</span><span class="p">:</span> <span class="n">false</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>root-uri</strong> - адрес сервиса подписания</p></li>
+<li><p><strong>keycloak.host</strong>  - host keycloak</p></li>
+<li><p><strong>keycloak.port</strong>  - порта keycloak</p></li>
+<li><p><strong>keycloak.client-id</strong>  - id сервисного клиента keycloak</p></li>
+<li><p><strong>keycloak.client-secret</strong>  - secret сервисного клиента keycloak</p></li>
+<li><p><strong>keycloak.realm</strong>  - realm для которого происходит проверка токена.</p></li>
+<li><p><strong>keycloak.isTokenCheckEnabled</strong>  - при включенном флаге в сервис подписания передается access токен сервисного клиента</p></li>
+<li><p><strong>keycloak.isTrustAllEnabled</strong>  - включение/отключение политики TrustAll при запросе токена у кейклока (выставляется в true если падает ошибка доступа, однако нужно учитывать что в таком случае появляется уязвимость)</p></li>
+</ul>
+</section>
+<section id="keycloak">
+<h2>Создание сервисного клиента keycloak<a class="headerlink" href="#keycloak" title="Ссылка на этот заголовок"></a></h2>
+<p>Сервисного клиента необходимо создать в соответствующем realm keycloak. Он необходим для получения access токена.</p>
+<ol class="arabic simple">
+<li><p>Зайти в консоль администратора непосредственно на сервер keycloak</p></li>
+<li><p>Переключится на нужный realm</p></li>
+<li><p>Пункт <strong>Clients → Добавить нового (Имя клиента - любое) → Cоздать</strong></p></li>
+<li><p>Пункт <strong>Access Type = confidential</strong></p></li>
+<li><p>Флаг <strong>Service Accounts Enabled = true</strong></p></li>
+<li><p><strong>Valid Redirect URIs</strong> - добавит любой uri редиректа на основной сервер alfresco, хотя в данном случае это не обязательно, так как от клиента нам нужен лишь токен и не нужны ресурсы</p></li>
+<li><p>Save</p></li>
+</ol>
+<p>После этого на вкладке <strong>Credentials</strong> данного клиента можно найти его secret, id же является заданное нами имя.</p>
+</section>
+<section id="ecos">
+<h2>Запрос из ecos<a class="headerlink" href="#ecos" title="Ссылка на этот заголовок"></a></h2>
+<p>Для того чтобы можно было запрашивать валидацию подписи и подписывание любого контента в микросервисе интеграции были реализованы соотвествующие <strong>RecordsDao</strong></p>
+<p><strong>Подписание - ServerSignRecords</strong></p>
+<p>ID - “server-sign“</p>
+<p>Dto - SignRequest</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">SignRequest</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">documentContent</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">KeyStoreInfo</span> <span class="n">keyStoreInfo</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">CertificateInfo</span> <span class="n">certificateInfo</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>CertificateInfo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">CertificateInfo</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">pin</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">alias</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">serialNumber</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">thumbprint</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">signatureAlgorithm</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>KeyStoreInfo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">KeyStoreInfo</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">providerType</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">keyStoreType</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Пример запроса из консоли браузера:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="n">sourceId</span><span class="p">:</span> <span class="s2">&quot;integrations/server-sign&quot;</span><span class="p">,</span>
+        <span class="n">query</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;documentContent&quot;</span><span class="p">:</span><span class="s2">&quot;MTIzNDU2Nzg5&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;keyStoreInfo&quot;</span><span class="p">:{</span>
+                <span class="s2">&quot;providerType&quot;</span><span class="p">:</span><span class="s2">&quot;JCSP&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;keyStoreType&quot;</span><span class="p">:</span><span class="s2">&quot;FAT12_D&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;certificateInfo&quot;</span><span class="p">:{</span>
+                <span class="s2">&quot;pin&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;alias&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;serialNumber&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;thumbprint&quot;</span><span class="p">:</span><span class="s2">&quot;A1424BFD6503EFD7236AFCE95A1236FAA2097E0883DEAD8123&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;signatureAlgorithm&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},{</span>
+    <span class="n">signatureContent</span><span class="p">:</span> <span class="s2">&quot;signatureContent&quot;</span><span class="p">,</span>
+    <span class="n">error</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span>
+    <span class="p">}</span>
+<span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">res</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+</pre></div>
+</div>
+<p><strong>Валидация - ServerSignVerificationRecords</strong></p>
+<p>ID - “server-sign-verify“</p>
+<p>Dto - SignVerifyRequest</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">SignVerifyRequest</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">documentContent</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">signatureContent</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">KeyStoreInfo</span> <span class="n">keyStoreInfo</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">CertificateInfo</span> <span class="n">certificateInfo</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>CertificateInfo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">CertificateInfo</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">pin</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">alias</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">serialNumber</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">thumbprint</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">signatureAlgorithm</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>KeyStoreInfo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">KeyStoreInfo</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">providerType</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">keyStoreType</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Пример запроса из консоли браузера:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="n">sourceId</span><span class="p">:</span> <span class="s2">&quot;integrations/server-sign-verify&quot;</span><span class="p">,</span>
+        <span class="n">query</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;documentContent&quot;</span><span class="p">:</span><span class="s2">&quot;MTIzNDU2Nzg5&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;signatureContent&quot;</span><span class="p">:</span><span class="s2">&quot;asdasdfbvhadsfbdhasbfks&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;keyStoreInfo&quot;</span><span class="p">:{</span>
+                <span class="s2">&quot;providerType&quot;</span><span class="p">:</span><span class="s2">&quot;JCSP&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;keyStoreType&quot;</span><span class="p">:</span><span class="s2">&quot;FAT12_D&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;certificateInfo&quot;</span><span class="p">:{</span>
+                <span class="s2">&quot;pin&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;alias&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;serialNumber&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;thumbprint&quot;</span><span class="p">:</span><span class="s2">&quot;A14BFD6503EFD1276AFCE952A6FAA205197E0883DEAD813&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;signatureAlgorithm&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},{</span>
+    <span class="n">result</span><span class="p">:</span> <span class="s2">&quot;result&quot;</span><span class="p">,</span>
+    <span class="n">error</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span>
+    <span class="p">}</span>
+<span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">res</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Для локального запуска функционала необходимо клонировать репозиторий <strong>ecos-crypto-sign</strong> и запустить приложение <strong>CryptoSignApp</strong></p>
+<p>Недостающие библиотеки (при возникновении ошибок компиляции и NoClassDefFoundException) можно взять с официально сайта КриптоПро</p>
+<p>Необходимо установить в нужную jre функционал JCP + JCSP</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="common_lib.html" class="btn btn-neutral float-left" title="Общая библиотека для обработки EDI событий ecos-edi-integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="4_RC2%2B_configuration.html" class="btn btn-neutral float-right" title="Конфигурация ЭДО" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

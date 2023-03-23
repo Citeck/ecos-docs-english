@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best practice &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Администрирование" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html" />
+    <link rel="prev" title="Настройка темы интерфейса" href="%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Aspects.html">Аспекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface.html">Интерфейс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Best practice</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Типы данных</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Формы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#table-form">Формы справочников, дочерних элементов (table-form)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Формы создания заявок</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Формы задач</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Шаблон уведомления</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+      <li>Best practice</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/settings_kb/Best_practice.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="best-practice">
+<h1>Best practice<a class="headerlink" href="#best-practice" title="Ссылка на этот заголовок"></a></h1>
+<section id="id1">
+<h2>Типы данных<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>При создании типа данных необходимо руководствоваться следующим правилом для <strong>выбора типа родителя</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/012.png"><img alt="../_images/012.png" class="align-center" src="../_images/012.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p><strong>Справочник</strong> - тип для хранения наборов бизнес-данных, которые будут использоваться как статические данные для документов, не участвующие непосредственно в бизнес-процессах. Маркером того, что тип будет справочником является указание при его создании только общей информации и перечня атрибутов.</p>
+<p><strong>Кейс</strong> - тип для хранения записи, статус которой изменяется в процессе жизненного цикла автоматически в ходе бизнес-процесса, или вручную (например, при использовании канбан-доски). Маркером того, что тип будет кейсом является необходимость прикрепления к нему процесса и указания при создании общей информации, атрибутов, ролей, статусов и матрицы прав.</p>
+<p><strong>Остальное</strong> – иные созданные ранее типы данных.</p>
+<p>Подробно о <a class="reference internal" href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-types"><span class="std std-ref">типах данных</span></a></p>
+</section>
+<section id="id2">
+<h2>Формы<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Подробно о <a class="reference internal" href="interface/forms.html#forms"><span class="std std-ref">формах</span></a></p>
+<section id="table-form">
+<h3>Формы справочников, дочерних элементов (table-form)<a class="headerlink" href="#table-form" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Все элементы формы располагаются внутри контейнера. Шапка формы и кнопки  статичны, а скроллироваться могут только поля на форме. На примере справочника контрагентов:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/012.png"><img alt="../_images/012.png" class="align-center" src="../_images/012.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Колонки:</p>
+<ul>
+<li><p>Если на форме располагается от 1 до 3 полей, то они размечаются в одну колонку.</p></li>
+<li><p>Если на форме 4 и более полей, то все поля на форме должны располагаться в 2 колонки.</p></li>
+<li><p>Если необходимо функциональное деление колонок, используются панели с заголовками. Колоночное деление может располагаться как внутри панели, так и панель может находиться внутри колонки</p>
+<a class="reference internal image-reference" href="../_images/071.png"><img alt="../_images/071.png" class="align-center" src="../_images/071.png" style="width: 600px;" /></a>
+</li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><a class="reference internal image-reference" href="../_images/03.png"><img alt="../_images/03.png" class="align-center" src="../_images/03.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Кнопки</p>
+<ul class="simple">
+<li><p>располагаются снизу формы,</p></li>
+<li><p>слева по ширине 1/4 ширины формы располагается кнопка <strong>«Отмена»</strong> серого цвета,</p></li>
+<li><p>справа по 1/4 ширины формы располагается кнопка <strong>«Сохранить»</strong> синего цвета.</p></li>
+<li><p>необходимо убирать большой отступ под кнопками снизу формы.</p></li>
+</ul>
+</li>
+</ol>
+<p>Пример идеального расположения и вида кнопок:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/04.png"><img alt="../_images/04.png" class="align-center" src="../_images/04.png" style="width: 600px;" /></a>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="id3">
+<h3>Формы создания заявок<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Все элементы формы должны располагаться внутри контейнера. Шапка формы и кнопки должны быть статичны, а скроллироваться могут только поля на форме. На примере формы договора:</p></li>
+<li><p>Все поля на форме должны располагаться в 2 колонки. Если необходимо функциональное деление колонок, используются панели с заголовками. Панели располагаются также внутри колонок.</p></li>
+<li><p>Критерии к <strong>панелям</strong>:</p>
+<ul>
+<li><p>Поля в панелях группируются по смыслу</p></li>
+<li><p>Панель обязательно должна иметь название</p></li>
+<li><p>Необходимо оптимизировать расположение панелей, чтобы пустого пространства было как можно меньше, но все поля были отформатированы по ширине и высоте, т.е. располагались таблично</p>
+<a class="reference internal image-reference" href="../_images/03.png"><img alt="../_images/03.png" class="align-center" src="../_images/03.png" style="width: 600px;" /></a>
+</li>
+</ul>
+</li>
+<li><p>Кнопки</p>
+<ul class="simple">
+<li><p>кнопки располагаются снизу формы,</p></li>
+<li><p>слева по ширине 1/4 ширины формы располагается кнопка <strong>«Отмена»</strong> серого цвета,</p></li>
+<li><p>справа по 1/4 ширины формы располагается кнопка <strong>«Создать»</strong> синего цвета.</p></li>
+<li><p>слева от кнопки <strong>«Создать»</strong> по ширине 1/4 ширины формы располагается кнопка <strong>«Сохранить»</strong> серого цвета.</p></li>
+<li><p>необходимо убирать большой отступ под кнопками снизу формы.</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+<p>Пример расположения и вида кнопок:</p>
+<blockquote>
+<div><blockquote>
+<div><a class="reference internal image-reference" href="../_images/05.png"><img alt="../_images/05.png" class="align-center" src="../_images/05.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Обычно на форме задач располагается поле «Комментарий» и кнопки согласования. В зависимости от требований процесса наполнение может меняться.</p>
+</div></blockquote>
+</section>
+<section id="id4">
+<h3>Формы задач<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<p>Требования к кнопкам:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Все кнопки располагаются с выравниванием по левому краю формы</p></li>
+<li><p>Сначала располагаются кнопки с отрицательной резолюцией серого цвета</p></li>
+<li><p>С правого края располагаются кнопки с положительной резолюцией синего цвета</p></li>
+<li><p>Если требуется, между кнопками отрицательной и положительной резолюции располагаются кнопки нейтральной резолюции серого цвета.</p></li>
+</ol>
+</div></blockquote>
+<p>Пример формы задач:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/061.png"><img alt="../_images/061.png" class="align-center" src="../_images/061.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+</section>
+<section id="id5">
+<h2>Шаблон уведомления<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>Подробно о <a class="reference internal" href="notifications/notifications_template.html#notification-templates"><span class="std std-ref">шаблонах уведомлений</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html" class="btn btn-neutral float-left" title="Настройка темы интерфейса" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html" class="btn btn-neutral float-right" title="Администрирование" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

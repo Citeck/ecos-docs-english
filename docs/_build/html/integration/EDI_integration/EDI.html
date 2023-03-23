@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDI &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Настройка получения событий с ящиком Контур.Диадок" href="events_kontur.html" />
+    <link rel="prev" title="Интеграция с ЭДО провайдерами" href="../EDI_integration.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EDI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Основные принципы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edisyncexecution">Связь сервисов-реализации с EdiSyncExecution для интеграции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edistateservice">Что происходит в либах обработки и что за зверь - EdiStateService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#event">Структура Event</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="events_kontur.html">Настройка получения событий с ящиком Контур.Диадок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="counterparty_kontur.html">Синхронизация данных контрагентов и их ящиков с Контур.Диадок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_provider.html">Реализация интеграции с новым ЭДО-провайдером</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-kontur-lib.html">Описание ecos-edi-kontur-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-ftps-lib.html">Описание ecos-edi-ftps-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-sbis-lib.html">Описание ecos-edi-sbis-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expand_functions.html">Как расширять функционал</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_integration_settings.html">Переход на новые настройки интеграции с EDI провайдерами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CounterpartyEdiInfoRecordsDao.html">CounterpartyEdiInfoRecordsDao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_lib.html">Общая библиотека для обработки EDI событий ecos-edi-integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_signing.html">Серверное подписание</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_RC2%2B_configuration.html">Конфигурация ЭДО</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a> &raquo;</li>
+      <li>EDI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/integration/EDI_integration/EDI.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="edi">
+<span id="id1"></span><h1>EDI<a class="headerlink" href="#edi" title="Ссылка на этот заголовок"></a></h1>
+<section id="id2">
+<h2>Основные принципы<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Интеграция с ЭДО провайдерами, как уже писалось в других статьях на эту тему, построена на стандартном для микросервиса интеграций механизме - синхронизациях <a class="reference internal" href="../ECOS%20Synchronization.html#ecos-synchronization"><span class="std std-ref">ECOS Synchronization</span></a>. Это для нас означает, что у нас есть простой способ управлять состоянием интеграции с конкретным ЭДО провайдером в рамках настроенного ящика в ECOS посредством уже готового функционала (включение/выключение чекбоксами, сброс состояния при необходимости для старта интеграции с самого начала и тд).</p>
+<p>Перейдем к описанию самого функционала с указанием классов.</p>
+<p>ECOS синхронизации работают на механизме объявления реализации <strong>SyncExecutionFactory</strong>, которые поставляют реализации SyncExecution, в котором уже происходит шедулинг интеграции.</p>
+<p>В нашем случае, за это ответственны классы <strong>EdiSyncExecutionFactory</strong> и <strong>EdiSyncExecution</strong>. Работу <strong>EdiSyncExecutionFactory</strong> рассматривать не будем, так как кроме регистрации в <strong>SyncService</strong> и создания <strong>EdiSyncExecution</strong> - никакой работы он и не делает.</p>
+<p>Рассмотрим работу EdiSyncExecution:</p>
+<ul class="simple">
+<li><p>Зашедулить джобу по настройкам.</p></li>
+<li><p>В джобе - повесить лок с помощью ShedLock. Если смог повесить лок - работа продолжается.</p></li>
+<li><p>Собирает данные для интеграции, ищет зарегистрированную для ЭДО-провайдера из настроек ящика реализацию интерфейса EdiEventsSyncService. Если не находит - сыпет исключения. Важно отметить, что реализаций <strong>EdiEventsSyncService</strong> в самом микросервисе integrations на самом деле нет, как они подключаются будет описано в разделе ниже.</p></li>
+<li><p>Делегирует работу найденному EdiEventsSyncService, передавая ему собранные ранее данные + метод-колбек для обновления состояния синхронизации.</p></li>
+</ul>
+<p>То есть, по факту, особой работы EdiSyncExecution не делает, полезная работа выполняется за счет делегирования.</p>
+</section>
+<section id="edisyncexecution">
+<h2>Связь сервисов-реализации с EdiSyncExecution для интеграции<a class="headerlink" href="#edisyncexecution" title="Ссылка на этот заголовок"></a></h2>
+<p>Ответ довольно прост, существует общая либа <em>ecos-edi-commons</em>, в которую вынесены основные интерфейсы интеграции и структуры данных. Таким образом, удается связать решение на уровне интерфейсов (то есть, связь такая, что интерфейс используется в микросервисе integrations, а реализация идет в сторонних либах).</p>
+<p>Ок, с этим разобрались, что-то реализуется, а как микросервис то получит это, если он этих зависимостей даже не имеет? Тут ответ уже сложнее. Решение основано на загрузке кода библиотек в микросервис в виде OSGi бандлов. Для более подробного изучения этого - можно почитать статью <a class="reference internal" href="../OSGI.html#osgi"><span class="std std-ref">Функционал загрузки OSGI пакетов</span></a> (и рекомендованные статьи), а так же пример загрузки либы контур для этих целей - <a class="reference internal" href="events_kontur.html#events-kontur"><span class="std std-ref">Настройка получения событий с ящиком Контур_Диадок</span></a></p>
+<p>Рассмотрим что именно за интерфейсы и сервисы определены в ecos-edi-commons либе:</p>
+<ul class="simple">
+<li><p><strong>EdiEventsSyncService</strong> - интерфейс, в который делегируется вся интеграция с ЭДО-провайдером.</p></li>
+<li><p><strong>EdiEventsSyncServiceResolver</strong> - класс, в котором регистрируются EdiEventsSyncService по связке “ЭДО-провайдер - Сервис” при загрузке бандла, предназначенного для интеграции с каким-то ЭДО-провайдером. Содержится в микросервисе в виде бина.</p></li>
+<li><p><strong>EdiBoxService</strong> - интерфейс для получения информации о ящике. Расширяется в основном коде микросервиса в виде бина.</p></li>
+<li><p><strong>EdiApiService</strong> - интерфейс для общения с ЭДО провайдером. Содержит методы для всех операций с ЭДО (или почти все).</p></li>
+<li><p><strong>EdiApiServiceResolver</strong> - класс, в котором регистрируются EdiApiService по связке “ЭДО-провайдер - Сервис” при загрузке бандла, предназначенного для интеграции с каким-то ЭДО-провайдером. Содержится в микросервисе в виде бина.</p></li>
+<li><p><strong>EdiService</strong> - Класс, который содержит те же методы, что и в EdiApiService, за исключением того, что в каждый метод дополнительно передается параметр EdiProviderType. По сути, является композитным EdiApiService. Делегирует логику в конкретный EdiApiService, полученный по связке с EdiProviderType из EdiApiServiceResolver.</p></li>
+<li><p><strong>EdiGenerator + дочерние интерфейсы</strong> - интерфейсы для расширения возможностей генерации контента в ЭДО провайдерах. К примеру, может быть 2 реализации генерации печатной формы: через вызов API генерации ПФ в сервисах диадока (удаленная генерация) или генерация силами ECOS (локальная). Регистрируется в EdiGeneratorResolver.</p></li>
+<li><p><strong>EdiGeneratorResolver</strong> - класс для регистрации EdiGenerator реализаций по составному ключу “Эдо-провайдер+Тип-генератора+вид-генератора”, где Эдо-провайдер - Контур или Корус, Тип генератора - Генерация печатной формы или Генерация титула покупателя, Вид генератора - Произвольная строка с символизирующая вид. Обычно, что то вроде “локальная генерация” или “генерация по API”.</p></li>
+<li><p><strong>EdiStateService</strong> - Сервис для отправки событий на обработку после получения и первичной обработки их в либе (будет рассмотрено ниже).</p></li>
+</ul>
+<p>Примерное взаимодействие сервисов можно изучить подробнее на <a class="reference external" href="https://app.diagrams.net/">drawIO</a> диаграмме:</p>
+<p><a class="reference external" href="https://docs.google.com/document/d/1OPjXLsTkOio4ikiG_a2d7aas_0W6fUrIbDGyNKA2uyY/edit?usp=sharing">edi_services</a></p>
+</section>
+<section id="edistateservice">
+<h2>Что происходит в либах обработки и что за зверь - EdiStateService<a class="headerlink" href="#edistateservice" title="Ссылка на этот заголовок"></a></h2>
+<p>Либы не обрабатывают события. Они их получают исходя последнего обработанного события (хранящегося в состоянии синхронизации), составляют универсальную структуру Event, хранящуюся в либе <em>ecos-edi-commons</em> и после этого отправляет эту структуру в EdiStateService.</p>
+<p>Структуры в <em>ecos-edi-commons</em> можно посмотреть в следующей диаграмме <a class="reference external" href="https://app.diagrams.net/">drawIO</a> :</p>
+<p><a class="reference external" href="https://docs.google.com/document/d/1zWTdASmNCthb7vuQkwz1ocGGUTYzKlldM1hXl1JdALQ/edit?usp=sharing">edi_structures</a></p>
+<p>EdiStateService - это класс в ecos-edi-commons, который отправляет события по определенному endpoint внутри camel контекста. CamelContext отправителя и CamelContext получателя события - это, как правило, разные контексты. Подобная передача осуществляется использованием эндпоинта direct-vm типа, а не простого direct.</p>
+<p>Таким образом, происходит следующее взаимодействие:</p>
+<a class="reference internal image-reference" href="../../_images/integration_EDI_1.png"><img alt="Integration EDI" class="align-center" src="../../_images/integration_EDI_1.png" style="width: 800px;" /></a>
+<p>, где указано по шагам:</p>
+<p>1 - Отправляется запрос выполнить интеграцию через Контур (или иной другой вариант ЭДО-провайдера), для какого-то ящика, от такого то события (вызов EdiEventsSyncService).</p>
+<p>2 - В случае найденных событий - трансформирует их в структуру Event и через EdiStateService отправляет сообщение в Camel из контекста Camel микросервиса интеграций.</p>
+<p>3 - Camel контекст микросервиса интеграций отправляет сообщение с Event в CamelContext внутри VM, в котором зарегистрирован указанный эндпоинт. На скриншоте указано, что мы используем еще какой-то customer-lib со своим camel контекстом, но такая кастомизация нужна не всегда, в общем случае - будет использоваться сразу переход в ecos-lib.</p>
+<p>4 - После выполнения каких-то работа в customer-lib роутах - они отправляют сообщение в CamelContext либы ecos-lib. Там происходит обновление документов, подписей и тд в альфреско путем вызовов Records API.</p>
+<p>Стоит уточнить еще раз, customer-lib и ecos-lib - отдельные OSGi бандлы, включенные в микросервис после его старта, которые создают и стартуют Camel контекст, на роутах которого возложена связь между ними. Обязательно нужно соблюдать контракт по именованию endpoint.</p>
+</section>
+<section id="event">
+<h2>Структура Event<a class="headerlink" href="#event" title="Ссылка на этот заголовок"></a></h2>
+<p>Не совсем так. Нет, я не имею ввиду, что Event - это какая-то хитрая структура. Это обычный POJO, с сеттерами, геттерами, equals и тд.
+Однако, заполнение Event носит определенный характер. Внутри него ДОЛЖНЫ содержаться все документы, состояния которых изменены в рамках данного события.
+Это означает, что если обрабатываем событие “Документ подписан”, то это означает, что должна прийти не просто подпись, а еще и информация о документе с АКТУАЛЬНЫМ статусом.
+Другая ситуация, если по документу типа УПД пришла корректировка УКД - это означает, что в рамках этого события придет не только УКД, но и информация о текущем новом состоянии УПД (только статус).
+Неизменившиеся поля, вроде контента или основанных на контенте формализованных атрибутах, которые могут быть тяжелыми при транспортировании - опускаются.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../EDI_integration.html" class="btn btn-neutral float-left" title="Интеграция с ЭДО провайдерами" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="events_kontur.html" class="btn btn-neutral float-right" title="Настройка получения событий с ящиком Контур.Диадок" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

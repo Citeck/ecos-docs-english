@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Переход на новые настройки интеграции с EDI провайдерами &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="CounterpartyEdiInfoRecordsDao" href="CounterpartyEdiInfoRecordsDao.html" />
+    <link rel="prev" title="Как расширять функционал" href="expand_functions.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EDI.html">EDI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events_kontur.html">Настройка получения событий с ящиком Контур.Диадок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="counterparty_kontur.html">Синхронизация данных контрагентов и их ящиков с Контур.Диадок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_provider.html">Реализация интеграции с новым ЭДО-провайдером</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-kontur-lib.html">Описание ecos-edi-kontur-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-ftps-lib.html">Описание ecos-edi-ftps-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-sbis-lib.html">Описание ecos-edi-sbis-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expand_functions.html">Как расширять функционал</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Переход на новые настройки интеграции с EDI провайдерами</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Пошаговая инструкция по переходу на новую интеграцию</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CounterpartyEdiInfoRecordsDao.html">CounterpartyEdiInfoRecordsDao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_lib.html">Общая библиотека для обработки EDI событий ecos-edi-integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_signing.html">Серверное подписание</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_RC2%2B_configuration.html">Конфигурация ЭДО</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a> &raquo;</li>
+      <li>Переход на новые настройки интеграции с EDI провайдерами</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/integration/EDI_integration/new_integration_settings.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="edi">
+<h1>Переход на новые настройки интеграции с EDI провайдерами<a class="headerlink" href="#edi" title="Ссылка на этот заголовок"></a></h1>
+<ol class="arabic simple">
+<li><p>Новые настройки для контрагентов.</p></li>
+</ol>
+<p>Ранее в enterprise версии поддерживался 1 провайдер - КОНТУР. Значение для <strong>boxid</strong> задавалось свойством <code class="docutils literal notranslate"><span class="pre">idocs:diadocBoxId</span></code> (или переопределенным в журнале <strong>“Системные журналы“ → “Настройки ЭДО“ → Тип свойства DiadocBox : diaDocBoxIdType</strong>). Теперь КА поддерживается несколько ящиков разных провайдеров</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/settings_1.png"><img alt="../../_images/settings_1.png" class="align-center" src="../../_images/settings_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для переноса старых настроек КА написан dyn-ext скрипт:</p>
+<p><strong>{root}/alfresco/service/citeck/ecos/moveCounterpartyEdiSettingToNewFormat?counterpartyType={type}&amp;diadocBoxIdProp={diadocBoxIdProp}</strong>, где:</p>
+<p><strong>{type}</strong> - тип ноды КА,</p>
+<p><strong>{diadocBoxIdProp}</strong> - Свойство с идентификатором ящика диадока.</p>
+<p>Для коробки соответсвенно: <code class="docutils literal notranslate"><span class="pre">type=idocs:contractor</span></code>, <code class="docutils literal notranslate"><span class="pre">diadocBoxIdProp=idocs:diadocBoxId</span></code></p>
+<p>Так же, предусмотрена возможность переноса настроек аналогичных по структуре к текущей. В таком случае урл будет таким:</p>
+<p><strong>{root}/alfresco/service/citeck/ecos/moveCounterpartyEdiSettingToNewFormat?counterpartyType={type}&amp;ediProviderInfoType={ediProviderInfoType}&amp;ediBoxIdProp={ediBoxIdProp}&amp;ediProviderProp={ediProviderProp}</strong></p>
+<ol class="arabic simple" start="2">
+<li><p>Переход на новые настройки для ЮР лиц.</p></li>
+</ol>
+<p>Ранее события приходили для ящиков настроенных через системный справочник (<strong>“Системные журналы“ → “Настройки ЭДО“ → diadoc|corus</strong>). Сейчас настройки для ящиков хранятся в ноде ЮР.лица аналогично настройкам в ноде КА.</p>
+<p>Для переноса старых настроек КА написан dyn-ext скрипт:</p>
+<p><strong>{root}/alfresco/service/citeck/ecos/moveCounterpartyEdiSettingToNewFormat?legalEntityRef={ref}&amp;clientBoxIdSettingKey={diadocClientBoxId}&amp;ediProviderType={ediProviderType}</strong>, где:</p>
+<p><strong>{ref}</strong> - нода ЮР лица,</p>
+<p><strong>{diadocClientBoxId}</strong> - настройка ящика(например, <code class="docutils literal notranslate"><span class="pre">diadocClientBoxId1</span></code>).</p>
+<p><strong>{ediProviderType}</strong> - тип провайдера</p>
+<ol class="arabic simple" start="3">
+<li><p>Переход на новых ответcвенных за обработку пакетов.</p></li>
+</ol>
+<p>Ранее при получения входящего пакета создавалась задача в журнале <strong>“Разбор входящих“</strong> с назначением на пользователей указанных в справочнике <strong>“Связь контрагента с группой“</strong>. Тип настраивался через системный справочник (<strong>“Системные журналы“ → “Настройки ЭДО“ → diadoc|corus</strong>). Сейчас ответственные хранятся в ноде КА в ассоциации <code class="docutils literal notranslate"><span class="pre">“idocs:responsibilities“</span></code>.</p>
+<p>Для переноса ответственных в ноду КА написан dyn-ext скрипт:</p>
+<p><strong>{root}/alfresco/service/citeck/ecos/moveResponsibleAuthoritiesToCounterpartyAssoc?clientBoxId={clientBoxId}</strong>, где:</p>
+<p><strong>{clientBoxId}</strong> -  тип ящика. Допустимые значения: <code class="docutils literal notranslate"><span class="pre">diadocClientBoxId1</span></code>, <code class="docutils literal notranslate"><span class="pre">diadocClientBoxId2</span></code>, <code class="docutils literal notranslate"><span class="pre">corusClientBoxId</span></code>.</p>
+<section id="id1">
+<h2>Пошаговая инструкция по переходу на новую интеграцию<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>Для перехода на новую интеграцию необходимо выполнить следующие шаги:</p>
+<ol class="arabic simple">
+<li><p>Миграция в коде (разработчик):</p></li>
+</ol>
+<blockquote>
+<div><p>1.1. Использовать <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.integration.edi.service.EcosEdiService</span></code> или <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.integration.edi.js.EcosEdiServiceJS</span></code> реализацию вместо всех предыдущих вариантов интерфейсов для обращения к EDF-провайдерам. Эти сервисы отправляют запрос именно в микросервис, а не в старую интеграцию.</p>
+<p>1.2. Если используются кастомные настройки контрагентов/юр лиц - привести их в вид соответствующий новой структуре, описанной в статье: Переход на новые настройки интеграции с Edi провайдерами.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Произвести миграцию на стенде, запустив скрипты (при миграции с 3й версии на 4ю) согласно следующей статье (Администратор/разработчик) Переход на новые настройки интеграции с Edi провайдерами.</p></li>
+<li><p>Перед запуском стенда - выключить старые джобы в <strong>alfresco-global.properties</strong>. Список свойств: (Администратор/разработчик)</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">integration</span><span class="o">.</span><span class="n">diadoc</span><span class="o">-</span><span class="n">getUpdates</span><span class="o">.</span><span class="n">enabled</span><span class="mf">.1</span><span class="o">=</span><span class="n">false</span>
+<span class="n">integration</span><span class="o">.</span><span class="n">diadoc</span><span class="o">-</span><span class="n">getUpdates</span><span class="o">.</span><span class="n">scheduler</span><span class="mf">.1</span><span class="o">.</span><span class="n">autoStartup</span><span class="o">=</span><span class="n">false</span>
+<span class="n">integration</span><span class="o">.</span><span class="n">diadoc</span><span class="o">-</span><span class="n">getUpdates</span><span class="o">.</span><span class="n">enabled</span><span class="mf">.2</span><span class="o">=</span><span class="n">false</span>
+<span class="n">integration</span><span class="o">.</span><span class="n">diadoc</span><span class="o">-</span><span class="n">getUpdates</span><span class="o">.</span><span class="n">scheduler</span><span class="mf">.2</span><span class="o">.</span><span class="n">autoStartup</span><span class="o">=</span><span class="n">false</span>
+<span class="n">integration</span><span class="o">.</span><span class="n">corus</span><span class="o">-</span><span class="n">getUpdates</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">false</span>
+<span class="n">integration</span><span class="o">.</span><span class="n">corus</span><span class="o">-</span><span class="n">getUpdates</span><span class="o">.</span><span class="n">scheduler</span><span class="o">.</span><span class="n">autoStartup</span><span class="o">=</span><span class="n">false</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Запустить стенд.</p></li>
+<li><p>Согласно статье Настройка получения событий с ящиком Контур.Диадок. - добавить интересующие интеграции. Если была интеграция по одному ящику - сделать одну синхронизацию, если две - то две и тд.</p></li>
+</ol>
+<p>ГАЛКУ <strong>“Enabled/Включена”</strong> ОСТАВИТЬ НЕ АКТИВНОЙ!!! Это необходимо, чтобы интеграция пошла именно с точки, с которой остановилась старая интеграция (для этого смотрите дальнейшие шаги).</p>
+<p>“Camel endpoint” для синхронизации указывать следующий: <code class="docutils literal notranslate"><span class="pre">direct-vm:ecosEventsReceiveVmRoute</span></code></p>
+<p>Остальное брать из справочника <strong>“Конфигурация EDI”</strong> (<code class="docutils literal notranslate"><span class="pre">URL:</span> <span class="pre">${server_host}/v2/journals?journalId=ecosEdiConfig</span></code>).</p>
+<ol class="arabic" start="6">
+<li><p>На момент написания статьи, нельзя было на форме редактировать последнее обработанное событие в интеграции, поэтому:</p>
+<blockquote>
+<div><p>6.1. Заходим в БД микросервиса интеграций, делаем select для таблицы ecos_sync (<strong>SELECT * FROM ecos_sync;</strong>).</p>
+<p>6.2. Для только что созданных ecos_sync записей выполнить update, засетив свойство sync_state значением из справочника <strong>“Конфигурация EDI”</strong>. Например:</p>
+<blockquote>
+<div><p>6.2.1. У нас была, к примеру, одна единственная интеграция с диадоком на ent. Заходим в журнал <strong>“Конфигурация EDI”</strong> (<code class="docutils literal notranslate"><span class="pre">URL:</span> <span class="pre">${server_host}/v2/journals?journalId=ecosEdiConfig</span></code>). Находим заполненное свойство <code class="docutils literal notranslate"><span class="pre">lastProcessedEdiEventId</span></code> (для первого ящика диадока). Запоминаем его значение.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/settings_2.png"><img alt="../../_images/settings_2.png" class="align-center" src="../../_images/settings_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>6.2.2. Выполняем запрос UPDATE:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UPDATE ecos_sync SET sync_state=&#39;{&quot;lastEventId&quot;:&quot;${значение_из_справочника_из_пункта_6.2.1}&quot;}&#39; WHERE id=${id_из_селекта};
+</pre></div>
+</div>
+<p>То есть, для значения выше запрос будет примерно следующим (обязательно удостовериться, что при копировании значения не скопировались лишние табы/пробелы):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">ecos_sync</span> <span class="n">SET</span> <span class="n">sync_state</span><span class="o">=</span><span class="s1">&#39;{&quot;lastEventId&quot;:&quot;4bc341e4-74b6-4908-899f-d196adbda205&quot;}&#39;</span> <span class="n">WHERE</span> <span class="nb">id</span><span class="o">=</span><span class="mi">1001</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>6.3. Сделать такое для каждого настроенного ящика.</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ol>
+<p>(На текущий момент при настройке синхронизации появилось поле для указания последнего обработанного события, которое подхватывается при первом запуске интеграции, либо после сброса синхронизации).</p>
+<ol class="arabic simple" start="7">
+<li><p>После того как для всех ящиков восстановили <strong>lastEventId</strong> - можно включать флаг <strong>“Enabled/Включена”</strong> для синхронизаций.</p></li>
+<li><p>Загрузить бандлы. Бандл - jar файл со специальным манифестом. В данном случае, “загрузить бандлы” означает скачать из nexus бандл соответствующей версии и загрузить его в журнал <code class="docutils literal notranslate"><span class="pre">${server_host}/v2/journals?journalId=ecos-osgi-bundles</span></code>. Если в журнале уже существует бандл - нужно его удалить и загрузить заново.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/settings_3.png"><img alt="../../_images/settings_3.png" class="align-center" src="../../_images/settings_3.png" style="width: 600px;" /></a>
+<p>Список бандлов, которые нужно загрузить для интеграции с Диадок:</p>
+<ul class="simple">
+<li><p>ru.citeck.ecos.ecos-edi-kontur-lib</p></li>
+<li><p>ru.citeck.ecos.ecos-edi-integration</p></li>
+</ul>
+<p>При загрузке бандла, в случае успеха - вы увидите в логах мкс интеграции следующие сообщения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Bundle ${bundle-name} is installed
+Bundle ${bundle-name} is started
+</pre></div>
+</div>
+<p>Версии бандлов брать исходя из версии микросервиса интеграций из таблицы в следующей статье: Соответствие версий бандлов к версии микросервиса</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="expand_functions.html" class="btn btn-neutral float-left" title="Как расширять функционал" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="CounterpartyEdiInfoRecordsDao.html" class="btn btn-neutral float-right" title="CounterpartyEdiInfoRecordsDao" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

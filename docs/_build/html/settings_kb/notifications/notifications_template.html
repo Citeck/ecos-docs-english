@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Шаблоны уведомлений &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Массовая рассылка" href="notifications_bulk_mail.html" />
+    <link rel="prev" title="Уведомления" href="notifications.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interface.html">Интерфейс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../notifications.html">Уведомления</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="notifications.html">Уведомления</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Шаблоны уведомлений</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1. Общие сведения</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1. Операции</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">3. Использование переменных в шаблоне</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_bulk_mail.html">Массовая рассылка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_from_flowable.html">Отправка уведомлений из flowable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_from_ecos_bpmn.html">Отправка уведомлений из Ecos BPMN (Camunda)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_firebase_push.html">Push уведомления (firebase)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications_commands.html">Отправка уведомлений через команду</a></li>
+<li class="toctree-l3"><a class="reference internal" href="senders.html">Отправители</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../notifications.html">Уведомления</a> &raquo;</li>
+      <li>Шаблоны уведомлений</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/settings_kb/notifications/notifications_template.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><a class="toc-backref" href="#id17">Шаблоны уведомлений</a><a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<span id="notification-templates"></span><p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id17">Шаблоны уведомлений</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id18">1. Общие сведения</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id4" id="id19">1.1 Описание сущности “Шаблон уведомления“</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id20">1.2 Журнал “Шаблоны уведомлений“</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id6" id="id21">1. Операции</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id7" id="id22">2.1 Создание шаблона уведомления</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id8" id="id23">2.1.1 Создание нового объекта</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id24">2.1.2 Импорт модуля</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id10" id="id25">2.2 Редактирование шаблона уведомления</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id26">2.3 Удаление шаблона уведомления</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id27">2.4 Выгрузка шаблона уведомления</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id13" id="id28">3. Использование переменных в шаблоне</a></p>
+<ul>
+<li><p><a class="reference internal" href="#notification-template-services" id="id29">3.1 Сервисы и константы</a></p></li>
+<li><p><a class="reference internal" href="#id15" id="id30">3.2 Множественные атрибуты</a></p></li>
+<li><p><a class="reference internal" href="#id16" id="id31">3.3 Вставка изображений в шаблон</a></p></li>
+<li><p><a class="reference internal" href="#attachments-email" id="id32">3.4 Прикрепление вложений (attachments) к email уведомлению</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id3">
+<h2><a class="toc-backref" href="#id18">1. Общие сведения</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<section id="id4">
+<h3><a class="toc-backref" href="#id19">1.1 Описание сущности “Шаблон уведомления“</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Id</dt>
+<dd class="field-odd"><p>Уникальный идентификатор шаблона уведомления.</p>
+</dd>
+<dt class="field-even">Name</dt>
+<dd class="field-even"><p>Имя шаблона уведомления.</p>
+</dd>
+<dt class="field-odd">Tags</dt>
+<dd class="field-odd"><p>Теги.</p>
+</dd>
+<dt class="field-even">Notification title</dt>
+<dd class="field-even"><p>Заголовок уведомления, мульти-язычное поле – строка с поддержкой freemarker.</p>
+</dd>
+<dt class="field-odd">Notification body</dt>
+<dd class="field-odd"><p>Многокомпонентное поле для описания тела уведомления с привязкой к указанной локали. В одном шаблоне уведомления предусмотрена поддержка разных локалей (языков). <br> <em>Lang</em> - Локаль сообщения, например <em>en</em>, <em>ru</em>. <br> <em>Body</em> - Исходное содержимое текста сообщения c использованием <a class="reference external" href="https://freemarker.apache.org/">freemarker</a>. При нажатии на кнопку «Редактировать как HTML» открывается richText редактор сообщения для более удобного редактирования html разметки</p>
+</dd>
+<dt class="field-even">Model</dt>
+<dd class="field-even"><p>Модель, исходя из которой будет происходить шаблонизация текста – title или body для уведомлений. <br> Модель – это map ключ: значение, ключом в данном случае выступает имя переменной, которая будет доступна в шаблоне, а значение – ecos records выражение для вычисления значения переменной. <br> Базовым record является документ, по которому идет бизнес-процесс. То есть, если в модели указать значение <code class="docutils literal notranslate"><span class="pre">.disp</span></code>, то вычисляется заголовок по документу. Так же есть доступ к другим объектам через знак <code class="docutils literal notranslate"><span class="pre">$</span></code>, например, если уведомление отправляется в рамках бизнес процесса, - <code class="docutils literal notranslate"><span class="pre">$process.webUrl</span></code> (по умолчанию доступны дополнительные переменные <code class="docutils literal notranslate"><span class="pre">$now</span></code>, <code class="docutils literal notranslate"><span class="pre">$user</span></code>, <code class="docutils literal notranslate"><span class="pre">$webUrl</span></code>). <br> При использовании мульти шаблонов, модель из базового шаблона будет сливаться с моделью, найденной по типу, таким образом часть «базовой» модели может быть описана в базовом шаблоне, а более специфичные атрибуты могут быть вынесены в конкретный шаблон.</p>
+</dd>
+<dt class="field-odd">Multi templates</dt>
+<dd class="field-odd"><p>Вычисляемые шаблоны, в зависимости от типа документа, по которому отсылается уведомление. Например, может быть «базовый» шаблон, который включает в себя несколько других шаблонов с разными типами документов. <br> При отправке уведомления, если у документа, по которому отправляется уведомление, тип не соответствует ни одному из мульти-шаблонов, то отправка осуществится по «базовому» шаблону, если тип документа соответствует мульти-шаблону, то отправка произойдет по соответствующему шаблону.</p>
+</dd>
+<dt class="field-even">Predicate</dt>
+<dd class="field-even"><p>Позволяет задать дополнительные условия для связки <em>шаблон - тип</em>. Вычисление предикатов происходит на основе атрибутов модели.</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3><a class="toc-backref" href="#id20">1.2 Журнал “Шаблоны уведомлений“</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<p id="template-journal">Для перехода в журнал необходимо в боковом меню выбрать <strong>«Инструменты»</strong>. Далее в правой части перейти в блок <strong>«Конфигурация уведомлений» - &gt; журнал «Шаблоны уведомлений»</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/notifications_template_menu_1.png"><img alt="../../_images/notifications_template_menu_1.png" class="align-center" src="../../_images/notifications_template_menu_1.png" style="width: 600px;" /></a>
+</section>
+</section>
+<section id="id6">
+<h2><a class="toc-backref" href="#id21">1. Операции</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<section id="id7">
+<h3><a class="toc-backref" href="#id22">2.1 Создание шаблона уведомления</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<p>Для создания необходимо перейти в журнал «Шаблоны уведомлений», см. <a class="reference internal" href="#id5">1.2 Журнал “Шаблоны уведомлений“</a>.</p>
+<p>Шаблон уведомления может быть создан несколькими способами:</p>
+<ul class="simple">
+<li><p>Создание нового объекта;</p></li>
+<li><p>Импорт модуля (zip).</p></li>
+</ul>
+<section id="id8">
+<h4><a class="toc-backref" href="#id23">2.1.1 Создание нового объекта</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h4>
+<p>Для создания нового объект необходимо нажать на <strong>«+»</strong> и выбрать <strong>«Создать новый шаблон уведомления»</strong></p>
+<a class="reference internal image-reference" href="../../_images/notifications_template_create_1.png"><img alt="../../_images/notifications_template_create_1.png" class="align-center" src="../../_images/notifications_template_create_1.png" style="width: 600px;" /></a>
+<p>Описание полей см. <a class="reference internal" href="#id4">1.1 Описание сущности “Шаблон уведомления“</a>.</p>
+<p>Для примера создадим базовый шаблон c уведомлением о том, что создан новый документ.</p>
+<p>Открываем форму создания и заполняем следующую информацию:</p>
+<p><strong>id</strong> - ssg-incident-base-new-incident-to-possible-responsible</p>
+<p><strong>name</strong> - Базовый шаблон. Новый документ</p>
+<p><strong>notification title</strong> - Новый инцидент: ${title}. <br>
+В данном случае <em>${title}</em> означает, что из описанной модели будет взято значение, которое является заголовком для документа. <br>
+Данное поле является мульти язычным, переключение языков происходит по нажатию на значок флага.</p>
+<a class="reference internal image-reference" href="../../_images/notifications_template_create_2.png"><img alt="../../_images/notifications_template_create_2.png" class="align-center" src="../../_images/notifications_template_create_2.png" style="width: 600px;" /></a>
+<p><strong>Notification body</strong> - <code class="docutils literal notranslate"><span class="pre">lang</span></code> = ru, <code class="docutils literal notranslate"><span class="pre">body</span></code> заполняем следующим текстом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="c1">#import &quot;ssg-template-lib&quot; as lib&gt;</span>
+
+<span class="o">&lt;</span><span class="nd">@lib</span><span class="o">.</span><span class="n">its_test_message</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+    <span class="n">Сообщаем</span><span class="p">,</span> <span class="n">что</span> <span class="n">сформирован</span> <span class="n">документ</span><span class="p">,</span> <span class="n">за</span> <span class="n">обработку</span> <span class="n">которого</span> <span class="n">Вы</span> <span class="n">являетесь</span> <span class="n">ответственным</span><span class="o">.&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nd">@lib</span><span class="o">.</span><span class="n">document_link</span><span class="o">/&gt;&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+    <span class="n">Пожалуйста</span><span class="p">,</span> <span class="n">проверьте</span> <span class="n">рабочий</span> <span class="n">список</span> <span class="n">задач</span> <span class="n">Скиф</span><span class="o">.&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>В данном шаблоне импортируется библиотечный шаблон:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;#macro its_test_message&gt;
+    &lt;b&gt;Это письмо было отправлено вам в рамках тестирования настроек новой системы.
+        Вам не нужно отвечать или как-то реагировать на него.&lt;/b&gt;
+&lt;/#macro&gt;
+
+&lt;#macro document_link&gt;
+&lt;a href=&quot;${web_url}/v2/dashboard?recordRef=${doc_recordRef}&quot;&gt;&lt;u&gt;&lt;i&gt;${title}&lt;/i&gt;&lt;/u&gt;&lt;/a&gt;
+&lt;/#macro&gt;
+</pre></div>
+</div>
+<p>В шаблонах уведомления поддерживается <code class="docutils literal notranslate"><span class="pre">import</span></code> и <code class="docutils literal notranslate"><span class="pre">include</span></code> других шаблонов по их <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<p>В текущем примере:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;&#64;lib.its_test_message/&gt;</span></code> - печать блока текста, информирующего о том, что это сообщение является тестовым. <br>
+<code class="docutils literal notranslate"><span class="pre">&lt;&#64;lib.document_link/&gt;</span></code> - печатает ссылку на документ, по которому идет бизнес процесс, в данном случае – сам документ.</p>
+<p>Подробнее о использовании макросов, импорте и включении других шаблонов см. документацию apache freemarker - <a class="reference external" href="https://freemarker.apache.org">https://freemarker.apache.org</a></p>
+<p><strong>Model</strong> - описываем модель, которая потребуется для шаблонизации текста:</p>
+<p><em>Flowable:</em></p>
+<ul class="simple">
+<li><p><strong>web_url : $process.webUrl</strong> – используется для формирования ссылки на документ</p></li>
+<li><p><strong>doc_recordRef : .id</strong>  – уникальный id документа, так же используется для формирования ссылки на документ</p></li>
+<li><p><strong>title : .disp</strong> – заголовок документа</p></li>
+</ul>
+<p><em>Ecos BPMN:</em></p>
+<p>См. описание компонента <a class="reference internal" href="../processes/ecos_bpmn/editor/components/ecos_bpmn_components_notifications.html#notification-variables"><span class="std std-ref">«Уведомление» в документации по Ecos BPMN.</span></a></p>
+</section>
+<section id="id9">
+<h4><a class="toc-backref" href="#id24">2.1.2 Импорт модуля</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h4>
+<p>Для импорта модуля в журнале «Шаблоны уведомлений» нажмите на <strong>«+»</strong> и выберите <strong>«Загрузить шаблон уведомления»</strong></p>
+<a class="reference internal image-reference" href="../../_images/notifications_template_import.png"><img alt="../../_images/notifications_template_import.png" class="align-center" src="../../_images/notifications_template_import.png" style="width: 400px;" /></a>
+<p>В открывшейся форме загрузите zip архив с шаблоном уведомления. Подробнее про модуль «Шаблон уведомления» см. <a class="reference internal" href="#id12">2.4 Выгрузка шаблона уведомления</a>.</p>
+</section>
+</section>
+<section id="id10">
+<h3><a class="toc-backref" href="#id25">2.2 Редактирование шаблона уведомления</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h3>
+<p>Для редактирования шаблона уведомления перейдите в журнал (см. <a class="reference internal" href="#id5">1.2 Журнал “Шаблоны уведомлений“</a>), найдите нужный шаблон и нажмите на действие «Редактировать».</p>
+<a class="reference internal image-reference" href="../../_images/notifications_template_edit.png"><img alt="../../_images/notifications_template_edit.png" class="align-center" src="../../_images/notifications_template_edit.png" style="width: 500px;" /></a>
+</section>
+<section id="id11">
+<h3><a class="toc-backref" href="#id26">2.3 Удаление шаблона уведомления</a><a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h3>
+<p>Для удаления шаблона уведомления перейдите в журнал (см. <a class="reference internal" href="#id5">1.2 Журнал “Шаблоны уведомлений“</a>), найдите нужный шаблон и нажмите на действие «Удалить».</p>
+<a class="reference internal image-reference" href="../../_images/notifications_template_delete.png"><img alt="../../_images/notifications_template_delete.png" class="align-center" src="../../_images/notifications_template_delete.png" style="width: 500px;" /></a>
+</section>
+<section id="id12">
+<h3><a class="toc-backref" href="#id27">2.4 Выгрузка шаблона уведомления</a><a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h3>
+<p>Для выгрузки модуля шаблона уведомления перейдите в журнал (см. <a class="reference internal" href="#id5">1.2 Журнал “Шаблоны уведомлений“</a>), найдите нужный шаблон и нажмите на действие «Скачать».</p>
+<a class="reference internal image-reference" href="../../_images/notifications_template_download.png"><img alt="../../_images/notifications_template_download.png" class="align-center" src="../../_images/notifications_template_download.png" style="width: 500px;" /></a>
+<p>Модуль представляет собой zip архив с мета-информаций по шаблону и самим контентом шаблона. Для примера, выгрузим модуль для шаблона, созданного на шаге <a class="reference internal" href="#id8">2.1.1 Создание нового объекта</a>.</p>
+<p>Файл ssg-incident-base-new-incident-to-possible-responsible.html.meta.yml является мета информацией, содержимое файла:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ssg-incident-base-new-incident-to-possible-responsible&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Базовый шаблон. Новый документ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;notificationTitle&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ru&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Новый инцидент: ${title}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;model&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;web_url&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$process.webUrl&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;doc_recordRef&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.disp&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;multiTemplateConfig&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Файл ssg-incident-base-new-incident-to-possible-responsible.html.ftl является самим контентом шаблона, его содержимое:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="c1">#import &quot;ssg-template-lib&quot; as lib&gt;</span>
+
+<span class="o">&lt;</span><span class="nd">@lib</span><span class="o">.</span><span class="n">its_test_message</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+    <span class="n">Сообщаем</span><span class="p">,</span> <span class="n">что</span> <span class="n">сформирован</span> <span class="n">документ</span><span class="p">,</span> <span class="n">за</span> <span class="n">обработку</span> <span class="n">которого</span> <span class="n">Вы</span> <span class="n">являетесь</span> <span class="n">ответственным</span><span class="o">.&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nd">@lib</span><span class="o">.</span><span class="n">document_link</span><span class="o">/&gt;&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+    <span class="n">Пожалуйста</span><span class="p">,</span> <span class="n">проверьте</span> <span class="n">рабочий</span> <span class="n">список</span> <span class="n">задач</span> <span class="n">Скиф</span><span class="o">.&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Обратите внимание, что модуль должен быть именно zip архивом, а файлы внутри него чувствительны к наименованию и расширению. <br>
+Файл с контентом должен иметь расширение «.html.ftl», а файл с мета информацией должен именоваться по правилу полное_имя_файла_контента_с_расширением.meta.yml</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Если тело шаблона предусматривает несколько локалей, то в имени файла контента указывается локаль по следующему правилу: <br>
+<code class="docutils literal notranslate"><span class="pre">ssg-incident-base-new-incident-to-possible-responsible.html_en.ft</span></code> для локали <code class="docutils literal notranslate"><span class="pre">en</span></code> <br>
+<code class="docutils literal notranslate"><span class="pre">ssg-incident-base-new-incident-to-possible-responsible.html_ru.ft</span></code> для локали <code class="docutils literal notranslate"><span class="pre">ru</span></code> <br>
+и т.д.</p>
+</div>
+</section>
+</section>
+<section id="id13">
+<h2><a class="toc-backref" href="#id28">3. Использование переменных в шаблоне</a><a class="headerlink" href="#id13" title="Ссылка на этот заголовок"></a></h2>
+<p>В шаблонах уведомлений доступны переменные, определенные в модели, см <a class="reference internal" href="#id4">1.1 Описание сущности “Шаблон уведомления“</a> блок «Model», а также добавленные сервисы в freemarker.</p>
+<section id="notification-template-services">
+<span id="id14"></span><h3><a class="toc-backref" href="#id29">3.1 Сервисы и константы</a><a class="headerlink" href="#notification-template-services" title="Ссылка на этот заголовок"></a></h3>
+<p>В шаблонах уведомлений доступны следующие сервисы, добавленные в freemarker:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">link</span></code> - формирование ссылок</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getRecordLink(recordRef:</span> <span class="pre">String):</span> <span class="pre">String</span></code> - возвращает полную ссылку на переданный recordRef вида <em>http://&lt;webUrl&gt;/v2/dashboard?recordRef=&lt;recordRef&gt;</em></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">meta</span></code> - сервис для получения различной мета информация</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getWebUrl():</span> <span class="pre">String</span></code>- возвращает настроенный webUrl сервера</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_notification</span></code> - информация о текущем уведомлении</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code> - заголовок уведомления</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span></code> - отправитель уведомления</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to</span></code> - получатель уведомления</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cc</span></code> - копия уведомления</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bcc</span></code> - скрытая копия уведомления</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - работа с изображениями в шаблоне, см. пример - <a class="reference internal" href="#notification-template-add-image"><span class="std std-ref">Вставка изображений в шаблон</span></a> .</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">toBase64Data(fileName:</span> <span class="pre">String):</span> <span class="pre">String</span></code> - возвращает <em>base64 data image</em> представление изображения по переданному имени файла изображения</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">toBase64(fileName:</span> <span class="pre">String):</span> <span class="pre">String</span></code> - возвращает <em>base64</em> представление изображения по переданному имени файла изображения</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config</span></code> - предоставляет доступ к Конфигурации Ecos по ключу в формате <code class="docutils literal notranslate"><span class="pre">&lt;область&gt;$&lt;идентификатор&gt;</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get(key:</span> <span class="pre">String):</span> <span class="pre">DataValue</span></code> - получение значения по ключу</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getOrDefault(key:</span> <span class="pre">String,</span> <span class="pre">defaultValue:</span> <span class="pre">Any):</span> <span class="pre">DataValue</span></code> - получение значения по ключу, если значение не найдено, то возвращается значение по умолчанию</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getNotNull(key:</span> <span class="pre">String):</span> <span class="pre">DataValue</span></code> - получение значения по ключу, если значение null, то выбрасывается исключение</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">получение</span> <span class="n">значения</span> <span class="n">конфигурации</span> <span class="n">по</span> <span class="n">ключу</span> <span class="n">и</span> <span class="n">приведение</span> <span class="n">к</span> <span class="n">типу</span> <span class="n">String</span>
+<span class="o">&lt;</span><span class="c1">#assign replyEmail = config.getNotNull(&quot;app/service-desk$sd-email-reply&quot;).asText()&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="id15">
+<h3><a class="toc-backref" href="#id30">3.2 Множественные атрибуты</a><a class="headerlink" href="#id15" title="Ссылка на этот заголовок"></a></h3>
+<p>Предположим, что в источнике есть атрибут <code class="docutils literal notranslate"><span class="pre">eventLines</span></code>, который возвращает список «строк» с атрибутами. <br>
+Для получения данных по множественным атрибутам, как и для всех других, используется стандартные records выражения:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lines:</span> <span class="pre">eventLines[]{id:skifem:eventLineId,text:VIEW_0POSTXT}</span></code> - получить список строк, с атрибутами id и VIEW_0POSTXT. Внутри {} можно указывать атрибуты, которые необходимо подгрузить в объект.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">firstLine:</span> <span class="pre">eventLines{id:skifem:eventLineId,text:VIEW_0POSTXT}</span></code> - аналогично примеру выше, с оговоркой, что будет загружен только первый объект.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/notifications_template_atts_list.png"><img alt="../../_images/notifications_template_atts_list.png" class="align-center" src="../../_images/notifications_template_atts_list.png" style="width: 400px;" /></a>
+<p>В самом шаблоне уведомления выведем информацию по списку строк в виде html таблицы и отдельной строкой первый элемент:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;style&gt;
+    table, tr, td {
+        border: 1px solid;
+        border-collapse: collapse;
+        overflow-wrap: break-word;
+    }
+
+    thead {
+        font-weight: bold;
+    }
+&lt;/style&gt;
+
+&lt;table&gt;
+    &lt;caption&gt;Пример - информация по строкам&lt;/caption&gt;
+    &lt;tr&gt;
+        &lt;th&gt;id&lt;/th&gt;
+        &lt;th&gt;текст документа&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;#if (lines?? &amp;&amp; lines?size &gt; 0)&gt;
+        &lt;#list lines as line&gt;
+            &lt;tr&gt;
+                &lt;td&gt;${line.id!&quot;&quot;}&lt;/td&gt;
+                &lt;td&gt;${line.text!&quot;&quot;}&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/#list&gt;
+    &lt;/#if&gt;
+&lt;/table&gt;
+&lt;br&gt;
+Пример - информация по первой строке: id: ${firstLine.id!&quot;&quot;}, text: ${firstLine.text!&quot;&quot;}
+&lt;p&gt;
+</pre></div>
+</div>
+<p>В результате получим емейл с следующим содержанием:</p>
+<a class="reference internal image-reference" href="../../_images/notifications_template_atts_list_result.png"><img alt="../../_images/notifications_template_atts_list_result.png" class="align-center" src="../../_images/notifications_template_atts_list_result.png" style="width: 400px;" /></a>
+</section>
+<section id="id16">
+<h3><a class="toc-backref" href="#id31">3.3 Вставка изображений в шаблон</a><a class="headerlink" href="#id16" title="Ссылка на этот заголовок"></a></h3>
+<p id="notification-template-add-image">В шаблонах уведомлений реализована возможность вставлять изображения в html разметку в виде base64 data.</p>
+<p>Доступные для вставки изображения находятся в журнале <strong>«Файлы уведомлений»</strong> (<strong>«Инструменты» - &gt; «Конфигурация уведомлений» - &gt; журнал «Шаблоны уведомлений»</strong>).</p>
+<p>Для загрузки нового изображения необходимо нажать на «+» и загрузить изображение. Имя изображения является идентификатором и должно быть уникально.</p>
+<a class="reference internal image-reference" href="../../_images/notifications_template_image_1.png"><img alt="../../_images/notifications_template_image_1.png" class="align-center" src="../../_images/notifications_template_image_1.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../_images/notifications_template_image_2.png"><img alt="../../_images/notifications_template_image_2.png" class="align-center" src="../../_images/notifications_template_image_2.png" style="width: 600px;" /></a>
+<p>Для примера, предположим, что в шаблон письма необходимо добавить кнопку с ссылкой на ресурс <a class="reference external" href="https://citeck.com">https://citeck.com</a>. Для этого необходимо осуществить следующие действия:</p>
+<ol class="arabic simple">
+<li><p>Загрузить файл изображения test-logo-citeck.png в журнал <strong>«Файлы уведомлений»</strong>.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/notifications_template_image_logo.png"><img alt="../../_images/notifications_template_image_logo.png" class="align-center" src="../../_images/notifications_template_image_logo.png" style="width: 200px;" /></a>
+<ol class="arabic simple" start="2">
+<li><p>В шаблоне добавим html разметку с кнопкой и src в виде base64 изображения, загруженного в пункте №1.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Привет! Это тестовый шаблон с кнопкой-изображение :)
+&lt;form action=&quot;https://citeck.com/&quot;&gt;
+    &lt;input type=&quot;image&quot; src=&quot;${image.toBase64Data(&quot;test-logo-citeck.png&quot;)}&quot; style=&quot;max-height: 67px; max-width: 200px;&quot;&gt;
+&lt;/form&gt;
+</pre></div>
+</div>
+<p>Как видно из шаблона выше, для конвертации изображение в base64 data необходимо у сервиса <code class="docutils literal notranslate"><span class="pre">image</span></code> вызвать метод <code class="docutils literal notranslate"><span class="pre">toBase64Data</span></code> и передать ему идентификатор изображения.</p>
+<ol class="arabic simple" start="3">
+<li><p>В результате получим емейл с кнопкой в виде изображения:</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/notifications_template_image_result.png"><img alt="../../_images/notifications_template_image_result.png" class="align-center" src="../../_images/notifications_template_image_result.png" style="width: 400px;" /></a>
+</section>
+<section id="attachments-email">
+<h3><a class="toc-backref" href="#id32">3.4 Прикрепление вложений (attachments) к email уведомлению</a><a class="headerlink" href="#attachments-email" title="Ссылка на этот заголовок"></a></h3>
+<p>Для того чтобы прикрепить вложение необходимо в шаблоне уведомления в модель добавить атрибут <code class="docutils literal notranslate"><span class="pre">_attachments</span></code>. В него мы можем указать контент или список из контентов. Выглядеть это должно следующим образом:</p>
+<a class="reference internal image-reference" href="../../_images/notifications_template_attachments_1.png"><img alt="../../_images/notifications_template_attachments_1.png" class="align-center" src="../../_images/notifications_template_attachments_1.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../../_images/notifications_template_attachments_2.png"><img alt="../../_images/notifications_template_attachments_2.png" class="align-center" src="../../_images/notifications_template_attachments_2.png" style="width: 600px;" /></a>
+<p>В значении к полю <code class="docutils literal notranslate"><span class="pre">_attachments</span></code> необходимо указать <a class="reference internal" href="../../general/ECOS_Records.html#records-api-attribute"><span class="std std-ref">Records API атрибут.</span></a></p>
+<p>Для рекродов, которые хранятся в emodel - <code class="docutils literal notranslate"><span class="pre">_content{bytes,meta:?json}</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Доступно с версии <code class="docutils literal notranslate"><span class="pre">2.15.0</span></code> микросервиса <em>ecos-notification</em>.
+Можно использовать любой атрибут, в котором хранится content рекорда. В примере используется <code class="docutils literal notranslate"><span class="pre">_content</span></code>, так как он является атрибутом для хранения контента по умолчанию.</p>
+</div>
+<p>Ожидаемая модель:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SOj2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test.txt&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ext&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;txt&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;mimeType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/plain&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Для рекордов, которые хранятся в Alfresco - <code class="docutils literal notranslate"><span class="pre">cm:content{bytes,previewInfo?json}</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Доступно с версии <code class="docutils literal notranslate"><span class="pre">2.5.0</span></code> микросервиса <em>ecos-notification</em>.</p>
+</div>
+<p>Ожидаемая модель:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SOj2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;previewInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;originalName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test.txt&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;originalExt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;txt&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;mimeType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/plain&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Использование вышеуказанных атрибутов необязательно, главное чтобы атрибут <code class="docutils literal notranslate"><span class="pre">_attachments</span></code> соответствовал ожидаемой модели.</p>
+<dl class="field-list simple">
+<dt class="field-odd">bytes</dt>
+<dd class="field-odd"><p>Контент файла закодированный в формат Base64</p>
+</dd>
+<dt class="field-even">mimetype</dt>
+<dd class="field-even"><p>Mimetype файла</p>
+</dd>
+<dt class="field-odd">ext</dt>
+<dd class="field-odd"><p>Расширение файла</p>
+</dd>
+<dt class="field-even">name</dt>
+<dd class="field-even"><p>Имя файла</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<ol class="arabic simple">
+<li><p>Если в <code class="docutils literal notranslate"><span class="pre">originalName</span></code> будет находиться имя без расширения, то система сама допишет расширение файлу из originalExt.</p></li>
+<li><p>Если окажется, что <code class="docutils literal notranslate"><span class="pre">cm:content</span></code> будет отсутствовать у ноды (или лист контентов будет пустым), то отправится уведомление без прикрепления вложений.</p></li>
+</ol>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="notifications.html" class="btn btn-neutral float-left" title="Уведомления" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="notifications_bulk_mail.html" class="btn btn-neutral float-right" title="Массовая рассылка" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

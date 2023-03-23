@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Шлюзы &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/translations.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../../../search.html" />
+    <link rel="next" title="Поток управления" href="ecos_bpmn_components_seq_flow.html" />
+    <link rel="prev" title="Установка статуса" href="ecos_bpmn_components_set_status.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../interface.html">Интерфейс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ui_actions.html">Действия</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../BPMN_ecos.html">Платформа бизнес-процессов (ECOS BPMN)</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../ecos_bpmn_overview.html">Общее описание Ecos BPMN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ecos_bpmn_base_operations.html">Базовые операции</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../ecos_bpmn_editor.html">Моделирование бизнес-процесса</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../BPMN_flowable.html">Редактор бизнес-процессов (BPMN) с использованием Flowable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CMMN.html">Редактор сценариев (CMMN)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CMMN_BPMN.html">Работа в связке CMMN - BPMN</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../../../../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a> &raquo;</li>
+          <li><a href="../../../BPMN_ecos.html">Платформа бизнес-процессов (ECOS BPMN)</a> &raquo;</li>
+          <li><a href="../../ecos_bpmn_editor.html">Моделирование бизнес-процесса</a> &raquo;</li>
+          <li><a href="../ecos_bpmn_components.html">Компоненты Ecos BPMN</a> &raquo;</li>
+      <li>Шлюзы</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Шлюзы<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p id="gateways">Шлюзы контролируют поток движения в процессе. Они позволяют моделировать решения на основе данных и событий, а также параллелизм разветвления/соединения.</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><a class="reference internal image-reference" href="../../../../../_images/gway_1.png"><img alt="../../../../../_images/gway_1.png" class="align-center" src="../../../../../_images/gway_1.png" style="width: 50px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../../../../../_images/gway_1_1.png"><img alt="../../../../../_images/gway_1_1.png" class="align-center" src="../../../../../_images/gway_1_1.png" style="width: 200px;" /></a>
+</td>
+<td><p><strong>Эксклюзивный шлюз</strong> (Exclusive Gateway,  исключающий) «или/или» — выбор только одного пути</p></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal image-reference" href="../../../../../_images/gway_2.png"><img alt="../../../../../_images/gway_2.png" class="align-center" src="../../../../../_images/gway_2.png" style="width: 50px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../../../../../_images/gway_2_1.png"><img alt="../../../../../_images/gway_2_1.png" class="align-center" src="../../../../../_images/gway_2_1.png" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/gway_2_2.png"><img alt="../../../../../_images/gway_2_2.png" class="align-center" src="../../../../../_images/gway_2_2.png" style="width: 200px;" /></a>
+</td>
+<td><p><strong>Параллельный шлюз</strong> (Parallel Gateway), «и» — выбор всех путей;</p></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal image-reference" href="../../../../../_images/gway_3.png"><img alt="../../../../../_images/gway_3.png" class="align-center" src="../../../../../_images/gway_3.png" style="width: 50px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../../../../../_images/gway_3_1.png"><img alt="../../../../../_images/gway_3_1.png" class="align-center" src="../../../../../_images/gway_3_1.png" style="width: 200px;" /></a>
+</td>
+<td><p><strong>Инклюзивный шлюз</strong> (Inclusive Gateway, неисключающий, неэсклюзивный), «и/или» — выбор одного или нескольких;</p></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal image-reference" href="../../../../../_images/gway_4.png"><img alt="../../../../../_images/gway_4.png" class="align-center" src="../../../../../_images/gway_4.png" style="width: 50px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../../../../../_images/gway_4_1.png"><img alt="../../../../../_images/gway_4_1.png" class="align-center" src="../../../../../_images/gway_4_1.png" style="width: 200px;" /></a>
+</td>
+<td><p><strong>Шлюз, основанный на событиях</strong> (Event Gateway) — выбор первого события, которое случится</p></td>
+</tr>
+</tbody>
+</table>
+<p>Выбор вида шлюза:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/gway_5.png"><img alt="../../../../../_images/gway_5.png" class="align-center" src="../../../../../_images/gway_5.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p>Шлюзом по умолчанию является эксклюзивный.</p>
+<section id="xor">
+<h2>Эксклюзивный шлюз (XOR)<a class="headerlink" href="#xor" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Эксклюзивный шлюз</strong> (также называемый шлюзом XOR или, говоря более технически, эксклюзивным шлюзом на основе данных) используется для моделирования решений в процессе.</p>
+<p>Когда выполнение процесса достигает этого шлюза, все исходящие потоки управления оцениваются в том порядке, в котором они были определены. Поток управления, условие которого оценивается как «истинное» (или который не имеет набора условий, концептуально имеющий «истинное» значение), выбирается для продолжения процесса.</p>
+<p>Обратите внимание, что при использовании эксклюзивного шлюза выбирается только один поток управления. В случае, если несколько потоков управления имеют условие, которое оценивается как «истина», для продолжения процесса выбирается только первый, определенный в схеме.</p>
+<p>Если поток управления не может быть выбран (ни одно из условий не оценивается как «истина»), это приведет к исключению во время выполнения процесса, если вы не определили поток по умолчанию. Один поток по умолчанию может быть установлен на самом шлюзе в случае, если никакое другое условие не соответствует — например, «else» в языках программирования.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/gway_6.png"><img alt="../../../../../_images/gway_6.png" class="align-center" src="../../../../../_images/gway_6.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Настройка шлюза:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/gway_7.png"><img alt="../../../../../_images/gway_7.png" class="align-center" src="../../../../../_images/gway_7.png" style="width: 300px;" /></a>
+</div></blockquote>
+</section>
+<section id="id2">
+<h2>Параллельный шлюз<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Параллельный шлюз</strong> (также называемый шлюзом AND), который позволяет разветвляться на несколько путей выполнения процесса или объединять несколько входящих путей выполнения процесса.</p>
+<p>Функциональность параллельного шлюза основана на входящем и исходящем потоках управления:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>разветвление</strong>: все исходящие потоки управления выполняются параллельно, создавая одно параллельное выполнение для каждого потока управления.</p></li>
+<li><p><strong>соединение</strong>: все одновременные выполнения, поступающие на параллельный шлюз, ожидают на шлюзе до тех пор, пока не будет выполнено выполнение процесса для каждого из входящих потоков управления. Затем процесс продолжается за присоединяющимся шлюзом.</p></li>
+</ul>
+</div></blockquote>
+<p>Обратите внимание, что параллельный шлюз может иметь как разветвление, так и объединение, если для одного и того же параллельного шлюза существует несколько входящих и исходящих потоков управления. В этом случае шлюз сначала соединит все входящие потоки управления, а затем разделит их на несколько параллельных путей исполнения.</p>
+<p>Важным отличием от других типов шлюзов является то, что параллельный шлюз не оценивает условия. Если условия определены для потока управления, связанного с параллельным шлюзом, они просто игнорируются.</p>
+<p>Фактическое поведение (разветвление, объединение или и то, и другое) определяется потоком управления, подключенным к параллельному шлюзу.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/gway_8.png"><img alt="../../../../../_images/gway_8.png" class="align-center" src="../../../../../_images/gway_8.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Настройка шлюза:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/gway_9.png"><img alt="../../../../../_images/gway_9.png" class="align-center" src="../../../../../_images/gway_9.png" style="width: 300px;" /></a>
+</div></blockquote>
+</section>
+<section id="id3">
+<h2>Инклюзивный шлюз<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Инклюзивный шлюз</strong> можно рассматривать как комбинацию эксклюзивного и параллельного шлюзов.</p>
+<p>Подобно эксклюзивному шлюзу, вы можете определить условия для исходящих потоков управления, и инклюзивный шлюз оценит их. Инклюзивный шлюз может принимать более одного потока управления, как и параллельный шлюз.
+Функциональность инклюзивного шлюза основана на входящих и исходящих потоках управления:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>разветвление: все исходящие условия потока управления оцениваются, и для условий потока управления, которые оцениваются как «истина», потоки выполняются параллельно, создавая одно параллельное выполнение для каждого потока управления.</p></li>
+<li><p>соединение: все одновременные выполнения, поступающие на инклюзивный шлюз, ожидают на шлюзе до тех пор, пока не произойдет выполнение процесса для каждого из входящих потоков управления, имеющих токен процесса. Это важное отличие от параллельного шлюза. Другими словами, инклюзивный шлюз будет ждать только выполнения входящих потоков управления. После присоединения процесс продолжается за пределами инклюзивного шлюза присоединения.</p></li>
+</ul>
+</div></blockquote>
+<p>Обратите внимание, что инклюзивный шлюз может работать как с разветвлением , так и с присоединением , если для одного и того же инклюзивного шлюза существует несколько входящих и исходящих потоков управления. В этом случае шлюз сначала присоединит все входящие потоки управления, имеющие маркер процесса, а затем разделит их на несколько параллельных путей выполнения процесса для исходящих потоков управления, условие которых оценивается как «истина».</p>
+<p>Фактическое поведение (разветвление, объединение или и то, и другое) определяется потоками управления, подключенными к инклюзивному шлюзу.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/gway_10.png"><img alt="../../../../../_images/gway_10.png" class="align-center" src="../../../../../_images/gway_10.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Настройка шлюза:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/gway_11.png"><img alt="../../../../../_images/gway_11.png" class="align-center" src="../../../../../_images/gway_11.png" style="width: 300px;" /></a>
+</div></blockquote>
+</section>
+<section id="id4">
+<h2>Шлюз на основе событий<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Шлюз, основанный на событиях</strong>, позволяет принимать решения на основе событий.</p>
+<p>Каждый исходящий поток управления шлюза должен быть подключен к <a class="reference internal" href="events/ecos_bpmn_components_signal.html#intermediate-catch-event"><span class="std std-ref">Intermediate Catch Event</span></a>. Когда выполнение процесса достигает шлюза, основанного на событиях, шлюз находится в состоянии ожидания: выполнение процесса приостанавливается. Кроме того, для каждого исходящего потока управления создается подписка на события.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/gway_12.png"><img alt="../../../../../_images/gway_12.png" class="align-center" src="../../../../../_images/gway_12.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p>Обратите внимание, что потоки управления, выходящие из шлюза, основанного на событиях, отличаются от обычных потоков управления. Эти потоки управления фактически никогда не «выполняются». Наоборот, они позволяют обработчику процесса определять, на какие события должно подписаться выполнение процесса, прибывающее к шлюзу, основанному на события.</p>
+<p>Применяются следующие ограничения:</p>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li><p>Шлюз должен иметь два или более исходящих потока управления.</p></li>
+<li><p>За шлюзом могут следовать только элементы типа <a class="reference internal" href="events/ecos_bpmn_components_signal.html#intermediate-catch-event"><span class="std std-ref">Intermediate Catch Event</span></a> (Получение задач после шлюза на основе событий еще не поддерживается движком.)</p></li>
+<li><p>Промежуточное событие CatchEvent, подключенное к шлюзу, должно иметь один входящий поток управления.</p></li>
+</ul>
+</div></blockquote>
+<a class="reference internal image-reference" href="../../../../../_images/gway_13.png"><img alt="../../../../../_images/gway_13.png" class="align-center" src="../../../../../_images/gway_13.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Настройка шлюза:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../../../_images/gway_14.png"><img alt="../../../../../_images/gway_14.png" class="align-center" src="../../../../../_images/gway_14.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p>Процесс является примером процесса со шлюзом на основе событий. Когда выполнение достигает шлюза, основанного на событиях, выполнение процесса приостанавливается. Кроме того, экземпляр процесса подписывается на событие сигнала предупреждения и создает таймер, который срабатывает через 10 минут. Это фактически приводит к тому, что обработчик процесса ожидает сигнального события в течение десяти минут. Если сигнальное событие происходит в течение 10 минут, таймер отменяется и выполнение продолжается после сигнала. Если сигнал не запущен, выполнение продолжается после таймера, и подписка на сигнал отменяется.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="ecos_bpmn_components_set_status.html" class="btn btn-neutral float-left" title="Установка статуса" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="ecos_bpmn_components_seq_flow.html" class="btn btn-neutral float-right" title="Поток управления" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

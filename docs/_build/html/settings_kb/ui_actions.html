@@ -1,0 +1,1577 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Действия &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Бизнес-процессы" href="%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html" />
+    <link rel="prev" title="Шаблоны нумерации" href="interface/number_template.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Aspects.html">Аспекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface.html">Интерфейс</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Действия</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Описание формата</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Получение действий по записи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Фронтенд</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Общие настройки любого действия</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Типы действий</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#view">view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit">edit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#open-in-background">open-in-background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download">download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete">delete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download-card-template">download-card-template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download-by-template">download-by-template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#view-card-template">view-card-template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#upload-new-version">upload-new-version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create">create</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#save-as-case-template">save-as-case-template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#open-url">open-url</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assoc-action">assoc-action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#content-preview-modal">content-preview-modal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fetch">fetch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-task-assignee">edit-task-assignee</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#view-business-process">view-business-process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cancel-business-process">cancel-business-process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mutate">mutate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-task-assignee">set-task-assignee</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-menu">edit-menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#view-menu">view-menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-outcome">task-outcome</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tasks-actions">tasks-actions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-password">edit-password</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#open-submit-form">open-submit-form</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#enterprise">Enterprise действия</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Расширение действий</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Добавление новых инстансов действий</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Добавление новых типов действий</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Настройки списка действий</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dashboard">Настройка действий на dashboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Настройка действий в журналах</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Техническая информация</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Вспомогательные параметры</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">Ожидаемый формат результат действия</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">Разработка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">Интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+      <li>Действия</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/settings_kb/ui_actions.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ui-actions">
+<span id="id1"></span><h1>Действия<a class="headerlink" href="#ui-actions" title="Ссылка на этот заголовок"></a></h1>
+<p>Раздел содержит описание работы действий в ECOS.</p>
+<p><strong>Действия</strong> - это артефакты ECOS в формате json или yaml с типом ui/action.</p>
+<p>Одно действие может быть многократно использовано в разных местах системы (например, в журнале и на карточке документа).</p>
+<section id="id2">
+<h2>Описание формата<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Имя</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p>String</p></td>
+<td><div class="line-block">
+<div class="line">Идентификатор действия.</div>
+<div class="line">Уникальный среди всех действий в системе</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p>String</p></td>
+<td><div class="line-block">
+<div class="line">Ключ, по которому возможна фильтрация.</div>
+<div class="line">Должен быть в формате <strong>word0.word1.word2</strong>, чтобы можно было фильтровать по маске.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>name</strong></p></td>
+<td><p>String</p></td>
+<td><p>Имя действия, которое увидит пользователь</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>type</strong></p></td>
+<td><p>String</p></td>
+<td><div class="line-block">
+<div class="line">Тип действия.</div>
+<div class="line">Тип определяет логику, которая будет выполнена при выполнении действия.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>icon</strong></p></td>
+<td><p>String</p></td>
+<td><div class="line-block">
+<div class="line">Иконка действия. Пример «icon-delete», «icon-on».</div>
+<div class="line">Все иконки можно посмотреть в <code class="docutils literal notranslate"><span class="pre">citeck/ecos-ui/src/fonts/citeck/demo.html</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>config</strong></p></td>
+<td><p>JsonObject</p></td>
+<td><div class="line-block">
+<div class="line">Конфигурация действия.</div>
+<div class="line">Полезно в случаях, когда один тип действия может на основе конфигурации менять свое поведение.</div>
+<div class="line">Например - для действия с типом <strong>Download</strong> можно задать шаблон URI для скачивания контента.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>predicate</strong></p></td>
+<td><p>Predicate</p></td>
+<td><div class="line-block">
+<div class="line">Используется для динамического определения доступности действия для пользователя.</div>
+<div class="line">Например, действия <strong>Редактировать</strong> и <strong>Удалить</strong> не могут выполнять пользователи без прав на запись и для них эти действия скрываются.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h2>Получение действий по записи<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Для запроса действий отправляется следующий запрос:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
+           <span class="s2">&quot;workspace://SpacesStore/123123-123-123&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;workspace://SpacesStore/123123-123-124&quot;</span>
+       <span class="p">],</span>
+       <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+           <span class="s2">&quot;ui/action$delete&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;ui/action$edit&quot;</span>
+       <span class="p">]</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Ответ:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+   <span class="p">{</span>
+       <span class="s2">&quot;record&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace://SpacesStore/123123-123-123&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+           <span class="p">{</span>
+               <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;edit&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;mutate&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{}</span>
+           <span class="p">},</span>
+           <span class="p">{</span>
+               <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{}</span>
+           <span class="p">}</span>
+       <span class="p">]</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+       <span class="s2">&quot;record&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace://SpacesStore/123123-123-124&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+           <span class="p">{</span>
+               <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;edit&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;mutate&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{}</span>
+           <span class="p">},</span>
+           <span class="p">{</span>
+               <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{}</span>
+           <span class="p">}</span>
+       <span class="p">]</span>
+   <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Так же доступен вариант раздельного указания действий по записям:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
+           <span class="p">{</span>
+               <span class="s2">&quot;record&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace://SpacesStore/123123-123-123&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                   <span class="s2">&quot;ui/action$delete&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;ui/action$edit&quot;</span>
+               <span class="p">]</span>
+           <span class="p">},</span>
+           <span class="p">{</span>
+               <span class="s2">&quot;record&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace://SpacesStore/123123-123-555&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                   <span class="s2">&quot;ui/action$edit&quot;</span>
+               <span class="p">]</span>
+           <span class="p">}</span>
+       <span class="p">]</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>Фронтенд<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>На фронтенде действия описаны в виде javascript сущностей с методами
+<code class="docutils literal notranslate"><span class="pre">execForRecord</span></code>, <code class="docutils literal notranslate"><span class="pre">execForRecords</span></code>, <code class="docutils literal notranslate"><span class="pre">execForQuery</span></code>, <code class="docutils literal notranslate"><span class="pre">getDefaultModel</span></code>, <code class="docutils literal notranslate"><span class="pre">canBeExecuted</span></code> и др.
+Например: <code class="docutils literal notranslate"><span class="pre">src/components/Records/actions/handler/executor/CreateAction.js</span></code></p>
+<p>При выполнении действия вызывается метод execute в который передается запись, над которой выполняется действие и конфигурация действия.</p>
+<p>Реестр действий описан в <code class="docutils literal notranslate"><span class="pre">src/components/Records/actions/RecordActionExecutorsRegistry.js</span></code></p>
+<p>Регистрация действий в реестре: <code class="docutils literal notranslate"><span class="pre">src/components/Records/actions/index.js</span></code></p>
+</section>
+<section id="id5">
+<h2>Общие настройки любого действия<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Конфигурация</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Стандартные установки</strong></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="nb">id</span><span class="p">:</span> <span class="s2">&quot;print-signed-fin-pdf&quot;</span><span class="p">,</span>
+<span class="n">name</span><span class="p">:</span> <span class="p">{</span>
+  <span class="n">ru</span><span class="p">:</span> <span class="s2">&quot;Распечатать подписанный PDF&quot;</span><span class="p">,</span>
+  <span class="n">en</span><span class="p">:</span> <span class="s2">&quot;Print signed PDF&quot;</span>
+<span class="p">},</span>
+<span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;open-url&quot;</span><span class="p">,</span>
+<span class="n">icon</span><span class="p">:</span> <span class="s2">&quot;icon-print&quot;</span><span class="p">,</span>
+<span class="n">theme</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="n">features</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s2">&quot;execForQuery&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="s2">&quot;execForRecord&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="s2">&quot;execForRecords&quot;</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>id</strong> - идентификатор действия;</div>
+<div class="line"><strong>name</strong> - название действия;</div>
+<div class="line"><strong>type</strong> - тип;</div>
+<div class="line"><strong>config</strong> - дополнительные сведения;</div>
+<div class="line"><strong>icon</strong> - код картинки из иконочного шрифта citeck;</div>
+<div class="line"><strong>theme</strong> - имя темы.</div>
+<div class="line"><strong>features</strong> - использовать для записи/Record, записей/Records, поискового запроса/Query</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Подтверждение и контент окна</strong></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">confirm</span><span class="p">:{</span>
+  <span class="n">title</span><span class="p">:{</span> <span class="n">ru</span><span class="p">:</span> <span class="s1">&#39;текст&#39;</span> <span class="p">,</span> <span class="n">en</span><span class="p">:</span> <span class="s1">&#39;text&#39;</span> <span class="p">},</span>
+  <span class="n">message</span><span class="p">:{</span> <span class="n">ru</span><span class="p">:</span> <span class="s1">&#39;текст&#39;</span> <span class="p">,</span> <span class="n">en</span><span class="p">:</span> <span class="s1">&#39;text&#39;</span> <span class="p">},</span>
+  <span class="n">formRef</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+  <span class="n">attributesMapping</span><span class="p">:{</span> <span class="n">body</span><span class="o">.</span><span class="n">comment</span><span class="p">:</span> <span class="s2">&quot;comment&quot;</span> <span class="p">}</span>
+      <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line">Подтверждение выполнения действия</div>
+<div class="line">- если не заданы значения в <strong>confirm</strong> , действие выполняется без подтверждения</div>
+<div class="line">- <strong>title</strong> - заголовок окна (строка или объект с локализацией)</div>
+<div class="line">- <strong>message</strong> - сообщение в окне</div>
+<div class="line">- если задано <strong>formRef</strong> - отображается соответствующая форма в окне подтверждения (message игнорируется)</div>
+<div class="line">- <strong>attributesMapping</strong> - маппинг атрибутов, данные с формы подтверждения (комментарии и т.д.) можно прокинуть в поля конфигурации действия; <code class="docutils literal notranslate"><span class="pre">key</span></code> - путь для записи в body конфигурации действия, <code class="docutils literal notranslate"><span class="pre">value</span></code> - путь к значению с формы.</div>
+<div class="line">Ответ подтверждения, если он есть, к прочие данные с формы, передается в действие.</div>
+<div class="line">Например, в запросе необходимо отправить комментарий с формы подтверждения. Для этого настраиваем <code class="docutils literal notranslate"><span class="pre">body.comment</span></code>. Внутри <code class="docutils literal notranslate"><span class="pre">body</span></code> в поле <code class="docutils literal notranslate"><span class="pre">comment</span></code> необходимо найти и записать значение из поля <code class="docutils literal notranslate"><span class="pre">comment</span></code> в форму подтверждения.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Подстановка значения по атрибуту</strong></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fetch&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/proxy/alfresco/api/someurl?nodeRef=$</span><span class="si">{recordRef}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;counterparty&quot;</span><span class="p">:</span> <span class="s2">&quot;${idocs:counterparty.idocs:organizationName}&quot;</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line">В любом месте конфигурации можно подставлять атрибуты из записи, над которой происходит действие.</div>
+<div class="line">Есть один частный случай - <code class="docutils literal notranslate"><span class="pre">${recordRef}</span></code>. Вместо него всегда подставляется <code class="docutils literal notranslate"><span class="pre">recordRef</span></code> текущей записи.</div>
+<div class="line">Все остальные атрибуты подставляются так же как если они загружены через <code class="docutils literal notranslate"><span class="pre">Citeck.Records.load(...)</span></code>. Например:</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Отключение окна о результатах выполнения</strong></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="o">...</span>
+  <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;noResultModal&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line">По умолчанию <code class="docutils literal notranslate"><span class="pre">false</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Первоначальная обработка внешнем модулем</strong></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="o">...</span>
+  <span class="s2">&quot;preActionModule&quot;</span><span class="p">:</span> <span class="s2">&quot;js/citeck/modules/common/custom-preProcess-action&quot;</span>
+      <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">preActionModule</span></code> указывается ссылка на модуль содержащая js код.</div>
+<div class="line">Модулю нужно экспортировать функции <code class="docutils literal notranslate"><span class="pre">execForRecord</span></code> или <code class="docutils literal notranslate"><span class="pre">execForRecords</span></code>  (в зависимости от features), которые вызываются перед выполнением основного внутреннего действия.</div>
+<div class="line">В функцию модуля передаются значения: <code class="docutils literal notranslate"><span class="pre">records</span></code>, <code class="docutils literal notranslate"><span class="pre">action</span></code>, <code class="docutils literal notranslate"><span class="pre">context</span></code>.</div>
+<div class="line">Ожидаемый ответ от функции модуля:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">config</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="n">results</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="n">message</span><span class="p">:</span> <span class="s1">&#39;String&#39;</span><span class="p">,</span>
+    <span class="n">status</span><span class="p">:</span> <span class="s1">&#39;String&#39;</span><span class="p">,</span>
+    <span class="n">recordRef</span><span class="p">:</span> <span class="s1">&#39;String&#39;</span>
+    <span class="p">},</span>
+    <span class="o">...</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">ключ-значения не обязательные, но обрабатываются только они.</div>
+<div class="line"><strong>config</strong> - объединяется со значением config из конфигурации самого действия</div>
+<div class="line"><strong>results</strong> - актуально для <code class="docutils literal notranslate"><span class="pre">execForRecords</span></code>; внешнее действие может обработать какие-то записи и вернуть по ним результат.</div>
+<div class="line">Если записи указаны в <strong>results</strong>, они исключаются из выполнения внутреннего основного действия.</div>
+<div class="line"><br /></div>
+<div class="line">Результаты внешнего и внутреннего объединяются для вывода информации.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h2>Типы действий<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<section id="view">
+<h3>view<a class="headerlink" href="#view" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">view</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Открыть запись на просмотр.</p></td>
+<td><div class="line-block">
+<div class="line">Дополнительные параметры для config:</div>
+<div class="line"><strong>background: Bool</strong> - открыть запись в новой вкладке приложения в фоновом режиме;</div>
+<div class="line"><strong>reopen: Bool</strong> - открыть запись в текущей вкладке приложения;</div>
+<div class="line"><strong>newBrowserTab: Bool</strong> - открыть запись в новой вкладке браузера</div>
+<div class="line"><strong>reopenBrowserTab: Bool</strong> - открыть запись в текущей вкладке браузера (с перезагрузкой страницы).</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="edit">
+<h3>edit<a class="headerlink" href="#edit" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">edit</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Редактировать запись.</p></td>
+<td><p><strong>attributes: Object&lt;String, String&gt;</strong> - атрибуты, которые будут прокинуты на форму создания. Необязательный параметр</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="open-in-background">
+<h3>open-in-background<a class="headerlink" href="#open-in-background" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">open-in-background</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Открыть запись в новой фоновой вкладке</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="download">
+<h3>download<a class="headerlink" href="#download" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">download</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Скачать некоторый контент связанный (или не связанный) с записью.</div>
+<div class="line">По умолчанию скачивается контент записи</div>
+</div>
+</td>
+<td><p><strong>url</strong> - URL для скачивания. Можно добавлять <code class="docutils literal notranslate"><span class="pre">${recordRef}</span></code> для подстановки текущей записи.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="delete">
+<h3>delete<a class="headerlink" href="#delete" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">delete</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Удалить запись</p></td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;config&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;isWaitResponse&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+      <span class="s2">&quot;withoutConfirm&quot;</span> <span class="p">:</span> <span class="n">true</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;delete&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>isWaitResponse</strong> - ожидание ответа удаления (по умолчанию <code class="docutils literal notranslate"><span class="pre">true</span></code>)</div>
+<div class="line"><strong>withoutConfirm</strong> - удаление без подтверждения (по умолчанию <code class="docutils literal notranslate"><span class="pre">false</span></code>)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="download-card-template">
+<h3>download-card-template<a class="headerlink" href="#download-card-template" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">download-card-template</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Скачать печатную версию документа</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>templateType</strong> - тип шаблона</div>
+<div class="line"><strong>format</strong> - формат (html, pdf, pdf2, docx)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="download-by-template">
+<h3>download-by-template<a class="headerlink" href="#download-by-template" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">download-by-template</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Скачать документ по шаблону</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>templateRef</strong> - ссылка на шаблон</div>
+<div class="line"><strong>resultName</strong> - имя файла, который будет скачан</div>
+<div class="line"><strong>requestParams</strong> - дополнительные параметры, которые будут отправлены на сервер</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="view-card-template">
+<h3>view-card-template<a class="headerlink" href="#view-card-template" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">view-card-template</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Просмотр печатной версии документа в новой вкладке браузера</div>
+<div class="line">(возвращаемый документ такой же как для события <code class="docutils literal notranslate"><span class="pre">download-card-template</span></code>)</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>templateType</strong> - тип шаблона</div>
+<div class="line"><strong>format</strong> - формат (html, pdf, pdf2, docx)</div>
+<div class="line"><strong>includeTimezone</strong> (по умолчанию - <code class="docutils literal notranslate"><span class="pre">true</span></code>)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="upload-new-version">
+<h3>upload-new-version<a class="headerlink" href="#upload-new-version" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">upload-new-version</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Загрузка новой версии документа</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="create">
+<h3>create<a class="headerlink" href="#create" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">create</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Действие для создания нового документа.</div>
+<div class="line">Обычно применяется когда требуется создать новый документ, в котором некоторые поля будут предзаполнены из данных текущего открытого документа.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>typeRef: String</strong> - ECOS тип для создания. Обязательный параметр;</div>
+<div class="line"><strong>createVariantId: String</strong> - Идентификатор варианта создания для типа. Если не указан, то используется первый доступный вариант</div>
+<div class="line"><strong>createVariant: Object</strong> - Вариант создания для ситуаций, когда ни один вариант создания из типа не походит и требуется его полностью определить в действии</div>
+<div class="line"><strong>attributes: Object</strong> - Предопределенные атрибуты для создания новой сущности. Для прокидывания атрибутов с текущей записи (т.е. той, с которой выполняется действие) на форму создания можно использовать вставки вида <code class="docutils literal notranslate"><span class="pre">${attribute_name}</span></code></div>
+<div class="line"><strong>options: Object</strong> - Опции формы</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="save-as-case-template">
+<h3>save-as-case-template<a class="headerlink" href="#save-as-case-template" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">save-as-case-template</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Создается шаблон, затем по условию конфигурации - скачивание или переход на дашборд.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>download</strong></div>
+<div class="line">По умолчанию скачивается контент записи.</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">true</span></code> (по умолчанию) - скачивается шаблон;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">false</span></code> - редирект на дашборд шаблона</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="open-url">
+<h3>open-url<a class="headerlink" href="#open-url" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">open-url</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Открывает заданный URL относительно текущего стенда.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>URL</strong> - можно добавлять <code class="docutils literal notranslate"><span class="pre">${recordRef}</span></code> для подстановки текущей записи</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="assoc-action">
+<h3>assoc-action<a class="headerlink" href="#assoc-action" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">assoc-action</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Выполняет действие над указанной ассоциацией.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>assoc</strong> - ассоциация</div>
+<div class="line"><strong>action</strong> - объект действия</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="content-preview-modal">
+<h3>content-preview-modal<a class="headerlink" href="#content-preview-modal" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">content-preview-modal</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Модальное окно с предпросмотром документа.</div>
+<div class="line">В конфигурации действия ожидается поле <strong>scale</strong>.</div>
+<div class="line">Возможные значения:
+| <strong>auto</strong>
+| <strong>0…4</strong>
+| <strong>page-fit</strong>
+| <strong>page-height</strong>
+| <strong>page-width</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>recordRef</strong></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fetch">
+<h3>fetch<a class="headerlink" href="#fetch" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">fetch</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Отправляет запрос на указанный URL</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>url</strong></div>
+<div class="line"><strong>method</strong></div>
+<div class="line"><strong>args</strong> - аргументы, которые будут переданы в URL</div>
+<div class="line"><strong>body</strong> - аргументы, которые будут переданы в тело запроса</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="edit-task-assignee">
+<h3>edit-task-assignee<a class="headerlink" href="#edit-task-assignee" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">edit-task-assignee</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Редактировать исполнителя задачи (запускается окно с выбором исполнителя).</div>
+<div class="line">Действие связано с бизнес-процессом записи.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>actionOfAssignment [claim , release]</strong></div>
+<div class="line"><strong>orgstructParams:{ userSearchExtraFields: custom:property1, custom:property2 }</strong></div>
+<div class="line">custom:property1, custom:property2 - строка. Свойста ноды пользователя по которым будет осущетствлен поиск</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="view-business-process">
+<h3>view-business-process<a class="headerlink" href="#view-business-process" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">view-business-process</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Просмотреть Бизнес-процесс</div>
+<div class="line">(окно с превью процесса и доп. действиями).</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>workflowFromRecord [true/ false]</strong></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">workflowFromRecord</span> <span class="pre">=</span> <span class="pre">true</span></code> =&gt; получает <strong>workflow id</strong> из переданного <strong>record</strong> в действие</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">workflowFromRecord</span> <span class="pre">=</span> <span class="pre">false</span></code> =&gt; указанное значение <strong>record</strong> является <strong>workflow id</strong></p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cancel-business-process">
+<h3>cancel-business-process<a class="headerlink" href="#cancel-business-process" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">cancel-business-process</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Отменить бизнес- процесс.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mutate">
+<h3>mutate<a class="headerlink" href="#mutate" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">mutate</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Внесение изменений без участия пользователя посредством передачи атрибутов.</div>
+<div class="line">Доступно для <code class="docutils literal notranslate"><span class="pre">execForRecord</span></code> и <code class="docutils literal notranslate"><span class="pre">execForRecords</span></code></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">record</span> <span class="p">:</span>  <span class="p">{</span>
+  <span class="nb">id</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{recordRef}</span><span class="s2">&quot;</span><span class="p">,</span>
+  <span class="n">attributes</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span> <span class="p">}</span>
+          <span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>record.id</strong> - необязательный параметр</div>
+<div class="line"><strong>record.attributes</strong> - изменяемые поля и их значения</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="set-task-assignee">
+<h3>set-task-assignee<a class="headerlink" href="#set-task-assignee" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">set-task-assignee</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Назначение исполнителя задачи</div>
+<div class="line">(расширенный вариант edit-task-assignee)</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>assignTo</strong> - на кого назначить [me , group , someone]:</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">someone</span></code> - если не указан assignee, запускается <code class="docutils literal notranslate"><span class="pre">edit-task-assignee</span></code> для выбора</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">me</span></code> - исполнитель устанавливается автоматически (текущий пользователь)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">group</span></code> - возврат в группу</p></li>
+</ul>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Необязательные параметры (можно использовать дополнительно или вместо assignTo):</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>actionOfAssignment</strong> - [claim , release]</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">release</span></code> - вернуть в группу</p></li>
+</ul>
+</li>
+<li><p><strong>assignee</strong> -  <code class="docutils literal notranslate"><span class="pre">workspace</span> <span class="pre">исполнителя</span></code> - если <code class="docutils literal notranslate"><span class="pre">claim</span></code> и значения нет - выбор через окно</p></li>
+<li><p><strong>errorMsg</strong> - сообщение об ошибки выполнения</p></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">assignTo:</span> <span class="pre">'me'</span></code> или</p>
+<p><code class="docutils literal notranslate"><span class="pre">actionOfAssignment:</span> <span class="pre">'claim'</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">assignee:</span> <span class="pre">'workspace://SpacesStore/......'</span></code></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span><span class="p">:</span> <span class="p">{</span>
+        <span class="n">errorMsg</span><span class="p">:</span> <span class="s1">&#39;text&#39;</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="edit-menu">
+<h3>edit-menu<a class="headerlink" href="#edit-menu" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">edit-menu</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Запустить редактор конфигурации меню</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><em>действие для версии конфигурации &gt; 0</em></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="view-menu">
+<h3>view-menu<a class="headerlink" href="#view-menu" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">view-menu</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Запустить редактор конфигурации меню</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><em>действие для версии конфигурации &gt; 0</em></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="task-outcome">
+<h3>task-outcome<a class="headerlink" href="#task-outcome" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">task-outcome</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Действие используется в связке с <code class="docutils literal notranslate"><span class="pre">tasks-actions</span></code>.</div>
+<div class="line">Действие связано с бизнес-процессом записи.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>label</strong> - заголовок варианта завершения задачи</div>
+<div class="line"><strong>outcome</strong> - идентификатор варианта завершения задачи</div>
+<div class="line"><strong>formRef</strong> - ссылка на форму задачи (uiserv/eform&#64;…)</div>
+<div class="line"><strong>taskRef</strong> - ссылка на задачу (<a class="reference external" href="mailto:wftask&#37;&#52;&#48;flowable$12345">wftask<span>&#64;</span>flowable$12345</a>)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tasks-actions">
+<h3>tasks-actions<a class="headerlink" href="#tasks-actions" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">tasks-actions</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Действие для загрузки вариантов завершения задач.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">На выходе для каждой задачи получается основное действие и <code class="docutils literal notranslate"><span class="pre">variants</span></code> с типом <code class="docutils literal notranslate"><span class="pre">task-outcome</span></code> где перечислены варианты завершения</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/actions_1.png"><img alt="../_images/actions_1.png" class="align-center" src="../_images/actions_1.png" style="width: 200px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Отображаются только задачи, которые может завершить текущий пользователь. Т.е. то же самое что и в виджете «Мои задачи».</div>
+<div class="line">Варианты завершения загружаются из конфигурации формы для задачи.</div>
+<div class="line">Находятся все кнопки с ключом outcome_* и преобразуются в варианты создания.</div>
+<div class="line">Если у задачи на форме есть поля, то показывается всплывающая форма с этими полями:</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/actions_2.png"><img alt="../_images/actions_2.png" class="align-center" src="../_images/actions_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Если у задачи на форме нет полей, то показывается следующее окно:</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/actions_3.png"><img alt="../_images/actions_3.png" class="align-center" src="../_images/actions_3.png" style="width: 300px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Если форма пустая и в конфигурации для tasks-actions задано как <code class="docutils literal notranslate"><span class="pre">hideConfirmEmptyForm=true</span></code>, окно не появляется, форма выполняется, действие завершается, уведомление, если успешно, появляется.</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;tasks-actions&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;ru&quot;</span><span class="p">:</span> <span class="s2">&quot;Действия для завершения задач&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;Actions to complete tasks&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;tasks-actions&quot;</span><span class="p">,</span>
+  <span class="o">------------------------</span><span class="n">new</span><span class="o">-------------------</span>
+  <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;hideConfirmEmptyForm&quot;</span><span class="p">:</span> <span class="n">true</span> <span class="o">&lt;&lt;&lt;</span>
+  <span class="p">}</span>
+  <span class="o">----------------------------------------------</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">При выполнение вариантов действия, в каждый вариант передаются некоторые конфигурации:</div>
+<div class="line">то есть <code class="docutils literal notranslate"><span class="pre">config</span></code> из <code class="docutils literal notranslate"><span class="pre">tasks-actions</span></code> передается в <code class="docutils literal notranslate"><span class="pre">task-outcome</span></code>.</div>
+<div class="line">При этом у <code class="docutils literal notranslate"><span class="pre">task-outcome</span></code> может быть свой конфиг, который может перезаписать прошедшие настройки.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="edit-password">
+<h3>edit-password<a class="headerlink" href="#edit-password" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">edit-password</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Изменение пароля</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="open-submit-form">
+<h3>open-submit-form<a class="headerlink" href="#open-submit-form" title="Ссылка на этот заголовок"></a></h3>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">open-submit-form</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Вызов формы редактирования с попыткой отправить в рассмотрение.</div>
+<div class="line">Действие связано с бизнес-процессом записи.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Если все поля заполнены корректны, форма отправляется и закрывается.</div>
+<div class="line">Иначе отображается список ошибок, после их исправления отправление вручную.</div>
+<div class="line"><strong>config.formId</strong> - необязательный параметр; без указания загружается форма по умолчанию.</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;formId&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="enterprise">
+<h2>Enterprise действия<a class="headerlink" href="#enterprise" title="Ссылка на этот заголовок"></a></h2>
+<p>id типа: <code class="docutils literal notranslate"><span class="pre">transform</span></code></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Конфигурация</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Трансформация содержимого по заданным правилам и его скачивание или загрузка в атрибут с типом «контент»</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>input: Object</strong> // источник содержимого. По умолчанию - основное содержимое текущего документа;</div>
+<div class="line"><strong>transformations: Object[]</strong> // описание трансформаций;</div>
+<div class="line"><strong>output: Object</strong> // цель для результата трансформации. По умолчанию - временный файл, контент которого сразу же скачивается.</div>
+<div class="line"><br /></div>
+<div class="line">Подробнее о возможных настройках input, transformations и output можно прочитать <a class="reference internal" href="../general/Preview/Content_transformation.html#content-transformation"><span class="std std-ref">здесь</span></a></div>
+<div class="line"><br /></div>
+<div class="line">Примеры:</div>
+<div class="line"><br /></div>
+<div class="line">1. Сконвертировать содержимое в PDF и скачать</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">:</span> <span class="n">download</span><span class="o">-</span><span class="k">as</span><span class="o">-</span><span class="n">pdf</span>
+<span class="nb">type</span><span class="p">:</span> <span class="n">transform</span>
+<span class="n">name</span><span class="p">:</span> <span class="n">Скачать</span> <span class="n">как</span> <span class="n">PDF</span>
+<span class="n">config</span><span class="p">:</span>
+  <span class="n">transformations</span><span class="p">:</span>
+    <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">convert</span>
+      <span class="n">config</span><span class="p">:</span> <span class="p">{</span> <span class="n">toMimeType</span><span class="p">:</span> <span class="s1">&#39;application/pdf&#39;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id7">
+<h2>Расширение действий<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h2>
+<section id="id8">
+<h3>Добавление новых инстансов действий<a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h3>
+<p>Для добавления новых инстансов действий необходимо описать их в json виде и добавить их в alfresco (в микросервисы так же можно добавлять действия) по пути</p>
+<p><strong>{alfresco_module_id}/src/main/resources/alfresco/module/{alfresco_module_id}/ui/action</strong></p>
+<p>Пример описания:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;confirm-list-html&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;card-template.confirm-list.html&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Скачать лист согласования&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;download-card-template&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s2">&quot;templateType&quot;</span><span class="p">:</span> <span class="s2">&quot;confirm-list&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;html&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Для тестирования можно заливать эту конфигурацию в журнале действий вручную.</p>
+</section>
+<section id="id9">
+<h3>Добавление новых типов действий<a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h3>
+<p>На данный момент все типы описаны в базовом проекте ecos-ui (в планах есть поддержка расширения действий без изменений в ecos-ui).</p>
+<p>Описать новое действие:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">const</span> <span class="n">DownloadAction</span> <span class="o">=</span> <span class="p">{</span>
+ <span class="n">execute</span><span class="p">:</span> <span class="p">({</span> <span class="n">record</span><span class="p">,</span> <span class="n">action</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="n">const</span> <span class="n">config</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="n">config</span> <span class="o">||</span> <span class="p">{};</span>
+
+   <span class="n">let</span> <span class="n">url</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">url</span> <span class="o">||</span> <span class="n">getDownloadContentUrl</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">id</span><span class="p">);</span>
+   <span class="n">url</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;$</span><span class="si">{recordRef}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">record</span><span class="o">.</span><span class="n">id</span><span class="p">);</span> <span class="o">//</span> <span class="n">eslint</span><span class="o">-</span><span class="n">disable</span><span class="o">-</span><span class="n">line</span> <span class="n">no</span><span class="o">-</span><span class="n">template</span><span class="o">-</span><span class="n">curly</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">string</span>
+
+   <span class="n">const</span> <span class="n">name</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">filename</span> <span class="o">||</span> <span class="s1">&#39;file&#39;</span><span class="p">;</span>
+
+   <span class="n">const</span> <span class="n">a</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="n">target</span><span class="p">:</span> <span class="s1">&#39;_blank&#39;</span> <span class="p">});</span>
+
+   <span class="n">a</span><span class="o">.</span><span class="n">href</span> <span class="o">=</span> <span class="n">url</span><span class="p">;</span>
+   <span class="n">a</span><span class="o">.</span><span class="n">download</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+   <span class="n">document</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+   <span class="n">a</span><span class="o">.</span><span class="n">click</span><span class="p">();</span>
+   <span class="n">document</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">removeChild</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+
+   <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
+ <span class="p">},</span>
+
+ <span class="n">getDefaultModel</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="p">{</span>
+     <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;grid.inline-tools.download&#39;</span><span class="p">,</span>
+     <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;download&#39;</span><span class="p">,</span>
+     <span class="n">icon</span><span class="p">:</span> <span class="s1">&#39;icon-download&#39;</span>
+   <span class="p">};</span>
+ <span class="p">},</span>
+
+ <span class="n">canBeExecuted</span><span class="p">:</span> <span class="p">({</span> <span class="n">record</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">record</span><span class="o">.</span><span class="n">att</span><span class="p">(</span><span class="s1">&#39;.has(n:&quot;cm:content&quot;)&#39;</span><span class="p">)</span> <span class="o">!==</span> <span class="n">false</span><span class="p">;</span>
+ <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Зарегистрировать новый тип:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Registry</span> <span class="kn">from</span> <span class="s1">&#39;./RecordActionExecutorsRegistry&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="p">{</span> <span class="n">DownloadAction</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;./DefaultActions&#39;</span><span class="p">;</span>
+
+<span class="n">Registry</span><span class="o">.</span><span class="n">addExecutors</span><span class="p">({</span>
+ <span class="n">download</span><span class="p">:</span> <span class="n">DownloadAction</span><span class="p">,</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id10">
+<h2>Настройки списка действий<a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h2>
+<section id="dashboard">
+<h3>Настройка действий на dashboard<a class="headerlink" href="#dashboard" title="Ссылка на этот заголовок"></a></h3>
+<p>Настройка действий на dashboard осуществляется в журнале типов данных, который располагается в системных журналах:</p>
+<a class="reference internal image-reference" href="../_images/Action_settings.png"><img alt="Настройка действий" class="align-center" src="../_images/Action_settings.png" style="width: 600px;" /></a>
+<p><strong>1</strong> - выбрать список действий для типа.</p>
+<p><strong>2</strong> - если стоит чекбокс, то действия наследуются от родителя.</p>
+</section>
+<section id="id11">
+<h3>Настройка действий в журналах<a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h3>
+<p>Действия в журнале описываются в разделе actions перед headers и содержат ссылки на те же действия, что и в типах. Если действия не описаны, то используется список действий по умолчанию:</p>
+<ul class="simple">
+<li><p><strong>ui/action$content-download</strong></p></li>
+<li><p><strong>ui/action$edit</strong></p></li>
+<li><p><strong>ui/action$delete</strong></p></li>
+<li><p><strong>ui/action$view-dashboard</strong></p></li>
+<li><p><strong>ui/action$view-dashboard-in-background</strong></p></li>
+</ul>
+<p>Примеры настроек действий:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">journal</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ecos-sync&quot;</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">datasource</span><span class="o">&gt;</span><span class="n">integrations</span><span class="o">/</span><span class="n">sync</span><span class="o">&lt;/</span><span class="n">datasource</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">create</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="n">variant</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Alfresco Records&quot;</span><span class="o">&gt;</span>
+           <span class="o">&lt;</span><span class="n">recordRef</span><span class="o">&gt;</span><span class="n">integrations</span><span class="o">/</span><span class="n">sync</span><span class="nd">@alfrecords</span><span class="o">&lt;/</span><span class="n">recordRef</span><span class="o">&gt;</span>
+           <span class="o">&lt;</span><span class="n">attribute</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="o">&gt;</span><span class="n">alfrecords</span><span class="o">&lt;/</span><span class="n">attribute</span><span class="o">&gt;</span>
+       <span class="o">&lt;/</span><span class="n">variant</span><span class="o">&gt;</span>
+   <span class="o">&lt;/</span><span class="n">create</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">actions</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="n">action</span> <span class="n">ref</span><span class="o">=</span><span class="s2">&quot;ui/action$ecos-module-download&quot;</span> <span class="o">/&gt;</span>
+       <span class="o">&lt;</span><span class="n">action</span> <span class="n">ref</span><span class="o">=</span><span class="s2">&quot;ui/action$delete&quot;</span> <span class="o">/&gt;</span>
+       <span class="o">&lt;</span><span class="n">action</span> <span class="n">ref</span><span class="o">=</span><span class="s2">&quot;ui/action$edit&quot;</span> <span class="o">/&gt;</span>
+   <span class="o">&lt;/</span><span class="n">actions</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">headers</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="n">header</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;module_id&quot;</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">/&gt;</span>
+       <span class="o">&lt;</span><span class="n">header</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;name&quot;</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">/&gt;</span>
+       <span class="o">&lt;</span><span class="n">header</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;type&quot;</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">/&gt;</span>
+       <span class="o">&lt;</span><span class="n">header</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;syncDate&quot;</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">/&gt;</span>
+       <span class="o">&lt;</span><span class="n">header</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;enabled&quot;</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">/&gt;</span>
+   <span class="o">&lt;/</span><span class="n">headers</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">journal</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Настройка действия, которое активно для записей с определенным mimetype контента:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;edit-in-onlyoffice&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;edit.onlyoffice&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Редактировать Документ&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;open-url&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">тип</span> <span class="n">действия</span> <span class="n">должен</span> <span class="n">соответствовать</span> <span class="n">типу</span> <span class="n">на</span> <span class="n">UI</span>
+   <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/page/onlyoffice-edit?nodeRef=$</span><span class="si">{recordRef}</span><span class="s2">&amp;new=&quot;</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;evaluator&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;predicate&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Тип</span> <span class="n">evaluator</span><span class="s1">&#39;а для фильтрации действий</span>
+       <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+           <span class="s2">&quot;predicate&quot;</span><span class="p">:</span> <span class="p">{</span>
+               <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;att&quot;</span><span class="p">:</span> <span class="s2">&quot;_content.mimetype?str&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">атрибут</span><span class="p">,</span> <span class="n">который</span> <span class="n">мы</span> <span class="n">проверяем</span>
+               <span class="s2">&quot;val&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="o">//</span><span class="n">значения</span><span class="p">,</span> <span class="n">на</span> <span class="n">которые</span> <span class="n">мы</span> <span class="n">проверяем</span>
+                   <span class="s2">&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;text/csv&quot;</span>
+               <span class="p">]</span>
+           <span class="p">}</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Данный конфиг достаточно положить в ecos-app/ui/action для микросервисов или в <code class="docutils literal notranslate"><span class="pre">{alfresco_module_id}/src/main/resources/alfresco/module/{alfresco_module_id}/ui/action</span> <span class="pre">для</span> <span class="pre">Alfresco</span></code></p>
+</section>
+</section>
+<section id="id12">
+<h2>Техническая информация<a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h2>
+<section id="id13">
+<h3>Вспомогательные параметры<a class="headerlink" href="#id13" title="Ссылка на этот заголовок"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Параметр</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>actionRecord</strong></p></td>
+<td><div class="line-block">
+<div class="line">В любую форму, которая вызывается из действия, в объект <code class="docutils literal notranslate"><span class="pre">options</span></code> устанавливается свойство <code class="docutils literal notranslate"><span class="pre">actionRecord</span></code>, указывающее идентификатор записи (record), для которой выполняется действие.</div>
+<div class="line">Данное значение только для чтения. Указать в действии <code class="docutils literal notranslate"><span class="pre">config.options.actionRecord</span></code> не нужно, пользовательское будет перезаписано.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id14">
+<h3>Ожидаемый формат результат действия<a class="headerlink" href="#id14" title="Ссылка на этот заголовок"></a></h3>
+<p>Тип результата boolean или object
+(array - deprecated - обработка поддерживается)</p>
+<p>Если <code class="docutils literal notranslate"><span class="pre">object</span></code> отображаются подробности выполнения в зависимости от типа результата.
+Для групповых действий модальное окно появляется сразу при запуске и если результат boolean автоматические закрывается.</p>
+<p><strong>link</strong></p>
+<p>Отображаемый результата выполнения - ссылка на скачивания отчета</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;link&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>results</strong></p>
+<p>Таблица записей с результатом выполнения действия</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;results&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+                  <span class="s2">&quot;recordRef&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace://SpacesStore/...&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;disp&quot;</span><span class="p">:</span> <span class="s2">&quot;название записи&quot;</span>
+                  <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Все хорошо&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>error</strong></p>
+<p>Вывод ошибки.
+Возможно автоматическое создание.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<ul class="simple">
+<li><p>В колонке <strong>ID</strong> типа используйте форматирование для типа - <strong>Heading 3</strong> (вместо Normal text) - так оно попадет в список доступных действий и будет возможность ссылки-якоря</p></li>
+<li><p>Если описание конфигурации большое используете <strong>Expand</strong> панель (+)</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="interface/number_template.html" class="btn btn-neutral float-left" title="Шаблоны нумерации" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html" class="btn btn-neutral float-right" title="Бизнес-процессы" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

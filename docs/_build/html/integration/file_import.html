@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Файловый импорт в систему &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Общение между двумя и более инстансами ECOS’а через команды и события" href="2_instances.html" />
+    <link rel="prev" title="Импорт писем IMAP" href="Mail%20Processing.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Файловый импорт в систему</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Общая информация по функционалу</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Информация об использовании справочников</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Конфигурация импорта файлов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Файлы для импорта</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Элементы файлового импорта</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Пример создания своих обработчиков</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">1. Создание конфигурации импорта</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">2. Написание команды парсинга</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">3. Написание команды импорта элементов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+      <li>Файловый импорт в систему</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integration/file_import.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><a class="toc-backref" href="#id12">Файловый импорт в систему</a><a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id12">Файловый импорт в систему</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id13">Общая информация по функционалу</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id14">Информация об использовании справочников</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id5" id="id15">Конфигурация импорта файлов</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id16">Файлы для импорта</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id17">Элементы файлового импорта</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id8" id="id18">Пример создания своих обработчиков</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id9" id="id19">1. Создание конфигурации импорта</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id20">2. Написание команды парсинга</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id21">3. Написание команды импорта элементов</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id3">
+<h2><a class="toc-backref" href="#id13">Общая информация по функционалу</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>В случае необходимости разобрать и импортировать данные из любого файла в систему - можно воспользоваться данным функционалом.</p>
+<p>Существует 3 системных справочника в микросервисе интеграций:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/file_import_1.png"><img alt="../_images/file_import_1.png" class="align-center" src="../_images/file_import_1.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p>Кратко об использовании:</p>
+<ol class="arabic simple">
+<li><p>Создается конфигурация, где указывается информация о двух командах. Одна команда для парсинга, другая для обработки строк.</p></li>
+<li><p>Загружается файл через справочник <strong>“Файлы для импорта”</strong>, указывается конфигурация в соответствии с которой этот файл должен обрабатываться.</p></li>
+<li><p>Микросервис интеграции периодически ищет необработанные записи в справочнике <strong>“Файлы для импорта”</strong>. При их нахождении отправляет контент файла в виде команды в определенное приложение (данные для команды targetApp, type и тд берутся из конфигурации, это команда парсинга). В результате, ответом на команду вернется список строк для обработки, которые помещаются в журнал <strong>“Элементы файлового импорта”</strong>.</p></li>
+<li><p>Микросервис интеграции периодически ищет необработанные записи в справочнике <strong>“Элементы файлового импорта”</strong>. При их нахождении отправляет payload найденных записей в виде команды в определенное приложение (данные для команды targetApp, type, maxBatch и тд берутся из конфигурации, это команда импорта). В результате, ответом на команду вернется информация об успешности завершения импорта строки или информация об ошибке.</p></li>
+</ol>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id14">Информация об использовании справочников</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<section id="id5">
+<h3><a class="toc-backref" href="#id15">Конфигурация импорта файлов</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/file_import_2.png"><img alt="../_images/file_import_2.png" class="align-center" src="../_images/file_import_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Содержит информацию о том, как именно файлы выбранного типа импорта должны быть обработаны в системе после загрузки.</p>
+<p>Пример готовой конфигурации (основная информация о командах для обработки):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/file_import_3.png"><img alt="../_images/file_import_3.png" class="align-center" src="../_images/file_import_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id6">
+<h3><a class="toc-backref" href="#id16">Файлы для импорта</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<p>Журнал, в который загружаются файлы, которые необходимо обработать. Тут же пишется статус обработки файла.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/file_import_4.png"><img alt="../_images/file_import_4.png" class="align-center" src="../_images/file_import_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Заведение записей в этот справочник состоит из выбора каким именно способом обрабатывать этот файл (выбор строки из журнала конфигурации импорта файлов), загрузки самого файла и выбора планируемой даты начала обработки. Если дата начала обработки не указана - файл начнет обрабатываться в ближайшее время.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/file_import_5.png"><img alt="../_images/file_import_5.png" class="align-center" src="../_images/file_import_5.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id7">
+<h3><a class="toc-backref" href="#id17">Элементы файлового импорта</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<p>Журнал, в которые попадают строки файла после его парсинга. Строки сюда попадают автоматически.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/file_import_6.png"><img alt="../_images/file_import_6.png" class="align-center" src="../_images/file_import_6.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Каждая строка, после стадии парсинга, возвращается в виде payload. <code class="docutils literal notranslate"><span class="pre">Payload</span></code> содержит, обычно, json, который будет понимать команда импорта строк. Пример <code class="docutils literal notranslate"><span class="pre">payload</span></code> можно видеть на скриншоте ниже:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/file_import_7.png"><img alt="../_images/file_import_7.png" class="align-center" src="../_images/file_import_7.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Если импорт строки завершился ошибкой - команда может вернуть информацию об ошибке и эта ошибка будет отображена в журнале.</p>
+</section>
+</section>
+<section id="id8">
+<h2><a class="toc-backref" href="#id18">Пример создания своих обработчиков</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h2>
+<section id="id9">
+<h3><a class="toc-backref" href="#id19">1. Создание конфигурации импорта</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h3>
+<p>Создать ее можно либо через журнал, либо подложив json по пути <code class="docutils literal notranslate"><span class="pre">${module_path}/integration/file-import-config</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;edi-events-import-config-id&quot;</span><span class="p">,</span>
+<span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Загрузка события для документа по ID&quot;</span><span class="p">,</span>
+<span class="s2">&quot;parseCommandConfig&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;targetApp&quot;</span><span class="p">:</span> <span class="s2">&quot;alfresco&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;***-edi-events-by-document-id-parse&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ttl&quot;</span><span class="p">:</span> <span class="s2">&quot;330000&quot;</span>
+<span class="p">},</span>
+<span class="s2">&quot;importCommandConfig&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;targetApp&quot;</span><span class="p">:</span> <span class="s2">&quot;alfresco&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;***-edi-get-events-by-document-id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ttl&quot;</span><span class="p">:</span> <span class="s2">&quot;120000&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;maxBatch&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3><a class="toc-backref" href="#id20">2. Написание команды парсинга</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h3>
+<p>В качестве dto на вход всегда одна структура:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@data</span>
+<span class="nd">@CommandType</span> <span class="p">(</span><span class="s2">&quot;***-edi ~events-by-document-id-parse&quot;</span><span class="p">)</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">EdiGetEventsByDocumentIdParseConmand</span> <span class="p">{</span>
+<span class="n">private</span> <span class="n">String</span> <span class="n">filename</span><span class="p">;</span>
+<span class="n">private</span> <span class="n">byte</span><span class="p">[]</span> <span class="n">content</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Выход должен быть следующим:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Data</span>
+
+<span class="nd">@uloargsConstructor</span>
+
+<span class="nd">@aiiargsConstructor</span>
+
+<span class="n">public</span> <span class="k">class</span> <span class="nc">EdifventsByDocumentIdParseResult</span> <span class="p">{</span>
+<span class="n">private</span> <span class="n">boolean</span> <span class="n">success</span><span class="p">;</span>
+<span class="n">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">EdiEventsByDocumentIdItem</span><span class="o">&gt;</span> <span class="n">itemsResult</span><span class="p">;</span>
+<span class="n">private</span> <span class="n">String</span> <span class="n">error</span><span class="p">;</span>
+
+<span class="n">public</span> <span class="n">static</span> <span class="n">EdifventsByDocumentIdParseResult</span> <span class="n">success</span> <span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">EdiEventsByDocumentIdItem</span><span class="o">&gt;</span> <span class="n">itemsResult</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="n">new</span> <span class="n">EdiEventsByDocumentIdParseResult</span> <span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">itemsResult</span><span class="p">,</span> <span class="n">null</span><span class="p">);</span>
+
+<span class="n">public</span> <span class="n">static</span> <span class="n">EdigventsByDocumentIdParseResult</span> <span class="n">fail</span> <span class="p">(</span><span class="n">String</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="n">new</span> <span class="n">EdifventsByDocumentIdParseResult</span> <span class="p">(</span><span class="n">false</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>В качествен <code class="docutils literal notranslate"><span class="pre">itemsResult</span></code> может быть любая DTO, главное, чтобы она успешно могла преобразоваться в JSON.</p>
+<p>Внутри команды файл надо распарсить и разбить на необходимые для будущей обработки DTOшки.</p>
+<p>Если файл нельзя обрабатывать - возвращайте в виде результата <code class="docutils literal notranslate"><span class="pre">success=false</span></code> и в <code class="docutils literal notranslate"><span class="pre">error</span></code> информацию об ошибке.</p>
+</section>
+<section id="id11">
+<h3><a class="toc-backref" href="#id21">3. Написание команды импорта элементов</a><a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h3>
+<p>В качестве dto на вход может быть следующая структура:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Data</span>
+
+<span class="n">GComnandType</span> <span class="p">(</span><span class="s2">&quot;*#*-edi-get-events-by-document-id&quot;</span><span class="p">)</span>
+
+<span class="n">public</span> <span class="k">class</span> <span class="nc">EdiGetEventsByDocumentIdCommand</span> <span class="p">{</span>
+<span class="n">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">FileImportItem</span><span class="o">&gt;</span> <span class="n">items</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@data</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">FileImportitem</span> <span class="p">{</span>
+<span class="n">private</span> <span class="n">String</span> <span class="nb">id</span><span class="p">;</span>
+<span class="n">private</span> <span class="n">ObjectData</span> <span class="n">payload</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В качестве результата:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Data</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">FileInportResultList</span> <span class="p">{</span>
+<span class="n">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">FileInportResultIvem</span><span class="o">&gt;</span> <span class="n">resultList</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Data</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">FileInportResultItem</span> <span class="p">{</span>
+<span class="n">private</span> <span class="n">String</span> <span class="nb">id</span><span class="p">:</span>
+<span class="n">private</span> <span class="n">boolean</span> <span class="n">error</span><span class="p">;</span>
+<span class="n">private</span> <span class="n">String</span> <span class="n">details</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Обратите внимание каждому <code class="docutils literal notranslate"><span class="pre">id</span></code> из <code class="docutils literal notranslate"><span class="pre">FileImportItem</span></code> должна соответствовать запись в результирующим листе с таким же <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="Mail%20Processing.html" class="btn btn-neutral float-left" title="Импорт писем IMAP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="2_instances.html" class="btn btn-neutral float-right" title="Общение между двумя и более инстансами ECOS’а через команды и события" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

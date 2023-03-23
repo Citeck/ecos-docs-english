@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дашборды &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Виджеты" href="widgets.html" />
+    <link rel="prev" title="Меню" href="menu.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ecos_applications.html">ECOS Приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Aspects.html">Аспекты</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../interface.html">Интерфейс</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="forms.html">Формы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="journals.html">Журналы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="menu.html">Меню</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Дашборды</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dashboard-types">Виды дашбордов</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Кэширование</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dashboard-config">Конфигурация дашборда</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Настройки виджетов на дашбордах</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Журнал «Дашборды»</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="widgets.html">Виджеты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="number_template.html">Шаблоны нумерации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+          <li><a href="../interface.html">Интерфейс</a> &raquo;</li>
+      <li>Дашборды</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/settings_kb/interface/dashboards.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dashboard">
+<span id="id1"></span><h1><a class="toc-backref" href="#id12">Дашборды</a><a class="headerlink" href="#dashboard" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#dashboard" id="id12">Дашборды</a></p>
+<ul>
+<li><p><a class="reference internal" href="#dashboard-types" id="id13">Виды дашбордов</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id14">Кэширование</a></p></li>
+<li><p><a class="reference internal" href="#dashboard-config" id="id15">Конфигурация дашборда</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id6" id="id16">Разделы дашборда</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id7" id="id17">«Принадлежность»</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id18">«Представление»</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id19">«Виджеты»</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id10" id="id20">Настройки виджетов на дашбордах</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id21">Журнал «Дашборды»</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Для отображения домашней страницы пользователя или информации по кейсу, или информации по сайту в ECOS предусмотрены дашборды.</p>
+<p>Дашборд позволяет добавлять и убирать виджеты, конфигурировать каждый виджет индивидуально. См. отдельную статью <a class="reference internal" href="widgets.html#widgets"><span class="std std-ref">виджеты</span></a></p>
+<p>Все настройки хранятся в том же json, что и конфигурация дашборда.</p>
+<section id="dashboard-types">
+<span id="id3"></span><h2><a class="toc-backref" href="#id13">Виды дашбордов</a><a class="headerlink" href="#dashboard-types" title="Ссылка на этот заголовок"></a></h2>
+<p>На момент написания статьи существует 3 вида дашборда:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Тип/Ключ</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Case-details</strong></p></td>
+<td><div class="line-block">
+<div class="line">Дашборд карточки кейса - информация по документу (задачи, свойства, действия, история и др.).</div>
+<div class="line">Ключ dashboard’а берется из <strong>RecordRef</strong> в URL страницы и как правило он связан с типом/видом ECOS.</div>
+<div class="line">Формирование ключа построено по следующему правилу:</div>
+<div class="line"><strong>type_uuid/kind_</strong></div>
+<div class="line"><strong>type_uuid</strong></div>
+<div class="line"><strong>alf_alfresco_type</strong></div>
+<div class="line">То есть для договоров (contracts:agreement) это будет:</div>
+<div class="line">1. <strong>contracts-cat-doctype-contract/contracts-cat-contract-rent</strong></div>
+<div class="line">2. <strong>contracts-cat-doctype-contract</strong></div>
+<div class="line">3. <strong>alf_contracts:agreement</strong></div>
+<div class="line">Порядок - от более приоритетного к менее приоритетному</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Site-dashboard</strong></p></td>
+<td><div class="line-block">
+<div class="line">Страница раздела, которая позволяет отображать общие данные по разделу. Например - профиль пользователя.</div>
+<div class="line">Ключ dashboard’а берется из <strong>RecordRef</strong> в URL страницы. На момент написания ключ формируется по правилу <strong>«site»</strong> + <strong>siteId</strong>.</div>
+<div class="line">Если идентификатор сайта <strong>contracts</strong>, то его приоритетный dashboardKey будет <strong>site_contracts</strong>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>User-dashboard</strong></p></td>
+<td><div class="line-block">
+<div class="line">Домашняя страница пользователя. Открывается если в URL не указано никакого <strong>recordRef</strong>.</div>
+<div class="line">Например: <code class="docutils literal notranslate"><span class="pre">localhost/v2/dashboard</span></code></div>
+<div class="line">Ключ dashboard’а всегда DEFAULT если явно не задано обратного (возможно указание dashboardKey в URL)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Алгоритм поиска dashboard следующий:</p>
+<ol class="arabic simple">
+<li><p>Смотрим наличие <strong>recordRef</strong> в URL,</p></li>
+<li><p>Если <strong>recordRef</strong> отсутствует - отправляется запрос на конфигурацию домашней страницы пользователя,</p></li>
+<li><p>Если <strong>recordRef</strong> присутствует, то запрашиваем аттрибуты <strong>_dashboardKey[]</strong> (массив) и <strong>_dashboardType</strong> (одно значение),</p></li>
+<li><p>Дальше перебираем каждый полученный <strong>dashboardKey</strong> и запрашиваем у сервера конфигурацию для ключа + типа,</p></li>
+<li><p>Если на сервере конфигурации не нашлось, то пробуем следующий <strong>dashboardKey</strong>,</p></li>
+<li><p>Если ни по одному ключу не нашелся dashboard, то запрашиваем конфигурацию по ключу <strong>DEFAULT</strong>.</p></li>
+</ol>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id14">Кэширование</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Кеширование возможно в пределах открытой вкладки браузера:</p>
+<ol class="arabic simple">
+<li><p><strong>_dashboardKey[]</strong> и <strong>_dashboardType</strong> по recordRef (они достаточно редко меняются),</p></li>
+<li><p>Конфигурация <strong>dashboard</strong> (или её отсутствие) по <strong>dashboardKey</strong> + <strong>dashboardType</strong>.</p></li>
+</ol>
+</section>
+<section id="dashboard-config">
+<span id="id5"></span><h2><a class="toc-backref" href="#id15">Конфигурация дашборда</a><a class="headerlink" href="#dashboard-config" title="Ссылка на этот заголовок"></a></h2>
+<p>При открытии впервые карточки кейса, профиля пользователя или домашней страницы будет показан дашборд по умолчанию для соответствующего типа.</p>
+<p>Конфигурация дашборда происходит непосредственно из выбранного типа данных.</p>
+<p>Чтобы дополнительно конфигурировать дашборд – изменить настройки, убрать или добавить виджеты, необходимо перейти в карточку кейса, профиль пользователя или домашнюю страницу и <strong>нажать шестеренку- &gt; «Настроить страницу»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_1.png"><img alt="../../_images/dashboards_1.png" class="align-center" src="../../_images/dashboards_1.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p>Общая форма настройки имеет следующий вид:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_2.png"><img alt="../../_images/dashboards_2.png" class="align-center" src="../../_images/dashboards_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+<section id="id6">
+<h3><a class="toc-backref" href="#id16">Разделы дашборда</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<section id="id7">
+<h4><a class="toc-backref" href="#id17">«Принадлежность»</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h4>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_3.png"><img alt="../../_images/dashboards_3.png" class="align-center" src="../../_images/dashboards_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>В верхней части указан <strong>id дашборда</strong> и <strong>тип данных</strong>, для которого он настраивается.</p>
+<p>Тип данных может быть изменен из доступного выпадающего списка. Например:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_4.png"><img alt="../../_images/dashboards_4.png" class="align-center" src="../../_images/dashboards_4.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Отдельный дашборд может быть настроен для определенного документа (если на примере выбрать тип «Договор№512», то при открытии карточки данного договора будет отображаться дашборд, сконфигурированный именно для данного документа).</p>
+<p>При выставленном чекбоксе <strong>«Применить для всех пользователей»</strong> настроенный дашборд будет применен для всех пользователей, состоящих в первой назначенной группе по организационной структуре, открывших указанный тип данных.</p>
+</section>
+<section id="id8">
+<h4><a class="toc-backref" href="#id18">«Представление»</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h4>
+<p>Доступен выбор настройки для десктопной или мобильной версии ECOS.</p>
+<p>Укажите количество и содержимое вкладок, выберите расположение и количество колонок для каждой вкладки.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_5.png"><img alt="../../_images/dashboards_5.png" class="align-center" src="../../_images/dashboards_5.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Только для типа дашборда Site-dashboard доступно следующее расположение (Количество колонок подстраивается под размер окна браузера):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_6.png"><img alt="../../_images/dashboards_6.png" class="align-center" src="../../_images/dashboards_6.png" style="width: 100px;" /></a>
+</div></blockquote>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<blockquote>
+<div><p>Для мобильной версии отображаются только те виджеты, которые уже были настроены для десктопной версии и несут в себе те же настройки:</p>
+</div></blockquote>
+<a class="reference internal image-reference" href="../../_images/dashboards_7.png"><img alt="../../_images/dashboards_7.png" class="align-center" src="../../_images/dashboards_7.png" style="width: 400px;" /></a>
+</div>
+</section>
+<section id="id9">
+<h4><a class="toc-backref" href="#id19">«Виджеты»</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h4>
+<p>Созданные колонки можно заполнить доступными виджетами – перетащите виджет в необходимую колонку:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_8.png"><img alt="../../_images/dashboards_8.png" class="align-center" src="../../_images/dashboards_8.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Набор доступных виджетов зависит от вида дашборда:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><div class="line-block">
+<div class="line">Case-details</div>
+<div class="line">Карточка кейса</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Site-dashboard</div>
+<div class="line">Профиль пользователя</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">User-dashboard</div>
+<div class="line">Домашняя страница</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>JOURNAL: „journal“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-journal"><span class="std std-ref">См. Журнал</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>WEB_PAGE: „web-page“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-web-page"><span class="std std-ref">См. Веб-страница</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>DOC_PREVIEW: „doc-preview“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-doc-preview"><span class="std std-ref">См. Предпросмотр</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>COMMENTS: „comments“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-comments"><span class="std std-ref">См. Комментарии</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>PROPERTIES: „properties“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-properties"><span class="std std-ref">См. Свойства</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>CURRENT_TASKS: „current-tasks“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-current-tasks"><span class="std std-ref">См. Мои задачи</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>TASKS: „tasks“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-tasks"><span class="std std-ref">См. Задачи</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>DOC_STATUS: „doc-status“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-doc-status"><span class="std std-ref">См. Статус</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>EVENTS_HISTORY: „events-history“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-events-history"><span class="std std-ref">См. История событий</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>VERSIONS_JOURNAL: „versions-journal“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-versions-journal"><span class="std std-ref">См. Журнал версий</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>DOC_ASSOCIATIONS: „doc-associations“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-doc-associations"><span class="std std-ref">См. Связи документа</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>RECORD_ACTIONS: „record-actions“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-record-actions"><span class="std std-ref">См. Действия</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>BARCODE: „barcode“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-barcode"><span class="std std-ref">См. Штрих-код</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>DOCUMENTS: „documents“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-documents"><span class="std std-ref">См. Документы</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>DOC_CONSTRUCTOR: „doc-constructor“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-doc-constructor"><span class="std std-ref">См. Doc.One</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>PROCESS_STATISTICS: „process-statistics“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-process-statistics"><span class="std std-ref">См. Статистика процесса</span></a></div>
+</div>
+</td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>REPORT: „report“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-report"><span class="std std-ref">См. Статистика по задачам</span></a></div>
+</div>
+</td>
+<td></td>
+<td></td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>BIRTHDAYS: „birthdays“</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-birthdays"><span class="std std-ref">См. Дни рождения</span></a></div>
+</div>
+</td>
+<td></td>
+<td></td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>USER_PROFILE: „user-profile</strong></div>
+<div class="line"><a class="reference internal" href="widgets.html#widget-user-profile"><span class="std std-ref">См. Профиль</span></a></div>
+</div>
+</td>
+<td></td>
+<td><a class="reference internal image-reference" href="../../_images/dashboards_0.png"><img alt="../../_images/dashboards_0.png" src="../../_images/dashboards_0.png" style="width: 20px;" /></a>
+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="id10">
+<h2><a class="toc-backref" href="#id20">Настройки виджетов на дашбордах</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h2>
+<p>Настройка виджета осуществляется в карточке каждого виджета. См. отдельную статью &lt;Виджеты&gt;</p>
+<p>Информация по доступности виджета хранится в самом виджете (без участия сервера).</p>
+<p>В конфигурации виджета в поле <strong>config.widgetDisplayCondition</strong> задается условие как <strong>json-строка</strong>. Написание условия в соответствии статье <a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html#ecos-predicate-main"><span class="std std-ref">Язык предикатов</span></a></p>
+<p>Если отсутствует условие, то виджет отображается.</p>
+</section>
+<section id="id11">
+<h2><a class="toc-backref" href="#id21">Журнал «Дашборды»</a><a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h2>
+<p>Журнал расположен в <strong>разделе администратора -&gt; Конфигурация UI - &gt; Дашборды</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_9.png"><img alt="../../_images/dashboards_9.png" class="align-center" src="../../_images/dashboards_9.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Дашборд можно отредактировать, удалить, внести изменения через конфиг:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_10.png"><img alt="../../_images/dashboards_10.png" src="../../_images/dashboards_10.png" style="width: 30px;" /></a>
+</div></blockquote>
+</td>
+<td><p>Скачать</p></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_11.png"><img alt="../../_images/dashboards_11.png" src="../../_images/dashboards_11.png" style="width: 30px;" /></a>
+</div></blockquote>
+</td>
+<td><p>Удалить</p></td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_12.png"><img alt="../../_images/dashboards_12.png" src="../../_images/dashboards_12.png" style="width: 30px;" /></a>
+</div></blockquote>
+</td>
+<td><p>Редактировать в форме</p></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_13.png"><img alt="../../_images/dashboards_13.png" src="../../_images/dashboards_13.png" style="width: 30px;" /></a>
+</div></blockquote>
+</td>
+<td><div class="line-block">
+<div class="line">Редактировать json</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_15.png"><img alt="../../_images/dashboards_15.png" src="../../_images/dashboards_15.png" style="width: 400px;" /></a>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/dashboards_14.png"><img alt="../../_images/dashboards_14.png" src="../../_images/dashboards_14.png" style="width: 30px;" /></a>
+</div></blockquote>
+</td>
+<td><p>Копировать</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="menu.html" class="btn btn-neutral float-left" title="Меню" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="widgets.html" class="btn btn-neutral float-right" title="Виджеты" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

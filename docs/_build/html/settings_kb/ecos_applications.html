@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECOS Приложения &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Типы данных" href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html" />
+    <link rel="prev" title="ECOS Артефакты" href="ecos_artifacts.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ecos_artifacts.html">ECOS Артефакты</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ECOS Приложения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Определения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Работа с приложениями</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Перенос данных с одного стенда на другой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Структура архива приложения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Артефакты</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Источники артефактов</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Обновление артефактов</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ecos-apps">Создание ECOS Apps проекта</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Деплой</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Aspects.html">Аспекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface.html">Интерфейс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_actions.html">Действия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.html">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Уведомления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Admin_Page.html">Страница администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%D0%A2%D0%B5%D0%BC%D1%8B_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0.html">Настройка темы интерфейса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Best_practice.html">Best practice</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a> &raquo;</li>
+      <li>ECOS Приложения</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/settings_kb/ecos_applications.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ecos">
+<span id="applications"></span><h1>ECOS Приложения<a class="headerlink" href="#ecos" title="Ссылка на этот заголовок"></a></h1>
+<section id="id1">
+<h2>Определения<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Артефакт</strong> - единица расширения системы. Примеры артефактов: <span class="guilabel">Тип</span>, <span class="guilabel">Форма</span>, <span class="guilabel">Журнал</span>.</p>
+<p><strong>Приложение ECOS</strong> (ECOS App) - приложение, которое содержит в себе артефакты.</p>
+<p>Основная задача Приложений ECOS - переносимость артефактов между стендами и возможность версионирования.</p>
+<p>ECOS Application является артефактом, но его нельзя включить в другие приложения т.к. это системный тип.</p>
+</section>
+<section id="id2">
+<h2>Работа с приложениями<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Работа с приложениями осуществляется на странице администратора системы.</p>
+<p><code class="docutils literal notranslate"><span class="pre">http://host/v2/bpmn-designer?journalId=ecos-apps</span></code></p>
+<a class="reference internal image-reference" href="../_images/apps_page.png"><img alt="ECOS apps" class="align-center" src="../_images/apps_page.png" style="width: 600px;" /></a>
+<p>На этой странице можно:</p>
+<ol class="arabic simple">
+<li><p>Cоздавать и редактировать приложения.</p></li>
+<li><p>Скачивать приложения.</p></li>
+</ol>
+</section>
+<section id="id3">
+<h2>Перенос данных с одного стенда на другой<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Перенос данных со стенда на стенд осуществляется через <strong>Приложения ECOS</strong>. Для этого необходимо:</p>
+<ol class="arabic simple">
+<li><p>Создать приложение по кнопке <strong>+</strong>.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/new_app.png"><img alt="Создать приложение" class="align-center" src="../_images/new_app.png" style="width: 600px;" /></a>
+<p>Ввести наименование, выбрать тип данных и автоматически иди вручную добавить соответствующие артефакты.</p>
+<ol class="arabic simple" start="2">
+<li><p>Скачать приложение.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/apps_page_1.png"><img alt="Скачать приложение" class="align-center" src="../_images/apps_page_1.png" style="width: 600px;" /></a>
+<ol class="arabic simple" start="3">
+<li><p>Загрузить приложение на необходимом стенде.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/apps_page_2.png"><img alt="Скачать приложение" class="align-center" src="../_images/apps_page_2.png" style="width: 600px;" /></a>
+</section>
+<section id="id4">
+<h2>Структура архива приложения<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span><span class="o">.</span><span class="n">json</span> <span class="o">//</span> <span class="n">метаданные</span> <span class="n">приложения</span>
+<span class="n">artifacts</span><span class="p">:</span> <span class="o">//</span> <span class="n">папка</span> <span class="n">с</span> <span class="n">артефактами</span> <span class="n">приложения</span>
+  <span class="n">type0</span><span class="p">:</span>
+    <span class="n">subType0</span><span class="p">:</span>
+      <span class="n">artifact0</span><span class="o">.</span><span class="n">json</span>
+      <span class="n">artifact1</span><span class="o">.</span><span class="n">json</span>
+      <span class="o">...</span>
+    <span class="n">subType1</span><span class="p">:</span>
+      <span class="n">artifact0</span><span class="o">.</span><span class="n">json</span>
+      <span class="n">artifact1</span><span class="o">.</span><span class="n">json</span>
+      <span class="o">...</span>
+  <span class="n">typ1</span><span class="p">:</span>
+    <span class="n">subType0</span><span class="p">:</span>
+      <span class="n">artifact0</span><span class="o">.</span><span class="n">json</span>
+      <span class="o">...</span>
+    <span class="n">subType1</span><span class="p">:</span>
+      <span class="n">artifact0</span><span class="o">.</span><span class="n">json</span>
+      <span class="o">...</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>Артефакты<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>Для управления артефактами предусмотрен журнал <strong>Артефакты ECOS</strong>. В данный журнал попадают все артефакты, которые достигли микросервиса <code class="docutils literal notranslate"><span class="pre">ecos-apps</span></code>.</p>
+<a class="reference internal image-reference" href="../_images/artifacts.png"><img alt="Артефакты" class="align-center" src="../_images/artifacts.png" style="width: 600px;" /></a>
+<p>В данном журнале есть возможность выполнить следующие действия:</p>
+<a class="reference internal image-reference" href="../_images/artifacts_2.png"><img alt="../_images/artifacts_2.png" class="align-center" src="../_images/artifacts_2.png" style="width: 200px;" /></a>
+<p><strong>1. Скачать историю артефакта</strong></p>
+<ul class="simple">
+<li><p>При нажатии на действие можно выбрать дату, с которой необходимо выгрузить историю артефакта.</p></li>
+<li><p>При сабмите формы скачивается <em>zip</em> архив со всеми версиями артефакта с указанной даты.</p></li>
+<li><p>Если последний артефакт был загружен ранее чем выбраная дата, то будет выгружен только он (т.е. всегда будет как минимум 1 артефакт).</p></li>
+<li><p>Формат имени папки с версией артефакта: <strong>дата_созданияTвремя_созданияZ-[USER | APPLICATION | ECOS_APP]</strong>. Дата создания указывается в часовом поясе UTC.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/artifact-history.png"><img alt="Версия артефакта" class="align-center" src="../_images/artifact-history.png" style="width: 600px;" /></a>
+<p><strong>2. Скачать артефакт</strong></p>
+<p>Всегда скачивается <em>zip</em> архив с выбранным артефактом.</p>
+<p><strong>3. Передеплоить артефакт вручную</strong></p>
+<p>Отправить артефакт из <code class="docutils literal notranslate"><span class="pre">ecos-apps</span></code> в микросервис. Может быть полезно при разработке или после сбоя в базе целевого микросервиса т.е. <code class="docutils literal notranslate"><span class="pre">ecos-apps</span></code> не пропускает артефакт если он ранее был успешно задеплоен.</p>
+<p><strong>4. Сбросить пользовательскую версию артефакта</strong></p>
+<p>Сброс происходит до той версии, которая была установлена из приложения (<code class="docutils literal notranslate"><span class="pre">APPLICATION</span></code> или <code class="docutils literal notranslate"><span class="pre">ECOS_APP</span></code>). Сбрасывать можно только артефакты, которые в колонке <span class="guilabel">Тип источника</span> имеют <strong>USER</strong>.</p>
+<section id="id6">
+<h3>Источники артефактов<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<p>Есть 3 возможных источника артефактов:</p>
+<ol class="arabic simple">
+<li><p><strong>USER</strong> - артефакт добавляет или модифицирует пользователь;</p></li>
+<li><p><strong>APPLICATION</strong> - артефакт загружается из приложений, которые подключены к интерфейсу команд;</p></li>
+<li><p><strong>ECOS_APP</strong> - артефакт загружается из приложения ECOS;</p></li>
+</ol>
+</section>
+<section id="id7">
+<h3>Обновление артефактов<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<p>Все 3 источника имеют свою политику по обновлению артефактов:</p>
+<p><strong>USER</strong> - Артефакт обновляется безусловно. Любое изменение артефакта приводит к его изменению в базе микросервиса <code class="docutils literal notranslate"><span class="pre">ecos-apps</span></code>.</p>
+<p><strong>APPLICATION</strong> - Артефакт обновляется если он не принадлежит никакому приложению ECOS и была загружена версия артефакта, которая отличается от предыдущей загруженной из <code class="docutils literal notranslate"><span class="pre">APPLICATION</span></code>. Пример: Если у нас есть следующие ревизии артефакта:</p>
+<ul class="simple">
+<li><p><strong>rev2</strong> USER</p></li>
+<li><p><strong>rev1</strong> USER</p></li>
+<li><p><strong>rev0</strong> APPLICATION</p></li>
+</ul>
+<p>То <strong>rev0</strong> - самая первая версия артефакта, а <strong>rec2</strong> - самая последняя версия артефакта. Мы видим, что первая версия артефакта поступила из приложения, а другие две от пользователя.</p>
+<p>Если в такой ситуации в микросервис приходит версия <strong>rev0</strong> от APPLICATION, то ничего не поменяется не смотря на то что <strong>rev2</strong> != <strong>rev0</strong>.</p>
+<p>Если из приложения придет <strong>rev3</strong>, то новая ревизия загрузится и станет актуальной:</p>
+<ul class="simple">
+<li><p><strong>rev3</strong> APPLICATION</p></li>
+<li><p><strong>rev2</strong> USER</p></li>
+<li><p><strong>rev1</strong> USER</p></li>
+<li><p><strong>rev0</strong> APPLICATION</p></li>
+</ul>
+<p><strong>ECOS_APP</strong> - обновляется аналогично APPLICATION, но при загрузке артефакту проставляется признак принадлежности приложению. Если артефакт принадлежит приложению, то он не обновляется из APPLICATION.</p>
+</section>
+</section>
+<section id="ecos-apps">
+<h2>Создание ECOS Apps проекта<a class="headerlink" href="#ecos-apps" title="Ссылка на этот заголовок"></a></h2>
+<p>Для создания ECOS Apps проекта нужно создать новый maven проект и настроить главный <strong>pom файл</strong> следующим образом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;ru.citeck.ecos.eapps.meetings&lt;/groupId&gt;
+    &lt;artifactId&gt;ecos-meetings&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+
+    &lt;parent&gt;
+        &lt;groupId&gt;ru.citeck.ecos.eapps.project&lt;/groupId&gt;
+        &lt;artifactId&gt;ecos-apps-simple-parent&lt;/artifactId&gt;
+        &lt;version&gt;1.0.2&lt;/version&gt;
+    &lt;/parent&gt;
+
+    &lt;repositories&gt;
+        &lt;repository&gt;
+            &lt;id&gt;citeck-public&lt;/id&gt;
+            &lt;url&gt;https://nexus.citeck.ru/repository/maven-public&lt;/url&gt;
+        &lt;/repository&gt;
+    &lt;/repositories&gt;
+
+&lt;/project&gt;
+</pre></div>
+</div>
+<p>Приложения можно расположить двумя способами:</p>
+<p><code class="docutils literal notranslate"><span class="pre">src/main/resources/app</span></code> - для варианта когда приложение у нас одно</p>
+<p><code class="docutils literal notranslate"><span class="pre">src/main/resources/apps/[app0,app1,…]</span></code> - для варианта когда приложений несколько</p>
+<p>В корне приложения нужно разместить файл <strong>meta.yml</strong>, в котором можно указать:</p>
+<ul class="simple">
+<li><p><strong>id: String</strong> - идентификатор приложения. По умолчанию равен artifactId проекта</p></li>
+<li><p><strong>name: MLText</strong> - имя приложения</p></li>
+</ul>
+<p>Если файл <strong>meta.yml</strong> отсутствует, то он будет сгенерирован автоматически.</p>
+<p>При сборке приложений получается набор zip-архивов, каждый из которых представляет из себя отдельное приложение.</p>
+<section id="id8">
+<h3>Деплой<a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h3>
+<p>Есть два основных способа деплоя - ручной и автоматический.</p>
+<section id="id9">
+<h4>Ручной деплой<a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h4>
+<p>При ручном деплое мы можем собрать приложения командой <cite>mvn clean package</cite> и загрузить нужный архив из папки <code class="docutils literal notranslate"><span class="pre">target/classes/app``s</span> <span class="pre">через</span> <span class="pre">журнал</span> <span class="pre">приложений,</span> <span class="pre">который</span> <span class="pre">доступен</span> <span class="pre">по</span> <span class="pre">ссылке</span> <span class="pre">``/v2/admin?journalId=ecos-apps&amp;type=JOURNAL</span></code></p>
+</section>
+<section id="id10">
+<h4>Автоматический деплой<a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h4>
+<p>Автоматический деплой осуществляется через механизм загрузки артефактов в микросервисе <strong>ecos-apps</strong>. Артефакты доставляются в виде docker образа.</p>
+<p>Команда для сборки docker образа:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mvn</span> <span class="n">clean</span> <span class="n">package</span> <span class="n">jib</span><span class="p">:</span><span class="n">dockerBuild</span> <span class="o">-</span><span class="n">Djib</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">tag</span><span class="o">=</span><span class="mf">1.0.0</span><span class="o">-</span><span class="n">snapshot</span>
+</pre></div>
+</div>
+<p>где <strong>1.0.0-snapshot</strong> - это тэг для итогового образа.</p>
+<p>После сборки образа мы подключаем его там, где развернут микросервис <strong>ecos-apps</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ecos</span><span class="o">-</span><span class="n">meetings</span><span class="o">-</span><span class="n">ecos</span><span class="o">-</span><span class="n">apps</span><span class="p">:</span>
+  <span class="n">container_name</span><span class="p">:</span> <span class="n">ecos</span><span class="o">-</span><span class="n">meetings</span><span class="o">-</span><span class="n">ecos</span><span class="o">-</span><span class="n">apps</span>
+  <span class="n">image</span><span class="p">:</span> <span class="n">nexus</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ru</span><span class="o">/</span><span class="n">ecos</span><span class="o">-</span><span class="n">meetings</span><span class="p">:</span><span class="mf">1.0.0</span><span class="o">-</span><span class="n">snapshot</span>
+  <span class="n">environment</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">ECOS_APPS_TARGET_DIR</span><span class="o">=/</span><span class="n">run</span><span class="o">/</span><span class="n">ecos</span><span class="o">-</span><span class="n">apps</span>
+  <span class="n">volumes</span><span class="p">:</span>
+    <span class="o">-</span> <span class="o">./</span><span class="n">volumes</span><span class="o">/</span><span class="n">ecos</span><span class="o">-</span><span class="n">apps</span><span class="p">:</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">ecos</span><span class="o">-</span><span class="n">apps</span>
+</pre></div>
+</div>
+<p>Параметр <strong>ECOS_APPS_TARGET_DIR</strong> - это папка, в которую будут скопированы все приложения, которые лежат внутри образа. Копирование происходит с помощью shell скрипта. По завершении копирования приложений ECOS образ сразу же останавливается т.к. на этом его работа заканчивается.</p>
+<p>Далее нам нужно подключить папку с артефактами (<code class="docutils literal notranslate"><span class="pre">./volumes/ecos-apps</span></code>) как volume в микросервис ecos-apps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eapps</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">dev</span><span class="p">:</span>
+  <span class="n">container_name</span><span class="p">:</span> <span class="n">eapps</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">dev</span>
+  <span class="n">image</span><span class="p">:</span> <span class="n">nexus</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ru</span><span class="o">/</span><span class="n">ecos</span><span class="o">-</span><span class="n">apps</span><span class="p">:</span><span class="mf">2.6.0</span><span class="o">-</span><span class="n">snapshot</span>
+  <span class="n">ports</span><span class="p">:</span>
+    <span class="o">-</span> <span class="mi">8089</span><span class="p">:</span><span class="mi">8089</span>
+  <span class="n">environment</span><span class="p">:</span>
+    <span class="o">...</span><span class="n">остальные_env_переменные</span><span class="o">...</span>
+    <span class="o">-</span> <span class="n">ECOS_WEBAPP_EAPPS_ADDITIONAL_ARTIFACTS_LOCATIONS</span><span class="o">=/</span><span class="n">run</span><span class="o">/</span><span class="n">ecos</span><span class="o">-</span><span class="n">artifacts</span>
+  <span class="n">volumes</span><span class="p">:</span>
+    <span class="o">-</span> <span class="o">./</span><span class="n">volumes</span><span class="o">/</span><span class="n">ecos</span><span class="o">-</span><span class="n">apps</span><span class="p">:</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">ecos</span><span class="o">-</span><span class="n">artifacts</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">ecosapp</span>
+</pre></div>
+</div>
+<p>В env переменной мы передаем конфигурацию  <strong>ECOS_WEBAPP_EAPPS_ADDITIONAL_ARTIFACTS_LOCATIONS</strong>, которая указывает на дополнительные папки, из которых нужно загрузить артефакты (приложение ECOS тоже является артефактами с типом <strong>app/ecosapp</strong>).</p>
+<p>Нашу папку с архивами мы должны подключить как volume в директорию <code class="docutils literal notranslate"><span class="pre">$ECOS_WEBAPP_EAPPS_ADDITIONAL_ARTIFACTS_LOCATIONS/app/ecosapp</span></code></p>
+<p>При запуске микросервиса <strong>ecos-apps</strong> он начинает следить за директориями, которые указаны в <strong>ECOS_WEBAPP_EAPPS_ADDITIONAL_ARTIFACTS_LOCATIONS</strong>, и если приложения, которые там находятся изменяются, то микросервис автоматически их загружает к себе в БД и деплоит оттуда артефакты.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="ecos_artifacts.html" class="btn btn-neutral float-left" title="ECOS Артефакты" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html" class="btn btn-neutral float-right" title="Типы данных" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

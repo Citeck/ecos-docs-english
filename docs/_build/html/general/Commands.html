@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Команды &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Аспекты" href="Aspects.html" />
+    <link rel="prev" title="Транзакции в ECOS" href="Transactions.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">&lt;no title&gt;</a> &raquo;</li>
+      <li>Команды</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/general/Commands.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Команды<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p><strong>Команда</strong> — декларативное описание действия, которое нужно сделать на удаленном сервисе или локально.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/Commands_1.png"><img alt="../_images/Commands_1.png" class="align-center" src="../_images/Commands_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p><strong>Команды</strong> в Citeck ECOS в качестве транспорта используют очереди RabbitMQ. Использование команд возможно как в синхронном, так и в асинхронном режиме.</p>
+<p>Целью команд могут быть:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Тип сервиса (ecos-process, ecos-uiserv, alfresco и др.). Команду исполняет один из инстансов данного сервиса.</p></li>
+<li><p>Инстанс сервиса (у каждого типа сервиса может быть много инстансов).</p></li>
+<li><p>Все типы сервисов (широковещательные команды). Сервис-источник команды отправляет широковещательную команду в RabbitMQ и её обрабатывают все сервисы, которые в данный момент активны.</p></li>
+</ol>
+</div></blockquote>
+<p>Выполнение команды осуществляется с помощью сервиса <strong>CommandService</strong>. В частности его методом <strong>execute</strong> и <strong>executeSync</strong>:</p>
+<p>Команды могут быть как локальными (т.е. исполняются в рамках одного сервиса), так и удаленными (команда отправляется в другой микросервис, в этом случае необходимо указать <strong>id микросервиса</strong>, куда отправится команда)</p>
+<p>Для реализации удаленной команды:</p>
+<ol class="arabic simple">
+<li><p>Создать DTO в сервисе, ИЗ которого будет отправлена команда и там где она будет исполняться,  например, если необходимо отправить команду из alfresco в микросервис интеграций, то необходимо создать 2 идентичных класса, один в alfresco, а второй в микросервис интеграций:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Data</span>
+<span class="nd">@CommandType</span><span class="p">(</span><span class="s2">&quot;execute-spark-method&quot;</span><span class="p">)</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">SparkServiceMethodCommand</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">dataSourceId</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">methodName</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">methodAttributes</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Обязательно указать аннотацию <strong>CommandType</strong> с уникальным именем команды (по ней определяется какому <strong>Executorу</strong> будет отдана данная команда (см. пункт 3)).</p>
+<ol class="arabic simple" start="2">
+<li><p>Также необходим DTO с ожидаемым ответом, его также необходимо реализовать в обоих сервисах.</p></li>
+</ol>
+<p>По сути отправляем DTO c данными, который конвертируется в json, затем отправляется в нужный микросервис, там конвертируется обратно в DTO и с ним уже работает executor, после обработки executorом снова необходимо отдать DTO c ответом, который также конвертируется в json и отсылается обратно в то место, откуда была вызвана команда, там он опять трансформируется из json в ResponseDTO.
+Например, ответ, который ожидаем от исполнения команды высланным выше DTO:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@AllArgsConstructor</span>
+<span class="nd">@NoArgsConstructor</span>
+<span class="nd">@Data</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">SparkServiceMethodCommandResponse</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">status</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">xmlContent</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>В сервисе, КУДА отсылается команда, необходимо реализовать <strong>Executor</strong>, который будет обрабатывать DTO.</p></li>
+</ol>
+<p>В executor необходимо имплиментировать интерфейс <strong>CommandExecutor&lt;E&gt;</strong> , где <strong>E</strong> - входящий DTO (п.1)</p>
+<p>Также необходимо реализовать метод <strong>execute(E)</strong>, в котором собственно и заключается обработка самой команды. Т.е. принимаем на вход DTO c запросом (п.1), берем из него данные, обрабатываем, затем формируем DTO с ответом в этом методе и возвращаем его.</p>
+<p>Пример:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">CallSparkServiceCommandExecutor</span> <span class="n">implements</span> <span class="n">CommandExecutor</span><span class="o">&lt;</span><span class="n">SparkServiceMethodCommand</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="n">public</span> <span class="n">SparkServiceMethodCommandResponse</span> <span class="n">execute</span><span class="p">(</span><span class="n">SparkServiceMethodCommand</span> <span class="n">executeServiceMethodCommand</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">statusString</span> <span class="o">=</span> <span class="s2">&quot;Error&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">methodName</span> <span class="o">=</span> <span class="n">executeServiceMethodCommand</span><span class="o">.</span><span class="n">getMethodName</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">methodName</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="s2">&quot;Complete&quot;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">statusString</span> <span class="o">=</span> <span class="s2">&quot;Done&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">SparkServiceMethodCommandResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SparkServiceMethodCommandResponse</span><span class="p">();</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">setStatus</span><span class="p">(</span><span class="n">statusString</span><span class="p">);</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">setXmlContent</span><span class="p">(</span><span class="s2">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s2">1.0</span><span class="se">\&quot;</span><span class="s2"> encoding=</span><span class="se">\&quot;</span><span class="s2">UTF-8</span><span class="se">\&quot;</span><span class="s2">?&gt;&lt;TestTag&gt;Test&lt;/TestTag&gt;&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">response</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Пример логики, где просто проверяем имя метода и формируем ответную DTO.</p>
+<ol class="arabic simple">
+<li><p>В сервисе, ИЗ которого отправляем командный запрос, используем <strong>CommandService</strong> для отправки команды, пример:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">String</span> <span class="n">sendSparkRequest</span><span class="p">(</span><span class="n">String</span> <span class="n">dataSourceId</span><span class="p">,</span> <span class="n">String</span> <span class="n">methodName</span><span class="p">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">attributes</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">SparkServiceMethodCommand</span> <span class="n">command</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SparkServiceMethodCommand</span><span class="p">();</span>
+        <span class="n">command</span><span class="o">.</span><span class="n">setDataSourceId</span><span class="p">(</span><span class="n">dataSourceId</span><span class="p">);</span>
+        <span class="n">command</span><span class="o">.</span><span class="n">setMethodName</span><span class="p">(</span><span class="n">methodName</span><span class="p">);</span>
+        <span class="n">command</span><span class="o">.</span><span class="n">setMethodAttributes</span><span class="p">(</span><span class="n">attributes</span><span class="p">);</span>
+        <span class="n">SparkServiceMethodCommandResponse</span> <span class="n">result</span> <span class="o">=</span> <span class="n">commandsService</span><span class="o">.</span><span class="n">executeSync</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="s2">&quot;integrations&quot;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">getResultAs</span><span class="p">(</span><span class="n">SparkServiceMethodCommandResponse</span><span class="o">.</span><span class="n">class</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">getXmlContent</span><span class="p">();</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>В данном примере формируем DTO (также можно использовать builder) и отправляем команду в микросервис интеграций, явно указывая это во втором параметре.</p>
+<p>В ответе ожидаем <strong>SparkServiceMethodCommandResponse</strong> DTO и используем метод <strong>.getResultAs</strong> для автоматической конвертации ответа в удобный DTO.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="Transactions.html" class="btn btn-neutral float-left" title="Транзакции в ECOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="Aspects.html" class="btn btn-neutral float-right" title="Аспекты" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

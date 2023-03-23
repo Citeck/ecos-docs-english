@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Описание ecos-edi-ftps-lib &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Описание ecos-edi-sbis-lib" href="ecos-edi-sbis-lib.html" />
+    <link rel="prev" title="Описание ecos-edi-kontur-lib" href="ecos-edi-kontur-lib.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EDI.html">EDI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events_kontur.html">Настройка получения событий с ящиком Контур.Диадок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="counterparty_kontur.html">Синхронизация данных контрагентов и их ящиков с Контур.Диадок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_provider.html">Реализация интеграции с новым ЭДО-провайдером</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-kontur-lib.html">Описание ecos-edi-kontur-lib</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Описание ecos-edi-ftps-lib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1. Цель либы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2. Настройка интеграции</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ecos-credentials">2.1. Создание ecos-credentials сущности</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ecos-data-sources">2.2. Создание ecos-data-sources сущности</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edi-box">2.3. Создание edi-box сущности</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ecos-sync">2.4. Создание ecos-sync сущности</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3. Принципы работы при отправке сообщений</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">4. Принципы работы при получении сообщений</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">4.1. Обход в поиске сообщений</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">4.2. Обработка сообщения</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">4.3. Фиксация обработанного сообщения</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-sbis-lib.html">Описание ecos-edi-sbis-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expand_functions.html">Как расширять функционал</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_integration_settings.html">Переход на новые настройки интеграции с EDI провайдерами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CounterpartyEdiInfoRecordsDao.html">CounterpartyEdiInfoRecordsDao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_lib.html">Общая библиотека для обработки EDI событий ecos-edi-integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_signing.html">Серверное подписание</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_RC2%2B_configuration.html">Конфигурация ЭДО</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a> &raquo;</li>
+      <li>Описание ecos-edi-ftps-lib</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/integration/EDI_integration/ecos-edi-ftps-lib.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ecos-edi-ftps-lib">
+<h1><a class="toc-backref" href="#id9">Описание ecos-edi-ftps-lib</a><a class="headerlink" href="#ecos-edi-ftps-lib" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ecos-edi-ftps-lib" id="id9">Описание ecos-edi-ftps-lib</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id10">1. Цель либы</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id11">2. Настройка интеграции</a></p>
+<ul>
+<li><p><a class="reference internal" href="#ecos-credentials" id="id12">2.1. Создание ecos-credentials сущности</a></p></li>
+<li><p><a class="reference internal" href="#ecos-data-sources" id="id13">2.2. Создание ecos-data-sources сущности</a></p></li>
+<li><p><a class="reference internal" href="#edi-box" id="id14">2.3. Создание edi-box сущности</a></p></li>
+<li><p><a class="reference internal" href="#ecos-sync" id="id15">2.4. Создание ecos-sync сущности</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id4" id="id16">3. Принципы работы при отправке сообщений</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id17">4. Принципы работы при получении сообщений</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id6" id="id18">4.1. Обход в поиске сообщений</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id19">4.2. Обработка сообщения</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id20">4.3. Фиксация обработанного сообщения</a></p>
+<ul>
+<li><p><a class="reference internal" href="#move-after-processing" id="id21">4.3.1. Политика MOVE_AFTER_PROCESSING</a></p></li>
+<li><p><a class="reference internal" href="#delete-on-success" id="id22">4.3.2. Политика DELETE_ON_SUCCESS</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id2">
+<h2><a class="toc-backref" href="#id10">1. Цель либы</a><a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Либа создана для обмена EDI-сообщениями с контрагентами через какой-то FTP-сервер.</p>
+<p>Общий принцип работы:</p>
+<p>Контрагент кладет в определенную папку сообщение, либа при активированной синхронизации раз в какое-то время производит рекурсивный обход по папкам на сервере и находит новые документы (подробнее в п.4).</p>
+<p>Отправка сообщений контрагенту происходит наоборот: В специальную папку либа кладет EDI-сообщение и когда то в будущем контрагент его заберет (подробнее в п.3).</p>
+</section>
+<section id="id3">
+<h2><a class="toc-backref" href="#id11">2. Настройка интеграции</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Для настройки, как и для любой интеграции ЭДО - необходимо создать <strong>ecos-credentials</strong>, <strong>ecos-data-sources</strong>, <strong>edi-box</strong> и <strong>ecos-sync</strong> сущности.</p>
+<section id="ecos-credentials">
+<h3><a class="toc-backref" href="#id12">2.1. Создание ecos-credentials сущности</a><a class="headerlink" href="#ecos-credentials" title="Ссылка на этот заголовок"></a></h3>
+<p>Тут все стандартно, создаем через журнал <strong>ecos-credentials</strong> запись, в которой указываем логин и пароль для подключения к FTP-серверу.</p>
+</section>
+<section id="ecos-data-sources">
+<h3><a class="toc-backref" href="#id13">2.2. Создание ecos-data-sources сущности</a><a class="headerlink" href="#ecos-data-sources" title="Ссылка на этот заголовок"></a></h3>
+<p>Создавать необходимо сущность <strong>“FTP Data source“</strong>. Поля <strong>id</strong> и <strong>name</strong> не важны.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/ecos-edi-ftps-lib_1.png"><img alt="../../_images/ecos-edi-ftps-lib_1.png" class="align-center" src="../../_images/ecos-edi-ftps-lib_1.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Важны <strong>host</strong>, <strong>port</strong> и <strong>protocol</strong>, где:</p>
+<p><code class="docutils literal notranslate"><span class="pre">host</span></code> - путь к серверу. В моем случае - локальный хост.</p>
+<p><code class="docutils literal notranslate"><span class="pre">port</span></code> - порт по которому ходим к серверу. Стандарт обычно 21.</p>
+<p><code class="docutils literal notranslate"><span class="pre">protocol</span></code> - на данный момент поддерживается FTP или FTPS.</p>
+</section>
+<section id="edi-box">
+<h3><a class="toc-backref" href="#id14">2.3. Создание edi-box сущности</a><a class="headerlink" href="#edi-box" title="Ссылка на этот заголовок"></a></h3>
+<p>Создаем сущность <strong>“FTP box”</strong>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/ecos-edi-ftps-lib_2.png"><img alt="../../_images/ecos-edi-ftps-lib_2.png" class="align-center" src="../../_images/ecos-edi-ftps-lib_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Самая основная часть конфигурации именно тут. Тут существует 3 раздела. В верхнем разделе:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> - указываем любой (или оставляем пустым и оно само сгенерится при создании).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - любое человеко-читаемое название для этого ящика.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">URL</span></code>- указываем созданный в 2.2 датасорс.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Credentials</span></code> - указываем созданные в 2.1 креды.</p></li>
+</ul>
+<p>В разделе <strong>Box configuration</strong> - заполняем идентификатор номером GLN организации, от имени которой происходит разбор EDI-сообщений.</p>
+<p>Раздел <strong>Other</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Outbound</span> <span class="pre">documents</span> <span class="pre">folder</span> <span class="pre">path</span> <span class="pre">template</span></code> - шаблон пути, по которому будут отправляться исходящие сообщения. Подробнее в п.3.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Inbound</span> <span class="pre">documents</span> <span class="pre">folder</span> <span class="pre">path</span> <span class="pre">template</span></code> - шаблон пути, по которому будут получаться входящие сообщения. Подробнее в п.4.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Search</span> <span class="pre">documents</span> <span class="pre">in</span> <span class="pre">subdirectories</span></code> - чекбокс с говорящим названием, который означает, что мы должны искать документы не только в папке полностью соответствующей конфигу выше, но и в поддиректориях.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Inbound</span> <span class="pre">processing</span> <span class="pre">policy</span></code> - выбор из вариантов обработки входящих сообщений. Существует 2 варианта - <code class="docutils literal notranslate"><span class="pre">MOVE_AFTER_PROCESSING</span></code> и <code class="docutils literal notranslate"><span class="pre">DELETE_ON_SUCCESS</span></code>. Подробнее в п.4.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Inbound</span> <span class="pre">documents</span> <span class="pre">success</span> <span class="pre">folder</span> <span class="pre">path</span> <span class="pre">template</span></code> - (используется только при <code class="docutils literal notranslate"><span class="pre">MOVE_AFTER_PROCESSING</span></code>) - папка куда складываются документы, которые были успешно обработаны.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Inbound</span> <span class="pre">documents</span> <span class="pre">error</span> <span class="pre">folder</span> <span class="pre">path</span> <span class="pre">template</span></code> - (используется только при <code class="docutils literal notranslate"><span class="pre">MOVE_AFTER_PROCESSING</span></code>) - папка, куда складываются документы, в результате обработки которых получили ошибку.</p></li>
+</ul>
+</section>
+<section id="ecos-sync">
+<h3><a class="toc-backref" href="#id15">2.4. Создание ecos-sync сущности</a><a class="headerlink" href="#ecos-sync" title="Ссылка на этот заголовок"></a></h3>
+<p>Ничем не отличается от остальных интеграций, можно посмотреть в общей статье: <a class="reference internal" href="events_kontur.html#events-kontur"><span class="std std-ref">Настройка получения событий с ящиком Контур_Диадок</span></a></p>
+<p>Указывать, конечно, сущность <strong>edi-box</strong> из п.2.3.</p>
+</section>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id16">3. Принципы работы при отправке сообщений</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Вся либа построена на том, что мы указываем относительные пути в конфигурации. Переменные для подстановки приходят из структуры <strong>EdiXmlRequest</strong> из либы <code class="docutils literal notranslate"><span class="pre">ecos-edi-commons</span></code> <cite>Описание работы интеграции :ref:</cite></p>
+<p>Эта структура состоит из следующих полей:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">private</span> <span class="n">OurId</span> <span class="n">ourId</span><span class="p">;</span>
+<span class="n">private</span> <span class="n">CounterpartyId</span> <span class="n">counterpartyId</span><span class="p">;</span>
+<span class="n">private</span> <span class="n">EdiXml</span> <span class="n">ediXml</span><span class="p">;</span>
+<span class="n">private</span> <span class="n">ObjectData</span> <span class="n">data</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>где:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ourId</span></code> маппится для подстановки в виде <code class="docutils literal notranslate"><span class="pre">ourId.key_from_attributes</span></code> (<code class="docutils literal notranslate"><span class="pre">OurId</span></code> состоит из <strong>ObjectData</strong>. Это означает, что если в <strong>ObjectData</strong> находится 2 значения с ключами <code class="docutils literal notranslate"><span class="pre">key1</span></code> и <code class="docutils literal notranslate"><span class="pre">key2</span></code>, то в шаблоне можем использовать значения по следующим ключам: <code class="docutils literal notranslate"><span class="pre">ourId.key1</span></code> и vourId.key2``).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">counterpartyId</span></code> маппится для подстановки в виде <code class="docutils literal notranslate"><span class="pre">counterpartyId.key_from_attributes</span></code> (аналогично ourId).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ediXml</span></code> маппится всего в 2 значения: <code class="docutils literal notranslate"><span class="pre">document.type</span></code>, где могут быть значения ORDERS, ORDRSP, DESADV, RECADV, etc и в document.lowerType, где могут быть значения orders, ordrsp, desadv, recadv, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> - полностью маппится в виде addInfo.key.</p></li>
+</ul>
+<p>Для заполнения <code class="docutils literal notranslate"><span class="pre">data</span></code> - можно на проектах расширить интерфейс <code class="docutils literal notranslate"><span class="pre">FtpCustomAddInfoProvider</span></code> и зарегистрировать его в бине <code class="docutils literal notranslate"><span class="pre">FtpCustomAddInfoProviderRegistry</span></code>. Таким образом, можно на любом проекте кастомную логику по определению путей сделать. Пример шаблонов:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/${addInfo.counterparty.esk}_S4TEST/OUTBOUND/${document.type}
+</pre></div>
+</div>
+<p>Это означает, что если в структуре data содержится значение 123456 по ключу <code class="docutils literal notranslate"><span class="pre">counterparty.esk</span></code> и <code class="docutils literal notranslate"><span class="pre">ediXml.ediDocumentType</span></code> содержит значение ORDERS, то данное сообщение отправится в следующую папку:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="mi">123456</span><span class="n">_S4TEST</span><span class="o">/</span><span class="n">OUTBOUND</span><span class="o">/</span><span class="n">ORDERS</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Можно вовсе не использовать шаблоны, тогда все документы будут попадать в любую папку.</p>
+<p>Например, шаблон:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/${addInfo.path}
+</pre></div>
+</div>
+<p>Разработать реализацию <code class="docutils literal notranslate"><span class="pre">FtpCustomAddInfoProvider</span></code>, которая бы возвращала переменную <code class="docutils literal notranslate"><span class="pre">path</span></code>. Например, если она будет равна <code class="docutils literal notranslate"><span class="pre">some/path/type/kind/outbound</span></code>, то путь будет следующим:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">some</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="nb">type</span><span class="o">/</span><span class="n">kind</span><span class="o">/</span><span class="n">outbound</span>
+</pre></div>
+</div>
+<p>Для шаблонизации пути используется компонент <code class="docutils literal notranslate"><span class="pre">StringSubstitutor</span></code> из библиотеки commons-text от Apache с небольшой модернизацией.</p>
+<p>Подробнее можно ознакомиться в тестах к либе.</p>
+<p>Отправить сообщение можно с помощью интерфейса <strong>EdiService</strong>, передав ему <code class="docutils literal notranslate"><span class="pre">EdiProviderType.FTP</span></code>. Доступные методы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">generateEdiXml</span></code> - доступен, но пока что реализованных генераторов не имеет ввиду ненадобности. Можно расширять список генераторов в рамках бандла <code class="docutils literal notranslate"><span class="pre">ecos-edi-ftps-lib</span></code> или других, если появится такая необходимость.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sendEdiXml</span></code> - отправка сообщения, данные которого сериализованы в <code class="docutils literal notranslate"><span class="pre">EdiXmlRequest</span></code> на FTP-сервер.</p></li>
+</ul>
+<p>Сервис <strong>EdiService</strong> доступен из контекста Alfresco и микросервиса <strong>integrations-app</strong>.</p>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id17">4. Принципы работы при получении сообщений</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>Для получения сообщений мы проходим через 3 фазы:</p>
+<ol class="arabic simple">
+<li><p>Ищем сообщения.</p></li>
+<li><p>Обрабатываем сообщения.</p></li>
+<li><p>Фиксируем, что сообщение обработано.</p></li>
+</ol>
+<section id="id6">
+<h3><a class="toc-backref" href="#id18">4.1. Обход в поиске сообщений</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<p>Для поиска документов - используется рекурсивный обход по папкам. Алгоритм не забирает все документы разом и отправляет их на обработку, а запоминает место последнего найденного документа, отправляет на обработку и позже возобновляет обход с той же точки. Реализовано это в виде итератора <code class="docutils literal notranslate"><span class="pre">FtpWalkIterator</span></code>.</p>
+<p>Итератору скармливаются параметры <code class="docutils literal notranslate"><span class="pre">Inbound</span> <span class="pre">documents</span> <span class="pre">folder</span> <span class="pre">path</span> <span class="pre">template</span></code> (далее - шаблон поиска входящих) и Search documents in subdirectories (флаг поиска в поддиректориях), которые описаны в п.2.3.</p>
+<p>Шаблон поиска входящих разбивается на уровни по папкам. То есть, например, шаблон <code class="docutils literal notranslate"><span class="pre">/${addInfo.counterparty.esk}_S4TEST/INBOUND/${document.type}</span></code> разобьется на 4 части:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/
+/${addInfo.counterparty.esk}_S4TEST
+/${addInfo.counterparty.esk}_S4TEST/INBOUND
+/${addInfo.counterparty.esk}_S4TEST/INBOUND/${document.type}
+</pre></div>
+</div>
+<p>После этого, части будут преобразованы в корректные регулярные выражения. То есть, эти части будут иметь теперь следующие значения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/
+/(?&lt;addInfo.counterparty.esk&gt;[\\w\\s-]+)_S4TEST
+/(?&lt;addInfo.counterparty.esk&gt;[\\w\\s-]+)_S4TEST/INBOUND
+/(?&lt;addInfo.counterparty.esk&gt;[\\w\\s-]+)_S4TEST/INBOUND/(?&lt;document.type&gt;ORDERS|ORDRSP|DESADV|RECADV)
+</pre></div>
+</div>
+<p>Обратите внимание, замена происходит не просто на регулярки, а создаются группы для того чтоб потом вынуть эти значения для создания события Event (внутри на самом деле еще заменяются точки на A1B2C3 строки, но это опустим, чтобы не ухудшать читаемость). Так же, обратите внимание, document.type и document.lowerType преобразуются в конкретные значения enum, а остальные переменные - в регулярки из букв, цифр, пустых символов или символа “-”.</p>
+<p>Если включен флаг поиска в поддиректориях - к последнему регулярному выражению добавляется “.*“. Таким образом становится возможным поиск по подпапкам.</p>
+<p>Так же, есть возможность указывать не стандартную регулярку, а свою. Пример -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/${addInfo.counterparty.esk(\d+)}_S4TEST/INBOUND/${document.type}
+</pre></div>
+</div>
+<p>Алгоритм обхода:</p>
+<p>Итератор внутри себя содержит очередь. В эту очередь вносятся файлы или папки, которые нужно будет в будущем посмотреть и проверить на предмет файлов, соответствующих регуляркам.</p>
+<ol class="arabic" start="0">
+<li><p>Инициализируем итератор, загрузив в очередь файлы из папки “/” (из рута). Этот шаг выполняется только 1 раз.</p></li>
+<li><p>Берем из очереди следующий элемент.</p></li>
+<li><p>Определяем его уровень (по количеству символов “/“). Берем соответствующий этому уровню regexp (или последний, если уровень больше чем есть regexp’ов).</p></li>
+<li><p>Проверяем совпадение по regexp.</p>
+<blockquote>
+<div><p>3.1. Если совпадает - смотрим, папка это или файл. Если папка - выбираем из нее список файлов и ложим в начало очереди для дальнейшего разбора, переходим на пункт 1. Если файл (для файлов проверяем только на соответствие последнему регулярному выражению) - отправляем его на обработку.</p>
+<p>3.2. Не совпадает - выбрасываем элемент из очереди. Переходим на пункт 1.</p>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="id7">
+<h3><a class="toc-backref" href="#id19">4.2. Обработка сообщения</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<p>Этот шаг состоит из 2х пунктов:</p>
+<ul class="simple">
+<li><p>Наполнения <strong>Event</strong> (Что такое Event в интеграции - можно почитать тут <a class="reference internal" href="EDI.html#edi"><span class="std std-ref">Описание работы интеграции</span></a>. Как уже написано выше, необходимо запомнить группы из regexp. Сделано это для того, чтобы передать по тем же ключам значения в структуру <strong>Event</strong>. То есть, для шаблона поиска входящих <code class="docutils literal notranslate"><span class="pre">/${addInfo.counterparty.esk}_S4TEST/OUTBOUND/${document.type}</span></code> - в структуру <strong>Event</strong> пробросятся значения из пути сообщения на FTP-сервере.</p></li>
+<li><p>Дальше, созданный <strong>Event</strong> отправляется в <strong>EdiStateService</strong> (<a class="reference internal" href="EDI.html#edi"><span class="std std-ref">Описание работы интеграции</span></a>) для обработки дальше системой силами роутов Camel.</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id20">4.3. Фиксация обработанного сообщения</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h3>
+<p>После успешной (или не успешной) обработки сообщения - необходимо зафиксировать, что сообщение было обработано. Происходит это за счет выбранной политики, переданной через конфигурацию Inbound processing policy (см. п.2.3).</p>
+<section id="move-after-processing">
+<h4><a class="toc-backref" href="#id21">4.3.1. Политика MOVE_AFTER_PROCESSING</a><a class="headerlink" href="#move-after-processing" title="Ссылка на этот заголовок"></a></h4>
+<p>В случае успеха - перемещаем файл в папку, которая указана в конфигурации <code class="docutils literal notranslate"><span class="pre">Inbound</span> <span class="pre">documents</span> <span class="pre">success</span> <span class="pre">folder</span> <span class="pre">path</span> <span class="pre">template</span></code> (см. п.2.3).</p>
+<p>В случае провала - перемещаем файл в папку, которая указана в конфигурации <code class="docutils literal notranslate"><span class="pre">Inbound</span> <span class="pre">documents</span> <span class="pre">error</span> <span class="pre">folder</span> <span class="pre">path</span> <span class="pre">template</span></code> (см. п.2.3).</p>
+<p>Обратите внимание, оба этих параметра являются шаблонами. В шаблонах можно использовать переменные, которые участвуют в шаблоне поиска входящих (пример можно посмотреть на скриншоте в п.2.3).</p>
+</section>
+<section id="delete-on-success">
+<h4><a class="toc-backref" href="#id22">4.3.2. Политика DELETE_ON_SUCCESS</a><a class="headerlink" href="#delete-on-success" title="Ссылка на этот заголовок"></a></h4>
+<p>В случае успешно обработанного события - файл удаляется с FTP-сервера.</p>
+<p>В случае провала - ничего не происходит.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="ecos-edi-kontur-lib.html" class="btn btn-neutral float-left" title="Описание ecos-edi-kontur-lib" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="ecos-edi-sbis-lib.html" class="btn btn-neutral float-right" title="Описание ecos-edi-sbis-lib" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

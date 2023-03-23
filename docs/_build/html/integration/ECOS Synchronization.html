@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Поддержка выгрузки нод alfresco в таблицу базы данных &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Мобильное приложение" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html" />
+    <link rel="prev" title="Интеграция курсов валют" href="currency.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Поддержка выгрузки нод alfresco в таблицу базы данных</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Изменение синхронизации «на лету»</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Перенос конфигурации между стендами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Структура таблицы с данными</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Пример скрипта для просмотра существующих записей в alfresco, для просмотра данных которые пойдут в таблицу интеграции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Восстановление потеряных записей</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+      <li>Поддержка выгрузки нод alfresco в таблицу базы данных</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integration/ECOS Synchronization.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="alfresco">
+<span id="ecos-synchronization"></span><h1>Поддержка выгрузки нод alfresco в таблицу базы данных<a class="headerlink" href="#alfresco" title="Ссылка на этот заголовок"></a></h1>
+<p>В микросервисе ecos-integrations добавлена поддержка выгрузки нод альфреско в таблицу базы данных. На данный момент выгрузка осуществляется в таблицы БД микросервиса ecos-integrations.</p>
+<p>Команда для подключения к БД на стенде с контейнерами докера:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">psql</span> <span class="n">postgres</span><span class="p">:</span><span class="o">//</span><span class="n">integrations</span><span class="nd">@localhost</span><span class="p">:</span><span class="mi">15432</span><span class="o">/</span><span class="n">integrations</span>
+</pre></div>
+</div>
+<p>Параметры для подключения к alfresco по REST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ecos</span><span class="o">-</span><span class="n">integrations</span><span class="p">:</span>
+   <span class="n">alfresco</span><span class="p">:</span>
+       <span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ecos</span><span class="p">:</span><span class="mi">8080</span>
+       <span class="n">authentication</span><span class="p">:</span>
+           <span class="n">username</span><span class="p">:</span> <span class="n">integrations</span>
+           <span class="n">password</span><span class="p">:</span> <span class="mi">97</span><span class="n">qiow104UIG</span>
+</pre></div>
+</div>
+<p>Можно менять эти настройки на стендах или оставить как есть (будет работать только если ECOS развернут в той же докер сети под именем «ecos»).</p>
+<p>На стороне alfresco для микросервиса должна быть заведена учетная запись integrations с паролем 97qiow104UIG (значения по-умолчанию) и админскими правами.</p>
+<p>Скрипт для создания пользователя:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">userName</span> <span class="o">=</span> <span class="s2">&quot;integrations&quot;</span><span class="p">;</span>
+<span class="n">people</span><span class="o">.</span><span class="n">createPerson</span><span class="p">(</span><span class="n">userName</span><span class="p">,</span> <span class="n">userName</span><span class="p">,</span> <span class="n">userName</span><span class="p">,</span> <span class="n">userName</span> <span class="o">+</span> <span class="s2">&quot;@ecos.ru&quot;</span><span class="p">,</span> <span class="s2">&quot;97qiow104UIG&quot;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">adminsGroup</span> <span class="o">=</span> <span class="n">groups</span><span class="o">.</span><span class="n">getGroup</span><span class="p">(</span><span class="s2">&quot;ALFRESCO_ADMINISTRATORS&quot;</span><span class="p">);</span>
+<span class="n">adminsGroup</span><span class="o">.</span><span class="n">addAuthority</span><span class="p">(</span><span class="n">userName</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Чтобы настроить выгрузку нод необходимо на стенде с ecos-enterprise-repo модулем открыть системные журналы в alfresco и найти там журнал Синхронизация (Synchronization):</p>
+<a class="reference internal image-reference" href="../_images/integration_synchronization_1.png"><img alt="Integration Sync" class="align-center" src="../_images/integration_synchronization_1.png" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p><strong>title</strong> - заголовок синхронизации</p></li>
+<li><p><strong>description</strong> - описание синхронизации</p></li>
+<li><p><strong>type</strong> - тип синхронизации (пока доступен только 1 тип - alfrescords (выгрузка нод альфреско))</p></li>
+<li><p><strong>enabled</strong> - включена или нет синхронизация</p></li>
+</ul>
+<p>В журнале можно создать новую выгрузку двумя способами:</p>
+<ol class="arabic simple">
+<li><p>Создание с помощью полей формы (удобно для создания «с нуля»)</p></li>
+<li><p>Создание с вводом json (удобно для переноса конфигурации между серверами)</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/integration_synchronization_2.png"><img alt="Intergration Sync2" class="align-center" src="../_images/integration_synchronization_2.png" style="width: 200px;" /></a>
+<p>Создание с помощью формы выглядит следующим образом:</p>
+<a class="reference internal image-reference" href="../_images/integration_synchronization_3.png"><img alt="Integration Sync3" class="align-center" src="../_images/integration_synchronization_3.png" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p><strong>Title</strong> - Заголовок выгрузки. Нужен для отображения в журнале синхронизации</p></li>
+<li><p><strong>Description</strong> - Описание выгрузки. Следует заполнить это поле чтобы другие люди могли сразу понять предназначение выгрузки.</p></li>
+<li><p><strong>Enabled</strong> - Включить/выключить синхронизацию;</p></li>
+<li><p><strong>Reset state</strong> - Сбросить состояние (выгрузка начнется с самого начала)</p></li>
+<li><p><strong>Config</strong> - Раздел с конфигурацией выгрузки</p></li>
+<li><dl class="simple">
+<dt><strong>Filter type</strong> - Тип фильтра, по которому будут выбираться ноды для выгрузки. На момент написания статьи доступно два типа:</dt><dd><ul>
+<li><p><strong>ECOS Type/Kind</strong> - фильтрация происходит по выбраному типу и виду</p></li>
+<li><p><strong>Raw Predicate</strong> - фильтрация происходит по заданному предикату в формате JSON. Синтаксис предикатов можно посмотреть <a class="reference internal" href="../settings_kb/interface/forms/form_components/components/select%20journal.html#select-journal"><span class="std std-ref">Select Journal</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>Target table</strong> - Имя таблицы для выгрузки. В базе данных к этому имени прибавится префикс <strong>ecos_sync_</strong> чтобы исключить случайные изменения системных таблиц.</p></li>
+<li><p><strong>Attributes</strong> - Выгружаемые аттрибуты. Слева описываются названия колонок в результирующей таблице, а справа выгружаемые аттрибуты. Синтаксис аттрибутов в правой колонке используется из Records API. Т.о. можно выгружать вложенные аттрибуты.</p></li>
+</ul>
+<p>Например, для выгрузки статуса договора можно описать следующие аттрибуты:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;status_id&quot;</span><span class="p">:</span> <span class="s2">&quot;icase:caseStatusAssoc?id&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">нодреф</span> <span class="n">статуса</span>
+<span class="s2">&quot;status_ru&quot;</span><span class="p">:</span> <span class="s2">&quot;icase:caseStatusAssoc.cm:title.ru&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">заголовок</span> <span class="n">статуса</span> <span class="n">на</span> <span class="n">русском</span>
+<span class="s2">&quot;status_en&quot;</span><span class="p">:</span> <span class="s2">&quot;icase:caseStatusAssoc.cm:title.en&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">заголовок</span> <span class="n">статуса</span> <span class="n">на</span> <span class="n">английском</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Если у аттрибута опустить тип скаляра (после знака ?), то по-умолчанию все аттрибуты будут выгружаться в строковом виде. Если требуется числовой вид, то следует добавить к аттрибуту <strong>?num</strong>, а для булева поля <strong>?bool</strong>.</p>
+<p>Для полей с датой на данный момент есть возможность их выгрузить в виде строки с форматом ISO8601 (это происходит автоматически и дополнительной настройки для этого не нужно).</p>
+<p>Подробнее о синтаксисе аттрибутов можно почитать в соответствующей статье <a class="reference internal" href="../general/ECOS_Records.html#records-api"><span class="std std-ref">ECOS Records API</span></a></p>
+<section id="id1">
+<h2>Изменение синхронизации «на лету»<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>Настройку синхронизации можно менять без перезагрузки сервера. При этом есть несколько особенностей:</p>
+<ol class="arabic simple">
+<li><p>Новые аттрибуты будут появляться только для заявок, которые изменились с момента изменения конфигурации. Для того чтобы новые аттрибуты появились у всех записей можно воспользоваться двумя способами:</p></li>
+</ol>
+<p>Первый - сбрасываем состояние синхронизации и недостающие данные синхронизируются полностью.</p>
+<p>Второй - создаем новую конфигурацию с недостающими атрибутами(которые были добавлены в исходную конфигурацию) и устанавливаем в ней ту же таблицу что и в исходной конфигурации. Когда новая конфигурации догонит старую, новую можно будет удалить.</p>
+<ol class="arabic simple" start="2">
+<li><p>При удалении аттрибутов таблица не чистится. То что уже синзронизировано остается в таблице.</p></li>
+<li><p>Изменение типа колонки на данный момент не поддерживается. Т.о. следует создать новый аттрибут если есть такая необходимость, а старый удалить из конфигурации. Для миграции старых записей можно воспользоваться рекоментациями из п.1</p></li>
+</ol>
+</section>
+<section id="id2">
+<h2>Перенос конфигурации между стендами<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<a class="reference internal image-reference" href="../_images/integration_synchronization_4.png"><img alt="Integration Sync4" class="align-center" src="../_images/integration_synchronization_4.png" style="width: 400px;" /></a>
+<p>Затем нужно:</p>
+<ol class="arabic simple">
+<li><p>Скопировать содержимое этого файла</p></li>
+<li><p>перейти на целевой стенд</p></li>
+<li><p>открыть журнал синхронизации</p></li>
+<li><p>Нажать Создать → Import JSON</p></li>
+<li><p>В появившемся окне вставить json, который мы скопировали в п.1</p></li>
+<li><p>Сохранить форму</p></li>
+<li><p>Обновить содержимое журнала</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/integration_synchronization_5.png"><img alt="Itegration Sync5" class="align-center" src="../_images/integration_synchronization_5.png" style="width: 600px;" /></a>
+</section>
+<section id="id3">
+<h2>Структура таблицы с данными<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>id</strong> (SERIAL PRIMARY KEY) - идентификатор строки,</p>
+<p><strong>_modified</strong> (TIMESTAMPTZ) - дата последнего изменения строки,</p>
+<p><strong>_created</strong> (TIMESTAMPTZ) - дата создания строки,</p>
+<p><strong>_version</strong> (BIGINT) - внутренняя версия записи. Используется, чтобы избежать одновременного изменения из раных потоков или инстансов микросервиса.</p>
+<p><strong>modified</strong> (VARCHAR) - дата изменения, записи в alfresco в ISO8601,</p>
+<p><strong>record_ref</strong> (VARCHAR) - alfresco&#64; + nodeRef заявки в alfresco</p>
+<ul class="simple">
+<li><p>все поля, которые описаны в интерфейсе</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>Пример скрипта для просмотра существующих записей в alfresco, для просмотра данных которые пойдут в таблицу интеграции<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Часть с атрибутами можно взять из json конфигурации интеграции, поле «attributes»:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">query</span><span class="p">({</span>
+<span class="n">query</span><span class="p">:</span> <span class="s1">&#39;tk:type:&quot;workspace://SpacesStore/type-unilever-te-request&quot;&#39;</span><span class="p">,</span>
+<span class="n">language</span><span class="p">:</span> <span class="s1">&#39;fts-alfresco&#39;</span><span class="p">,</span>
+<span class="n">consistency</span><span class="p">:</span> <span class="s1">&#39;EVENTUAL&#39;</span><span class="p">,</span>
+<span class="n">page</span><span class="p">:</span> <span class="p">{</span>
+<span class="n">maxItems</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">}</span>
+<span class="p">},</span> <span class="p">{</span>
+<span class="s2">&quot;Reg Number&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRegNumber&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Expense Type&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terExpenseType.utedm:teetName&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:reportablePerson&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP Cost Center &quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRPCostCenter&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS GRC Code&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignCRGCode.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP Vendor Code&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRPVendorCode&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP ID&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRPPersonnelNumber&quot;</span><span class="p">,</span>
+<span class="s2">&quot;RP Sub Function&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terRPSubFunction.udm:subFunctionName&quot;</span><span class="p">,</span>
+<span class="s2">&quot;AR Approve Date&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terAdvRepApproveDate&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Date&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignDate&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Status&quot;</span><span class="p">:</span> <span class="s2">&quot;icase:caseStatusAssoc.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Line Manager&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terLineManager&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Accountant&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terAccountant&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Goal Travel&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignGoalTravelType.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Outsider Goal Travel&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignOutsiderGoalTravelType.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Travel Begin Date&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignTravelBeginDate&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Travel End Date&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignTravelEndDate&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Destination City&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignDestinationCity&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Diff Destination Point&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignDiffDestinationPoint&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Hotel Required&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignHotelRequired.cm:title&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Ticket Required&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignTicketRequired&quot;</span><span class="p">,</span>
+<span class="s2">&quot;OS Tickets&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terOrdSignTicketsTable.uterm:tertTransportType&quot;</span><span class="p">,</span>
+<span class="s2">&quot;AR Doc Requester Amount&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terAdvRepDocRequesterAmount&quot;</span><span class="p">,</span>
+<span class="s2">&quot;AR Currency&quot;</span><span class="p">:</span> <span class="s2">&quot;uterm:terAdvRepCurrency.idocs:currencyName&quot;</span>
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>«Reg Number» - key (Attributes),
+«uterm:terRegNumber» - value (Attributes)</p>
+</section>
+<section id="id5">
+<h2>Восстановление потеряных записей<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Версия микросервиса: 1.14.0</strong></p>
+<p>На форму добавлен флаг “Run recovery job”. Если он активен, то вместе с основной выгрузкой дополнительно запускается джоба, которая ищет пропущенные записи за последний час. Если такие записи находятся, то происходит запуск восстановления. В процессе восстановления сужается диапазон дат, между которыми найдено отличие. После уменьшения диапазона происходит пересинхронизация найденых в нем записией.</p>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<p>значение флага проверяется только при запуске выгрузки (флаг Enabled переключается с False на True) или при перезагрузке микросервиса.</p>
+</div>
+<p>Дата модификации записи сохраняется в поле _rec_modified. Возможно потребуется создание индексов для этого поля, чтобы джоба работала эффективнее (Но все же если поиск будет долгим, то ничего страшного не произойдет. Просто восстановление будет происходить не так быстро).</p>
+<p><strong>Версия микросервиса: 1.18.0</strong></p>
+<p>На форму добавлено поле “Recovery job duration (in hours)”, доступно когда установлен флаг “Run recovery job”. Задает время в часах, за которое будет осуществлятся поиск пропущенных записей (по умолчанию 1 час, ограничение на форме от 1 до 12).</p>
+<p>На форму добавлено поле “Reset sync date”, не доступно когда установлен флаг “Reset State”. Задает время старта синхронизации, если указанное время больше текущего времени синхронизации у задачи, то данное изменение не применяется.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="currency.html" class="btn btn-neutral float-left" title="Интеграция курсов валют" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html" class="btn btn-neutral float-right" title="Мобильное приложение" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

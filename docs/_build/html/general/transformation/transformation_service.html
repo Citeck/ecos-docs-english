@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Подключение микросервиса &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Предпросмотр документов" href="../Preview.html" />
+    <link rel="prev" title="Микросервис Трансформации. Генерация документов по шаблонам" href="../%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Подключение микросервиса</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docker-compose-yml">Параметры подключения через docker-compose.yml</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Создание нового шаблона</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Создание шаблона документа в проекте</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Создание шаблона через журнал</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calculated-attr">Вычисляемые атрибуты для шаблонов</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Типы вычисляемых атрибутов</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Действие сгенерировать и скачать документ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Импорт/экспорт шаблонов</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Импорт</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Экспорт</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">Автоматическая генерация контента из шаблона</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a> &raquo;</li>
+      <li>Подключение микросервиса</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/general/transformation/transformation_service.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Подключение микросервиса<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>Микросервис Трансформации (ecos-transformations) - самостоятельный микросервис, не требующих развертывания дополнительных баз данных (все шаблоны хранятся в бд ecos-model).
+Для обеспечения работоспособности необходимы:</p>
+<ul class="simple">
+<li><p>ecos-model:2.13.0</p></li>
+</ul>
+<section id="docker-compose-yml">
+<h2>Параметры подключения через docker-compose.yml<a class="headerlink" href="#docker-compose-yml" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    #=== TRANSFORMATIONS ===#
+
+transformations-app-dev:
+  container_name: transformations-app-dev
+  image: nexus.citeck.ru/ecos-transformations:1.0.0
+  ports:
+    - 8087:8087
+  environment:
+    - _JAVA_OPTIONS=-Xmx256m -Xms256m
+    - SPRING_PROFILES_ACTIVE=dev,swagger
+    - ECOS_INTEGRATIONS_ONLYOFFICE_HOST=only-office-app
+    - ECOS_WEBAPP_RABBITMQ_HOST=rabbitmq-dev
+    - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@ecos-registry:8761/eureka
+    - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@ecos-registry:8761/config
+    - ECOS_INIT_DELAY=0
+  depends_on:
+    - ecos-registry
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id2">
+<h1>Создание нового шаблона<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h1>
+<p>Для работы с новыми шаблонами документов в Ecos есть журнал <strong>«Шаблоны документов»</strong>, расположеный он в меню <strong>Инструменты</strong> в разделе <strong>Трансформации</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/trans_1.png"><img alt="../../_images/trans_1.png" class="align-center" src="../../_images/trans_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Существует 2 способа создавать шаблоны документов в системе:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Располагая их в проекте в определенной директории.</p></li>
+<li><p>Загрузив их через действие Добавить в журнале Шаблоны документов.</p></li>
+</ol>
+</div></blockquote>
+<section id="id3">
+<h2>Создание шаблона документа в проекте<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Для успешного добавления в систему вашего шаблона необходимо учитывать некоторые вещи:</p>
+<ul>
+<li><p>Вместе с самим шаблонов должен храниться файл <code class="docutils literal notranslate"><span class="pre">meta.yml</span></code>, который будет хранить метоинформацию о шаблоне.</p>
+<p><strong>Особенность наименования файлов:</strong></p>
+<p>Если файл шаблона один, то мета-файл называется по шаблону <code class="docutils literal notranslate"><span class="pre">${Полное_имя_файла_с_расширением}.meta.yml</span></code></p>
+<p>Пример:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/trans_2.png"><img alt="../../_images/trans_2.png" class="align-center" src="../../_images/trans_2.png" style="width: 200px;" /></a>
+</div></blockquote>
+<p>Если файлов шаблона несколько в результате разделения их по локализации, то мета-файл именуется по следующему шаблону <code class="docutils literal notranslate"><span class="pre">&amp;{Имя_файла_до_указания_локали}.meta.yml</span></code></p>
+<p>Пример:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/trans_3.png"><img alt="../../_images/trans_3.png" class="align-center" src="../../_images/trans_3.png" style="width: 200px;" /></a>
+</div></blockquote>
+<p><strong>Структура мета-файла</strong></p>
+<p>Мета-файл должен содержать следующие поля в своей структуре:</p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Поле</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><div class="line-block">
+<div class="line">Уникальный идентификатор шаблона в системе</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">:</span> <span class="n">test</span><span class="o">-</span><span class="n">template</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>engine</strong></p></td>
+<td><div class="line-block">
+<div class="line">Наименования движка, который будет обрабатывать заполнение шаблона</div>
+<div class="line">(На данный момент существует только <code class="docutils literal notranslate"><span class="pre">freemarker</span></code>)</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span><span class="p">:</span> <span class="n">freemarker</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>name</strong></p></td>
+<td><div class="line-block">
+<div class="line">Имя шаблона</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">TestTemplate</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>mimeType</strong></p></td>
+<td><div class="line-block">
+<div class="line">Тип файла шаблона</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mimeType</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">openxmlformats</span><span class="o">-</span><span class="n">officedocument</span><span class="o">.</span><span class="n">wordprocessingml</span><span class="o">.</span><span class="n">document</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>model</strong></p></td>
+<td><div class="line-block">
+<div class="line">Представляет собой мапу ключ-значение, где в качестве ключа используется атрибут из шаблона, а в качестве значения атрибут, который возмется из карточки.</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="p">:</span>
+  <span class="n">regNumber</span><span class="p">:</span> <span class="n">idocs</span><span class="p">:</span><span class="n">registrationNumber</span>
+  <span class="n">regDate</span><span class="p">:</span> <span class="n">idocs</span><span class="p">:</span><span class="n">registrationDate</span><span class="o">|</span><span class="n">fmt</span><span class="p">(</span><span class="s1">&#39;dd.MM.yyyy&#39;</span><span class="p">)</span>
+  <span class="n">initiator</span><span class="p">:</span> <span class="n">idocs</span><span class="p">:</span><span class="n">initiator</span><span class="o">.</span><span class="n">cm</span><span class="p">:</span><span class="n">firstName</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">В значениях можно использовать все возможности обращения с атрибутами через <a class="reference internal" href="../ECOS_Records.html#records-api"><span class="std std-ref">Records API</span></a></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>computedAttributes</strong></p></td>
+<td><div class="line-block">
+<div class="line">Вычисляемые атрибуты модели.</div>
+<div class="line">Задается списком атрибутов.</div>
+<div class="line">Перед генерацией шаблона преобразует полученные атрибуты в моделе согласно типу преобразования.</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">computedAttributes</span><span class="p">:</span>
+  <span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">docInvestigationInfo</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">html</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">text</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Подробнее тут <a class="reference internal" href="#calculated-attr"><span class="std std-ref">Вычисляемые атрибуты для шаблонов`</span></a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>tags</strong></p></td>
+<td><div class="line-block">
+<div class="line">Список вспомогательных меток где удобного поиска</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tags</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">Template</span>
+  <span class="o">-</span> <span class="n">Test</span>
+  <span class="o">-</span> <span class="n">Example</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Пример:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  ---
+id: test-docx-template
+engine: freemarker
+name: TestDocxTemplate
+mimeType: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+model:
+  modelValue: ?disp
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Файлы должны располагаться в проекте по определенному пути.</p>
+<p>Путь для расположения файлов имеет следующий паттерн:</p>
+<p>В МКР: <code class="docutils literal notranslate"><span class="pre">${home_dir}/src/main/resources/eapps/artifacts/transformation/template/</span></code></p>
+<p>В проектах: <code class="docutils literal notranslate"><span class="pre">${module_name}/src/main/resources/alfresco/module/${module_name}/transformation/template/</span></code></p>
+<p>В данных директориях вы можете создавать создавать внутреннюю структуру папок. Поиск артифактов шаблонов происходит рекурсивно по папкам, но начинается именно с этих директорий.</p>
+</li>
+</ul>
+</section>
+<section id="id4">
+<h2>Создание шаблона через журнал<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Для создания шаблона документа через журнал необходимо зайти в Инструменты в левом меню, затем в справа в разделе <strong>Трансформации</strong> выбрать журнал <strong>Шаблоны документов</strong> и создать новую запись.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/trans_4.png"><img alt="../../_images/trans_4.png" class="align-center" src="../../_images/trans_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/trans_5.png"><img alt="../../_images/trans_5.png" class="align-center" src="../../_images/trans_5.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Необходимо заполнить следующие поля:</p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Поле</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>ID</strong></p></td>
+<td><p>Уникальный идентификатор шаблона в системе</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Имя</strong></p></td>
+<td><p>Имя шаблона</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Движок</strong></p></td>
+<td><div class="line-block">
+<div class="line">Наименования движка, который будет обрабатывать заполнение шаблона</div>
+<div class="line">(На данный момент существует только Freemarker)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Шаблоны</strong></p></td>
+<td><div class="line-block">
+<div class="line">Загружается файл шаблона</div>
+<div class="line">Шаблон должен быть добавлен в zip архиве. (Так как именно так шаблоны хранятся в базе. пока так…)</div>
+<div class="line">В архиве должен быть файл с шаблоном в формате docx или ftl. Строгих правил к его наименованию нет, но желательно придерживаться общей концепции и называть файл как id шаблона.</div>
+<div class="line">Если шаблонов несколько (разделены по локализации), то при названии файлов в конце нужно приписывать суффиксы _ru, _en и т.п.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Модель</strong></p></td>
+<td><p>Представляет собой мапу ключ-значение, где в качестве ключа используется атрибут из шаблона, а в качестве значения атрибут, который возмется из карточки.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Вычисляемые атрибуты</strong></p></td>
+<td><div class="line-block">
+<div class="line">Лист объектов с информацией о вычисляемых атрибутах.</div>
+<div class="line">Подробнее тут</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Теги</strong></p></td>
+<td><div class="line-block">
+<div class="line">Список вспомогательных меток для удобного поиска</div>
+<div class="line">Подробнее тут <a class="reference internal" href="#calculated-attr"><span class="std std-ref">Вычисляемые атрибуты для шаблонов`</span></a></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="calculated-attr">
+<span id="id5"></span><h1>Вычисляемые атрибуты для шаблонов<a class="headerlink" href="#calculated-attr" title="Ссылка на этот заголовок"></a></h1>
+<p>Вычисляемые атрибуты в метафайле шаблона предназначены для тоже, чтобы совершить какую-то постобработку над значениями, которые пришли в модели, и обновить эти значения в модели или добавить под новыми именами.</p>
+<p><strong>Структура записи:</strong></p>
+<p>Указания вычисляемых атрибутов начинается с указания ключевого атрибута <code class="docutils literal notranslate"><span class="pre">computedAttributes</span></code> в корневой страктуре метафайла, содержащего в себе список объектов следующего вида:</p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Поле</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>ID</strong></p></td>
+<td><div class="line-block">
+<div class="line">Уникальный идентификатор атрибута. Именно с этим значением атрибут попадет в итоговую модель.</div>
+<div class="line">Если в модели есть аттрибут с таким именем, то значение в модели обновится.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>type</strong></p></td>
+<td><p>Указания типа преобразования значения.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>config</strong></p></td>
+<td><div class="line-block">
+<div class="line">Представляет собой мапу ключ-значение, из дополнительных параметров конфигурации и их значений.</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span><span class="p">:</span>
+  <span class="n">attribute</span><span class="p">:</span> <span class="n">test1</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Имеет общий параметр для всех видов - <code class="docutils literal notranslate"><span class="pre">attribute</span></code>. Данный параметр в качетве значения принимает имя атрибута, значение которого возмется для преобразования.</div>
+<div class="line">Если данный параметр не задан, то из модели возметря значение атрибута с именем из поля <strong>id</strong> вычисляемого атрибута.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Пример:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="p">:</span>
+  <span class="n">test1</span><span class="p">:</span> <span class="n">ecos</span><span class="p">:</span><span class="n">text1</span>
+  <span class="n">test2</span><span class="p">:</span> <span class="n">ecos</span><span class="p">:</span><span class="n">text2</span>
+<span class="n">computedAttributes</span><span class="p">:</span>
+  <span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">test3</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">html</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">text</span>
+    <span class="n">config</span><span class="p">:</span>
+      <span class="n">attribute</span><span class="p">:</span> <span class="n">test1</span>
+  <span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">test2</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">html</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">text</span>
+</pre></div>
+</div>
+<section id="id6">
+<h2>Типы вычисляемых атрибутов<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Тип</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>html-to-text</strong></p></td>
+<td><p>Преобразует входной текст из HTML кода в текст, убирая из него лишние теги (такие как &lt;p&gt;, &lt;br&gt;, &lt;li&gt;).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id7">
+<h1>Действие сгенерировать и скачать документ<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h1>
+<p>В системе предусмотрено действие, позволяющее на основе карточки, сгенерировать документ из шаблона документов и сразу его скачать. Для это необходимо в системе создать новое действие (Подробнее о действиях тут: <a class="reference internal" href="../../settings_kb/ui_actions.html#ui-actions"><span class="std std-ref">Действия</span></a>) с типом <code class="docutils literal notranslate"><span class="pre">download-by-template</span></code>.</p>
+<p>Для работы действия необходимо заполнить следующие атрибуты в конфиге действия:</p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Атрибут</p></th>
+<th class="head"><p>Значение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>resultName</strong></p></td>
+<td><div class="line-block">
+<div class="line">Имя итогового документа.</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">resultName</span><span class="p">:</span> <span class="s1">&#39;test-docx.docx&#39;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Если данный атрибут будет отсутствовать, то возьмется имя документа шаблона.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>templateRef</strong></p></td>
+<td><div class="line-block">
+<div class="line">Ссылка на вызываемый шаблон</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">templateRef</span><span class="p">:</span> <span class="s1">&#39;transformations/template@test-template&#39;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Принцип работы:</strong></p>
+<p>Вызывая действие из меню действий карточки система сделает запрос к шаблону, достанет модель из шаблона, заполнит ее соответствующими значениями и отправит все данные в микросервис транснформации, где на основе модели и шаблона сгенерируется документ и вернется обратно на UI, где просто скачается.</p>
+<p>Особенность: Если используются зашифрованные поля (зашифрованы в БД и расшифровываются непосредственно у пользователя), то такие поля передадутся в расшифрованном виде и в сгенерированном документе они будут корректно отображаться.</p>
+<p>Примеры действий:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span>
+<span class="nb">id</span><span class="p">:</span> <span class="n">download</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">template</span>
+<span class="nb">type</span><span class="p">:</span> <span class="n">download</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">template</span>
+<span class="n">config</span><span class="p">:</span>
+  <span class="n">templateRef</span><span class="p">:</span> <span class="s1">&#39;transformations/template@test-template&#39;&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span>
+<span class="nb">id</span><span class="p">:</span> <span class="n">download</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">docx</span><span class="o">-</span><span class="n">template</span>
+<span class="nb">type</span><span class="p">:</span> <span class="n">download</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">template</span>
+<span class="n">name</span><span class="p">:</span>
+  <span class="n">ru</span><span class="p">:</span> <span class="n">Скачать</span> <span class="n">DOCX</span> <span class="n">шаблон</span>
+  <span class="n">en</span><span class="p">:</span> <span class="n">Download</span> <span class="n">DOCX</span> <span class="n">template</span>
+<span class="n">config</span><span class="p">:</span>
+  <span class="n">templateRef</span><span class="p">:</span> <span class="s1">&#39;transformations/template@test-docx-template&#39;</span>
+  <span class="n">resultName</span><span class="p">:</span> <span class="s1">&#39;test-docx.docx&#39;&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h1>Импорт/экспорт шаблонов<a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h1>
+<p>Импорт и экспорт шаблонов помогает легко и просто переносить шаблоны документов между стендами. Мы скачиваем необходимые нам шаблоны на одном стенде и импортируем их на другом без особой нагрузки. Также можно сгенерировать архив с шаблоном самому, и импортировать нужный шаблон на стенд в одно несложное действие.</p>
+<p>При импорте/экспорте будет осуществляться работа с zip-архивом, который содержит метоинформацию шаблона и непосредственно сам шаблон документа:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/trans_6.png"><img alt="../../_images/trans_6.png" class="align-center" src="../../_images/trans_6.png" style="width: 600px;" /></a>
+</div></blockquote>
+<section id="id9">
+<h2>Импорт<a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h2>
+<p>Импорт шаблонов осуществляется через вариант создания шаблона <strong>Импортировать шаблон документа</strong> в журнале <strong>Шаблон документов</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/trans_7.png"><img alt="../../_images/trans_7.png" class="align-center" src="../../_images/trans_7.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для импорта необходимо приложить zip-архив с файлами:</p>
+<ul class="simple">
+<li><p>Файл с метаданными от шаблона. Имя файла должно быть сформировано по принципу: <strong>Имя_файла.meta.yml</strong></p></li>
+<li><p>Непосредственно сам шаблон (или шаблоны с разной локализацией).</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<p>Именно такой архив формируется при экспорте шаблона</p>
+</div>
+</section>
+<section id="id10">
+<h2>Экспорт<a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h2>
+<p>Экспорт осуществляется с помощью действия <strong>Скачать</strong> при наведении на необходимый нам шаблон документа.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/trans_8.png"><img alt="../../_images/trans_8.png" class="align-center" src="../../_images/trans_8.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>После нажатия на действие будет осуществляться скачивание zip-архива с шаблоном и его метаданными.</p>
+</section>
+</section>
+<section id="id11">
+<h1>Автоматическая генерация контента из шаблона<a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h1>
+<p>Для автоматической генерации контента из шаблона при создании рекорда необходимо:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>В тип данных добавить <a class="reference internal" href="../../settings_kb/Aspects.html#aspects-user"><span class="std std-ref">аспект</span></a> <code class="docutils literal notranslate"><span class="pre">templated-content</span></code></p></li>
+<li><p>В конфигурации аспекта выбрать шаблон:</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/templated_content.png"><img alt="../../_images/templated_content.png" class="align-center" src="../../_images/templated_content.png" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Если при создании рекорда включен аспект <code class="docutils literal notranslate"><span class="pre">templated-content</span></code>, но автоматическую генерацию нужно выключить, то можно выставить атрибут <code class="docutils literal notranslate"><span class="pre">templated-content:autoGenerate</span></code> в <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</div>
+<p>При создании рекорда автоматическая генерация выполняется синхронно, результат будет записан в атрибут <code class="docutils literal notranslate"><span class="pre">_content</span></code>.</p>
+<p>Сгенерированный контент будет доступен для скачивания, предпросмотра и сравнения версий.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html" class="btn btn-neutral float-left" title="Микросервис Трансформации. Генерация документов по шаблонам" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../Preview.html" class="btn btn-neutral float-right" title="Предпросмотр документов" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

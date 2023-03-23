@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>backup-tool-app &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="ecos-alfresco-search-service" href="ecos-alfresco-search-service.html" />
+    <link rel="prev" title="eis (Keycloak)" href="eis_Keycloack.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker-compose.html">Установка Citeck ECOS c помощью Docker-compose</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../docker_services.html">Сервисы Docker</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="onlyoffice-ds-app.html">onlyoffice-ds-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-gateway-app.html">ecos-gateway-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-notifications-app.html">ecos-notifications-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-mongo-app.html">ecos-mongo-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mailhog-app.html">mailhog-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-registry-app.html">ecos-registry-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-postgresql-app.html">ecos-postgresql-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-model-app.html">ecos-model-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-app.html">ecos-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-integrations-app.html">ecos-integrations-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-solr-app.html">ecos-solr-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-proxy-app.html">ecos-proxy-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-uiserv-app.html">ecos-uiserv-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-process-app.html">ecos-process-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-microservices-postgresql-app.html">ecos-microservices-postgresql-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-history-app.html">ecos-history-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rabbitmq-app.html">rabbitmq-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-apps-app.html">ecos-apps-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eis_Keycloack.html">eis (Keycloak)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">backup-tool-app</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Назначение:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Теги:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Используемые переменные:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Типовой вывод принятых настроек в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-alfresco-search-service.html">ecos-alfresco-search-service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html">Аутентификация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sync_authorities.html">Синхронизация Authorities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keycloak.html">ECOS KeyCloak Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keycloack_postman.html">Настройки аутентификации для работы с Records API из внешних систем</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html">Конфигурация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../license.html">Лицензии ECOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audit.html">Аудит</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../howto.html">How To</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a> &raquo;</li>
+          <li><a href="../docker_services.html">Сервисы Docker</a> &raquo;</li>
+      <li>backup-tool-app</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/admin/docker_services/backup-tool-app.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="backup-tool-app">
+<h1>backup-tool-app<a class="headerlink" href="#backup-tool-app" title="Ссылка на этот заголовок"></a></h1>
+<section id="id1">
+<h2>Назначение:<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>Образ для создания бекапов.</p>
+<p>Создан на базе решения <a class="reference external" href="https://github.com/backup/backup">Backup 4.4.1.</a>
+Документация находится <a class="reference external" href="http://backup.github.io/backup/v4/">тут</a></p>
+<p>Выключен по умолчанию.</p>
+<p>Исходники находятся в репозитории <a class="reference external" href="https://gitlab.citeck.ru/citeck-projects/citeck-devops/">https://gitlab.citeck.ru/citeck-projects/citeck-devops</a></p>
+</section>
+<section id="id3">
+<h2>Теги:<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Актуальная версия <a class="reference external" href="nexus.citeck.ru/backup-tool">nexus.citeck.ru/backup-tool</a> 0.0.3
+UPD:  По сравнению с предыдущей версией ( 0.0.2 ) поправлены СА серты R3 и актуализированы версии вспомогательных утилит.</p>
+</section>
+<section id="docker-compose">
+<h2>Шаблон сервиса docker-compose:<a class="headerlink" href="#docker-compose" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">services</span><span class="p">:</span>
+        <span class="n">app</span><span class="p">:</span>
+                <span class="n">logging</span><span class="p">:</span>
+                 <span class="n">options</span><span class="p">:</span>
+                        <span class="nb">max</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="s2">&quot;10m&quot;</span>
+                        <span class="nb">max</span><span class="o">-</span><span class="n">file</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span>
+                 <span class="n">hostname</span><span class="p">:</span> <span class="n">backup</span><span class="o">-</span><span class="n">tool</span><span class="o">-</span><span class="n">app</span>
+                 <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
+                 <span class="n">stop_grace_period</span><span class="p">:</span> <span class="mi">1</span><span class="n">m</span>
+                <span class="n">image</span><span class="p">:</span> <span class="n">nexus</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ru</span><span class="o">/</span><span class="n">backup</span><span class="o">-</span><span class="n">tool</span><span class="p">:</span><span class="mf">0.0.2</span>
+                <span class="n">env_file</span><span class="p">:</span>
+                 <span class="o">-</span> <span class="o">./</span><span class="n">environments</span><span class="o">/</span><span class="n">backup</span><span class="o">-</span><span class="n">tool</span><span class="o">-</span><span class="n">app</span><span class="o">.</span><span class="n">env</span>
+                <span class="n">volumes</span><span class="p">:</span>
+        <span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="p">(</span><span class="n">BackupToolApp</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">backup</span><span class="o">.</span><span class="n">contentstore</span><span class="p">)</span><span class="ow">and</span><span class="p">(</span><span class="n">EcosApp</span><span class="o">.</span><span class="n">enabled</span><span class="p">)</span> <span class="o">%</span><span class="p">}</span>
+                <span class="o">-</span> <span class="p">{{</span> <span class="n">EcosProjectDataDir</span> <span class="p">}}</span><span class="n">ecos</span><span class="o">-</span><span class="n">app</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">content</span><span class="o">/</span>
+        <span class="p">{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>
+        <span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="p">(</span><span class="n">BackupToolApp</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">backup</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">EcosSearchApp</span><span class="o">.</span><span class="n">enabled</span><span class="p">)</span> <span class="o">%</span><span class="p">}</span>
+                <span class="o">-</span> <span class="p">{{</span> <span class="n">EcosProjectDataDir</span> <span class="p">}}</span><span class="n">ecos</span><span class="o">-</span><span class="n">search</span><span class="o">-</span><span class="n">app</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">index</span><span class="o">/</span>
+        <span class="p">{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>
+        <span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="n">BackupToolApp</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">export</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">enabled</span> <span class="o">%</span><span class="p">}</span>
+                <span class="o">-</span> <span class="p">{{</span> <span class="n">EcosProjectDataDir</span> <span class="p">}}</span><span class="n">backups</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">backups</span><span class="o">/</span>
+        <span class="p">{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>
+                <span class="n">networks</span><span class="p">:</span>
+                <span class="o">-</span> <span class="n">app_network</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>Используемые переменные:<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Пример ожидаемых переменных в <code class="docutils literal notranslate"><span class="pre">backup-tool-app.env</span></code> с значениями по умолчанию:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>BACKUP_SHEDULE=”0 0 * * *”</strong></p></li>
+<li><p><strong>BACKUP_DEBUG_CONFIG=false</strong></p></li>
+<li><p><strong>BACKUP_INSTANCE_ID=local.dev</strong></p></li>
+<li><p><strong>BACKUP_CONTENTSTORE=false</strong></p></li>
+<li><p><strong>BACKUP_INDEX=false</strong></p></li>
+<li><p><strong>BACKUP_POSTGRESQL_APP_1=false</strong></p></li>
+<li><p><strong>BACKUP_POSTGRESQL_APP_1_HOST=ecos-postgresql-app</strong></p></li>
+<li><p><strong>BACKUP_POSTGRESQL_APP_1_PORT=5432</strong></p></li>
+<li><p><strong>BACKUP_POSTGRESQL_APP_1_USERNAME=user</strong></p></li>
+<li><p><strong>BACKUP_POSTGRESQL_APP_1_PASSWORD=password</strong></p></li>
+<li><p><strong>BACKUP_POSTGRESQL_APP_2=false</strong></p></li>
+<li><p><strong>BACKUP_POSTGRESQL_APP_2_HOST=ecos-microservices-postgresql-app</strong></p></li>
+<li><p><strong>BACKUP_POSTGRESQL_APP_2_PORT=5432</strong></p></li>
+<li><p><strong>BACKUP_POSTGRESQL_APP_2_USERNAME=user</strong></p></li>
+<li><p><strong>BACKUP_POSTGRESQL_APP_2_PASSWORD=password</strong></p></li>
+<li><p><strong>BACKUP_MONGODB_APP_1=false</strong></p></li>
+<li><p><strong>BACKUP_MONGODB_APP_1_HOST=mongodb-app</strong></p></li>
+<li><p><strong>BACKUP_MONGODB_APP_1_PORT=27017</strong></p></li>
+<li><p><strong>BACKUP_MONGODB_APP_1_USERNAME=user</strong></p></li>
+<li><p><strong>BACKUP_MONGODB_APP_1_PASSWORD=password</strong></p></li>
+<li><p><strong>BACKUP_MYSQL_APP_1=false</strong></p></li>
+<li><p><strong>BACKUP_MYSQL_APP_1_HOST=mysql-app</strong></p></li>
+<li><p><strong>BACKUP_MYSQL_APP_1_PORT=3306</strong></p></li>
+<li><p><strong>BACKUP_MYSQL_APP_1_USERNAME=user</strong></p></li>
+<li><p><strong>BACKUP_MYSQL_APP_1_PASSWORD=password</strong></p></li>
+<li><p><strong>BACKUP_LOCAL_EXPORT=false</strong></p></li>
+<li><p><strong>BACKUP_LOCAL_EXPORT_KEEP=7</strong></p></li>
+<li><p><strong>BACKUP_S3_EXPORT=false</strong></p></li>
+<li><p><strong>BACKUP_S3_EXPORT_USE_FOG_OPTIONS=true</strong></p></li>
+<li><p><strong>BACKUP_S3_EXPORT_ENDPOINT=s3.citeck.ru</strong></p></li>
+<li><p><strong>BACKUP_S3_EXPORT_REGION=</strong></p></li>
+<li><p><strong>BACKUP_S3_EXPORT_KEY=changemeplease</strong></p></li>
+<li><p><strong>BACKUP_S3_EXPORT_SECRET=changemeplease</strong></p></li>
+<li><p><strong>BACKUP_S3_EXPORT_BUCKET=bucket</strong></p></li>
+<li><p><strong>BACKUP_S3_EXPORT_KEEP=7</strong></p></li>
+<li><p><strong>BACKUP_MATTERMOST_NOTIFICATIONS=false</strong></p></li>
+<li><p><strong>BACKUP_MATTERMOST_NOTIFICATIONS_WEBHOOK=changemeplease</strong></p></li>
+<li><p><strong>BACKUP_MATTERMOST_NOTIFICATIONS_CHANNEL=channel</strong></p></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">BACKUP_POSTGRESQL_APP_*</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">BACKUP_MONGODB_APP_*</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">BACKUP_MYSQL_APP_*</span></code></p>
+<p>Отвечают за авторизацию в субд. При использовании шаблонизатора docker-compose значения полей подставляются автоматически. Эти параметры в большинстве случаев нет необходимости предопределять.</p>
+<ul class="simple">
+<li><p><strong>BACKUP_SHEDULE</strong> - Как часто необходимо делать бекапы. Задается в формате cron. По умолчанию ежедневно в 00:00. p.s. <a class="reference external" href="https://crontab.guru/">вот удобный калькулятор</a></p></li>
+<li><p><strong>BACKUP_DEBUG_CONFIG</strong> - Возвращает список переменных и сконфигурированый backup_plan.rb.</p></li>
+<li><p><strong>BACKUP_INSTANCE_ID</strong> - Имя инстанса. Используется для оповещений в mattermost и для экспорта в S3.</p></li>
+<li><p><strong>BACKUP_CONTENTSTORE</strong> - Включает бекапы для <code class="docutils literal notranslate"><span class="pre">ecos-app</span></code> <code class="docutils literal notranslate"><span class="pre">contentstore</span></code>.</p></li>
+<li><p><strong>BACKUP_INDEX</strong> - Включает бекапы для <code class="docutils literal notranslate"><span class="pre">ecos-search-app</span></code> <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p></li>
+<li><p><strong>BACKUP_LOCAL_EXPORT</strong> - Включает хранение бекапов на сервере, в директории <code class="docutils literal notranslate"><span class="pre">backups/</span></code>.</p></li>
+<li><p><strong>BACKUP_LOCAL_EXPORT_KEEP</strong> - Сколько дней хранить бекапы в директории <code class="docutils literal notranslate"><span class="pre">backups/</span></code>. Зависит о частоты выполнения бекап плана.</p></li>
+<li><p><strong>BACKUP_S3_EXPORT</strong> - Включает экспорт бекапов в S3 хранилище.</p></li>
+<li><p><strong>BACKUP_S3_EXPORT_USE_FOG_OPTIONS</strong> - Переключатель необходимый для использования в S3-like хранилищах, например в <a class="reference external" href="https://developers.digitalocean.com/documentation/v2/">DigitalOcean’s Spaces</a> или <a class="reference external" href="https://www.minio.io/">Minio</a>. Использует в качестве хоста переменную BACKUP_S3_EXPORT_ENDPOINT. Более подробно в <a class="reference external" href="https://backup.github.io/backup/v4/storage-s3/">документации</a></p></li>
+<li><p><strong>BACKUP_S3_EXPORT_ENDPOINT</strong> - Адрес S3-like сервера. Зависит от значения <code class="docutils literal notranslate"><span class="pre">true</span></code> переменной BACKUP_S3_EXPORT_USE_FOG_OPTIONS.</p></li>
+<li><p><strong>BACKUP_S3_EXPORT_REGION</strong> - Регион для amazon S3.</p></li>
+<li><p><strong>BACKUP_S3_EXPORT_KEY</strong> - S3 ключ авторизации.</p></li>
+<li><p><strong>BACKUP_S3_EXPORT_SECRET</strong> - S3 сикрет авторизации.</p></li>
+<li><p><strong>BACKUP_S3_EXPORT_BUCKET</strong> - Ведерко, куда складывать бекапы в S3.</p></li>
+<li><p><strong>BACKUP_S3_EXPORT_KEEP</strong> - Сколько дней хранить бекапы в S3 хранилище. Зависит о частоты выполнения бекап плана.</p></li>
+<li><p><strong>BACKUP_MATTERMOST_NOTIFICATIONS</strong> - Включает отправку уведомлений в mattermost / slack.</p></li>
+<li><p><strong>BACKUP_MATTERMOST_NOTIFICATIONS_WEBHOOK</strong> - Полный адрес webhook, куда нужно отправлять уведомления. <a class="reference external" href="https://mm.citeck.ru/hooks/apbhdnp72djpexxmofkywptyy">Например</a>.</p></li>
+<li><p><strong>BACKUP_MATTERMOST_NOTIFICATIONS_CHANNEL</strong> - Канал в mattermost / slack для уведомлений.</p></li>
+</ul>
+</section>
+<section id="id8">
+<h2>Типовой вывод принятых настроек в лог контейнера:<a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>17:27:10.INFO  ==&gt; ** Starting Backup plan setup **
+17:27:10.INFO  ==&gt; ** Export to s3 storage disabled **
+17:27:10.INFO  ==&gt; ** Export to local storage disabled **
+17:27:10.INFO  ==&gt; ** Disabled mattermost notification **
+17:27:11.INFO  ==&gt; ** Generation of the configuration file /opt/backup/backup_plan.rb completed successfully **
+17:27:11.INFO  ==&gt; ** Configuration check completed successfully **
+17:27:11.INFO  ==&gt; ** Backup plan setup finished! **
+
+17:27:11.INFO  ==&gt; ** Сonfiguring the scheduler **
+17:27:11.INFO  ==&gt; ** Schedule applied: 0 0 * * * **
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="eis_Keycloack.html" class="btn btn-neutral float-left" title="eis (Keycloak)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="ecos-alfresco-search-service.html" class="btn btn-neutral float-right" title="ecos-alfresco-search-service" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Как расширять функционал &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Переход на новые настройки интеграции с EDI провайдерами" href="new_integration_settings.html" />
+    <link rel="prev" title="Описание ecos-edi-sbis-lib" href="ecos-edi-sbis-lib.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EDI.html">EDI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events_kontur.html">Настройка получения событий с ящиком Контур.Диадок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="counterparty_kontur.html">Синхронизация данных контрагентов и их ящиков с Контур.Диадок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_provider.html">Реализация интеграции с новым ЭДО-провайдером</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-kontur-lib.html">Описание ecos-edi-kontur-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-ftps-lib.html">Описание ecos-edi-ftps-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-sbis-lib.html">Описание ecos-edi-sbis-lib</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Как расширять функционал</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1. Кастомизация поиска контрагента и юр лица</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alfresco">2. Кастомизация варианта создания пакетов в alfresco</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camel">3. Переопределение обработки событий от ЭДО-провайдеров (Camel)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4. Расширение способов генерации печатных форм и иных служебных документов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ecosediservice">5. Переопределение EcosEdiService для добавления дополнительных флагов в случае необходимости</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="new_integration_settings.html">Переход на новые настройки интеграции с EDI провайдерами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CounterpartyEdiInfoRecordsDao.html">CounterpartyEdiInfoRecordsDao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_lib.html">Общая библиотека для обработки EDI событий ecos-edi-integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_signing.html">Серверное подписание</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_RC2%2B_configuration.html">Конфигурация ЭДО</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a> &raquo;</li>
+      <li>Как расширять функционал</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/integration/EDI_integration/expand_functions.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Как расширять функционал<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>Данная статья - варианты переопределения какой-либо части функционала интеграции с ЭДО-провайдерами. Рекомендуется использовать их только при необычных требования на проектах заказчиков, а не на коробке. Практически все что тут будет - легальное переопределение бинов в спринге, расширение/обертывание каких-либо компонентов и тд.</p>
+<p>При использовании других способов - просьба дополнять статью.</p>
+<section id="id2">
+<h2>1. Кастомизация поиска контрагента и юр лица<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>В случае наличия специального типа контрагента/использования других атрибутов с идентификаторами ЭДО-провайдеров или еще что-то, можно переопределить бины работы с ЭДО-контрагентами и ЭДО-юр лицами.</p>
+<p>Для переопределения рекомендуется унаследоваться от <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.integration.edi.counterparty.EdiCounterpartyServiceImpl</span></code> или от <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.integration.edi.legalentity.EdiLegalEntityServiceImpl</span></code>, имплементировать необходимую логику поиска/получения/задания под проект и после этого отметить ваш переопределяющий класс аннотациями <code class="docutils literal notranslate"><span class="pre">&#64;Primary</span></code> и <code class="docutils literal notranslate"><span class="pre">&#64;Service</span></code>. Можно не наследоваться, а расширить полностью интерфейсы, которые расширяют эти классы, но сложно придумать кейс, в котором придется полностью переделывать абсолютно все, а не только часть существующего функционала.</p>
+<p>Посмотреть пример можно в проекте <code class="docutils literal notranslate"><span class="pre">ecos-ssg-edi</span></code>, <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.ssg.service.integration.edi.counterparty.SsgEdiCounterpartyService</span></code>.</p>
+</section>
+<section id="alfresco">
+<h2>2. Кастомизация варианта создания пакетов в alfresco<a class="headerlink" href="#alfresco" title="Ссылка на этот заголовок"></a></h2>
+<p>По умолчанию, что старая реализация интеграции с ЭДО-провайдерами, что вынесенная в микросервис интеграции (в данном случае речь идет о функционале в либе ecos-edi-integration) - создает при получении нового входяшего пакета с документами - ноду типа <code class="docutils literal notranslate"><span class="pre">sam:inboundPackage</span></code>. При создании такого пакета в альфреско - подключается <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.behaviour.AbstractIncomePackageProcessor</span></code>, а точнее, его конкретная реализация.</p>
+<p>К сожалению, сейчас все работает таким образом, что нам обязательно нужна реализация для того чтобы реагировать на создаваемые пакеты, но испокон веков все сложилось так, что пустую реализацию, просто “чтоб все работало” перенесли в finance модуль. Так что, если хочется и пользоваться finance и переопределить - придется придумать как обойти такой подход. Главное, чтобы не срабатывало 2 бихейвиора на создание пакета, следите обязательно за этим, приведет к плавающим багам.</p>
+<p>Пример: <code class="docutils literal notranslate"><span class="pre">ecos-ssg-edi</span></code>, <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.ssg.service.integration.inbound.SsgIncomePackageProcessor</span></code>, где мы создаем кейс из входящего пакета, а не задачу разбора входящих.</p>
+</section>
+<section id="camel">
+<h2>3. Переопределение обработки событий от ЭДО-провайдеров (Camel)<a class="headerlink" href="#camel" title="Ссылка на этот заголовок"></a></h2>
+<p>Данный подход - создание обертывающего роута в каком-либо из бандлов OSGI и указание в виде Camel эндпоинта для отправки событий в конкретных синхронизациях ЭДО-провайдеров - нашего обертывающего эндпоинта.</p>
+<p>Это может выглядеть так:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/expand_functions.png"><img alt="../../_images/expand_functions.png" class="align-center" src="../../_images/expand_functions.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Уточняю, отправка событий в alfresco способом, который реализован в оригинальным роуте в <code class="docutils literal notranslate"><span class="pre">ecos-edi-integration</span></code> является условно идемпотентной операцией. То есть, сколько бы раз мы не обработали одно и то же событие, мы должны прийти по результату каждый раз к одному и тому же состоянию.</p>
+<p>Условная идемпотентность из-за того, что мы рассчитываем статусы пакетов исходя из текущего состояние документов в альфреско и состояний документов, которые изменились в событии.</p>
+</section>
+<section id="id3">
+<h2>4. Расширение способов генерации печатных форм и иных служебных документов<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Если интересует использование другого способа генерации ПФ, титула покупателя/продавца или еще чего-то, можно зарегистрировать по определенному ключу в мкр интеграции (можно через бандл) свой генератор конкретного интерфейса и использовать его. Контур и СБИС бандлы передают генерацию генератору, найденному по ключу, так что, это рабочая схема. Стандартный ключ нужно только переопределить в EcosEdiService в альфреске при передаче команды в мкр интеграции.</p>
+<p>Способ зарегистрировать свой генератор:</p>
+<p>Написать свой генератор. Генератор должен расширять один из интерфейсов в либе <strong>ecos-edi-commons</strong>, которые располагаются в пакете <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.domain.edi.service.generator.interfaces</span></code>.</p>
+<p>Получить из контекста спринга экземпляр <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.domain.edi.service.generator.EdiGeneratorResolver</span></code>. Вызвать для своего генератора метод register с указанием ключа.</p>
+<p>Как уже писал выше, запросы необходимо передавать с конкретным ключом, для того чтоб запрос на генерацию попал в ваш генератор. Для всех команд на генерацию есть такое поле, его и надо заполнять при переопределении в alfresco <strong>EcosEdiService</strong>. Примеры в dto этого поля ниже:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">GeneratePrintFormRequest</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">OurId</span> <span class="n">ourId</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">DocunentEdildentifier_documentEdiId</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">printForméenerationControllerid</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">ObjectData</span> <span class="n">data</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">RejectionxmlRequest</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">DocunentEdildentifier</span> <span class="n">documentEdiId</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">OurId</span> <span class="n">ourId</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">comment</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="p">[</span><span class="n">rejectionsenerationcontrovlerld</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">ObjectData</span> <span class="n">data</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="ecosediservice">
+<h2>5. Переопределение EcosEdiService для добавления дополнительных флагов в случае необходимости<a class="headerlink" href="#ecosediservice" title="Ссылка на этот заголовок"></a></h2>
+<p>Для случаев, когда необходимо как-то по особому выполнять какую-то операцию. Например, в теории, можно переопределить генерацию титула покупателя, вызвав сначала super метод, а позже изменить значения в xml на те, которые необходимы данному проекту. Либо, использовать какой-то конкретный конвертер, специфичный для проекта (см. п. 4).</p>
+<p>Аналогично первому пункту, тут про переопределение бина в спринге за счет приоритезации при autowiring с помощью аннотации <code class="docutils literal notranslate"><span class="pre">&#64;Primary</span></code>. Только на этот раз - это класс <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.integration.edi.service.EcosEdiServiceImpl</span></code></p>
+<p>Пример: <code class="docutils literal notranslate"><span class="pre">ecos-ssg-edi</span></code>, <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.ssg.service.integration.SsgEcosEdiService</span></code></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="ecos-edi-sbis-lib.html" class="btn btn-neutral float-left" title="Описание ecos-edi-sbis-lib" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="new_integration_settings.html" class="btn btn-neutral float-right" title="Переход на новые настройки интеграции с EDI провайдерами" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

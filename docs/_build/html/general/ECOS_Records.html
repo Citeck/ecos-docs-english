@@ -1,0 +1,1235 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECOS Records API &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Примеры запросов ECOS Records" href="ECOS_Records_examples.html" />
+    <link rel="prev" title="Термины" href="%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ECOS Records API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Общее описание</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Термины</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Описание работы с данными</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Атрибуты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Синтаксис атрибутов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mltext-3-26-0">Работа с MLText полями (3.26.0+)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Использование динамических атрибутов в предикатах (3.26.0+)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Контекстные атрибуты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raw-bin-3-45-0">Скаляры ?raw и ?bin (3.45.0)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#recordsservice-java">RecordsService (Java)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">а) Поиск записей</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">б) Получение атрибутов записи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">в) Мутация (изменение или создание) записи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">г) Удаление записи</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#recordref">RecordRef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">Использование в браузере</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#crud">CRUD операции</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Возвращаемые в ответе типы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#http">Коды HTTP ответов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Описание ошибок и их уровни</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#kotlin-java-backend">Kotlin/Java Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ecos-records">Формальное описание синтаксиса атрибута ECOS Records</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Терминология</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Описание</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">&lt;no title&gt;</a> &raquo;</li>
+      <li>ECOS Records API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/general/ECOS_Records.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ecos-records-api">
+<span id="records-api"></span><h1><a class="toc-backref" href="#id19">ECOS Records API</a><a class="headerlink" href="#ecos-records-api" title="Ссылка на этот заголовок"></a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ecos-records-api" id="id19">ECOS Records API</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id20">Общее описание</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id21">Термины</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id22">Описание работы с данными</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id23">Атрибуты</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id6" id="id24">Синтаксис атрибутов</a></p></li>
+<li><p><a class="reference internal" href="#mltext-3-26-0" id="id25">Работа с MLText полями (3.26.0+)</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id26">Использование динамических атрибутов в предикатах (3.26.0+)</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id27">Контекстные атрибуты</a></p></li>
+<li><p><a class="reference internal" href="#raw-bin-3-45-0" id="id28">Скаляры ?raw и ?bin (3.45.0)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#recordsservice-java" id="id29">RecordsService (Java)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id9" id="id30">а) Поиск записей</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id31">б) Получение атрибутов записи</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id32">в) Мутация (изменение или создание) записи</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id33">г) Удаление записи</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#recordref" id="id34">RecordRef</a></p></li>
+<li><p><a class="reference internal" href="#id13" id="id35">Использование в браузере</a></p>
+<ul>
+<li><p><a class="reference internal" href="#crud" id="id36">CRUD операции</a></p></li>
+<li><p><a class="reference internal" href="#id14" id="id37">Возвращаемые в ответе типы</a></p></li>
+<li><p><a class="reference internal" href="#http" id="id38">Коды HTTP ответов</a></p></li>
+<li><p><a class="reference internal" href="#id15" id="id39">Описание ошибок и их уровни</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#kotlin-java-backend" id="id40">Kotlin/Java Backend</a></p></li>
+<li><p><a class="reference internal" href="#ecos-records" id="id41">Формальное описание синтаксиса атрибута ECOS Records</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id16" id="id42">Терминология</a></p></li>
+<li><p><a class="reference internal" href="#id17" id="id43">Описание</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id2">
+<h2><a class="toc-backref" href="#id20">Общее описание</a><a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>API, разработанное для организации простого и легко масштабируемого общения между потребителем информации и источником.
+Источниками данных могут быть БД, alfresco, REST и др.</p>
+<p>Преимущества:</p>
+<ul class="simple">
+<li><p>Единый API для доступа к данным в системе для всех потребителей (Браузер, Мобильное приложение, Система построения отчетов, Индексирование данных, Различные микросервисы и т.д.);</p></li>
+<li><p>Поддержка загрузки данных из связанных сущностей. Например, если у нас договор ссылается на доверенность, то, имея идентификатор договора, мы можем получить любой атрибут связанной доверенности;</p></li>
+<li><p>Оптимальность. Загружаются и вычисляются только те атрибуты, которые нужны потребителю;</p></li>
+<li><p>Простота в разработке – разработчик источника данных описывает все атрибуты, которые могут запросить потребители вне зависимости от сложности их вычисления. Потребитель в запросе указывает только те атрибуты, в которых он заинтересован;</p></li>
+<li><p>Простота поддержки - нет версионирования API т.к. мы в любой момент можем добавлять новые атрибуты, не трогая старые;</p></li>
+<li><p>Тип получаемых данных полностью описывается запросом. Из источника данных мы возвращаем атрибуты с любым типом, а Records API приводит их к нужному для потребителя;</p></li>
+<li><p>Вычисляемые атрибуты. Возможность добавлять атрибуты, которые не хранятся в БД или любом другом хранилище, а вычисляются на основе существующих;</p></li>
+<li><p>Поддержка объединения атрибутов из разных источников. Например, можно написать источник данных, который часть атрибутов будет брать из alfresco, а часть из внешней БД объединяя их по идентификатору.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>ECOS Records API - это <strong>НЕ GraphQL</strong>. Старые версии Records API использовали GraphQL, но начиная с версии 3.0 API полностью самостоятелен.</p>
+</div>
+</section>
+<section id="id3">
+<h2><a class="toc-backref" href="#id21">Термины</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Общие:</p>
+<ul class="simple">
+<li><p><strong>Атрибут (Attribute)</strong> – свойство или ассоциация сущности;</p></li>
+<li><p><strong>Сущность (Entity)</strong> – некоторый объект в системе (договор, доверенность, человек, группа, форма и др.);</p></li>
+<li><p><strong>Запись (Record)</strong> – сущность с набором атрибутов и идентификатором записи (RecordRef);</p></li>
+<li><p><strong>Идентификатор записи (RecordRef)</strong> – идентификатор источника данных и локальный идентификатор сущности в виде строки.</p></li>
+<li><p><strong>Источник данных (записей) (Records DAO)</strong> – источник данных, в котором описана логика базовых CRUD операций для работы с сущностями.</p></li>
+</ul>
+<p>Данные:</p>
+<ul class="simple">
+<li><p><strong>Граф данных (Data Graph)</strong> – представление данных, которые может запросить клиент по схеме атрибутов;</p></li>
+<li><p><strong>Скаляр (Scalar)</strong> – некоторое финальное значение в графе данных, у которого нельзя запросить вложенные атрибуты (строка, число и др).</p></li>
+<li><p><strong>Схема атрибутов (Attributes Schema)</strong> – описание запроса данных для преобразования графа данных в наборы (map и list) значений скаляров;</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id22">Описание работы с данными</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Очень часто данные не являются плоским списком, а представляют из себя граф, где сущности ссылаются друг на друга.
+Ниже показан пример такого среза данных, где у нас есть договор с четыремя атрибутами:</p>
+<ul class="simple">
+<li><p><strong>Заголовок (Title)</strong> - Строка</p></li>
+<li><p><strong>Имя (Name)</strong> - Строка</p></li>
+<li><dl class="simple">
+<dt><strong>Контрагент (Counterparty)</strong> - Сложный объект</dt><dd><ul>
+<li><p><strong>Полное наименование (Full Organization Name)</strong> - Строка</p></li>
+<li><p><strong>Адрес контрагента (Counterparty Address)</strong> - Строка</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Валюта (Currency)</strong> - Сложный объект</dt><dd><ul>
+<li><p><em>атрибуты пропущены для простоты</em></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/data_graph.png"><img alt="Data Graph" class="align-center" src="../_images/data_graph.png" style="width: 600px;" /></a>
+<p id="scalars">С точки зрения Records API каждый узел этого графа данных может быть получен как значение одного из скаляров:</p>
+<ul class="simple">
+<li><p><strong>disp</strong> - Человекочитаемый вид значения. (Примеры: Для договора - «Договор №2», Для пользователя - «Иванов Иван»);</p></li>
+<li><p><strong>str</strong> - Строка;</p></li>
+<li><p><strong>num</strong> - Число (Двойная точность. Если точности Double не хватает, то следует использовать str);</p></li>
+<li><p><strong>bool</strong> - Булево значение;</p></li>
+<li><p><strong>json</strong> - JSON представление значения. Допускаются массивы и объекты;</p></li>
+<li><p><strong>id</strong> - глобальный идентификатор значения, который содержит идентификатор источника данных и локальный идентификатор. Актуален для сложных значений вроде «Договор», «Контрагент», «Валюта» и др.;</p></li>
+<li><p><strong>localId</strong> - то же что и id, но без идентификатора источника данных;</p></li>
+<li><p><strong>assoc</strong> - с точки зрения потребителя данных - то же что и id. Разница появляется при изменении (мутации) записи.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/data_graph_with_scalars.png"><img alt="Data Graph with Scalars" class="align-center" src="../_images/data_graph_with_scalars.png" style="width: 600px;" /></a>
+<p>Для примера рассмотрим получение полного наименования организации контрагента у договора.</p>
+<a class="reference internal image-reference" href="../_images/get_full_org_name.png"><img alt="Получение наименования контрагента" class="align-center" src="../_images/get_full_org_name.png" style="width: 600px;" /></a>
+<p>Здесь мы используем javascript Records API для загрузки нужного нам атрибута.</p>
+<p>Первая строка - получение записи по её идентификатору.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Общий вид идентификатора <strong>«приложение/источник_данных&#64;локальный_id»</strong>, но здесь присутствует только локальный_id. Для API это означает, что приложение = «alfresco», а источник_данных = «» (пустой идентификатор зарезервирован за источником с нодами Alfresco)</p>
+</div>
+<p>Вторая строка - загрузка нужного нам атрибута. Вложенные атрибуты разделены точкой <strong>«.»</strong>, а скаляр определяется знаком вопроса <strong>«?»</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Допустимая вложенность атрибутов не ограничена</p>
+</div>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id23">Атрибуты</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<section id="id6">
+<h3><a class="toc-backref" href="#id24">Синтаксис атрибутов</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<p id="records-api-attribute">Самый простой способ получить значение атрибута - это указать его имя:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span><span class="p">:</span><span class="n">name</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Двоеточие - часть имени и не является спец символом в данном контексте.</p>
+</div>
+<p>Если мы не указываем скаляр, то он по умолчанию принимается равным <strong>«?disp»</strong>. То есть запись выше аналогична следующей:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cm:name?disp
+</pre></div>
+</div>
+<p>Для значений с типом <strong>«Строка (String)»</strong> разницы между скалярами <strong>«?disp»</strong> и <strong>«?str»</strong> нет т.к. вернется одно и то же значение.</p>
+<p>Для обращения к вложенному атрибуту следует разделять имена точкой:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>counterparty.fullOrgName?str
+</pre></div>
+</div>
+<p>Если на каком-то из уровней в атрибуте ожидается список значений, то следует использовать квадратные скобки <strong>«[]»</strong> после имени атрибута:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>counterparty[].fullOrgName?str
+cm:manager.cm:subordinates[].cm:userName?str
+cm:manager.cm:department.managers[].cm:subordinates[].cm:userName?str
+</pre></div>
+</div>
+<p>Если мы запросили атрибут без указания квадратных скобок, а источник данных вернул список, то мы получим только первый элемент из этого списка или null, если список пустой.</p>
+<p>Для получения сразу нескольких атрибутов у вложенного значения можно использовать фигурные скобки:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span><span class="p">:</span><span class="n">manager</span><span class="o">.</span><span class="n">cm</span><span class="p">:</span><span class="n">subordinates</span><span class="p">[]{</span><span class="n">userName</span><span class="p">:</span><span class="s2">&quot;cm:userName?str&quot;</span><span class="p">,</span><span class="n">firstName</span><span class="p">:</span><span class="s2">&quot;cm:firstName&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>В результате получим следующую структуру:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+      <span class="s2">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;ivan.ivanov&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ivan&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="s2">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;petr.petrov&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;Petr&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>В атрибутах есть поддержка пост-процессоров, которые позволяют выполнять операции над результатом перед тем как вернуть его клиенту.</p>
+<p>Пост-процессоры описываются после атрибута через символ вертикальной черты <strong>«|»</strong>.</p>
+<p><strong>Форматирование даты</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span><span class="p">:</span><span class="n">created</span><span class="o">|</span><span class="n">fmt</span><span class="p">(</span><span class="s2">&quot;yyyy__MM__dd&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Подробнее о шаблоне для форматирования даты можно почитать здесь: <a class="reference external" href="https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html">https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html</a></p>
+<p><strong>Форматирование числа</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ecos</span><span class="p">:</span><span class="n">documentAmount</span><span class="o">|</span><span class="n">fmt</span><span class="p">(</span><span class="s2">&quot;00000.00&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Данный формат помогает дополнить число лидирующими нулями, если его целая часть меньше 5 знаков и ограничивает числа после запятой двумя знаками</p>
+<p>Подробнее о шаблоне для форматирования чисел можно почитать здесь: <a class="reference external" href="https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html">https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html</a></p>
+<p><strong>Значение по умолчанию</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ecos:documentAmount?num|or(0)
+</pre></div>
+</div>
+<p>Если атрибут <strong>ecos:documentAmount</strong> вернет <strong>null</strong>, то вместо него мы получим число <strong>0</strong>.</p>
+<p>Для процессора <strong>«or»</strong> есть короткая запись через <strong>«!»</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ecos:documentAmount?num!0
+</pre></div>
+</div>
+<p>В процессоре <strong>«or»</strong> можно использовать другие атрибуты:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cm:title?str!cm:name?str
+cm:title?str|or(&quot;a:cm:name?str&quot;)
+</pre></div>
+</div>
+<p>В данном примере мы получим значение <strong>cm:title</strong> или значение <strong>cm:name</strong>, если <strong>cm:title</strong> равен null или пустой строке.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Данный атрибут приведен для примера и для получения «заголовок или имя» лучше использовать скаляр <strong>«?disp»</strong> т.к. у нод alfresco он по умолчанию реализован подобным образом</p>
+</div>
+<p>В полной форме нам нужно указать префикс <strong>«a:»</strong> чтобы обозначить, что нам нужно значение атрибута, а не константа <strong>«cm:name?str»</strong>
+Если нам нужно строковое константное значение в короткой форме, то следует взять значение в кавычки:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cm:title?str!&quot;cm:name&quot;
+</pre></div>
+</div>
+<p><strong>Добавление префикса или суффикса</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span><span class="p">:</span><span class="n">name</span><span class="o">|</span><span class="n">presuf</span><span class="p">(</span><span class="s2">&quot;prefix-&quot;</span><span class="p">,</span><span class="s2">&quot;-suffix&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Если значение <strong>cm:name</strong> равно <strong>«Имя»</strong>, то на выходе мы получим <strong>«prefix-Имя-suffix»</strong>
+Значение суффикса можно не задавать. Если значение префикса не нужно, а значение суффикса нужно, то первым аргументом можно передать пустую строку.</p>
+<p><strong>Процессоры можно объединять</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cm:title!cm:name!&quot;n-a&quot;|presuf(&quot;prefix-&quot;,&quot;-suffix&quot;)
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Взять <strong>заголовок</strong>;</p></li>
+<li><p>Если заголовок пустой, то взять <strong>имя</strong>;</p></li>
+<li><p>Если имя пустое, то взять константу <strong>«n-a»</strong>;</p></li>
+<li><p>Добавить к результату пунктов 1-3 префикс <strong>«prefix-»</strong>;</p></li>
+<li><p>Добавить к результату пункта 4 суффикс <strong>«-suffix»</strong>.</p></li>
+</ol>
+<table class="colwidths-given docutils align-default" id="id18">
+<caption><span class="caption-text">Список возможных пост-процессоров</span><a class="headerlink" href="#id18" title="Постоянная ссылка на таблицу"></a></caption>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 48%" />
+<col style="width: 48%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Название</p></th>
+<th class="head"><p>Аргументы</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>presuf</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">prefix:</span> <span class="pre">String</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">suffix:</span> <span class="pre">String</span></code></div>
+</div>
+</td>
+<td><p>Добавить константу в начало и/или в конец строки</p></td>
+</tr>
+<tr class="row-odd"><td><p>or</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">orValue0:</span> <span class="pre">Any</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">orValue1:</span> <span class="pre">Any</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">orValueN:</span> <span class="pre">Any</span></code></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Вернуть значение по умолчанию если значение атрибута равно null. Если аргумент является строкой</div>
+<div class="line">и начинается на «a:», то оставшаяся часть атрибута воспринимается как другой атрибут, который</div>
+<div class="line">нужно вычислить и вернуть в результате.</div>
+<div class="line">Количество аргументов не ограничено. Аргументы перебираются по очереди</div>
+<div class="line">и если он не null (не является null и не вычислился через «a:» в null), то результат сразу возвращается.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>rxg</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">pattern:</span> <span class="pre">String</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">groupIdx:</span> <span class="pre">Int</span> <span class="pre">=</span> <span class="pre">1</span></code></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Применить регулярное выражение к результату и вернуть указанную группу.</div>
+<div class="line">Примеры:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&quot;some-text&quot;</span> <span class="pre">|</span> <span class="pre">rxg(&quot;some-(.+)&quot;)</span> <span class="pre">-&gt;</span> <span class="pre">text</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&quot;some-text-and-more&quot;</span> <span class="pre">|</span> <span class="pre">rgx(&quot;(some)-(text)-(and)-(more)&quot;,</span> <span class="pre">2)</span> <span class="pre">-&gt;</span> <span class="pre">text</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>join</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">delimiter:</span> <span class="pre">String</span> <span class="pre">=</span> <span class="pre">&quot;,&quot;</span></code></p></td>
+<td><p>Объединить список значений в строку используя указанный разделитель</p></td>
+</tr>
+<tr class="row-even"><td><p>hex (3.26.0+)</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">delimiter:</span> <span class="pre">String</span> <span class="pre">=</span> <span class="pre">&quot;&quot;</span></code></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Представить base64 строку как HEX строку (список шестнадцатеричных чисел,</div>
+<div class="line">где каждый байт представлен двумя символами)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>fmt</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">format:</span> <span class="pre">String</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">locale:</span> <span class="pre">String</span> <span class="pre">=</span> <span class="pre">&quot;en&quot;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">timezone:</span> <span class="pre">String</span> <span class="pre">=</span> <span class="pre">&quot;UTC&quot;</span></code></div>
+</div>
+</td>
+<td><p>Отформатировать число или дату по указанному формату</p></td>
+</tr>
+<tr class="row-even"><td><p>cast</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">{</span> <span class="pre">&quot;str&quot;,</span> <span class="pre">&quot;num&quot;,</span> <span class="pre">&quot;bool&quot;</span> <span class="pre">}</span></code></div>
+</div>
+</td>
+<td><p>Преобразует значение в указанный формат.</p></td>
+</tr>
+<tr class="row-odd"><td><p>yaml</p></td>
+<td></td>
+<td><p>Любую структуру приводит к YAML строке.
+| Пример:</p>
+<blockquote>
+<div><div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="nx">Citeck</span><span class="p">.</span><span class="nx">Records</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;uiserv/form@ECOS_FORM&#39;</span><span class="p">).</span><span class="nx">load</span><span class="p">(</span><span class="s1">&#39;?json|yaml()&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mltext-3-26-0">
+<h3><a class="toc-backref" href="#id25">Работа с MLText полями (3.26.0+)</a><a class="headerlink" href="#mltext-3-26-0" title="Ссылка на этот заголовок"></a></h3>
+<p>Если известно. что в каком-то атрибуте лежит строка или MLText структура (объект, где в качестве ключей локаль,
+а в значении соответствующая строка), то можно применить преобразование <strong>«mltext»</strong>.</p>
+<p>Пример:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>some.att._as.mltext // получение актуального значения по локали пользователя
+some.att._as.mltext.ru // получение значения для конкретной локали
+some.att._as.mltext.closest.ru // получение значения для конкретной локали с попыткой вычислить ближайшее не пустое значение
+some.att._as.mltext?json // получение значения для всех локалей (если some.att является строкой, то она будет соответствовать локали &quot;en&quot;)
+</pre></div>
+</div>
+<p>Преобразование работает для <strong>String, DataValue, MLText, ObjectData, JsonNode (jackson)</strong></p>
+</section>
+<section id="id7">
+<h3><a class="toc-backref" href="#id26">Использование динамических атрибутов в предикатах (3.26.0+)</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<p>При использовании поиска на основе языка предикатов для всех источников записей есть возможность
+указывать вместо значений динамически вычисляемые атрибуты.</p>
+<p>Пример запроса с текущим пользователем:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="s2">&quot;eq&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;att&quot;</span><span class="p">:</span> <span class="s2">&quot;actor&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;val&quot;</span><span class="p">:</span> <span class="s2">&quot;${$user.userName}&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Если <code class="docutils literal notranslate"><span class="pre">${}</span></code> один и занимает всю строку, то <code class="docutils literal notranslate"><span class="pre">&quot;${...}&quot;</span></code> меняется полностью на вычисленное значение. Таким образом результат вычисления шаблона может быть любым JSON типом включая null.
+Динамические вставки можно использовать на любом уровне вложенности для любых значений в объектах (можно задавать t, att, val).</p>
+<p>Список доступных атрибутов можно посмотреть в разделе <strong>«Контекстные атрибуты»</strong>.</p>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id27">Контекстные атрибуты</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h3>
+<p>Часто возникают ситуации, когда нужно загрузить атрибуты, которые не относятся напрямую к сущности, а являются контекстными.</p>
+<p>Пример таких атрибутов:</p>
+<ul class="simple">
+<li><p><strong>Текущий пользователь</strong></p></li>
+<li><p><strong>Текущая дата</strong></p></li>
+</ul>
+<p>Для доступа к таким атрибутам при запросе данных к имени атрибута в начале добавляется знак <strong>«$»</strong>.</p>
+<p>Т.о. если нам нужно получить имя текущего пользователя, мы можем загрузить следующий атрибут:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$user.cm:userName
+</pre></div>
+</div>
+<p>Если нам нужно получить текущую дату и отформатировать её:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$now|fmt(&quot;yyyy&quot;)
+</pre></div>
+</div>
+<p>Список контекстных атрибутов, которые доступны во всех источниках:</p>
+<ul>
+<li><p><strong>user</strong> - Текущий пользователь</p></li>
+<li><p><strong>now</strong> - Текущая дата</p></li>
+<li><p><strong>auth</strong> - Аутентификация текущего пользователя. С помощью этого атрибута можно проверить является ли пользователь частью группы или глобальной роли:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$auth._has.GROUP_ECOS_ADMINISTRATORS?bool
+$auth._has.ROLE_ADMIN?bool
+</pre></div>
+</div>
+</li>
+<li><p><strong>str</strong> - Атрибут для указания константного строкового значения</p></li>
+<li><p><strong>ref</strong> - Атрибут для указания ссылки на другую сущность</p></li>
+<li><p><strong>appName</strong> - Имя текущего приложения</p></li>
+<li><p><strong>appInstanceId</strong> - Идентификатор инстанса текущего приложения</p></li>
+</ul>
+<p>Если в серверном коде нужно расширить доступный список контекстных атрибутов, то работу с RecordsService нужно выполнять следующим образом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">contextAtts</span> <span class="o">=</span> <span class="n">mutableMapOf</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Object</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="n">contextAtts</span><span class="p">[</span><span class="s2">&quot;customVariable&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">RecordRef</span><span class="o">.</span><span class="n">valueOf</span><span class="p">(</span><span class="s2">&quot;people@admin&quot;</span><span class="p">)</span>
+
+<span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">RequestContext</span><span class="o">.</span><span class="n">doWithAtts</span><span class="p">(</span><span class="n">contextAtts</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">recordsService</span><span class="o">.</span><span class="n">getAtt</span><span class="p">(</span><span class="s2">&quot;any-record&quot;</span><span class="p">,</span> <span class="s2">&quot;$customVariable?disp&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">asText</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>В качестве значений для контекстных атрибутов могут быть RecordRef’ы (для доступа к другим сущностям) или значения любых других типов.</p>
+</section>
+<section id="raw-bin-3-45-0">
+<h3><a class="toc-backref" href="#id28">Скаляры ?raw и ?bin (3.45.0)</a><a class="headerlink" href="#raw-bin-3-45-0" title="Ссылка на этот заголовок"></a></h3>
+<p>В [3.45.0] Появилось два новых скаляра - <strong>?raw</strong> и <strong>?bin</strong></p>
+<p><strong>?raw</strong> возвращет данные без преобразования, как есть.</p>
+<p><strong>?bin</strong> возвращает бинарные данные. При использовании json-формата равнозначен использованию <strong>?str</strong> (данные передаются в виде base64 строки), но с использованием форматов, которые поддерживают передачу массивов байт без необходимости трансформации в base64 дает преимущество по размеру передаваемых данных (base64 дает оверхед 33%).</p>
+</section>
+</section>
+<section id="recordsservice-java">
+<h2><a class="toc-backref" href="#id29">RecordsService (Java)</a><a class="headerlink" href="#recordsservice-java" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>RecordsService</strong> - сервис для работы с абстрактными записями, источником которых может быть любой DAO.</p>
+<p>Существует четыре операции, которые можно проделывать над записями:</p>
+<section id="id9">
+<h3><a class="toc-backref" href="#id30">а) Поиск записей</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h3>
+<p>Методы: <strong>query, queryOne</strong></p>
+<p>Для поиска записей всегда передается <strong>RecordsQuery</strong>, который содержит параметры поиска. Помимо самого простого метода для поиска с одним параметром <strong>RecordsQuery</strong> так же есть варианты с объединенным поиском и запросом атрибутов.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">recordsService</span><span class="p">.</span><span class="na">queryOne</span><span class="p">(</span>
+  <span class="n">RecordsQuery</span><span class="p">.</span><span class="na">create</span><span class="p">()</span>
+        <span class="p">.</span><span class="na">withLanguage</span><span class="p">(</span><span class="n">PredicateService</span><span class="p">.</span><span class="na">LANGUAGE_PREDICATE</span><span class="p">)</span>
+        <span class="p">.</span><span class="na">withQuery</span><span class="p">(</span><span class="n">Predicates</span><span class="p">.</span><span class="na">and</span><span class="p">(</span>
+                <span class="n">Predicates</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="n">ValuePredicateToFtsAlfrescoConstants</span><span class="p">.</span><span class="na">TYPE</span><span class="p">,</span> <span class="s">&quot;cm:person&quot;</span><span class="p">),</span>
+                <span class="n">Predicates</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;ssgedic:personalNumber&quot;</span><span class="p">,</span> <span class="n">personalNumber</span><span class="p">)))</span>
+        <span class="p">.</span><span class="na">withConsistency</span><span class="p">(</span><span class="n">Consistency</span><span class="p">.</span><span class="na">EVENTUAL</span><span class="p">)</span>
+        <span class="p">.</span><span class="na">addSort</span><span class="p">(</span><span class="k">new</span> <span class="n">SortBy</span><span class="p">(</span><span class="s">&quot;cm:created&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">))</span>
+        <span class="p">.</span><span class="na">build</span><span class="p">());</span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">recordsService</span><span class="p">.</span><span class="na">query</span><span class="p">(</span><span class="n">RecordsQuery</span><span class="p">.</span><span class="na">create</span><span class="p">()</span>
+        <span class="p">.</span><span class="na">withLanguage</span><span class="p">(</span><span class="n">PredicateService</span><span class="p">.</span><span class="na">LANGUAGE_PREDICATE</span><span class="p">)</span>
+        <span class="p">.</span><span class="na">withQuery</span><span class="p">(</span><span class="n">Predicates</span><span class="p">.</span><span class="na">and</span><span class="p">(</span>
+                <span class="n">Predicates</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;_type&quot;</span><span class="p">,</span> <span class="s">&quot;emodel/type@ssgediip-inboundPackage&quot;</span><span class="p">),</span>
+                <span class="n">Predicates</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;ssgediip:isNeedSendToVim&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">),</span>
+                <span class="n">Predicates</span><span class="p">.</span><span class="na">not</span><span class="p">(</span>
+                        <span class="n">Predicates</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;ssgediip:isAlreadySentToVim&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+                <span class="p">)</span>
+        <span class="p">))</span>
+        <span class="p">.</span><span class="na">withConsistency</span><span class="p">(</span><span class="n">Consistency</span><span class="p">.</span><span class="na">EVENTUAL</span><span class="p">)</span>
+        <span class="p">.</span><span class="na">build</span><span class="p">());</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>.withLanguage</strong> – указываем язык запроса;</p></li>
+<li><p><strong>.withQuery</strong> – сам запрос;</p></li>
+<li><p><strong>.withConsistency</strong> – Consistency (Согласованность). Возможные варианты: EVENTUAL, TRANSACTIONAL, DEFAULT, TRANSACTIONAL_IF_POSSIBLE</p></li>
+<li><p><strong>.addSort</strong> – указываем по какому полю нужна сортировка</p></li>
+<li><p><strong>.build()</strong> – сборка запроса</p></li>
+</ul>
+<p>На выходе:</p>
+<ul class="simple">
+<li><p>при <strong>query</strong> получаем <strong>RecsQueryRes&lt;RecordRef&gt;</strong></p></li>
+<li><p>при <strong>queryOne</strong> получаем <strong>RecordRef</strong></p></li>
+</ul>
+</section>
+<section id="id10">
+<h3><a class="toc-backref" href="#id31">б) Получение атрибутов записи</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h3>
+<p>Методы: <strong>getAtt</strong>, <strong>getAtts</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">recordsService</span><span class="p">.</span><span class="na">getAtt</span><span class="p">(</span><span class="n">documentRef</span><span class="p">,</span> <span class="s">&quot;eint:ediProviderType?str&quot;</span><span class="p">).</span><span class="na">asText</span><span class="p">();</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>documentRef</strong> – record, к которому обращаемся</p></li>
+<li><p><strong>«eint:ediProviderType?str»</strong> – параметр, который хотим получить</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="n">ObjPropertyClass</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">recordsService</span><span class="p">.</span><span class="na">getAtt</span><span class="p">(</span><span class="n">documentRef</span><span class="p">,</span> <span class="s">&quot;objProperty[]?json&quot;</span><span class="p">).</span><span class="na">asList</span><span class="p">(</span><span class="n">ObjPropertyClass</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">RecordAtts</span> <span class="n">recordAtts</span> <span class="o">=</span> <span class="n">recordsService</span><span class="p">.</span><span class="na">getAtts</span><span class="p">(</span><span class="n">RecordRef</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">nodeRef</span><span class="p">.</span><span class="na">toString</span><span class="p">()),</span>
+      <span class="n">Collections</span><span class="p">.</span><span class="na">singletonMap</span><span class="p">(</span><span class="s">&quot;assocId&quot;</span><span class="p">,</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&quot;[]?id&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Существует два уровня абстрации для получения атрибутов:</p>
+<p><strong>DTO Class &gt; Attributes</strong></p>
+<ul class="simple">
+<li><p><strong>DTO Class</strong> - класс, который используется для генерации списка аттрибутов для формирования схемы и запроса атрибутов из DAO.</p></li>
+</ul>
+<p>После получения всех данных из DAO идет создание инстансов переданного DTO класса и наполнение его данными с помощью библиотеки jackson;
+Список аттрибутов формируется либо из названий полей, либо можно добавить аннотацию AttName для указания атрибута вручную.</p>
+<ul class="simple">
+<li><p><strong>Attributes</strong> - аттрибуты записи в чистом виде. Есть варианты с одним атрибутом, списком атрибутов или набором ключ-&gt;значение (Map)</p></li>
+</ul>
+</section>
+<section id="id11">
+<h3><a class="toc-backref" href="#id32">в) Мутация (изменение или создание) записи</a><a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h3>
+<p>Каждый DAO решает сам создавать или редактировать полученную запись.
+Если в DAO приходит запись с пустым идентификатором, то это команда к созданию новой записи.</p>
+<p>Изменение записи</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">RecordAtts</span> <span class="n">recordAtts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RecordAtts</span><span class="p">();</span>
+<span class="n">recordAtts</span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="n">recordRef</span><span class="p">);</span>
+<span class="n">recordAtts</span><span class="p">.</span><span class="na">setAtt</span><span class="p">(</span><span class="s">&quot;ssgedidl:isOutboundPackageSyncNeeded&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="n">recordsService</span><span class="p">.</span><span class="na">mutate</span><span class="p">(</span><span class="n">recordAtts</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Для обновления записи необходимо указывать <strong>.setId()</strong> записи которой необходимо изменить</p>
+<p>Создание записи</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">RecordAtts</span> <span class="n">recordAtts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RecordAtts</span><span class="p">();</span>
+<span class="n">recordAtts</span><span class="p">.</span><span class="na">setAtt</span><span class="p">(</span><span class="n">AlfNodeRecord</span><span class="p">.</span><span class="na">ATTR_TYPE</span><span class="p">,</span> <span class="s">&quot;ssgedidl:routeTemplate&quot;</span><span class="p">);</span>
+<span class="n">recordAtts</span><span class="p">.</span><span class="na">setAtt</span><span class="p">(</span><span class="n">RecordConstants</span><span class="p">.</span><span class="na">ATT_TYPE</span><span class="p">,</span> <span class="s">&quot;emodel/type@ssgedidl-routeTemplateItem&quot;</span><span class="p">);</span>
+<span class="n">recordAtts</span><span class="p">.</span><span class="na">setAtt</span><span class="p">(</span><span class="s">&quot;etype:type&quot;</span><span class="p">,</span><span class="s">&quot;ssgedidl-routeTemplateItem&quot;</span><span class="p">);</span>
+<span class="n">recordAtts</span><span class="p">.</span><span class="na">setAtt</span><span class="p">(</span><span class="n">RecordConstants</span><span class="p">.</span><span class="na">ATT_PARENT</span><span class="p">,</span>
+        <span class="s">&quot;/app:company_home/st:sites/cm:ssg-edi/cm:dataLists/cm:ssgedidl-routeTemplate&quot;</span><span class="p">);</span>
+<span class="n">recordAtts</span><span class="p">.</span><span class="na">setAtt</span><span class="p">(</span><span class="n">RecordConstants</span><span class="p">.</span><span class="na">ATT_PARENT_ATT</span><span class="p">,</span> <span class="s">&quot;cm:contains&quot;</span><span class="p">);</span>
+<span class="n">recordsService</span><span class="p">.</span><span class="na">mutate</span><span class="p">(</span><span class="n">recordAtts</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>При создании новой записи параметр <strong>setId()</strong> не указывается.</p>
+</section>
+<section id="id12">
+<h3><a class="toc-backref" href="#id33">г) Удаление записи</a><a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">recordsService</span><span class="p">.</span><span class="na">delete</span><span class="p">(</span><span class="n">routeTemplate</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>RecordRef routeTemplate</strong> – record который необходимо удалить</p></li>
+</ul>
+</section>
+</section>
+<section id="recordref">
+<h2><a class="toc-backref" href="#id34">RecordRef</a><a class="headerlink" href="#recordref" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>RecordRef</strong> - это идентификатор записи, который состоит из трех частей:</p>
+<ol class="arabic simple">
+<li><p><strong>appName</strong> - идентификатор приложения, к которому относится запись;</p></li>
+<li><p><strong>sourceId</strong> - идентификатор локального (для приложения) источника данных, к которому относится запись;</p></li>
+<li><p><strong>id</strong> - локальный идентификатор, который должен быть уникален в пределах источника.</p></li>
+</ol>
+<p>Общий вид: <code class="docutils literal notranslate"><span class="pre">appname/sourceId&#64;id</span></code></p>
+<blockquote>
+<div><p>где <strong>/</strong> и <strong>&#64;</strong> - особые разделители.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Если в <strong>RecordRef</strong> не задан <strong>sourceId</strong>, то источником по умолчанию считается - «» (пустая строка).</p></li>
+</ul>
+<p><strong>RecordRef является реализацией интерфейса EntityRef</strong></p>
+<p>В Alfresco с таким идентификатором зарегистрирован AlfNodesRecordsDAO - источник данных, у которого запись === нода Alfresco.
+Из этого следует, что NodeRef.toString() === RecordRef.toString() для нод Alfresco;</p>
+<p>Уровни детализации от меньшего к большему:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="mailto:/&#37;&#52;&#48;localId">/<span>&#64;</span>localId</a> == &#64;localId == localId</p></li>
+<li><p><a class="reference external" href="mailto:/sourceId&#37;&#52;&#48;localId">/sourceId<span>&#64;</span>localId</a> == <a class="reference external" href="mailto:sourceId&#37;&#52;&#48;localId">sourceId<span>&#64;</span>localId</a></p></li>
+<li><p><a class="reference external" href="mailto:appName/sourceId&#37;&#52;&#48;localId">appName/sourceId<span>&#64;</span>localId</a></p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">RecordRef</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;emodel&quot;</span><span class="p">,</span> <span class="s">&quot;type&quot;</span><span class="p">,</span> <span class="s">&quot;ssgedidl-counterpartyToAuthority&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>“emodel”</strong> – appName</p></li>
+<li><p><strong>“type”</strong> – sourceId</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/records_1.png"><img alt="../_images/records_1.png" class="align-center" src="../_images/records_1.png" style="width: 600px;" /></a>
+</section>
+<section id="id13">
+<h2><a class="toc-backref" href="#id35">Использование в браузере</a><a class="headerlink" href="#id13" title="Ссылка на этот заголовок"></a></h2>
+<p>Для работы с Records API разработан компонент <strong>Citeck.Records</strong>, который доступен в глобальном контексте на любой странице системы. Доступные операции:</p>
+<ul class="simple">
+<li><p><strong>get(recordRef)</strong> - Получить запись по её идентификатору. Ниже представлен список операций с записью;</p></li>
+<li><p><strong>query(query, attributes)</strong> - Поиск записей. Первый аргумент - запрос для поиска, а второй - какие атрибуты нам нужны у найденых записей;</p></li>
+<li><p><strong>remove(records)</strong> - Удаление записей.</p></li>
+</ul>
+<p>Операции с записью, которая получена через метод «Citeck.Records.get»:</p>
+<ul class="simple">
+<li><p><strong>load(attributes, forceLoad)</strong> - Загрузить атрибут или несколько атрибутов. Первым аргументом мы указываем что нужно загрузить, а вторым следует использовать кэш или нет. Второй аргумент опционален и по умолчанию равен false (т.е. кэш активен);</p></li>
+<li><p><strong>att(attributeName, value)</strong> - Проставить значение атрибута для записи. Используется перед сохранением записи;</p></li>
+<li><p><strong>save(attsToLoad)</strong> - Сохранить изменения в записи, которые были сделаны методом att из предыдущего пункта и загрузить атрибуты, которые передали в attsToLoad (опционально);</p></li>
+</ul>
+<p>Метод save с версии UI 2.8.1 может принимать атрибуты для загрузки. В этом случае на сервер вместе с атрибутами для изменения так же отправляются атрибуты для загрузки в поле attributes тела запроса.
+Если при вызове save указаны атрибуты для загрузки, то в результате будет тот же формат, что и при вызове метода load.</p>
+<p>Структура query:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;sourceId&quot;</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">идентификатор</span> <span class="n">источника</span> <span class="n">данных</span> <span class="n">в</span> <span class="n">формате</span> <span class="s2">&quot;приложение/id_локального_источника_данных&quot;</span>
+  <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="n">Any</span> <span class="o">//</span> <span class="n">любой</span> <span class="n">формат</span><span class="p">,</span> <span class="n">который</span> <span class="n">поддерживается</span> <span class="n">источником</span> <span class="n">данных</span>
+  <span class="s2">&quot;language&quot;</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">язык</span> <span class="n">для</span> <span class="n">определения</span> <span class="n">содержимого</span> <span class="n">query</span><span class="o">.</span> <span class="n">Источник</span> <span class="n">данных</span> <span class="n">может</span> <span class="n">поддерживать</span> <span class="n">несколько</span> <span class="n">языков</span>
+  <span class="s2">&quot;sortBy&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+          <span class="s2">&quot;attribute&quot;</span><span class="p">:</span> <span class="n">String</span> <span class="o">//</span> <span class="n">атрибут</span> <span class="n">для</span> <span class="n">сортировки</span>
+          <span class="s2">&quot;ascending&quot;</span><span class="p">:</span> <span class="n">Boolean</span> <span class="o">//</span> <span class="n">сортировка</span> <span class="n">должна</span> <span class="n">быть</span> <span class="n">по</span> <span class="n">возрастанию</span> <span class="n">true</span> <span class="n">или</span> <span class="n">по</span> <span class="n">убыванию</span> <span class="n">false</span>
+      <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;groupBy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">String</span><span class="p">]</span> <span class="o">//</span> <span class="n">список</span> <span class="n">атрибутов</span> <span class="n">для</span> <span class="n">группировки</span>
+  <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">maxItems</span><span class="p">:</span> <span class="n">Number</span> <span class="o">//</span> <span class="n">максимальное</span> <span class="n">кол</span><span class="o">-</span><span class="n">во</span> <span class="n">элементов</span>
+      <span class="n">skipCount</span><span class="p">:</span> <span class="n">Number</span> <span class="o">//</span> <span class="n">количество</span> <span class="n">элементов</span><span class="p">,</span> <span class="n">которое</span> <span class="n">нужно</span> <span class="n">пропустить</span> <span class="n">при</span> <span class="n">поиске</span>
+  <span class="p">}</span>
+  <span class="s2">&quot;consistency&quot;</span><span class="p">:</span> <span class="n">EVENTUAL</span> <span class="o">|</span> <span class="n">TRANSACTIONAL</span> <span class="o">|</span> <span class="n">DEFAULT</span> <span class="o">|</span> <span class="n">TRANSACTIONAL_IF_POSSIBLE</span> <span class="o">//</span> <span class="n">ожидаемая</span> <span class="n">консистенция</span> <span class="n">данных</span><span class="o">.</span> <span class="n">EVENTUAL</span> <span class="n">позволяет</span> <span class="n">использовать</span> <span class="n">индексы</span> <span class="n">для</span> <span class="n">поиска</span> <span class="n">элементов</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Примеры использования:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Запрос</span> <span class="n">ноды</span><span class="p">:</span>
+
+<span class="k">await</span> <span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;workspace://SpacesStore/16d8668d-7325-49ef-80d3-f2bfdb4c6d00&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">({</span>
+  <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;icase:caseStatusAssoc.cm:title?str&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="s1">&#39;.disp&#39;</span>
+<span class="p">});</span>
+
+<span class="o">---</span>
+<span class="n">Запрос</span> <span class="n">конфига</span><span class="p">:</span>
+
+<span class="k">await</span> <span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ecos-config@ecos-forms-enable&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;.str&#39;</span><span class="p">);</span>
+
+<span class="o">---</span>
+
+<span class="k">await</span> <span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">query</span><span class="p">({</span>
+  <span class="n">sourceId</span><span class="p">:</span> <span class="s1">&#39;alfresco/&#39;</span><span class="p">,</span>
+  <span class="n">query</span><span class="p">:</span> <span class="s1">&#39;TYPE:&quot;cm:content&quot;&#39;</span><span class="p">,</span>
+  <span class="n">language</span><span class="p">:</span> <span class="s1">&#39;fts-alfresco&#39;</span><span class="p">,</span>
+  <span class="n">page</span><span class="p">:</span> <span class="p">{</span>     <span class="n">maxItems</span><span class="p">:</span> <span class="mi">10</span> <span class="p">}</span>
+<span class="p">},</span> <span class="p">[</span><span class="s1">&#39;cm:title&#39;</span><span class="p">,</span> <span class="s1">&#39;cm:name&#39;</span><span class="p">]);</span>
+
+<span class="o">---</span>
+<span class="n">Запрос</span> <span class="n">ФИО</span> <span class="n">пользователя</span><span class="p">:</span>
+
+<span class="n">var</span> <span class="n">user</span> <span class="o">=</span> <span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;alfresco/people@admin&#39;</span><span class="p">);</span>
+<span class="k">await</span> <span class="n">user</span><span class="o">.</span><span class="n">load</span><span class="p">({</span>
+  <span class="n">userName</span><span class="p">:</span> <span class="s1">&#39;cm:userName&#39;</span><span class="p">,</span>
+  <span class="n">firstName</span><span class="p">:</span> <span class="s1">&#39;cm:firstName&#39;</span><span class="p">,</span>
+  <span class="n">lastName</span><span class="p">:</span> <span class="s1">&#39;cm:lastName&#39;</span>
+<span class="p">})</span>
+
+<span class="o">---</span>
+<span class="n">Запрос</span> <span class="n">ФИО</span> <span class="n">пользователя</span><span class="p">:</span>
+
+<span class="n">var</span> <span class="n">user</span> <span class="o">=</span> <span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;alfresco/people@admin&#39;</span><span class="p">);</span>
+<span class="k">await</span> <span class="n">user</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;cm:userName&#39;</span><span class="p">,</span> <span class="s1">&#39;cm:firstName&#39;</span><span class="p">,</span> <span class="s1">&#39;cm:lastName&#39;</span><span class="p">])</span>
+
+<span class="o">---</span>
+<span class="n">Запрос</span> <span class="n">имени</span> <span class="n">пользователя</span><span class="p">:</span>
+
+<span class="n">var</span> <span class="n">user</span> <span class="o">=</span> <span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;alfresco/people@admin&#39;</span><span class="p">);</span>
+<span class="k">await</span> <span class="n">user</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;cm:firstName&#39;</span><span class="p">)</span>
+
+<span class="o">---</span>
+
+<span class="n">Пример</span> <span class="n">скрипта</span> <span class="n">для</span> <span class="n">смены</span> <span class="n">статуса</span><span class="p">:</span>
+
+<span class="n">var</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;someDocumentRef&#39;</span><span class="p">);</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">att</span><span class="p">(</span><span class="s1">&#39;_status&#39;</span><span class="p">,</span> <span class="s1">&#39;some_status_id&#39;</span><span class="p">);</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">save</span><span class="p">();</span>
+
+<span class="o">---</span>
+
+<span class="n">Проверка</span> <span class="n">enterprise</span> <span class="n">лицензии</span><span class="p">:</span>
+
+<span class="k">await</span> <span class="n">Citeck</span><span class="o">.</span><span class="n">Records</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;emodel/meta@&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;$license.enterprise?bool&#39;</span><span class="p">,</span> <span class="n">true</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="crud">
+<h3><a class="toc-backref" href="#id36">CRUD операции</a><a class="headerlink" href="#crud" title="Ссылка на этот заголовок"></a></h3>
+<p>Общение с сервером происходит через <code class="docutils literal notranslate"><span class="pre">POST</span></code> запросы.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 44%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Запрос</p></th>
+<th class="head"><p>Описание</p></th>
+<th class="head"><p>В коде ecos-ui используется</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">READ_ONLY</span> <span class="pre">POST</span></code></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/gateway/api/records/query
+</pre></div>
+</div>
+</td>
+<td><p>Поиск записей и/или получение атрибутов</p></td>
+<td><div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">Records</span><span class="p">.</span><span class="nx">query</span> <span class="nx">и</span> <span class="nx">Records</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;id_сущности&quot;</span><span class="p">).</span><span class="nx">load</span><span class="p">(</span><span class="nx">атрибуты_для_загрузки</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">READ_WRITE</span> <span class="pre">POST</span></code></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/gateway/api/records/delete
+</pre></div>
+</div>
+</td>
+<td><p>Удаление сущностей</p></td>
+<td><div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">Records</span><span class="p">.</span><span class="nx">remove</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">READ_WRITE</span> <span class="pre">POST</span></code></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/gateway/api/records/mutate
+</pre></div>
+</div>
+</td>
+<td><p>Создание или изменение сущностей</p></td>
+<td><div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">rec</span> <span class="o">=</span> <span class="nx">Records</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;id_сущности&quot;</span><span class="p">);</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">att</span><span class="p">(</span><span class="s2">&quot;атрибут&quot;</span><span class="p">,</span> <span class="s2">&quot;значение&quot;</span><span class="p">);</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">save</span><span class="p">()</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id14">
+<h3><a class="toc-backref" href="#id37">Возвращаемые в ответе типы</a><a class="headerlink" href="#id14" title="Ссылка на этот заголовок"></a></h3>
+<p>В ответе может быть возвращен только тип json.</p>
+</section>
+<section id="http">
+<h3><a class="toc-backref" href="#id38">Коды HTTP ответов</a><a class="headerlink" href="#http" title="Ссылка на этот заголовок"></a></h3>
+<p>Возможные коды ответов:</p>
+<ul class="simple">
+<li><p>200 <strong>OK</strong></p></li>
+<li><p>401 <strong>Unauthorized</strong></p></li>
+<li><p>500 <strong>Internal Server Error</strong></p></li>
+</ul>
+</section>
+<section id="id15">
+<h3><a class="toc-backref" href="#id39">Описание ошибок и их уровни</a><a class="headerlink" href="#id15" title="Ссылка на этот заголовок"></a></h3>
+<p>Ошибки отражены в теле ответа по ключу <strong>messages</strong> и с полем <strong>level</strong> равным <strong>«ERROR»</strong>.</p>
+<p>Пример:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ERROR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1653990549261</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;msg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Some error&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;requestId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;7848a70e-a449-4b24-abb9-a2a7fbb8ebfa&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;requestTrace&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;gateway:06d039e1766550be603cf98379bbdb22&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;alfresco:019ca5db-160f-45df-84a6-02750a4f13b7&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;txnActions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;records&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;hasMore&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;totalCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Доступный <strong>level</strong> только <strong>«ERROR»</strong>.</p>
+</section>
+</section>
+<section id="kotlin-java-backend">
+<h2><a class="toc-backref" href="#id40">Kotlin/Java Backend</a><a class="headerlink" href="#kotlin-java-backend" title="Ссылка на этот заголовок"></a></h2>
+<p>Для работы с RecordsAPI на kotlin/java бэкенде предусмотрена библиотека ecos-records - <a class="reference external" href="https://github.com/Citeck/ecos-records">https://github.com/Citeck/ecos-records</a></p>
+<p>Подключив библиотеку можно создать <code class="docutils literal notranslate"><span class="pre">RecordsServiceFactory</span></code> и получить оттуда все сервисы для работы с RecordsAPI.
+Инициализация сервисов инкапсулирована в <code class="docutils literal notranslate"><span class="pre">RecordsServiceFactory</span></code> и не требует обязательного наличия DI механизмов.</p>
+<p>Основной сервис для работы с RecordsAPI - это <code class="docutils literal notranslate"><span class="pre">ru.citeck.ecos.records3.RecordsService</span></code>. Пример использования:</p>
+<p>Kotlin:</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span> <span class="nv">serviceFactory</span> <span class="o">=</span> <span class="n">RecordsServiceFactory</span><span class="p">()</span>
+<span class="kd">val</span> <span class="nv">recordsService</span> <span class="o">=</span> <span class="n">serviceFactory</span><span class="p">.</span><span class="na">recordsServiceV1</span>
+
+<span class="kd">val</span> <span class="nv">value</span> <span class="o">=</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">String</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="n">value</span><span class="o">[</span><span class="s">&quot;someKey&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="s">&quot;someValue&quot;</span>
+
+<span class="kd">val</span> <span class="nv">attributeValue</span> <span class="o">=</span> <span class="n">recordsService</span><span class="p">.</span><span class="na">getAtt</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s">&quot;someKey&quot;</span><span class="p">).</span><span class="na">asText</span><span class="p">()</span>
+<span class="n">println</span><span class="p">(</span><span class="n">attributeValue</span><span class="p">)</span> <span class="c1">// someValue</span>
+</pre></div>
+</div>
+<p>Java:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">RecordsServiceFactory</span> <span class="n">serviceFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RecordsServiceFactory</span><span class="p">();</span>
+<span class="n">RecordsService</span> <span class="n">recordsService</span> <span class="o">=</span> <span class="n">serviceFactory</span><span class="p">.</span><span class="na">getRecordsServiceV1</span><span class="p">();</span>
+
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">value</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="n">value</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;someKey&quot;</span><span class="p">,</span> <span class="s">&quot;someValue&quot;</span><span class="p">);</span>
+
+<span class="n">String</span> <span class="n">attributeValue</span> <span class="o">=</span> <span class="n">recordsService</span><span class="p">.</span><span class="na">getAtt</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s">&quot;someKey&quot;</span><span class="p">).</span><span class="na">asText</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">attributeValue</span><span class="p">);</span> <span class="c1">// someValue</span>
+</pre></div>
+</div>
+<p>Здесь мы создаем новую мапу с одним значением и получаем из неё атрибут с именем someKey через <code class="docutils literal notranslate"><span class="pre">RecordsService</span></code>.</p>
+<p>Есть два основных сценария использования <code class="docutils literal notranslate"><span class="pre">RecordsService</span></code>:</p>
+<ul class="simple">
+<li><p>Работа с уже готовыми данными как в примере выше. Нам не нужно никуда отправлять запросы и получение атрибутов проходит в пределах сервиса. В этом режиме доступно только получение атрибутов и Records DAO никак не задействуются.</p></li>
+<li><p>Работа с ссылками (<code class="docutils literal notranslate"><span class="pre">EntityRef</span></code>). В этом режиме сервис взаимодействует с источниками данных, функционал которых реализован через следующие интерфейсы:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">RecordsDao</span></code> базовый интерфейс для всех остальных ниже по списку. Содержит только один метод - <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">getId()</span></code>, который используется при регистрации <code class="docutils literal notranslate"><span class="pre">RecordsDao</span></code> в <code class="docutils literal notranslate"><span class="pre">RecordsService</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RecordsQueryDao</span></code> для поиска записей;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RecordsAttsDao</span></code> (<code class="docutils literal notranslate"><span class="pre">RecordAttsDao</span></code>) для получения атрибутов по заранее известным идентификаторам записей;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RecordMutateDao</span></code> для создания или редактирования записей;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RecordsDeleteDao</span></code> (<code class="docutils literal notranslate"><span class="pre">RecordDeleteDao</span></code>) для удаления записей;</p></li>
+</ul>
+</li>
+</ul>
+<p><em>прим. - В скобках указаны варианты интерфейсов, где в метод приходит только один идентификатор записи.
+По своей сути эти интерфейсы отличаются от множественного варианта только отсутствием необходимости писать перебор идентификаторов вручную. Но
+если есть какие-либо оптимизации, которые можно реализовать при пакетной обработке записей, то следует реализовывать интерфейсы, которые принимают коллекции записей</em></p>
+<p><em>прим. - Records DAO - это реализация абстрактного понятия «Источник данных». Один Records DAO может представлять разные источники данных.</em></p>
+<p>При работе с Records DAO в зависимости от типа действия происходит следующее:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Query. Мы передаем в <code class="docutils literal notranslate"><span class="pre">RecordsQueryDao</span></code> поисковый запрос и ждем на выходе следующие типы значений (поддерживаются как коллекции этих значений так и значения в одном экземпляре):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">EntityRef</span></code> - ссылки на сущности. Если мы получаем ссылки, то сервис обращается к соответствующему <code class="docutils literal notranslate"><span class="pre">RecordsAttsDao</span></code> для получения атрибутов;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">String</span></code> - текстовый результат означает что мы вернули идентификаторы записей, по которым нам нужно получить атрибуты через RecordsAttsDao. Если в строке не указан другой Records DAO, то используется тот же, у которого мы вызывали query;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RecsQueryRes</span></code> - список записей вместе с данными об их общем количестве;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Any</span></code> - любое другое значение, которое обрабатывается с использованием реализаций интерфейса <code class="docutils literal notranslate"><span class="pre">AttValueFactory</span></code>;</p></li>
+</ul>
+</li>
+<li><p>Get attributes. Получение атрибутов по идентификаторам записей. Этот метод используется либо с результатом Query из предыдущего пункта либо посредством прямого вызова <code class="docutils literal notranslate"><span class="pre">recordsService.getAtts(...)</span></code>
+Метод возвращает любое значение, которое обрабатывается с использованием реализаций интерфейса <code class="docutils literal notranslate"><span class="pre">AttValueFactory</span></code>;</p></li>
+<li><p>Mutate. Изменение или создание записей через <code class="docutils literal notranslate"><span class="pre">RecordMutateDao</span></code></p></li>
+<li><p>Delete. Удаление записей через <code class="docutils literal notranslate"><span class="pre">RecordsDeleteDao</span></code></p></li>
+</ul>
+</div></blockquote>
+<p><strong>AttValue</strong> - это интерфейс, который представляет собой значение, с которым умеет работать <code class="docutils literal notranslate"><span class="pre">RecordsService</span></code> при получении атрибутов. Методы интерфейса:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Promise</span><span class="o">&lt;?&gt;</span> <span class="n">init</span><span class="p">()</span> <span class="c1">// инициализация значения перед тем как начать вычисление атрибутов</span>
+<span class="n">Object</span> <span class="nf">getId</span><span class="p">()</span> <span class="c1">// идентификатор значения. Может быть как строкой, так и EntityRef</span>
+<span class="n">Object</span> <span class="nf">getDisplayName</span><span class="p">()</span> <span class="c1">// значение для скаляра &quot;?disp&quot;</span>
+<span class="n">String</span> <span class="nf">asText</span><span class="p">()</span> <span class="c1">// значение для скаляра &quot;?str&quot;</span>
+<span class="n">Object</span> <span class="nf">getAs</span><span class="p">(</span><span class="n">String</span> <span class="n">type</span><span class="p">)</span> <span class="c1">// значение для спец. атрибута &quot;_as&quot;</span>
+<span class="n">Double</span> <span class="nf">asDouble</span><span class="p">()</span> <span class="c1">// значение для скаляра &quot;?num&quot;</span>
+<span class="n">Boolean</span> <span class="nf">asBoolean</span><span class="p">()</span> <span class="c1">// значение для скаляра &quot;?bool&quot;</span>
+<span class="n">Object</span> <span class="nf">asJson</span><span class="p">()</span> <span class="c1">// значение для скаляра &quot;?json&quot;</span>
+<span class="n">Object</span> <span class="nf">asRaw</span><span class="p">()</span> <span class="c1">// значение для скаляра &quot;?raw&quot;</span>
+<span class="n">Object</span> <span class="nf">asBin</span><span class="p">()</span> <span class="c1">// значение для скаляра &quot;?bin&quot;</span>
+<span class="n">has</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="c1">// значение для спец. атрибута &quot;_has&quot;</span>
+<span class="n">Object</span> <span class="nf">getAtt</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="c1">// получить значение атрибута по его имени</span>
+<span class="n">AttEdge</span> <span class="nf">getEdge</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="c1">// получить мета-информацию об атрибуте по его имени</span>
+<span class="n">Object</span> <span class="nf">getType</span><span class="p">()</span> <span class="c1">// получить ECOS тип значения</span>
+</pre></div>
+</div>
+<p><strong>AttValueFactory</strong> - это интерфейс для преобразования произвольных типов данных в имплементацию AttValue</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Проинициализировать фабрику. В основном используется для получения конвертеров для других типов.</span>
+<span class="c1">// Например: attValuesConverter.getFactory(DataValueAttFactory.class)</span>
+<span class="kt">void</span> <span class="nf">init</span><span class="p">(</span><span class="n">attValuesConverter</span><span class="p">:</span> <span class="n">AttValuesConverter</span><span class="p">)</span>
+
+<span class="c1">// Получить реализацию AttValue для значения</span>
+<span class="n">AttValue</span> <span class="nf">getValue</span><span class="p">(</span><span class="n">T</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="c1">// Получить список доступных типов значений, которые может обрабатывать данная фабрика</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;*&gt;&gt;</span> <span class="n">getValueTypes</span><span class="p">()</span>
+
+<span class="c1">// Получить приоритет фабрики. Чем выше приоритет, тем важнее фабрика в случае если для одного и того же типа нашлось две фабрики.</span>
+<span class="kt">int</span> <span class="nf">getPriority</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Для регистрации произвольных AttValueFactory нужно в библиотеке или микросервисе создать следующий файл:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">resources</span><span class="o">/</span><span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">services</span><span class="o">/</span><span class="n">ru</span><span class="o">.</span><span class="n">citeck</span><span class="o">.</span><span class="n">ecos</span><span class="o">.</span><span class="n">records3</span><span class="o">.</span><span class="n">record</span><span class="o">.</span><span class="n">atts</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">AttValueFactory</span>
+</pre></div>
+</div>
+<p>Внутри этого файла должно быть полное имя класса (вместе с пакетом) с вашей реализацией интерфейса AttValueFactory</p>
+<p>Пример: <a class="reference external" href="https://github.com/Citeck/ecos-records/blob/master/ecos-records/src/test/resources/META-INF/services/ru.citeck.ecos.records3.record.atts.value.factory.AttValueFactory">https://github.com/Citeck/ecos-records/blob/master/ecos-records/src/test/resources/META-INF/services/ru.citeck.ecos.records3.record.atts.value.factory.AttValueFactory</a></p>
+<p>Если для значения не нашлось подходящего <code class="docutils literal notranslate"><span class="pre">AttValueFactory</span></code>, то используется стандартная фабрика <code class="docutils literal notranslate"><span class="pre">BeanValueFactory</span></code>.
+Эта фабрика работает со значением как с бином, у которого ищутся геттеры для атрибутов.</p>
+<p>Например, если у нас есть следующий бин:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span> <span class="kd">class</span> <span class="nc">TestDto</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">field</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">setField</span><span class="p">(</span><span class="n">String</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">field</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">String</span> <span class="nf">getField</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">field</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>То с точки зрения <code class="docutils literal notranslate"><span class="pre">BeanValueFactory</span></code> у этого бина есть значение с одним атрибутом «field». Пример работы:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">RecordsServiceFactory</span> <span class="n">serviceFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RecordsServiceFactory</span><span class="p">();</span>
+<span class="n">RecordsService</span> <span class="n">recordsService</span> <span class="o">=</span> <span class="n">serviceFactory</span><span class="p">.</span><span class="na">getRecordsServiceV1</span><span class="p">();</span>
+
+<span class="n">TestDto</span> <span class="n">value</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TestDto</span><span class="p">();</span>
+<span class="n">value</span><span class="p">.</span><span class="na">setField</span><span class="p">(</span><span class="s">&quot;field-value&quot;</span><span class="p">);</span>
+
+<span class="n">String</span> <span class="n">attributeValue</span> <span class="o">=</span> <span class="n">recordsService</span><span class="p">.</span><span class="na">getAtt</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s">&quot;someKey&quot;</span><span class="p">).</span><span class="na">asText</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">attributeValue</span><span class="p">);</span> <span class="c1">// field-value</span>
+</pre></div>
+</div>
+<p>Если же мы хотим изменить имя атрибута не меняя названия методов, то можно воспользоваться аннотацией <code class="docutils literal notranslate"><span class="pre">AttName</span></code>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span> <span class="kd">class</span> <span class="nc">TestDto</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">field</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">setField</span><span class="p">(</span><span class="n">String</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">field</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@AttName</span><span class="p">(</span><span class="s">&quot;otherName&quot;</span><span class="p">)</span>
+  <span class="n">String</span> <span class="nf">getField</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">field</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">...</span>
+<span class="n">TestDto</span> <span class="n">value</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TestDto</span><span class="p">();</span>
+<span class="n">value</span><span class="p">.</span><span class="na">setField</span><span class="p">(</span><span class="s">&quot;field-value-2&quot;</span><span class="p">);</span>
+
+<span class="n">String</span> <span class="n">attributeValue</span> <span class="o">=</span> <span class="n">recordsService</span><span class="p">.</span><span class="na">getAtt</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s">&quot;otherName&quot;</span><span class="p">).</span><span class="na">asText</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">attributeValue</span><span class="p">);</span> <span class="c1">// field-value-2</span>
+</pre></div>
+</div>
+<p>Аннотация <code class="docutils literal notranslate"><span class="pre">&#64;AttName</span></code> помогает задать произвольное имя атрибута. Её можно использовать:</p>
+<ul class="simple">
+<li><p>На геттере, чтобы дать произвольное название атрибуту;</p></li>
+<li><p>На сеттере для конвертации DTO -&gt; Схема атрибутов для запроса; (см. методы <code class="docutils literal notranslate"><span class="pre">recordsService.getAtts(Any</span> <span class="pre">record,</span> <span class="pre">Class&lt;?&gt;</span> <span class="pre">atts)</span></code>)</p></li>
+<li><p>Аннотация на поле работает как для сеттера так и для геттера если они есть;</p></li>
+</ul>
+<p>Аннотация <code class="docutils literal notranslate"><span class="pre">&#64;AttName</span></code> может в качестве аргумента принимать значение <code class="docutils literal notranslate"><span class="pre">&quot;...&quot;</span></code>.
+Такая запись означает, что все атрибуты из поля с этой аннотацией будут доступны так же и в нашем значении. Пример:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span> <span class="kd">class</span> <span class="nc">ParentDto</span> <span class="p">{</span>
+  <span class="nd">@AttName</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">)</span>
+  <span class="kd">private</span> <span class="n">ChildDto</span> <span class="n">child</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ChildDto</span><span class="p">();</span> <span class="c1">// опустим сеттер, чтобы не усложнять пример</span>
+  <span class="kd">public</span> <span class="n">ChildDto</span> <span class="nf">getChild</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">child</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">static</span> <span class="kd">class</span> <span class="nc">ChildDto</span> <span class="p">{</span>
+   <span class="kd">public</span> <span class="n">String</span> <span class="nf">getValue</span><span class="p">():</span> <span class="n">String</span> <span class="p">{</span>
+     <span class="k">return</span> <span class="s">&quot;abc&quot;</span><span class="p">;</span> <span class="c1">// геттер не обязательно должен отдавать значение поля. Его поведение может быть произвольным</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">...</span>
+<span class="n">ParentDto</span> <span class="n">value</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParentDto</span><span class="p">();</span>
+
+<span class="c1">// Если бы аннотация AttName отсутствовала, то до значения &#39;abc&#39; мы бы могли добраться так:</span>
+<span class="c1">// recordsService.getAtt(value, &quot;child.value&quot;).asText();</span>
+<span class="c1">// Но с аннотацией @AttValue(&quot;...&quot;) можно обращаться к вложенному атрибуту так:</span>
+
+<span class="n">String</span> <span class="n">attributeValue</span> <span class="o">=</span> <span class="n">recordsService</span><span class="p">.</span><span class="na">getAtt</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">).</span><span class="na">asText</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">attributeValue</span><span class="p">);</span> <span class="c1">// abc</span>
+</pre></div>
+</div>
+<p>Так же особое значение имеют аннотации <code class="docutils literal notranslate"><span class="pre">AttName</span></code> где в качестве аргумента указан один из скаляров с вопросительным знаком.
+Например: <code class="docutils literal notranslate"><span class="pre">&#64;AttName(&quot;?str&quot;)</span></code>. Такие геттеры вызываются при загрузке скаляров.</p>
+<p><code class="docutils literal notranslate"><span class="pre">BeanValueFactory</span></code> так же ищет в бине ряд специальных методов по их имени и аргументам (тип возвращаемого значения не важен):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Object</span> <span class="nf">getId</span><span class="p">()</span> <span class="c1">// значение для скаляра ?id</span>
+<span class="n">Object</span> <span class="nf">getAsStr</span><span class="p">()</span> <span class="c1">// значение для скаляра &quot;?str&quot;</span>
+<span class="n">Object</span> <span class="nf">getAsNum</span><span class="p">()</span> <span class="c1">// значение для скаляра &quot;?num&quot;</span>
+<span class="n">Object</span> <span class="nf">getAsBool</span><span class="p">()</span> <span class="c1">// значение для скаляра &quot;?bool&quot;</span>
+<span class="n">Object</span> <span class="nf">getAsJson</span><span class="p">()</span> <span class="c1">// значение для скаляра &quot;?json&quot;</span>
+<span class="n">Object</span> <span class="nf">getAsRaw</span><span class="p">()</span> <span class="c1">// значение для скаляра &quot;?raw&quot;</span>
+<span class="n">Object</span> <span class="nf">getAsBin</span><span class="p">()</span> <span class="c1">// значение для скаляра &quot;?bin&quot;</span>
+<span class="n">Object</span> <span class="nf">getEcosType</span><span class="p">()</span> <span class="c1">// значение для атрибута &quot;_type&quot;</span>
+<span class="n">Object</span> <span class="nf">getAs</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="c1">// значение для спец. атрибута &quot;_as&quot;</span>
+<span class="n">Object</span> <span class="nf">has</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="c1">// значение для спец. атрибута &quot;_has&quot;</span>
+<span class="n">Object</span> <span class="nf">getEdge</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="c1">// значение для спец. атрибута &quot;_edge&quot;</span>
+<span class="n">Object</span> <span class="nf">getAtt</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="c1">// Значение атрибута по имени если не получилось найти геттер для него</span>
+</pre></div>
+</div>
+<p>Для отображаемого имени нашего бина <code class="docutils literal notranslate"><span class="pre">BeanValueFactory</span></code> ищет следующие методы в порядке убывания приоритета (используется первый найденный):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Object</span> <span class="nf">getDisplayName</span><span class="p">()</span>
+<span class="n">Object</span> <span class="nf">getLabel</span><span class="p">()</span>
+<span class="n">Object</span> <span class="nf">getTitle</span><span class="p">()</span>
+<span class="n">Object</span> <span class="nf">getName</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="ecos-records">
+<h2><a class="toc-backref" href="#id41">Формальное описание синтаксиса атрибута ECOS Records</a><a class="headerlink" href="#ecos-records" title="Ссылка на этот заголовок"></a></h2>
+<section id="id16">
+<h3><a class="toc-backref" href="#id42">Терминология</a><a class="headerlink" href="#id16" title="Ссылка на этот заголовок"></a></h3>
+<ul class="simple">
+<li><p><strong>Контекст</strong> - область, которая выделена с помощью скобок или кавычек <code class="docutils literal notranslate"><span class="pre">{}</span></code>, <code class="docutils literal notranslate"><span class="pre">[]</span></code>, <code class="docutils literal notranslate"><span class="pre">()</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">''</span></code> или не выделена ничем (корневая область или корневой контекст);</p></li>
+<li><p><strong>Алиас</strong> - псевдоним для атрибута. Пример: в конструкции <code class="docutils literal notranslate"><span class="pre">someAlias:name</span></code> someAlias является алиасом и возможный результат вычисления - <code class="docutils literal notranslate"><span class="pre">someAlias:&quot;Договор</span> <span class="pre">№2&quot;</span></code>;</p></li>
+<li><p><strong>Экранирование символа</strong> - добавление перед символом знака <code class="docutils literal notranslate"><span class="pre">\</span></code>. Необходимо в тех случаях, когда спец-символ должен быть обработан как обычный символ;</p></li>
+<li><p><strong>Спец-символ</strong> - символ, который в определенном контексте имеет специальное значение.</p></li>
+<li><p><strong>Скаляр</strong> - конечный атрибут, который не может содержать вложенных атрибутов. Может быть одним из <code class="docutils literal notranslate"><span class="pre">?id</span></code>, <code class="docutils literal notranslate"><span class="pre">?str</span></code>, <code class="docutils literal notranslate"><span class="pre">?disp</span></code>, <code class="docutils literal notranslate"><span class="pre">?num</span></code>, <code class="docutils literal notranslate"><span class="pre">?assoc</span></code>, <code class="docutils literal notranslate"><span class="pre">?localId</span></code>, <code class="docutils literal notranslate"><span class="pre">?bool</span></code>, <code class="docutils literal notranslate"><span class="pre">?json</span></code>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<ol class="arabic simple">
+<li><p>Экранирование спец-символов необходимо только в текущем контексте и не требуется во вложенных контекстах.</p></li>
+</ol>
+</div>
+</section>
+<section id="id17">
+<h3><a class="toc-backref" href="#id43">Описание</a><a class="headerlink" href="#id17" title="Ссылка на этот заголовок"></a></h3>
+<p>Общий вид атрибута:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path0</span><span class="p">[]</span><span class="o">.</span><span class="n">path1</span><span class="p">{</span><span class="n">INNER</span><span class="p">}</span><span class="o">|</span><span class="n">proc0</span><span class="p">(</span><span class="n">arg0</span><span class="p">,</span><span class="n">arg1</span><span class="p">)</span><span class="o">|</span><span class="n">proc1</span><span class="p">(</span><span class="n">arg0</span><span class="p">,</span><span class="n">arg1</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">path0[].path1</span></code> - это путь из атрибутов. Элементы пути объединяются через точку. Если точка является частью имени атрибута, то её следует экранировать.</p>
+<p>Все атрибуты в пути кроме последнего имеют ровно один внутренний атрибут без пост-процессоров и алиаса. Последний атрибут в пути может иметь любое количество вложенных атрибутов, но не имеет алиаса.
+Все атрибуты в пути кроме первого не имеют пост-процессоров. Первый атрибут в пути может иметь любое количество пост-процессоров, которые указываются в конце после <code class="docutils literal notranslate"><span class="pre">{INNER}</span></code>.
+Любой элемент пути из атрибутов может иметь окончание <code class="docutils literal notranslate"><span class="pre">[]</span></code>, которое при наличии означает, что атрибут множественный.</p>
+<p><code class="docutils literal notranslate"><span class="pre">{INNER}</span></code> содержит вложенные атрибуты с алиасами, которые разделены через запятую. Алиас не обязателен. Если он отсутствует, то для результата используется первое имя в пути атрибутов.</p>
+<p>Пример значения <code class="docutils literal notranslate"><span class="pre">{INNER}</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">alias0</span><span class="p">:</span><span class="n">attribute0</span><span class="p">,</span><span class="n">alias1</span><span class="p">:</span><span class="n">attribute1</span><span class="p">,</span><span class="n">attribute2</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>В <strong>aliasN</strong> спец-символами являются <code class="docutils literal notranslate"><span class="pre">,</span></code> и <code class="docutils literal notranslate"><span class="pre">:</span></code>. Вместо <strong>attributeN</strong> допускается синтаксис (1), но c экранированием запятых <code class="docutils literal notranslate"><span class="pre">,</span></code> и если отсутствует алиас, то следует экранировать <code class="docutils literal notranslate"><span class="pre">:</span></code> (см. Примечание 1). Если алиас равен первому элементу в пути атрибутов, то это равнозначно отсутствию алиаса.</p>
+<p>Вместо <code class="docutils literal notranslate"><span class="pre">{INNER}</span></code> при наличии только одного вложенного атрибута без алиаса и процессоров допускается запись без фигурных скобок. В таком случае если вложенный атрибут не является скаляром, то перед ним добавляется точка. Перед скаляром ничего не добавляется т.к. он уже содержит разделительный символ <code class="docutils literal notranslate"><span class="pre">?</span></code>.</p>
+<p>Примеры:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>name?str == name{?str}
+name.title?str == name{title{?str}}
+</pre></div>
+</div>
+<p>Если атрибут заканчивается на скаляр <code class="docutils literal notranslate"><span class="pre">?disp</span></code> (<code class="docutils literal notranslate"><span class="pre">att0?disp</span></code> или <code class="docutils literal notranslate"><span class="pre">att0{?disp}</span></code>), то допускается опустить окончание <code class="docutils literal notranslate"><span class="pre">?disp</span></code> в атрибуте т.к. это скаляр по-умолчанию.</p>
+<p>Пример:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>name?disp == name
+</pre></div>
+</div>
+<p>При описании атрибута допускается использование пост-процессоров, которые вызываются с результатом вычисления атрибута:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proc0</span><span class="p">(</span><span class="n">arg0</span><span class="p">,</span><span class="n">arg1</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>procN</strong> - имя пост-процессора;</p></li>
+<li><p><strong>argN</strong> - аргументы, которые отделяются друг от друга запятыми. Допускаются значения аналогичные формату json - <a class="reference external" href="https://www.json.org/json-en.html">https://www.json.org/json-en.html</a> , но с возможностью использовать для строк одинарные кавычки вместо двойных;</p></li>
+</ul>
+<p>Пост-процессоры объединяются через символ <code class="docutils literal notranslate"><span class="pre">|</span></code> и выполняются слева направо аналогично unix pipeline. Пост-процессоры могут быть частью любого атрибута на любом уровне вложенности.</p>
+<p>Для пост-процессора с типом «or» доступен дополнительный синтаксис с использованием <code class="docutils literal notranslate"><span class="pre">!</span></code>. Возможные варианты значения после <code class="docutils literal notranslate"><span class="pre">!</span></code>:</p>
+<ol class="arabic simple">
+<li><p>Значение в двойных или одинарных кавычках означает константную строку; (<code class="docutils literal notranslate"><span class="pre">some!'constant'</span> <span class="pre">==</span> <span class="pre">some|or('constant')</span></code>)</p></li>
+<li><p>При отсутствии значения парсер подбирает нужный аргумент в зависимости от скаляра перед знаком <code class="docutils literal notranslate"><span class="pre">!</span></code>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>?bool! -&gt; <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p>?json! -&gt; <code class="docutils literal notranslate"><span class="pre">{}</span></code>;</p></li>
+<li><p>?num! -&gt; <code class="docutils literal notranslate"><span class="pre">0</span></code>;</p></li>
+<li><p>иначе -&gt; <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>null означает пустое значение; (<code class="docutils literal notranslate"><span class="pre">some!null</span> <span class="pre">==</span> <span class="pre">some|or(null)</span></code>)</p></li>
+<li><p>true или false - булево значение; (<code class="docutils literal notranslate"><span class="pre">some!true</span> <span class="pre">==</span> <span class="pre">some|or(true)</span></code>)</p></li>
+<li><p>Если первый символ число - числовое значение; (<code class="docutils literal notranslate"><span class="pre">some!123</span> <span class="pre">==</span> <span class="pre">some|or(123)</span></code>)</p></li>
+<li><p>Если ни один из вышестоящих вариантов не подошел, то считается, что указано имя атрибута, который нужно вернуть в случае если результат вычисления атрибута до <code class="docutils literal notranslate"><span class="pre">!</span></code> оказался null; (<code class="docutils literal notranslate"><span class="pre">some!other</span> <span class="pre">==</span> <span class="pre">some|or('a:other')</span></code>)</p></li>
+</ol>
+<p>Между частями атрибута (алиас, путь, вложенные атрибуты, пост-процессоры, аргументы) допускается использование любого количества пробельных символов (<code class="docutils literal notranslate"><span class="pre">\n</span></code>, <code class="docutils literal notranslate"><span class="pre">\t</span></code>, <code class="docutils literal notranslate"><span class="pre">\r</span></code>, <code class="docutils literal notranslate"></code>).</p>
+<p>Модель атрибута:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SchemaAtt</span> <span class="p">{</span>
+    <span class="n">alias</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+    <span class="n">multiple</span><span class="p">:</span> <span class="n">Boolean</span><span class="p">,</span>
+    <span class="n">inner</span><span class="p">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">SchemaAtt</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">processors</span><span class="p">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">AttProcDef</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Модель пост-процессора:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AttProcDef</span> <span class="p">{</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+    <span class="n">arguments</span><span class="p">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">DataValue</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>DataValue</strong> - любой json тип - <a class="reference external" href="https://www.json.org/json-en.html">https://www.json.org/json-en.html</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html" class="btn btn-neutral float-left" title="Термины" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="ECOS_Records_examples.html" class="btn btn-neutral float-right" title="Примеры запросов ECOS Records" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,889 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Процесс запроса на закупку оборудования &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Процесс согласования оффера" href="offer.html" />
+    <link rel="prev" title="Создание пользователей для ecos-community-demo" href="new_user.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="new_user.html">Создание пользователей для ecos-community-demo</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Процесс запроса на закупку оборудования</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Тип данных</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Основное</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Атрибуты</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Роли</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Статусы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Промежуточный итог</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Форма</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Журнал</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Бизнес-процесс</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Запуск процесса</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="offer.html">Процесс согласования оффера</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html">Упаковка приложения</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a> &raquo;</li>
+      <li>Процесс запроса на закупку оборудования</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/case_sample/equipment_request.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Процесс запроса на закупку оборудования<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>Данная статья знакомит пользователей с основами ECOS на примере создания бизнес-процесса «Заявка на закупку оборудования».</p>
+<p><strong>Заявка на оборудование</strong> – заявка, которая необходима для закупки оборудования для операционной деятельности сотрудников. Например, для подключения монитора к компьютеру сотруднику необходим специальный кабель, которого на данный момент нет в наличии.</p>
+<p>Обычно сотрудник обращается к своему руководителю с просьбой, чтобы для него (сотрудника) необходимое оборудование было приобретено, после успешного согласования с руководителем и в соответствии с внутренними правилами и распорядками происходит закупка. Согласующий так же может отказать в покупке.</p>
+<p>Далее мы пошагово реализуем описанный сценарий с использованием инструментов ECOS.</p>
+<p>Для закупки оборудования нам потребуется следующая информация:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Инициатор</strong> – сотрудник, которому необходимо оборудование;</p></li>
+<li><p><strong>Согласующий</strong> – сотрудник, ответственный за согласование приобретаемого оборудования;</p></li>
+<li><p><strong>Название</strong> – наименование приобретаемого оборудования;</p></li>
+<li><p><strong>Стоимость</strong> – стоимость оборудования.</p></li>
+</ul>
+</div></blockquote>
+<p>До создания самого бизнес-процесса необходимо создать ряд <a class="reference internal" href="../settings_kb/ecos_artifacts.html#ecos-artifacts"><span class="std std-ref">артефактов</span></a> в следующем порядке:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../settings_kb/%D0%A2%D0%B8%D0%BF%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.html#data-types-main"><span class="std std-ref">тип данных</span></a>;</p></li>
+<li><p><a class="reference internal" href="../settings_kb/interface/journals.html#journals"><span class="std std-ref">журнал</span></a>;</p></li>
+<li><p><a class="reference internal" href="../settings_kb/interface/forms.html#forms"><span class="std std-ref">форма</span></a> ;</p></li>
+<li><p><a class="reference internal" href="../settings_kb/processes/ecos_bpmn/ecos_bpmn_overview.html#id1"><span class="std std-ref">процесс</span></a>.</p></li>
+</ul>
+</div></blockquote>
+<section id="id2">
+<h2>Тип данных<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Тип данных</strong> - основной источник метаданных работы с объектом.</p>
+<p>Для создания типа данных перейдите в журнал <strong>«Типы данных» (Раздел администратора - Модель - Журналы)</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_new_1.png"><img alt="../_images/type_new_1.png" class="align-center" src="../_images/type_new_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>нажмите <strong>+ - Создать новый тип</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/type_new_2.png"><img alt="../_images/type_new_2.png" class="align-center" src="../_images/type_new_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<section id="id3">
+<h3>Основное<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h3>
+<p>На вкладке расположены основные данные по типу данных (объекту):</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>1</strong></p></td>
+<td><p>id</p></td>
+<td><p>equipment-request</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>2</strong></p></td>
+<td><p>Имя</p></td>
+<td><p>Заявка на покупку оборудования</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>3</strong></p></td>
+<td><p>Родитель</p></td>
+<td><p>Кейс</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>4</strong></p></td>
+<td><p>Форма</p></td>
+<td><p>Оставить по умолчанию (система автоматически сгенерирует форму по тем атрибутам, которые мы укажем далее, но автоматически сгенерированные формы нельзя редактировать)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>5</strong></p></td>
+<td><p>Журнал</p></td>
+<td><p>Оставить по умолчанию (система автоматически сгенерирует журнал по тем атрибутам, которые мы укажем далее, но автоматически сгенерированные журналы нельзя редактировать)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Конечная настройка вкладки:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tab_1.png"><img alt="../_images/tab_1.png" class="align-center" src="../_images/tab_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id4">
+<h3>Атрибуты<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h3>
+<p>На вкладке находится информация о свойствах, которые будут использованы для взаимодействия с объектом.</p>
+<dl class="simple">
+<dt>Для создания заявки нам потребуется следующая информация:</dt><dd><ul class="simple">
+<li><p>что нужно купить,</p></li>
+<li><p>сколько стоит,</p></li>
+<li><p>кто запрашивает</p></li>
+<li><p>кто согласует закупку.</p></li>
+</ul>
+</dd>
+</dl>
+<p>И, соответственно, нам потребуются следующие атрибуты (свойства объекта):</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Id (1)</p></th>
+<th class="head"><p>Имя (2)</p></th>
+<th class="head"><p>Тип (3)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>Название оборудования</p></td>
+<td><p>Text</p></td>
+</tr>
+<tr class="row-odd"><td><p>price</p></td>
+<td><p>Стоимость</p></td>
+<td><p>Number</p></td>
+</tr>
+<tr class="row-even"><td><p>requester</p></td>
+<td><p>Инициатор</p></td>
+<td><p>Person</p></td>
+</tr>
+<tr class="row-odd"><td><p>approver</p></td>
+<td><p>Согласующий</p></td>
+<td><p>Person</p></td>
+</tr>
+</tbody>
+</table>
+<p>Конечная настройка вкладки:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tab_2.png"><img alt="../_images/tab_2.png" class="align-center" src="../_images/tab_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id5">
+<h3>Роли<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<p>На вкладке описываются роли, которые участвуют в работе с объектом, в нашем случае, участвуют в работе с заявкой.</p>
+<p>Смотря на атрибуты, несложно догадаться, что нам потребуется на первом этапе две роли: <strong>Инициатор</strong> и <strong>Согласующий</strong>.</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Id (1)</p></th>
+<th class="head"><p>Имя (2)</p></th>
+<th class="head"><div class="line-block">
+<div class="line">Атрибут (3)</div>
+<div class="line">(Выбирается из указанных ранее атрибутов.</div>
+<div class="line">По клику на поле, выпадает список указанных атрибутов на вкладке «Атрибуты»)</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>requestor</p></td>
+<td><p>Инициатор</p></td>
+<td><p>Инициатор</p></td>
+</tr>
+<tr class="row-odd"><td><p>approver</p></td>
+<td><p>Согласующий</p></td>
+<td><p>Согласующий</p></td>
+</tr>
+</tbody>
+</table>
+<p>Конечная настройка вкладки:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tab_3.png"><img alt="../_images/tab_3.png" class="align-center" src="../_images/tab_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id6">
+<h3>Статусы<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h3>
+<p>На вкладке описываются статусы, по которым будет перемещаться объект (наша заявка) по бизнес-процессу.</p>
+<p>Рассмотрим самый простой и успешный вариант процесса.</p>
+<p>Инициатор создаёт заявку (статус <strong>«Заявка создана»</strong>), далее отправляет её на согласование согласующему (статус <strong>«На согласовании»</strong>), после Согласующий одобряет заявку (статус <strong>«Одобрено»/«Согласовано»</strong>).</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Id (1)</p></th>
+<th class="head"><p>Имя (2)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>request-created</p></td>
+<td><p>Заявка создана</p></td>
+</tr>
+<tr class="row-odd"><td><p>approving</p></td>
+<td><p>На согласовании</p></td>
+</tr>
+<tr class="row-even"><td><p>approved</p></td>
+<td><p>Согласовано</p></td>
+</tr>
+<tr class="row-odd"><td><p>rejected</p></td>
+<td><p>Отказано</p></td>
+</tr>
+</tbody>
+</table>
+<p>Конечная настройка вкладки:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tab_4.png"><img alt="../_images/tab_4.png" class="align-center" src="../_images/tab_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для сохранения нажмите <strong>«Создать» (Сохранить)</strong>.</p>
+<p>На этом создание базового варианта типа данных для заявки закончено.</p>
+</section>
+<section id="id7">
+<h3>Промежуточный итог<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h3>
+<ul class="simple">
+<li><p>указали базовую информацию о типе данных: id, название типа данных,</p></li>
+<li><p>форму и журнал система сгенерировала автоматически на основании введенных данных;</p></li>
+<li><p>описали свойства заявки, с которыми дальше будем взаимодействовать;</p></li>
+<li><p>добавили роли, которые будут участвовать в работе с заявкой;</p></li>
+<li><p>обозначили статусы, по которым будет перемещаться заявка.</p></li>
+</ul>
+</section>
+</section>
+<section id="id8">
+<h2>Форма<a class="headerlink" href="#id8" title="Ссылка на этот заголовок"></a></h2>
+<p>Посмотрим, как выглядит сгенерированная автоматически форма. Помните, что автоматически сгенерированные формы нельзя редактировать.</p>
+<p>Для этого на открывшейся вкладке <strong>«Тип «Заявка на покупку оборудования»</strong> нажмите <strong>«Форма по умолчанию»</strong>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/auto_form_1.png"><img alt="../_images/auto_form_1.png" class="align-center" src="../_images/auto_form_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>В открывшейся вкладке в виджете <strong>«Действия»</strong> нажмите  <strong>«Редактировать форму»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/auto_form_2.png"><img alt="../_images/auto_form_2.png" class="align-center" src="../_images/auto_form_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Данная форма была автоматически сгенерирована системой из атрибутов, которые были указаны в типе данных:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/auto_form_3.png"><img alt="../_images/auto_form_3.png" class="align-center" src="../_images/auto_form_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Тип компонента на форме зависит от типа атрибута, указанного в типе данных.</p>
+<p>Например, компонент <strong>Стоимость</strong> имеет тип <strong>Number</strong>, так как в типе атрибута был указано значение Number.</p>
+<p>Это можно проверить, наведя курсор на компонент с названием <strong>«Стоимость»</strong>, и далее, нажав на шестерёнку в правом-верхнем углу компонента^</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/auto_form_4.png"><img alt="../_images/auto_form_4.png" class="align-center" src="../_images/auto_form_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>В заголовке модального окна видно, что компонент имеет тип <strong>Number</strong>.</p>
+<p>А в поле <strong>Имя свойства</strong> указано значение <strong>«price»</strong>, это значение было указано ранее в типе данных.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/auto_form_5.png"><img alt="../_images/auto_form_5.png" class="align-center" src="../_images/auto_form_5.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id9">
+<h2>Журнал<a class="headerlink" href="#id9" title="Ссылка на этот заголовок"></a></h2>
+<p>Для просмотра журнала необходимо его добавить в левое меню:</p>
+<ol class="arabic simple">
+<li><p>Перейдите в настройку меню, нажав на шестеренку справа сверху, далее выберите <strong>«Настроить меню»</strong>:</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/menu_1.png"><img alt="../_images/menu_1.png" class="align-center" src="../_images/menu_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Перейдите во вкладку <strong>«Настройки выбранной конфигурации»</strong>, нажмите <strong>«+ Добавить»</strong>, выберите <strong>«Раздел»</strong>:</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/menu_2.png"><img alt="../_images/menu_2.png" class="align-center" src="../_images/menu_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>В поле <strong>«Название»</strong> введите название раздела. Например, «Оборудование». Нажмите <strong>«Сохранить»</strong>.</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/menu_3.png"><img alt="../_images/menu_3.png" class="align-center" src="../_images/menu_3.png" style="width: 400px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p>Наведите курсор на добавленный раздел, нажмите <strong>«+ Добавить»</strong>, выберите <strong>«Журнал»</strong>:</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/menu_4.png"><img alt="../_images/menu_4.png" class="align-center" src="../_images/menu_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Выберите журнал <strong>«type$equipment-request»</strong> и нажмите <strong>ОК</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/menu_5.png"><img alt="../_images/menu_5.png" class="align-center" src="../_images/menu_5.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/menu_6.png"><img alt="../_images/menu_6.png" class="align-center" src="../_images/menu_6.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li><p>Нажмите <strong>«Применить»</strong>.</p></li>
+</ol>
+<p>В левом меню появился новый журнал <strong>«Заявка на покупку оборудования»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/menu_7.png"><img alt="../_images/menu_7.png" class="align-center" src="../_images/menu_7.png" style="width: 200px;" /></a>
+</div></blockquote>
+<p>Нажав на этот пункт меню, откроется новая ECOS вкладка с автоматически сгенерированным журналом.
+В журнале присутствуют колонки, которые относятся непосредственно к атрибутам, которые были указаны ранее в типе данных:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/journal_1.png"><img alt="../_images/journal_1.png" class="align-center" src="../_images/journal_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Создать заявку в журнале пока невозможно, так как для объекта еще не задано описание процесса, по которому будет проходить его жизненный цикл.</p>
+</section>
+<section id="id10">
+<h2>Бизнес-процесс<a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h2>
+<p>Перейдите в левом меню в пункт <strong>«Редактор бизнес-процессов»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bp_new.png"><img alt="../_images/bp_new.png" class="align-center" src="../_images/bp_new.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Для создания процесса нажмите <strong>«+ - Создать camunda процесс»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bp_new_1.png"><img alt="../_images/bp_new_1.png" class="align-center" src="../_images/bp_new_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>В открывшемся модальном окне заполните поля:</p>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>1</strong></p></td>
+<td><p>Идентификатор</p></td>
+<td><p>equipment-request</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>2</strong></p></td>
+<td><p>Имя</p></td>
+<td><p>Заявка на покупку оборудования</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>3</strong></p></td>
+<td><p>Data type</p></td>
+<td><p>equipment-request</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>4</strong></p></td>
+<td><p>Включен</p></td>
+<td><p>True. Отметка об активности процесса.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>5</strong></p></td>
+<td><p>Автоматический старт процесса.</p></td>
+<td><p>True, чтобы старт процесса осуществлялся автоматически. Подробно о <a class="reference internal" href="../settings_kb/processes/ecos_bpmn/ecos_bpmn_base_operations.html#new-bp-start"><span class="std std-ref">запуске процесса</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Конечная настройка бизнес-процесса:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bp_new_2.png"><img alt="../_images/bp_new_2.png" class="align-center" src="../_images/bp_new_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Нажмите <strong>«Сохранить»</strong>.</p>
+<p>Далее необходимо описать схему процесса в <a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/ecos_bpmn_editor.html#editor-bpmn"><span class="std std-ref">редакторе бизнес-процессов</span></a>.</p>
+<p>Для перехода к редактору разверните раздел <strong>«По умолчанию»</strong>, наведите курсор на созданный процесс и нажмите:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/bp_new_3.png"><img alt="../_images/bp_new_3.png" class="align-center" src="../_images/bp_new_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Откроется <strong>конструктор бизнес-процесса</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/modeller.png"><img alt="../_images/modeller.png" class="align-center" src="../_images/modeller.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Процесс прохождения заявки опишем следующим образом:</p>
+<p><strong>Создать заявку -&gt; Отправить на согласование -&gt; Согласовать/Отклонить заявку</strong></p>
+<ol class="arabic simple">
+<li><p>Автоматически на схему добавляется компонент, который отвечает за начало процесса (<a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_events.html#bpmn-events"><span class="std std-ref">Start event</span></a>).</p></li>
+</ol>
+<p><strong>Start event компонент</strong> слушает систему и ждёт, когда в систему постучится запрос на создание нового объекта с нужным нам типом данных.</p>
+<p>Выделите <strong>Start Event компонент</strong> - рядом с компонентом расположено контекстное меню, с помощью которого в процесс можно добавлять новые элементы, связи между элементами, или редактировать текущий элемент.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/start_event.png"><img alt="../_images/start_event.png" class="align-center" src="../_images/start_event.png" style="width: 200px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Теперь нужно добавить новый элемент, но какой?</p></li>
+</ol>
+<p>Сразу после создания заявки, она должна получить статус <strong>«Заявка создана»</strong> - нажмите на элемент <a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_set_status.html#set-status"><span class="std std-ref">Set status</span></a> в контекстном меню:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/set_status.png"><img alt="../_images/set_status.png" class="align-center" src="../_images/set_status.png" style="width: 200px;" /></a>
+</div></blockquote>
+<p>Справа от области для схемы появляются настройки добавленного компонента, где необходимо указать <strong>имя (1)</strong> и <strong>cтатус (2)</strong>, который будет присвоен объекту на данном этапе.</p>
+<p>Укажите имя <strong>«Статус «Заявка создана»</strong>. В поле «Статус» выберите вариант <strong>«Заявка создана»</strong>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/set_status_prop.png"><img alt="../_images/set_status_prop.png" class="align-center" src="../_images/set_status_prop.png" style="width: 300px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Когда заявка создана, нужно проверить всё содержимое заявки, а после проверки отправить на согласование.</p></li>
+</ol>
+<p>Для этого необходимо создать задачу для пользователя - в контекстном меню нажмите на компонент <strong>«Task»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/User_task_1.png"><img alt="../_images/User_task_1.png" class="align-center" src="../_images/User_task_1.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p>Но данный компонент не подходит, и необходимо изменить его тип с «Task» на <a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_user_task.html#user-task"><span class="std std-ref">User task</span></a>. Для этого нажмите на гаечный ключ и выберите вариант <strong>«User task»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/User_task_2.png"><img alt="../_images/User_task_2.png" class="align-center" src="../_images/User_task_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Далее нужно правильно настроить задачу для пользователя, укажите в форме:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Имя - <strong>«На согласование»</strong>,</p></li>
+<li><p>Реципиент - <strong>«Инициатор»</strong></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/User_task_prop.png"><img alt="../_images/User_task_prop.png" class="align-center" src="../_images/User_task_prop.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p>К задаче необходимо создать форму. Формы для задач обычно состоят из комментариев и кнопок, которые обозначают результат выполнения задачи.</p>
+<p>В данном случае не нужен комментарий, на текущем этапе достаточно одной кнопки, которая будет отвечать за исход задачи «На согласование».</p>
+<p>Для этого следует выполнить следующие действия:</p>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li><p>На панели настроек компонента User Task нажмите под полем «Форма задачи» кнопку <strong>«Выбрать»</strong>:</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/form_common_1.png"><img alt="../_images/form_common_1.png" class="align-center" src="../_images/form_common_1.png" style="width: 300px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>В верхней части нажмите на выпадающий список <strong>«Создать»</strong>, выберите вариант <strong>«Создать форму»</strong>:</p></li>
+</ul>
+<blockquote>
+<div><blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_common_2.png"><img alt="../_images/form_common_2.png" class="align-center" src="../_images/form_common_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>Заполните поля следующими данными:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Идентификатор формы - <strong>«equipment-request-send-to-approve-form»</strong></p></li>
+<li><p>Название формы – <strong>«Отправить на согласование форма»</strong></p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Нажмите кнопку <strong>«Редактировать форму»</strong>:</p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_to_approve_1.png"><img alt="../_images/form_to_approve_1.png" class="align-center" src="../_images/form_to_approve_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>Удалите текстовый компонент с именем <strong>«Название»</strong></p></li>
+<li><p>Удалите компонент кнопка с названием <strong>«Отменить»</strong></p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_common_3.png"><img alt="../_images/form_common_3.png" class="align-center" src="../_images/form_common_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+</div></blockquote>
+<ul class="simple">
+<li><p>На кнопке <strong>«Создать»</strong> нажмите на кнопку редактирования (шестерёнка):</p></li>
+</ul>
+<blockquote>
+<div><blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_common_4.png"><img alt="../_images/form_common_4.png" class="align-center" src="../_images/form_common_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>В поле <strong>«Имя свойства»</strong> введите значение <strong>«outcome_ToApprove»</strong></p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>В данном случае приставка «outcome» используется как обозначение, что кнопка отвечает за один из вариантов исхода выполнения задачи</p></li>
+<li><p>ToApprove выступает в роли Идентификатора исхода задачи</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>В поле <strong>«Название»</strong> поля введите значение <strong>«На согласование»</strong></p></li>
+<li><p>Нажмите кнопку <strong>«Сохранить»</strong></p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_to_approve_2.png"><img alt="../_images/form_to_approve_2.png" class="align-center" src="../_images/form_to_approve_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+</div></blockquote>
+<ul class="simple">
+<li><p>Нажмите кнопку <strong>«Сохранить»</strong></p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_to_approve_3.png"><img alt="../_images/form_to_approve_3.png" class="align-center" src="../_images/form_to_approve_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>Нажмите кнопку <strong>«Сохранить»</strong></p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_to_approve_4.png"><img alt="../_images/form_to_approve_4.png" class="align-center" src="../_images/form_to_approve_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+</div></blockquote>
+<ul class="simple">
+<li><p>Вернувшись к компоненту <strong>User Task</strong>, заполните список <strong>«Результаты задачи»</strong> следующими значениями</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Идентификатор – <strong>ToApprove</strong></p></li>
+<li><p>Название – <strong>На согласование</strong></p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_to_approve_5.png"><img alt="../_images/form_to_approve_5.png" class="align-center" src="../_images/form_to_approve_5.png" style="width: 400px;" /></a>
+</div></blockquote>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p>Задача создана и после отправки на согласование необходимо изменить статус задачи на <strong>«На согласовании»</strong>. Для этого повторяем действия первой смены статуса (пункт 2):</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Нажмите в контекстном меню на иконку <strong>Set Status</strong></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/set_status_2.png"><img alt="../_images/set_status_2.png" class="align-center" src="../_images/set_status_2.png" style="width: 400px;" /></a>
+<ul class="simple">
+<li><p>Укажите в поле «Имя» <strong>«Статус «На согласовании»</strong>.</p></li>
+<li><p>В поле «Статус» выберите вариант <strong>«На согласовании»</strong>.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/set_status_2_prop.png"><img alt="../_images/set_status_2_prop.png" class="align-center" src="../_images/set_status_2_prop.png" style="width: 400px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li><p>Далее необходимо создать аналогичную задачу только уже для согласующего:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Добавьте при помощи контекстного меню компонент <strong>Task</strong></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/User_task_3.png"><img alt="../_images/User_task_3.png" class="align-center" src="../_images/User_task_3.png" style="width: 400px;" /></a>
+<ul class="simple">
+<li><p>Измените тип компонента с <strong>Task</strong> на <strong>User Task</strong>:</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/User_task_4.png"><img alt="../_images/User_task_4.png" class="align-center" src="../_images/User_task_4.png" style="width: 500px;" /></a>
+<ul class="simple">
+<li><p>Поле <strong>«Имя»</strong> - <strong>«На согласовании согласующим»</strong>,</p></li>
+<li><p>Поле <strong>«Реципиент»</strong> - <strong>«Согласующий»</strong>.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/User_task_2_prop.png"><img alt="../_images/User_task_2_prop.png" class="align-center" src="../_images/User_task_2_prop.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p>К задаче необходимо создать форму. Формы для задач обычно состоят из комментариев и кнопок, которые обозначают результат выполнения задачи.</p>
+<p>В данном случае не нужен комментарий, на текущем этапе достаточно одной кнопки, которая будет отвечать за исход задачи «На согласование».</p>
+<p>Для этого следует выполнить следующие действия:</p>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li><p>На панели настроек компонента User Task под полем <strong>«Форма задачи»</strong> нажмите кнопку <strong>«Выбрать»</strong>:</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/form_common_1.png"><img alt="../_images/form_common_1.png" class="align-center" src="../_images/form_common_1.png" style="width: 300px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>В верхней части нажмите <strong>«Создать»</strong>, выберите вариант <strong>«Создать форму»</strong>:</p></li>
+</ul>
+<blockquote>
+<div><blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_common_2.png"><img alt="../_images/form_common_2.png" class="align-center" src="../_images/form_common_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>Заполните поля следующими данными:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Идентификатор формы - <strong>«equipment-request-approve-form»</strong></p></li>
+<li><p>Название формы – <strong>«Форма согласования заявки на покупку оборудования»</strong></p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Нажмите кнопку <strong>«Редактировать форму»</strong>:</p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/request_approve_1.png"><img alt="../_images/request_approve_1.png" class="align-center" src="../_images/request_approve_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>Удалите текстовый компонент с именем <strong>«Название»</strong></p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_common_3_1.png"><img alt="../_images/form_common_3_1.png" class="align-center" src="../_images/form_common_3_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+</div></blockquote>
+<ul class="simple">
+<li><p>На кнопке <strong>«Создать»</strong> нажмите на кнопку редактирования (шестерёнка):</p></li>
+</ul>
+<blockquote>
+<div><blockquote>
+<div><a class="reference internal image-reference" href="../_images/form_common_4.png"><img alt="../_images/form_common_4.png" class="align-center" src="../_images/form_common_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>В поле <strong>«Имя свойства»</strong> введите значение <strong>«outcome_Approve</strong></p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>В данном случае приставка «outcome» используется как обозначение, что кнопка отвечает за один из вариантов исхода выполнения задачи</p></li>
+<li><p>Approve выступает в роли Идентификатора исхода задачи</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>В поле <strong>«Название»</strong> поля введите значение <strong>«Согласовать»</strong></p></li>
+<li><p>Нажмите кнопку <strong>«Сохранить»</strong></p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/request_approve_2.png"><img alt="../_images/request_approve_2.png" class="align-center" src="../_images/request_approve_2.png" style="width: 600px;" /></a>
+</div></blockquote>
+</div></blockquote>
+<ul class="simple">
+<li><p>На кнопке <strong>«Отменить»</strong> нажмите на кнопку редактирования (шестерёнка)</p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/request_approve_6.png"><img alt="../_images/request_approve_6.png" class="align-center" src="../_images/request_approve_6.png" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>В поле <strong>«Имя свойства»</strong> введите значение <strong>«outcome_Reject»</strong></p></li>
+<li><p>В поле <strong>«Название поля»</strong> введите значение <strong>«Отказать»</strong></p></li>
+<li><p>В поле Действие выставите значение <strong>«Submit»</strong></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/request_approve_7.png"><img alt="../_images/request_approve_7.png" class="align-center" src="../_images/request_approve_7.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>Нажмите кнопку <strong>«Сохранить»</strong></p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/request_approve_3.png"><img alt="../_images/request_approve_3.png" class="align-center" src="../_images/request_approve_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>Нажмите кнопку <strong>«Сохранить»</strong></p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/request_approve_4.png"><img alt="../_images/request_approve_4.png" class="align-center" src="../_images/request_approve_4.png" style="width: 600px;" /></a>
+</div></blockquote>
+</div></blockquote>
+<ul class="simple">
+<li><p>Вернувшись к компоненту <strong>User Task</strong>, заполните список <strong>«Результаты задачи»</strong> следующими значениями</p></li>
+</ul>
+<blockquote>
+<div><ul>
+<li><p>Идентификатор – <strong>Approve</strong>, Название – <strong>Согласовать</strong></p></li>
+<li><p>Идентификатор – <strong>Reject</strong>, Название – <strong>Отказать</strong></p>
+<a class="reference internal image-reference" href="../_images/request_approve_5.png"><img alt="../_images/request_approve_5.png" class="align-center" src="../_images/request_approve_5.png" style="width: 400px;" /></a>
+</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="6">
+<li><p>После согласования Согласующим задача должна завершиться, но исходов у процесса два – покупка согласована, или в покупке отказано, потому поставим следующий компонентом разветвитель - <a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_gateway.html#gateways"><span class="std std-ref">Gateway</span></a></p></li>
+</ol>
+<p><strong>Gateway компонент</strong> отвечает за разветвление маршрутов и за слияние потоков. Для его добавления необходимо нажать на соответствующую иконку в контекстном меню или на панели слева (но в этом случае придётся самостоятельно проставлять связи их направления):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/gateway_1.png"><img alt="../_images/gateway_1.png" class="align-center" src="../_images/gateway_1.png" style="width: 500px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/gateway_2.png"><img alt="../_images/gateway_2.png" class="align-center" src="../_images/gateway_2.png" style="width: 500px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="7">
+<li><p>После Gateway необходимо поставить 2 компонента смены статуса на «Согласовано»/ «Отказано». Для этого повторяем действия первой смены статуса (пункт 2):</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Нажмите в контекстном меню на иконку <strong>Set Status</strong></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/set_status_3.png"><img alt="../_images/set_status_3.png" class="align-center" src="../_images/set_status_3.png" style="width: 500px;" /></a>
+<ul class="simple">
+<li><p>Укажите в поле «Имя» <strong>«Статус «Согласовано»</strong>.</p></li>
+<li><p>В поле «Статус» выберите вариант <strong>«Согласовано»</strong>.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/set_status_3_prop.png"><img alt="../_images/set_status_3_prop.png" class="align-center" src="../_images/set_status_3_prop.png" style="width: 300px;" /></a>
+<ul class="simple">
+<li><p>Нажмите в контекстном меню на иконку <strong>Set Status</strong></p></li>
+<li><p>Укажите в поле «Имя» <strong>«Статус «Отказано»</strong>.</p></li>
+<li><p>В поле «Статус» выберите вариант <strong>«Отказано»</strong>.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/set_status_4_prop.png"><img alt="../_images/set_status_4_prop.png" class="align-center" src="../_images/set_status_4_prop.png" style="width: 300px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="8">
+<li><p>Так как из Gateway, потенциально, может быть несколько потоков, то система умеет определять по какому потоку нужно идти при помощи вариантов исхода (исходы настраиваются при помощи кнопок на форме и стрелок, выходящих из компонента Gateway).</p></li>
+</ol>
+<p>Для настройки выберите «стрелку» (отдельный компонент <strong>Sequence Flow</strong>, который отвечает не только за визуализацию направления).</p>
+<p>Для потока <strong>«Согласовано»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/Sequence_Flow_1.png"><img alt="../_images/Sequence_Flow_1.png" class="align-center" src="../_images/Sequence_Flow_1.png" style="width: 500px;" /></a>
+<ul class="simple">
+<li><p>В поле «Имя» укажите <strong>«Согласовано»</strong>.</p></li>
+<li><p>В поле «Тип условия» выберите вариант <strong>«Исходящий»</strong>.</p></li>
+<li><p>В появившемся поле Исходящий выбрать вариант <strong>«На согласовании согласующим - Согласовать»</strong>. Варианты автоматически генерируются из двух частей: первая – название задачи (поле Имя), вторая – название результатов задач.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/Sequence_Flow_2.png"><img alt="../_images/Sequence_Flow_2.png" class="align-center" src="../_images/Sequence_Flow_2.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p>Для потока <strong>«Отказано»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/Sequence_Flow_3.png"><img alt="../_images/Sequence_Flow_3.png" class="align-center" src="../_images/Sequence_Flow_3.png" style="width: 500px;" /></a>
+<ul class="simple">
+<li><p>Укажите имя <strong>«Отказано»</strong>.</p></li>
+<li><p>В поле <strong>«Тип условия»</strong> выберите вариант <strong>«Исходящий»</strong>.</p></li>
+<li><p>В появившемся поле Исходящий выбрать вариант <strong>«На согласовании согласующим - Отказать»</strong>.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/Sequence_Flow_3.png"><img alt="../_images/Sequence_Flow_3.png" class="align-center" src="../_images/Sequence_Flow_3.png" style="width: 500px;" /></a>
+</div></blockquote>
+<ol class="arabic simple" start="9">
+<li><p>Дальше необходимо добавить компонент, который будет означать, что процесс закончен. Для этого в контекстном меню компонентов <strong>«Статус «Согласовано»</strong> и <strong>«Статус «Отказано»</strong> нужно нажать на иконку <a class="reference internal" href="../settings_kb/processes/ecos_bpmn/editor/components/ecos_bpmn_components_events.html#bpmn-events"><span class="std std-ref">End event</span></a> компонента.</p></li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/end_event_1.png"><img alt="../_images/end_event_1.png" class="align-center" src="../_images/end_event_1.png" style="width: 500px;" /></a>
+</div></blockquote>
+<p>Так же для второго выхода gateway добавим <strong>End Event компонент</strong>.</p>
+<p>Теперь процесс можно сохранить и опубликовать, нажав:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/publish.png"><img alt="../_images/publish.png" class="align-center" src="../_images/publish.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="id11">
+<h2>Запуск процесса<a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h2>
+<p>После того, как создан Тип данных, бизнес-процесс, Журнал и Форма, можно проверить, как процесс работает.</p>
+<p>Создайте 2 пользователей с именами <strong>requestor</strong> и <strong>approver</strong>, как написано в <a class="reference internal" href="new_user.html#demo-user"><span class="std std-ref">инструкции</span></a>. Список созданных пользователей:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/users.png"><img alt="../_images/users.png" class="align-center" src="../_images/users.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Зайдите под <strong>requestor</strong>:</p>
+<p>В левом меню выберите <strong>«Запрос на оборудование»</strong>. Откроется журнал, где нет записей. Для создания нового объекта (заявки на покупку оборудования). нажмите на <strong>«+»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/new_request_1.png"><img alt="../_images/new_request_1.png" class="align-center" src="../_images/new_request_1.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Заполните поля соответствующими данными. Например:</p>
+<ul class="simple">
+<li><p>Название оборудование – <strong>HDMI кабель</strong></p></li>
+<li><p>Стоимость - <strong>500</strong></p></li>
+<li><p>Инициатор – <strong>Инициатор(requestor)</strong></p></li>
+<li><p>Согласующий – <strong>Согласующий(approver)</strong></p></li>
+</ul>
+<p>И нажмите <strong>«Сохранить»</strong>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/new_request_2.png"><img alt="../_images/new_request_2.png" class="align-center" src="../_images/new_request_2.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Создана первая заявка в статусе <strong>«Заявка создана»</strong> и далее проведем ее по нашему бизнес-процессу.</p>
+<p>В виджете <strong>«Мои задачи»</strong> нажмите кнопку <strong>«Отправить на согласование».</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/new_request_3.png"><img alt="../_images/new_request_3.png" class="align-center" src="../_images/new_request_3.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>После выполнения задачи заявка перейдёт в статус <strong>«На согласовании»</strong> и на Согласующего (approver) будет назначена задача - <strong>Согласование</strong>.</p>
+<p>Зайдите под <strong>approver</strong>:</p>
+<p>В левом меню перейдите в <strong>Активные задачи</strong>, откройте задачу, нажав:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/new_request_4.png"><img alt="../_images/new_request_4.png" class="align-center" src="../_images/new_request_4.png" style="width: 800px;" /></a>
+</div></blockquote>
+<p>Для согласования в виджете <strong>«Мои задачи»</strong> нажмите кнопку <strong>«Согласовать»</strong>:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/new_request_5.png"><img alt="../_images/new_request_5.png" class="align-center" src="../_images/new_request_5.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p>После выполнения задачи заявка перейдёт в статус <strong>«Согласовано»</strong>.</p>
+<p>Поздравляю, первая заявка прошла полный процесс, который был только что создан Вами.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="new_user.html" class="btn btn-neutral float-left" title="Создание пользователей для ecos-community-demo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="offer.html" class="btn btn-neutral float-right" title="Процесс согласования оффера" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

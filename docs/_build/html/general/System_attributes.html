@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Системные атрибуты &mdash; ECOS</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Язык предикатов" href="%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html" />
+    <link rel="prev" title="ECOS Data" href="ecos_data.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../%D0%9E%D0%B1%D1%89%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9.html">&lt;no title&gt;</a> &raquo;</li>
+      <li>Системные атрибуты</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/general/System_attributes.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="system-attributes">
+<span id="id1"></span><h1>Системные атрибуты<a class="headerlink" href="#system-attributes" title="Ссылка на этот заголовок"></a></h1>
+<table class="colwidths-given tight-table docutils align-center">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>_null</strong></p></td>
+<td><p>всегда возвращает null значение</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_type</strong></p></td>
+<td><p>возвращает тип сущности</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_notExists</strong></p></td>
+<td><p>возвращает true, если сущность не существует</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_has</strong></p></td>
+<td><div class="line-block">
+<div class="line">проверить наличие чего-то в значении. Например:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>permissions._has.Write?bool
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">проверить наличие прав на изменение сущности</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>_edge</strong></p></td>
+<td><p>получить мета-информацию об атрибуте. (имя, заголовок, возможность просматривать, возможность редактировать и т.д.)</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>_edge.title.protected?bool
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">например, для того чтобы узнать, что атрибут защищен от редактирования</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>_alias</strong></p></td>
+<td><div class="line-block">
+<div class="line">алиас сущности при сабмите. Используется, когда нужно создать несколько связанных сущностей.</div>
+<div class="line">т.к. ID новых сущностей станет известен только после того, как непосредственно они будут созданы, то необходим какой-то «фэйковый ID», чтобы на него ссылаться в атрибутах.</div>
+<div class="line">Например, хотим создать 2 сущности:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;emodel/some-type@&quot;</span><span class="p">,</span> <span class="s2">&quot;attributes&quot;</span><span class="p">:{</span><span class="s2">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;alias-value-0&quot;</span><span class="p">}},</span> <span class="o">//</span> <span class="n">тут</span> <span class="n">link</span> <span class="o">-</span> <span class="n">это</span> <span class="n">ассоциация</span><span class="o">.</span> <span class="n">В</span> <span class="n">ней</span> <span class="n">мы</span> <span class="n">пишем</span> <span class="n">значение</span> <span class="n">алиаса</span>
+<span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;emodel/some-type@&quot;</span><span class="p">,</span> <span class="s2">&quot;attributes&quot;</span><span class="p">:{</span><span class="s2">&quot;_alias&quot;</span><span class="p">:</span><span class="s2">&quot;alias-value-0&quot;</span><span class="p">},</span> <span class="o">//</span> <span class="n">тут</span> <span class="n">_alias</span> <span class="o">-</span> <span class="n">это</span> <span class="n">тот</span> <span class="n">фейковый</span> <span class="nb">id</span> <span class="n">под</span> <span class="n">которым</span> <span class="n">эта</span> <span class="n">сущность</span> <span class="n">представлена</span><span class="o">.</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Движок создает сущности с конца. Т.е. сначала создаст</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;emodel/some-type@&quot;</span><span class="p">,</span> <span class="s2">&quot;attributes&quot;</span><span class="p">:{</span><span class="s2">&quot;_alias&quot;</span><span class="p">:</span><span class="s2">&quot;alias-value-0&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">получит идентификатор новой сущности <strong>emodel/some-type&#64;123-123-123-123</strong> пробежится по сущностям,</div>
+<div class="line">которые будут созданы далее и подменит все «alias-value-0» на реальный ID <strong>(emodel/some-type&#64;123-123-123-123)</strong></div>
+<div class="line">т.е. вторая сущность отправится на создание уже в виде^</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;emodel/some-type@&quot;</span><span class="p">,</span> <span class="s2">&quot;attributes&quot;</span><span class="p">:{</span><span class="s2">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;emodel/some-type@123-123-123-123&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>_parent</strong></p></td>
+<td><p>ассоциация на родителя</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_parentAtt</strong></p></td>
+<td><p>родительский атрибут, по которому создается ссылка родитель-&gt;дочерняя_сущность</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_formKey</strong></p></td>
+<td><div class="line-block">
+<div class="line">ключ формы (в множественном варианте), которые можно использовать для редактирования сущности в порядке приоритета от большего к меньшему.</div>
+<div class="line">Позволяет связывать сущности без ECOS типа с формами (старые задачи, например)</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>_modified</strong></p></td>
+<td><p>дата изменения сущности</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_modifier</strong></p></td>
+<td><p>изменивший сущность</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_created</strong></p></td>
+<td><p>дата изменения сущности</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_creator</strong></p></td>
+<td><p>создавший сущность</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_content</strong></p></td>
+<td><p>содержимое сущности</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_actions</strong></p></td>
+<td><p>действия</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_docNum</strong></p></td>
+<td><p>номер документа, который генерируется по шаблону нумерации в типе</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_self</strong></p></td>
+<td><div class="line-block">
+<div class="line">атрибут, который представляет само значение.</div>
+<div class="line">Т.е. _self._self._self._self._self это то же самое что и _self._self</div>
+<div class="line">используется:</div>
+<div class="line">1. Там где значение - это примитив (строка, число), но его нужно отредактировать на форме (форма может редактировать только атрибуты). В этом случае можно добавить на форме атрибут <strong>_self</strong></div>
+<div class="line">2. Там где нам нужно сделать мутацию передав на форме файл (или json объект), который по сути является сборником атрибутов сущности (форма с загрузкой конфигурацией артефактов например). Т.е. мы отправляем на бэк:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;_self&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;first&quot;</span><span class="p">:</span><span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="s2">&quot;third&quot;</span><span class="p">:</span><span class="s2">&quot;fourh&quot;</span><span class="p">}}}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">и движок это воспринимает все равно что:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;first&quot;</span><span class="p">:</span><span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="s2">&quot;third&quot;</span><span class="p">:</span><span class="s2">&quot;fourh&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>_as</strong></p></td>
+<td><div class="line-block">
+<div class="line">получить значение как что-то другое. Список вариантов зависит от типа значения.</div>
+<div class="line">Для строки доступно:</div>
+<div class="line">используется:</div>
+<div class="line"><strong>_as.ref</strong> - получить строку как ссылку на сущность</div>
+<div class="line"><strong>_as.mltext</strong> - получить строку как multi language text</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>_localId</strong></div>
+<div class="line"><strong>_disp</strong></div>
+<div class="line"><strong>_str</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="ECOS_Records.html#scalars"><span class="std std-ref">скаляры</span></a>, которые можно получить как значения обычных атрибутов.</div>
+<div class="line">Т.е. в API доступ к скалярам идет через вопросительный знак (например, <strong>?str</strong> и <strong>?bin</strong>), но поменяв <strong>«?»</strong> на <strong>«_»</strong> мы получим те же данные, но уже в неконечном виде (т.е. можно будет запрашивать вложенные атрибуты).</div>
+<div class="line">Как вариант использования - берем свойство, в котором в виде строки записана ссылка на что-то другое. Пишем:</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">someField</span><span class="o">.</span><span class="n">_str</span><span class="o">.</span><span class="n">_as</span><span class="o">.</span><span class="n">ref</span><span class="o">.</span><span class="n">fieldFromRef</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>_roles.isCurrentUserMemberOf.initiator?bool</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Является ли текущий пользователь представителем роли «инициатор». Вместо <code class="docutils literal notranslate"><span class="pre">initiator</span></code> можно подставлять любой идентификатор роли</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>_roles.assigneesOf.initiator[]?str</strong></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Загрузить представителей роли «инициатор». Вместо <code class="docutils literal notranslate"><span class="pre">initiator</span></code> можно подставлять любой идентификатор роли</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="ecos_data.html" class="btn btn-neutral float-left" title="ECOS Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html" class="btn btn-neutral float-right" title="Язык предикатов" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

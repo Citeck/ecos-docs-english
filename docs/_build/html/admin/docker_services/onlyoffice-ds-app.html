@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>onlyoffice-ds-app &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="ecos-gateway-app" href="ecos-gateway-app.html" />
+    <link rel="prev" title="Сервисы Docker" href="../docker_services.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker-compose.html">Установка Citeck ECOS c помощью Docker-compose</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../docker_services.html">Сервисы Docker</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">onlyoffice-ds-app</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Назначение:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-compose">Шаблон сервиса docker-compose:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Типовой вывод успешного развертывания в лог контейнера:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-gateway-app.html">ecos-gateway-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-notifications-app.html">ecos-notifications-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-mongo-app.html">ecos-mongo-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mailhog-app.html">mailhog-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-registry-app.html">ecos-registry-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-postgresql-app.html">ecos-postgresql-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-model-app.html">ecos-model-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-app.html">ecos-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-integrations-app.html">ecos-integrations-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-solr-app.html">ecos-solr-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-proxy-app.html">ecos-proxy-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-uiserv-app.html">ecos-uiserv-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-process-app.html">ecos-process-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-microservices-postgresql-app.html">ecos-microservices-postgresql-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-history-app.html">ecos-history-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rabbitmq-app.html">rabbitmq-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-apps-app.html">ecos-apps-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eis_Keycloack.html">eis (Keycloak)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backup-tool-app.html">backup-tool-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecos-alfresco-search-service.html">ecos-alfresco-search-service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html">Аутентификация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sync_authorities.html">Синхронизация Authorities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keycloak.html">ECOS KeyCloak Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keycloack_postman.html">Настройки аутентификации для работы с Records API из внешних систем</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html">Конфигурация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../license.html">Лицензии ECOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audit.html">Аудит</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../howto.html">How To</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a> &raquo;</li>
+          <li><a href="../docker_services.html">Сервисы Docker</a> &raquo;</li>
+      <li>onlyoffice-ds-app</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/admin/docker_services/onlyoffice-ds-app.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="onlyoffice-ds-app">
+<h1>onlyoffice-ds-app<a class="headerlink" href="#onlyoffice-ds-app" title="Ссылка на этот заголовок"></a></h1>
+<section id="id1">
+<h2>Назначение:<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>Образ, включающий набор инструментов для развертывания onlyoffice-ds</p>
+</section>
+<section id="docker-compose">
+<h2>Шаблон сервиса docker-compose:<a class="headerlink" href="#docker-compose" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span><span class="p">:</span>
+    <span class="n">logging</span><span class="p">:</span>
+      <span class="n">options</span><span class="p">:</span>
+        <span class="nb">max</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="s2">&quot;10m&quot;</span>
+        <span class="nb">max</span><span class="o">-</span><span class="n">file</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span>
+    <span class="n">container_name</span><span class="p">:</span> <span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>
+    <span class="n">hostname</span><span class="p">:</span> <span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">onlyoffice</span><span class="o">/</span><span class="n">documentserver</span><span class="p">:</span><span class="n">latest</span>
+    <span class="n">restart</span><span class="p">:</span> <span class="n">unless</span><span class="o">-</span><span class="n">stopped</span>
+    <span class="n">stop_grace_period</span><span class="p">:</span> <span class="mi">1</span><span class="n">m</span>
+    <span class="n">networks</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">app_network</span>
+    <span class="n">expose</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s1">&#39;80&#39;</span>
+      <span class="o">-</span> <span class="s1">&#39;443&#39;</span>
+    <span class="n">volumes</span><span class="p">:</span>
+      <span class="o">-</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">document_data</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">Data</span>
+      <span class="o">-</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">document_log</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">onlyoffice</span>
+      <span class="o">-</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">document_fonts</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">fonts</span><span class="o">/</span><span class="n">truetype</span><span class="o">/</span><span class="n">custom</span>
+      <span class="o">-</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">document_forgotten</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">documentserver</span><span class="o">/</span><span class="n">App_Data</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">forgotten</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>Типовой вывод успешного развертывания в лог контейнера:<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>  <span class="o">*</span> <span class="n">Starting</span> <span class="n">PostgreSQL</span> <span class="mi">10</span> <span class="n">database</span> <span class="n">server</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>    <span class="o">...</span><span class="n">done</span><span class="o">.</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>  <span class="o">*</span> <span class="n">Starting</span> <span class="n">RabbitMQ</span> <span class="n">Messaging</span> <span class="n">Server</span> <span class="n">rabbitmq</span><span class="o">-</span><span class="n">server</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>    <span class="o">...</span><span class="n">done</span><span class="o">.</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="n">Starting</span> <span class="n">redis</span><span class="o">-</span><span class="n">server</span><span class="p">:</span> <span class="n">redis</span><span class="o">-</span><span class="n">server</span><span class="o">.</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="n">Starting</span> <span class="n">supervisor</span><span class="p">:</span> <span class="n">supervisord</span><span class="o">.</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>  <span class="o">*</span> <span class="n">Starting</span> <span class="n">periodic</span> <span class="n">command</span> <span class="n">scheduler</span> <span class="n">cron</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>    <span class="o">...</span><span class="n">done</span><span class="o">.</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>  <span class="o">*</span> <span class="n">Starting</span> <span class="n">nginx</span> <span class="n">nginx</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>    <span class="o">...</span><span class="n">done</span><span class="o">.</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="n">Generating</span> <span class="n">AllFonts</span><span class="o">.</span><span class="n">js</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span><span class="n">Done</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="n">Generating</span> <span class="n">presentation</span> <span class="n">themes</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span><span class="n">Done</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="n">ds</span><span class="p">:</span><span class="n">docservice</span><span class="p">:</span> <span class="n">stopped</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="n">ds</span><span class="p">:</span><span class="n">docservice</span><span class="p">:</span> <span class="n">started</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="n">ds</span><span class="p">:</span><span class="n">converter</span><span class="p">:</span> <span class="n">stopped</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="n">ds</span><span class="p">:</span><span class="n">converter</span><span class="p">:</span> <span class="n">started</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>  <span class="o">*</span> <span class="n">Reloading</span> <span class="n">nginx</span> <span class="n">configuration</span> <span class="n">nginx</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>    <span class="o">...</span><span class="n">done</span><span class="o">.</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="o">==&gt;</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">documentserver</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">err</span><span class="o">.</span><span class="n">log</span> <span class="o">&lt;==</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="o">==&gt;</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">documentserver</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">out</span><span class="o">.</span><span class="n">log</span> <span class="o">&lt;==</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="n">T20</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mf">52.505</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">update</span> <span class="n">cluster</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">workers</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="n">T20</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">27.586</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">update</span> <span class="n">cluster</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">workers</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="n">T20</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">27.604</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">worker</span> <span class="mi">903</span> <span class="n">started</span><span class="o">.</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="n">T20</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">27.605</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">update</span> <span class="n">cluster</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">workers</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="n">T09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">03.094</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">update</span> <span class="n">cluster</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">workers</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="n">T09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">03.125</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">worker</span> <span class="mi">861</span> <span class="n">started</span><span class="o">.</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="n">T09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">03.126</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">update</span> <span class="n">cluster</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">workers</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="n">T09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">35.735</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">update</span> <span class="n">cluster</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">workers</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="n">T09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">35.746</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">worker</span> <span class="mi">926</span> <span class="n">started</span><span class="o">.</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="n">T09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">35.748</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">update</span> <span class="n">cluster</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">workers</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="o">==&gt;</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">documentserver</span><span class="o">/</span><span class="n">docservice</span><span class="o">/</span><span class="n">err</span><span class="o">.</span><span class="n">log</span> <span class="o">&lt;==</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="o">==&gt;</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">documentserver</span><span class="o">/</span><span class="n">docservice</span><span class="o">/</span><span class="n">out</span><span class="o">.</span><span class="n">log</span> <span class="o">&lt;==</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="n">T20</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">05.671</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">error</span> <span class="n">description</span><span class="p">:</span> <span class="n">docId</span> <span class="o">=</span> <span class="mi">0</span><span class="n">a2955d7</span><span class="o">-</span><span class="mi">9505</span><span class="o">-</span><span class="mi">421</span><span class="n">b</span><span class="o">-</span><span class="mf">8e14</span><span class="o">-</span><span class="mi">4</span><span class="n">bfaa68d994a_1</span><span class="mf">.0</span> <span class="n">errorId</span> <span class="o">=</span> <span class="n">Other</span> <span class="n">error</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="n">T20</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">26.944</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">Express</span> <span class="n">server</span> <span class="n">starting</span><span class="o">...</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="n">T20</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">26.947</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">Plugins</span> <span class="n">watch</span> <span class="n">exception</span> <span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nodejs</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">fs</span><span class="o">.</span><span class="n">html</span><span class="c1">#fs_availability).</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="n">T20</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">27.185</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">Express</span> <span class="n">server</span> <span class="n">listening</span> <span class="n">on</span> <span class="n">port</span> <span class="mi">8000</span> <span class="ow">in</span> <span class="n">production</span><span class="o">-</span><span class="n">linux</span> <span class="n">mode</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="n">T09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">04.094</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">Express</span> <span class="n">server</span> <span class="n">starting</span><span class="o">...</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="n">T09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">04.100</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">Plugins</span> <span class="n">watch</span> <span class="n">exception</span> <span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nodejs</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">fs</span><span class="o">.</span><span class="n">html</span><span class="c1">#fs_availability).</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="n">T09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">04.354</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">Express</span> <span class="n">server</span> <span class="n">listening</span> <span class="n">on</span> <span class="n">port</span> <span class="mi">8000</span> <span class="ow">in</span> <span class="n">production</span><span class="o">-</span><span class="n">linux</span> <span class="n">mode</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="n">T09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">34.897</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">Express</span> <span class="n">server</span> <span class="n">starting</span><span class="o">...</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="n">T09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">34.901</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">Plugins</span> <span class="n">watch</span> <span class="n">exception</span> <span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nodejs</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">fs</span><span class="o">.</span><span class="n">html</span><span class="c1">#fs_availability).</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="p">[</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="n">T09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">35.083</span><span class="p">]</span> <span class="p">[</span><span class="n">WARN</span><span class="p">]</span> <span class="n">nodeJS</span> <span class="o">-</span> <span class="n">Express</span> <span class="n">server</span> <span class="n">listening</span> <span class="n">on</span> <span class="n">port</span> <span class="mi">8000</span> <span class="ow">in</span> <span class="n">production</span><span class="o">-</span><span class="n">linux</span> <span class="n">mode</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="o">==&gt;</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">documentserver</span><span class="o">/</span><span class="n">gc</span><span class="o">/</span><span class="n">err</span><span class="o">.</span><span class="n">log</span> <span class="o">&lt;==</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="o">==&gt;</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">documentserver</span><span class="o">/</span><span class="n">gc</span><span class="o">/</span><span class="n">out</span><span class="o">.</span><span class="n">log</span> <span class="o">&lt;==</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="o">==&gt;</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">documentserver</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">err</span><span class="o">.</span><span class="n">log</span> <span class="o">&lt;==</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="o">==&gt;</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">documentserver</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">out</span><span class="o">.</span><span class="n">log</span> <span class="o">&lt;==</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>   <span class="n">gauges</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;statsd.timestamp_lag&#39;</span><span class="p">:</span> <span class="mi">0</span> <span class="p">},</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>   <span class="n">timer_data</span><span class="p">:</span> <span class="p">{},</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>   <span class="n">counter_rates</span><span class="p">:</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>    <span class="p">{</span> <span class="s1">&#39;statsd.bad_lines_seen&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>      <span class="s1">&#39;statsd.packets_received&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>      <span class="s1">&#39;statsd.metrics_received&#39;</span><span class="p">:</span> <span class="mi">0</span> <span class="p">},</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>   <span class="n">sets</span><span class="p">:</span> <span class="p">{},</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span>   <span class="n">pctThreshold</span><span class="p">:</span> <span class="p">[</span> <span class="mi">90</span> <span class="p">]</span> <span class="p">}</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="mi">15</span> <span class="n">May</span> <span class="mi">09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">02</span> <span class="o">-</span> <span class="p">[</span><span class="mi">796</span><span class="p">]</span> <span class="n">reading</span> <span class="n">config</span> <span class="n">file</span><span class="p">:</span> <span class="o">./</span><span class="n">config</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">js</span>
+<span class="n">onlyoffice</span><span class="o">-</span><span class="n">ds</span>               <span class="o">|</span> <span class="mi">15</span> <span class="n">May</span> <span class="mi">09</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">02</span> <span class="o">-</span> <span class="n">server</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">INFO</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../docker_services.html" class="btn btn-neutral float-left" title="Сервисы Docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="ecos-gateway-app.html" class="btn btn-neutral float-right" title="ecos-gateway-app" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

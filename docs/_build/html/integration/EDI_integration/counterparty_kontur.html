@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Синхронизация данных контрагентов и их ящиков с Контур.Диадок &mdash; ECOS</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/main_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Реализация интеграции с новым ЭДО-провайдером" href="new_provider.html" />
+    <link rel="prev" title="Настройка получения событий с ящиком Контур.Диадок" href="events_kontur.html" />
+
+
+ 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Citeck ECOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records.html">ECOS Records API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ecos_data.html">ECOS Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/System_attributes.html">Системные атрибуты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Transactions.html">Транзакции в ECOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Commands.html">Команды</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Aspects.html">Аспекты</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Microservices.html">Микросервисы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Preview.html">Предпросмотр документов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Events.html">Работа с событиями (events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Processes.html">Бизнес-процессы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/Alfresco.html">Alfresco и информация о миграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/How_To.html">How To</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Camel_DSL.html">Использование Camel DSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data%20sources.html">Источники данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OSGI.html">Функционал загрузки OSGI пакетов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Mail%20Processing.html">Импорт писем IMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_import.html">Файловый импорт в систему</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EDI.html">EDI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events_kontur.html">Настройка получения событий с ящиком Контур.Диадок</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Синхронизация данных контрагентов и их ящиков с Контур.Диадок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Устройство бандла для обработки контрагентов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Настройка синхронизации контрагентов с Контур.Диадок</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dto">DTO для механизма синхронизации контрагентов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="new_provider.html">Реализация интеграции с новым ЭДО-провайдером</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-kontur-lib.html">Описание ecos-edi-kontur-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-ftps-lib.html">Описание ecos-edi-ftps-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecos-edi-sbis-lib.html">Описание ecos-edi-sbis-lib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expand_functions.html">Как расширять функционал</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_integration_settings.html">Переход на новые настройки интеграции с EDI провайдерами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CounterpartyEdiInfoRecordsDao.html">CounterpartyEdiInfoRecordsDao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_lib.html">Общая библиотека для обработки EDI событий ecos-edi-integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_signing.html">Серверное подписание</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_RC2%2B_configuration.html">Конфигурация ЭДО</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Counterparties%20sync.html">Синхронизация контрагентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Интеграция курсов валют</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Citeck ECOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8.html">&lt;no title&gt;</a> &raquo;</li>
+          <li><a href="../EDI_integration.html">Интеграция с ЭДО провайдерами</a> &raquo;</li>
+      <li>Синхронизация данных контрагентов и их ящиков с Контур.Диадок</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/integration/EDI_integration/counterparty_kontur.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="counterparty-kontur">
+<span id="id1"></span><h1>Синхронизация данных контрагентов и их ящиков с Контур.Диадок<a class="headerlink" href="#counterparty-kontur" title="Ссылка на этот заголовок"></a></h1>
+<p>Данная синхронизация предназначена для автоматизации заполнения данных контрагентов, включая ящики ЭДО.</p>
+<p>Логика работы:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>При создании синхронизации, стандартными средствами ECOS создается <strong>FutureTask</strong>, привязанный к определенному триггеру, который завязан на крон, или на переодический таймер</p></li>
+<li><p>При вызове созданной ранее <strong>FutureTask</strong>, выполняется метод <code class="docutils literal notranslate"><span class="pre">execute</span></code>, вызывающий запуск синхронизации.</p></li>
+<li><p>В методе <code class="docutils literal notranslate"><span class="pre">execute</span></code>, вызывается метод <code class="docutils literal notranslate"><span class="pre">executeImpl</span></code>, в котором:</p>
+<blockquote>
+<div><ol class="loweralpha">
+<li><p>Производится поиск зарегистрированного <strong>CounterpartiesSyncService</strong>, интерфейс которого определен в ecos-edi-commons, а реализация описывается в отдельном бандле для каждого ЭДО провайдера. К примеру <a class="reference internal" href="ecos-edi-kontur-lib.html#ecos-edi-kontur-lib"><span class="std std-ref">ecos-edi-kontur-lib</span></a></p>
+<blockquote>
+<div><p>Если <strong>CounterpartiesSyncService</strong> не найден, выбрасывается исключение.</p>
+</div></blockquote>
+</li>
+<li><p>Запускается синхронизация контрагентов, на основе описанной в синхронизации конфигурации.</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+<p>Логика работы синхронизационного сервиса <strong>KonturDiadocCounterpartiesSyncService</strong>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Валидируются и извлекаются параметры, из конфигурации синхронизации</p></li>
+<li><p>Происходит отправка запроса в Контур.Диадок, для получения всех контрагентов, для заданного ящика. В данном случае видна разница между этой синхронизацией и синхронизацией документов. В данном случае, мы получаем всех контрагентов, так как у Контура нет никакой событийной системы для них.</p></li>
+<li><p>Производится маппинг данных, полученных из Контура в dto Counterparty, описанное в ecos-edi-commons</p></li>
+<li><p>Полученные и обработанные данные передаются в camel route, описанный в настройках синхронизации</p></li>
+</ol>
+</div></blockquote>
+<section id="id2">
+<h2>Устройство бандла для обработки контрагентов<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<p>Бандл устроен достаточно просто:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Активатор, в котором, в момент загрузки бандла инициализируется фабрика <strong>ApplicationCamelContextFactory</strong>. В момент его удаления происходит её уничтожение</p></li>
+<li><p>Класс фабрики для инициализации camel routes и всех необходимых сервисов</p></li>
+<li><p>Классы самих роутов, в которых производится фильтрация, передача данных в другие роуты и делегирование обработки классам процессорам</p></li>
+<li><p>Классы процессоры, которые обрабатывают данные по необходимому алгоритму</p></li>
+</ol>
+</div></blockquote>
+<p>Классы роутов устроены достаточно однотипно и их логика не будет меняться, если нет необходимости исключить какие-то статусы из обработки.</p>
+<p>Классы процессоры обрабатывают данные, согласно заложенному в них алгоритму.</p>
+<p>Пример обработчика контрагентов в статусах <strong>IsMyCounteragent</strong>, <strong>RejectsMe</strong>, <strong>IsRejectedByMe</strong>:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Производится поиск контрагента, на основе полученных данных. Например, по ИНН</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Если контрагент не найден, в лог пишется информация, об этом, процессор завершает обработку полученных данных</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Производится заполнение запроса на мутацию с полученными данными. Отдельно производится заполнение данных ящиков, так как это ассоциация</p></li>
+<li><p>Отправляется запрос на мутацию</p></li>
+<li><p>Процессор завершает обработку полученных данных</p></li>
+</ol>
+</div></blockquote>
+<p>Пример обработчика контрагентов в статусе <strong>InvitesMe</strong>:</p>
+<p>На примере заполнения <strong>“Заявок на ЭДО”</strong>:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Производится поиск контрагента, на основе полученных данных. Например, по ИНН.</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Если контрагент найден, производится обновление его данных, для последующего прикрепления к карточке.</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Производится поиск карточки “Заявки на ЭДО”, по полученным данным.</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Если такая заявка найдена, её данные обновляются, процессор завершает обработку полученных данных.</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Заполняется запрос на мутацию карточки “Заявка на ЭДО”. Отдельно создаются сопутствующие документы-приглашения, если они есть(к карточке привязывается процесс и если пользователь принимает заявку, при наличии, их необходимо подписать), после чего они привязываются к карточке.</p></li>
+<li><p>Отправляется запрос на мутацию.</p></li>
+<li><p>Процессор завершает обработку полученных данных.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id3">
+<h2>Настройка синхронизации контрагентов с Контур.Диадок<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<p>Шаги по настройке:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Открываем журнал “Синхронизации”</p></li>
+<li><p>Нажимаем кнопку +</p></li>
+<li><p>В выпадающем списке находим “Синхронизация контрагентов(ЭДО)”, нажимаем на этот пункт выпадающего списка</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/011.png"><img alt="../../_images/011.png" class="align-center" src="../../_images/011.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Заполняем открывшуюся форму</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/021.png"><img alt="../../_images/021.png" class="align-center" src="../../_images/021.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+</ol>
+<p>Параметры:</p>
+<blockquote>
+<div><p><strong>Идентификатор</strong> – идентификатор синхронизации. На саму синхронизацию не влияет, нужен только для понимания, за что эта интеграция отвечает. Если обработка происходит для конкретного статуса контрагента, лучше указывать <code class="docutils literal notranslate"><span class="pre">идентификатор</span> <span class="pre">статуса</span> <span class="pre">+</span> <span class="pre">sync</span></code>. Если все контрагенты обрабатываются в одном роуте, можно указать <code class="docutils literal notranslate"><span class="pre">diadoc-counterparties-sync</span></code>.</p>
+<p><strong>Наименование</strong> – наименование синхронизации. Так же не влияет на саму интеграцию, нужно для понимания. Обычно, совпадает с идентификатором.</p>
+<p><strong>Включена</strong> – включена ли синхронизация.</p>
+<p><strong>Необходимо перезагрузить</strong> – перезапуск интеграции сразу после сохранения.</p>
+<p><strong>Ящик ЭДО</strong> – отвечает за то, для какого ящика будет проводиться синхронизация, как и в случае с документооборотом Контур.Диадок.</p>
+<p><strong>Время наложения блокировки</strong> – необходимо задавать для того, чтобы одновременно не запускалось более 2х интеграций для одного и того же ящика. Если значение не задано - блокировка будет накладываться на 2 часа.</p>
+<p><strong>Camel endpoint</strong> – описанный ранее роут для обработки контрагентов.</p>
+<p><strong>Cron expression</strong> – Подробнее здесь: <a class="reference external" href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/support/CronTrigger.html">org.springframework.scheduling.support.CronTrigger</a></p>
+<p><strong>Trigger period</strong> – Используется, если не задан Cron expression. Должен быть задан, если не задан Cron expression, иначе могут проблемы при работе синхронизации</p>
+<p><strong>Use fixed rate</strong> – отсчет времени до следующего триггирования будет начинаться только после того как завершилась работа по предыдущему триггированию. Подробнее здесь: org.springframework.scheduling.support.PeriodicTrigger</p>
+<p><strong>Initial delay</strong> – джоба не будет триггериться первые N миллисекунд</p>
+</div></blockquote>
+</div></blockquote>
+<section id="dto">
+<h3>DTO для механизма синхронизации контрагентов<a class="headerlink" href="#dto" title="Ссылка на этот заголовок"></a></h3>
+<p>Для синхронизации данных по контрагентам с Контур.Диадок, при получении данных используется Protobuf диадока.</p>
+<p>Описание данных по контрагентам: <a class="reference external" href="https://developer.kontur.ru/docs/diadoc-api/proto/Counteragent.html">Counteragent — документация Диадок 1.87.0</a></p>
+<p>Для преобразования полученных данных, в ECOS используются следующие DTO:</p>
+<p><strong>Counterparty:</strong></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Тип поля</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Примечание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OrgId</p></td>
+<td><p>myOrgId</p></td>
+<td><p>Идентификатор организации, от лица которой совершался запрос на получение контрагента.</p></td>
+</tr>
+<tr class="row-odd"><td><p>OurId</p></td>
+<td><p>ourId</p></td>
+<td><p>Идентификатор ящика, с которого совершался запрос на получение контрагента.</p></td>
+</tr>
+<tr class="row-even"><td><p>OrgId</p></td>
+<td><p>orgId</p></td>
+<td><p>Идентификатор организации контрагента.</p></td>
+</tr>
+<tr class="row-odd"><td><p>String</p></td>
+<td><p>fullName</p></td>
+<td><p>Полное наименование организации контрагента.</p></td>
+</tr>
+<tr class="row-even"><td><p>String</p></td>
+<td><p>shortName</p></td>
+<td><p>Сокращенное/альтернативное наименование организации контрагента.</p></td>
+</tr>
+<tr class="row-odd"><td><p>String</p></td>
+<td><p>inn</p></td>
+<td><p>ИНН организации контрагента.</p></td>
+</tr>
+<tr class="row-even"><td><p>String</p></td>
+<td><p>kpp</p></td>
+<td><p>КПП организации контрагента.</p></td>
+</tr>
+<tr class="row-odd"><td><p>String</p></td>
+<td><p>ogrn</p></td>
+<td><p>ОГРН организации контрагента.</p></td>
+</tr>
+<tr class="row-even"><td><p>String</p></td>
+<td><p>address</p></td>
+<td><p>Почтовый адрес организации контрагента.</p></td>
+</tr>
+<tr class="row-odd"><td><p>String</p></td>
+<td><p>status</p></td>
+<td><p>Статус организации контрагента.</p></td>
+</tr>
+<tr class="row-even"><td><p>String</p></td>
+<td><p>fnsParticipantId</p></td>
+<td><p>Налоговый идентификатор организации контрагента.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Long</p></td>
+<td><p>lastEventTimestamp</p></td>
+<td><p>Время последнего события, произошедшего между нашей организацией и организацией контрагента (изменение статуса).</p></td>
+</tr>
+<tr class="row-even"><td><p>InvitationDocument</p></td>
+<td><p>InvitationDocument</p></td>
+<td><p>Структура документа-приглашения. Опциональный.</p></td>
+</tr>
+<tr class="row-odd"><td><p>List&lt;EdiBoxDto&gt;</p></td>
+<td><p>boxDtos</p></td>
+<td><p>Структура ящиков контрагента в Контур.Диадок. Может быть множественным.</p></td>
+</tr>
+<tr class="row-even"><td><p>ObjectData</p></td>
+<td><p>data</p></td>
+<td><p>Дополнительные параметры, которые не определены в основной структуре. Опциональный.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>InvitationDocument:</strong></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Тип поля</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Примечание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DocumentEdiIdentifier</p></td>
+<td><p>docId</p></td>
+<td><p>Идентификатор документа приглашения в Контур.Диадок</p></td>
+</tr>
+<tr class="row-odd"><td><p>SignedContent</p></td>
+<td><p>signedContent</p></td>
+<td><p>Подписанный контрагентом контент документа-приглашения</p></td>
+</tr>
+<tr class="row-even"><td><p>FileContent</p></td>
+<td><p>docContent</p></td>
+<td><p>Контент документа-приглашения</p></td>
+</tr>
+<tr class="row-odd"><td><p>boolean</p></td>
+<td><p>НsignatureRequested</p></td>
+<td><p>Флаг, указывающий на то, запросил контрагент от нас подписание документа-приглашения, или нет. Дефолтное значение – false</p></td>
+</tr>
+<tr class="row-even"><td><p>ObjectData</p></td>
+<td><p>data</p></td>
+<td><p>Дополнительные параметры, которые не определены в основной структуре. Опциональный</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>SignedContent:</strong></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Тип поля</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Примечание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Signature</p></td>
+<td><p>signature</p></td>
+<td><p>Подписанный контент документа.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ObjectData</p></td>
+<td><p>data</p></td>
+<td><p>Дополнительные параметры, которые не определены в основной структуре. Опциональный.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>EdiBoxDto:</strong></p>
+<table class="colwidths-given tight-table docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Тип поля</p></th>
+<th class="head"><p>Название поля</p></th>
+<th class="head"><p>Примечание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>String</p></td>
+<td><p>id</p></td>
+<td><p>Идентификатор ящика Контур.Диадок.</p></td>
+</tr>
+<tr class="row-odd"><td><p>String</p></td>
+<td><p>title</p></td>
+<td><p>Заголовок ящика Контур.Диадок.</p></td>
+</tr>
+<tr class="row-even"><td><p>OurId</p></td>
+<td><p>ourId</p></td>
+<td><p>Идентификатор нашей организации. Опциональный.</p></td>
+</tr>
+<tr class="row-odd"><td><p>EdiProviderType</p></td>
+<td><p>ediProviderType</p></td>
+<td><p>Тип ЭДО провайдера. В нашем случае, – KONTUR. Другое значение принимать не может.</p></td>
+</tr>
+<tr class="row-even"><td><p>RecordRef</p></td>
+<td><p>datasourceRef</p></td>
+<td><p>Ссылка на запись источника, для синхронизации. Опциональный.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RecordRef</p></td>
+<td><p>credentialsRef</p></td>
+<td><p>Ссылка на данные учетной записи для синхронизации. Опциональный.</p></td>
+</tr>
+<tr class="row-even"><td><p>ObjectData</p></td>
+<td><p>specialInfo</p></td>
+<td><p>Дополнительные параметры, которые не определены в основной структуре. Опциональный. Обычно там хранится идентификатор ящика организации контрагента.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="events_kontur.html" class="btn btn-neutral float-left" title="Настройка получения событий с ящиком Контур.Диадок" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="new_provider.html" class="btn btn-neutral float-right" title="Реализация интеграции с новым ЭДО-провайдером" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Citeck.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
