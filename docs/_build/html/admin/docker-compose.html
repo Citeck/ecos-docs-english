@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="ru" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
@@ -17,12 +17,10 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/translations.js"></script>
     <script src="../_static/js/theme.js"></script>
-    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
-    <link rel="search" title="Поиск" href="../search.html" />
-    <link rel="next" title="Сервисы Docker" href="docker_services.html" />
-    <link rel="prev" title="Администрирование" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Администрирование" href="../Admin.html" />
 
 
  
@@ -37,120 +35,55 @@
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
-              <p class="caption" role="heading"><span class="caption-text">Знакомство с ECOS</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.html">Знакомство с ECOS</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Раздел 2</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.html">Пример создания приложения ECOS</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Раздел 3</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B5.html">Конструктор low-code</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Администрирование</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a><ul class="current">
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Знакомство с ECOS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Admin.html">Администрирование</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Установка Citeck ECOS c помощью Docker-compose</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Общие требования к системе</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Системные требования</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Общие требования к системе</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Системные требования</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Linux</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#macos">MacOS</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Установка и запуск проекта</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Установка и запуск проекта</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#centos-7-x-citeck-ecos">Подготовка окружения CentOS 7.x для установки Citeck Ecos</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#docker">Сервисы Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">Возможные проблемы</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id11">ОС Windows</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15">MacOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Возможные проблемы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">ОС Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">MacOS</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="docker_services.html">Сервисы Docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html">Аутентификация</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sync_authorities.html">Синхронизация Authorities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="keycloak.html">ECOS KeyCloak Extensions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="keycloack_postman.html">Настройки аутентификации для работы с Records API из внешних систем</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration.html">Конфигурация</a></li>
-<li class="toctree-l2"><a class="reference internal" href="license.html">Лицензии ECOS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="audit.html">Аудит</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howto.html">How To</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Архитектура</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0.html">Архитектура</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Общая база знаний</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D1%8B.html">Термины</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records.html">ECOS Records API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_Records_examples.html">Примеры запросов ECOS Records</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/ecos_data.html">ECOS Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/System_attributes.html">Системные атрибуты</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2.html">Язык предикатов</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/Transactions.html">Транзакции в ECOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/Commands.html">Команды</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/Aspects.html">Аспекты</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/Microservices.html">Микросервисы</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/ECOS_WebAPI.html">ECOS WebAPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2.html">Микросервис Трансформации. Генерация документов по шаблонам</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/Preview.html">Предпросмотр документов</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/Events.html">Работа с событиями (events)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/Processes.html">Бизнес-процессы</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/Alfresco.html">Alfresco и информация о миграции</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/How_To.html">How To</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Интеграции</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../integration/API%20ECOS%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC.html">Примеры использования Records API для внешних систем</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/Camel_DSL.html">Использование Camel DSL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/data%20sources.html">Источники данных</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/records%20sources.html">Создание новых источников записей через Web интерфейс</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/OSGI.html">Функционал загрузки OSGI пакетов</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/Filesystem%20Export.html">Выгрузка записей из любой базы данных в файловую систему микросервиса интеграции</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/Mail%20Processing.html">Импорт писем IMAP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/file_import.html">Файловый импорт в систему</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/2_instances.html">Общение между двумя и более инстансами ECOS’а через команды и события</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/EDI_integration.html">Интеграция с ЭДО провайдерами</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/Counterparties%20sync.html">Синхронизация контрагентов</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/currency.html">Интеграция курсов валют</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/ECOS%20Synchronization.html">Поддержка выгрузки нод alfresco в таблицу базы данных</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Раздел 8</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%D0%9C%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.html">Мобильное приложение</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Citeck ECOS</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="Навигация по страницам">
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html">Администрирование</a> &raquo;</li>
+          <li><a href="../Admin.html">Администрирование</a> &raquo;</li>
       <li>Установка Citeck ECOS c помощью Docker-compose</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/admin/docker-compose.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+            <a href="../_sources/admin/docker-compose.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -159,36 +92,36 @@
            <div itemprop="articleBody">
              
   <section id="citeck-ecos-c-docker-compose">
-<span id="docker-compose"></span><h1><a class="toc-backref" href="#id17">Установка Citeck ECOS c помощью Docker-compose</a><a class="headerlink" href="#citeck-ecos-c-docker-compose" title="Ссылка на этот заголовок"></a></h1>
-<div class="contents topic" id="id1">
-<p class="topic-title">Содержание</p>
+<span id="docker-compose"></span><h1><a class="toc-backref" href="#id16">Установка Citeck ECOS c помощью Docker-compose</a><a class="headerlink" href="#citeck-ecos-c-docker-compose" title="Permalink to this headline"></a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#citeck-ecos-c-docker-compose" id="id17">Установка Citeck ECOS c помощью Docker-compose</a></p>
+<li><p><a class="reference internal" href="#citeck-ecos-c-docker-compose" id="id16">Установка Citeck ECOS c помощью Docker-compose</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id2" id="id18">Общие требования к системе</a></p></li>
-<li><p><a class="reference internal" href="#id3" id="id19">Системные требования</a></p>
+<li><p><a class="reference internal" href="#id1" id="id17">Общие требования к системе</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id18">Системные требования</a></p>
 <ul>
-<li><p><a class="reference internal" href="#windows" id="id20">Windows</a></p></li>
-<li><p><a class="reference internal" href="#id5" id="id21">Linux</a></p></li>
-<li><p><a class="reference internal" href="#macos" id="id22">MacOS</a></p></li>
+<li><p><a class="reference internal" href="#windows" id="id19">Windows</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id20">Linux</a></p></li>
+<li><p><a class="reference internal" href="#macos" id="id21">MacOS</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#id7" id="id23">Установка и запуск проекта</a></p></li>
-<li><p><a class="reference internal" href="#centos-7-x-citeck-ecos" id="id24">Подготовка окружения CentOS 7.x для установки Citeck Ecos</a></p></li>
-<li><p><a class="reference internal" href="#docker" id="id25">Сервисы Docker</a></p></li>
-<li><p><a class="reference internal" href="#id10" id="id26">Возможные проблемы</a></p>
+<li><p><a class="reference internal" href="#id6" id="id22">Установка и запуск проекта</a></p></li>
+<li><p><a class="reference internal" href="#centos-7-x-citeck-ecos" id="id23">Подготовка окружения CentOS 7.x для установки Citeck Ecos</a></p></li>
+<li><p><a class="reference internal" href="#docker" id="id24">Сервисы Docker</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id25">Возможные проблемы</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id11" id="id27">ОС Windows</a></p>
+<li><p><a class="reference internal" href="#id10" id="id26">ОС Windows</a></p>
 <ul>
-<li><p><a class="reference internal" href="#wsl-2-windows" id="id28">Включение функции WSL 2 в Windows</a></p></li>
-<li><p><a class="reference internal" href="#id12" id="id29">Порт 8080 уже занят</a></p></li>
-<li><p><a class="reference internal" href="#id13" id="id30">Порт зарезервирован Windows</a></p></li>
-<li><p><a class="reference internal" href="#wsl-windows" id="id31">Настройка дополнительных параметров  WSL в Windows</a></p></li>
+<li><p><a class="reference internal" href="#wsl-2-windows" id="id27">Включение функции WSL 2 в Windows</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id28">Порт 8080 уже занят</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id29">Порт зарезервирован Windows</a></p></li>
+<li><p><a class="reference internal" href="#wsl-windows" id="id30">Настройка дополнительных параметров  WSL в Windows</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#id15" id="id32">MacOS</a></p>
+<li><p><a class="reference internal" href="#id14" id="id31">MacOS</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id16" id="id33">Запускаются не все контейнеры</a></p></li>
+<li><p><a class="reference internal" href="#id15" id="id32">Запускаются не все контейнеры</a></p></li>
 </ul>
 </li>
 </ul>
@@ -197,8 +130,8 @@
 </li>
 </ul>
 </div>
-<section id="id2">
-<h2><a class="toc-backref" href="#id18">Общие требования к системе</a><a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<section id="id1">
+<h2><a class="toc-backref" href="#id17">Общие требования к системе</a><a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>Все действия рекомендуется выполнять в командной строке или окне терминала, или в Git CMD Windows, запущенного с повышенными правами.</p></li>
 <li><p>В файле <strong>hosts</strong> прописать <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span> <span class="pre">ecos-community-demo</span></code>. Путь к папке, где лежит файл hosts, зависит от операционной системы, которая установлена на вашем компьютере:</p>
@@ -210,10 +143,10 @@
 </li>
 </ul>
 </section>
-<section id="id3">
-<h2><a class="toc-backref" href="#id19">Системные требования</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<section id="id2">
+<h2><a class="toc-backref" href="#id18">Системные требования</a><a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <section id="windows">
-<h3><a class="toc-backref" href="#id20">Windows</a><a class="headerlink" href="#windows" title="Ссылка на этот заголовок"></a></h3>
+<h3><a class="toc-backref" href="#id19">Windows</a><a class="headerlink" href="#windows" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Windows 11 64bit: Home, Pro, Enterprise или Education версии 21H2 или выше.</p></li>
 <li><p>Windows 10 64bit: Home или Pro 21H1 (сборка 19043) или выше, Enterprise или Education 20H2 (сборка 19042) или выше</p></li>
@@ -229,8 +162,8 @@
 </ul>
 <p><a class="reference external" href="https://docs.docker.com/desktop/install/windows-install/">Официальное руководстов по установке Docker на Windows</a></p>
 </section>
-<section id="id5">
-<h3><a class="toc-backref" href="#id21">Linux</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h3>
+<section id="id4">
+<h3><a class="toc-backref" href="#id20">Linux</a><a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Поддержка 64-битного ядра и процессора для виртуализации.</p></li>
 <li><p>Поддержка виртуализации KVM. Следуйте <a class="reference external" href="https://docs.docker.com/desktop/install/linux-install/#kvm-virtualization-support">инструкциям поддержки виртуализации KVM</a> для проверки включены или нет модули ядра KVM и как предоставить доступ к устройству kvm.</p></li>
@@ -244,7 +177,7 @@
 <p><a class="reference external" href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Официальное руководстов по установке Docker на Ubuntu</a></p>
 </section>
 <section id="macos">
-<h3><a class="toc-backref" href="#id22">MacOS</a><a class="headerlink" href="#macos" title="Ссылка на этот заголовок"></a></h3>
+<h3><a class="toc-backref" href="#id21">MacOS</a><a class="headerlink" href="#macos" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>MacOS версии 10.15 или выше.</p></li>
 <li><p>Не менее 4 ГБ оперативной памяти.</p></li>
@@ -252,12 +185,12 @@
 <p><a class="reference external" href="https://docs.docker.com/desktop/install/mac-install/">Официальное руководстов по установке Docker на MacOS</a></p>
 </section>
 </section>
-<section id="id7">
-<h2><a class="toc-backref" href="#id23">Установка и запуск проекта</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h2>
+<section id="id6">
+<h2><a class="toc-backref" href="#id22">Установка и запуск проекта</a><a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>Установить <a class="reference external" href="https://docs.docker.com/get-docker/">docker и docker-compose</a> на Вашу ОС</p></li>
 <li><p>Установить <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a> для Вашей ОС</p></li>
-<li><p>Скачать <a class="reference external" href="https://gitlab.citeck.ru/ecos-community/ecos-community-demo/-/archive/master/ecos-community-demo-master.zip">репозиторий</a> , распаковать на диске С</p></li>
+<li><p>Скачать <a class="reference external" href="https://github.com/Citeck/ecos-community-demo/archive/refs/heads/master.zip">репозиторий</a> , распаковать на диске С</p></li>
 <li><p>В командной строке выполнить команды:</p></li>
 </ul>
 <blockquote>
@@ -278,7 +211,7 @@
 <p>При первом развертывании keycloak попросит сменить пароль.  Если необходимо еще раз сменить пароль, <a class="reference external" href="https://www.keycloak.org/docs/latest/getting_started/index.html#creating-a-user">см. инструкцию</a></p>
 </section>
 <section id="centos-7-x-citeck-ecos">
-<h2><a class="toc-backref" href="#id24">Подготовка окружения CentOS 7.x для установки Citeck Ecos</a><a class="headerlink" href="#centos-7-x-citeck-ecos" title="Ссылка на этот заголовок"></a></h2>
+<h2><a class="toc-backref" href="#id23">Подготовка окружения CentOS 7.x для установки Citeck Ecos</a><a class="headerlink" href="#centos-7-x-citeck-ecos" title="Permalink to this headline"></a></h2>
 <p>Обновить систему и пакеты до последней актуальной версии:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">update</span> <span class="o">-</span><span class="n">y</span> <span class="o">&amp;&amp;</span> <span class="n">yum</span> <span class="n">upgrade</span> <span class="o">-</span><span class="n">y</span>
 </pre></div>
@@ -328,15 +261,28 @@
 <p>Система будет инициализирована, и после полного запуска, будет готова к работе.</p>
 </section>
 <section id="docker">
-<h2><a class="toc-backref" href="#id25">Сервисы Docker</a><a class="headerlink" href="#docker" title="Ссылка на этот заголовок"></a></h2>
-<p><a class="reference internal" href="docker_services.html#docker-services"><span class="std std-ref">По ссылке</span></a> перечислены сервисы с точки зрения Docker’а и их настройки.</p>
+<h2><a class="toc-backref" href="#id24">Сервисы Docker</a><a class="headerlink" href="#docker" title="Permalink to this headline"></a></h2>
+<p><span class="xref std std-ref">По ссылке</span> перечислены сервисы с точки зрения Docker’а и их настройки.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Следующие контейнеры запускаются 1 раз:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ecos-community-demo-master-ecos-meetings-ecos-apps-1</p></li>
+<li><p>ecos-community-demo-master-ecos-order-pass-ecos-apps-1</p></li>
+<li><p>ecos-community-demo-master-ecos-common-data-list-ecos-apps-1</p></li>
+<li><p>ecos-community-demo-master-ecos-assignments-ecos-apps-1</p></li>
+</ul>
+</div></blockquote>
+<p>и далее находятся в статусе <strong>exited</strong></p>
+</div>
 </section>
+<section id="id9">
+<h2><a class="toc-backref" href="#id25">Возможные проблемы</a><a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
 <section id="id10">
-<h2><a class="toc-backref" href="#id26">Возможные проблемы</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок"></a></h2>
-<section id="id11">
-<h3><a class="toc-backref" href="#id27">ОС Windows</a><a class="headerlink" href="#id11" title="Ссылка на этот заголовок"></a></h3>
+<h3><a class="toc-backref" href="#id26">ОС Windows</a><a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
 <section id="wsl-2-windows">
-<h4><a class="toc-backref" href="#id28">Включение функции WSL 2 в Windows</a><a class="headerlink" href="#wsl-2-windows" title="Ссылка на этот заголовок"></a></h4>
+<h4><a class="toc-backref" href="#id27">Включение функции WSL 2 в Windows</a><a class="headerlink" href="#wsl-2-windows" title="Permalink to this headline"></a></h4>
 <p>Docker Desktop использует функцию динамического распределения памяти в WSL 2, чтобы значительно снизить потребление ресурсов. Кроме того, WSL 2 улучшает совместное использование файловой системы, время загрузки и предоставляет пользователям Docker Desktop доступ к некоторым новым интересным функциям.</p>
 <ol class="arabic simple">
 <li><p>Перед установкой WSL 2 необходимо включить необязательный компонент <strong>Платформа виртуальных машин</strong>.</p></li>
@@ -365,8 +311,8 @@
 <li><p>При установке Docker в окне конфигурации установите галочку в поле <strong>Use WSL 2 instead of Hyper-V (recommended)</strong>. Более подробная версия инструкции см. <a class="reference external" href="https://docs.docker.com/docker-for-windows/wsl/">https://docs.docker.com/docker-for-windows/wsl/</a></p></li>
 </ol>
 </section>
-<section id="id12">
-<h4><a class="toc-backref" href="#id29">Порт 8080 уже занят</a><a class="headerlink" href="#id12" title="Ссылка на этот заголовок"></a></h4>
+<section id="id11">
+<h4><a class="toc-backref" href="#id28">Порт 8080 уже занят</a><a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
 <p>Ecos-ui использует порт 8080 и, если этот порт уже занят другой программой, то можно получить ошибку:</p>
 <p><strong>«Error starting userland proxy: listen tcp 0.0.0.0:8080:bind: Only one usage of each socket address is normally permitted.»</strong></p>
 <blockquote>
@@ -374,8 +320,8 @@
 </div></blockquote>
 <p>Если команда <code class="docutils literal notranslate"><span class="pre">netstat</span> <span class="pre">-ono</span> <span class="pre">(или</span> <span class="pre">netstat</span> <span class="pre">-ono</span> <span class="pre">|</span> <span class="pre">findstr</span> <span class="pre">8080)</span></code> не находит, чем занят порт, то нужно скачать программу, например, CurrPorts и уже с ее помощью найти занятые порты.</p>
 </section>
-<section id="id13">
-<h4><a class="toc-backref" href="#id30">Порт зарезервирован Windows</a><a class="headerlink" href="#id13" title="Ссылка на этот заголовок"></a></h4>
+<section id="id12">
+<h4><a class="toc-backref" href="#id29">Порт зарезервирован Windows</a><a class="headerlink" href="#id12" title="Permalink to this headline"></a></h4>
 <p>К примеру, каталог <strong>ecos-postgres</strong> использует порт <strong>50432</strong>, но этот порт зарезервирован Windows. Проверить такие порты можно командой <code class="docutils literal notranslate"><span class="pre">netsh</span> <span class="pre">int</span> <span class="pre">ipv4</span> <span class="pre">show</span> <span class="pre">excludedportrange</span> <span class="pre">protocol=tcp</span></code>.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../_images/02.png"><img alt="../_images/02.png" class="align-center" src="../_images/02.png" style="width: 400px;" /></a>
@@ -391,16 +337,16 @@
 <p>Порт попадет в исключения, и подобной ошибки не возникнет.</p>
 </section>
 <section id="wsl-windows">
-<h4><a class="toc-backref" href="#id31">Настройка дополнительных параметров  WSL в Windows</a><a class="headerlink" href="#wsl-windows" title="Ссылка на этот заголовок"></a></h4>
+<h4><a class="toc-backref" href="#id30">Настройка дополнительных параметров  WSL в Windows</a><a class="headerlink" href="#wsl-windows" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><p><a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig">Настройка дополнительных параметров  WSL в Windows</a></p>
 </div></blockquote>
 </section>
 </section>
+<section id="id14">
+<h3><a class="toc-backref" href="#id31">MacOS</a><a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
 <section id="id15">
-<h3><a class="toc-backref" href="#id32">MacOS</a><a class="headerlink" href="#id15" title="Ссылка на этот заголовок"></a></h3>
-<section id="id16">
-<h4><a class="toc-backref" href="#id33">Запускаются не все контейнеры</a><a class="headerlink" href="#id16" title="Ссылка на этот заголовок"></a></h4>
+<h4><a class="toc-backref" href="#id32">Запускаются не все контейнеры</a><a class="headerlink" href="#id15" title="Permalink to this headline"></a></h4>
 <p>Если при разворачивании приложения в докере запускаются не все контейнеры:</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../_images/06.png"><img alt="../_images/06.png" class="align-center" src="../_images/06.png" style="width: 400px;" /></a>
@@ -417,9 +363,8 @@
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
-        <a href="../%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.html" class="btn btn-neutral float-left" title="Администрирование" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
-        <a href="docker_services.html" class="btn btn-neutral float-right" title="Сервисы Docker" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Admin.html" class="btn btn-neutral float-left" title="Администрирование" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
@@ -428,9 +373,9 @@
     <p>&#169; Copyright 2023, Citeck.</p>
   </div>
 
-  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
-    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>

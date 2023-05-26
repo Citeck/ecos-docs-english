@@ -15,5 +15,6 @@ Citeck ECOS documentation
    :maxdepth: 2
 
    Introduction
+   Admin
 
 
