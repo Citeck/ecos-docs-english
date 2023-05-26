@@ -14,8 +14,6 @@ import os
 import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-
-
 # -- Project information -----------------------------------------------------
 
 project = 'Citeck ECOS'
@@ -33,6 +31,7 @@ release = 'Ver. 4'
 # ones.
 extensions = [
  'sphinx.ext.mathjax',
+ 'sphinx_search.extension', 
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -44,7 +43,7 @@ templates_path = ['_templates']
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = 'en'
+language = 'ru'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
